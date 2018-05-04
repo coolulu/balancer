@@ -9,12 +9,12 @@
     struct Packet
     {
         unsigned short 		head			:2
-        unsigned short		len				:2
+		unsigned short		len				:2
         unsigned short		version			:2
         unsigned short 		service_id		:2
         unsigned int 		app_id			:4
         unsigned int 		session_id		:4
-        unsigned char		data[]			:len
+		unsigned char		data[]			:len
         unsigned int		crc				:4
     }
     head = [0x00,0x00]
@@ -24,9 +24,9 @@
 ### Proto
     message Message
     {
-        repeated uint64    timestamp 		= 1;
-        optional uint32    error_code  		= 2;	//rsp必填
-        optional bytes     error_info   	= 3;	//rsp必填
+        repeated uint64		timestamp 		= 1;
+		optional uint32		error_code		= 2;	//rsp必填
+		optional bytes		error_info		= 3;	//rsp必填
         extensions 10000 to 20000;
     }
 
@@ -37,7 +37,7 @@
 	eg:
 	gate:
 		1,01,01
-        1,01,02
+		1,01,02
     group:
 		1,02,01
 		1,02,02
@@ -90,22 +90,22 @@
         "module": "gate",
         "idc_list": [
             {
-                "idc": "shenzhen_01",						//地区机房分组
-                "set_list": [
+				"idc": "shenzhen_01",						//地区机房分组
+				"set_list": [
                     {
-                        "set": "set_01",					//机房内部分组
+						"set": "set_01",					//机房内部分组
                         "heartbeat": {
-                            "heartbeat_ip": "out_ip",		//用out_ip或inner_ip做心跳
+							"heartbeat_ip": "out_ip",		//用out_ip或inner_ip做心跳
 							"heartbeat_gap": 5,				//心跳探测间隔
 							"lose_time": 3,					//服务丢失次数
-                            "recover_time": 3				//服务恢复次数
+							"recover_time": 3				//服务恢复次数
                         }
                         "heartbeat_list": [
                             {
                                 "id": "id_01",
-                                "inner_ip": "121.1.1.1",	//外网ip,没外网填内网ip
-                                "out_ip":  "11.1.1.1",		//内网ip
-                                "port": 10101
+								"inner_ip": "121.1.1.1",	//外网ip,没外网填内网ip
+								"out_ip":  "11.1.1.1",		//内网ip
+								"port": 10101
                             }
                         ],
                         "service_list": [
