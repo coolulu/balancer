@@ -54,21 +54,35 @@
 
 ## 资源管理服务
 
+只有全局配置，先不搞局部配置
+
 ### 模块列表
     module.conf
     {
         "module_list": [
             {
                 "module": "gate",
-                "depend_file": "depend_gate.conf",
-                "idc_file": "idc_gate.conf",
-                "kv_file": "kv_gate.conf"
+                "depend_file": "./depend_gate.conf",
+                "idc_file": "./idc_gate.conf",
+                "kv_file": "./kv_gate.conf"
+				"heartbeat": {
+					"heartbeat_ip": "out_ip",       	//用out_ip或inner_ip做心跳
+					"heartbeat_gap": 5,             	//心跳探测间隔
+					"lose_time": 3,                 	//服务丢失次数
+					"recover_time": 3               	//服务恢复次数
+                }
             },
             {
                 "module": "group",
-                "depend_file": "depend_group.conf",
-                "idc_file": "idc_group.conf",
-                "kv_file": "kv_group.conf"
+                "depend_file": "./depend_group.conf",
+                "idc_file": "./idc_group.conf",
+                "kv_file": "./kv_group.conf"
+				"heartbeat": {
+					"heartbeat_ip": "out_ip",
+					"heartbeat_gap": 5,
+					"lose_time": 3,
+					"recover_time": 3
+				}
             }
         ]
     }
@@ -97,12 +111,6 @@
                 "set_list": [
                     {
                         "set": "set_01",                    //机房内部分组
-                        "heartbeat": {
-                            "heartbeat_ip": "out_ip",       //用out_ip或inner_ip做心跳
-                            "heartbeat_gap": 5,             //心跳探测间隔
-                            "lose_time": 3,                 //服务丢失次数
-                            "recover_time": 3               //服务恢复次数
-                        }
                         "heartbeat_list": [
                             {
                                 "id": "id_01",
