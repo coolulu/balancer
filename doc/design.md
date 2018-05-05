@@ -62,26 +62,30 @@
         "module_list": [
             {
                 "module": "gate",
-                "depend_file": "./depend_gate.conf",
-                "idc_file": "./idc_gate.conf",
-                "kv_file": "./kv_gate.conf"
 				"heartbeat": {
 					"heartbeat_ip": "out_ip",       	//用out_ip或inner_ip做心跳
 					"heartbeat_gap": 5,             	//心跳探测间隔
 					"lose_time": 3,                 	//服务丢失次数
 					"recover_time": 3               	//服务恢复次数
-                }
+                },
+				"file_path": {
+					"depend": "./depend_gate.conf",
+					"idc": "./idc_gate.conf",
+					"kv": "./kv_gate.conf"
+				}
             },
             {
                 "module": "group",
-                "depend_file": "./depend_group.conf",
-                "idc_file": "./idc_group.conf",
-                "kv_file": "./kv_group.conf"
 				"heartbeat": {
 					"heartbeat_ip": "out_ip",
 					"heartbeat_gap": 5,
 					"lose_time": 3,
 					"recover_time": 3
+				},
+				"file_path": {
+					"depend": "./depend_gate.conf",
+					"idc": "./idc_gate.conf",
+					"kv": "./kv_gate.conf"
 				}
             }
         ]
