@@ -56,12 +56,13 @@
 
 只有全局配置，先不搞局部配置
 
-### 模块列表
-    module.conf
+### 服务列表
+    service.conf
     {
-        "module_list": [
+        "service_list": [
             {
-                "module": "gate",
+                "service": "gate",
+				"service_id": 1,
 				"heartbeat": {
 					"heartbeat_ip": "out_ip",       	//用out_ip或inner_ip做心跳
 					"heartbeat_gap": 5,             	//心跳探测间隔
@@ -75,7 +76,8 @@
 				}
             },
             {
-                "module": "group",
+                "service": "group",
+				"service_id": 2,
 				"heartbeat": {
 					"heartbeat_ip": "out_ip",
 					"heartbeat_gap": 5,
@@ -91,24 +93,24 @@
         ]
     }
 
-### 模块依列表
+### 服务依列表
     depend_gate.conf
     {
-        "module": "gate",
+        "service": "gate",
         "depend_list": [
             {
-                "module": "group"
+                "service": "group"
             },
             {
-                "module": "buddy"
+                "service": "buddy"
             }
         ]
     }
 
-### 模块idc列表
+### 服务idc列表
     idc_gate.conf
     {
-        "module": "gate",
+        "service": "gate",
         "idc_list": [
             {
                 "idc": "shenzhen_01",                       //地区机房分组
@@ -140,7 +142,7 @@
 ### 模块kv配置列表
     kv_gate.conf
     {
-        "module": "gate",
+        "service": "gate",
         "kv_list": [
             {
                 "key": "timeout",
