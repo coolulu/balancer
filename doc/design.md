@@ -160,7 +160,7 @@
     保证同一个user client重连还是重连到之前的gate服务
 
 ## 网关服务
-    （暂不考虑）region要做user对tcp的绑定，保证user断开重连之后tcp连接不同，但还能找回user的新tcp连接
+    （暂不考虑）gate要做user对tcp的绑定，保证user断开重连之后tcp连接不同，但还能找回user的新tcp连接
 
 ## 业务服务
 
