@@ -173,7 +173,8 @@
 
     高32位放时间戳（time（NULL）），unsigned int类型
     time_t强制转换成unsigned int，有数值损失，但只要在unsigned int最大值之内，
-    及2100年之前都是准确的，即使超时2100也是可以使用的
+	unsigned int max = 4294967295，即2106/2/7 14:28:15，
+    及2106年之前都是准确的，即使超时2106也是可以使用的
 
     低32位放count，count从0开始，每次使用加1，unsigned int类型
     unsigned int从0到最大值在翻转回0一圈，在现有的机器上循环要6-9秒，
