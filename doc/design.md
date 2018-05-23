@@ -16,13 +16,13 @@
         unsigned short      from_id         :2
         unsigned int        app_id          :4
         unsigned int        session_id      :4
-        unsigned char       data[]          :len
+        unsigned char       data[]          :data_len
         unsigned int        crc             :4
     }
     head = [0x00,0x00,0x00,0x00]
-    len = len(version + service_id + from_id + app_id + session_id + data[] + crc)
-    len(message) = 26 + len(data[])
-	crc = crc(head + len + version + service_id + from_id + app_id + session_id + data[])
+    len = len(version + service_id + from_id + app_id + session_id + data_len + crc)
+    len(Packet) = 26 + data_len = [26, (unsigned short)-1]
+	crc = crc(len + version + service_id + from_id + app_id + session_id + data[])
 
 ### message.proto
     message Message
