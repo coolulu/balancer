@@ -13,21 +13,20 @@
         unsigned int        len             :4
         unsigned short      version         :2
         unsigned short      service_id      :2
-        unsigned short      from_id         :2
         unsigned int        app_id          :4
         unsigned int        session_id      :4
         unsigned char       data[]          :data_len
         unsigned int        crc             :4
     }
     head = [0x00,0x00,0x00,0x00]
-    len = len(version + service_id + from_id + app_id + session_id + data_len + crc)
-    len(Packet) = 26 + data_len = [26, (unsigned short)-1]
-	crc = crc(len + version + service_id + from_id + app_id + session_id + data[])
+    len = len(version + service_id + app_id + session_id + data_len + crc)
+    len(Packet) = 24 + data_len = [24, (unsigned short)-1]
+	crc = crc(len + version + service_id + app_id + session_id + data[])
 
 ### message.proto
     message Message
     {
-        repeated uint64     timestamp       = 1;
+        repeated uint64     timestamp       = 1;	//请求源或返回源的时间(比如App客户端发送时间)
         optional uint32     error_code      = 2;    //rsp必填
         optional bytes      error_info      = 3;    //rsp必填
         extensions 10000 to 20000;
@@ -76,7 +75,7 @@
                 "service": "gate",
                 "service_id": 1,
                 "heartbeat": {
-                    "heartbeat_ip": "out_ip",           //用out_ip或inner_ip做心跳
+                    "heartbeat_ip": in_ip",           //用in_ip或out_ip做心跳
                     "heartbeat_gap": 5,                 //心跳探测间隔
                     "lose_time": 3,                     //服务丢失次数
                     "recover_time": 3                   //服务恢复次数
@@ -129,21 +128,21 @@
                 "idc": "shenzhen_01",                       //地区机房分组
                 "set_list": [
                     {
-                        "set": "set_01",                    //机房内部分组
+                        "set": "set_01",                   	//机房内部分组
                         "heartbeat_list": [
                             {
                                 "id": "id_01",
-                                "inner_ip": "121.1.1.1",    //外网ip,没外网填内网ip
-                                "out_ip":  "11.1.1.1",      //内网ip
-                                "port": 10101
+                                "in_ip": "121.1.1.1",    	//内网ip
+                                "out_ip": "11.1.1.1",      	//外网ip,没外网填内网ip
+                                "port": 11001
                             }
                         ],
                         "service_list": [
                             {
                                 "id": "id_02",
-                                "inner_ip": "121.1.1.2",
-                                "out_ip":  "11.1.1.2",
-                                "port": 10102
+                                "in_ip": "121.1.1.2",
+                                "out_ip": "11.1.1.2",
+                                "port": 11002
                             }
                         ]
                     }
@@ -167,6 +166,86 @@
             }
         ]
     }
+
+### 集中简化
+	service.conf
+    {
+        "service_list": [
+            {
+                "service": "gate",
+                "service_id": 11000,
+                "heartbeat": {
+                    "heartbeat_ip": "in_ip",        //用in_ip或out_ip做心跳
+                    "heartbeat_gap": 5,             //心跳探测间隔
+                    "lose_time": 3,                 //服务丢失次数
+                    "recover_time": 3              	//服务恢复次数
+                },
+                "kv_list": [
+            		{
+                		"key": "timeout",
+                		"val": "30"
+            		},
+            		{
+                		"key": "env",
+                		"val": "test"
+            		}
+        		],
+				"heartbeat_list": [
+                    {
+						"id": "gate_001",
+						"in_ip": "121.1.1.1",   	//内网ip
+                        "out_ip": "11.1.1.1",      	//外网ip,没外网填内网ip
+                        "port": 11001
+                    }
+               	],
+				"service_list": [
+                    {
+                        "id": "gate_002",
+                        "in_ip": "121.1.1.2",
+                        "out_ip": "11.1.1.2",
+                        "port": 11002
+                    }
+                ]
+            },
+            {
+                "service": "group",
+                "service_id": 12000,
+                "heartbeat": {
+                    "heartbeat_ip": "out_ip",
+                    "heartbeat_gap": 5,
+                    "lose_time": 3,
+                    "recover_time": 3
+                },
+				"kv_list": [
+            		{
+                		"key": "name_max_size",
+                		"val": "1024"
+            		},
+            		{
+                		"key": "buffer_max_size",
+                		"val": "1024"
+            		}
+        		],
+				"heartbeat_list": [
+                    {
+						"id": "group_001",
+						"in_ip": "121.1.1.10",
+                        "out_ip": "11.1.1.10",
+                        "port": 11001
+                    }
+               	],
+				"service_list": [
+                    {
+                        "id": "group_002",
+                        "in_ip": "121.1.1.20",
+                        "out_ip": "11.1.1.20",
+                        "port": 11002
+                    }
+                ]
+            }
+        ]
+    }
+
 
 ## 导航服务
     请求导航服务服务返回gate的ip做一致性哈希，gate不发生变换的情况下，
