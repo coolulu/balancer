@@ -21,12 +21,12 @@
     head = [0x00,0x00,0x00,0x00]
     len = len(version + service_id + app_id + session_id + data_len + crc)
     len(Packet) = 24 + data_len = [24, (unsigned short)-1]
-	crc = crc(len + version + service_id + app_id + session_id + data[])
+    crc = crc(len + version + service_id + app_id + session_id + data[])
 
 ### message.proto
     message Message
     {
-        repeated uint64     timestamp       = 1;	//请求源或返回源的时间(比如App客户端发送时间)
+        repeated uint64     timestamp       = 1;    //请求源或返回源的时间(比如App客户端发送时间)
         optional uint32     error_code      = 2;    //rsp必填
         optional bytes      error_info      = 3;    //rsp必填
         extensions 10000 to 20000;
@@ -35,8 +35,8 @@
 ## 数值划分
 
 ### 服务id
-	unsigned int max  = 4,294,967,295
-	eg:
+    unsigned int max  = 4,294,967,295
+    eg:
     gate:
         11,000
         11,000
@@ -57,7 +57,7 @@
 
 ### 错误码
     unsigned int max  = 4,294,967,295
-	[服务id]*100,000+[错误码(00,000-99,999)]
+    [服务id]*100,000+[错误码(00,000-99,999)]
     eg:
     gate:
         (11,000,00,000 - 11,000,99,999]
@@ -128,12 +128,12 @@
                 "idc": "shenzhen_01",                       //地区机房分组
                 "set_list": [
                     {
-                        "set": "set_01",                   	//机房内部分组
+                        "set": "set_01",                    //机房内部分组
                         "heartbeat_list": [
                             {
                                 "id": "id_01",
-                                "in_ip": "121.1.1.1",    	//内网ip
-                                "out_ip": "11.1.1.1",      	//外网ip,没外网填内网ip
+                                "in_ip": "121.1.1.1",       //内网ip
+                                "out_ip": "11.1.1.1",       //外网ip,没外网填内网ip
                                 "port": 11001
                             }
                         ],
@@ -168,7 +168,7 @@
     }
 
 ### 集中简化
-	service.conf
+    service.conf
     {
         "service_list": [
             {
@@ -178,27 +178,27 @@
                     "heartbeat_ip": "in_ip",        //用in_ip或out_ip做心跳
                     "heartbeat_gap": 5,             //心跳探测间隔
                     "lose_time": 3,                 //服务丢失次数
-                    "recover_time": 3              	//服务恢复次数
+                    "recover_time": 3               //服务恢复次数
                 },
                 "kv_list": [
-            		{
-                		"key": "timeout",
-                		"val": "30"
-            		},
-            		{
-                		"key": "env",
-                		"val": "test"
-            		}
-        		],
-				"heartbeat_list": [
                     {
-						"id": "gate_001",
-						"in_ip": "121.1.1.1",   	//内网ip
-                        "out_ip": "11.1.1.1",      	//外网ip,没外网填内网ip
+                        "key": "timeout",
+                        "val": "30"
+                    },
+                    {
+                        "key": "env",
+                        "val": "test"
+                    }
+                ],
+                "heartbeat_list": [
+                    {
+                        "id": "gate_001",
+                        "in_ip": "121.1.1.1",       //内网ip
+                        "out_ip": "11.1.1.1",       //外网ip,没外网填内网ip
                         "port": 11001
                     }
-               	],
-				"service_list": [
+                ],
+                "service_list": [
                     {
                         "id": "gate_002",
                         "in_ip": "121.1.1.2",
@@ -216,25 +216,25 @@
                     "lose_time": 3,
                     "recover_time": 3
                 },
-				"kv_list": [
-            		{
-                		"key": "name_max_size",
-                		"val": "1024"
-            		},
-            		{
-                		"key": "buffer_max_size",
-                		"val": "1024"
-            		}
-        		],
-				"heartbeat_list": [
+                "kv_list": [
                     {
-						"id": "group_001",
-						"in_ip": "121.1.1.10",
+                        "key": "name_max_size",
+                        "val": "1024"
+                    },
+                    {
+                        "key": "buffer_max_size",
+                        "val": "1024"
+                    }
+                ],
+                "heartbeat_list": [
+                    {
+                        "id": "group_001",
+                        "in_ip": "121.1.1.10",
                         "out_ip": "11.1.1.10",
                         "port": 11001
                     }
-               	],
-				"service_list": [
+                ],
+                "service_list": [
                     {
                         "id": "group_002",
                         "in_ip": "121.1.1.20",
@@ -265,7 +265,7 @@
 
     高32位放时间戳（time（NULL）），unsigned int类型
     time_t强制转换成unsigned int，有数值损失，但只要在unsigned int最大值之内，
-	unsigned int max = 4294967295，即2106/2/7 14:28:15，
+    unsigned int max = 4294967295，即2106/2/7 14:28:15，
     及2106年之前都是准确的，即使超时2106也是可以使用的
 
     低32位放count，count从0开始，每次使用加1，unsigned int类型
