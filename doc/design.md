@@ -68,9 +68,9 @@
     只有全局配置，先不搞局部配置
 
 ### 服务列表
-    server.conf
+    service.conf
     {
-        "server_list": [
+        "service_list": [
             {
                 "service": "gate",
                 "service_id": 1,
@@ -137,7 +137,7 @@
                                 "port": 11001
                             }
                         ],
-                        "service_list": [
+                        "inservice_list": [
                             {
                                 "id": "id_02",
                                 "in_ip": "121.1.1.2",
@@ -198,7 +198,7 @@
                         "port": 11001
                     }
                 ],
-                "service_list": [
+                "inservice_list": [
                     {
                         "id": "gate_002",
                         "in_ip": "121.1.1.2",
@@ -234,7 +234,7 @@
                         "port": 11001
                     }
                 ],
-                "service_list": [
+                "inservice_list": [
                     {
                         "id": "group_002",
                         "in_ip": "121.1.1.20",
