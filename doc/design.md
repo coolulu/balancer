@@ -68,9 +68,9 @@
     只有全局配置，先不搞局部配置
 
 ### 服务列表
-    service.conf
+    server.conf
     {
-        "service_list": [
+        "server_list": [
             {
                 "service": "gate",
                 "service_id": 1,
