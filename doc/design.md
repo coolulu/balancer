@@ -168,12 +168,26 @@
     }
 
 ### 集中简化
-	字段检查
+	字段检查:
 	1.字符串不能为空
 	2.数值类型不能小于等于0
-	3.service_map.service, service_map.service_id不能全局重复
-	4.同一个service内, kv_map.key不能重复
-	5.同一个service内, heartbeat_map.id, inservice_map.id不能重复
+	3.service_map.service，service_map.service_id不能全局重复
+	4.同一个service内，kv_map.key不能重复
+	5.同一个service内，heartbeat_map.id, inservice_map.id不能重复
+
+	写操作:
+	1.根据service，service_id，修改heartbeat成员值（heartbeat_ip不能修改）
+	2.根据service，service_id，key，value，修改kv_map的key对应val
+	3.根据service，service_id，key，value，增加kv_map的key，val
+	4.根据service，service_id，key，删除kv_map的key，val
+	5.根据service，service_id，id，增加ip到heartbeat_map（上架）
+	6.根据service，service_id，id，从heartbeat_map中删除ip（下架）
+	7.根据service，service_id，id，从heartbeat_map的ip删除，增加到inservice_map（上线）
+	8.根据service，service_id，id，从inservice_map的ip删除，增加到heartbeat_map（下线）
+
+	读操作:
+	1.查询，返回service，service_id列表
+	2.根据service，service_id查询，返回heartbeat，kv_map，heartbeat_map，inservice_map
 
     service.conf
     {
