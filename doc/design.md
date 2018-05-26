@@ -170,30 +170,30 @@
 ### 集中简化
 
 #### 字段检查:
-	1.所有字段名必须存在
-	2.字段值字符串不能为空
-	3.字段值数值类型不能小于等于0
-	4.service_map.service，service_map.service_id不能全局重复
-	5.同一个service内，kv_map.key不能重复
-	6.同一个service内，heartbeat_map.id, inservice_map.id不能重复
-	7.同一个service内,depend_map.depend_service不能重复
-	8.depend_map.depend_service必须存在service_map.service中
+    1.所有字段名必须存在
+    2.字段值字符串不能为空
+    3.字段值数值类型不能小于等于0
+    4.service_map.service，service_map.service_id不能全局重复
+    5.同一个service内，kv_map.key不能重复
+    6.同一个service内，heartbeat_map.id, inservice_map.id不能重复
+    7.同一个service内,depend_map.depend_service不能重复
+    8.depend_map.depend_service必须存在service_map.service中
 
 #### 写操作:
-	1.根据service，service_id，修改heartbeat成员值（heartbeat_ip不能修改）
-	2.根据service，service_id，key，value，修改kv_map的key对应val
-	3.根据service，service_id，key，value，增加kv_map的key，val
-	4.根据service，service_id，key，删除kv_map的key，val
-	5.根据service，service_id，id，增加ip到heartbeat_map（上架）
-	6.根据service，service_id，id，从heartbeat_map中删除ip（下架）
-	7.根据service，service_id，id，从heartbeat_map的ip删除，增加到inservice_map（上线）
-	8.根据service，service_id，id，从inservice_map的ip删除，增加到heartbeat_map（下线）
-	9.根据service，service_id，depend_service，增加depend_map的depend_service
-	10.根据service，service_id，depend_service，删除depend_map的depend_service
+    1.根据service，service_id，修改heartbeat成员值（heartbeat_ip不能修改）
+    2.根据service，service_id，key，value，修改kv_map的key对应val
+    3.根据service，service_id，key，value，增加kv_map的key，val
+    4.根据service，service_id，key，删除kv_map的key，val
+    5.根据service，service_id，id，增加ip到heartbeat_map（上架）
+    6.根据service，service_id，id，从heartbeat_map中删除ip（下架）
+    7.根据service，service_id，id，从heartbeat_map的ip删除，增加到inservice_map（上线）
+    8.根据service，service_id，id，从inservice_map的ip删除，增加到heartbeat_map（下线）
+    9.根据service，service_id，depend_service，增加depend_map的depend_service
+    10.根据service，service_id，depend_service，删除depend_map的depend_service
 
 #### 读操作:
-	1.查询，返回service，service_id列表
-	2.根据service，service_id查询，返回heartbeat，depend_map，kv_map，heartbeat_map，inservice_map
+    1.查询，返回service，service_id列表
+    2.根据service，service_id查询，返回heartbeat，depend_map，kv_map，heartbeat_map，inservice_map
 
 #### service.conf
     {
@@ -207,11 +207,11 @@
                     "lose_time": 3,                 //服务丢失次数
                     "recover_time": 3               //服务恢复次数
                 },
-				"depend_map": [
-					{
-						"depend_service": "group"
-					}
-				],
+                "depend_map": [
+                    {
+                        "depend_service": "group"
+                    }
+                ],
                 "kv_map": [
                     {
                         "key": "timeout",
@@ -248,11 +248,11 @@
                     "lose_time": 3,
                     "recover_time": 3
                 },
-				"depend_map": [
-					{
-						"depend_service": "gate"
-					}
-				],
+                "depend_map": [
+                    {
+                        "depend_service": "gate"
+                    }
+                ],
                 "kv_map": [
                     {
                         "key": "name_max_size",
