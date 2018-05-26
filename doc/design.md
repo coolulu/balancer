@@ -64,8 +64,19 @@
     group:
         (12,000,00,000 - 12,000,99,999]
 
+## 服务角色
+	backend:
+		center -> [backend]
+		navigate <- client
+		gate <- client, -> [navigate, middle, proxy]
+		middle -> [proxy, gate]
+		proxy -> [db, third party]
+	frontend:
+		client -> navigate, gate
+
 ## 资源管理服务
-    只有全局配置，先不搞局部配置
+	service_type: center
+    只有全局配置，先不搞局部配置和精细化控制
 
 ### 服务列表
     service.conf
@@ -285,17 +296,23 @@
 
 
 ## 导航服务
+	service_type: navigate
     请求导航服务服务返回gate的ip做一致性哈希，gate不发生变换的情况下，
     保证同一个user client重连还是重连到之前的gate服务
 
 ## 网关服务
+	service_type: gate
     （暂不考虑）gate要做user对tcp的绑定，保证user断开重连之后tcp连接不同，但还能找回user的新tcp连接
 
 ## 业务服务
+	service_type: middle
 
-## 数据库代理服务
+## 代理服务
+	service_type: proxy
+	数据库，第三方接口等
 
 ## 客户端
+	service_type: client
 
 ## id生成
     用unsigned long long类型，占64位
