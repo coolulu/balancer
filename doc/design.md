@@ -66,11 +66,12 @@
 
 ## 服务角色
 	backend:
-		center -> [backend]
+		center -> [navigate, gate, middle, proxy]
 		navigate <- client
 		gate <- client, -> [navigate, middle, proxy]
 		middle -> [proxy, gate]
 		proxy -> [db, third party]
+
 	frontend:
 		client -> navigate, gate
 
