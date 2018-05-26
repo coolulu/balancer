@@ -168,9 +168,16 @@
     }
 
 ### 集中简化
+	字段检查
+	1.字符串不能为空
+	2.数值类型不能小于等于0
+	3.service_map.service, service_map.service_id不能全局重复
+	4.同一个service内, kv_map.key不能重复
+	5.同一个service内, heartbeat_map.id, inservice_map.id不能重复
+
     service.conf
     {
-        "service_list": [
+        "service_map": [
             {
                 "service": "gate",
                 "service_id": 11000,
@@ -180,7 +187,7 @@
                     "lose_time": 3,                 //服务丢失次数
                     "recover_time": 3               //服务恢复次数
                 },
-                "kv_list": [
+                "kv_map": [
                     {
                         "key": "timeout",
                         "val": "30"
@@ -190,7 +197,7 @@
                         "val": "test"
                     }
                 ],
-                "heartbeat_list": [
+                "heartbeat_map": [
                     {
                         "id": "gate_001",
                         "in_ip": "121.1.1.1",       //内网ip
@@ -198,7 +205,7 @@
                         "port": 11001
                     }
                 ],
-                "inservice_list": [
+                "inservice_map": [
                     {
                         "id": "gate_002",
                         "in_ip": "121.1.1.2",
@@ -216,7 +223,7 @@
                     "lose_time": 3,
                     "recover_time": 3
                 },
-                "kv_list": [
+                "kv_map": [
                     {
                         "key": "name_max_size",
                         "val": "1024"
@@ -226,7 +233,7 @@
                         "val": "1024"
                     }
                 ],
-                "heartbeat_list": [
+                "heartbeat_map": [
                     {
                         "id": "group_001",
                         "in_ip": "121.1.1.10",
@@ -234,7 +241,7 @@
                         "port": 11001
                     }
                 ],
-                "inservice_list": [
+                "inservice_map": [
                     {
                         "id": "group_002",
                         "in_ip": "121.1.1.20",
