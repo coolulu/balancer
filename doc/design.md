@@ -65,18 +65,18 @@
         (12,000,00,000 - 12,000,99,999]
 
 ## 服务角色
-	backend:
-		center -> [navigate, gate, middle, proxy]
-		navigate <- client
-		gate <- client, -> [navigate, middle, proxy]
-		middle -> [proxy, gate]
-		proxy -> [db, third party]
+    backend:
+        center -> [navigate, gate, middle, proxy]
+        navigate <- client
+        gate <- client, -> [navigate, middle, proxy]
+        middle -> [proxy, gate]
+        proxy -> [db, third party]
 
-	frontend:
-		client -> navigate, gate
+    frontend:
+        client -> navigate, gate
 
 ## 资源管理服务
-	service_role: center
+    service_role: center
     只有全局配置，先不搞局部配置和精细化控制
 
 ### 服务列表
@@ -87,7 +87,7 @@
                 "service": "gate",
                 "service_id": 1,
                 "heartbeat": {
-                    "heartbeat_ip": in_ip",           //用in_ip或out_ip做心跳
+                    "heartbeat_ip": in_ip",             //用in_ip或out_ip做心跳
                     "heartbeat_gap": 5,                 //心跳探测间隔
                     "lose_time": 3,                     //服务丢失次数
                     "recover_time": 3                   //服务恢复次数
@@ -187,43 +187,46 @@
     3.字段值数值类型不能小于等于0
     4.service_map.service，service_map.service_id不能全局重复
     5.同一个service内，kv_map.key不能重复
-    6.同一个service内，heartbeat_map.id, inservice_map.id不能重复
+    6.同一个service内，heartbeat_map.proc_id, inservice_map.proc_id不能重复
     7.同一个service内,depend_map.depend_service不能重复
     8.depend_map.depend_service必须存在service_map.service中
 
 #### 读操作:
     1.查询，返回service，service_id列表
-    2.根据service，service_id查询，返回heartbeat，depend_map，kv_map，heartbeat_map，inservice_map
+    2.根据service查询，返回heartbeat，depend_map，kv_map，heartbeat_map，inservice_map
 
 #### 写操作:
-    1.根据service，service_id，修改heartbeat成员值
-    2.根据service，service_id，key，value，修改kv_map的key对应val
-    3.根据service，service_id，key，value，增加kv_map的key，val
-    4.根据service，service_id，key，删除kv_map的key，val
-    5.根据service，service_id，id，增加ip到heartbeat_map（上架）
-    6.根据service，service_id，id，从heartbeat_map中删除ip（下架）
-    7.根据service，service_id，id，从heartbeat_map的ip删除，增加到inservice_map（上线）
-    8.根据service，service_id，id，从inservice_map的ip删除，增加到heartbeat_map（下线）
-    9.根据service，service_id，depend_service，增加depend_map的depend_service
-    10.根据service，service_id，depend_service，删除depend_map的depend_service
+    1.根据service，修改heartbeat成员值
+    2.根据service，depend_service，增加depend_map的depend_service
+    3.根据service，depend_service，删除depend_map的depend_service
+    4.根据service，key，value，修改kv_map的key对应val
+    5.根据service，key，value，增加kv_map的key，val
+    6.根据service，key，删除kv_map的key，val
+    7.根据service，proc_id，增加ip到heartbeat_map（上架）
+    8.根据service，proc_id，从heartbeat_map中删除ip（下架）
+    9.根据service，proc_id，从heartbeat_map的ip删除，增加到inservice_map（上线）
+    10.根据service，proc_id，从inservice_map的ip删除，增加到heartbeat_map（下线）
+    11.根据service，service_id，heartbeat增加service
+    12.根据service，删除service
 
 #### service.conf
     {
         "service_map": [
             {
-                "service": "gate",
-                "service_id": 11000,
+                "service": "gate",                  //服务名
+                "service_id": 11000,                //服务id
                 "heartbeat": {
+                    "heartbeat_enable": true,       //心跳开关 true和false
                     "heartbeat_gap": 5,             //心跳探测间隔
                     "lose_time": 3,                 //服务丢失次数
                     "recover_time": 3               //服务恢复次数
                 },
-                "depend_map": [
+                "depend_map": [                     //服务依赖
                     {
                         "depend_service": "group"
                     }
                 ],
-                "kv_map": [
+                "kv_map": [                         //kv配置参数
                     {
                         "key": "timeout",
                         "val": "30"
@@ -233,17 +236,17 @@
                         "val": "test"
                     }
                 ],
-                "heartbeat_map": [
+                "heartbeat_map": [                  //上架(有心跳探测,不服务)
                     {
-                        "id": "gate_001",
+                        "proc_id": "gate_001",
                         "in_ip": "121.1.1.1",       //内网ip,心跳探测,服务通信
                         "out_ip": "11.1.1.1",       //外网ip,没外网ip就填内网ip
                         "port": 11001
                     }
                 ],
-                "inservice_map": [
+                "inservice_map": [                  //上线(有心跳探测,在服务)
                     {
-                        "id": "gate_002",
+                        "proc_id": "gate_002",
                         "in_ip": "121.1.1.2",
                         "out_ip": "11.1.1.2",
                         "port": 11002
@@ -275,7 +278,7 @@
                 ],
                 "heartbeat_map": [
                     {
-                        "id": "group_001",
+                        "proc_id": "group_001",
                         "in_ip": "121.1.1.10",
                         "out_ip": "11.1.1.10",
                         "port": 11001
@@ -283,7 +286,7 @@
                 ],
                 "inservice_map": [
                     {
-                        "id": "group_002",
+                        "proc_id": "group_002",
                         "in_ip": "121.1.1.20",
                         "out_ip": "11.1.1.20",
                         "port": 11002
@@ -295,23 +298,23 @@
 
 
 ## 导航服务
-	service_role: navigate
+    service_role: navigate
     请求导航服务服务返回gate的ip做一致性哈希，gate不发生变换的情况下，
     保证同一个user client重连还是重连到之前的gate服务
 
 ## 网关服务
-	service_role: gate
+    service_role: gate
     （暂不考虑）gate要做user对tcp的绑定，保证user断开重连之后tcp连接不同，但还能找回user的新tcp连接
 
 ## 业务服务
-	service_role: middle
+    service_role: middle
 
 ## 代理服务
-	service_role: proxy
-	数据库，第三方接口等对接
+    service_role: proxy
+    数据库，第三方接口等对接
 
 ## 客户端
-	service_role: client
+    service_role: client
 
 ## id生成
     用unsigned long long类型，占64位
