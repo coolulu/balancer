@@ -191,8 +191,12 @@
     7.同一个service内,depend_map.depend_service不能重复
     8.depend_map.depend_service必须存在service_map.service中
 
+#### 读操作:
+    1.查询，返回service，service_id列表
+    2.根据service，service_id查询，返回heartbeat，depend_map，kv_map，heartbeat_map，inservice_map
+
 #### 写操作:
-    1.根据service，service_id，修改heartbeat成员值（heartbeat_ip不能修改）
+    1.根据service，service_id，修改heartbeat成员值
     2.根据service，service_id，key，value，修改kv_map的key对应val
     3.根据service，service_id，key，value，增加kv_map的key，val
     4.根据service，service_id，key，删除kv_map的key，val
@@ -203,10 +207,6 @@
     9.根据service，service_id，depend_service，增加depend_map的depend_service
     10.根据service，service_id，depend_service，删除depend_map的depend_service
 
-#### 读操作:
-    1.查询，返回service，service_id列表
-    2.根据service，service_id查询，返回heartbeat，depend_map，kv_map，heartbeat_map，inservice_map
-
 #### service.conf
     {
         "service_map": [
@@ -214,7 +214,6 @@
                 "service": "gate",
                 "service_id": 11000,
                 "heartbeat": {
-                    "heartbeat_ip": "in_ip",        //用in_ip或out_ip做心跳
                     "heartbeat_gap": 5,             //心跳探测间隔
                     "lose_time": 3,                 //服务丢失次数
                     "recover_time": 3               //服务恢复次数
@@ -237,8 +236,8 @@
                 "heartbeat_map": [
                     {
                         "id": "gate_001",
-                        "in_ip": "121.1.1.1",       //内网ip
-                        "out_ip": "11.1.1.1",       //外网ip,没外网填内网ip
+                        "in_ip": "121.1.1.1",       //内网ip,心跳探测,服务通信
+                        "out_ip": "11.1.1.1",       //外网ip,没外网ip就填内网ip
                         "port": 11001
                     }
                 ],
@@ -255,7 +254,6 @@
                 "service": "group",
                 "service_id": 12000,
                 "heartbeat": {
-                    "heartbeat_ip": "out_ip",
                     "heartbeat_gap": 5,
                     "lose_time": 3,
                     "recover_time": 3
