@@ -65,19 +65,39 @@
         (12,000,00,000 - 12,000,99,999]
 
 ## 服务角色
+    send: ->
+    recv: <-
+
     backend:
         center -> [navigate, gate, middle, proxy]
-        navigate <- client
-        gate <- client, -> [navigate, middle, proxy]
-        middle -> [proxy, gate]
-        proxy -> [db, third party]
+        (listen http * 1, listen tcp * 1, connect tcp * n)
+
+        navigate -> [], <- [client, gate]
+         (listen http * 1, listen tcp * 1)
+
+        gate -> [client, navigate, middle, proxy], <- [client]
+        (listen http * 1, listen tcp * 1, connect tcp * n)
+
+        middle -> [proxy, gate], <- [gate]
+        (listen http * 1, listen tcp * 1, connect tcp * n)
+
+        proxy -> [], <-[gate, middle]
+        (listen http * 1, listen tcp * 1)
 
     frontend:
-        client -> navigate, gate
+        client -> [navigate, gate], <- [gate]
+        (listen http * 1, connect tcp * n)
 
 ## 资源管理服务
     service_role: center
     只有全局配置，先不搞局部配置和精细化控制
+    同步配置
+    1 <-----2 <-----3 <--|
+    |--------—-----------|
+
+    1为最高角色，当1设置为‘同步’状态，2定时请求1拉的配置，当2请求配置跟新完毕后返回，1设置为‘同步中’，
+    3定时请求2拉的配置，1定时请求拉3的配置，由于3等级比1小，3收到比自己大等级的请求说明自己是最后一个，
+    返回3的配置信息，1收到3的返回比较本地配置信息，设置为‘同步完成’
 
 ### 服务列表
     service.conf
@@ -203,9 +223,9 @@
     5.根据service，key，value，增加kv_map的key，val
     6.根据service，key，删除kv_map的key，val
     7.根据service，proc_id，增加ip到heartbeat_map（上架）
-    8.根据service，proc_id，从heartbeat_map中删除ip（下架）
-    9.根据service，proc_id，从heartbeat_map的ip删除，增加到inservice_map（上线）
-    10.根据service，proc_id，从inservice_map的ip删除，增加到heartbeat_map（下线）
+    8.根据service，proc_id，从heartbeat_map中删除proc_id（下架）
+    9.根据service，proc_id，从heartbeat_map的proc_id删除，增加到inservice_map（上线）
+    10.根据service，proc_id，从inservice_map的proc_id删除，增加到heartbeat_map（下线）
     11.根据service，service_id，heartbeat增加service
     12.根据service，删除service
 
