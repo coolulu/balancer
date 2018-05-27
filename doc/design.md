@@ -205,36 +205,36 @@
     1.所有字段名必须存在
     2.字段值字符串不能为空
     3.字段值数值类型不能小于等于0
-    4.service_map.service，service_map.service_id不能全局重复
+    4.service_map.service_id，service_map.service_name不能全局重复
     5.同一个service内，kv_map.key不能重复
-    6.同一个service内，heartbeat_map.proc_id, inservice_map.proc_id不能重复
-    7.同一个service内,depend_map.depend_service不能重复
-    8.depend_map.depend_service必须存在service_map.service中
+    6.同一个service内，heartbeat_list.proc_id, inservice_list.proc_id不能重复
+    7.同一个service内，depend_map.depend_service_name不能重复
+    8.depend_map.depend_service_name必须存在service_map.service_name中
 
 #### 读操作:
-    1.查询，返回service，service_id列表
-    2.根据service查询，返回heartbeat，depend_map，kv_map，heartbeat_map，inservice_map
+    1.查询，返回service_id，service_name列表
+    2.根据service_id查询，返回service_id，service_name，heartbeat，depend_map，kv_map，heartbeat_list，inservice_list
 
 #### 写操作:
-    1.根据service，修改heartbeat成员值
-    2.根据service，depend_service，增加depend_map的depend_service
-    3.根据service，depend_service，删除depend_map的depend_service
-    4.根据service，key，value，修改kv_map的key对应val
-    5.根据service，key，value，增加kv_map的key，val
-    6.根据service，key，删除kv_map的key，val
-    7.根据service，proc_id，增加ip到heartbeat_map（上架）
-    8.根据service，proc_id，从heartbeat_map中删除proc_id（下架）
-    9.根据service，proc_id，从heartbeat_map的proc_id删除，增加到inservice_map（上线）
-    10.根据service，proc_id，从inservice_map的proc_id删除，增加到heartbeat_map（下线）
-    11.根据service，service_id，heartbeat增加service
-    12.根据service，删除service
+    1.根据service_id，修改heartbeat成员值
+    2.根据service_id，depend_service_name，增加depend_map的depend_service_name
+    3.根据service_id，depend_service_name，删除depend_map的depend_service_name
+    4.根据service_id，key，value，修改kv_map的key对应val
+    5.根据service_id，key，value，增加kv_map的key，val
+    6.根据service_id，key，删除kv_map的key，val
+    7.根据service_id，proc_id，增加ip到heartbeat_list（上架）
+    8.根据service_id，proc_id，从heartbeat_list中删除proc_id（下架）
+    9.根据service_id，proc_id，从heartbeat_list的proc_id删除，增加到inservice_list（上线）
+    10.根据service_id，proc_id，从inservice_list的proc_id删除，增加到heartbeat_list（下线）
+    11.根据service_id，service_id，heartbeat增加service
+    12.根据service_id，删除service
 
 #### service.conf
     {
         "service_map": [
             {
-                "service": "gate",                  //服务名
                 "service_id": 11000,                //服务id
+                "service_name": "gate",             //服务名
                 "heartbeat": {
                     "heartbeat_enable": true,       //心跳开关 true和false
                     "heartbeat_gap": 5,             //心跳探测间隔
@@ -243,7 +243,7 @@
                 },
                 "depend_map": [                     //服务依赖
                     {
-                        "depend_service": "group"
+                        "depend_service_name": "group"
                     }
                 ],
                 "kv_map": [                         //kv配置参数
@@ -256,7 +256,7 @@
                         "val": "test"
                     }
                 ],
-                "heartbeat_map": [                  //上架(有心跳探测,不服务)
+                "heartbeat_list": [                  //上架(有心跳探测,不服务)
                     {
                         "proc_id": "gate_001",
                         "in_ip": "121.1.1.1",       //内网ip,心跳探测,服务通信
@@ -264,7 +264,7 @@
                         "port": 11001
                     }
                 ],
-                "inservice_map": [                  //上线(有心跳探测,在服务)
+                "inservice_list": [                  //上线(有心跳探测,在服务)
                     {
                         "proc_id": "gate_002",
                         "in_ip": "121.1.1.2",
@@ -274,8 +274,8 @@
                 ]
             },
             {
-                "service": "group",
                 "service_id": 12000,
+                "service_name": "group",
                 "heartbeat": {
                     "heartbeat_gap": 5,
                     "lose_time": 3,
@@ -283,7 +283,7 @@
                 },
                 "depend_map": [
                     {
-                        "depend_service": "gate"
+                        "depend_service_name": "gate"
                     }
                 ],
                 "kv_map": [
@@ -296,7 +296,7 @@
                         "val": "1024"
                     }
                 ],
-                "heartbeat_map": [
+                "heartbeat_list": [
                     {
                         "proc_id": "group_001",
                         "in_ip": "121.1.1.10",
@@ -304,7 +304,7 @@
                         "port": 11001
                     }
                 ],
-                "inservice_map": [
+                "inservice_list": [
                     {
                         "proc_id": "group_002",
                         "in_ip": "121.1.1.20",
