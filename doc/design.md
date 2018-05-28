@@ -29,7 +29,8 @@
         repeated uint64     timestamp       = 1;    //请求源或返回源的时间(比如App客户端发送时间)
         optional uint32     error_code      = 2;    //rsp必填
         optional bytes      error_info      = 3;    //rsp必填
-        extensions 10000 to 20000;
+
+        extensions 10000 to 60000;
     }
 
 ## 数值划分
@@ -73,7 +74,7 @@
         (listen http * 1, listen tcp * 1, connect tcp * n)
 
         navigate -> [], <- [client, gate]
-         (listen http * 1, listen tcp * 1)
+        (listen http * 1, listen tcp * 1)
 
         gate -> [client, navigate, middle, proxy], <- [client]
         (listen http * 1, listen tcp * 1, connect tcp * n)
@@ -89,15 +90,6 @@
         (listen http * 1, connect tcp * n)
 
 ## 资源管理服务
-    service_role: center
-    只有全局配置，先不搞局部配置和精细化控制
-    同步配置
-    1 <-----2 <-----3 <--|
-    |--------—-----------|
-
-    1为最高角色，当1设置为‘同步’状态，2定时请求1拉的配置，当2请求配置跟新完毕后返回，1设置为‘同步中’，
-    3定时请求2拉的配置，1定时请求拉3的配置，由于3等级比1小，3收到比自己大等级的请求说明自己是最后一个，
-    返回3的配置信息，1收到3的返回比较本地配置信息，设置为‘同步完成’
 
 ### 服务列表
     service.conf
@@ -270,6 +262,12 @@
                         "in_ip": "121.1.1.2",
                         "out_ip": "11.1.1.2",
                         "port": 11002
+                    },
+                    {
+                        "proc_id": "gate_003",      // 支持虚拟进程，gate_002和gate_003是同一个进程，变相给进程倒流
+                        "in_ip": "121.1.1.2",
+                        "out_ip": "11.1.1.2",
+                        "port": 11002
                     }
                 ]
             },
@@ -316,11 +314,55 @@
         ]
     }
 
+### 心跳探测
+    message CenterHeartbeatReq {
+        required int32      level               = 1;    // center的等级
+        required int32      service_id          = 2;
+        required int32      state               = 3;    // 目标进程状态:1.上架,2.上线
+        required uint64     conf_update_time    = 4;    // 配置更新时间
+        required bytes      conf_json           = 5;    // 有配置更新下发json，无配置更新下发空字符串
+    }
+
+    message CenterHeartbeatRsp {
+        required int32      level               = 1;    // 接管center的等级
+        required int32      service_id          = 2;
+        required uint64     conf_update_time    = 3;    // 配置更新时间
+        required uint64     last_heartbeat_time = 4;    // 接管center的最后心跳时间
+    }
+
+### 配置更新
+
+### 虚拟进程
+    同一服务各个机器的配置不同，对于高配的机器的进程，通过给该进程虚拟多个proc_id，变相给该进程更多的请求
+
+### 上架
+
+### 下架
+
+### 上线
+
+### 下线
+
+### 异常踢出
+
+### 恢复切入
+
+### center之间配置同步
+    service_role: center
+    只有全局配置，先不搞局部配置和精细化控制
+    同步配置
+    1 <-----2 <-----3 <--|
+    |--------—-----------|
+
+    1为最高角色，当1设置为‘同步’状态，2定时请求1拉的配置，当2请求配置跟新完毕后返回，1设置为‘同步中’，
+    3定时请求2拉的配置，1定时请求拉3的配置，由于3等级比1小，3收到比自己大等级的请求说明自己是最后一个，
+    返回3的配置信息，1收到3的返回比较本地配置信息，设置为‘同步完成’
 
 ## 导航服务
     service_role: navigate
-    请求导航服务服务返回gate的ip做一致性哈希，gate不发生变换的情况下，
-    保证同一个user client重连还是重连到之前的gate服务
+    两种模式:
+    A.请求导航服务服务返回gate的ip做一致性哈希，gate不发生变换的情况下，保证同一个user client重连还是重连到之前的gate服务
+    B.返回在用户连接数最小的gate，gate定时(60s)向所有navgate广播的用户连接数
 
 ## 网关服务
     service_role: gate
