@@ -14,13 +14,13 @@
         unsigned short      version         :2
         unsigned short      service_id      :2
         unsigned int        app_id          :4
-        unsigned int        session_id      :4
+        unsigned long long  session_id      :8
         unsigned char       data[]          :data_len
         unsigned int        crc             :4
     }
     head = [0x00,0x00,0x00,0x00]
     len = len(version + service_id + app_id + session_id + data_len + crc)
-    len(Packet) = 24 + data_len = [24, (unsigned short)-1]
+    len(Packet) = 28 + data_len = [28, (unsigned short)-1]
     crc = crc(len + version + service_id + app_id + session_id + data[])
 
 ### message.proto
@@ -102,7 +102,7 @@
                     "heartbeat_ip": in_ip",             //用in_ip或out_ip做心跳
                     "heartbeat_gap": 5,                 //心跳探测间隔
                     "lose_time": 3,                     //服务丢失次数
-                    "recover_time": 3                   //服务恢复次数
+                    "recover_time": 5                   //服务恢复次数
                 },
                 "file_path": {
                     "depend": "./depend_gate.conf",
@@ -117,7 +117,7 @@
                     "heartbeat_ip": "out_ip",
                     "heartbeat_gap": 5,
                     "lose_time": 3,
-                    "recover_time": 3
+                    "recover_time": 5
                 },
                 "file_path": {
                     "depend": "./depend_gate.conf",
@@ -231,7 +231,7 @@
                     "heartbeat_enable": true,       //心跳开关 true和false
                     "heartbeat_gap": 5,             //心跳探测间隔
                     "lose_time": 3,                 //服务丢失次数
-                    "recover_time": 3               //服务恢复次数
+                    "recover_time": 5               //服务恢复次数
                 },
                 "depend_map": [                     //服务依赖
                     {
@@ -277,7 +277,7 @@
                 "heartbeat": {
                     "heartbeat_gap": 5,
                     "lose_time": 3,
-                    "recover_time": 3
+                    "recover_time": 5
                 },
                 "depend_map": [
                     {
@@ -319,21 +319,23 @@
         required int32      level               = 1;    // center的等级
         required int32      service_id          = 2;
         required int32      state               = 3;    // 目标进程状态:1.上架,2.上线
-        required uint64     conf_update_time    = 4;    // 配置更新时间
+        required uint64     conf_update_time    = 4;    // 配置更新时间(微妙)
         required bytes      conf_json           = 5;    // 有配置更新下发json，无配置更新下发空字符串
     }
 
     message CenterHeartbeatRsp {
         required int32      level               = 1;    // 接管center的等级
         required int32      service_id          = 2;
-        required uint64     conf_update_time    = 3;    // 配置更新时间
-        required uint64     last_heartbeat_time = 4;    // 接管center的最后心跳时间
+        required uint64     conf_update_time    = 3;    // 配置更新时间(微妙)
+        required uint32     role_expire_time    = 4;    // 接管center的到期秒数
+                                                        // (服务当前时间和接管center最新心跳请求时间相减秒数)
     }
 
 ### 配置更新
 
 ### 虚拟进程
     同一服务各个机器的配置不同，对于高配的机器的进程，通过给该进程虚拟多个proc_id，变相给该进程更多的请求
+    注意，虚拟进程只能用在对状态（上架/上线）切换无特殊处理的服务（向gate就不合适，gate从上线到上架后要主动断开客户端连接）
 
 ### 上架
 
@@ -424,3 +426,5 @@
     若需要转发产生子任务id
     最后处理完毕后，根据id_server_1找回id_client_1_req_1替换返回id，
     根据id_tcp_client_1找到tcp_client_1，发送给tcp_client_1
+
+## 过载保护
