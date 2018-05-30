@@ -327,8 +327,9 @@
         required int32      level               = 1;    // 接管center的等级
         required int32      service_id          = 2;
         required uint64     conf_update_time    = 3;    // 配置更新时间(微妙)
-        required uint32     role_expire_time    = 4;    // 接管center的到期秒数
-                                                        // (服务当前时间和接管center最新心跳请求时间相减秒数)
+        required uint32     role_expire_time    = 4;    // 接管center的到期秒数，
+                                                        // 服务当前时间和接管center最新心跳请求时间相减秒数，
+                                                        // 非接管center根据role_expire_time判断是否需要接管服务
     }
 
 ### 配置更新
