@@ -209,8 +209,8 @@
 
 #### 写操作:
     1.根据service_id，修改heartbeat成员值
-    2.根据service_id，depend_service_name，增加depend_map的depend_service_name
-    3.根据service_id，depend_service_name，删除depend_map的depend_service_name
+    2.根据service_id，depend_service_id，增加depend_map的depend_service_id
+    3.根据service_id，depend_service_id，删除depend_map的depend_service_id
     4.根据service_id，key，value，修改kv_map的key对应val
     5.根据service_id，key，value，增加kv_map的key，val
     6.根据service_id，key，删除kv_map的key，val
@@ -235,7 +235,7 @@
                 },
                 "depend_map": [                     //服务依赖
                     {
-                        "depend_service_name": "group"
+                        "depend_service_id": 12000  //依赖的service_id
                     }
                 ],
                 "kv_map": [                         //kv配置参数
@@ -248,7 +248,7 @@
                         "val": "test"
                     }
                 ],
-                "heartbeat_list": [                  //上架(有心跳探测,不服务)
+                "heartbeat_list": [                 //上架(有心跳探测,不服务)
                     {
                         "proc_id": "gate_001",
                         "in_ip": "121.1.1.1",       //内网ip,心跳探测,服务通信
@@ -256,7 +256,7 @@
                         "port": 11001
                     }
                 ],
-                "inservice_list": [                  //上线(有心跳探测,在服务)
+                "inservice_list": [                 //上线(有心跳探测,在服务)
                     {
                         "proc_id": "gate_002",
                         "in_ip": "121.1.1.2",
@@ -264,7 +264,7 @@
                         "port": 11002
                     },
                     {
-                        "proc_id": "gate_003",      // 支持虚拟进程，gate_002和gate_003是同一个进程，变相给进程导流
+                        "proc_id": "gate_002_v",    // 支持虚拟进程，gate_002和gate_002_v是同一个进程，变相给进程导流
                         "in_ip": "121.1.1.2",
                         "out_ip": "11.1.1.2",
                         "port": 11002
@@ -281,7 +281,7 @@
                 },
                 "depend_map": [
                     {
-                        "depend_service_name": "gate"
+                        "depend_service_id": 11000
                     }
                 ],
                 "kv_map": [
@@ -299,7 +299,7 @@
                         "proc_id": "group_001",
                         "in_ip": "121.1.1.10",
                         "out_ip": "11.1.1.10",
-                        "port": 11001
+                        "port": 12001
                     }
                 ],
                 "inservice_list": [
@@ -307,7 +307,7 @@
                         "proc_id": "group_002",
                         "in_ip": "121.1.1.20",
                         "out_ip": "11.1.1.20",
-                        "port": 11002
+                        "port": 12002
                     }
                 ]
             }
