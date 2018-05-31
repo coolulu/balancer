@@ -28,9 +28,14 @@
     }
 
     head = [0x00,0x00,0x00,0x00]
-    len = len(version + to_service_id + from_service_id + app_id + app_version + session_id + data_format + reserve_field[4] + data_len + crc)
+
+    len = len(version + to_service_id + from_service_id + app_id + app_version +
+              session_id + data_format + reserve_field[4] + data_len + crc)
+
     len(Packet) = 48 + data_len = [48, (unsigned short)-1]
-    crc = crc(len + version + to_service_id + from_service_id + app_id + app_version + session_id + data_format + reserve_field[4] + data[])
+
+    crc = crc(len + version + to_service_id + from_service_id + app_id + app_version +
+              session_id + data_format + reserve_field[4] + data[])
 
 ### message.proto
     message Message
