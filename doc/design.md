@@ -9,19 +9,24 @@
     HLV格式
     struct Packet
     {
-        unsigned int        head            :4
-        unsigned int        len             :4
-        unsigned short      version         :2
-        unsigned short      service_id      :2
-        unsigned int        app_id          :4
-        unsigned long long  session_id      :8
-        unsigned char       data[]          :data_len
-        unsigned int        crc             :4
+        unsigned int        head                :4
+        unsigned int        len                 :4
+        unsigned short      version             :2
+        unsigned short      to_service_id       :2
+        unsigned short      from_service_id     :2
+        unsigned int        app_id              :4
+        unsigned long long  session_id          :8
+        unsigned int        reserve_field_0     :4
+        unsigned int        reserve_field_1     :4
+        unsigned int        reserve_field_2     :4
+        unsigned int        reserve_field_3     :4
+        unsigned char       data[]              :data_len
+        unsigned int        crc                 :4
     }
     head = [0x00,0x00,0x00,0x00]
-    len = len(version + service_id + app_id + session_id + data_len + crc)
-    len(Packet) = 28 + data_len = [28, (unsigned short)-1]
-    crc = crc(len + version + service_id + app_id + session_id + data[])
+    len = len(version + to_service_id + from_service_id + app_id + session_id + + reserve_field[4] + data_len + crc)
+    len(Packet) = 46 + data_len = [46, (unsigned short)-1]
+    crc = crc(len + version + to_service_id + from_service_id + app_id + session_id + reserve_field[4] + data[])
 
 ### message.proto
     message Message
