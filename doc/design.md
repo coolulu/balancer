@@ -7,26 +7,30 @@
 
 ### 数据包格式
     HLV格式
+
     struct Packet
     {
-        unsigned int        head                :4
-        unsigned int        len                 :4
-        unsigned short      version             :2
-        unsigned short      to_service_id       :2
-        unsigned short      from_service_id     :2
-        unsigned int        app_id              :4
-        unsigned long long  session_id          :8
-        unsigned int        reserve_field_0     :4
-        unsigned int        reserve_field_1     :4
-        unsigned int        reserve_field_2     :4
-        unsigned int        reserve_field_3     :4
-        unsigned char       data[]              :data_len
-        unsigned int        crc                 :4
+        unsigned int            head                :4              // 包头标识
+        unsigned int            len                 :4              // 长度
+        unsigned short          version             :2              // 协议版本
+        unsigned short          to_service_id       :2              // 发送到service_id
+        unsigned short          from_service_id     :2              // 发送的service_id
+        unsigned int            app_id              :4
+        unsigned int            app_version         :4
+        unsigned long long      session_id          :8
+        unsigned char           data_format         :1              // 数据格式(1.protobuf)
+        unsigned char           reserve_field_0     :1              // 保留字段0
+        unsigned int            reserve_field_1     :4              // 保留字段1
+        unsigned int            reserve_field_2     :4              // 保留字段2
+        unsigned int            reserve_field_3     :4              // 保留字段3
+        unsigned char           data[]              :data_len
+        unsigned int            crc                 :4              // 校验
     }
+
     head = [0x00,0x00,0x00,0x00]
-    len = len(version + to_service_id + from_service_id + app_id + session_id + + reserve_field[4] + data_len + crc)
-    len(Packet) = 46 + data_len = [46, (unsigned short)-1]
-    crc = crc(len + version + to_service_id + from_service_id + app_id + session_id + reserve_field[4] + data[])
+    len = len(version + to_service_id + from_service_id + app_id + app_version + session_id + data_format + reserve_field[4] + data_len + crc)
+    len(Packet) = 48 + data_len = [48, (unsigned short)-1]
+    crc = crc(len + version + to_service_id + from_service_id + app_id + app_version + session_id + data_format + reserve_field[4] + data[])
 
 ### message.proto
     message Message
