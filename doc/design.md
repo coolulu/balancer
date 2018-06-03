@@ -37,7 +37,9 @@
     crc = crc(len + version + to_service_id + from_service_id + app_id + app_version +
               session_id + data_format + reserve_field[4] + data[])
 
-### message.proto
+### data
+    message.proto
+
     message Message
     {
         repeated uint64     timestamp       = 1;    //请求源或返回源的时间(比如App客户端发送时间)
