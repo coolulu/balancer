@@ -95,7 +95,7 @@
         ERR_SYS_TIMEOUT                 = 104;          // 超时错误
         ERR_SYS_NO_INSERVICE_LIST       = 105;          // 没有可用服务ip
         ERR_SYS_TASK_STATE              = 106;          // 任务状态错误
-        ERR_SYS_DISCARD                 = 107;          // 任务丢弃
+        ERR_SYS_TASK_DISCARD            = 107;          // 任务丢弃
         ERR_SYS_END                     = 199;
 
         // 公共数据包错误码 (各个服务service_id * 100000 + 公共数据包错误码)
@@ -139,7 +139,7 @@
         ERR_SYS_TIMEOUT                 = 1100000104;       // 超时错误
         ERR_SYS_NO_INSERVICE_LIST       = 1100000105;       // 没有可用服务ip
         ERR_SYS_TASK_STATE              = 1100000106;       // 任务状态错误
-        ERR_SYS_DISCARD                 = 1100000107;       // 任务丢弃
+        ERR_SYS_TASK_DISCARD            = 1100000107;       // 任务丢弃
         ERR_SYS_END                     = 1100000199;
 
         // 数据包错误码
