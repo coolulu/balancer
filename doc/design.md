@@ -50,7 +50,7 @@
 ## 数值划分
 
 ### 服务id
-    unsigned int max  = 4,294,967,295
+    unsigned short max  = 65,535
     eg:
     gate:
         11,000
@@ -90,7 +90,7 @@
         navigate -> [], <- [client, gate]
         (listen http * 1, listen tcp * 1)
 
-        gate -> [client, navigate, middle, proxy], <- [client]
+        gate -> [client, navigate, middle, proxy], <- [client, middle]
         (listen http * 1, listen tcp * 1, connect tcp * n)
 
         middle -> [proxy, gate], <- [gate]
@@ -412,7 +412,7 @@
 ### 连接断开条件
     对于内网服务之间的连接，简化断开方式和请求的返回不丢失，
     优先client先关闭闲置连接，若长久不断开闲置连接，可认为客户端出问题，则服务端才断开连接
-    对于client端，空闲连接大于60秒，关闭连接（隐藏条件是客户端处理请求的时间要小于60秒）
+    对于client端，空闲连接大于60秒，关闭连接（隐藏条件是server端处理请求的时间要小于60秒）
     对于server端，空闲连接大于90秒，关闭连接
 
 ### 防串话
