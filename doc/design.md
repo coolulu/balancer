@@ -3,6 +3,38 @@
 # 目录
 [toc]
 
+## 数值划分
+
+### 服务id
+    unsigned short max  = 65,535
+    eg:
+    gate:
+        11,000
+        11,000
+    group:
+        12,000
+        12,000
+
+### 端口
+    unsigned short max  = 65,535
+    [服务id]+[程序id]
+    eg:
+    gate:
+        11,001 = 11,000 + 1
+        11,002 = 11,000 + 2
+    group:
+        12,001 = 12,000 + 1
+        12,002 = 12,000 + 2
+
+### 错误码
+    unsigned int max  = 4,294,967,295
+    [服务id]*100,000+[错误码(00,000-99,999)]
+    eg:
+    gate:
+        (11,000,00,000 - 11,000,99,999]
+    group:
+        (12,000,00,000 - 12,000,99,999]
+
 ## 消息设计
 
 ### 数据包格式
@@ -38,48 +70,118 @@
               session_id + data_format + reserve_field[4] + data[])
 
 ### data
-    message.proto
+    data.proto
 
-    message Message
+    message Data
     {
-        repeated uint64     timestamp       = 1;    //请求源或返回源的时间(比如App客户端发送时间)
-        optional uint32     error_code      = 2;    //rsp必填
-        optional bytes      error_info      = 3;    //rsp必填
+        repeated uint64     timestamp       = 1;        // 请求源或返回源的时间(比如App客户端发送时间)
+        optional uint32     error_code      = 2;        // rsp必填
+        optional bytes      error_info      = 3;        // rsp必填
 
-        extensions 10000 to 60000;
+        extensions 10000 to 60000;                      // 扩展各个服务
     }
 
-## 数值划分
+    common.proto
 
-### 服务id
-    unsigned short max  = 65,535
-    eg:
-    gate:
-        11,000
-        11,000
-    group:
-        12,000
-        12,000
+    // 公共错误码
+    enum ErrorCode {
+        SUCCESS                         = 0;
 
-### 端口
-    unsigned short max  = 65,535
-    [服务id]+[程序id]
-    eg:
-    gate:
-        11,001 = 11,000 + 1
-        11,002 = 11,000 + 2
-    group:
-        12,001 = 12,000 + 1
-        12,002 = 12,000 + 2
+        // 公共系统错误码 (各个服务service_id * 100000 + 公共系统错误码)
+        ERR_SYS_BEGIN                   = 100;
+        ERR_SYS_OVERLOAD                = 101;          // 服务过载
+        ERR_SYS_REJECT_SERVICE          = 102;          // 拒绝服务
+        ERR_SYS_SERVER_INNER            = 103;          // 服务内部错误
+        ERR_SYS_TIMEOUT                 = 104;          // 超时错误
+        ERR_SYS_NO_INSERVICE_LIST       = 105;          // 没有可用服务ip
+        ERR_SYS_TASK_STATE              = 106;          // 任务状态错误
+        ERR_SYS_DISCARD                 = 107;          // 任务丢弃
+        ERR_SYS_END                     = 199;
 
-### 错误码
-    unsigned int max  = 4,294,967,295
-    [服务id]*100,000+[错误码(00,000-99,999)]
-    eg:
-    gate:
-        (11,000,00,000 - 11,000,99,999]
-    group:
-        (12,000,00,000 - 12,000,99,999]
+        // 公共数据包错误码 (各个服务service_id * 100000 + 公共数据包错误码)
+        ERR_PACKET_BEGIN                = 200;
+        ERR_PACKET_ENCODE               = 201;          // 打包失败
+        ERR_PACKET_DECODE               = 202;          // 解码失败
+        ERR_PACKET_VERSION              = 203;
+        ERR_PACKET_LEN                  = 204;
+        ERR_PACKET_VERSION              = 205;
+        ERR_PACKET_TO_SERVICE_ID        = 206;
+        ERR_PACKET_FROM_SERVICE_ID      = 207;
+        ERR_PACKET_APP_ID               = 208;
+        ERR_PACKET_APP_VERSION          = 209;
+        ERR_PACKET_SESSION_ID           = 210;
+        ERR_PACKET_DATA_FORMAT          = 211;
+        ERR_PACKET_CRC                  = 212;
+        ERR_PACKET_UNKNOWN_REQUEST      = 213;          // 不明请求
+        ERR_PACKET_END                  = 299;
+
+        // 公共接口错误码 (各个服务service_id * 100000 + 公共接口错误码)
+        ERR_INTERFACE_BEGIN             = 300;
+        ERR_INTERFACE_PARAM             = 301;          // 参数错误
+        ERR_INTERFACE_PERM              = 302;          // 权限错误
+        ERR_INTERFACE_END               = 399;
+
+        // 公共业务错误码 (各个服务service_id * 100000 + 公共业务错误码)
+        ERR_BUSINESS_BEGIN              = 10000;
+        ERR_BUSINESS_END                = 99999;
+    }
+
+    gate.proto
+
+    enum ErrorCode {
+        ERR_BEGIN                       = 1100000000;
+
+        // 系统错误码
+        ERR_SYS_BEGIN                   = 1100000100;
+        ERR_SYS_OVERLOAD                = 1100000101;       // 服务过载
+        ERR_SYS_REJECT_SERVICE          = 1100000102;       // 拒绝服务
+        ERR_SYS_SERVER_INNER            = 1100000103;       // 服务内部错误
+        ERR_SYS_TIMEOUT                 = 1100000104;       // 超时错误
+        ERR_SYS_NO_INSERVICE_LIST       = 1100000105;       // 没有可用服务ip
+        ERR_SYS_TASK_STATE              = 1100000106;       // 任务状态错误
+        ERR_SYS_DISCARD                 = 1100000107;       // 任务丢弃
+        ERR_SYS_END                     = 1100000199;
+
+        // 数据包错误码
+        ERR_PACKET_BEGIN                = 1100000200;
+        ERR_PACKET_ENCODE               = 1100000201;       // 打包失败
+        ERR_PACKET_DECODE               = 1100000202;       // 解码失败
+        ERR_PACKET_VERSION              = 1100000203;
+        ERR_PACKET_LEN                  = 1100000204;
+        ERR_PACKET_VERSION              = 1100000205;
+        ERR_PACKET_TO_SERVICE_ID        = 1100000206;
+        ERR_PACKET_FROM_SERVICE_ID      = 1100000207;
+        ERR_PACKET_APP_ID               = 1100000208;
+        ERR_PACKET_APP_VERSION          = 1100000209;
+        ERR_PACKET_SESSION_ID           = 1100000210;
+        ERR_PACKET_DATA_FORMAT          = 1100000211;
+        ERR_PACKET_CRC                  = 1100000212;
+        ERR_PACKET_UNKNOWN_REQUEST      = 1100000213;       // 不明请求
+        ERR_PACKET_END                  = 1100000299;
+
+        // 接口错误码
+        ERR_INTERFACE_BEGIN             = 1100000300;
+        ERR_INTERFACE_PARAM             = 1100000301;       // 参数错误
+        ERR_INTERFACE_PERM              = 1100000302;       // 权限错误
+        ERR_INTERFACE_END               = 1100000399;
+
+        // 业务错误码
+        ERR_BUSINESS_BEGIN              = 1100010000;
+        ERR_USERID_NO_EXIST             = 1100010001;
+
+        ERR_BEGIN                       = 1100099999;
+    }
+
+    message GroupMsg{                                       // 奇数是请求，偶数是响应
+        oneof choice{
+            LoginReq        login_req       = 1;            // 登录请求
+            LoginRsp        login_rsp       = 2;            // 登录响应
+        }
+    }
+
+    extend data.Data {
+        optional GateMsg    gate_msg        = 11000;        // gate的service_id
+    }
 
 ## 服务角色
     send: ->
@@ -145,7 +247,6 @@
     }
 
 ### 服务依赖列表
-    不搞依赖表，全局广播依赖，各服务自行决定取自己的依赖
     depend_gate.conf
     {
         "service": "gate",
@@ -444,4 +545,7 @@
     最后处理完毕后，根据id_server_1找回id_client_1_req_1替换返回id，
     根据id_tcp_client_1找到tcp_client_1，发送给tcp_client_1
 
+## 负载均衡
+
 ## 过载保护
+
