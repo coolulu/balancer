@@ -207,9 +207,9 @@
         client -> [navigate, gate], <- [gate]
         (listen http * 1, connect tcp * n)
 
-## 资源管理服务
+### 资源管理服务
 
-### 服务列表
+#### 服务列表
     service.conf
     {
         "service_list": [
@@ -246,7 +246,7 @@
         ]
     }
 
-### 服务依赖列表
+#### 服务依赖列表
     depend_gate.conf
     {
         "service": "gate",
@@ -260,7 +260,7 @@
         ]
     }
 
-### 服务idc列表
+#### 服务idc列表
     idc_gate.conf
     {
         "service": "gate",
@@ -292,7 +292,7 @@
         ]
     }
 
-### 模块kv配置列表
+#### 模块kv配置列表
     kv_gate.conf
     {
         "service": "gate",
@@ -308,9 +308,9 @@
         ]
     }
 
-### 集中简化
+#### 集中简化
 
-#### 字段检查:
+##### 字段检查:
     1.所有字段名必须存在
     2.字段值字符串不能为空
     3.字段值数值类型不能小于等于0
@@ -320,11 +320,11 @@
     7.同一个service内，depend_map.depend_service_name不能重复
     8.depend_map.depend_service_name必须存在service_map.service_name中
 
-#### 读操作:
+##### 读操作:
     1.查询，返回service_id，service_name列表
     2.根据service_id查询，返回service_id，service_name，heartbeat，depend_map，kv_map，heartbeat_list，inservice_list
 
-#### 写操作:
+##### 写操作:
     1.根据service_id，修改heartbeat成员值
     2.根据service_id，depend_service_id，增加depend_map的depend_service_id
     3.根据service_id，depend_service_id，删除depend_map的depend_service_id
@@ -338,7 +338,7 @@
     11.根据service_id，service_id，heartbeat增加service
     12.根据service_id，删除service
 
-#### service.conf
+##### service.conf
     {
         "service_map": [
             {
@@ -431,7 +431,7 @@
         ]
     }
 
-### 心跳探测
+#### 心跳探测
     message CenterHeartbeatReq {
         required int32      level               = 1;    // center的等级
         required int32      service_id          = 2;
@@ -449,25 +449,25 @@
                                                         // 非接管center根据role_expire_time判断是否需要接管服务
     }
 
-### 配置更新
+#### 配置更新
 
-### 虚拟进程
+#### 虚拟进程
     同一服务各个机器的配置不同，对于高配的机器的进程，通过给该进程虚拟多个proc_id，变相给该进程更多的请求
     注意，虚拟进程只能用在对状态（上架/上线）切换无特殊处理的服务（向gate就不合适，gate从上线到上架后要主动断开客户端连接）
 
-### 上架
+#### 上架
 
-### 下架
+#### 下架
 
-### 上线
+#### 上线
 
-### 下线
+#### 下线
 
-### 异常踢出
+#### 异常踢出
 
-### 恢复切入
+#### 恢复切入
 
-### center之间配置同步
+#### center之间配置同步
     service_role: center
     只有全局配置，先不搞局部配置和精细化控制
     同步配置
@@ -478,24 +478,24 @@
     3定时请求2拉的配置，1定时请求拉3的配置，由于3等级比1小，3收到比自己大等级的请求说明自己是最后一个，
     返回3的配置信息，1收到3的返回比较本地配置信息，设置为‘同步完成’
 
-## 导航服务
+### 导航服务
     service_role: navigate
     两种模式:
     A.请求导航服务服务返回gate的ip做一致性哈希，gate不发生变换的情况下，保证同一个user client重连还是重连到之前的gate服务
     B.返回在用户连接数最小的gate，gate定时(60s)向所有navgate广播的用户连接数
 
-## 网关服务
+### 网关服务
     service_role: gate
     （暂不考虑）gate要做user对tcp的绑定，保证user断开重连之后tcp连接不同，但还能找回user的新tcp连接
 
-## 业务服务
+### 业务服务
     service_role: middle
 
-## 代理服务
+### 代理服务
     service_role: proxy
     数据库，第三方接口等对接
 
-## 客户端
+### 客户端
     service_role: client
 
 ## id生成
