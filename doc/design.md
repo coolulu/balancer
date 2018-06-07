@@ -340,6 +340,7 @@
 
 ##### service.conf
     {
+        "level": 1,                                 //center等级
         "service_map": [
             {
                 "service_id": 11000,                //服务id
