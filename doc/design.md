@@ -15,25 +15,24 @@
 
 ### 端口
     unsigned short max  = 65535
-    [服务id]+[程序id]
+    [服务id]+[程序id(绑定的cpu号)]
+	从1开始，0保留给采集/监控等外围系统
     eg:
     gate:
-        11000 = 11000 + 0
-        11001 = 11000 + 1
-        11002 = 11000 + 2
+        10101 = 10100 + 1	//绑定cpu 1
+        10102 = 10100 + 2	//绑定cpu 2
     group:
-        12000 = 12000 + 0
-        12001 = 12000 + 1
-        12002 = 12000 + 2
+        10201 = 10200 + 1
+        10202 = 10200 + 2
 
 ### 错误码
     unsigned int max  = 42949,67295
     [服务id] * 100000 + [错误码(00000-99999)]
     eg:
     gate:
-        (11000,00000 - 11000,99999]
+        (10100,00000 - 10100,99999]
     group:
-        (12000,00000 - 12000,99999]
+        (10200,00000 - 10200,99999]
 
 ## 消息设计
 
@@ -129,47 +128,47 @@
     gate.proto
 
     enum ErrorCode {
-        ERR_BEGIN                       = 1100000000;
+        ERR_BEGIN                       = 1010000000;
 
-        // 系统错误码
-        ERR_SYS_BEGIN                   = 1100000100;
-        ERR_SYS_OVERLOAD                = 1100000101;       // 服务过载
-        ERR_SYS_REJECT_SERVICE          = 1100000102;       // 拒绝服务
-        ERR_SYS_SERVER_INNER            = 1100000103;       // 服务内部错误
-        ERR_SYS_TIMEOUT                 = 1100000104;       // 超时错误
-        ERR_SYS_NO_INSERVICE_LIST       = 1100000105;       // 没有可用服务ip
-        ERR_SYS_TASK_STATE              = 1100000106;       // 任务状态错误
-        ERR_SYS_TASK_DISCARD            = 1100000107;       // 任务丢弃
-        ERR_SYS_END                     = 1100000199;
+        // 系统错误码0
+        ERR_SYS_BEGIN                   = 1010000100;
+        ERR_SYS_OVERLOAD                = 1010000101;       // 服务过载
+        ERR_SYS_REJECT_SERVICE          = 1010000102;       // 拒绝服务
+        ERR_SYS_SERVER_INNER            = 1010000103;       // 服务内部错误
+        ERR_SYS_TIMEOUT                 = 1010000104;       // 超时错误
+        ERR_SYS_NO_INSERVICE_LIST       = 1010000105;       // 没有可用服务ip
+        ERR_SYS_TASK_STATE              = 1010000106;       // 任务状态错误
+        ERR_SYS_TASK_DISCARD            = 1010000107;       // 任务丢弃
+        ERR_SYS_END                     = 1010000199;
 
-        // 数据包错误码
-        ERR_PACKET_BEGIN                = 1100000200;
-        ERR_PACKET_ENCODE               = 1100000201;       // 打包失败
-        ERR_PACKET_DECODE               = 1100000202;       // 解码失败
-        ERR_PACKET_VERSION              = 1100000203;
-        ERR_PACKET_LEN                  = 1100000204;
-        ERR_PACKET_VERSION              = 1100000205;
-        ERR_PACKET_TO_SERVICE_ID        = 1100000206;
-        ERR_PACKET_FROM_SERVICE_ID      = 1100000207;
-        ERR_PACKET_APP_ID               = 1100000208;
-        ERR_PACKET_APP_VERSION          = 1100000209;
-        ERR_PACKET_SESSION_ID           = 1100000210;
-        ERR_PACKET_DATA_FORMAT          = 1100000211;
-        ERR_PACKET_CRC                  = 1100000212;
-        ERR_PACKET_UNKNOWN_REQUEST      = 1100000213;       // 不明请求
-        ERR_PACKET_END                  = 1100000299;
+        // 数据包错误码0
+        ERR_PACKET_BEGIN                = 1010000200;
+        ERR_PACKET_ENCODE               = 1010000201;       // 打包失败
+        ERR_PACKET_DECODE               = 1010000202;       // 解码失败
+        ERR_PACKET_VERSION              = 1010000203;
+        ERR_PACKET_LEN                  = 1010000204;
+        ERR_PACKET_VERSION              = 1010000205;
+        ERR_PACKET_TO_SERVICE_ID        = 1010000206;
+        ERR_PACKET_FROM_SERVICE_ID      = 1010000207;
+        ERR_PACKET_APP_ID               = 1010000208;
+        ERR_PACKET_APP_VERSION          = 1010000209;
+        ERR_PACKET_SESSION_ID           = 1010000210;
+        ERR_PACKET_DATA_FORMAT          = 1010000211;
+        ERR_PACKET_CRC                  = 1010000212;
+        ERR_PACKET_UNKNOWN_REQUEST      = 1010000213;       // 不明请求
+        ERR_PACKET_END                  = 1010000299;
 
-        // 接口错误码
-        ERR_INTERFACE_BEGIN             = 1100000300;
-        ERR_INTERFACE_PARAM             = 1100000301;       // 参数错误
-        ERR_INTERFACE_PERM              = 1100000302;       // 权限错误
-        ERR_INTERFACE_END               = 1100000399;
+        // 接口错误码0
+        ERR_INTERFACE_BEGIN             = 1010000300;
+        ERR_INTERFACE_PARAM             = 1010000301;       // 参数错误
+        ERR_INTERFACE_PERM              = 1010000302;       // 权限错误
+        ERR_INTERFACE_END               = 1010000399;
 
-        // 业务错误码
-        ERR_BUSINESS_BEGIN              = 1100010000;
-        ERR_USERID_NO_EXIST             = 1100010001;
+        // 业务错误码0
+        ERR_BUSINESS_BEGIN              = 1010010000;
+        ERR_USERID_NO_EXIST             = 1010010001;
 
-        ERR_BEGIN                       = 1100099999;
+        ERR_BEGIN                       = 1010099999;
     }
 
     message GroupMsg{                                       // 奇数是请求，偶数是响应
@@ -340,10 +339,9 @@
 
 ##### service.conf
     {
-        "level": 1,                                 //center等级
         "service_map": [
             {
-                "service_id": 11000,                //服务id
+                "service_id": 10100,                //服务id
                 "service_name": "gate",             //服务名
                 "heartbeat": {
                     "heartbeat_enable": true,       //心跳开关 true和false
@@ -353,7 +351,7 @@
                 },
                 "depend_map": [                     //服务依赖
                     {
-                        "depend_service_id": 12000  //依赖的service_id
+                        "depend_service_id": 10200  //依赖的service_id
                     }
                 ],
                 "kv_map": [                         //kv配置参数
@@ -368,29 +366,29 @@
                 ],
                 "heartbeat_list": [                 //上架(有心跳探测,不服务)
                     {
-                        "proc_id": "gate_000",
+                        "proc_id": "gate_1_1",
                         "in_ip": "121.1.1.1",       //内网ip,心跳探测,服务通信
                         "out_ip": "11.1.1.1",       //外网ip,没外网ip就填内网ip
-                        "port": 11000
+                        "port": 10101
                     }
                 ],
                 "inservice_list": [                 //上线(有心跳探测,在服务)
                     {
-                        "proc_id": "gate_001",
+                        "proc_id": "gate_2_1",
                         "in_ip": "121.1.1.2",
                         "out_ip": "11.1.1.2",
-                        "port": 11001
+                        "port": 10101
                     },
                     {
-                        "proc_id": "gate_001_v",    // 支持虚拟进程，gate_001和gate_001_v是同一个进程，变相给进程导流
+                        "proc_id": "gate_2_1_v",   	//支持虚拟进程，gate_2_1和gate_2_1_v是同一个进程，变相给进程导流
                         "in_ip": "121.1.1.2",
                         "out_ip": "11.1.1.2",
-                        "port": 11001
+                        "port": 10101
                     }
                 ]
             },
             {
-                "service_id": 12000,
+                "service_id": 10200,
                 "service_name": "group",
                 "heartbeat": {
                     "heartbeat_gap": 5,
@@ -399,7 +397,7 @@
                 },
                 "depend_map": [
                     {
-                        "depend_service_id": 11000
+                        "depend_service_id": 10100
                     }
                 ],
                 "kv_map": [
@@ -414,18 +412,18 @@
                 ],
                 "heartbeat_list": [
                     {
-                        "proc_id": "group_000",
+                        "proc_id": "group_1_1",
                         "in_ip": "121.1.1.10",
                         "out_ip": "11.1.1.10",
-                        "port": 12000
+                        "port": 10201
                     }
                 ],
                 "inservice_list": [
                     {
-                        "proc_id": "group_001",
+                        "proc_id": "group_2_1",
                         "in_ip": "121.1.1.20",
                         "out_ip": "11.1.1.20",
-                        "port": 12001
+                        "port": 10201
                     }
                 ]
             }
