@@ -188,7 +188,7 @@
 
     backend:
         center -> [navigate, gate, middle, proxy]
-        (listen http * 1, listen tcp * 1, connect tcp * n)
+        (listen http * 1, connect tcp * n)
 
         navigate -> [], <- [client, gate]
         (listen http * 1, listen tcp * 1)
@@ -470,7 +470,7 @@
 #### center之间配置同步
     service_role: center
     只有全局配置，先不搞局部配置和精细化控制
-    同步配置
+    同步配置(http请求定时查询同步)
     1 <-----2 <-----3 <--|
     |--------—-----------|
 
