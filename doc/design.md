@@ -16,11 +16,11 @@
 ### 端口
     unsigned short max  = 65535
     [服务id]+[程序id(绑定的cpu号)]
-	从1开始，0保留给采集/监控等外围系统
+    从1开始，0保留给采集/监控等外围系统
     eg:
     gate:
-        10101 = 10100 + 1	//绑定cpu 1
-        10102 = 10100 + 2	//绑定cpu 2
+        10101 = 10100 + 1   //绑定cpu 1
+        10102 = 10100 + 2   //绑定cpu 2
     group:
         10201 = 10200 + 1
         10202 = 10200 + 2
@@ -380,7 +380,7 @@
                         "port": 10101
                     },
                     {
-                        "proc_id": "gate_2_1_v",   	//支持虚拟进程，gate_2_1和gate_2_1_v是同一个进程，变相给进程导流
+                        "proc_id": "gate_2_1_v",    //支持虚拟进程，gate_2_1和gate_2_1_v是同一个进程，变相给进程导流
                         "in_ip": "121.1.1.2",
                         "out_ip": "11.1.1.2",
                         "port": 10101
@@ -391,7 +391,7 @@
                 "service_id": 10200,
                 "service_name": "group",
                 "heartbeat": {
-					"heartbeat_enable": true,
+                    "heartbeat_enable": true,
                     "heartbeat_gap": 5,
                     "lose_time": 3,
                     "recover_time": 5
