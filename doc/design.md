@@ -391,6 +391,7 @@
                 "service_id": 10200,
                 "service_name": "group",
                 "heartbeat": {
+					"heartbeat_enable": true,
                     "heartbeat_gap": 5,
                     "lose_time": 3,
                     "recover_time": 5
