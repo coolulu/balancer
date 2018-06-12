@@ -171,7 +171,7 @@
         ERR_BEGIN                       = 1010099999;
     }
 
-    message GroupMsg{                                       // 奇数是请求，偶数是响应
+    message GateMsg{                                        // 奇数是请求，偶数是响应
         oneof choice{
             LoginReq        login_req       = 1;            // 登录请求
             LoginRsp        login_rsp       = 2;            // 登录响应
@@ -179,7 +179,7 @@
     }
 
     extend data.Data {
-        optional GateMsg    gate_msg        = 11000;        // gate的service_id
+        optional GateMsg    gate_msg        = 10100;        // gate的service_id
     }
 
 ## 服务角色
@@ -337,7 +337,7 @@
     11.根据service_id，service_id，heartbeat增加service
     12.根据service_id，删除service
 
-##### service.conf
+##### service.json
     {
         "service_map": [
             {
