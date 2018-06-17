@@ -48,7 +48,7 @@
         unsigned short          from_service_id     :2              // 发送的service_id
         unsigned int            app_id              :4
         unsigned int            app_version         :4
-        unsigned long long      session_id          :8
+        unsigned long long      seq_id          	:8
         unsigned char           data_format         :1              // 数据格式(1.protobuf)
         unsigned char           reserve_field_0     :1              // 保留字段0
         unsigned int            reserve_field_1     :4              // 保留字段1
@@ -61,12 +61,12 @@
     head = [0x00,0x00,0x00,0x00]
 
     len = len(version + to_service_id + from_service_id + app_id + app_version +
-              session_id + data_format + reserve_field[4] + data_len + crc)
+              seq_id + data_format + reserve_field[4] + data_len + crc)
 
     len(Packet) = 48 + data_len = [48, (unsigned short)-1]
 
     crc = crc(len + version + to_service_id + from_service_id + app_id + app_version +
-              session_id + data_format + reserve_field[4] + data[])
+              seq_id + data_format + reserve_field[4] + data[])
 
 ### data
     data.proto
