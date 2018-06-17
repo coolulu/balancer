@@ -19,11 +19,11 @@
     从1开始，0保留给采集/监控等外围系统
     eg:
     gate:
-        10101 = 10100 + 1   //绑定cpu 1
-        10102 = 10100 + 2   //绑定cpu 2
+        tcp: 10101 = 10100 + 1, http: 10181 = 10100 + 80 + 1   //绑定cpu 1
+        tcp: 10102 = 10100 + 2, http: 10182 = 10100 + 80 + 2   //绑定cpu 2
     group:
-        10201 = 10200 + 1
-        10202 = 10200 + 2
+        tcp: 10201 = 10200 + 1, http: 10281 = 10200 + 80 + 1
+        tcp: 10202 = 10200 + 2, http: 10282 = 10200 + 80 + 2
 
 ### 错误码
     unsigned int max  = 42949,67295
@@ -187,23 +187,23 @@
     recv: <-
 
     backend:
-        center -> [navigate, gate, middle, proxy]
+        center(10100:核心服务) -> [navigate, gate, middle, proxy]
         (listen http * 1, connect tcp * n)
 
-        navigate -> [], <- [client, gate]
+        navigate(10200:核心服务) -> [], <- [client, gate]
         (listen http * 1, listen tcp * 1)
 
-        gate -> [client, navigate, middle, proxy], <- [client, middle]
+        gate(10300:核心服务) -> [client, navigate, middle, proxy], <- [client, middle]
         (listen http * 1, listen tcp * 1, connect tcp * n)
 
-        middle -> [proxy, gate], <- [gate]
+        middle(10400:业务服务) -> [proxy, gate], <- [gate]
         (listen http * 1, listen tcp * 1, connect tcp * n)
 
-        proxy -> [], <-[gate, middle]
+        proxy(10500:业务服务) -> [], <-[gate, middle]
         (listen http * 1, listen tcp * 1)
 
     frontend:
-        client -> [navigate, gate], <- [gate]
+        client(10600:业务服务) -> [navigate, gate], <- [gate]
         (listen http * 1, connect tcp * n)
 
 ### 资源管理服务
