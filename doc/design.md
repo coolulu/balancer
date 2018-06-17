@@ -19,11 +19,11 @@
     从1开始，0保留给采集/监控等外围系统
     eg:
     gate:
-        tcp: 10101 = 10100 + 1, http: 10181 = 10100 + 80 + 1   //绑定cpu 1
-        tcp: 10102 = 10100 + 2, http: 10182 = 10100 + 80 + 2   //绑定cpu 2
+        tcp: 10101 = 10100 + 1, http: 10151 = 10100 + 50 + 1   //绑定cpu 1
+        tcp: 10102 = 10100 + 2, http: 10152 = 10100 + 50 + 2   //绑定cpu 2
     group:
-        tcp: 10201 = 10200 + 1, http: 10281 = 10200 + 80 + 1
-        tcp: 10202 = 10200 + 2, http: 10282 = 10200 + 80 + 2
+        tcp: 10201 = 10200 + 1, http: 10251 = 10200 + 50 + 1
+        tcp: 10202 = 10200 + 2, http: 10252 = 10200 + 50 + 2
 
 ### 错误码
     unsigned int max  = 42949,67295
@@ -187,24 +187,30 @@
     recv: <-
 
     backend:
-        center(10100:核心服务) -> [navigate, gate, middle, proxy]
+        center -> [navigate, gate, middle, proxy]
         (listen http * 1, connect tcp * n)
+		10100:核心服务,cpu密集型,绑定cpu,进程数等于cpu数减1
 
-        navigate(10200:核心服务) -> [], <- [client, gate]
+        navigate -> [], <- [client, gate]
         (listen http * 1, listen tcp * 1)
+		10200:核心服务,io密集型,不绑定cpu,进程数等于cpu乘2或3
 
-        gate(10300:核心服务) -> [client, navigate, middle, proxy], <- [client, middle]
+        gate -> [client, navigate, middle, proxy], <- [client, middle]
         (listen http * 1, listen tcp * 1, connect tcp * n)
+		10300:核心服务,cpu密集型,绑定cpu,进程数等于cpu数减1
 
-        middle(10400:业务服务) -> [proxy, gate], <- [gate]
+        middle -> [proxy, gate], <- [gate]
         (listen http * 1, listen tcp * 1, connect tcp * n)
+		10400:业务服务,cpu密集型,绑定cpu,进程数等于cpu数减1
 
-        proxy(10500:业务服务) -> [], <-[gate, middle]
+        proxy -> [], <-[gate, middle]
         (listen http * 1, listen tcp * 1)
+		10500:业务服务,io密集型,不绑定cpu,进程数等于cpu乘2或3
 
     frontend:
-        client(10600:业务服务) -> [navigate, gate], <- [gate]
+        client -> [navigate, gate], <- [gate]
         (listen http * 1, connect tcp * n)
+		10600:业务服务,cpu密集型,绑定cpu,进程数等于cpu数减1
 
 ### 资源管理服务
 
