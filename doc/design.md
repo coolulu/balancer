@@ -189,28 +189,28 @@
     backend:
         center -> [navigate, gate, middle, proxy]
         (listen http * 1, connect tcp * n)
-		10100:核心服务,cpu密集型,绑定cpu,进程数等于cpu数减1
+        10100:核心服务,cpu密集型,绑定cpu,进程数等于cpu数减1
 
         navigate -> [], <- [client, gate]
         (listen http * 1, listen tcp * 1)
-		10200:核心服务,io密集型,不绑定cpu,进程数等于cpu乘2或3
+        10200:核心服务,io密集型,不绑定cpu,进程数等于cpu乘2或3
 
         gate -> [client, navigate, middle, proxy], <- [client, middle]
         (listen http * 1, listen tcp * 1, connect tcp * n)
-		10300:核心服务,cpu密集型,绑定cpu,进程数等于cpu数减1
+        10300:核心服务,cpu密集型,绑定cpu,进程数等于cpu数减1
 
         middle -> [proxy, gate], <- [gate]
         (listen http * 1, listen tcp * 1, connect tcp * n)
-		10400:业务服务,cpu密集型,绑定cpu,进程数等于cpu数减1
+        10400:业务服务,cpu密集型,绑定cpu,进程数等于cpu数减1
 
         proxy -> [], <-[gate, middle]
         (listen http * 1, listen tcp * 1)
-		10500:业务服务,io密集型,不绑定cpu,进程数等于cpu乘2或3
+        10500:业务服务,io密集型,不绑定cpu,进程数等于cpu乘2或3
 
     frontend:
         client -> [navigate, gate], <- [gate]
         (listen http * 1, connect tcp * n)
-		10600:业务服务,cpu密集型,绑定cpu,进程数等于cpu数减1
+        10600:业务服务,cpu密集型,绑定cpu,进程数等于cpu数减1
 
 ### 资源管理服务
 
