@@ -602,7 +602,7 @@
       刚好等于之前回收内网机器A内网ip_A的client_port的值，由于所有内网机器出口ip是一样的，网关看client_port没变化，
       但客户端实际已经变了，导致网关串话，虽然他们在同一个内网里。
 
-    所以client_ip和client_port作为conn_id是不可靠的，不能心存侥幸。
+    所以client_ip和client_port作为conn_id是不可靠的，不能有侥幸心理。
 
 
 ## 负载均衡
