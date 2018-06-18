@@ -48,7 +48,8 @@
         unsigned short          from_service_id     :2              // 发送的service_id
         unsigned int            app_id              :4
         unsigned int            app_version         :4
-        unsigned long long      seq_id          	:8
+        unsigned long long      conn_seq_id         :8              // 客户端连接序列id(用在网关转发)
+        unsigned long long      msg_seq_id          :8              // 消息序列id
         unsigned char           data_format         :1              // 数据格式(1.protobuf)
         unsigned char           reserve_field_0     :1              // 保留字段0
         unsigned int            reserve_field_1     :4              // 保留字段1
@@ -61,12 +62,12 @@
     head = [0x00,0x00,0x00,0x00]
 
     len = len(version + to_service_id + from_service_id + app_id + app_version +
-              seq_id + data_format + reserve_field[4] + data_len + crc)
+              conn_seq_id + msg_seq_id + data_format + reserve_field[4] + data_len + crc)
 
-    len(Packet) = 48 + data_len = [48, (unsigned short)-1]
+    len(Packet) = 56 + data_len = [56, (unsigned short)-1]
 
     crc = crc(len + version + to_service_id + from_service_id + app_id + app_version +
-              seq_id + data_format + reserve_field[4] + data[])
+              conn_seq_id + msg_seq_id + data_format + reserve_field[4] + data[])
 
 ### data
     data.proto
@@ -182,7 +183,7 @@
         optional GateMsg    gate_msg        = 10100;        // gate的service_id
     }
 
-## 服务角色
+## 服务类型
     send: ->
     recv: <-
 
@@ -474,7 +475,7 @@
 #### 恢复切入
 
 #### center之间配置同步
-    service_role: center
+    service_type: center
     只有全局配置，先不搞局部配置和精细化控制
     同步配置(http请求定时查询同步)
     1 <-----2 <-----3 <--|
@@ -485,24 +486,24 @@
     返回3的配置信息，1收到3的返回比较本地配置信息，设置为‘同步完成’
 
 ### 导航服务
-    service_role: navigate
+    service_type: navigate
     两种模式:
     A.请求导航服务服务返回gate的ip做一致性哈希，gate不发生变换的情况下，保证同一个user client重连还是重连到之前的gate服务
     B.返回在用户连接数最小的gate，gate定时(60s)向所有navgate广播的用户连接数
 
 ### 网关服务
-    service_role: gate
+    service_type: gate
     （暂不考虑）gate要做user对tcp的绑定，保证user断开重连之后tcp连接不同，但还能找回user的新tcp连接
 
 ### 业务服务
-    service_role: middle
+    service_type: middle
 
 ### 代理服务
-    service_role: proxy
+    service_type: proxy
     数据库，第三方接口等对接
 
 ### 客户端
-    service_role: client
+    service_type: client
 
 ## id生成
     用unsigned long long类型，占64位
@@ -525,6 +526,8 @@
     对于server端，空闲连接大于90秒，关闭连接
 
 ### 防串话
+
+#### 更换id
     不同连接下的相同请求id的处理，需要程序内部替换本程序唯一id，
     防止不同客户端连接但相同的id请求的返回串话
 
@@ -550,6 +553,57 @@
     若需要转发产生子任务id
     最后处理完毕后，根据id_server_1找回id_client_1_req_1替换返回id，
     根据id_tcp_client_1找到tcp_client_1，发送给tcp_client_1
+
+    代价
+    a.由于要替换id，如果有数据包中有crc且下游需要校验，则需要重新计算更新crc才能转发给下游服务；
+      同时下游服务返回结果用新id找到老id，替换回老id重新计算crc转发给客户端;
+      所以更换id不适合类型做网关类型服务（转发/透传），由于要更换id必须重新计算crc，浪费cpu资源。
+
+    b.由于产生新的id替换，就有新id和老id的对应的映射关系，如果下游服务不返回结果，新id会一直存在导致资源泄露
+      所以新id和老id的对应的映射关系要缓存起来且放入定时器中，同时加重定时器的负担；
+      一定时间内下游服务的新id返回结果超时，要清理新id和老id的对应的映射关系，
+      所以更换id不适合类型做网关类型服务（转发/透传），每个请求都要产生一个新老id映射放入定时器，
+      同时网关也要维持大量客户端连接的定时器，定时器负担过重。
+
+    所以更换id适用于middle类型服务
+
+#### 服务端产生conn_id且不更换id
+
+    由于每个客户端请求都有conn_id，网关程序则不需要更换id，无需加重定时器负担，无需重新计算crc，就可以转发给下游服务；
+    下游服务返回结果带上客户端的conn_id，网关收到结果消息后无需重新计算crc和更换id，消息原封不同的直接根据conn_id返回给客户端，
+    客户端收到返回结果要校验conn_id。
+	服务端产生一个conn_id对应客户端一个连接，且conn_id是不会改变的
+    数据包进进出出gate无需其他操作，定时器只需要维持客户端的连接。
+
+    代价:
+    客户端和网关建立连接后，第一个请求必须获取自己的conn_id，后面的请求带上conn_id，
+    否则后面的客户端请求会因为conn_id校验失败被网关断开连接。
+    所以客户端建立连接后，第一个请求发送conn_id为0，len为最小数据包长的请求（data_len为0）给网关，
+    网关返回客户端的conn_id（网关必须要为每个客户端连接标记是否请求过conn_id，获取conn_id机会只有一次且只有第一次）
+
+    所以服务端产生conn_id且不更换id适用于gate类型服务
+
+    错误的方式： conn_id = [client_ip，client_port]
+    网关服务使用客户端client_ip和client_port作为conn_id,虽然理论上五元组可作为key，
+    [protocol，client_ip， client_port，server_ip，server_port]
+    protocol为tcp不变，client_ip变化，client_port变化，server_ip不变，server_port不变
+    则client_ip和client_port组合为key，为2^48个值。
+
+    a.实际在单机上，client_ip是不变的，client_port是临时端口是变化的，操作系统会重复使用临时端口；
+      可能出现某进程client_port刚回收，新进程connect产生client_port刚好等于之前回收client_port，虽然client_port值虽然没变，
+      但已经是另外一个进程使用client_port，导致内部服务转发给网关还是之前的client_ip和client_port作为conn_id，
+      网关拿这个conn_id转发客户端，这时conn_id已经是对应另外一个客户端进程，导致网关串话，虽然他们在同一台机器上。
+
+    b.由于很多客户端是在内网发起connect对网关的连接，虽然他们在内网的不同机器上（每个内网机器对应不同的内网ip）；
+      但从listen的网关来说，虽然客户端内网ip不同，但客户端的出口ip（外网ip）是一样的，等同于这些客户端共用同一个client_ip，
+      由于每个内网机上的client_port是和网关看客户端的client_port是一致的，client_port有2^16个值，
+      却表示整个内网所以机器上的client_port，大大增加client_port重复的概率。
+      导致出现内网机器A内网ip_A的client_port刚回收，另外一个内网机器B内网ip_B的新进程connect产生client_port
+      刚好等于之前回收内网机器A内网ip_A的client_port的值，由于所有内网机器出口ip是一样的，网关看client_port没变化，
+      但客户端实际已经变了，导致网关串话，虽然他们在同一个内网里。
+
+    所以client_ip和client_port作为conn_id是不可靠的，不能心存侥幸。
+
 
 ## 负载均衡
 
