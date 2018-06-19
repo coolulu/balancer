@@ -592,7 +592,7 @@
     a.实际在单机上，client_ip是不变的，client_port是临时端口是变化的，操作系统会重复使用临时端口；
       可能出现某进程client_port刚回收，新进程connect产生client_port刚好等于之前回收client_port，虽然client_port值虽然没变，
       但已经是另外一个进程使用client_port，导致内部服务转发给网关还是之前的client_ip和client_port作为conn_id，
-      网关拿这个conn_id转发客户端，这时conn_id已经是对应另外一个客户端进程，导致网关串话，虽然他们在同一台机器上。
+      网关拿这个conn_id转发客户端，这时conn_id已经是对应另外一个客户端进程，导致网关串话，虽然他们在同一台机器上的不同的进程。
 
     b.由于很多客户端是在内网发起connect对网关的连接，虽然他们在内网的不同机器上（每个内网机器对应不同的内网ip）；
       但从listen的网关来说，虽然客户端内网ip不同，但客户端的出口ip（外网ip）是一样的，等同于这些客户端共用同一个client_ip，
@@ -600,7 +600,7 @@
       却表示整个内网所以机器上的client_port，大大增加client_port重复的概率。
       导致出现内网机器A内网ip_A的client_port刚回收，另外一个内网机器B内网ip_B的新进程connect产生client_port
       刚好等于之前回收内网机器A内网ip_A的client_port的值，由于所有内网机器出口ip是一样的，网关看client_port没变化，
-      但客户端实际已经变了，导致网关串话，虽然他们在同一个内网里。
+      但客户端实际已经变了，导致网关串话，虽然他们在同一个内网里的不同的机器上。
 
     所以client_ip和client_port作为conn_id是不可靠的，不能有侥幸心理。
 
