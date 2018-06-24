@@ -56,18 +56,18 @@
         unsigned int            reserve_field_2     :4              // 保留字段2
         unsigned int            reserve_field_3     :4              // 保留字段3
         unsigned char           data[]              :data_len
-        unsigned int            crc                 :4              // 校验
+        unsigned int            check_sum           :4              // 校验和
     }
 
     header = [0x00,0x00,0x00,0x00]
 
     len = len(version + to_service_id + from_service_id + app_id + app_version +
-              conn_seq_id + msg_seq_id + data_format + reserve_field[4] + data_len + crc)
+              conn_seq_id + msg_seq_id + data_format + reserve_field[4] + data_len + check_sum)
 
     len(Packet) = 56 + data_len = [56, (unsigned short)-1]
 
-    crc = crc(len + version + to_service_id + from_service_id + app_id + app_version +
-              conn_seq_id + msg_seq_id + data_format + reserve_field[4] + data[])
+    check_sum = adler32(len + version + to_service_id + from_service_id + app_id + app_version +
+                        conn_seq_id + msg_seq_id + data_format + reserve_field[4] + data[])
 
 ### data
     data.proto
@@ -572,7 +572,7 @@
     由于每个客户端请求都有conn_id，网关程序则不需要更换id，无需加重定时器负担，无需重新计算crc，就可以转发给下游服务；
     下游服务返回结果带上客户端的conn_id，网关收到结果消息后无需重新计算crc和更换id，消息原封不同的直接根据conn_id返回给客户端，
     客户端收到返回结果要校验conn_id。
-	服务端产生一个conn_id对应客户端一个连接，且conn_id是不会改变的
+    服务端产生一个conn_id对应客户端一个连接，且conn_id是不会改变的
     数据包进进出出gate无需其他操作，定时器只需要维持客户端的连接。
 
     代价:
