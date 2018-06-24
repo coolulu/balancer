@@ -61,8 +61,8 @@
 
     header = [0x00,0x00,0x00,0x00]
 
-    len = len(version + to_service_id + from_service_id + app_id + app_version +
-              conn_seq_id + msg_seq_id + data_format + reserve_field[4] + data_len + check_sum)
+    len = sizeof(version + to_service_id + from_service_id + app_id + app_version +
+                 conn_seq_id + msg_seq_id + data_format + reserve_field[4] + check_sum) + data_len
 
     len(Packet) = 56 + data_len = [56, (unsigned short)-1]
 
