@@ -41,7 +41,7 @@
 
     struct Packet
     {
-        unsigned int            head                :4              // 包头标识
+        unsigned int            header              :4              // 包头标识
         unsigned int            len                 :4              // 长度
         unsigned short          version             :2              // 协议版本
         unsigned short          to_service_id       :2              // 发送到service_id
@@ -59,7 +59,7 @@
         unsigned int            crc                 :4              // 校验
     }
 
-    head = [0x00,0x00,0x00,0x00]
+    header = [0x00,0x00,0x00,0x00]
 
     len = len(version + to_service_id + from_service_id + app_id + app_version +
               conn_seq_id + msg_seq_id + data_format + reserve_field[4] + data_len + crc)
