@@ -71,6 +71,8 @@
                         conn_seq_id + msg_seq_id + data_format + reserve_field[4] + data[])
 
 ### data
+
+#### protobuf 2
     data.proto
 
     message Data
@@ -183,6 +185,8 @@
     extend data.Data {
         optional GateMsg    gate_msg        = 10100;        // gate的service_id
     }
+
+#### protobuf 3
 
 ## 服务类型
     send: ->
