@@ -44,8 +44,9 @@
         unsigned int            header              :4              // 包头标识
         unsigned int            len                 :4              // 长度
         unsigned short          version             :2              // 协议版本
-        unsigned short          to_service_id       :2              // 发送到service_id
         unsigned short          from_service_id     :2              // 发送的service_id
+        unsigned short          to_service_id       :2              // 发送到service_id
+        unsigned int            to_proc_id          :4              // 0为负载均衡，非0则请求到proc_id的服务
         unsigned int            app_id              :4
         unsigned int            app_version         :4
         unsigned long long      conn_seq_id         :8              // 客户端连接序列id(用在网关转发)
@@ -61,12 +62,12 @@
 
     header = [0x00,0x00,0x00,0x00]
 
-    len = sizeof(version + to_service_id + from_service_id + app_id + app_version +
+    len = sizeof(version + from_service_id + to_service_id + to_proc_id + app_id + app_version +
                  conn_seq_id + msg_seq_id + data_format + reserve_field[4] + check_sum) + data_len
 
-    len(Packet) = 56 + data_len = [56, (unsigned short)-1]
+    len(Packet) = 60 + data_len = [60, (unsigned short)-1]
 
-    check_sum = adler32(len + version + to_service_id + from_service_id + app_id + app_version +
+    check_sum = adler32(len + version + from_service_id + to_service_id + to_proc_id + app_id + app_version +
                         conn_seq_id + msg_seq_id + data_format + reserve_field[4] + data[])
 
 ### data
@@ -373,7 +374,8 @@
                 ],
                 "heartbeat_list": [                 //上架(有心跳探测,不服务)
                     {
-                        "proc_id": "gate_1_1",
+                        "proc_id": 1,               //程序id
+                        "proc_des": "gate_1_1",     //程序描述
                         "in_ip": "121.1.1.1",       //内网ip,心跳探测,服务通信
                         "out_ip": "11.1.1.1",       //外网ip,没外网ip就填内网ip
                         "port": 10101
@@ -381,13 +383,15 @@
                 ],
                 "inservice_list": [                 //上线(有心跳探测,在服务)
                     {
-                        "proc_id": "gate_2_1",
+                        "proc_id": 2,
+                        "proc_des": "gate_2_1",
                         "in_ip": "121.1.1.2",
                         "out_ip": "11.1.1.2",
                         "port": 10101
                     },
                     {
-                        "proc_id": "gate_2_1_v",    //支持虚拟进程，gate_2_1和gate_2_1_v是同一个进程，变相给进程导流
+                        "proc_id": 3,
+                        "proc_des": "gate_2_1_v",    //支持虚拟进程，gate_2_1和gate_2_1_v是同一个进程，变相给进程导流
                         "in_ip": "121.1.1.2",
                         "out_ip": "11.1.1.2",
                         "port": 10101
@@ -420,7 +424,8 @@
                 ],
                 "heartbeat_list": [
                     {
-                        "proc_id": "group_1_1",
+                        "proc_id": 1,
+                        "proc_des": "group_1_1",
                         "in_ip": "121.1.1.10",
                         "out_ip": "11.1.1.10",
                         "port": 10201
@@ -428,7 +433,8 @@
                 ],
                 "inservice_list": [
                     {
-                        "proc_id": "group_2_1",
+                        "proc_id": 2,
+                        "proc_des": "group_2_1",
                         "in_ip": "121.1.1.20",
                         "out_ip": "11.1.1.20",
                         "port": 10201
@@ -607,5 +613,13 @@
 
 ## 负载均衡
 
+## 请求路由
+    proc_id
+
 ## 过载保护
 
+## 服务更新
+
+### 无状态服务更新
+
+### 有状态服务更新
