@@ -71,19 +71,6 @@
                         conn_seq_id + msg_seq_id + data_format + reserve_field[4] + data[])
 
 ### data
-
-#### protobuf 2
-    data.proto
-
-    message Data
-    {
-        repeated uint64     timestamp       = 1;        // 请求源或返回源的时间(比如App客户端发送时间)
-        optional uint32     error_code      = 2;        // rsp必填
-        optional bytes      error_info      = 3;        // rsp必填
-
-        extensions 10000 to 60000;                      // 扩展各个服务
-    }
-
     common.proto
 
     // 公共错误码
@@ -127,6 +114,17 @@
         // 公共业务错误码 (各个服务service_id * 100000 + 公共业务错误码)
         ERR_BUSINESS_BEGIN              = 10000;
         ERR_BUSINESS_END                = 99999;
+    }
+
+#### protobuf 2
+    data.proto
+
+    message Data {
+        optional uint64     timestamp       = 1;        // 请求源或返回源的时间(比如App客户端发送时间)
+        optional uint32     error_code      = 2;        // rsp必填
+        optional bytes      error_info      = 3;        // rsp必填
+
+        extensions 10000 to 60000;                      // 扩展各个服务
     }
 
     gate.proto
@@ -175,8 +173,8 @@
         ERR_BEGIN                       = 1010099999;
     }
 
-    message GateMsg{                                        // 奇数是请求，偶数是响应
-        oneof choice{
+    message GateMsg {                                       // 奇数是请求，偶数是响应
+        oneof choice {
             LoginReq        login_req       = 1;            // 登录请求
             LoginRsp        login_rsp       = 2;            // 登录响应
         }
@@ -187,6 +185,68 @@
     }
 
 #### protobuf 3
+    data.proto
+
+    message Data {
+        uint64     timestamp       = 1;        // 请求源或返回源的时间(比如App客户端发送时间)
+        uint32     error_code      = 2;        // rsp必填
+        bytes      error_info      = 3;        // rsp必填
+
+        google.protobuf.Any data   = 4;        // 扩展各个服务
+    }
+
+    gate.proto
+
+    enum ErrorCode {
+        ERR_BEGIN                       = 1010000000;
+
+        // 系统错误码0
+        ERR_SYS_BEGIN                   = 1010000100;
+        ERR_SYS_OVERLOAD                = 1010000101;       // 服务过载
+        ERR_SYS_REJECT_SERVICE          = 1010000102;       // 拒绝服务
+        ERR_SYS_SERVER_INNER            = 1010000103;       // 服务内部错误
+        ERR_SYS_TIMEOUT                 = 1010000104;       // 超时错误
+        ERR_SYS_NO_INSERVICE_LIST       = 1010000105;       // 没有可用服务ip
+        ERR_SYS_TASK_STATE              = 1010000106;       // 任务状态错误
+        ERR_SYS_TASK_DISCARD            = 1010000107;       // 任务丢弃
+        ERR_SYS_END                     = 1010000199;
+
+        // 数据包错误码0
+        ERR_PACKET_BEGIN                = 1010000200;
+        ERR_PACKET_ENCODE               = 1010000201;       // 打包失败
+        ERR_PACKET_DECODE               = 1010000202;       // 解码失败
+        ERR_PACKET_VERSION              = 1010000203;
+        ERR_PACKET_LEN                  = 1010000204;
+        ERR_PACKET_VERSION              = 1010000205;
+        ERR_PACKET_TO_SERVICE_ID        = 1010000206;
+        ERR_PACKET_FROM_SERVICE_ID      = 1010000207;
+        ERR_PACKET_APP_ID               = 1010000208;
+        ERR_PACKET_APP_VERSION          = 1010000209;
+        ERR_PACKET_SESSION_ID           = 1010000210;
+        ERR_PACKET_DATA_FORMAT          = 1010000211;
+        ERR_PACKET_CRC                  = 1010000212;
+        ERR_PACKET_UNKNOWN_REQUEST      = 1010000213;       // 不明请求
+        ERR_PACKET_END                  = 1010000299;
+
+        // 接口错误码0
+        ERR_INTERFACE_BEGIN             = 1010000300;
+        ERR_INTERFACE_PARAM             = 1010000301;       // 参数错误
+        ERR_INTERFACE_PERM              = 1010000302;       // 权限错误
+        ERR_INTERFACE_END               = 1010000399;
+
+        // 业务错误码0
+        ERR_BUSINESS_BEGIN              = 1010010000;
+        ERR_USERID_NO_EXIST             = 1010010001;
+
+        ERR_BEGIN                       = 1010099999;
+    }
+
+    message GateMsg {                                       // 奇数是请求，偶数是响应
+        oneof choice {
+            LoginReq        login_req       = 1;            // 登录请求
+            LoginRsp        login_rsp       = 2;            // 登录响应
+        }
+    }
 
 ## 服务类型
     send: ->
