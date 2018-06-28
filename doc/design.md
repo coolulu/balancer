@@ -119,12 +119,12 @@
 #### protobuf 2
     data.proto
 
-    message Data {
+    message Body {
         optional uint64     timestamp       = 1;        // 请求源或返回源的时间(比如App客户端发送时间)
         optional uint32     error_code      = 2;        // rsp必填
         optional bytes      error_info      = 3;        // rsp必填
 
-        extensions 10000 to 60000;                      // 扩展各个服务
+        extensions 10000 to 60000;                      // 扩展各个服务消息
     }
 
     gate.proto
@@ -180,19 +180,19 @@
         }
     }
 
-    extend data.Data {
+    extend Data.Body {
         optional GateMsg    gate_msg        = 10100;        // gate的service_id
     }
 
 #### protobuf 3
     data.proto
 
-    message Data {
+    message Body {
         uint64     timestamp       = 1;        // 请求源或返回源的时间(比如App客户端发送时间)
         uint32     error_code      = 2;        // rsp必填
         bytes      error_info      = 3;        // rsp必填
 
-        google.protobuf.Any data   = 4;        // 扩展各个服务
+        google.protobuf.Any service_msg    = 4;        // 扩展各个服务消息
     }
 
     gate.proto
@@ -540,9 +540,9 @@
 
 #### 下线
 
-#### 异常踢出
+#### 故障转移
 
-#### 恢复切入
+#### 故障恢复
 
 #### center之间配置同步
     service_type: center
@@ -684,6 +684,6 @@
 
 ## 服务更新
 
-### 无状态服务更新
+### 无状态服务灰度发布
 
-### 有状态服务更新
+### 有状态服务灰度发布
