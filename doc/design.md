@@ -253,7 +253,7 @@
     recv: <-
 
     backend:
-        center -> [navigate, gate, middle, proxy]
+        center -> [navigate, gate, logic, proxy]
         (listen http * 1, connect tcp * n)
         10100:核心服务,cpu密集型,绑定cpu,进程数等于cpu数减1
 
@@ -261,15 +261,15 @@
         (listen http * 1, listen tcp * 1)
         10200:核心服务,io密集型,不绑定cpu,进程数等于cpu乘2或3
 
-        gate -> [client, navigate, middle, proxy], <- [client, middle]
+        gate -> [client, navigate, logic, proxy], <- [client, logic]
         (listen http * 1, listen tcp * 1, connect tcp * n)
         10300:核心服务,cpu密集型,绑定cpu,进程数等于cpu数减1
 
-        middle -> [proxy, gate], <- [gate]
+        logic -> [proxy, gate], <- [gate]
         (listen http * 1, listen tcp * 1, connect tcp * n)
         10400:业务服务,cpu密集型,绑定cpu,进程数等于cpu数减1
 
-        proxy -> [], <-[gate, middle]
+        proxy -> [], <-[gate, logic]
         (listen http * 1, listen tcp * 1)
         10500:业务服务,io密集型,不绑定cpu,进程数等于cpu乘2或3
 
@@ -566,7 +566,7 @@
     （暂不考虑）gate要做user对tcp的绑定，保证user断开重连之后tcp连接不同，但还能找回user的新tcp连接
 
 ### 业务服务
-    service_type: middle
+    service_type: logic
 
 ### 代理服务
     service_type: proxy
@@ -635,7 +635,7 @@
       所以更换id不适合类型做网关类型服务（转发/透传），每个请求都要产生一个新老id映射放入定时器，
       同时网关也要维持大量客户端连接的定时器，定时器负担过重。
 
-    所以更换id适用于middle类型服务
+    所以更换id适用于logic类型服务
 
 #### 服务端产生conn_id且不更换id
 
