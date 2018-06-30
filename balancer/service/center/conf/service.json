@@ -1,0 +1,92 @@
+{
+    "service_map": [
+        {
+            "service_id": 10100,                
+            "service_name": "gate",             
+            "heartbeat": {
+                "heartbeat_enable": true,       
+                "heartbeat_gap": 5,             
+                "lose_time": 3,                 
+                "recover_time": 5               
+            },
+            "depend_map": [                     
+                {
+                    "depend_service_id": 10200  
+                }
+            ],
+            "kv_map": [                         
+                {
+                    "key": "timeout",
+                    "val": "30"
+                },
+                {
+                    "key": "env",
+                    "val": "test"
+                }
+            ],
+            "heartbeat_list": [                 
+                {
+                    "proc_id": "gate_1_1",
+                    "in_ip": "121.1.1.1",       
+                    "out_ip": "11.1.1.1",       
+                    "port": 10101
+                }
+            ],
+            "inservice_list": [                 
+                {
+                    "proc_id": "gate_2_1",
+                    "in_ip": "121.1.1.2",
+                    "out_ip": "11.1.1.2",
+                    "port": 10101
+                },
+                {
+                    "proc_id": "gate_2_1_v",   	
+                    "in_ip": "121.1.1.2",
+                    "out_ip": "11.1.1.2",
+                    "port": 10101
+                }
+            ]
+        },
+        {
+            "service_id": 10200,
+            "service_name": "group",
+            "heartbeat": {
+			"heartbeat_enable": true,
+                "heartbeat_gap": 5,
+                "lose_time": 3,
+                "recover_time": 5
+            },
+            "depend_map": [
+                {
+                    "depend_service_id": 10100
+                }
+            ],
+            "kv_map": [
+                {
+                    "key": "name_max_size",
+                    "val": "1024"
+                },
+                {
+                    "key": "buffer_max_size",
+                    "val": "1024"
+                }
+            ],
+            "heartbeat_list": [
+                {
+                    "proc_id": "group_1_1",
+                    "in_ip": "121.1.1.10",
+                    "out_ip": "11.1.1.10",
+                    "port": 10201
+                }
+            ],
+            "inservice_list": [
+                {
+                    "proc_id": "group_2_1",
+                    "in_ip": "121.1.1.20",
+                    "out_ip": "11.1.1.20",
+                    "port": 10201
+                }
+            ]
+        }
+    ]
+}

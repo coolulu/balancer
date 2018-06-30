@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BB668541-7B61-483B-B55D-52A581491AF3}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeIncludeSearchPath>$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0009\muduo;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0008\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0010\zlib;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5\x86_64-redhat-linux;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5\backward;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0002\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0003\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0000\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(ProjectDir)\gcc_Debug.h;$(VISUALGDB_DIR)\gcc_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)center-Debug.vgdbsettings</NMakeOutput>
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+    <NMakePreprocessorDefinitions>__VisualGDB_CFG_Debug;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeIncludeSearchPath>$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5\x86_64-redhat-linux;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5\backward;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0002\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0003\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0000\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(ProjectDir)\gcc_Release.h;$(VISUALGDB_DIR)\gcc_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakePreprocessorDefinitions>__VisualGDB_CFG_Release;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)center-Release.vgdbsettings</NMakeOutput>
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="conf\center_1.json" />
+    <None Include="conf\service.json" />
+    <None Include="debug.mak" />
+    <None Include="Makefile" />
+    <None Include="release.mak" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\BTcpClient.cc" />
+    <ClCompile Include="src\BTcpClientPool.cc" />
+    <ClCompile Include="src\Codec.cc" />
+    <ClCompile Include="src\Config.cc" />
+    <ClCompile Include="src\BHttpServer.cc" />
+    <ClCompile Include="src\Log.cc" />
+    <ClCompile Include="src\main.cc" />
+    <ClCompile Include="src\Packet.cc" />
+    <ClCompile Include="src\Prober.cc" />
+    <ClCompile Include="src\Proc.cc" />
+    <ClCompile Include="src\Seq.cc" />
+    <ClCompile Include="src\ServiceConfig.cc" />
+    <ClCompile Include="src\SignalHandle.cc" />
+    <ClCompile Include="src\Timer.cc" />
+    <ClCompile Include="src\Util.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\BTcpClient.h" />
+    <ClInclude Include="src\BTcpClientPool.h" />
+    <ClInclude Include="src\Codec.h" />
+    <ClInclude Include="src\Config.h" />
+    <ClInclude Include="src\BHttpServer.h" />
+    <ClInclude Include="src\Define.h" />
+    <ClInclude Include="src\Log.h" />
+    <ClInclude Include="src\Packet.h" />
+    <ClInclude Include="src\Prober.h" />
+    <ClInclude Include="src\Proc.h" />
+    <ClInclude Include="src\Seq.h" />
+    <ClInclude Include="src\ServiceConfig.h" />
+    <ClInclude Include="src\SignalHandle.h" />
+    <ClInclude Include="src\Timer.h" />
+    <ClInclude Include="src\Util.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

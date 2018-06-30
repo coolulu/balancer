@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Make files">
+      <UniqueIdentifier>{e15cc4c7-839b-4b61-8511-ee1b87580515}</UniqueIdentifier>
+      <Extensions>*.mak</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{2ea158a6-af22-4b2b-9e1c-11dcdbb4d850}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="conf">
+      <UniqueIdentifier>{101efeb2-fd59-4f7b-a076-af0e95ffc50b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+    <None Include="debug.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="release.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="conf\navigate_1.json">
+      <Filter>conf</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\BHttpServer.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Config.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Log.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Proc.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Seq.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ServiceConfig.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SignalHandle.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Timer.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Util.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BTcpServer.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Codec.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Packet.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\BHttpServer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Config.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Log.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Proc.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Seq.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ServiceConfig.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SignalHandle.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Timer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Util.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BTcpServer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Define.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Codec.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Packet.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
