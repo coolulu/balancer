@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Make files">
+      <UniqueIdentifier>{1766e1af-d979-4328-9e2c-6100529a4d08}</UniqueIdentifier>
+      <Extensions>*.mak</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{3bf93e54-e961-4068-bd69-fde38d4bf058}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+    <None Include="debug.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="release.mak">
+      <Filter>Make files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\json.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ServiceConfig.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InserviceService.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ServiceConfig.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\InserviceService.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
