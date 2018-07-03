@@ -440,7 +440,7 @@
                     {
                         "proc_id": 1,               //程序id
                         "proc_des": "gate_1_1",     //程序描述
-                        "in_ip": "121.1.1.1",       //内网ip,心跳探测,服务通信
+                        "in_ip": "121.1.1.1",       //内网ip,心跳探测,服务通信(如果要跨机房通讯，全部用外网ip连接)
                         "out_ip": "11.1.1.1",       //外网ip,没外网ip就填内网ip
                         "port": 10101
                     }
@@ -510,27 +510,28 @@
 
 #### 心跳探测
     message CenterHeartbeatReq {
-        required int32      level               = 1;    // center的等级
-        required int32      service_id          = 2;
-        required int32      state               = 3;    // 目标进程状态:1.上架,2.上线
-        required uint64     conf_update_time    = 4;    // 配置更新时间(微妙)
-        required bytes      conf_json           = 5;    // 有配置更新下发json，无配置更新下发空字符串
+        int32      level               = 1;    // center的等级
+        int32      service_id          = 2;
+        uint32     proc_id             = 3;
+        uint32     state               = 4;    // 目标进程状态:1.上架,2.上线
+        uint64     conf_update_time    = 5;    // 配置更新时间(微妙)
+        bytes      conf_json           = 6;    // 有配置更新下发json，无配置更新下发空字符串
     }
 
     message CenterHeartbeatRsp {
-        required int32      level               = 1;    // 接管center的等级
-        required int32      service_id          = 2;
-        required uint64     conf_update_time    = 3;    // 配置更新时间(微妙)
-        required uint32     role_expire_time    = 4;    // 接管center的到期秒数，
-                                                        // 服务当前时间和接管center最新心跳请求时间相减秒数，
-                                                        // 非接管center根据role_expire_time判断是否需要接管服务
+        int32      level               = 1;    // 接管center的等级
+        int32      service_id          = 2;
+        uint64     conf_update_time    = 3;    // 配置更新时间(微妙)
+        uint32     role_expire_time    = 4;    // 接管center的到期秒数，
+                                               // 服务当前时间和接管center最新心跳请求时间相减秒数，
+                                               // 非接管center根据role_expire_time判断是否需要接管服务
     }
 
 #### 配置更新
 
 #### 虚拟进程
     同一服务各个机器的配置不同，对于高配的机器的进程，通过给该进程虚拟多个proc_id，变相给该进程更多的请求
-    注意，虚拟进程只能用在对状态（上架/上线）切换无特殊处理的服务（向gate就不合适，gate从上线到上架后要主动断开客户端连接）
+    注意，虚拟进程只能用在对状态（上架/上线）切换无特殊处理的服务（像gate就不合适，gate从上线到上架后要主动断开客户端连接）
 
 #### 上架
 
@@ -559,13 +560,14 @@
     service_type: navigate
     两种模式:
     A.请求导航服务服务返回gate的ip做一致性哈希，gate不发生变换的情况下，保证同一个user client重连还是重连到之前的gate服务
-    B.返回在用户连接数最小的gate，gate定时(60s)向所有navgate广播的用户连接数
+    B.返回在用户连接数最小的gate，gate和navigate人数同步机制，定时(30-60s)和定量（1-n个次数增加/减少变化）向所有navgate广播的用户连接数
 
 ### 网关服务
     service_type: gate
-    （暂不考虑）gate要做user对tcp的绑定，保证user断开重连之后tcp连接不同，但还能找回user的新tcp连接
+    （不考虑）gate要做user对tcp的绑定，保证user断开重连之后tcp连接不同，但还能找回user的新tcp连接
+    每次gate被接管时，要赋值center发送给的proc_id，以便同步navigate时报上自己proc_id，方便navigate根据proc_id更新
 
-### 业务服务
+### 逻辑服务
     service_type: logic
 
 ### 代理服务
