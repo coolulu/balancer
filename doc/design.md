@@ -509,7 +509,7 @@
     }
 
 #### 心跳探测
-    message CenterHeartbeatReq {
+    message HeartbeatReq {
         int32      level               = 1;    // center的等级
         int32      service_id          = 2;
         uint32     proc_id             = 3;
@@ -518,7 +518,7 @@
         bytes      conf_json           = 6;    // 有配置更新下发json，无配置更新下发空字符串
     }
 
-    message CenterHeartbeatRsp {
+    message HeartbeatRsp {
         int32      level               = 1;    // 接管center的等级
         int32      service_id          = 2;
         uint64     conf_update_time    = 3;    // 配置更新时间(微妙)
@@ -560,7 +560,7 @@
     service_type: navigate
     两种模式:
     A.请求导航服务服务返回gate的ip做一致性哈希，gate不发生变换的情况下，保证同一个user client重连还是重连到之前的gate服务
-    B.返回在用户连接数最小的gate，gate和navigate人数同步机制，定时(30-60s)和定量（1-n个次数增加/减少变化）向所有navgate广播的用户连接数
+    B.返回在用户连接数最小的gate，gate和navigate人数同步，定时(30-60s)和定量(1-n个次数增加/减少变化)向所有navigate广播人数
 
 ### 网关服务
     service_type: gate
