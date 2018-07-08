@@ -246,15 +246,16 @@
 #endif
 
 // --- Include directories begin --- //
-///home/lulu/balancer/depend/cpp/muduo
-///home/lulu/balancer/depend/cpp/rapidjson/include
-///home/lulu/balancer/depend/cpp/zlib
 ///usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5
 ///usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/x86_64-redhat-linux
 ///usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/backward
 ///usr/lib/gcc/x86_64-redhat-linux/4.8.5/include
 ///usr/local/include
 ///usr/include
+//../../../depend/cpp/muduo
+//../../../depend/cpp/rapidjson/include
+//../../../depend/cpp/zlib
+//../../../depend/cpp/protobuf/src
 // --- Library directories end --- //
 
 

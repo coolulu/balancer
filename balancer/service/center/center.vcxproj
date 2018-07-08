@@ -35,7 +35,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <NMakeIncludeSearchPath>$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0009\muduo;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0008\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0010\zlib;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5\x86_64-redhat-linux;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5\backward;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0002\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0003\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0000\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5\x86_64-redhat-linux;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5\backward;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0002\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0003\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0000\include;$(ProjectDir)\..\..\..\depend\cpp\muduo;$(ProjectDir)\..\..\..\depend\cpp\rapidjson\include;$(ProjectDir)\..\..\..\depend\cpp\zlib;$(ProjectDir)\..\..\..\depend\cpp\protobuf\src;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
     <NMakeForcedIncludes>$(ProjectDir)\gcc_Debug.h;$(VISUALGDB_DIR)\gcc_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
     <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
     <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
@@ -66,6 +66,15 @@
     <None Include="debug.mak" />
     <None Include="Makefile" />
     <None Include="release.mak" />
+    <None Include="src\protocol\proto\center.proto" />
+    <None Include="src\protocol\proto\common.proto" />
+    <None Include="src\protocol\proto\data.proto" />
+    <None Include="src\protocol\proto\gate.proto" />
+    <None Include="src\protocol\proto\logic.proto" />
+    <None Include="src\protocol\proto\navigate.proto" />
+    <None Include="src\protocol\proto\proxy.proto" />
+    <None Include="src\protocol\proto\service.proto" />
+    <None Include="src\protocol\proto\version.proto" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\BTcpClient.cc" />
@@ -78,6 +87,16 @@
     <ClCompile Include="src\Packet.cc" />
     <ClCompile Include="src\Prober.cc" />
     <ClCompile Include="src\Proc.cc" />
+    <ClCompile Include="src\protocol\CenterStack.cc" />
+    <ClCompile Include="src\protocol\proto_cpp\center.pb.cc" />
+    <ClCompile Include="src\protocol\proto_cpp\common.pb.cc" />
+    <ClCompile Include="src\protocol\proto_cpp\data.pb.cc" />
+    <ClCompile Include="src\protocol\proto_cpp\gate.pb.cc" />
+    <ClCompile Include="src\protocol\proto_cpp\logic.pb.cc" />
+    <ClCompile Include="src\protocol\proto_cpp\navigate.pb.cc" />
+    <ClCompile Include="src\protocol\proto_cpp\proxy.pb.cc" />
+    <ClCompile Include="src\protocol\proto_cpp\service.pb.cc" />
+    <ClCompile Include="src\protocol\proto_cpp\version.pb.cc" />
     <ClCompile Include="src\Seq.cc" />
     <ClCompile Include="src\ServiceConfig.cc" />
     <ClCompile Include="src\SignalHandle.cc" />
@@ -95,6 +114,17 @@
     <ClInclude Include="src\Packet.h" />
     <ClInclude Include="src\Prober.h" />
     <ClInclude Include="src\Proc.h" />
+    <ClInclude Include="src\protocol\CenterStack.h" />
+    <ClInclude Include="src\protocol\Protocol.h" />
+    <ClInclude Include="src\protocol\proto_cpp\center.pb.h" />
+    <ClInclude Include="src\protocol\proto_cpp\common.pb.h" />
+    <ClInclude Include="src\protocol\proto_cpp\data.pb.h" />
+    <ClInclude Include="src\protocol\proto_cpp\gate.pb.h" />
+    <ClInclude Include="src\protocol\proto_cpp\logic.pb.h" />
+    <ClInclude Include="src\protocol\proto_cpp\navigate.pb.h" />
+    <ClInclude Include="src\protocol\proto_cpp\proxy.pb.h" />
+    <ClInclude Include="src\protocol\proto_cpp\service.pb.h" />
+    <ClInclude Include="src\protocol\proto_cpp\version.pb.h" />
     <ClInclude Include="src\Seq.h" />
     <ClInclude Include="src\ServiceConfig.h" />
     <ClInclude Include="src\SignalHandle.h" />

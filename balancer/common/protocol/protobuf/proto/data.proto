@@ -4,7 +4,7 @@ import "google/protobuf/any.proto";
 
 package data;
 
-message body {
+message Body {
     int32               code  = 1;          // rsp必填
     bytes               msg   = 2;          // rsp error必填
     google.protobuf.Any service_msg = 3;    // 扩展各个服务消息

@@ -13,9 +13,9 @@ OBJCOPY := objcopy
 
 #Additional flags
 PREPROCESSOR_MACROS := 
-INCLUDE_DIRS := /home/lulu/backup/muduo-2018.04.08/muduo /home/lulu/backup/rapidjson/include /home/lulu/backup/zlib
-LIBRARY_DIRS := /home/lulu/backup/muduo-2018.04.08/build/release/lib /home/lulu/backup/zlib
-LIBRARY_NAMES := pthread muduo_net_cpp11 muduo_base_cpp11 muduo_http z
+INCLUDE_DIRS := ./src /home/lulu/balancer/depend/cpp/muduo /home/lulu/balancer/depend/cpp/rapidjson/include /home/lulu/balancer/depend/cpp/zlib /home/lulu/balancer/depend/cpp/protobuf/src
+LIBRARY_DIRS := ../../../depend/cpp/lib
+LIBRARY_NAMES := pthread muduo_net_cpp11 muduo_base_cpp11 muduo_http z protobuf
 ADDITIONAL_LINKER_INPUTS := 
 MACOS_FRAMEWORKS := 
 LINUX_PACKAGES := 

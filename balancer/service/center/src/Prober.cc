@@ -1,6 +1,7 @@
 #include "Prober.h"
 #include "Proc.h"
 #include <ctime>
+#include "protocol/Protocol.h"
 
 Prober::Prober(Proc& proc) : _proc(proc)
 {
@@ -63,6 +64,15 @@ void Prober::probe()
 								<< ", port=" << ip_info.port
 								<< ", ip=" << ip_info.ip
 								<< ", key_ip_port=" << ip_info.key_ip_port;
+
+					data::Body body; 
+					CenterStack::HeartbeatReq(body,
+											  _proc._config.proc.level,
+											  service.service_id,
+											  ip_info.proc_id,
+											  center::HeartbeatReq_State_HEARTBEAT,
+											  0, 
+											  "");
 					// send
 					_proc._tcp_client_pool.send_msg(ip_info, ip_info.proc_des);
 				}
@@ -85,6 +95,15 @@ void Prober::probe()
 								<< ", port=" << ip_info.port
 								<< ", ip=" << ip_info.ip
 								<< ", key_ip_port=" << ip_info.key_ip_port;
+
+					data::Body body; 
+					CenterStack::HeartbeatReq(body,
+											  _proc._config.proc.level,
+											  service.service_id,
+											  ip_info.proc_id,
+											  center::HeartbeatReq_State_HEARTBEAT,
+											  0, 
+											  "");
 					// send
 					_proc._tcp_client_pool.send_msg(ip_info, ip_info.proc_des);
 				}

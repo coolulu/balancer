@@ -198,6 +198,8 @@
     gate.proto
 
     enum ErrorCode {
+		SUCCESS                         = 0;
+
         ERR_BEGIN                       = 1010000000;
 
         // 系统错误码0
@@ -510,21 +512,22 @@
 
 #### 心跳探测
     message HeartbeatReq {
-        int32      level               = 1;    // center的等级
+        int32      level               = 1;    	// center的等级
         int32      service_id          = 2;
         uint32     proc_id             = 3;
-        uint32     state               = 4;    // 目标进程状态:1.上架,2.上线
-        uint64     conf_update_time    = 5;    // 配置更新时间(微妙)
-        bytes      conf_json           = 6;    // 有配置更新下发json，无配置更新下发空字符串
+        uint32     state               = 4;    	// 目标进程状态:1.上架,2.上线
+        uint64     conf_update_time    = 5;    	// 配置更新时间(微妙)
+        bytes      conf_json           = 6;    	// 有配置更新下发json，无配置更新下发空字符串
     }
 
     message HeartbeatRsp {
-        int32      level               = 1;    // 接管center的等级
-        int32      service_id          = 2;
-        uint64     conf_update_time    = 3;    // 配置更新时间(微妙)
-        uint32     role_expire_time    = 4;    // 接管center的到期秒数，
-                                               // 服务当前时间和接管center最新心跳请求时间相减秒数，
-                                               // 非接管center根据role_expire_time判断是否需要接管服务
+        int32      level               = 1;    	// 接管center的等级
+        int32      service_id          = 2;		// 返回和HeartbeatReq.service_id的值一样
+		uint32     proc_id             = 3;		// 返回和HeartbeatReq.proc_id的值一样
+        uint64     conf_update_time    = 4;    	// 配置更新时间(微妙)
+        uint32     role_expire_time    = 5;    	// 接管center的到期秒数，
+                                               	// 服务当前时间和接管center最新心跳请求时间相减秒数，
+                                               	// 非接管center根据role_expire_time判断是否需要接管服务
     }
 
 #### 配置更新
