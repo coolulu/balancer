@@ -93,7 +93,7 @@ void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 			{
 			case center::CenterMsg::kHeartbeatReq:
 				{
-					B_LOG_INFO << "group::HeartbeatReq";
+					B_LOG_INFO << "center::HeartbeatReq";
 					const center::HeartbeatReq& req = msg.heartbeat_req();
 					B_LOG_INFO << "level=" << req.level();
 					B_LOG_INFO << "service_id=" << req.service_id();
@@ -104,7 +104,7 @@ void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 
 
 					PacketPtr packetPtr(new Packet(service::NAVIGATE, packet._from_service_id,
-												   0, 0, 0, 0, _proc._seq.make_seq()));
+												   0, 0, 0, 0, packet._msg_seq_id));
 					CenterStack::HeartbeatRsp(packetPtr->_body,
 											  req.level(),
 											  req.service_id(),

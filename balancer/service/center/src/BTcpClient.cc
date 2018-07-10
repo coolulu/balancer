@@ -138,22 +138,9 @@ void BTcpClient::on_message(const muduo::net::TcpConnectionPtr& conn,
 
 			switch(msg.choice_case())
 			{
-			case center::CenterMsg::kHeartbeatReq:
-				{
-					B_LOG_INFO << "group::HeartbeatReq";
-					const center::HeartbeatReq& req = msg.heartbeat_req();
-					B_LOG_INFO << "level=" << req.level();
-					B_LOG_INFO << "service_id=" << req.service_id();
-					B_LOG_INFO << "proc_id=" << req.proc_id();
-					B_LOG_INFO << "state=" << req.state();
-					B_LOG_INFO << "conf_update_time=" << req.conf_update_time();
-					B_LOG_INFO << "conf_json=" << req.conf_json();
-				}
-				break;
-
 			case center::CenterMsg::kHeartbeatRsp:
 				{
-					B_LOG_INFO << "group::HeartbeatRsp";
+					B_LOG_INFO << "center::HeartbeatRsp";
 					const center::HeartbeatRsp& rsp = msg.heartbeat_rsp();
 					B_LOG_INFO << "level=" << rsp.level();
 					B_LOG_INFO << "service_id=" << rsp.service_id();
