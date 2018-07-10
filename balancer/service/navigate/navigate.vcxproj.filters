@@ -12,6 +12,15 @@
     <Filter Include="conf">
       <UniqueIdentifier>{101efeb2-fd59-4f7b-a076-af0e95ffc50b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\protocol">
+      <UniqueIdentifier>{0b88cc3b-a1ff-472f-a26a-593faf429f73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\protocol\proto">
+      <UniqueIdentifier>{4f3bde6a-8bba-45b8-959f-ffac748543dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\protocol\proto_cpp">
+      <UniqueIdentifier>{7941399c-5393-4062-ad96-99af19a4fb0e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -23,6 +32,36 @@
     </None>
     <None Include="conf\navigate_1.json">
       <Filter>conf</Filter>
+    </None>
+    <None Include="src\protocol\proto\center.proto">
+      <Filter>src\protocol\proto</Filter>
+    </None>
+    <None Include="src\protocol\proto\common.proto">
+      <Filter>src\protocol\proto</Filter>
+    </None>
+    <None Include="src\protocol\proto\data.proto">
+      <Filter>src\protocol\proto</Filter>
+    </None>
+    <None Include="src\protocol\proto\data_format.proto">
+      <Filter>src\protocol\proto</Filter>
+    </None>
+    <None Include="src\protocol\proto\gate.proto">
+      <Filter>src\protocol\proto</Filter>
+    </None>
+    <None Include="src\protocol\proto\logic.proto">
+      <Filter>src\protocol\proto</Filter>
+    </None>
+    <None Include="src\protocol\proto\navigate.proto">
+      <Filter>src\protocol\proto</Filter>
+    </None>
+    <None Include="src\protocol\proto\proxy.proto">
+      <Filter>src\protocol\proto</Filter>
+    </None>
+    <None Include="src\protocol\proto\service.proto">
+      <Filter>src\protocol\proto</Filter>
+    </None>
+    <None Include="src\protocol\proto\version.proto">
+      <Filter>src\protocol\proto</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -65,6 +104,39 @@
     <ClCompile Include="src\Packet.cc">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\protocol\proto_cpp\center.pb.cc">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\proto_cpp\common.pb.cc">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\proto_cpp\data.pb.cc">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\proto_cpp\data_format.pb.cc">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\proto_cpp\gate.pb.cc">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\proto_cpp\logic.pb.cc">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\proto_cpp\navigate.pb.cc">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\proto_cpp\proxy.pb.cc">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\proto_cpp\service.pb.cc">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\proto_cpp\version.pb.cc">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\CenterStack.cc">
+      <Filter>src\protocol</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BHttpServer.h">
@@ -105,6 +177,42 @@
     </ClInclude>
     <ClInclude Include="src\Packet.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\proto_cpp\center.pb.h">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\proto_cpp\common.pb.h">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\proto_cpp\data.pb.h">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\proto_cpp\data_format.pb.h">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\proto_cpp\gate.pb.h">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\proto_cpp\logic.pb.h">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\proto_cpp\navigate.pb.h">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\proto_cpp\proxy.pb.h">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\proto_cpp\service.pb.h">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\proto_cpp\version.pb.h">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\CenterStack.h">
+      <Filter>src\protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\Protocol.h">
+      <Filter>src\protocol</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

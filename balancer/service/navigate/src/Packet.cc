@@ -2,6 +2,7 @@
 #include <cstring>
 #include <zlib.h>
 #include <muduo/net/Endian.h>
+#include "protocol/proto_cpp/version.pb.h"
 
 #include "Log.h"
 
@@ -44,6 +45,41 @@ Packet::Packet(unsigned int header, const char* buffer, unsigned int len)
 	_check_sum			= muduo::net::sockets::networkToHost32(*(unsigned int*)(_buffer + s_data_offset + _data_len));
 }
 
+Packet::Packet(unsigned short from_service_id,
+			   unsigned short to_service_id, 
+			   unsigned int to_proc_id, 
+			   unsigned int app_id, 
+			   unsigned int app_version, 
+			   unsigned long long conn_seq_id, 
+			   unsigned long long msg_seq_id, 
+			   unsigned char data_format, 
+			   unsigned char reserve_field_0, 
+			   unsigned int reserve_field_1, 
+			   unsigned int reserve_field_2, 
+			   unsigned int reserve_field_3)
+	:	_buffer(nullptr),
+		_data_len(0),
+		_header(0),
+		_len(0),
+		_version(version::PROTO_VER),
+		_from_service_id(from_service_id),
+		_to_service_id(to_service_id),
+		_to_proc_id(to_proc_id),
+		_app_id(app_id),
+		_app_version(app_version),
+		_conn_seq_id(conn_seq_id),
+		_msg_seq_id(msg_seq_id),
+		_data_format(data_format),
+		_reserve_field_0(reserve_field_0),
+		_reserve_field_1(reserve_field_1),
+		_reserve_field_2(reserve_field_2),
+		_reserve_field_3(reserve_field_3),
+		_data(nullptr),
+		_check_sum(0)
+{
+
+}
+
 Packet::~Packet()
 {
 	_buffer = nullptr;	// ≤ª”√ Õ∑≈
@@ -54,17 +90,27 @@ bool Packet::check()
 {
 	unsigned int check_sum = ::adler32(0, reinterpret_cast<const Bytef*>(_buffer + k_header_size), 
 									   _len + k_len_size - k_check_sum_size);
-	bool b = (check_sum == _check_sum);
-	if(b)
+	if(check_sum == _check_sum)
 	{
-		B_LOG_INFO << "check_sum is ok, check_sum=" << check_sum << ", _check_sum=" << _check_sum;
+		B_LOG_INFO << "check_sum is ok, _msg_seq_id=" << _msg_seq_id << ", check_sum=" << check_sum << ", _check_sum=" << _check_sum;
 	}
 	else
 	{
-		B_LOG_ERROR << "check_sum is error, check_sum=" << check_sum << ", _check_sum=" << _check_sum;
+		B_LOG_ERROR << "check_sum is error, _msg_seq_id=" << _msg_seq_id << ", check_sum=" << check_sum << ", _check_sum=" << _check_sum;
+		return false;
 	}
 
-	return b;
+	if(_body.ParseFromArray(_data, _data_len))
+	{
+		B_LOG_INFO << "_msg_seq_id=" << _msg_seq_id << ", _body.ParseFromArray=true";	
+	}
+	else
+	{
+		B_LOG_ERROR << "_msg_seq_id=" << _msg_seq_id << ", _body.ParseFromArray=false";
+		return false;
+	}
+
+	return true;
 }
 
 void Packet::print()

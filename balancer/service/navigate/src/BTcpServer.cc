@@ -70,16 +70,53 @@ void BTcpServer::on_connection(const muduo::net::TcpConnectionPtr& conn)
 	}
 }
 
+#include "protocol/Protocol.h"
 void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn, 
 							Packet& packet,
 							muduo::Timestamp time)
 {
-	std::string str((char*)packet._data, packet._data_len);
-	B_LOG_INFO	<< conn->name() << " " 
-				<< packet._len << " bytes, " << "data received at " << time.toString() 
-				<< " msg: " << str;
-	_codec.send_stream(get_pointer(conn), 110, 120, 130, 140, 150, 160, 170, 180, 190,
-		packet._data, packet._data_len);
+	B_LOG_INFO	<< conn->name() 
+				<< ", _msg_seq_id=" << packet._msg_seq_id
+				<< ", _len=" << packet._len 
+				<< ", time=" << time.toString();
+	{
+		B_LOG_INFO << "code=" << packet._body.code();
+		B_LOG_INFO << "msg=" << packet._body.msg();
+		const ::google::protobuf::Any& service_msg = packet._body.service_msg();
+		if(service_msg.Is<center::CenterMsg>())
+		{
+			B_LOG_INFO << "center::CenterMsg";
+			center::CenterMsg msg;
+			service_msg.UnpackTo(&msg);
+
+			switch(msg.choice_case())
+			{
+			case center::CenterMsg::kHeartbeatReq:
+				{
+					B_LOG_INFO << "group::HeartbeatReq";
+					const center::HeartbeatReq& req = msg.heartbeat_req();
+					B_LOG_INFO << "level=" << req.level();
+					B_LOG_INFO << "service_id=" << req.service_id();
+					B_LOG_INFO << "proc_id=" << req.proc_id();
+					B_LOG_INFO << "state=" << req.state();
+					B_LOG_INFO << "conf_update_time=" << req.conf_update_time();
+					B_LOG_INFO << "conf_json=" << req.conf_json();
+
+
+					PacketPtr packetPtr(new Packet(service::NAVIGATE, packet._from_service_id,
+												   0, 0, 0, 0, _proc._seq.make_seq()));
+					CenterStack::HeartbeatRsp(packetPtr->_body,
+											  req.level(),
+											  req.service_id(),
+											  req.proc_id(),
+											  req.conf_update_time(),
+											  ::time(nullptr));
+					_codec.send_stream(get_pointer(conn), packetPtr);
+				}
+				break;
+			}
+		}
+	}
 
 	Context* p_context = boost::any_cast<Context>(conn->getMutableContext());
 	p_context->_update_time = ::time(nullptr);

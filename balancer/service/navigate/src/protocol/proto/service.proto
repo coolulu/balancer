@@ -1,0 +1,17 @@
+syntax="proto3";
+
+package service;
+
+enum ServiceId {
+    BEGIN        = 0;
+
+    CLIENT       = 100;
+
+    CENTER       = 10100;
+    NAVIGATE     = 10200;
+    GATE         = 10300;
+    LOGIC        = 10400;
+    PROXY        = 10500;
+
+    END          = 65535;
+}

@@ -252,6 +252,7 @@
 ///usr/lib/gcc/x86_64-redhat-linux/4.8.5/include
 ///usr/local/include
 ///usr/include
+//./src
 //../../../depend/cpp/muduo
 //../../../depend/cpp/rapidjson/include
 //../../../depend/cpp/zlib
