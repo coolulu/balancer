@@ -63,6 +63,9 @@
     <None Include="src\protocol\proto\version.proto">
       <Filter>src\protocol\proto</Filter>
     </None>
+    <None Include="src\protocol\proto\data_format.proto">
+      <Filter>src\protocol\proto</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Config.cc">
@@ -138,6 +141,9 @@
       <Filter>src\protocol\proto_cpp</Filter>
     </ClCompile>
     <ClCompile Include="src\protocol\proto_cpp\version.pb.cc">
+      <Filter>src\protocol\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\proto_cpp\data_format.pb.cc">
       <Filter>src\protocol\proto_cpp</Filter>
     </ClCompile>
   </ItemGroup>
@@ -219,6 +225,9 @@
     </ClInclude>
     <ClInclude Include="src\protocol\Protocol.h">
       <Filter>src\protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\proto_cpp\data_format.pb.h">
+      <Filter>src\protocol\proto_cpp</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

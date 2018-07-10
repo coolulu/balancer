@@ -54,29 +54,28 @@ void BTcpClient::connect()
 	_update_time = ::time(nullptr);
 } 
 
-void BTcpClient::send_msg(const std::string& msg)
+void BTcpClient::send_msg(PacketPtr& msg)
 {
 	if(_connect)
 	{	
 		muduo::net::TcpConnectionPtr tcpConnectionPtr = _tcp_client.connection();
 		if(tcpConnectionPtr)
 		{
-			_codec.send_stream(get_pointer(tcpConnectionPtr), 10, 20, 30, 40, 50, 60, 70, 80, 90, 
-				(unsigned char*)msg.c_str(), msg.size());
+			_codec.send_stream(get_pointer(tcpConnectionPtr), msg);
 		}
 		else
 		{
 			_connect = false;
-		
+
 			_msg_send_buffer.push_back(msg);
-			B_LOG_WARN << "save msg, " << "msg.size=" << msg.size() << " _msg_send_buffer.size=" << _msg_send_buffer.size();
+			B_LOG_WARN << "save msg, _msg_seq_id=" << msg->_msg_seq_id << ", _msg_send_buffer.size=" << _msg_send_buffer.size();
 			check_send_buffer_reduce();
 		}
 	}
 	else
 	{
 		_msg_send_buffer.push_back(msg);
-		B_LOG_INFO << "_msg_send_buffer.size=" << _msg_send_buffer.size();
+		B_LOG_INFO << "connecting, _msg_seq_id=" << msg->_msg_seq_id << ", _msg_send_buffer.size=" << _msg_send_buffer.size();
 		check_send_buffer_reduce();
 	}
 
@@ -105,8 +104,7 @@ void BTcpClient::on_connection(const muduo::net::TcpConnectionPtr& conn)
 			B_LOG_INFO << "_msg_send_buffer.size=" << _msg_send_buffer.size();
 			for(auto& msg : _msg_send_buffer)
 			{
-				_codec.send_stream(get_pointer(conn), 10, 20, 30, 40, 50, 60, 70, 80, 90, 
-					(unsigned char*)msg.c_str(), msg.size());
+				_codec.send_stream(get_pointer(conn), msg);
 			}
 			_msg_send_buffer.clear();
 		}
@@ -118,15 +116,55 @@ void BTcpClient::on_connection(const muduo::net::TcpConnectionPtr& conn)
 		//触发主动关闭会导致对象已经析构，但依然会回调这个成员函数，所以else下面的代码不能有成员变量
 	}
 }
-
+	
+#include "protocol/proto_cpp/center.pb.h"
 void BTcpClient::on_message(const muduo::net::TcpConnectionPtr& conn, 
 							Packet& packet, 
 							muduo::Timestamp time)
 {
-	std::string str((char*)packet._data, packet._data_len);
-	B_LOG_INFO	<< conn->name() << " " 
-				<< packet._len << " bytes, " << "data received at " << time.toString() 
-				<< " msg: " << str;
+	B_LOG_INFO	<< conn->name() 
+				<< ", _msg_seq_id=" << packet._msg_seq_id
+				<< ", _len=" << packet._len 
+				<< ", time=" << time.toString();
+	{
+		B_LOG_INFO << "code=" << packet._body.code();
+		B_LOG_INFO << "msg=" << packet._body.msg();
+		const ::google::protobuf::Any& service_msg = packet._body.service_msg();
+		if(service_msg.Is<center::CenterMsg>())
+		{
+			B_LOG_INFO << "center::CenterMsg";
+			center::CenterMsg msg;
+			service_msg.UnpackTo(&msg);
+
+			switch(msg.choice_case())
+			{
+			case center::CenterMsg::kHeartbeatReq:
+				{
+					B_LOG_INFO << "group::HeartbeatReq";
+					const center::HeartbeatReq& req = msg.heartbeat_req();
+					B_LOG_INFO << "level=" << req.level();
+					B_LOG_INFO << "service_id=" << req.service_id();
+					B_LOG_INFO << "proc_id=" << req.proc_id();
+					B_LOG_INFO << "state=" << req.state();
+					B_LOG_INFO << "conf_update_time=" << req.conf_update_time();
+					B_LOG_INFO << "conf_json=" << req.conf_json();
+				}
+				break;
+
+			case center::CenterMsg::kHeartbeatRsp:
+				{
+					B_LOG_INFO << "group::HeartbeatRsp";
+					const center::HeartbeatRsp& rsp = msg.heartbeat_rsp();
+					B_LOG_INFO << "level=" << rsp.level();
+					B_LOG_INFO << "service_id=" << rsp.service_id();
+					B_LOG_INFO << "proc_id=" << rsp.proc_id();
+					B_LOG_INFO << "conf_update_time=" << rsp.conf_update_time();
+					B_LOG_INFO << "role_expire_time=" << rsp.role_expire_time();
+				}
+				break;
+			}
+		}
+	}
 
 	_update_time = ::time(nullptr);
 }
@@ -149,8 +187,13 @@ void BTcpClient::check_send_buffer_reduce()
 {
 	if(_msg_send_buffer.size() >= _proc._config.proc.tcp_client_msg_reduce_size)
 	{
-		std::vector<std::string> msg_send_buffer(_msg_send_buffer.begin() + _msg_send_buffer.size() / 2, 
-												 _msg_send_buffer.end());
+		std::vector<PacketPtr> msg_send_buffer(_msg_send_buffer.begin() + _msg_send_buffer.size() / 2, 
+											   _msg_send_buffer.end());
+		for(unsigned int i = 0; i != _msg_send_buffer.size() / 2; i++)
+		{
+			B_LOG_WARN << "discard msg, _msg_seq_id=" << _msg_send_buffer[i]->_msg_seq_id;
+		}
+
 		_msg_send_buffer.swap(msg_send_buffer);
 		B_LOG_WARN << "reduce _msg_send_buffer.size=" << _msg_send_buffer.size();
 	}

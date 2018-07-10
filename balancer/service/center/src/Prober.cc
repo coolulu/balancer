@@ -65,16 +65,17 @@ void Prober::probe()
 								<< ", ip=" << ip_info.ip
 								<< ", key_ip_port=" << ip_info.key_ip_port;
 
-					data::Body body; 
-					CenterStack::HeartbeatReq(body,
+					PacketPtr packetPtr(new Packet(service::CENTER, service.service_id, 
+												   0, 0, 0, 0, _proc._seq.make_seq()));
+					CenterStack::HeartbeatReq(packetPtr->_body,
 											  _proc._config.proc.level,
 											  service.service_id,
 											  ip_info.proc_id,
 											  center::HeartbeatReq_State_HEARTBEAT,
-											  0, 
+											  time(NULL), 
 											  "");
-					// send
-					_proc._tcp_client_pool.send_msg(ip_info, ip_info.proc_des);
+
+					_proc._tcp_client_pool.get_client(ip_info)->send_msg(packetPtr);
 				}
 
 				for(auto it = inservice_list.begin(); it != inservice_list.end(); it++)
@@ -96,16 +97,17 @@ void Prober::probe()
 								<< ", ip=" << ip_info.ip
 								<< ", key_ip_port=" << ip_info.key_ip_port;
 
-					data::Body body; 
-					CenterStack::HeartbeatReq(body,
+					PacketPtr packetPtr(new Packet(service::CENTER, service.service_id, 
+												   0, 0, 0, 0, _proc._seq.make_seq()));
+					CenterStack::HeartbeatReq(packetPtr->_body,
 											  _proc._config.proc.level,
 											  service.service_id,
 											  ip_info.proc_id,
 											  center::HeartbeatReq_State_HEARTBEAT,
-											  0, 
+											  time(NULL), 
 											  "");
-					// send
-					_proc._tcp_client_pool.send_msg(ip_info, ip_info.proc_des);
+
+					_proc._tcp_client_pool.get_client(ip_info)->send_msg(packetPtr);
 				}
 			}
 			else

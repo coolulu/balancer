@@ -23,7 +23,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := src/BTcpClient.cc src/BTcpClientPool.cc src/Codec.cc src/Config.cc src/BHttpServer.cc src/Log.cc src/main.cc src/Packet.cc src/Prober.cc src/Proc.cc src/protocol/CenterStack.cc src/protocol/proto_cpp/center.pb.cc src/protocol/proto_cpp/common.pb.cc src/protocol/proto_cpp/data.pb.cc src/protocol/proto_cpp/gate.pb.cc src/protocol/proto_cpp/logic.pb.cc src/protocol/proto_cpp/navigate.pb.cc src/protocol/proto_cpp/proxy.pb.cc src/protocol/proto_cpp/service.pb.cc src/protocol/proto_cpp/version.pb.cc src/Seq.cc src/ServiceConfig.cc src/SignalHandle.cc src/Timer.cc src/Util.cc
+SOURCEFILES := src/BTcpClient.cc src/BTcpClientPool.cc src/Codec.cc src/Config.cc src/BHttpServer.cc src/Log.cc src/main.cc src/Packet.cc src/Prober.cc src/Proc.cc src/protocol/CenterStack.cc src/protocol/proto_cpp/center.pb.cc src/protocol/proto_cpp/common.pb.cc src/protocol/proto_cpp/data.pb.cc src/protocol/proto_cpp/data_format.pb.cc src/protocol/proto_cpp/gate.pb.cc src/protocol/proto_cpp/logic.pb.cc src/protocol/proto_cpp/navigate.pb.cc src/protocol/proto_cpp/proxy.pb.cc src/protocol/proto_cpp/service.pb.cc src/protocol/proto_cpp/version.pb.cc src/Seq.cc src/ServiceConfig.cc src/SignalHandle.cc src/Timer.cc src/Util.cc
 EXTERNAL_LIBS := 
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
@@ -218,6 +218,10 @@ $(BINARYDIR)/common.pb.o : src/protocol/proto_cpp/common.pb.cc $(all_make_files)
 
 
 $(BINARYDIR)/data.pb.o : src/protocol/proto_cpp/data.pb.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/data_format.pb.o : src/protocol/proto_cpp/data_format.pb.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 

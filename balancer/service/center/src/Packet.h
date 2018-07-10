@@ -1,9 +1,28 @@
 #pragma once
 
+#include <boost/shared_ptr.hpp>
+#include "protocol/proto_cpp/data.pb.h"
+#include "protocol/proto_cpp/data_format.pb.h"
+
 struct Packet
 {
 public:
-	Packet(unsigned int header, const char* buffer, unsigned int len);
+	// 接收数据
+	Packet(unsigned int header, const char* buffer, unsigned int len);	
+
+	// 发送数据
+	Packet(unsigned short from_service_id,
+		   unsigned short to_service_id,
+		   unsigned int to_proc_id,
+		   unsigned int app_id, 
+		   unsigned int app_version, 
+		   unsigned long long conn_seq_id,
+		   unsigned long long msg_seq_id, 
+		   unsigned char data_format = data_format::PROTOBUF,
+		   unsigned char reserve_field_0 = 0, 
+		   unsigned int reserve_field_1 = 0, 
+		   unsigned int reserve_field_2 = 0, 
+		   unsigned int reserve_field_3 = 0);
 	~Packet();
 
 public:
@@ -34,6 +53,9 @@ public:
 	unsigned int				_check_sum;         // 校验和
 
 public:
+	data::Body					_body;
+
+public:
 	const static unsigned int	k_header			= 0x00000000;
 	const static unsigned int	k_header_size		= sizeof(unsigned int);
 	const static unsigned int	k_len_size			= sizeof(unsigned int);
@@ -58,3 +80,6 @@ public:
 	const static unsigned int	s_check_sum_no_has_data_len_offset	= 56;	//不包括data_len的偏移
 
 };
+
+
+typedef boost::shared_ptr<Packet> PacketPtr;

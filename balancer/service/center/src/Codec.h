@@ -25,21 +25,7 @@ public:
 						   muduo::Timestamp receiveTime);
 
 	void send_stream(muduo::net::TcpConnection* conn,
-					 unsigned short version,  
-					 unsigned short from_service_id,
-					 unsigned short to_service_id,
-					 unsigned int to_proc_id,
-					 unsigned int app_id,
-					 unsigned int app_version,
-					 unsigned long long conn_seq_id,
-					 unsigned long long msg_seq_id,
-					 unsigned char data_format,
-					 unsigned char* data,
-					 unsigned int data_len,
-					 unsigned char reserve_field_0 = 0,
-					 unsigned int reserve_field_1 = 0,
-					 unsigned int reserve_field_2 = 0,
-					 unsigned int reserve_field_3 = 0);
+					 PacketPtr& packetPtr);
 
 private:
 	PacketMessageCallback _messageCallback;	

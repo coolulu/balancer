@@ -1,0 +1,47 @@
+syntax="proto3";
+
+package center;
+
+message TestReq {
+    int32   service_id        = 1;
+}
+
+message TestRsp {
+    bytes   service_name      = 1;
+}
+
+message HeartbeatReq {
+    int32      level               = 1;     // center的等级
+    int32      service_id          = 2;
+    uint32     proc_id             = 3;
+    State      state               = 4;     // 目标进程状态:1.上架,2.上线
+    uint64     conf_update_time    = 5;     // 配置更新时间(微妙)
+    bytes      conf_json           = 6;     // 有配置更新下发json，无配置更新下发空字符串
+
+    enum State {
+        HEARTBEAT   = 0;
+        INSERVICE   = 1;
+    }
+}
+
+message HeartbeatRsp {
+    int32      level               = 1;     // 接管center的等级
+    int32      service_id          = 2;     // 返回和HeartbeatReq.service_id的值一样
+    int32      proc_id             = 3;     // 返回和HeartbeatReq.proc_id的值一样
+    uint64     conf_update_time    = 4;     // 配置更新时间(微妙)
+    uint32     role_expire_time    = 5;     // 接管center的到期秒数，
+                                            // 服务当前时间和接管center最新心跳请求时间相减秒数，
+                                            // 非接管center根据role_expire_time判断是否需要接管服务
+}
+
+message CenterMsg {                         // 奇数是请求，偶数是响应
+    oneof choice {
+        //测试
+        TestReq         test_req        = 1;        // 请求
+        TestRsp         test_rsp        = 2;        // 响应
+
+        //心跳探测
+        HeartbeatReq    Heartbeat_req   = 3;
+        HeartbeatRsp    Heartbeat_rsp   = 4;
+    }
+}

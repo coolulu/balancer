@@ -19,7 +19,7 @@ public:
 public:
 	bool check_idle(unsigned int now);
 	void connect(); 
-	void send_msg(const std::string& msg);
+	void send_msg(PacketPtr& msg);
 
 private:
 	void on_connection(const muduo::net::TcpConnectionPtr& conn);
@@ -39,7 +39,7 @@ private:
 
 	bool _connect;
 	ServiceConfig::IPInfo _ip_info;
-	std::vector<std::string> _msg_send_buffer;
+	std::vector<PacketPtr> _msg_send_buffer;
 
 	muduo::net::TcpClient _tcp_client;
 
