@@ -2,19 +2,19 @@
 	"net": {
 		"tcp": {
 			"ip": "192.168.154.130",
-			"port": 10101
+			"port": 10201
 		},
 
 		"http": {
 			"ip": "192.168.154.130",
-			"port": 10151
+			"port": 10251
 		}
 	},
 
 	"log": {
 		"level": 1,
 		"console": true,
-		"file_path": "./log/1/center",
+		"file_path": "./log/0/navigate",
 		"roll_size": 10000000,
 		"thread_safe": false,
 		"flush_interval": 0,
@@ -26,16 +26,13 @@
 		"tcp_server_no_delay": true,
 		"tcp_server_recv_packet_len_max": 65535,	
 		"tcp_server_send_packet_len_max": 65535,	
-		"tcp_server_high_water_mark": 65536,	
+		"tcp_server_high_water_mark": 65535,	
 
 		"tcp_client_idle": 60,
 		"tcp_client_no_delay": true,
 		"tcp_client_recv_packet_len_max": 65535,
 		"tcp_client_send_packet_len_max": 65535,
 		"tcp_client_high_water_mark": 65535,
-		"tcp_client_msg_reduce_size": 100,
-
-		"level": 1,
-		"service_path": "./conf/service.json"
+		"tcp_client_msg_reduce_size": 1000,
 	}
 }

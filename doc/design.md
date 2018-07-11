@@ -16,12 +16,13 @@
 ### 端口
     unsigned short max  = 65535
     [服务id]+[程序id(绑定的cpu号)]
-    从1开始，0保留给采集/监控等外围系统
     eg:
     gate:
+        tcp: 10100 = 10100 + 0, http: 10150 = 10100 + 50 + 0   //绑定cpu 0
         tcp: 10101 = 10100 + 1, http: 10151 = 10100 + 50 + 1   //绑定cpu 1
         tcp: 10102 = 10100 + 2, http: 10152 = 10100 + 50 + 2   //绑定cpu 2
     group:
+        tcp: 10200 = 10200 + 0, http: 10250 = 10200 + 50 + 0
         tcp: 10201 = 10200 + 1, http: 10251 = 10200 + 50 + 1
         tcp: 10202 = 10200 + 2, http: 10252 = 10200 + 50 + 2
 
@@ -198,7 +199,7 @@
     gate.proto
 
     enum ErrorCode {
-		SUCCESS                         = 0;
+        SUCCESS                         = 0;
 
         ERR_BEGIN                       = 1010000000;
 
@@ -257,28 +258,28 @@
     backend:
         center -> [navigate, gate, logic, proxy]
         (listen http * 1, connect tcp * n)
-        10100:核心服务,cpu密集型,绑定cpu,进程数等于cpu数减1
+        10100:核心服务,cpu密集型,进程数等于cpu数
 
         navigate -> [], <- [client, gate]
         (listen http * 1, listen tcp * 1)
-        10200:核心服务,io密集型,不绑定cpu,进程数等于cpu乘2或3
+        10200:核心服务,io密集型,进程数等于cpu数乘2或3
 
         gate -> [client, navigate, logic, proxy], <- [client, logic]
         (listen http * 1, listen tcp * 1, connect tcp * n)
-        10300:核心服务,cpu密集型,绑定cpu,进程数等于cpu数减1
+        10300:核心服务,cpu密集型,进程数等于cpu数
 
         logic -> [proxy, gate], <- [gate]
         (listen http * 1, listen tcp * 1, connect tcp * n)
-        10400:业务服务,cpu密集型,绑定cpu,进程数等于cpu数减1
+        10400:业务服务,cpu密集型,进程数等于cpu数
 
         proxy -> [], <-[gate, logic]
         (listen http * 1, listen tcp * 1)
-        10500:业务服务,io密集型,不绑定cpu,进程数等于cpu乘2或3
+        10500:业务服务,io密集型,进程数等于cpu数乘2或3
 
     frontend:
         client -> [navigate, gate], <- [gate]
         (listen http * 1, connect tcp * n)
-        10600:业务服务,cpu密集型,绑定cpu,进程数等于cpu数减1
+        10600:业务服务,cpu密集型,进程数等于cpu数
 
 ### 资源管理服务
 
@@ -512,22 +513,22 @@
 
 #### 心跳探测
     message HeartbeatReq {
-        int32      level               = 1;    	// center的等级
+        int32      level               = 1;     // center的等级
         int32      service_id          = 2;
         uint32     proc_id             = 3;
-        uint32     state               = 4;    	// 目标进程状态:1.上架,2.上线
-        uint64     conf_update_time    = 5;    	// 配置更新时间(微妙)
-        bytes      conf_json           = 6;    	// 有配置更新下发json，无配置更新下发空字符串
+        uint32     state               = 4;     // 目标进程状态:1.上架,2.上线
+        uint64     conf_update_time    = 5;     // 配置更新时间(微妙)
+        bytes      conf_json           = 6;     // 有配置更新下发json，无配置更新下发空字符串
     }
 
     message HeartbeatRsp {
-        int32      level               = 1;    	// 接管center的等级
-        int32      service_id          = 2;		// 返回和HeartbeatReq.service_id的值一样
-		uint32     proc_id             = 3;		// 返回和HeartbeatReq.proc_id的值一样
-        uint64     conf_update_time    = 4;    	// 配置更新时间(微妙)
-        uint32     role_expire_time    = 5;    	// 接管center的到期秒数，
-                                               	// 服务当前时间和接管center最新心跳请求时间相减秒数，
-                                               	// 非接管center根据role_expire_time判断是否需要接管服务
+        int32      level               = 1;     // 接管center的等级
+        int32      service_id          = 2;     // 返回和HeartbeatReq.service_id的值一样
+        uint32     proc_id             = 3;     // 返回和HeartbeatReq.proc_id的值一样
+        uint64     conf_update_time    = 4;     // 配置更新时间(微妙)
+        uint32     role_expire_time    = 5;     // 接管center的到期秒数，
+                                                // 服务当前时间和接管center最新心跳请求时间相减秒数，
+                                                // 非接管center根据role_expire_time判断是否需要接管服务
     }
 
 #### 配置更新
