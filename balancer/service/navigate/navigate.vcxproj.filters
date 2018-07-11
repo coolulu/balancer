@@ -30,9 +30,6 @@
     <None Include="release.mak">
       <Filter>Make files</Filter>
     </None>
-    <None Include="conf\navigate_1.json">
-      <Filter>conf</Filter>
-    </None>
     <None Include="src\protocol\proto\center.proto">
       <Filter>src\protocol\proto</Filter>
     </None>
@@ -62,6 +59,9 @@
     </None>
     <None Include="src\protocol\proto\version.proto">
       <Filter>src\protocol\proto</Filter>
+    </None>
+    <None Include="conf\navigate_0.json">
+      <Filter>conf</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

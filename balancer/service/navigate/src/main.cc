@@ -50,6 +50,37 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	{	
+		int cpu_size = sysconf(_SC_NPROCESSORS_CONF);
+		unsigned short cpu_id = Util::get_cpu_id(config_file) % cpu_size;
+
+		cpu_set_t cpu_mask;
+		err = Util::get_cpu_mask(0, &cpu_mask);
+		if(err.size() > 0)
+		{
+			B_LOG_ERROR << err;
+			return -30;
+		}
+		B_LOG_INFO << Util::print_cpu_mask(cpu_mask);
+
+		err = Util::set_cpu_mask(cpu_id, &cpu_mask);
+		if(err.size() > 0)
+		{
+			B_LOG_ERROR << err;
+			return -31;
+		}
+
+		err = Util::get_cpu_mask(0, &cpu_mask);
+		if(err.size() > 0)
+		{
+			B_LOG_ERROR << err;
+			return -32;
+		}
+
+		B_LOG_INFO << Util::print_cpu_mask(cpu_mask);
+		B_LOG_INFO << "bind cpu_id " << cpu_id;
+	}
+
 	SignalHandle::init_signal();
 
 	muduo::net::EventLoop loop;	//安全关闭，loop声明周期要长于proc

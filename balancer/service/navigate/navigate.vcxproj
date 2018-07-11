@@ -61,7 +61,7 @@
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="conf\navigate_1.json" />
+    <None Include="conf\navigate_0.json" />
     <None Include="debug.mak" />
     <None Include="Makefile" />
     <None Include="release.mak" />
