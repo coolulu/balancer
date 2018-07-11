@@ -61,7 +61,7 @@
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="conf\center_1.json" />
+    <None Include="conf\center_0.json" />
     <None Include="conf\service.json" />
     <None Include="debug.mak" />
     <None Include="Makefile" />

@@ -124,7 +124,7 @@
     <LaunchGDBSettings xsi:type="GDBLaunchParametersNewInstance">
       <DebuggedProgram>$(TargetPath)</DebuggedProgram>
       <GDBServerPort>2000</GDBServerPort>
-      <ProgramArguments>-f conf/center_1.json</ProgramArguments>
+      <ProgramArguments>-f conf/center_0.json</ProgramArguments>
       <WorkingDirectory>$(RemoteSourceDir)</WorkingDirectory>
     </LaunchGDBSettings>
     <GenerateCtrlBreakInsteadOfCtrlC>false</GenerateCtrlBreakInsteadOfCtrlC>

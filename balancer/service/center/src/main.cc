@@ -50,26 +50,16 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	unsigned short cpu_id = Util::get_cpu_id(config_file);
-	int cpu_size = sysconf(_SC_NPROCESSORS_CONF);
-	if(cpu_id == 0)
-	{
-		B_LOG_ERROR << "cpu_id=0";
-		return -30;
-	}
-	else if(cpu_id >= cpu_size)
-	{
-		B_LOG_ERROR << "cpu_size=" << cpu_size;
-		return -31;
-	}
-	else
 	{	
+		int cpu_size = sysconf(_SC_NPROCESSORS_CONF);
+		unsigned short cpu_id = Util::get_cpu_id(config_file) % cpu_size;
+
 		cpu_set_t cpu_mask;
 		err = Util::get_cpu_mask(0, &cpu_mask);
 		if(err.size() > 0)
 		{
 			B_LOG_ERROR << err;
-			return -32;
+			return -30;
 		}
 		B_LOG_INFO << Util::print_cpu_mask(cpu_mask);
 	
@@ -77,14 +67,14 @@ int main(int argc, char *argv[])
 		if(err.size() > 0)
 		{
 			B_LOG_ERROR << err;
-			return -33;
+			return -31;
 		}
 
 		err = Util::get_cpu_mask(0, &cpu_mask);
 		if(err.size() > 0)
 		{
 			B_LOG_ERROR << err;
-			return -34;
+			return -32;
 		}
 
 		B_LOG_INFO << Util::print_cpu_mask(cpu_mask);
