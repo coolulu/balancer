@@ -100,6 +100,22 @@ bool Packet::check()
 		return false;
 	}
 
+	switch (_data_format)
+	{
+	case data_format::PROTOBUF:
+		break;
+
+	case data_format::PROTOBUF_ZIP:
+		break;
+
+	case data_format::PROTOBUF_SNAPPY:
+		break;
+
+	default:
+		B_LOG_ERROR << "_msg_seq_id=" << _msg_seq_id << ", unknow _data_format=" << _data_format;
+		return false;
+	}
+
 	if(_body.ParseFromArray(_data, _data_len))
 	{
 		B_LOG_INFO << "_msg_seq_id=" << _msg_seq_id << ", _body.ParseFromArray=true";	
