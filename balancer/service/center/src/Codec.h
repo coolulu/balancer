@@ -12,7 +12,7 @@ class Codec : boost::noncopyable
 {
 public:
 	typedef boost::function<void (const muduo::net::TcpConnectionPtr&,
-								  Packet& packet,
+								  PacketPtr& packet_ptr,
 								  muduo::Timestamp)> PacketMessageCallback;
 
 	explicit Codec(const PacketMessageCallback& cb,
@@ -25,7 +25,7 @@ public:
 						   muduo::Timestamp receiveTime);
 
 	void send_stream(muduo::net::TcpConnection* conn,
-					 PacketPtr& packetPtr);
+					 PacketPtr& packet_ptr);
 
 private:
 	PacketMessageCallback _messageCallback;	

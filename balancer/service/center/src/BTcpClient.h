@@ -24,7 +24,7 @@ public:
 private:
 	void on_connection(const muduo::net::TcpConnectionPtr& conn);
 	void on_message(const muduo::net::TcpConnectionPtr& conn,
-					Packet& packet,
+					PacketPtr& packet_ptr,
 					muduo::Timestamp time);
 	void on_write_complete(const muduo::net::TcpConnectionPtr& conn);
 	void on_high_water_mark(const muduo::net::TcpConnectionPtr& conn, size_t len);

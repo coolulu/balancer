@@ -119,17 +119,17 @@ void BTcpClient::on_connection(const muduo::net::TcpConnectionPtr& conn)
 	
 #include "protocol/proto_cpp/center.pb.h"
 void BTcpClient::on_message(const muduo::net::TcpConnectionPtr& conn, 
-							Packet& packet, 
+							PacketPtr& packet_ptr, 
 							muduo::Timestamp time)
 {
 	B_LOG_INFO	<< conn->name() 
-				<< ", _msg_seq_id=" << packet._msg_seq_id
-				<< ", _len=" << packet._len 
+				<< ", _msg_seq_id=" << packet_ptr->_msg_seq_id
+				<< ", _len=" << packet_ptr->_len 
 				<< ", time=" << time.toString();
 	{
-		B_LOG_INFO << "code=" << packet._body.code();
-		B_LOG_INFO << "msg=" << packet._body.msg();
-		const ::google::protobuf::Any& service_msg = packet._body.service_msg();
+		B_LOG_INFO << "code=" << packet_ptr->_body.code();
+		B_LOG_INFO << "msg=" << packet_ptr->_body.msg();
+		const ::google::protobuf::Any& service_msg = packet_ptr->_body.service_msg();
 		if(service_msg.Is<center::CenterMsg>())
 		{
 			B_LOG_INFO << "center::CenterMsg";

@@ -65,9 +65,9 @@ void Prober::probe()
 								<< ", ip=" << ip_info.ip
 								<< ", key_ip_port=" << ip_info.key_ip_port;
 
-					PacketPtr packetPtr(new Packet(service::CENTER, service.service_id, 
+					PacketPtr packet_ptr(new Packet(service::CENTER, service.service_id, 
 												   0, 0, 0, 0, _proc._seq.make_seq()));
-					CenterStack::HeartbeatReq(packetPtr->_body,
+					CenterStack::HeartbeatReq(packet_ptr->_body,
 											  _proc._config.proc.level,
 											  service.service_id,
 											  ip_info.proc_id,
@@ -75,7 +75,7 @@ void Prober::probe()
 											  time(NULL), 
 											  "");
 
-					_proc._tcp_client_pool.get_client(ip_info)->send_msg(packetPtr);
+					_proc._tcp_client_pool.get_client(ip_info)->send_msg(packet_ptr);
 				}
 
 				for(auto it = inservice_list.begin(); it != inservice_list.end(); it++)
@@ -97,9 +97,9 @@ void Prober::probe()
 								<< ", ip=" << ip_info.ip
 								<< ", key_ip_port=" << ip_info.key_ip_port;
 
-					PacketPtr packetPtr(new Packet(service::CENTER, service.service_id, 
+					PacketPtr packet_ptr(new Packet(service::CENTER, service.service_id, 
 												   0, 0, 0, 0, _proc._seq.make_seq()));
-					CenterStack::HeartbeatReq(packetPtr->_body,
+					CenterStack::HeartbeatReq(packet_ptr->_body,
 											  _proc._config.proc.level,
 											  service.service_id,
 											  ip_info.proc_id,
@@ -107,7 +107,7 @@ void Prober::probe()
 											  time(NULL), 
 											  "");
 
-					_proc._tcp_client_pool.get_client(ip_info)->send_msg(packetPtr);
+					_proc._tcp_client_pool.get_client(ip_info)->send_msg(packet_ptr);
 				}
 			}
 			else
