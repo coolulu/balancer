@@ -1,6 +1,8 @@
 #include "CenterStack.h"
 
-void CenterStack::HeartbeatRsp(data::Body& body, 
+void CenterStack::HeartbeatRsp(data::Body& body,
+							   int code,
+							   const std::string& info,
 							   int level, 
 							   int service_id, 
 							   unsigned int proc_id, 
@@ -15,6 +17,10 @@ void CenterStack::HeartbeatRsp(data::Body& body,
 	rsp->set_proc_id(proc_id);
 	rsp->set_conf_update_time(conf_update_time);
 	rsp->set_role_expire_time(role_expire_time);
+
+	::data::Body_MsgRsq* msg_rsp = body.mutable_msg_rsp();
+	msg_rsp->set_code(code);
+	msg_rsp->set_info(info);
 
 	body.mutable_service_msg()->PackFrom(msg);
 }

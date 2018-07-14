@@ -33,6 +33,8 @@ void Heartbeat::handle(const center::CenterMsg& msg)
 
 	PacketPtr packet_ptr_rsp(new Packet(_packet_ptr->_from_service_id, 0, 0, 0, 0, _packet_ptr->_msg_seq_id));
 	CenterStack::HeartbeatRsp(packet_ptr_rsp->_body,
+		common::SUCCESS,
+		"",
 		req.level(),
 		req.service_id(),
 		req.proc_id(),

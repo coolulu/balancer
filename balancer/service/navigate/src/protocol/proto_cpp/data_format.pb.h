@@ -52,12 +52,14 @@ void InitDefaults();
 enum DataFormat {
   BEGIN = 0,
   PROTOBUF = 1,
+  PROTOBUF_ZIP = 2,
+  PROTOBUF_SNAPPY = 3,
   DataFormat_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   DataFormat_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool DataFormat_IsValid(int value);
 const DataFormat DataFormat_MIN = BEGIN;
-const DataFormat DataFormat_MAX = PROTOBUF;
+const DataFormat DataFormat_MAX = PROTOBUF_SNAPPY;
 const int DataFormat_ARRAYSIZE = DataFormat_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* DataFormat_descriptor();

@@ -88,51 +88,31 @@ void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 							PacketPtr& packet_ptr,
 							muduo::Timestamp time)
 {
-	B_LOG_INFO	<< conn->name() 
-				<< ", _msg_seq_id=" << packet_ptr->_msg_seq_id
-				<< ", _len=" << packet_ptr->_len 
-				<< ", time=" << time.toString();
-	/*
+	int msg_type = packet_ptr->_body.msg_type_case();
+	switch(msg_type)
 	{
-		B_LOG_INFO << "code=" << packet._body.code();
-		B_LOG_INFO << "msg=" << packet._body.msg();
-		const ::google::protobuf::Any& service_msg = packet._body.service_msg();
-		if(service_msg.Is<center::CenterMsg>())
+	case data::Body::kMsgReq:
 		{
-			B_LOG_INFO << "center::CenterMsg";
-			center::CenterMsg msg;
-			service_msg.UnpackTo(&msg);
+			const ::data::Body_MsgReq& msg_req = packet_ptr->_body.msg_req();
 
-			switch(msg.choice_case())
-			{
-			case center::CenterMsg::kHeartbeatReq:
-				{
-					B_LOG_INFO << "center::HeartbeatReq";
-					const center::HeartbeatReq& req = msg.heartbeat_req();
-					B_LOG_INFO << "level=" << req.level();
-					B_LOG_INFO << "service_id=" << req.service_id();
-					B_LOG_INFO << "proc_id=" << req.proc_id();
-					B_LOG_INFO << "state=" << req.state();
-					B_LOG_INFO << "conf_update_time=" << req.conf_update_time();
-					B_LOG_INFO << "conf_json=" << req.conf_json();
+			B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
+						<< ", msg_type is req";
 
-
-					PacketPtr packet_ptr(new Packet(service::NAVIGATE, packet._from_service_id,
-												   0, 0, 0, 0, packet._msg_seq_id));
-					CenterStack::HeartbeatRsp(packet_ptr->_body,
-											  req.level(),
-											  req.service_id(),
-											  req.proc_id(),
-											  req.conf_update_time(),
-											  ::time(nullptr));
-					_codec.send_stream(get_pointer(conn), packet_ptr);
-				}
-				break;
-			}
+			_handleReq.handle(conn, packet_ptr, time);
 		}
+		
+		break;
+
+	case data::Body::kMsgRsp:
+		B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
+					<< ", msg_type is rsp";
+		break;
+
+	default:
+		B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString() 
+					<< ", unknow msg_type=" << msg_type;
+		break;
 	}
-	*/
-	_handleReq.handle(conn, packet_ptr, time);
 
 	Context* p_context = boost::any_cast<Context>(conn->getMutableContext());
 	p_context->_update_time = ::time(nullptr);

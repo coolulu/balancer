@@ -6,7 +6,9 @@
 
 namespace CenterStack
 {
-	void HeartbeatRsp(data::Body& body, 
+	void HeartbeatRsp(data::Body& body,
+					  int code,
+					  const std::string& info,
 					  int level, 
 					  int service_id, 
 					  unsigned int proc_id,
