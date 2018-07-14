@@ -383,6 +383,10 @@
     }
 
 #### 集中简化
+    proc_id编号规则 x[n]:y[2]:z[1]，相同service下不能重复
+    x:机器编号
+    y:该机器的进程编号(占两位)
+    z:0为实体进程，非0为虚拟进程(占最后一位)
 
 ##### 字段检查:
     1.所有字段名必须存在
@@ -441,27 +445,27 @@
                 ],
                 "heartbeat_list": [                 //上架(有心跳探测,不服务)
                     {
-                        "proc_id": 1,               //程序id
-                        "proc_des": "gate_1_1",     //程序描述
+                        "proc_id": 1000,            //程序id
+                        "proc_des": "gate_1_0_0",   //程序描述
                         "in_ip": "121.1.1.1",       //内网ip,心跳探测,服务通信(如果要跨机房通讯，全部用外网ip连接)
                         "out_ip": "11.1.1.1",       //外网ip,没外网ip就填内网ip
-                        "port": 10101
+                        "port": 10100
                     }
                 ],
                 "inservice_list": [                 //上线(有心跳探测,在服务)
                     {
-                        "proc_id": 2,
-                        "proc_des": "gate_2_1",
+                        "proc_id": 2000,
+                        "proc_des": "gate_2_0_0",
                         "in_ip": "121.1.1.2",
                         "out_ip": "11.1.1.2",
-                        "port": 10101
+                        "port": 10100
                     },
                     {
-                        "proc_id": 3,
-                        "proc_des": "gate_2_1_v",    //支持虚拟进程，gate_2_1和gate_2_1_v是同一个进程，变相给进程导流
+                        "proc_id": 2001,
+                        "proc_des": "gate_2_0_1_v",    //支持虚拟进程，gate_2_0_0和gate_2_0_1_v是同一个进程，变相给进程导流
                         "in_ip": "121.1.1.2",
                         "out_ip": "11.1.1.2",
-                        "port": 10101
+                        "port": 10100
                     }
                 ]
             },
@@ -491,19 +495,26 @@
                 ],
                 "heartbeat_list": [
                     {
-                        "proc_id": 1,
-                        "proc_des": "group_1_1",
+                        "proc_id": 1000,
+                        "proc_des": "group_1_0_0",
                         "in_ip": "121.1.1.10",
                         "out_ip": "11.1.1.10",
-                        "port": 10201
+                        "port": 10200
                     }
                 ],
                 "inservice_list": [
                     {
-                        "proc_id": 2,
-                        "proc_des": "group_2_1",
+                        "proc_id": 2000,
+                        "proc_des": "group_2_0_0",
                         "in_ip": "121.1.1.20",
                         "out_ip": "11.1.1.20",
+                        "port": 10200
+                    },
+                    {
+                        "proc_id": 2010,
+                        "proc_des": "group_2_1_0",
+                        "in_ip": "121.1.1.21",
+                        "out_ip": "11.1.1.21",
                         "port": 10201
                     }
                 ]
