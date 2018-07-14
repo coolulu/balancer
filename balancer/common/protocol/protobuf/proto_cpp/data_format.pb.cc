@@ -80,11 +80,12 @@ namespace {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\021data_format.proto\022\013data_format*%\n\nData"
-      "Format\022\t\n\005BEGIN\020\000\022\014\n\010PROTOBUF\020\001b\006proto3"
+      "\n\021data_format.proto\022\013data_format*L\n\nData"
+      "Format\022\t\n\005BEGIN\020\000\022\014\n\010PROTOBUF\020\001\022\020\n\014PROTO"
+      "BUF_ZIP\020\002\022\023\n\017PROTOBUF_SNAPPY\020\003b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 79);
+      descriptor, 118);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "data_format.proto", &protobuf_RegisterTypes);
 }
@@ -111,6 +112,8 @@ bool DataFormat_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
+    case 2:
+    case 3:
       return true;
     default:
       return false;

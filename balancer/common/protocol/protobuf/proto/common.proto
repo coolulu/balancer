@@ -1,3 +1,8 @@
 syntax="proto3";
 
 package common;
+
+enum ErrorCode {
+    SUCCESS     = 0;
+
+}
