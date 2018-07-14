@@ -25,7 +25,7 @@ public:
 
 public:
 	void start();
-	void send(const muduo::net::TcpConnectionPtr& conn, PacketPtr& packet_ptr);
+	void send_msg(const muduo::net::TcpConnectionPtr& conn, PacketPtr& msg);
 
 private:
 	void on_connection(const muduo::net::TcpConnectionPtr& conn);

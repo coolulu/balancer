@@ -48,9 +48,16 @@ void BTcpServer::start()
 	}
 }
 
-void BTcpServer::send(const muduo::net::TcpConnectionPtr& conn, PacketPtr& packet_ptr)
+void BTcpServer::send_msg(const muduo::net::TcpConnectionPtr& conn, PacketPtr& msg)
 {
-	_codec.send_stream(get_pointer(conn), packet_ptr);
+	if(conn)
+	{
+		_codec.send_stream(get_pointer(conn), msg);
+	}
+	else
+	{
+		B_LOG_WARN << "conn is null, msg is lose, _msg_seq_id=" << msg->_msg_seq_id;
+	}
 }
 
 void BTcpServer::on_connection(const muduo::net::TcpConnectionPtr& conn)

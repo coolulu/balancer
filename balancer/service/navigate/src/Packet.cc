@@ -3,6 +3,7 @@
 #include <zlib.h>
 #include <muduo/net/Endian.h>
 #include "protocol/proto_cpp/version.pb.h"
+#include "Define.h"
 
 #include "Log.h"
 
@@ -45,8 +46,7 @@ Packet::Packet(unsigned int header, const char* buffer, unsigned int len)
 	_check_sum			= muduo::net::sockets::networkToHost32(*(unsigned int*)(_buffer + s_data_offset + _data_len));
 }
 
-Packet::Packet(unsigned short from_service_id,
-			   unsigned short to_service_id, 
+Packet::Packet(unsigned short to_service_id, 
 			   unsigned int to_proc_id, 
 			   unsigned int app_id, 
 			   unsigned int app_version, 
@@ -62,7 +62,7 @@ Packet::Packet(unsigned short from_service_id,
 		_header(0),
 		_len(0),
 		_version(version::PROTO_VER),
-		_from_service_id(from_service_id),
+		_from_service_id(Define::service_id),
 		_to_service_id(to_service_id),
 		_to_proc_id(to_proc_id),
 		_app_id(app_id),

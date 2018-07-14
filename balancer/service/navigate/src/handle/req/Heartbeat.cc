@@ -1,0 +1,45 @@
+#include "Heartbeat.h"
+
+#include "BTcpServer.h"
+#include "Log.h"
+
+Heartbeat::Heartbeat(BTcpServer& tcp_server, 
+					 const muduo::net::TcpConnectionPtr& conn, 
+					 PacketPtr& packet_ptr, 
+					 muduo::Timestamp time)
+	:	_tcp_server(tcp_server),
+		_conn(conn),
+		_packet_ptr(packet_ptr),
+		_time(time)
+{
+
+}
+
+Heartbeat::~Heartbeat()
+{
+
+}
+
+void Heartbeat::handle(const center::CenterMsg& msg)
+{
+	const center::HeartbeatReq& req = msg.heartbeat_req();
+	B_LOG_INFO << "level=" << req.level();
+	B_LOG_INFO << "service_id=" << req.service_id();
+	B_LOG_INFO << "proc_id=" << req.proc_id();
+	B_LOG_INFO << "state=" << req.state();
+	B_LOG_INFO << "conf_update_time=" << req.conf_update_time();
+	B_LOG_INFO << "conf_json=" << req.conf_json();
+
+
+	PacketPtr packet_ptr_rsp(new Packet(_packet_ptr->_from_service_id, 0, 0, 0, 0, _packet_ptr->_msg_seq_id));
+	CenterStack::HeartbeatRsp(packet_ptr_rsp->_body,
+		req.level(),
+		req.service_id(),
+		req.proc_id(),
+		req.conf_update_time(),
+		::time(nullptr));
+
+	_tcp_server.send_msg(_conn, packet_ptr_rsp);
+}
+
+
