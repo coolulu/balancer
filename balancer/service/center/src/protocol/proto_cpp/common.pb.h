@@ -27,6 +27,7 @@
 #include <google/protobuf/metadata.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 // @@protoc_insertion_point(includes)
 namespace common {
 }  // namespace common
@@ -48,6 +49,26 @@ void AddDescriptors();
 void InitDefaults();
 }  // namespace protobuf_common_2eproto
 
+enum ErrorCode {
+  SUCCESS = 0,
+  ErrorCode_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ErrorCode_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool ErrorCode_IsValid(int value);
+const ErrorCode ErrorCode_MIN = SUCCESS;
+const ErrorCode ErrorCode_MAX = SUCCESS;
+const int ErrorCode_ARRAYSIZE = ErrorCode_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ErrorCode_descriptor();
+inline const ::std::string& ErrorCode_Name(ErrorCode value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ErrorCode_descriptor(), value);
+}
+inline bool ErrorCode_Parse(
+    const ::std::string& name, ErrorCode* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ErrorCode>(
+    ErrorCode_descriptor(), name, value);
+}
 // ===================================================================
 
 
@@ -70,6 +91,18 @@ void InitDefaults();
 
 
 }  // namespace common
+
+namespace google {
+namespace protobuf {
+
+template <> struct is_proto_enum< ::common::ErrorCode> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::common::ErrorCode>() {
+  return ::common::ErrorCode_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 

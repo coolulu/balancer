@@ -24,6 +24,7 @@ namespace protobuf_common_2eproto {
 
 namespace {
 
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
 
 }  // namespace
 
@@ -51,7 +52,7 @@ void protobuf_AssignDescriptors() {
   ::google::protobuf::MessageFactory* factory = NULL;
   AssignDescriptors(
       "common.proto", schemas, file_default_instances, TableStruct::offsets, factory,
-      NULL, NULL, NULL);
+      NULL, file_level_enum_descriptors, NULL);
 }
 
 void protobuf_AssignDescriptorsOnce() {
@@ -79,10 +80,11 @@ namespace {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\014common.proto\022\006commonb\006proto3"
+      "\n\014common.proto\022\006common*\030\n\tErrorCode\022\013\n\007S"
+      "UCCESS\020\000b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 30);
+      descriptor, 56);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
 }
@@ -100,6 +102,19 @@ struct StaticDescriptorInitializer {
 } static_descriptor_initializer;
 
 }  // namespace protobuf_common_2eproto
+
+const ::google::protobuf::EnumDescriptor* ErrorCode_descriptor() {
+  protobuf_common_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_common_2eproto::file_level_enum_descriptors[0];
+}
+bool ErrorCode_IsValid(int value) {
+  switch (value) {
+    case 0:
+      return true;
+    default:
+      return false;
+  }
+}
 
 
 // @@protoc_insertion_point(namespace_scope)

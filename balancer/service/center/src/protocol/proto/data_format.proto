@@ -3,6 +3,8 @@ syntax="proto3";
 package data_format;
 
 enum DataFormat {
-    BEGIN           = 0;
-    PROTOBUF        = 1;
+    BEGIN               = 0;
+    PROTOBUF            = 1;
+    PROTOBUF_ZIP        = 2;
+    PROTOBUF_SNAPPY     = 3;
 }

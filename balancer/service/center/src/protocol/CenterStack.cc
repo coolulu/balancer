@@ -18,5 +18,6 @@ void CenterStack::HeartbeatReq(data::Body& body,
 	req->set_conf_update_time(conf_update_time);
 	req->set_conf_json(conf_json);
 
+	body.mutable_msg_req();
 	body.mutable_service_msg()->PackFrom(msg);
 }

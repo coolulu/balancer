@@ -122,35 +122,50 @@ void BTcpClient::on_message(const muduo::net::TcpConnectionPtr& conn,
 							PacketPtr& packet_ptr, 
 							muduo::Timestamp time)
 {
-	B_LOG_INFO	<< conn->name() 
-				<< ", _msg_seq_id=" << packet_ptr->_msg_seq_id
-				<< ", _len=" << packet_ptr->_len 
-				<< ", time=" << time.toString();
+	int msg_type = packet_ptr->_body.msg_type_case();
+	switch(msg_type)
 	{
-		B_LOG_INFO << "code=" << packet_ptr->_body.code();
-		B_LOG_INFO << "msg=" << packet_ptr->_body.msg();
-		const ::google::protobuf::Any& service_msg = packet_ptr->_body.service_msg();
-		if(service_msg.Is<center::CenterMsg>())
-		{
-			B_LOG_INFO << "center::CenterMsg";
-			center::CenterMsg msg;
-			service_msg.UnpackTo(&msg);
+	case data::Body::kMsgReq:
+		B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
+					<< ", msg_type is req";
+		break;
 
-			switch(msg.choice_case())
+	case data::Body::kMsgRsp:
+		{
+			const ::data::Body_MsgRsq& msg_rsp = packet_ptr->_body.msg_rsp();
+
+			B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
+						<< ", msg_type is rsp" << ", code=" << msg_rsp.code() << ", info=" << msg_rsp.info();
+
+			const ::google::protobuf::Any& service_msg = packet_ptr->_body.service_msg();
+			if(service_msg.Is<center::CenterMsg>())
 			{
-			case center::CenterMsg::kHeartbeatRsp:
+				B_LOG_INFO << "center::CenterMsg";
+				center::CenterMsg msg;
+				service_msg.UnpackTo(&msg);
+
+				switch(msg.choice_case())
 				{
-					B_LOG_INFO << "center::HeartbeatRsp";
-					const center::HeartbeatRsp& rsp = msg.heartbeat_rsp();
-					B_LOG_INFO << "level=" << rsp.level();
-					B_LOG_INFO << "service_id=" << rsp.service_id();
-					B_LOG_INFO << "proc_id=" << rsp.proc_id();
-					B_LOG_INFO << "conf_update_time=" << rsp.conf_update_time();
-					B_LOG_INFO << "role_expire_time=" << rsp.role_expire_time();
+				case center::CenterMsg::kHeartbeatRsp:
+					{
+						B_LOG_INFO << "center::HeartbeatRsp";
+						const center::HeartbeatRsp& rsp = msg.heartbeat_rsp();
+						B_LOG_INFO << "level=" << rsp.level();
+						B_LOG_INFO << "service_id=" << rsp.service_id();
+						B_LOG_INFO << "proc_id=" << rsp.proc_id();
+						B_LOG_INFO << "conf_update_time=" << rsp.conf_update_time();
+						B_LOG_INFO << "role_expire_time=" << rsp.role_expire_time();
+					}
+					break;
 				}
-				break;
 			}
 		}
+		break;
+
+	default:
+		B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString() 
+					<< ", unknow msg_type=" << msg_type;
+		break;
 	}
 
 	_update_time = ::time(nullptr);
