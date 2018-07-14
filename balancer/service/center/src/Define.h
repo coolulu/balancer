@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "protocol/proto_cpp/service.pb.h"
 
 namespace Define
 {
@@ -11,6 +12,6 @@ namespace Define
 
 	static const std::string& service_version = "0.1.0";
 
-	static const unsigned short service_id = 10100;
+	static const unsigned short service_id = service::CENTER;
 	static const std::string& service_name = "center";
 };

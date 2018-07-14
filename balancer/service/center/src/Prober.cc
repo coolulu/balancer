@@ -65,8 +65,7 @@ void Prober::probe()
 								<< ", ip=" << ip_info.ip
 								<< ", key_ip_port=" << ip_info.key_ip_port;
 
-					PacketPtr packet_ptr(new Packet(service::CENTER, service.service_id, 
-												   0, 0, 0, 0, _proc._seq.make_seq()));
+					PacketPtr packet_ptr(new Packet(service.service_id, 0, 0, 0, 0, _proc._seq.make_seq()));
 					CenterStack::HeartbeatReq(packet_ptr->_body,
 											  _proc._config.proc.level,
 											  service.service_id,
@@ -97,8 +96,7 @@ void Prober::probe()
 								<< ", ip=" << ip_info.ip
 								<< ", key_ip_port=" << ip_info.key_ip_port;
 
-					PacketPtr packet_ptr(new Packet(service::CENTER, service.service_id, 
-												   0, 0, 0, 0, _proc._seq.make_seq()));
+					PacketPtr packet_ptr(new Packet(service.service_id, 0, 0, 0, 0, _proc._seq.make_seq()));
 					CenterStack::HeartbeatReq(packet_ptr->_body,
 											  _proc._config.proc.level,
 											  service.service_id,

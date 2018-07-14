@@ -11,8 +11,7 @@ public:
 	Packet(unsigned int header, const char* buffer, unsigned int len);	
 
 	// ·¢ËÍÊı¾İ
-	Packet(unsigned short from_service_id,
-		   unsigned short to_service_id,
+	Packet(unsigned short to_service_id,
 		   unsigned int to_proc_id,
 		   unsigned int app_id, 
 		   unsigned int app_version, 
