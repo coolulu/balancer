@@ -60,12 +60,12 @@ void Codec::on_stream_message(const muduo::net::TcpConnectionPtr& conn,
 		readableBytes = buf->readableBytes();
 		if (readableBytes >= Packet::k_len_size + len)
 		{
-			Packet packet(header, buf->peek(), len);
-			packet.print();
-			bool b = packet.check();
+			PacketPtr packet_ptr(new Packet(header, buf->peek(), len));
+			packet_ptr->print();
+			bool b = packet_ptr->check();
 			if(b)
 			{
-				_messageCallback(conn, packet, receiveTime);
+				_messageCallback(conn, packet_ptr, receiveTime);
 				buf->retrieve(Packet::k_header_size + Packet::k_len_size + len);
 			}
 			else
@@ -83,25 +83,25 @@ void Codec::on_stream_message(const muduo::net::TcpConnectionPtr& conn,
 }
 
 void Codec::send_stream(muduo::net::TcpConnection* conn, 
-						PacketPtr& packetPtr)
+						PacketPtr& packet_ptr)
 {
-	unsigned short      version_be			= muduo::net::sockets::hostToNetwork16(packetPtr->_version);	
-	unsigned short      from_service_id_be	= muduo::net::sockets::hostToNetwork16(packetPtr->_from_service_id);
-	unsigned short      to_service_id_be	= muduo::net::sockets::hostToNetwork16(packetPtr->_to_service_id);
-	unsigned int		to_proc_id_be		= muduo::net::sockets::hostToNetwork32(packetPtr->_to_proc_id);
-	unsigned int        app_id_be 			= muduo::net::sockets::hostToNetwork32(packetPtr->_app_id);
-	unsigned int		app_version_be		= muduo::net::sockets::hostToNetwork32(packetPtr->_app_version);
-	unsigned long long	conn_seq_id_be 		= muduo::net::sockets::hostToNetwork64(packetPtr->_conn_seq_id);
-	unsigned long long  msg_seq_id_be		= muduo::net::sockets::hostToNetwork64(packetPtr->_msg_seq_id);
-	unsigned char		data_format_be		= packetPtr->_data_format;
-	unsigned int		data_len			= packetPtr->_body.ByteSize();
+	unsigned short      version_be			= muduo::net::sockets::hostToNetwork16(packet_ptr->_version);	
+	unsigned short      from_service_id_be	= muduo::net::sockets::hostToNetwork16(packet_ptr->_from_service_id);
+	unsigned short      to_service_id_be	= muduo::net::sockets::hostToNetwork16(packet_ptr->_to_service_id);
+	unsigned int		to_proc_id_be		= muduo::net::sockets::hostToNetwork32(packet_ptr->_to_proc_id);
+	unsigned int        app_id_be 			= muduo::net::sockets::hostToNetwork32(packet_ptr->_app_id);
+	unsigned int		app_version_be		= muduo::net::sockets::hostToNetwork32(packet_ptr->_app_version);
+	unsigned long long	conn_seq_id_be 		= muduo::net::sockets::hostToNetwork64(packet_ptr->_conn_seq_id);
+	unsigned long long  msg_seq_id_be		= muduo::net::sockets::hostToNetwork64(packet_ptr->_msg_seq_id);
+	unsigned char		data_format_be		= packet_ptr->_data_format;
+	unsigned int		data_len			= packet_ptr->_body.ByteSize();
 	unsigned char*		data				= new unsigned char[data_len];
-	unsigned char		reserve_field_0_be	= packetPtr->_reserve_field_0;
-	unsigned int        reserve_field_1_be	= muduo::net::sockets::hostToNetwork32(packetPtr->_reserve_field_1);
-	unsigned int        reserve_field_2_be	= muduo::net::sockets::hostToNetwork32(packetPtr->_reserve_field_2);
-	unsigned int        reserve_field_3_be	= muduo::net::sockets::hostToNetwork32(packetPtr->_reserve_field_3);
+	unsigned char		reserve_field_0_be	= packet_ptr->_reserve_field_0;
+	unsigned int        reserve_field_1_be	= muduo::net::sockets::hostToNetwork32(packet_ptr->_reserve_field_1);
+	unsigned int        reserve_field_2_be	= muduo::net::sockets::hostToNetwork32(packet_ptr->_reserve_field_2);
+	unsigned int        reserve_field_3_be	= muduo::net::sockets::hostToNetwork32(packet_ptr->_reserve_field_3);
 
-	bool b = packetPtr->_body.SerializeToArray(data, data_len);
+	bool b = packet_ptr->_body.SerializeToArray(data, data_len);
 	if(b)
 	{
 		muduo::net::Buffer buf;
@@ -132,17 +132,17 @@ void Codec::send_stream(muduo::net::TcpConnection* conn,
 		uint32_t header_be = muduo::net::sockets::hostToNetwork32(Packet::k_header);
 		buf.prepend(&header_be, sizeof header_be);
 
-		B_LOG_INFO << "_name=" << _name << ", _msg_seq_id=" << packetPtr->_msg_seq_id << ", send k_header=" << Packet::k_header << ", header_be=" << header_be << ", len=" << len << ", len_be=" << len_be;
+		B_LOG_INFO << "_name=" << _name << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", send k_header=" << Packet::k_header << ", header_be=" << header_be << ", len=" << len << ", len_be=" << len_be;
 		if(len > _tcp_send_packet_len_max)
 		{
-			B_LOG_WARN << "_name=" << _name << ", _msg_seq_id=" << packetPtr->_msg_seq_id << ", len=" << len << " more than _tcp_send_packet_len_max=" << _tcp_send_packet_len_max;
+			B_LOG_WARN << "_name=" << _name << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", len=" << len << " more than _tcp_send_packet_len_max=" << _tcp_send_packet_len_max;
 		}
 
 		conn->send(&buf);
 	}
 	else
 	{
-		B_LOG_ERROR << "_name=" << _name << ", _msg_seq_id=" << packetPtr->_msg_seq_id << " SerializeToArray=false";
+		B_LOG_ERROR << "_name=" << _name << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << " SerializeToArray=false";
 	}
 
 	delete [] data;

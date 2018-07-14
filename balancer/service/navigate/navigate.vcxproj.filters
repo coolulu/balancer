@@ -21,6 +21,12 @@
     <Filter Include="src\protocol\proto_cpp">
       <UniqueIdentifier>{7941399c-5393-4062-ad96-99af19a4fb0e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\handle">
+      <UniqueIdentifier>{c20c95a0-541a-4f91-89c1-406ff21aceca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\handle\req">
+      <UniqueIdentifier>{757e8063-cdb5-478e-9083-fc5f907ce63a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -137,6 +143,15 @@
     <ClCompile Include="src\protocol\CenterStack.cc">
       <Filter>src\protocol</Filter>
     </ClCompile>
+    <ClCompile Include="src\protocol\NavigateStack.cc">
+      <Filter>src\protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="src\handle\HandleReq.cc">
+      <Filter>src\handle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\handle\req\Heartbeat.cc">
+      <Filter>src\handle\req</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BHttpServer.h">
@@ -213,6 +228,15 @@
     </ClInclude>
     <ClInclude Include="src\protocol\Protocol.h">
       <Filter>src\protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\NavigateStack.h">
+      <Filter>src\protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\HandleReq.h">
+      <Filter>src\handle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\req\Heartbeat.h">
+      <Filter>src\handle\req</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

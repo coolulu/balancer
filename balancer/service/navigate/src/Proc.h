@@ -10,7 +10,6 @@
 #include "BHttpServer.h"
 #include "Seq.h"
 
-
 class Proc
 {
 public:
@@ -40,10 +39,10 @@ public:
 	Log _log;
 	Config _config;
 	ServiceConfig _sc;
-
-	Timer _timer;
+	
 	BTcpServer _tcp_server;
 	BHttpServer _http_server;
-	
+	Timer _timer;
+
 	muduo::net::EventLoop& _loop;
 };

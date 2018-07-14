@@ -27,7 +27,7 @@ int Proc::init()
 	int ret = 0;
 	std::string err;
 
-	char config_json[BUFFER_SIZE] = {0};
+	char config_json[Define::BUFFER_SIZE] = {0};
 	ret = Util::file_2_bin(_config_file, config_json, sizeof(config_json)/sizeof(char));
 	if(ret != 0)
 	{

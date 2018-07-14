@@ -4,6 +4,7 @@
 #include <muduo/net/TcpServer.h>
 
 #include "Codec.h"
+#include "handle/HandleReq.h"
 
 class Proc;
 
@@ -24,11 +25,12 @@ public:
 
 public:
 	void start();
+	void send(const muduo::net::TcpConnectionPtr& conn, PacketPtr& packet_ptr);
 
 private:
 	void on_connection(const muduo::net::TcpConnectionPtr& conn);
 	void on_message(const muduo::net::TcpConnectionPtr& conn,
-					Packet& packet,
+					PacketPtr& packet_ptr,
 					muduo::Timestamp time);
 	void on_write_complete(const muduo::net::TcpConnectionPtr& conn);
 	void on_high_water_mark(const muduo::net::TcpConnectionPtr& conn, size_t len);
@@ -41,5 +43,5 @@ private:
 	std::map<unsigned long long, muduo::net::TcpConnectionPtr> _conn_map;
 
 	Codec _codec;
-
+	HandleReq _handleReq;
 };

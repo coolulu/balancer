@@ -15,7 +15,8 @@ BTcpServer::BTcpServer(Proc& proc)
 	: _proc(proc), _p_tcp_server(nullptr),
 	  _codec(boost::bind(&BTcpServer::on_message, this, _1, _2, _3), "TcpServer",
 			proc._config.proc.tcp_client_recv_packet_len_max,
-			proc._config.proc.tcp_client_send_packet_len_max)
+			proc._config.proc.tcp_client_send_packet_len_max),
+	_handleReq(*this)
 {
 	
 }
@@ -47,6 +48,11 @@ void BTcpServer::start()
 	}
 }
 
+void BTcpServer::send(const muduo::net::TcpConnectionPtr& conn, PacketPtr& packet_ptr)
+{
+	_codec.send_stream(get_pointer(conn), packet_ptr);
+}
+
 void BTcpServer::on_connection(const muduo::net::TcpConnectionPtr& conn)
 {
 	B_LOG_INFO	<< conn->name() << " " 
@@ -70,15 +76,16 @@ void BTcpServer::on_connection(const muduo::net::TcpConnectionPtr& conn)
 	}
 }
 
-#include "protocol/Protocol.h"
+//#include "protocol/Protocol.h"
 void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn, 
-							Packet& packet,
+							PacketPtr& packet_ptr,
 							muduo::Timestamp time)
 {
 	B_LOG_INFO	<< conn->name() 
-				<< ", _msg_seq_id=" << packet._msg_seq_id
-				<< ", _len=" << packet._len 
+				<< ", _msg_seq_id=" << packet_ptr->_msg_seq_id
+				<< ", _len=" << packet_ptr->_len 
 				<< ", time=" << time.toString();
+	/*
 	{
 		B_LOG_INFO << "code=" << packet._body.code();
 		B_LOG_INFO << "msg=" << packet._body.msg();
@@ -103,20 +110,22 @@ void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 					B_LOG_INFO << "conf_json=" << req.conf_json();
 
 
-					PacketPtr packetPtr(new Packet(service::NAVIGATE, packet._from_service_id,
+					PacketPtr packet_ptr(new Packet(service::NAVIGATE, packet._from_service_id,
 												   0, 0, 0, 0, packet._msg_seq_id));
-					CenterStack::HeartbeatRsp(packetPtr->_body,
+					CenterStack::HeartbeatRsp(packet_ptr->_body,
 											  req.level(),
 											  req.service_id(),
 											  req.proc_id(),
 											  req.conf_update_time(),
 											  ::time(nullptr));
-					_codec.send_stream(get_pointer(conn), packetPtr);
+					_codec.send_stream(get_pointer(conn), packet_ptr);
 				}
 				break;
 			}
 		}
 	}
+	*/
+	_handleReq.handle(conn, packet_ptr, time);
 
 	Context* p_context = boost::any_cast<Context>(conn->getMutableContext());
 	p_context->_update_time = ::time(nullptr);
@@ -162,5 +171,7 @@ void BTcpServer::on_check_idle()
 		}
 	}
 }
+
+
 
 
