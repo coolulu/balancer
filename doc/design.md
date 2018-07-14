@@ -121,9 +121,8 @@
     data.proto
 
     message Body {
-        optional uint64     timestamp       = 1;        // 请求源或返回源的时间(比如App客户端发送时间)
-        optional uint32     error_code      = 2;        // rsp必填
-        optional bytes      error_info      = 3;        // rsp必填
+        optional uint32     error_code      = 1;        // rsp必填
+        optional bytes      error_info      = 2;        // rsp必填
 
         extensions 10000 to 60000;                      // 扩展各个服务消息
     }
@@ -189,11 +188,22 @@
     data.proto
 
     message Body {
-        uint64     timestamp       = 1;        // 请求源或返回源的时间(比如App客户端发送时间)
-        uint32     error_code      = 2;        // rsp必填
-        bytes      error_info      = 3;        // rsp必填
+        oneof msg_type {
+            MsgReq  msg_req = 1;
+            MsgRsq  msg_rsp = 2;
+        }
 
-        google.protobuf.Any service_msg    = 4;        // 扩展各个服务消息
+        google.protobuf.Any service_msg    = 3;        // 扩展各个服务消息
+
+
+        message MsgReq {
+            // 方便以后扩展
+        }
+
+        message MsgRsq {
+            int32           code  = 1;
+            bytes           info  = 2;
+        }
     }
 
     gate.proto
@@ -262,7 +272,7 @@
 
         navigate -> [], <- [client, gate]
         (listen http * 1, listen tcp * 1)
-        10200:核心服务,io密集型,进程数等于cpu数乘2或3
+        10200:核心服务,cpu密集型,进程数等于cpu数
 
         gate -> [client, navigate, logic, proxy], <- [client, logic]
         (listen http * 1, listen tcp * 1, connect tcp * n)
@@ -576,6 +586,8 @@
     两种模式:
     A.请求导航服务服务返回gate的ip做一致性哈希，gate不发生变换的情况下，保证同一个user client重连还是重连到之前的gate服务
     B.返回在用户连接数最小的gate，gate和navigate人数同步，定时(30-60s)和定量(1-n个次数增加/减少变化)向所有navigate广播人数
+
+    如果要统一外网端口或减少外网ip机器数量(成本)，则在前面放nginx转后到后方多个端口的navigate
 
 ### 网关服务
     service_type: gate
