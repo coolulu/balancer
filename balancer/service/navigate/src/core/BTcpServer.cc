@@ -99,8 +99,7 @@ void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 						<< ", msg_type is req";
 
 			_handle_req.handle(conn, packet_ptr, time);
-		}
-		
+		}		
 		break;
 
 	case data::Body::kMsgRsp:

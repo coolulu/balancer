@@ -1,6 +1,5 @@
 #include "HeartbeatReq.h"
 
-#include "core/BTcpServer.h"
 #include "log/Log.h"
 
 HeartbeatReq::HeartbeatReq(Proc& proc,
