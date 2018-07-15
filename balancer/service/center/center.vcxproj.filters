@@ -36,6 +36,12 @@
     <Filter Include="src\tool">
       <UniqueIdentifier>{aefe98d9-6bbf-4590-a153-eccb2b5edf9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\handle">
+      <UniqueIdentifier>{de8267a8-cee1-46d8-84e0-ebe45ea2cbcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\handle\rsp">
+      <UniqueIdentifier>{d1befe3d-8ef1-453f-a5b7-34a16322cf2f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -161,6 +167,12 @@
     <ClCompile Include="src\config\ServiceConfig.cc">
       <Filter>src\config</Filter>
     </ClCompile>
+    <ClCompile Include="src\handle\HandleRsp.cc">
+      <Filter>src\handle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\handle\rsp\HeartbeatRsp.cc">
+      <Filter>src\handle\rsp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\protocol\Protocol.h">
@@ -243,6 +255,12 @@
     </ClInclude>
     <ClInclude Include="src\config\ServiceConfig.h">
       <Filter>src\config</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\HandleRsp.h">
+      <Filter>src\handle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\rsp\HeartbeatRsp.h">
+      <Filter>src\handle\rsp</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

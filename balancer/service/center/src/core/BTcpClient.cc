@@ -16,7 +16,8 @@ BTcpClient::BTcpClient(Proc& proc, const ServiceConfig::IPInfo& ip_info)
 					ip_info.proc_des.c_str()),
 		_codec(boost::bind(&BTcpClient::on_message, this, _1, _2, _3), ip_info.proc_des,
 			   proc._config.proc.tcp_client_recv_packet_len_max,
-			   proc._config.proc.tcp_client_send_packet_len_max)
+			   proc._config.proc.tcp_client_send_packet_len_max),
+		_handle_rsp(proc)
 {
 	_create_time = ::time(nullptr);
 	_update_time = _create_time;
@@ -139,29 +140,8 @@ void BTcpClient::on_message(const muduo::net::TcpConnectionPtr& conn,
 
 			B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
 						<< ", msg_type is rsp" << ", code=" << msg_rsp.code() << ", info=" << msg_rsp.info();
-
-			const ::google::protobuf::Any& service_msg = packet_ptr->_body.service_msg();
-			if(service_msg.Is<center::CenterMsg>())
-			{
-				B_LOG_INFO << "center::CenterMsg";
-				center::CenterMsg msg;
-				service_msg.UnpackTo(&msg);
-
-				switch(msg.choice_case())
-				{
-				case center::CenterMsg::kHeartbeatRsp:
-					{
-						B_LOG_INFO << "center::HeartbeatRsp";
-						const center::HeartbeatRsp& rsp = msg.heartbeat_rsp();
-						B_LOG_INFO << "level=" << rsp.level();
-						B_LOG_INFO << "service_id=" << rsp.service_id();
-						B_LOG_INFO << "proc_id=" << rsp.proc_id();
-						B_LOG_INFO << "conf_update_time=" << rsp.conf_update_time();
-						B_LOG_INFO << "role_expire_time=" << rsp.role_expire_time();
-					}
-					break;
-				}
-			}
+			
+			_handle_rsp.handle(conn, packet_ptr, time);
 		}
 		break;
 
