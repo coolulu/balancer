@@ -7,7 +7,9 @@ public:
 	~Owner();
 
 public:
-	void update_owner_hb_time(unsigned short level, int	state);
+	void update_owner_hb_time(unsigned int now, 
+							  unsigned short level, 
+							  unsigned int state);
 	void update_owner(unsigned short level, 
 					  unsigned long long conf_update_time,
 					  unsigned long long msg_seq_id);

@@ -1,7 +1,9 @@
 #include "HeartbeatReq.h"
 
+#include <sstream> 
 #include "log/Log.h"
 #include "define.h"
+#include "tool/Util.h"
 
 HeartbeatReq::HeartbeatReq(Proc& proc,
 						   const muduo::net::TcpConnectionPtr& conn, 
@@ -36,7 +38,8 @@ void HeartbeatReq::handle(const center::CenterMsg& msg)
 		return;
 	}
 
-	_proc._owner.update_owner_hb_time(req.level(), req.state());
+	unsigned int now = ::time(nullptr);
+	_proc._owner.update_owner_hb_time(now, req.level(), req.state());
 	if(req.conf_json().size() > 0)
 	{
 		// ¸üÐÂÅäÖÃ
@@ -44,10 +47,32 @@ void HeartbeatReq::handle(const center::CenterMsg& msg)
 		std::string err = sc.json_to_map(req.conf_json());
 		if(err.empty())
 		{
-			_proc._sc.assign(sc);
-
+			
 
 			_proc._owner.update_owner(req.level(), req.conf_update_time(), _packet_ptr->_msg_seq_id);
+			_proc._owner.update_owner_hb_time(now, req.level(), req.state());
+
+			std::ostringstream oss;
+			oss << "req.level=" << req.level() << std::endl
+				<< "req.service_id=" << req.service_id() << std::endl
+				<< "req.proc_id=" << req.proc_id() << std::endl
+				<< "req.state=" << req.state() << std::endl
+				<< "req.conf_update_time=" << req.conf_update_time() << std::endl
+				<< "req.conf_json=" << req.conf_json() << std::endl
+				<< std::endl
+				<< "_owner._level=" << _proc._owner._level << std::endl
+				<< "_owner._state=" << _proc._owner._state << std::endl
+				<< "_owner._owner_hb_time=" << _proc._owner._owner_hb_time << std::endl
+				<< "_owner._expire_second=" << _proc._owner._expire_second << std::endl
+				<< "_owner._conf_update_time=" << _proc._owner._conf_update_time << std::endl
+				<< "_owner._msg_seq_id=" << _proc._owner._msg_seq_id << std::endl;
+
+			std::string str = oss.str();
+			Util::bin_2_file("conf.txt", str.c_str(), str.size());
+		}
+		else
+		{
+			B_LOG_ERROR << "json_to_map=false";
 		}
 	}
 

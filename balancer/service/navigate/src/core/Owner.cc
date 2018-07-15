@@ -1,6 +1,5 @@
 #include "Owner.h"
 
-#include <ctime>
 #include "protocol/protobuf/proto_cpp/center.pb.h"
 
 Owner::Owner()
@@ -19,9 +18,10 @@ Owner::~Owner()
 
 }
 
-void Owner::update_owner_hb_time(unsigned short level, int state)
+void Owner::update_owner_hb_time(unsigned int now, 
+								 unsigned short level, 
+								 unsigned int state)
 {
-	unsigned int now = ::time(nullptr);
 	_expire_second = now - _owner_hb_time;
 	if(level == _level)
 	{
