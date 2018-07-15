@@ -4,7 +4,7 @@ void CenterStack::HeartbeatReq(data::Body& body,
 							   int level, 
 							   int service_id, 
 							   unsigned int proc_id,
-							   center::HeartbeatReq_State state, 
+							   unsigned int state,
 							   unsigned long long conf_update_time, 
 							   const std::string& conf_json)
 {

@@ -120,8 +120,7 @@ void BTcpClient::on_connection(const muduo::net::TcpConnectionPtr& conn)
 		//触发主动关闭会导致对象已经析构，但依然会回调这个成员函数，所以else下面的代码不能有成员变量
 	}
 }
-	
-#include "protocol/protobuf/proto_cpp/center.pb.h"
+
 void BTcpClient::on_message(const muduo::net::TcpConnectionPtr& conn, 
 							PacketPtr& packet_ptr, 
 							muduo::Timestamp time)

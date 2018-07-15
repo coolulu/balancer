@@ -70,7 +70,7 @@ void Prober::probe()
 											  _proc._config.proc.level,
 											  service.service_id,
 											  ip_info.proc_id,
-											  center::HeartbeatReq_State_HEARTBEAT,
+											  center::HEARTBEAT,
 											  time(NULL), 
 											  "");
 
@@ -101,7 +101,7 @@ void Prober::probe()
 											  _proc._config.proc.level,
 											  service.service_id,
 											  ip_info.proc_id,
-											  center::HeartbeatReq_State_HEARTBEAT,
+											  center::HEARTBEAT,
 											  time(NULL), 
 											  "");
 
