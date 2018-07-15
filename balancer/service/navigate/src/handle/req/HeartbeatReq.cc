@@ -1,12 +1,12 @@
-#include "Heartbeat.h"
+#include "HeartbeatReq.h"
 
 #include "BTcpServer.h"
 #include "Log.h"
 
-Heartbeat::Heartbeat(Proc& proc,
-					 const muduo::net::TcpConnectionPtr& conn, 
-					 PacketPtr& packet_ptr, 
-					 muduo::Timestamp time)
+HeartbeatReq::HeartbeatReq(Proc& proc,
+						   const muduo::net::TcpConnectionPtr& conn, 
+						   PacketPtr& packet_ptr, 
+						   muduo::Timestamp time)
 	:	_proc(proc),
 		_conn(conn),
 		_packet_ptr(packet_ptr),
@@ -15,12 +15,12 @@ Heartbeat::Heartbeat(Proc& proc,
 
 }
 
-Heartbeat::~Heartbeat()
+HeartbeatReq::~HeartbeatReq()
 {
 
 }
 
-void Heartbeat::handle(const center::CenterMsg& msg)
+void HeartbeatReq::handle(const center::CenterMsg& msg)
 {
 	const center::HeartbeatReq& req = msg.heartbeat_req();
 	B_LOG_INFO << "level=" << req.level();

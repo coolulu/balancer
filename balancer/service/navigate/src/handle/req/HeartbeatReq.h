@@ -4,14 +4,14 @@
 #include "Proc.h"
 #include "protocol/Protocol.h"
 
-class Heartbeat
+class HeartbeatReq
 {
 public:
-	Heartbeat(Proc& proc, 
-			  const muduo::net::TcpConnectionPtr& conn,
-			  PacketPtr& packet_ptr,
-			  muduo::Timestamp time);
-	~Heartbeat();
+	HeartbeatReq(Proc& proc, 
+				 const muduo::net::TcpConnectionPtr& conn,
+				 PacketPtr& packet_ptr,
+				 muduo::Timestamp time);
+	~HeartbeatReq();
 
 public:
 	void handle(const center::CenterMsg& msg);

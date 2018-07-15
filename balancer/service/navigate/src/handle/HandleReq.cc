@@ -3,7 +3,7 @@
 #include "Proc.h"
 #include "protocol/Protocol.h"
 
-#include "handle/req/Heartbeat.h"
+#include "handle/req/HeartbeatReq.h"
 
 HandleReq::HandleReq(Proc& proc)
 	: _proc(proc)
@@ -31,8 +31,8 @@ void HandleReq::handle(const muduo::net::TcpConnectionPtr& conn,
 		case center::CenterMsg::kHeartbeatReq:
 			{
 				B_LOG_INFO << "center::HeartbeatReq, _msg_seq_id=" << packet_ptr->_msg_seq_id;
-				Heartbeat hb(_proc, conn, packet_ptr, time);
-				hb.handle(msg);
+				HeartbeatReq req(_proc, conn, packet_ptr, time);
+				req.handle(msg);
 			}
 			break;
 
