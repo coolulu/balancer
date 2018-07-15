@@ -19,7 +19,7 @@ public:
 public:
 	bool check_idle(unsigned int now);
 	void connect(); 
-	void send_msg(PacketPtr& msg);
+	bool send_msg(PacketPtr& msg);
 
 private:
 	void on_connection(const muduo::net::TcpConnectionPtr& conn);

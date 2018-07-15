@@ -54,14 +54,16 @@ void BTcpClient::connect()
 	_update_time = ::time(nullptr);
 } 
 
-void BTcpClient::send_msg(PacketPtr& msg)
+bool BTcpClient::send_msg(PacketPtr& msg)
 {
+	bool b = false;
 	if(_connect)
 	{	
 		muduo::net::TcpConnectionPtr tcpConnectionPtr = _tcp_client.connection();
 		if(tcpConnectionPtr)
 		{
 			_codec.send_stream(get_pointer(tcpConnectionPtr), msg);
+			b = true;
 		}
 		else
 		{
@@ -80,6 +82,7 @@ void BTcpClient::send_msg(PacketPtr& msg)
 	}
 
 	_update_time = ::time(nullptr);
+	return b;
 }
 
 void BTcpClient::on_connection(const muduo::net::TcpConnectionPtr& conn)
