@@ -2,7 +2,7 @@
 
 #include <boost/bind.hpp>
 #include "Proc.h"
-#include "Log.h"
+#include "log/Log.h"
 
 BHttpServer::BHttpServer(Proc& proc) : _proc(proc), _p_http_server(nullptr)
 {

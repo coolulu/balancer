@@ -2,7 +2,7 @@
 
 #include <boost/bind.hpp>
 #include "Proc.h"
-#include "Log.h"
+#include "log/Log.h"
 
 Context::Context(unsigned int seq_id)
 	: _seq_id(seq_id), _create_time(0), _update_time(0)

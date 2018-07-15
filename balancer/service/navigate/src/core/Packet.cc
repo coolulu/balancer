@@ -3,9 +3,9 @@
 #include <zlib.h>
 #include <muduo/net/Endian.h>
 #include "protocol/protobuf/proto_cpp/version.pb.h"
-#include "Define.h"
+#include "define.h"
 
-#include "Log.h"
+#include "log/Log.h"
 
 Packet::Packet(unsigned int header, const char* buffer, unsigned int len)
 	:	_buffer(buffer), 

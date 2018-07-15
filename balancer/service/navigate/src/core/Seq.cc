@@ -2,7 +2,7 @@
 #include <ctime>
 #include <cstring>
 
-#include "Util.h"
+#include "tool/Util.h"
 
 Seq::Seq() : count(0)
 {

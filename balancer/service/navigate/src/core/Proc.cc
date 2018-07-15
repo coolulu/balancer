@@ -1,8 +1,8 @@
 #include "Proc.h"
 
 #include <boost/bind.hpp>
-#include "Define.h"
-#include "Util.h"
+#include "define.h"
+#include "tool/Util.h"
 
 bool Proc::s_reload_flag = false;
 bool Proc::s_stop_flag = false;
