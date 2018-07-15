@@ -117,7 +117,7 @@ void BTcpClient::on_connection(const muduo::net::TcpConnectionPtr& conn)
 	}
 }
 	
-#include "protocol/proto_cpp/center.pb.h"
+#include "protocol/protobuf/proto_cpp/center.pb.h"
 void BTcpClient::on_message(const muduo::net::TcpConnectionPtr& conn, 
 							PacketPtr& packet_ptr, 
 							muduo::Timestamp time)
