@@ -52,7 +52,7 @@
         unsigned int            app_version         :4
         unsigned long long      conn_seq_id         :8              // 客户端连接序列id(用在网关转发)
         unsigned long long      msg_seq_id          :8              // 消息序列id
-        unsigned char           data_format         :1              // 数据格式(1.protobuf)
+        unsigned char           data_format         :1              // 数据格式，详见data_format.proto
         unsigned char           reserve_field_0     :1              // 保留字段0
         unsigned int            reserve_field_1     :4              // 保留字段1
         unsigned int            reserve_field_2     :4              // 保留字段2
