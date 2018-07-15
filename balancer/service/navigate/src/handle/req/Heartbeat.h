@@ -1,13 +1,13 @@
 #pragma once
 
 #include "Packet.h"
-#include "BTcpServer.h"
+#include "Proc.h"
 #include "protocol/Protocol.h"
 
 class Heartbeat
 {
 public:
-	Heartbeat(BTcpServer& tcp_server, 
+	Heartbeat(Proc& proc, 
 			  const muduo::net::TcpConnectionPtr& conn,
 			  PacketPtr& packet_ptr,
 			  muduo::Timestamp time);
@@ -18,7 +18,7 @@ public:
 
 
 private:
-	BTcpServer& _tcp_server;
+	Proc& _proc;
 	const muduo::net::TcpConnectionPtr& _conn;
 	PacketPtr _packet_ptr;
 	muduo::Timestamp _time;

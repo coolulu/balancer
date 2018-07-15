@@ -3,12 +3,12 @@
 #include <muduo/net/TcpConnection.h>
 #include "Packet.h"
 
-class BTcpServer;
+class Proc;
 
 class HandleReq
 {
 public:
-	HandleReq(BTcpServer& tcp_server);
+	HandleReq(Proc& proc);
 	~HandleReq();
 
 public:
@@ -18,6 +18,6 @@ public:
 
 
 private:
-	BTcpServer& _tcp_server;
+	Proc& _proc;
 
 };

@@ -5,8 +5,8 @@
 
 #include "handle/req/Heartbeat.h"
 
-HandleReq::HandleReq(BTcpServer& tcp_server)
-	: _tcp_server(tcp_server)
+HandleReq::HandleReq(Proc& proc)
+	: _proc(proc)
 {
 
 }
@@ -31,7 +31,7 @@ void HandleReq::handle(const muduo::net::TcpConnectionPtr& conn,
 		case center::CenterMsg::kHeartbeatReq:
 			{
 				B_LOG_INFO << "center::HeartbeatReq, _msg_seq_id=" << packet_ptr->_msg_seq_id;
-				Heartbeat hb(_tcp_server, conn, packet_ptr, time);
+				Heartbeat hb(_proc, conn, packet_ptr, time);
 				hb.handle(msg);
 			}
 			break;

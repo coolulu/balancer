@@ -43,5 +43,5 @@ private:
 	std::map<unsigned long long, muduo::net::TcpConnectionPtr> _conn_map;
 
 	Codec _codec;
-	HandleReq _handleReq;
+	HandleReq _handle_req;
 };

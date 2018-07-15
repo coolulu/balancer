@@ -12,11 +12,11 @@ Context::Context(unsigned int seq_id)
 }
 
 BTcpServer::BTcpServer(Proc& proc)
-	: _proc(proc), _p_tcp_server(nullptr),
-	  _codec(boost::bind(&BTcpServer::on_message, this, _1, _2, _3), "TcpServer",
-			proc._config.proc.tcp_client_recv_packet_len_max,
-			proc._config.proc.tcp_client_send_packet_len_max),
-	_handleReq(*this)
+	:	_proc(proc), _p_tcp_server(nullptr),
+		_codec(	boost::bind(&BTcpServer::on_message, this, _1, _2, _3), "TcpServer",
+				proc._config.proc.tcp_client_recv_packet_len_max,
+				proc._config.proc.tcp_client_send_packet_len_max),
+		_handle_req(proc)
 {
 	
 }
@@ -98,7 +98,7 @@ void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 			B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
 						<< ", msg_type is req";
 
-			_handleReq.handle(conn, packet_ptr, time);
+			_handle_req.handle(conn, packet_ptr, time);
 		}
 		
 		break;

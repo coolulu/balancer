@@ -3,11 +3,11 @@
 #include "BTcpServer.h"
 #include "Log.h"
 
-Heartbeat::Heartbeat(BTcpServer& tcp_server, 
+Heartbeat::Heartbeat(Proc& proc,
 					 const muduo::net::TcpConnectionPtr& conn, 
 					 PacketPtr& packet_ptr, 
 					 muduo::Timestamp time)
-	:	_tcp_server(tcp_server),
+	:	_proc(proc),
 		_conn(conn),
 		_packet_ptr(packet_ptr),
 		_time(time)
@@ -41,7 +41,7 @@ void Heartbeat::handle(const center::CenterMsg& msg)
 		req.conf_update_time(),
 		::time(nullptr));
 
-	_tcp_server.send_msg(_conn, packet_ptr_rsp);
+	_proc._tcp_server.send_msg(_conn, packet_ptr_rsp);
 }
 
 
