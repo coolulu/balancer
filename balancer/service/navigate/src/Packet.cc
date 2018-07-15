@@ -2,7 +2,7 @@
 #include <cstring>
 #include <zlib.h>
 #include <muduo/net/Endian.h>
-#include "protocol/proto_cpp/version.pb.h"
+#include "protocol/protobuf/proto_cpp/version.pb.h"
 #include "Define.h"
 
 #include "Log.h"

@@ -1,8 +1,8 @@
 #pragma once
 
 #include <boost/shared_ptr.hpp>
-#include "protocol/proto_cpp/data.pb.h"
-#include "protocol/proto_cpp/data_format.pb.h"
+#include "protocol/protobuf/proto_cpp/data.pb.h"
+#include "protocol/protobuf/proto_cpp/data_format.pb.h"
 
 struct Packet
 {

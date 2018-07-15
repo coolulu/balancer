@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "protocol/proto_cpp/service.pb.h"
+#include "protocol/protobuf/proto_cpp/service.pb.h"
 
 namespace Define
 {
