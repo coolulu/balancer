@@ -69,14 +69,14 @@ bool BTcpClient::send_msg(PacketPtr& msg)
 		{
 			_connect = false;
 
-			_msg_send_buffer.push_back(msg);
+			_msg_send_buffer.insert(std::make_pair(msg->_msg_seq_id, msg));
 			B_LOG_WARN << "save msg, _msg_seq_id=" << msg->_msg_seq_id << ", _msg_send_buffer.size=" << _msg_send_buffer.size();
 			check_send_buffer_reduce();
 		}
 	}
 	else
 	{
-		_msg_send_buffer.push_back(msg);
+		_msg_send_buffer.insert(std::make_pair(msg->_msg_seq_id, msg));
 		B_LOG_INFO << "connecting, _msg_seq_id=" << msg->_msg_seq_id << ", _msg_send_buffer.size=" << _msg_send_buffer.size();
 		check_send_buffer_reduce();
 	}
@@ -105,9 +105,9 @@ void BTcpClient::on_connection(const muduo::net::TcpConnectionPtr& conn)
 		else
 		{
 			B_LOG_INFO << "_msg_send_buffer.size=" << _msg_send_buffer.size();
-			for(auto& msg : _msg_send_buffer)
+			for(auto& it : _msg_send_buffer)
 			{
-				_codec.send_stream(get_pointer(conn), msg);
+				_codec.send_stream(get_pointer(conn), it.second);
 			}
 			_msg_send_buffer.clear();
 		}
@@ -192,16 +192,30 @@ void BTcpClient::check_send_buffer_reduce()
 {
 	if(_msg_send_buffer.size() >= _proc._config.proc.tcp_client_msg_reduce_size)
 	{
-		std::vector<PacketPtr> msg_send_buffer(_msg_send_buffer.begin() + _msg_send_buffer.size() / 2, 
-											   _msg_send_buffer.end());
-		for(unsigned int i = 0; i != _msg_send_buffer.size() / 2; i++)
+		int count = 0;
+		int reduce_size = _proc._config.proc.tcp_client_msg_reduce_size / 2;
+
+		for(auto it = _msg_send_buffer.begin(); it != _msg_send_buffer.end();)
 		{
-			B_LOG_WARN << "discard msg, _msg_seq_id=" << _msg_send_buffer[i]->_msg_seq_id;
+			if(++count <= reduce_size)
+			{
+				B_LOG_WARN << "discard msg, _msg_seq_id=" << it->second->_msg_seq_id;
+				_msg_send_buffer.erase(it++);
+			}
+			else
+			{
+				break;
+			}
 		}
 
-		_msg_send_buffer.swap(msg_send_buffer);
 		B_LOG_WARN << "reduce _msg_send_buffer.size=" << _msg_send_buffer.size();
 	}
+}
+
+bool BTcpClient::reomve_msg_send_buffer(unsigned long long msg_seq_id)
+{
+	auto i = _msg_send_buffer.erase(msg_seq_id);	// i = 0 or 1
+	return i != 0;	// 返回true, 说明一定没发出去
 }
 
 
