@@ -9,6 +9,7 @@
 #include "BTcpServer.h"
 #include "BHttpServer.h"
 #include "Seq.h"
+#include "Owner.h"
 
 class Proc
 {
@@ -43,6 +44,8 @@ public:
 	BTcpServer _tcp_server;
 	BHttpServer _http_server;
 	Timer _timer;
+
+	Owner _owner;
 
 	muduo::net::EventLoop& _loop;
 };

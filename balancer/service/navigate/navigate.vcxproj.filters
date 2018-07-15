@@ -167,6 +167,9 @@
     <ClCompile Include="src\core\Proc.cc">
       <Filter>src\core</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\Owner.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\protocol\Protocol.h">
@@ -251,6 +254,9 @@
       <Filter>src\core</Filter>
     </ClInclude>
     <ClInclude Include="src\core\Proc.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Owner.h">
       <Filter>src\core</Filter>
     </ClInclude>
   </ItemGroup>

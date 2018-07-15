@@ -13,6 +13,6 @@ namespace CenterStack
 					  int service_id, 
 					  unsigned int proc_id,
 					  unsigned long long conf_update_time,
-					  unsigned int role_expire_time);
+					  unsigned int expire_second);
 
 };

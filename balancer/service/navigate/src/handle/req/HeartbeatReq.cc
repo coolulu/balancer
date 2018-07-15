@@ -1,6 +1,7 @@
 #include "HeartbeatReq.h"
 
 #include "log/Log.h"
+#include "define.h"
 
 HeartbeatReq::HeartbeatReq(Proc& proc,
 						   const muduo::net::TcpConnectionPtr& conn, 
@@ -29,6 +30,11 @@ void HeartbeatReq::handle(const center::CenterMsg& msg)
 	B_LOG_INFO << "conf_update_time=" << req.conf_update_time();
 	B_LOG_INFO << "conf_json=" << req.conf_json();
 
+	if(req.service_id() != Define::service_id)
+	{
+		B_LOG_ERROR << "unknow service_id=" << req.service_id();
+		return;
+	}
 
 	PacketPtr packet_ptr_rsp(new Packet(_packet_ptr->_from_service_id, 0, 0, 0, 0, _packet_ptr->_msg_seq_id));
 	CenterStack::HeartbeatRsp(packet_ptr_rsp->_body,

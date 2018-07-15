@@ -7,7 +7,7 @@ void CenterStack::HeartbeatRsp(data::Body& body,
 							   int service_id, 
 							   unsigned int proc_id, 
 							   unsigned long long conf_update_time, 
-							   unsigned int role_expire_time)
+							   unsigned int expire_second)
 {
 	center::CenterMsg msg;
 
@@ -16,7 +16,7 @@ void CenterStack::HeartbeatRsp(data::Body& body,
 	rsp->set_service_id(service_id);
 	rsp->set_proc_id(proc_id);
 	rsp->set_conf_update_time(conf_update_time);
-	rsp->set_role_expire_time(role_expire_time);
+	rsp->set_expire_second(expire_second);
 
 	::data::Body_MsgRsq* msg_rsp = body.mutable_msg_rsp();
 	msg_rsp->set_code(code);
