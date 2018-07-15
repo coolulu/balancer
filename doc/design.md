@@ -605,7 +605,7 @@
     service_type: client
 
 ## id生成
-    用unsigned long long类型，占64位
+    用unsigned long long类型，占64位，单调递增
 
     高32位放时间戳（time（NULL）），unsigned int类型
     time_t强制转换成unsigned int，有数值损失，但只要在unsigned int最大值之内，
