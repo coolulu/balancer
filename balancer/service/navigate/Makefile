@@ -23,7 +23,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := src/BHttpServer.cc src/BTcpServer.cc src/Codec.cc src/Config.cc src/handle/HandleReq.cc src/handle/req/HeartbeatReq.cc src/Log.cc src/main.cc src/Packet.cc src/Proc.cc src/protocol/protobuf/CenterStack.cc src/protocol/protobuf/NavigateStack.cc src/protocol/protobuf/proto_cpp/center.pb.cc src/protocol/protobuf/proto_cpp/common.pb.cc src/protocol/protobuf/proto_cpp/data.pb.cc src/protocol/protobuf/proto_cpp/data_format.pb.cc src/protocol/protobuf/proto_cpp/gate.pb.cc src/protocol/protobuf/proto_cpp/logic.pb.cc src/protocol/protobuf/proto_cpp/navigate.pb.cc src/protocol/protobuf/proto_cpp/proxy.pb.cc src/protocol/protobuf/proto_cpp/service.pb.cc src/protocol/protobuf/proto_cpp/version.pb.cc src/Seq.cc src/ServiceConfig.cc src/SignalHandle.cc src/Timer.cc src/Util.cc
+SOURCEFILES := src/config/Config.cc src/config/ServiceConfig.cc src/core/BHttpServer.cc src/core/BTcpServer.cc src/core/Codec.cc src/core/Packet.cc src/core/Proc.cc src/core/Seq.cc src/core/SignalHandle.cc src/core/Timer.cc src/handle/HandleReq.cc src/handle/req/HeartbeatReq.cc src/log/Log.cc src/main.cc src/protocol/protobuf/CenterStack.cc src/protocol/protobuf/NavigateStack.cc src/protocol/protobuf/proto_cpp/center.pb.cc src/protocol/protobuf/proto_cpp/common.pb.cc src/protocol/protobuf/proto_cpp/data.pb.cc src/protocol/protobuf/proto_cpp/data_format.pb.cc src/protocol/protobuf/proto_cpp/gate.pb.cc src/protocol/protobuf/proto_cpp/logic.pb.cc src/protocol/protobuf/proto_cpp/navigate.pb.cc src/protocol/protobuf/proto_cpp/proxy.pb.cc src/protocol/protobuf/proto_cpp/service.pb.cc src/protocol/protobuf/proto_cpp/version.pb.cc src/tool/Util.cc
 EXTERNAL_LIBS := 
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
@@ -165,19 +165,43 @@ $(BINARYDIR)/%.o : %.cxx $(all_make_files) |$(BINARYDIR)
 #VisualGDB: GeneratedRules				#<--- All lines below are auto-generated
 
 
-$(BINARYDIR)/BHttpServer.o : src/BHttpServer.cc $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/Config.o : src/config/Config.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/BTcpServer.o : src/BTcpServer.cc $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/ServiceConfig.o : src/config/ServiceConfig.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/Codec.o : src/Codec.cc $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/BHttpServer.o : src/core/BHttpServer.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/Config.o : src/Config.cc $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/BTcpServer.o : src/core/BTcpServer.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/Codec.o : src/core/Codec.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/Packet.o : src/core/Packet.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/Proc.o : src/core/Proc.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/Seq.o : src/core/Seq.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/SignalHandle.o : src/core/SignalHandle.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/Timer.o : src/core/Timer.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
@@ -189,19 +213,11 @@ $(BINARYDIR)/HeartbeatReq.o : src/handle/req/HeartbeatReq.cc $(all_make_files) |
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/Log.o : src/Log.cc $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/Log.o : src/log/Log.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
 $(BINARYDIR)/main.o : src/main.cc $(all_make_files) |$(BINARYDIR)
-	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
-
-
-$(BINARYDIR)/Packet.o : src/Packet.cc $(all_make_files) |$(BINARYDIR)
-	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
-
-
-$(BINARYDIR)/Proc.o : src/Proc.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
@@ -253,22 +269,6 @@ $(BINARYDIR)/version.pb.o : src/protocol/protobuf/proto_cpp/version.pb.cc $(all_
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/Seq.o : src/Seq.cc $(all_make_files) |$(BINARYDIR)
-	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
-
-
-$(BINARYDIR)/ServiceConfig.o : src/ServiceConfig.cc $(all_make_files) |$(BINARYDIR)
-	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
-
-
-$(BINARYDIR)/SignalHandle.o : src/SignalHandle.cc $(all_make_files) |$(BINARYDIR)
-	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
-
-
-$(BINARYDIR)/Timer.o : src/Timer.cc $(all_make_files) |$(BINARYDIR)
-	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
-
-
-$(BINARYDIR)/Util.o : src/Util.cc $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/Util.o : src/tool/Util.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 

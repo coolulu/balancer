@@ -2,7 +2,7 @@
 
 #include <map>
 #include "BTcpClient.h"
-#include "ServiceConfig.h"
+#include "config/ServiceConfig.h"
 #include <google/protobuf/message.h>
 
 class Proc;

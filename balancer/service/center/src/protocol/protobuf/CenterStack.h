@@ -2,7 +2,7 @@
 
 #include "proto_cpp/data.pb.h"
 #include "proto_cpp/center.pb.h"
-#include "Packet.h"
+#include "core/Packet.h"
 
 namespace CenterStack
 {

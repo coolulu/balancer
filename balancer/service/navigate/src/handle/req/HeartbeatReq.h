@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Packet.h"
-#include "Proc.h"
+#include "core/Packet.h"
+#include "core/Proc.h"
 #include "protocol/Protocol.h"
 
 class HeartbeatReq

@@ -77,16 +77,20 @@
     <None Include="src\protocol\protobuf\proto\version.proto" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\BHttpServer.cc" />
-    <ClCompile Include="src\BTcpServer.cc" />
-    <ClCompile Include="src\Codec.cc" />
-    <ClCompile Include="src\Config.cc" />
+    <ClCompile Include="src\config\Config.cc" />
+    <ClCompile Include="src\config\ServiceConfig.cc" />
+    <ClCompile Include="src\core\BHttpServer.cc" />
+    <ClCompile Include="src\core\BTcpServer.cc" />
+    <ClCompile Include="src\core\Codec.cc" />
+    <ClCompile Include="src\core\Packet.cc" />
+    <ClCompile Include="src\core\Proc.cc" />
+    <ClCompile Include="src\core\Seq.cc" />
+    <ClCompile Include="src\core\SignalHandle.cc" />
+    <ClCompile Include="src\core\Timer.cc" />
     <ClCompile Include="src\handle\HandleReq.cc" />
     <ClCompile Include="src\handle\req\HeartbeatReq.cc" />
-    <ClCompile Include="src\Log.cc" />
+    <ClCompile Include="src\log\Log.cc" />
     <ClCompile Include="src\main.cc" />
-    <ClCompile Include="src\Packet.cc" />
-    <ClCompile Include="src\Proc.cc" />
     <ClCompile Include="src\protocol\protobuf\CenterStack.cc" />
     <ClCompile Include="src\protocol\protobuf\NavigateStack.cc" />
     <ClCompile Include="src\protocol\protobuf\proto_cpp\center.pb.cc" />
@@ -99,23 +103,23 @@
     <ClCompile Include="src\protocol\protobuf\proto_cpp\proxy.pb.cc" />
     <ClCompile Include="src\protocol\protobuf\proto_cpp\service.pb.cc" />
     <ClCompile Include="src\protocol\protobuf\proto_cpp\version.pb.cc" />
-    <ClCompile Include="src\Seq.cc" />
-    <ClCompile Include="src\ServiceConfig.cc" />
-    <ClCompile Include="src\SignalHandle.cc" />
-    <ClCompile Include="src\Timer.cc" />
-    <ClCompile Include="src\Util.cc" />
+    <ClCompile Include="src\tool\Util.cc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\BHttpServer.h" />
-    <ClInclude Include="src\BTcpServer.h" />
-    <ClInclude Include="src\Codec.h" />
-    <ClInclude Include="src\Config.h" />
-    <ClInclude Include="src\Define.h" />
+    <ClInclude Include="src\config\Config.h" />
+    <ClInclude Include="src\config\ServiceConfig.h" />
+    <ClInclude Include="src\core\BHttpServer.h" />
+    <ClInclude Include="src\core\BTcpServer.h" />
+    <ClInclude Include="src\core\Codec.h" />
+    <ClInclude Include="src\core\Packet.h" />
+    <ClInclude Include="src\core\Proc.h" />
+    <ClInclude Include="src\core\Seq.h" />
+    <ClInclude Include="src\core\SignalHandle.h" />
+    <ClInclude Include="src\core\Timer.h" />
+    <ClInclude Include="src\define.h" />
     <ClInclude Include="src\handle\HandleReq.h" />
     <ClInclude Include="src\handle\req\HeartbeatReq.h" />
-    <ClInclude Include="src\Log.h" />
-    <ClInclude Include="src\Packet.h" />
-    <ClInclude Include="src\Proc.h" />
+    <ClInclude Include="src\log\Log.h" />
     <ClInclude Include="src\protocol\protobuf\CenterStack.h" />
     <ClInclude Include="src\protocol\protobuf\NavigateStack.h" />
     <ClInclude Include="src\protocol\protobuf\proto_cpp\center.pb.h" />
@@ -129,11 +133,7 @@
     <ClInclude Include="src\protocol\protobuf\proto_cpp\service.pb.h" />
     <ClInclude Include="src\protocol\protobuf\proto_cpp\version.pb.h" />
     <ClInclude Include="src\protocol\Protocol.h" />
-    <ClInclude Include="src\Seq.h" />
-    <ClInclude Include="src\ServiceConfig.h" />
-    <ClInclude Include="src\SignalHandle.h" />
-    <ClInclude Include="src\Timer.h" />
-    <ClInclude Include="src\Util.h" />
+    <ClInclude Include="src\tool\Util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,7 +1,7 @@
 #include "HeartbeatReq.h"
 
-#include "BTcpServer.h"
-#include "Log.h"
+#include "core/BTcpServer.h"
+#include "log/Log.h"
 
 HeartbeatReq::HeartbeatReq(Proc& proc,
 						   const muduo::net::TcpConnectionPtr& conn, 

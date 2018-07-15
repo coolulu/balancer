@@ -24,6 +24,18 @@
     <Filter Include="src\protocol\protobuf\proto_cpp">
       <UniqueIdentifier>{760a59cb-b314-427a-9adf-1749227fcf4e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\config">
+      <UniqueIdentifier>{68b22243-6224-4097-8639-a592ed6a39af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\core">
+      <UniqueIdentifier>{5ce92de8-0ab4-4320-a2da-2389dc30fec8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\log">
+      <UniqueIdentifier>{77964c29-021c-4886-af41-19517d48f0c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tool">
+      <UniqueIdentifier>{aefe98d9-6bbf-4590-a153-eccb2b5edf9e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -71,51 +83,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Config.cc">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\main.cc">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ServiceConfig.cc">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Util.cc">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Timer.cc">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Prober.cc">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Proc.cc">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Log.cc">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SignalHandle.cc">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Seq.cc">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\BTcpClient.cc">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\BTcpClientPool.cc">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\BHttpServer.cc">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Packet.cc">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Codec.cc">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\protocol\protobuf\CenterStack.cc">
       <Filter>src\protocol\protobuf</Filter>
     </ClCompile>
@@ -149,53 +116,53 @@
     <ClCompile Include="src\protocol\protobuf\proto_cpp\version.pb.cc">
       <Filter>src\protocol\protobuf\proto_cpp</Filter>
     </ClCompile>
+    <ClCompile Include="src\main.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tool\Util.cc">
+      <Filter>src\tool</Filter>
+    </ClCompile>
+    <ClCompile Include="src\log\Log.cc">
+      <Filter>src\log</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\BHttpServer.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\BTcpClient.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\BTcpClientPool.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Codec.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Packet.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Prober.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Proc.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Seq.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\SignalHandle.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Timer.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\config\Config.cc">
+      <Filter>src\config</Filter>
+    </ClCompile>
+    <ClCompile Include="src\config\ServiceConfig.cc">
+      <Filter>src\config</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Config.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ServiceConfig.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Util.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Timer.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Prober.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Proc.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Log.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SignalHandle.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Seq.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\BTcpClient.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\BTcpClientPool.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\BHttpServer.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Define.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Codec.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Packet.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\protocol\Protocol.h">
       <Filter>src\protocol</Filter>
     </ClInclude>
@@ -231,6 +198,51 @@
     </ClInclude>
     <ClInclude Include="src\protocol\protobuf\proto_cpp\version.pb.h">
       <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\define.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tool\Util.h">
+      <Filter>src\tool</Filter>
+    </ClInclude>
+    <ClInclude Include="src\log\Log.h">
+      <Filter>src\log</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\BHttpServer.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\BTcpClient.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\BTcpClientPool.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Codec.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Packet.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Prober.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Proc.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Seq.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\SignalHandle.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Timer.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\config\Config.h">
+      <Filter>src\config</Filter>
+    </ClInclude>
+    <ClInclude Include="src\config\ServiceConfig.h">
+      <Filter>src\config</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

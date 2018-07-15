@@ -1,5 +1,5 @@
 #include "Timer.h"
-#include "Log.h"
+#include "log/Log.h"
 #include "Proc.h"
 
 Timer::Timer(Proc& proc) : _proc(proc)
