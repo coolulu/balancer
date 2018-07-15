@@ -54,7 +54,7 @@ namespace protobuf_center_2eproto {
 namespace {
 
 ::google::protobuf::Metadata file_level_metadata[5];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
 
 }  // namespace
 
@@ -109,7 +109,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HeartbeatRsp, service_id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HeartbeatRsp, proc_id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HeartbeatRsp, conf_update_time_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HeartbeatRsp, role_expire_time_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HeartbeatRsp, expire_second_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CenterMsg, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -193,23 +193,23 @@ void AddDescriptorsImpl() {
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\014center.proto\022\006center\"\035\n\007TestReq\022\022\n\nser"
       "vice_id\030\001 \001(\005\"\037\n\007TestRsp\022\024\n\014service_name"
-      "\030\001 \001(\014\"\301\001\n\014HeartbeatReq\022\r\n\005level\030\001 \001(\005\022\022"
-      "\n\nservice_id\030\002 \001(\005\022\017\n\007proc_id\030\003 \001(\r\022)\n\005s"
-      "tate\030\004 \001(\0162\032.center.HeartbeatReq.State\022\030"
-      "\n\020conf_update_time\030\005 \001(\004\022\021\n\tconf_json\030\006 "
-      "\001(\014\"%\n\005State\022\r\n\tHEARTBEAT\020\000\022\r\n\tINSERVICE"
-      "\020\001\"v\n\014HeartbeatRsp\022\r\n\005level\030\001 \001(\005\022\022\n\nser"
-      "vice_id\030\002 \001(\005\022\017\n\007proc_id\030\003 \001(\005\022\030\n\020conf_u"
-      "pdate_time\030\004 \001(\004\022\030\n\020role_expire_time\030\005 \001"
-      "(\r\"\275\001\n\tCenterMsg\022#\n\010test_req\030\001 \001(\0132\017.cen"
-      "ter.TestReqH\000\022#\n\010test_rsp\030\002 \001(\0132\017.center"
-      ".TestRspH\000\022-\n\rHeartbeat_req\030\003 \001(\0132\024.cent"
-      "er.HeartbeatReqH\000\022-\n\rHeartbeat_rsp\030\004 \001(\013"
-      "2\024.center.HeartbeatRspH\000B\010\n\006choiceb\006prot"
-      "o3"
+      "\030\001 \001(\014\"~\n\014HeartbeatReq\022\r\n\005level\030\001 \001(\005\022\022\n"
+      "\nservice_id\030\002 \001(\005\022\017\n\007proc_id\030\003 \001(\r\022\r\n\005st"
+      "ate\030\004 \001(\r\022\030\n\020conf_update_time\030\005 \001(\004\022\021\n\tc"
+      "onf_json\030\006 \001(\014\"s\n\014HeartbeatRsp\022\r\n\005level\030"
+      "\001 \001(\005\022\022\n\nservice_id\030\002 \001(\005\022\017\n\007proc_id\030\003 \001"
+      "(\005\022\030\n\020conf_update_time\030\004 \001(\004\022\025\n\rexpire_s"
+      "econd\030\005 \001(\r\"\275\001\n\tCenterMsg\022#\n\010test_req\030\001 "
+      "\001(\0132\017.center.TestReqH\000\022#\n\010test_rsp\030\002 \001(\013"
+      "2\017.center.TestRspH\000\022-\n\rHeartbeat_req\030\003 \001"
+      "(\0132\024.center.HeartbeatReqH\000\022-\n\rHeartbeat_"
+      "rsp\030\004 \001(\0132\024.center.HeartbeatRspH\000B\010\n\006cho"
+      "ice*7\n\005State\022\017\n\013STATE_BEGIN\020\000\022\r\n\tHEARTBE"
+      "AT\020d\022\016\n\tINSERVICE\020\310\001*)\n\005Level\022\017\n\013LEVEL_B"
+      "EGIN\020\000\022\017\n\nINIT_LEVEL\020\350\007b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 602);
+      descriptor, 631);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "center.proto", &protobuf_RegisterTypes);
 }
@@ -228,27 +228,35 @@ struct StaticDescriptorInitializer {
 
 }  // namespace protobuf_center_2eproto
 
-const ::google::protobuf::EnumDescriptor* HeartbeatReq_State_descriptor() {
+const ::google::protobuf::EnumDescriptor* State_descriptor() {
   protobuf_center_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_center_2eproto::file_level_enum_descriptors[0];
 }
-bool HeartbeatReq_State_IsValid(int value) {
+bool State_IsValid(int value) {
   switch (value) {
     case 0:
-    case 1:
+    case 100:
+    case 200:
       return true;
     default:
       return false;
   }
 }
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const HeartbeatReq_State HeartbeatReq::HEARTBEAT;
-const HeartbeatReq_State HeartbeatReq::INSERVICE;
-const HeartbeatReq_State HeartbeatReq::State_MIN;
-const HeartbeatReq_State HeartbeatReq::State_MAX;
-const int HeartbeatReq::State_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+const ::google::protobuf::EnumDescriptor* Level_descriptor() {
+  protobuf_center_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_center_2eproto::file_level_enum_descriptors[1];
+}
+bool Level_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1000:
+      return true;
+    default:
+      return false;
+  }
+}
+
 
 // ===================================================================
 
@@ -942,15 +950,14 @@ bool HeartbeatReq::MergePartialFromCodedStream(
         break;
       }
 
-      // .center.HeartbeatReq.State state = 4;
+      // uint32 state = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
-          int value;
+
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_state(static_cast< ::center::HeartbeatReq_State >(value));
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &state_)));
         } else {
           goto handle_unusual;
         }
@@ -1024,10 +1031,9 @@ void HeartbeatReq::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->proc_id(), output);
   }
 
-  // .center.HeartbeatReq.State state = 4;
+  // uint32 state = 4;
   if (this->state() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      4, this->state(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->state(), output);
   }
 
   // uint64 conf_update_time = 5;
@@ -1070,10 +1076,9 @@ void HeartbeatReq::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->proc_id(), target);
   }
 
-  // .center.HeartbeatReq.State state = 4;
+  // uint32 state = 4;
   if (this->state() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      4, this->state(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->state(), target);
   }
 
   // uint64 conf_update_time = 5;
@@ -1133,10 +1138,11 @@ size_t HeartbeatReq::ByteSizeLong() const {
         this->proc_id());
   }
 
-  // .center.HeartbeatReq.State state = 4;
+  // uint32 state = 4;
   if (this->state() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->state());
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->state());
   }
 
   // uint64 conf_update_time = 5;
@@ -1280,15 +1286,15 @@ void HeartbeatReq::set_proc_id(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:center.HeartbeatReq.proc_id)
 }
 
-// .center.HeartbeatReq.State state = 4;
+// uint32 state = 4;
 void HeartbeatReq::clear_state() {
-  state_ = 0;
+  state_ = 0u;
 }
-::center::HeartbeatReq_State HeartbeatReq::state() const {
+::google::protobuf::uint32 HeartbeatReq::state() const {
   // @@protoc_insertion_point(field_get:center.HeartbeatReq.state)
-  return static_cast< ::center::HeartbeatReq_State >(state_);
+  return state_;
 }
-void HeartbeatReq::set_state(::center::HeartbeatReq_State value) {
+void HeartbeatReq::set_state(::google::protobuf::uint32 value) {
   
   state_ = value;
   // @@protoc_insertion_point(field_set:center.HeartbeatReq.state)
@@ -1370,7 +1376,7 @@ const int HeartbeatRsp::kLevelFieldNumber;
 const int HeartbeatRsp::kServiceIdFieldNumber;
 const int HeartbeatRsp::kProcIdFieldNumber;
 const int HeartbeatRsp::kConfUpdateTimeFieldNumber;
-const int HeartbeatRsp::kRoleExpireTimeFieldNumber;
+const int HeartbeatRsp::kExpireSecondFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 HeartbeatRsp::HeartbeatRsp()
@@ -1387,15 +1393,15 @@ HeartbeatRsp::HeartbeatRsp(const HeartbeatRsp& from)
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&level_, &from.level_,
-    static_cast<size_t>(reinterpret_cast<char*>(&role_expire_time_) -
-    reinterpret_cast<char*>(&level_)) + sizeof(role_expire_time_));
+    static_cast<size_t>(reinterpret_cast<char*>(&expire_second_) -
+    reinterpret_cast<char*>(&level_)) + sizeof(expire_second_));
   // @@protoc_insertion_point(copy_constructor:center.HeartbeatRsp)
 }
 
 void HeartbeatRsp::SharedCtor() {
   ::memset(&level_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&role_expire_time_) -
-      reinterpret_cast<char*>(&level_)) + sizeof(role_expire_time_));
+      reinterpret_cast<char*>(&expire_second_) -
+      reinterpret_cast<char*>(&level_)) + sizeof(expire_second_));
   _cached_size_ = 0;
 }
 
@@ -1437,8 +1443,8 @@ void HeartbeatRsp::Clear() {
   (void) cached_has_bits;
 
   ::memset(&level_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&role_expire_time_) -
-      reinterpret_cast<char*>(&level_)) + sizeof(role_expire_time_));
+      reinterpret_cast<char*>(&expire_second_) -
+      reinterpret_cast<char*>(&level_)) + sizeof(expire_second_));
   _internal_metadata_.Clear();
 }
 
@@ -1508,14 +1514,14 @@ bool HeartbeatRsp::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 role_expire_time = 5;
+      // uint32 expire_second = 5;
       case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &role_expire_time_)));
+                 input, &expire_second_)));
         } else {
           goto handle_unusual;
         }
@@ -1568,9 +1574,9 @@ void HeartbeatRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(4, this->conf_update_time(), output);
   }
 
-  // uint32 role_expire_time = 5;
-  if (this->role_expire_time() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->role_expire_time(), output);
+  // uint32 expire_second = 5;
+  if (this->expire_second() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->expire_second(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1607,9 +1613,9 @@ void HeartbeatRsp::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(4, this->conf_update_time(), target);
   }
 
-  // uint32 role_expire_time = 5;
-  if (this->role_expire_time() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->role_expire_time(), target);
+  // uint32 expire_second = 5;
+  if (this->expire_second() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->expire_second(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1657,11 +1663,11 @@ size_t HeartbeatRsp::ByteSizeLong() const {
         this->proc_id());
   }
 
-  // uint32 role_expire_time = 5;
-  if (this->role_expire_time() != 0) {
+  // uint32 expire_second = 5;
+  if (this->expire_second() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->role_expire_time());
+        this->expire_second());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -1705,8 +1711,8 @@ void HeartbeatRsp::MergeFrom(const HeartbeatRsp& from) {
   if (from.proc_id() != 0) {
     set_proc_id(from.proc_id());
   }
-  if (from.role_expire_time() != 0) {
-    set_role_expire_time(from.role_expire_time());
+  if (from.expire_second() != 0) {
+    set_expire_second(from.expire_second());
   }
 }
 
@@ -1738,7 +1744,7 @@ void HeartbeatRsp::InternalSwap(HeartbeatRsp* other) {
   swap(service_id_, other->service_id_);
   swap(conf_update_time_, other->conf_update_time_);
   swap(proc_id_, other->proc_id_);
-  swap(role_expire_time_, other->role_expire_time_);
+  swap(expire_second_, other->expire_second_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -1807,18 +1813,18 @@ void HeartbeatRsp::set_conf_update_time(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:center.HeartbeatRsp.conf_update_time)
 }
 
-// uint32 role_expire_time = 5;
-void HeartbeatRsp::clear_role_expire_time() {
-  role_expire_time_ = 0u;
+// uint32 expire_second = 5;
+void HeartbeatRsp::clear_expire_second() {
+  expire_second_ = 0u;
 }
-::google::protobuf::uint32 HeartbeatRsp::role_expire_time() const {
-  // @@protoc_insertion_point(field_get:center.HeartbeatRsp.role_expire_time)
-  return role_expire_time_;
+::google::protobuf::uint32 HeartbeatRsp::expire_second() const {
+  // @@protoc_insertion_point(field_get:center.HeartbeatRsp.expire_second)
+  return expire_second_;
 }
-void HeartbeatRsp::set_role_expire_time(::google::protobuf::uint32 value) {
+void HeartbeatRsp::set_expire_second(::google::protobuf::uint32 value) {
   
-  role_expire_time_ = value;
-  // @@protoc_insertion_point(field_set:center.HeartbeatRsp.role_expire_time)
+  expire_second_ = value;
+  // @@protoc_insertion_point(field_set:center.HeartbeatRsp.expire_second)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

@@ -66,26 +66,48 @@ void AddDescriptors();
 void InitDefaults();
 }  // namespace protobuf_center_2eproto
 
-enum HeartbeatReq_State {
-  HeartbeatReq_State_HEARTBEAT = 0,
-  HeartbeatReq_State_INSERVICE = 1,
-  HeartbeatReq_State_HeartbeatReq_State_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  HeartbeatReq_State_HeartbeatReq_State_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+enum State {
+  STATE_BEGIN = 0,
+  HEARTBEAT = 100,
+  INSERVICE = 200,
+  State_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  State_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
-bool HeartbeatReq_State_IsValid(int value);
-const HeartbeatReq_State HeartbeatReq_State_State_MIN = HeartbeatReq_State_HEARTBEAT;
-const HeartbeatReq_State HeartbeatReq_State_State_MAX = HeartbeatReq_State_INSERVICE;
-const int HeartbeatReq_State_State_ARRAYSIZE = HeartbeatReq_State_State_MAX + 1;
+bool State_IsValid(int value);
+const State State_MIN = STATE_BEGIN;
+const State State_MAX = INSERVICE;
+const int State_ARRAYSIZE = State_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* HeartbeatReq_State_descriptor();
-inline const ::std::string& HeartbeatReq_State_Name(HeartbeatReq_State value) {
+const ::google::protobuf::EnumDescriptor* State_descriptor();
+inline const ::std::string& State_Name(State value) {
   return ::google::protobuf::internal::NameOfEnum(
-    HeartbeatReq_State_descriptor(), value);
+    State_descriptor(), value);
 }
-inline bool HeartbeatReq_State_Parse(
-    const ::std::string& name, HeartbeatReq_State* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<HeartbeatReq_State>(
-    HeartbeatReq_State_descriptor(), name, value);
+inline bool State_Parse(
+    const ::std::string& name, State* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<State>(
+    State_descriptor(), name, value);
+}
+enum Level {
+  LEVEL_BEGIN = 0,
+  INIT_LEVEL = 1000,
+  Level_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  Level_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool Level_IsValid(int value);
+const Level Level_MIN = LEVEL_BEGIN;
+const Level Level_MAX = INIT_LEVEL;
+const int Level_ARRAYSIZE = Level_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* Level_descriptor();
+inline const ::std::string& Level_Name(Level value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    Level_descriptor(), value);
+}
+inline bool Level_Parse(
+    const ::std::string& name, Level* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Level>(
+    Level_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -370,32 +392,6 @@ class HeartbeatReq : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // nested types ----------------------------------------------------
 
-  typedef HeartbeatReq_State State;
-  static const State HEARTBEAT =
-    HeartbeatReq_State_HEARTBEAT;
-  static const State INSERVICE =
-    HeartbeatReq_State_INSERVICE;
-  static inline bool State_IsValid(int value) {
-    return HeartbeatReq_State_IsValid(value);
-  }
-  static const State State_MIN =
-    HeartbeatReq_State_State_MIN;
-  static const State State_MAX =
-    HeartbeatReq_State_State_MAX;
-  static const int State_ARRAYSIZE =
-    HeartbeatReq_State_State_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  State_descriptor() {
-    return HeartbeatReq_State_descriptor();
-  }
-  static inline const ::std::string& State_Name(State value) {
-    return HeartbeatReq_State_Name(value);
-  }
-  static inline bool State_Parse(const ::std::string& name,
-      State* value) {
-    return HeartbeatReq_State_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
   // bytes conf_json = 6;
@@ -430,11 +426,11 @@ class HeartbeatReq : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::uint32 proc_id() const;
   void set_proc_id(::google::protobuf::uint32 value);
 
-  // .center.HeartbeatReq.State state = 4;
+  // uint32 state = 4;
   void clear_state();
   static const int kStateFieldNumber = 4;
-  ::center::HeartbeatReq_State state() const;
-  void set_state(::center::HeartbeatReq_State value);
+  ::google::protobuf::uint32 state() const;
+  void set_state(::google::protobuf::uint32 value);
 
   // uint64 conf_update_time = 5;
   void clear_conf_update_time();
@@ -450,7 +446,7 @@ class HeartbeatReq : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::int32 level_;
   ::google::protobuf::int32 service_id_;
   ::google::protobuf::uint32 proc_id_;
-  int state_;
+  ::google::protobuf::uint32 state_;
   ::google::protobuf::uint64 conf_update_time_;
   mutable int _cached_size_;
   friend struct protobuf_center_2eproto::TableStruct;
@@ -562,11 +558,11 @@ class HeartbeatRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::int32 proc_id() const;
   void set_proc_id(::google::protobuf::int32 value);
 
-  // uint32 role_expire_time = 5;
-  void clear_role_expire_time();
-  static const int kRoleExpireTimeFieldNumber = 5;
-  ::google::protobuf::uint32 role_expire_time() const;
-  void set_role_expire_time(::google::protobuf::uint32 value);
+  // uint32 expire_second = 5;
+  void clear_expire_second();
+  static const int kExpireSecondFieldNumber = 5;
+  ::google::protobuf::uint32 expire_second() const;
+  void set_expire_second(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:center.HeartbeatRsp)
  private:
@@ -576,7 +572,7 @@ class HeartbeatRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::int32 service_id_;
   ::google::protobuf::uint64 conf_update_time_;
   ::google::protobuf::int32 proc_id_;
-  ::google::protobuf::uint32 role_expire_time_;
+  ::google::protobuf::uint32 expire_second_;
   mutable int _cached_size_;
   friend struct protobuf_center_2eproto::TableStruct;
 };
@@ -861,15 +857,15 @@ inline void HeartbeatReq::set_proc_id(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:center.HeartbeatReq.proc_id)
 }
 
-// .center.HeartbeatReq.State state = 4;
+// uint32 state = 4;
 inline void HeartbeatReq::clear_state() {
-  state_ = 0;
+  state_ = 0u;
 }
-inline ::center::HeartbeatReq_State HeartbeatReq::state() const {
+inline ::google::protobuf::uint32 HeartbeatReq::state() const {
   // @@protoc_insertion_point(field_get:center.HeartbeatReq.state)
-  return static_cast< ::center::HeartbeatReq_State >(state_);
+  return state_;
 }
-inline void HeartbeatReq::set_state(::center::HeartbeatReq_State value) {
+inline void HeartbeatReq::set_state(::google::protobuf::uint32 value) {
   
   state_ = value;
   // @@protoc_insertion_point(field_set:center.HeartbeatReq.state)
@@ -1002,18 +998,18 @@ inline void HeartbeatRsp::set_conf_update_time(::google::protobuf::uint64 value)
   // @@protoc_insertion_point(field_set:center.HeartbeatRsp.conf_update_time)
 }
 
-// uint32 role_expire_time = 5;
-inline void HeartbeatRsp::clear_role_expire_time() {
-  role_expire_time_ = 0u;
+// uint32 expire_second = 5;
+inline void HeartbeatRsp::clear_expire_second() {
+  expire_second_ = 0u;
 }
-inline ::google::protobuf::uint32 HeartbeatRsp::role_expire_time() const {
-  // @@protoc_insertion_point(field_get:center.HeartbeatRsp.role_expire_time)
-  return role_expire_time_;
+inline ::google::protobuf::uint32 HeartbeatRsp::expire_second() const {
+  // @@protoc_insertion_point(field_get:center.HeartbeatRsp.expire_second)
+  return expire_second_;
 }
-inline void HeartbeatRsp::set_role_expire_time(::google::protobuf::uint32 value) {
+inline void HeartbeatRsp::set_expire_second(::google::protobuf::uint32 value) {
   
-  role_expire_time_ = value;
-  // @@protoc_insertion_point(field_set:center.HeartbeatRsp.role_expire_time)
+  expire_second_ = value;
+  // @@protoc_insertion_point(field_set:center.HeartbeatRsp.expire_second)
 }
 
 // -------------------------------------------------------------------
@@ -1242,10 +1238,15 @@ inline CenterMsg::ChoiceCase CenterMsg::choice_case() const {
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::center::HeartbeatReq_State> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::center::State> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::center::HeartbeatReq_State>() {
-  return ::center::HeartbeatReq_State_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::center::State>() {
+  return ::center::State_descriptor();
+}
+template <> struct is_proto_enum< ::center::Level> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::center::Level>() {
+  return ::center::Level_descriptor();
 }
 
 }  // namespace protobuf
