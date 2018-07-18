@@ -7,9 +7,12 @@
 bool Proc::s_reload_flag = false;
 bool Proc::s_stop_flag = false;
 
-Proc::Proc(muduo::net::EventLoop& loop, const std::string& config_file)
+Proc::Proc(muduo::net::EventLoop& loop,
+		   const std::string& config_file,
+		   const unsigned int conf_id)
 	:	_loop(loop), 
 		_config_file(config_file),
+		_conf_id(conf_id),
 		_tcp_server(*this),
 		_http_server(*this),
 		_timer(*this)

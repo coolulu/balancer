@@ -151,7 +151,7 @@ int Util::file_2_bin(const std::string &filepath,char* ptr, unsigned binsize)
     return 0;
 }
 
-unsigned int Util::get_cpu_id(const std::string& config_file)
+unsigned int Util::get_conf_id(const std::string& config_file)
 {
 	std::string basename = ::basename(config_file.c_str());
 	auto begin = basename.find("_");

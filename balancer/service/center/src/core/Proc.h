@@ -15,7 +15,9 @@
 class Proc
 {
 public:
-	Proc(muduo::net::EventLoop& loop, const std::string& config_file);
+	Proc(muduo::net::EventLoop& loop, 
+		 const std::string& config_file, 
+		 unsigned int conf_id);
 	~Proc();
 
 public:
@@ -36,6 +38,7 @@ private:
 
 public:
 	const std::string _config_file;
+	const unsigned int _conf_id;
 
 	Seq _seq;
 	Log _log;

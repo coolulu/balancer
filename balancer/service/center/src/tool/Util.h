@@ -12,7 +12,7 @@ namespace Util
 	std::string uip_2_sip(unsigned uip);
 	int bin_2_file(const std::string &filepath,const char* ptr,int filelen);
 	int file_2_bin(const std::string &filepath,char* ptr, unsigned binsize);
-	unsigned int get_cpu_id(const std::string& config_file);
+	unsigned int get_conf_id(const std::string& config_file);
 
 	std::string print_cpu_mask(cpu_set_t cpu_mask);
 	std::string get_cpu_mask(pid_t pid, cpu_set_t *mask);
