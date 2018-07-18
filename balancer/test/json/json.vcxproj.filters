@@ -19,16 +19,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\json.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\ServiceConfig.cc">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\util.cc">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\InserviceService.cpp">
+    <ClCompile Include="src\InserviceService.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\json.cc">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>

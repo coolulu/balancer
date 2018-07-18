@@ -66,8 +66,8 @@
     <None Include="release.mak" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\InserviceService.cpp" />
-    <ClCompile Include="src\json.cpp" />
+    <ClCompile Include="src\InserviceService.cc" />
+    <ClCompile Include="src\json.cc" />
     <ClCompile Include="src\ServiceConfig.cc" />
     <ClCompile Include="src\util.cc" />
   </ItemGroup>
