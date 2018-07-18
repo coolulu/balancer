@@ -22,8 +22,10 @@ public:
 	~InserviceService(){}
 
 public:
-	inline bool is_ok(){return _is_ok;}
 	inline void assign(const InserviceService& is){*this = is;}
+
+	// 依赖服务ip列表是否可用，不可用则拒绝服务
+	inline bool is_ok(){return _is_ok;}
 
 	// 用本服务的service_id拿到依赖service_id,加载依赖服务ipinfo
 	bool load_ip_info(unsigned short service_id, ServiceConfig& sc);
