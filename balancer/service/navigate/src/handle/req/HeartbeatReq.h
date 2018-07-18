@@ -16,6 +16,8 @@ public:
 public:
 	void handle(const center::CenterMsg& msg);
 
+private:
+	void save_conf(const center::HeartbeatReq& req);
 
 private:
 	Proc& _proc;

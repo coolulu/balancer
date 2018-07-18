@@ -10,6 +10,7 @@
 #include "BHttpServer.h"
 #include "Seq.h"
 #include "Owner.h"
+#include "InserviceService.h"
 
 class Proc
 {
@@ -49,6 +50,7 @@ public:
 	Timer _timer;
 
 	Owner _owner;
+	InserviceService _is;
 
 	muduo::net::EventLoop& _loop;
 };

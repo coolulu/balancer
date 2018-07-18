@@ -82,6 +82,7 @@
     <ClCompile Include="src\core\BHttpServer.cc" />
     <ClCompile Include="src\core\BTcpServer.cc" />
     <ClCompile Include="src\core\Codec.cc" />
+    <ClCompile Include="src\core\InserviceService.cc" />
     <ClCompile Include="src\core\Owner.cc" />
     <ClCompile Include="src\core\Packet.cc" />
     <ClCompile Include="src\core\Proc.cc" />
@@ -112,6 +113,7 @@
     <ClInclude Include="src\core\BHttpServer.h" />
     <ClInclude Include="src\core\BTcpServer.h" />
     <ClInclude Include="src\core\Codec.h" />
+    <ClInclude Include="src\core\InserviceService.h" />
     <ClInclude Include="src\core\Owner.h" />
     <ClInclude Include="src\core\Packet.h" />
     <ClInclude Include="src\core\Proc.h" />

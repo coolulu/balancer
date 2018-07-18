@@ -14,4 +14,6 @@ namespace Define
 
 	static const unsigned short service_id = service::NAVIGATE;
 	static const std::string& service_name = "navigate";
+
+	static const std::string& conf_file_postfix = ".conf";
 };

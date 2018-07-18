@@ -5,7 +5,7 @@
 Owner::Owner()
 	:	_level(center::INIT_LEVEL),
 		_state(center::STATE_BEGIN),
-		_owner_hb_time(0),
+		_owner_hb_time(::time(nullptr)), // 如果初始化为0，会导致程序启动时，配置下发两次
 		_expire_second(0),
 		_conf_update_time(0),
 		_msg_seq_id(0)
