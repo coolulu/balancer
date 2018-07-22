@@ -91,25 +91,25 @@
 
         // 公共数据包错误码 (各个服务service_id * 100000 + 公共数据包错误码)
         ERR_PACKET_BEGIN                = 200;
-   		ERR_PACKET_ENCODE               = 201;          // 打包失败
-   		ERR_PACKET_DECODE               = 202;          // 解码失败
-   		ERR_PACKET_HEADER               = 203;
-   		ERR_PACKET_LEN                  = 204;
-   		ERR_PACKET_VERSION              = 205;
-   		ERR_PACKET_FROM_SERVICE_ID      = 206;
-   		ERR_PACKET_TO_SERVICE_ID        = 207;
-   		ERR_PACKET_APP_ID               = 208;
-   		ERR_PACKET_APP_VERSION          = 209;
-   		ERR_PACKET_CONN_SEQ_ID          = 210;
-   		ERR_PACKET_MSG_SEQ_ID           = 211;
-   		ERR_PACKET_DATA_FORMAT          = 212;
-   		ERR_PACKET_DATA_FIELD_0         = 213;
-   		ERR_PACKET_DATA_FIELD_1         = 214;
-   		ERR_PACKET_DATA_FIELD_2         = 215;
-   		ERR_PACKET_DATA_FIELD_3         = 216;
-   		ERR_PACKET_CHECK_SUM            = 217;
-   		ERR_PACKET_UNKNOWN_REQUEST      = 218;          // 不明请求
-   		ERR_PACKET_END                  = 299;
+        ERR_PACKET_ENCODE               = 201;          // 打包失败
+        ERR_PACKET_DECODE               = 202;          // 解码失败
+        ERR_PACKET_HEADER               = 203;
+        ERR_PACKET_LEN                  = 204;
+        ERR_PACKET_VERSION              = 205;
+        ERR_PACKET_FROM_SERVICE_ID      = 206;
+        ERR_PACKET_TO_SERVICE_ID        = 207;
+        ERR_PACKET_APP_ID               = 208;
+        ERR_PACKET_APP_VERSION          = 209;
+        ERR_PACKET_CONN_SEQ_ID          = 210;
+        ERR_PACKET_MSG_SEQ_ID           = 211;
+        ERR_PACKET_DATA_FORMAT          = 212;
+        ERR_PACKET_DATA_FIELD_0         = 213;
+        ERR_PACKET_DATA_FIELD_1         = 214;
+        ERR_PACKET_DATA_FIELD_2         = 215;
+        ERR_PACKET_DATA_FIELD_3         = 216;
+        ERR_PACKET_CHECK_SUM            = 217;
+        ERR_PACKET_UNKNOWN_REQUEST      = 218;          // 不明请求
+        ERR_PACKET_END                  = 299;
 
         // 公共接口错误码 (各个服务service_id * 100000 + 公共接口错误码)
         ERR_INTERFACE_BEGIN             = 300;
@@ -150,25 +150,25 @@
 
         // 数据包错误码
         ERR_PACKET_BEGIN                = 1010000200;
-   		ERR_PACKET_ENCODE               = 1010000201;          // 打包失败
-   		ERR_PACKET_DECODE               = 1010000202;          // 解码失败
-   		ERR_PACKET_HEADER               = 1010000203;
-   		ERR_PACKET_LEN                  = 1010000204;
-   		ERR_PACKET_VERSION              = 1010000205;
-   		ERR_PACKET_FROM_SERVICE_ID      = 1010000206;
-   		ERR_PACKET_TO_SERVICE_ID        = 1010000207;
-   		ERR_PACKET_APP_ID               = 1010000208;
-   		ERR_PACKET_APP_VERSION          = 1010000209;
-   		ERR_PACKET_CONN_SEQ_ID          = 1010000210;
-   		ERR_PACKET_MSG_SEQ_ID           = 1010000211;
-   		ERR_PACKET_DATA_FORMAT          = 1010000212;
-   		ERR_PACKET_DATA_FIELD_0         = 1010000213;
-   		ERR_PACKET_DATA_FIELD_1         = 1010000214;
-   		ERR_PACKET_DATA_FIELD_2         = 1010000215;
-   		ERR_PACKET_DATA_FIELD_3         = 1010000216;
-   		ERR_PACKET_CHECK_SUM            = 1010000217;
-   		ERR_PACKET_UNKNOWN_REQUEST      = 1010000218;          // 不明请求
-   		ERR_PACKET_END                  = 1010000299;
+        ERR_PACKET_ENCODE               = 1010000201;          // 打包失败
+        ERR_PACKET_DECODE               = 1010000202;          // 解码失败
+        ERR_PACKET_HEADER               = 1010000203;
+        ERR_PACKET_LEN                  = 1010000204;
+        ERR_PACKET_VERSION              = 1010000205;
+        ERR_PACKET_FROM_SERVICE_ID      = 1010000206;
+        ERR_PACKET_TO_SERVICE_ID        = 1010000207;
+        ERR_PACKET_APP_ID               = 1010000208;
+        ERR_PACKET_APP_VERSION          = 1010000209;
+        ERR_PACKET_CONN_SEQ_ID          = 1010000210;
+        ERR_PACKET_MSG_SEQ_ID           = 1010000211;
+        ERR_PACKET_DATA_FORMAT          = 1010000212;
+        ERR_PACKET_DATA_FIELD_0         = 1010000213;
+        ERR_PACKET_DATA_FIELD_1         = 1010000214;
+        ERR_PACKET_DATA_FIELD_2         = 1010000215;
+        ERR_PACKET_DATA_FIELD_3         = 1010000216;
+        ERR_PACKET_CHECK_SUM            = 1010000217;
+        ERR_PACKET_UNKNOWN_REQUEST      = 1010000218;          // 不明请求
+        ERR_PACKET_END                  = 1010000299;
 
         // 接口错误码
         ERR_INTERFACE_BEGIN             = 1010000300;
@@ -236,25 +236,25 @@
 
         // 数据包错误码
         ERR_PACKET_BEGIN                = 1010000200;
-   		ERR_PACKET_ENCODE               = 1010000201;          // 打包失败
-   		ERR_PACKET_DECODE               = 1010000202;          // 解码失败
-   		ERR_PACKET_HEADER               = 1010000203;
-   		ERR_PACKET_LEN                  = 1010000204;
-   		ERR_PACKET_VERSION              = 1010000205;
-   		ERR_PACKET_FROM_SERVICE_ID      = 1010000206;
-   		ERR_PACKET_TO_SERVICE_ID        = 1010000207;
-   		ERR_PACKET_APP_ID               = 1010000208;
-   		ERR_PACKET_APP_VERSION          = 1010000209;
-   		ERR_PACKET_CONN_SEQ_ID          = 1010000210;
-   		ERR_PACKET_MSG_SEQ_ID           = 1010000211;
-   		ERR_PACKET_DATA_FORMAT          = 1010000212;
-   		ERR_PACKET_DATA_FIELD_0         = 1010000213;
-   		ERR_PACKET_DATA_FIELD_1         = 1010000214;
-   		ERR_PACKET_DATA_FIELD_2         = 1010000215;
-   		ERR_PACKET_DATA_FIELD_3         = 1010000216;
-   		ERR_PACKET_CHECK_SUM            = 1010000217;
-   		ERR_PACKET_UNKNOWN_REQUEST      = 1010000218;          // 不明请求
-   		ERR_PACKET_END                  = 1010000299;
+        ERR_PACKET_ENCODE               = 1010000201;          // 打包失败
+        ERR_PACKET_DECODE               = 1010000202;          // 解码失败
+        ERR_PACKET_HEADER               = 1010000203;
+        ERR_PACKET_LEN                  = 1010000204;
+        ERR_PACKET_VERSION              = 1010000205;
+        ERR_PACKET_FROM_SERVICE_ID      = 1010000206;
+        ERR_PACKET_TO_SERVICE_ID        = 1010000207;
+        ERR_PACKET_APP_ID               = 1010000208;
+        ERR_PACKET_APP_VERSION          = 1010000209;
+        ERR_PACKET_CONN_SEQ_ID          = 1010000210;
+        ERR_PACKET_MSG_SEQ_ID           = 1010000211;
+        ERR_PACKET_DATA_FORMAT          = 1010000212;
+        ERR_PACKET_DATA_FIELD_0         = 1010000213;
+        ERR_PACKET_DATA_FIELD_1         = 1010000214;
+        ERR_PACKET_DATA_FIELD_2         = 1010000215;
+        ERR_PACKET_DATA_FIELD_3         = 1010000216;
+        ERR_PACKET_CHECK_SUM            = 1010000217;
+        ERR_PACKET_UNKNOWN_REQUEST      = 1010000218;          // 不明请求
+        ERR_PACKET_END                  = 1010000299;
 
         // 接口错误码
         ERR_INTERFACE_BEGIN             = 1010000300;
