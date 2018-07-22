@@ -301,10 +301,10 @@
                 "service": "gate",
                 "service_id": 1,
                 "heartbeat": {
-                    "heartbeat_ip": in_ip",             //用in_ip或out_ip做心跳
-                    "heartbeat_gap": 5,                 //心跳探测间隔
-                    "lose_time": 3,                     //服务丢失次数
-                    "recover_time": 5                   //服务恢复次数
+                    "heartbeat_ip": in_ip",             // 用in_ip或out_ip做心跳
+                    "heartbeat_gap": 5,                 // 心跳探测间隔
+                    "lose_time": 3,                     // 服务丢失次数
+                    "recover_time": 5                   // 服务恢复次数
                 },
                 "file_path": {
                     "depend": "./depend_gate.conf",
@@ -350,15 +350,15 @@
         "service": "gate",
         "idc_list": [
             {
-                "idc": "shenzhen_01",                       //地区机房分组
+                "idc": "shenzhen_01",                       // 地区机房分组
                 "set_list": [
                     {
-                        "set": "set_01",                    //机房内部分组
+                        "set": "set_01",                    // 机房内部分组
                         "heartbeat_list": [
                             {
                                 "id": "id_01",
-                                "in_ip": "121.1.1.1",       //内网ip
-                                "out_ip": "11.1.1.1",       //外网ip,没外网填内网ip
+                                "in_ip": "121.1.1.1",       // 内网ip
+                                "out_ip": "11.1.1.1",       // 外网ip,没外网填内网ip
                                 "port": 11001
                             }
                         ],
