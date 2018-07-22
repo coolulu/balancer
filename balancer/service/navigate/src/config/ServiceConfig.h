@@ -118,7 +118,7 @@ public:
 	bool add_service_depend(unsigned short service_id, unsigned short depend_service_id);
 
 	// 根据service_id，depend_service_id，删除depend_map的depend_service_id
-	bool del_service_depend(unsigned short service_id, unsigned short epend_service_id);
+	bool del_service_depend(unsigned short service_id, unsigned short depend_service_id);
 
 	// 根据service_id，key，value，修改kv_map的key对应val
 	bool set_service_kv(unsigned short service_id, const KV& kv);
