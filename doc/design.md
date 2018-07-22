@@ -91,20 +91,25 @@
 
         // 公共数据包错误码 (各个服务service_id * 100000 + 公共数据包错误码)
         ERR_PACKET_BEGIN                = 200;
-        ERR_PACKET_ENCODE               = 201;          // 打包失败
-        ERR_PACKET_DECODE               = 202;          // 解码失败
-        ERR_PACKET_VERSION              = 203;
-        ERR_PACKET_LEN                  = 204;
-        ERR_PACKET_VERSION              = 205;
-        ERR_PACKET_TO_SERVICE_ID        = 206;
-        ERR_PACKET_FROM_SERVICE_ID      = 207;
-        ERR_PACKET_APP_ID               = 208;
-        ERR_PACKET_APP_VERSION          = 209;
-        ERR_PACKET_SESSION_ID           = 210;
-        ERR_PACKET_DATA_FORMAT          = 211;
-        ERR_PACKET_CRC                  = 212;
-        ERR_PACKET_UNKNOWN_REQUEST      = 213;          // 不明请求
-        ERR_PACKET_END                  = 299;
+   		ERR_PACKET_ENCODE               = 201;          // 打包失败
+   		ERR_PACKET_DECODE               = 202;          // 解码失败
+   		ERR_PACKET_HEADER               = 203;
+   		ERR_PACKET_LEN                  = 204;
+   		ERR_PACKET_VERSION              = 205;
+   		ERR_PACKET_FROM_SERVICE_ID      = 206;
+   		ERR_PACKET_TO_SERVICE_ID        = 207;
+   		ERR_PACKET_APP_ID               = 208;
+   		ERR_PACKET_APP_VERSION          = 209;
+   		ERR_PACKET_CONN_SEQ_ID          = 210;
+   		ERR_PACKET_MSG_SEQ_ID           = 211;
+   		ERR_PACKET_DATA_FORMAT          = 212;
+   		ERR_PACKET_DATA_FIELD_0         = 213;
+   		ERR_PACKET_DATA_FIELD_1         = 214;
+   		ERR_PACKET_DATA_FIELD_2         = 215;
+   		ERR_PACKET_DATA_FIELD_3         = 216;
+   		ERR_PACKET_CHECK_SUM            = 217;
+   		ERR_PACKET_UNKNOWN_REQUEST      = 218;          // 不明请求
+   		ERR_PACKET_END                  = 299;
 
         // 公共接口错误码 (各个服务service_id * 100000 + 公共接口错误码)
         ERR_INTERFACE_BEGIN             = 300;
@@ -132,7 +137,7 @@
     enum ErrorCode {
         ERR_BEGIN                       = 1010000000;
 
-        // 系统错误码0
+        // 系统错误码
         ERR_SYS_BEGIN                   = 1010000100;
         ERR_SYS_OVERLOAD                = 1010000101;       // 服务过载
         ERR_SYS_REJECT_SERVICE          = 1010000102;       // 拒绝服务
@@ -143,34 +148,39 @@
         ERR_SYS_TASK_DISCARD            = 1010000107;       // 任务丢弃
         ERR_SYS_END                     = 1010000199;
 
-        // 数据包错误码0
+        // 数据包错误码
         ERR_PACKET_BEGIN                = 1010000200;
-        ERR_PACKET_ENCODE               = 1010000201;       // 打包失败
-        ERR_PACKET_DECODE               = 1010000202;       // 解码失败
-        ERR_PACKET_VERSION              = 1010000203;
-        ERR_PACKET_LEN                  = 1010000204;
-        ERR_PACKET_VERSION              = 1010000205;
-        ERR_PACKET_TO_SERVICE_ID        = 1010000206;
-        ERR_PACKET_FROM_SERVICE_ID      = 1010000207;
-        ERR_PACKET_APP_ID               = 1010000208;
-        ERR_PACKET_APP_VERSION          = 1010000209;
-        ERR_PACKET_SESSION_ID           = 1010000210;
-        ERR_PACKET_DATA_FORMAT          = 1010000211;
-        ERR_PACKET_CRC                  = 1010000212;
-        ERR_PACKET_UNKNOWN_REQUEST      = 1010000213;       // 不明请求
-        ERR_PACKET_END                  = 1010000299;
+   		ERR_PACKET_ENCODE               = 1010000201;          // 打包失败
+   		ERR_PACKET_DECODE               = 1010000202;          // 解码失败
+   		ERR_PACKET_HEADER               = 1010000203;
+   		ERR_PACKET_LEN                  = 1010000204;
+   		ERR_PACKET_VERSION              = 1010000205;
+   		ERR_PACKET_FROM_SERVICE_ID      = 1010000206;
+   		ERR_PACKET_TO_SERVICE_ID        = 1010000207;
+   		ERR_PACKET_APP_ID               = 1010000208;
+   		ERR_PACKET_APP_VERSION          = 1010000209;
+   		ERR_PACKET_CONN_SEQ_ID          = 1010000210;
+   		ERR_PACKET_MSG_SEQ_ID           = 1010000211;
+   		ERR_PACKET_DATA_FORMAT          = 1010000212;
+   		ERR_PACKET_DATA_FIELD_0         = 1010000213;
+   		ERR_PACKET_DATA_FIELD_1         = 1010000214;
+   		ERR_PACKET_DATA_FIELD_2         = 1010000215;
+   		ERR_PACKET_DATA_FIELD_3         = 1010000216;
+   		ERR_PACKET_CHECK_SUM            = 1010000217;
+   		ERR_PACKET_UNKNOWN_REQUEST      = 1010000218;          // 不明请求
+   		ERR_PACKET_END                  = 1010000299;
 
-        // 接口错误码0
+        // 接口错误码
         ERR_INTERFACE_BEGIN             = 1010000300;
         ERR_INTERFACE_PARAM             = 1010000301;       // 参数错误
         ERR_INTERFACE_PERM              = 1010000302;       // 权限错误
         ERR_INTERFACE_END               = 1010000399;
 
-        // 业务错误码0
+        // 业务错误码
         ERR_BUSINESS_BEGIN              = 1010010000;
         ERR_USERID_NO_EXIST             = 1010010001;
 
-        ERR_BEGIN                       = 1010099999;
+        ERR_END                         = 1010099999;
     }
 
     message GateMsg {                                       // 奇数是请求，偶数是响应
@@ -213,7 +223,7 @@
 
         ERR_BEGIN                       = 1010000000;
 
-        // 系统错误码0
+        // 系统错误码
         ERR_SYS_BEGIN                   = 1010000100;
         ERR_SYS_OVERLOAD                = 1010000101;       // 服务过载
         ERR_SYS_REJECT_SERVICE          = 1010000102;       // 拒绝服务
@@ -224,34 +234,39 @@
         ERR_SYS_TASK_DISCARD            = 1010000107;       // 任务丢弃
         ERR_SYS_END                     = 1010000199;
 
-        // 数据包错误码0
+        // 数据包错误码
         ERR_PACKET_BEGIN                = 1010000200;
-        ERR_PACKET_ENCODE               = 1010000201;       // 打包失败
-        ERR_PACKET_DECODE               = 1010000202;       // 解码失败
-        ERR_PACKET_VERSION              = 1010000203;
-        ERR_PACKET_LEN                  = 1010000204;
-        ERR_PACKET_VERSION              = 1010000205;
-        ERR_PACKET_TO_SERVICE_ID        = 1010000206;
-        ERR_PACKET_FROM_SERVICE_ID      = 1010000207;
-        ERR_PACKET_APP_ID               = 1010000208;
-        ERR_PACKET_APP_VERSION          = 1010000209;
-        ERR_PACKET_SESSION_ID           = 1010000210;
-        ERR_PACKET_DATA_FORMAT          = 1010000211;
-        ERR_PACKET_CRC                  = 1010000212;
-        ERR_PACKET_UNKNOWN_REQUEST      = 1010000213;       // 不明请求
-        ERR_PACKET_END                  = 1010000299;
+   		ERR_PACKET_ENCODE               = 1010000201;          // 打包失败
+   		ERR_PACKET_DECODE               = 1010000202;          // 解码失败
+   		ERR_PACKET_HEADER               = 1010000203;
+   		ERR_PACKET_LEN                  = 1010000204;
+   		ERR_PACKET_VERSION              = 1010000205;
+   		ERR_PACKET_FROM_SERVICE_ID      = 1010000206;
+   		ERR_PACKET_TO_SERVICE_ID        = 1010000207;
+   		ERR_PACKET_APP_ID               = 1010000208;
+   		ERR_PACKET_APP_VERSION          = 1010000209;
+   		ERR_PACKET_CONN_SEQ_ID          = 1010000210;
+   		ERR_PACKET_MSG_SEQ_ID           = 1010000211;
+   		ERR_PACKET_DATA_FORMAT          = 1010000212;
+   		ERR_PACKET_DATA_FIELD_0         = 1010000213;
+   		ERR_PACKET_DATA_FIELD_1         = 1010000214;
+   		ERR_PACKET_DATA_FIELD_2         = 1010000215;
+   		ERR_PACKET_DATA_FIELD_3         = 1010000216;
+   		ERR_PACKET_CHECK_SUM            = 1010000217;
+   		ERR_PACKET_UNKNOWN_REQUEST      = 1010000218;          // 不明请求
+   		ERR_PACKET_END                  = 1010000299;
 
-        // 接口错误码0
+        // 接口错误码
         ERR_INTERFACE_BEGIN             = 1010000300;
         ERR_INTERFACE_PARAM             = 1010000301;       // 参数错误
         ERR_INTERFACE_PERM              = 1010000302;       // 权限错误
         ERR_INTERFACE_END               = 1010000399;
 
-        // 业务错误码0
+        // 业务错误码
         ERR_BUSINESS_BEGIN              = 1010010000;
         ERR_USERID_NO_EXIST             = 1010010001;
 
-        ERR_BEGIN                       = 1010099999;
+        ERR_END                         = 1010099999;
     }
 
     message GateMsg {                                       // 奇数是请求，偶数是响应
