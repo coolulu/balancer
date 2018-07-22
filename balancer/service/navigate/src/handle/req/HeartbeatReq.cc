@@ -32,47 +32,52 @@ void HeartbeatReq::handle(const center::CenterMsg& msg)
 	B_LOG_INFO << "conf_update_time=" << req.conf_update_time();
 	B_LOG_INFO << "conf_json=" << req.conf_json();
 
+	int code = common::SUCCESS;
 	if(req.service_id() != Define::service_id)
 	{
+		code = center::ERR_PROBER_SERVICE_ID;
 		B_LOG_ERROR << "unknow service_id=" << req.service_id();
-		return;
 	}
-
-	unsigned int now = ::time(nullptr);
-	_proc._owner.update_owner_hb_time(now, req.level(), req.state());
-	if(req.conf_json().size() > 0)
+	else
 	{
-		// 更新配置
-		ServiceConfig sc;
-		std::string err = sc.json_to_map(req.conf_json());
-		if(err.empty())
+		unsigned int now = ::time(nullptr);
+		_proc._owner.update_owner_hb_time(now, req.level(), req.state());
+		if(req.conf_json().size() > 0)
 		{
-			InserviceService is;
-			bool b = is.load_ip_info(Define::service_id, sc);
-			if(b)
+			// 更新配置
+			ServiceConfig sc;
+			std::string err = sc.json_to_map(req.conf_json());
+			if(err.empty())
 			{
-				_proc._sc.assign(sc);
-				_proc._is.assign(is);
-				
-				_proc._owner.update_owner(req.level(), req.conf_update_time(), _packet_ptr->_msg_seq_id);
-				_proc._owner.update_owner_hb_time(now, req.level(), req.state());
+				InserviceService is;
+				bool b = is.load_ip_info(Define::service_id, sc);
+				if(b)
+				{
+					_proc._sc.assign(sc);
+					_proc._is.assign(is);
 
-				save_conf(req);
+					_proc._owner.update_owner(req.level(), req.conf_update_time(), _packet_ptr->_msg_seq_id);
+					_proc._owner.update_owner_hb_time(now, req.level(), req.state());
+
+					save_conf(req);
+				}
+				else
+				{
+					code = center::ERR_PROBER_CONF_LOAD_IP_INFO;
+					B_LOG_ERROR << "load_ip_info=false";
+				}
 			}
 			else
 			{
-				B_LOG_ERROR << "load_ip_info=false";
+				code = center::ERR_PROBER_CONF_JSON_TO_MAP;
+				B_LOG_ERROR << "json_to_map=false, err=" << err;
 			}
-		}
-		else
-		{
-			B_LOG_ERROR << "json_to_map=false, err=" << err;
 		}
 	}
 
 	PacketPtr packet_ptr_rsp(new Packet(_packet_ptr->_from_service_id, 0, 0, 0, 0, _packet_ptr->_msg_seq_id));
 	CenterStack::HeartbeatRsp(packet_ptr_rsp->_body,
-		common::SUCCESS,
+		code,
 		"",
 		req.level(),
 		req.service_id(),
@@ -103,6 +108,8 @@ void HeartbeatReq::save_conf(const center::HeartbeatReq& req)
 	std::string str = oss.str();
 	std::string conf_file = Define::service_name + '_' + std::to_string(_proc._conf_id) + Define::conf_file_postfix;
 	Util::bin_2_file(conf_file, str.c_str(), str.size());
+
+	B_LOG_INFO << "conf_file=" << conf_file << ", str=" << str;
 }
 
 
