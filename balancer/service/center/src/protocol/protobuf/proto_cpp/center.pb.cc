@@ -54,7 +54,7 @@ namespace protobuf_center_2eproto {
 namespace {
 
 ::google::protobuf::Metadata file_level_metadata[5];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[3];
 
 }  // namespace
 
@@ -204,12 +204,42 @@ void AddDescriptorsImpl() {
       "2\017.center.TestRspH\000\022-\n\rHeartbeat_req\030\003 \001"
       "(\0132\024.center.HeartbeatReqH\000\022-\n\rHeartbeat_"
       "rsp\030\004 \001(\0132\024.center.HeartbeatRspH\000B\010\n\006cho"
-      "ice*7\n\005State\022\017\n\013STATE_BEGIN\020\000\022\r\n\tHEARTBE"
-      "AT\020d\022\016\n\tINSERVICE\020\310\001*)\n\005Level\022\017\n\013LEVEL_B"
-      "EGIN\020\000\022\017\n\nINIT_LEVEL\020\350\007b\006proto3"
+      "ice*\256\t\n\tErrorCode\022\013\n\007SUCCESS\020\000\022\021\n\tERR_BE"
+      "GIN\020\200\301\315\341\003\022\025\n\rERR_SYS_BEGIN\020\344\301\315\341\003\022\030\n\020ERR_"
+      "SYS_OVERLOAD\020\345\301\315\341\003\022\036\n\026ERR_SYS_REJECT_SER"
+      "VICE\020\346\301\315\341\003\022\034\n\024ERR_SYS_SERVER_INNER\020\347\301\315\341\003"
+      "\022\027\n\017ERR_SYS_TIMEOUT\020\350\301\315\341\003\022!\n\031ERR_SYS_NO_"
+      "INSERVICE_LIST\020\351\301\315\341\003\022\032\n\022ERR_SYS_TASK_STA"
+      "TE\020\352\301\315\341\003\022\034\n\024ERR_SYS_TASK_DISCARD\020\353\301\315\341\003\022\023"
+      "\n\013ERR_SYS_END\020\307\302\315\341\003\022\030\n\020ERR_PACKET_BEGIN\020"
+      "\310\302\315\341\003\022\031\n\021ERR_PACKET_ENCODE\020\311\302\315\341\003\022\031\n\021ERR_"
+      "PACKET_DECODE\020\312\302\315\341\003\022\031\n\021ERR_PACKET_HEADER"
+      "\020\313\302\315\341\003\022\026\n\016ERR_PACKET_LEN\020\314\302\315\341\003\022\032\n\022ERR_PA"
+      "CKET_VERSION\020\315\302\315\341\003\022\"\n\032ERR_PACKET_FROM_SE"
+      "RVICE_ID\020\316\302\315\341\003\022 \n\030ERR_PACKET_TO_SERVICE_"
+      "ID\020\317\302\315\341\003\022\031\n\021ERR_PACKET_APP_ID\020\320\302\315\341\003\022\036\n\026E"
+      "RR_PACKET_APP_VERSION\020\321\302\315\341\003\022\036\n\026ERR_PACKE"
+      "T_CONN_SEQ_ID\020\322\302\315\341\003\022\035\n\025ERR_PACKET_MSG_SE"
+      "Q_ID\020\323\302\315\341\003\022\036\n\026ERR_PACKET_DATA_FORMAT\020\324\302\315"
+      "\341\003\022\037\n\027ERR_PACKET_DATA_FIELD_0\020\325\302\315\341\003\022\037\n\027E"
+      "RR_PACKET_DATA_FIELD_1\020\326\302\315\341\003\022\037\n\027ERR_PACK"
+      "ET_DATA_FIELD_2\020\327\302\315\341\003\022\037\n\027ERR_PACKET_DATA"
+      "_FIELD_3\020\330\302\315\341\003\022\034\n\024ERR_PACKET_CHECK_SUM\020\331"
+      "\302\315\341\003\022\"\n\032ERR_PACKET_UNKNOWN_REQUEST\020\332\302\315\341\003"
+      "\022\026\n\016ERR_PACKET_END\020\253\303\315\341\003\022\033\n\023ERR_INTERFAC"
+      "E_BEGIN\020\254\303\315\341\003\022\033\n\023ERR_INTERFACE_PARAM\020\255\303\315"
+      "\341\003\022\032\n\022ERR_INTERFACE_PERM\020\256\303\315\341\003\022\031\n\021ERR_IN"
+      "TERFACE_END\020\217\304\315\341\003\022\032\n\022ERR_BUSINESS_BEGIN\020"
+      "\220\217\316\341\003\022\"\n\032ERR_PROBER_SERVICE_TIMEOUT\020\221\217\316\341"
+      "\003\022\035\n\025ERR_PROBER_SERVICE_ID\020\222\217\316\341\003\022#\n\033ERR_"
+      "PROBER_CONF_JSON_TO_MAP\020\223\217\316\341\003\022$\n\034ERR_PRO"
+      "BER_CONF_LOAD_IP_INFO\020\224\217\316\341\003\022\017\n\007ERR_END\020\237"
+      "\316\323\341\003*7\n\005State\022\017\n\013STATE_BEGIN\020\000\022\r\n\tHEARTB"
+      "EAT\020d\022\016\n\tINSERVICE\020\310\001*)\n\005Level\022\017\n\013LEVEL_"
+      "BEGIN\020\000\022\017\n\nINIT_LEVEL\020\350\007b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 631);
+      descriptor, 1832);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "center.proto", &protobuf_RegisterTypes);
 }
@@ -228,9 +258,62 @@ struct StaticDescriptorInitializer {
 
 }  // namespace protobuf_center_2eproto
 
-const ::google::protobuf::EnumDescriptor* State_descriptor() {
+const ::google::protobuf::EnumDescriptor* ErrorCode_descriptor() {
   protobuf_center_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_center_2eproto::file_level_enum_descriptors[0];
+}
+bool ErrorCode_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1010000000:
+    case 1010000100:
+    case 1010000101:
+    case 1010000102:
+    case 1010000103:
+    case 1010000104:
+    case 1010000105:
+    case 1010000106:
+    case 1010000107:
+    case 1010000199:
+    case 1010000200:
+    case 1010000201:
+    case 1010000202:
+    case 1010000203:
+    case 1010000204:
+    case 1010000205:
+    case 1010000206:
+    case 1010000207:
+    case 1010000208:
+    case 1010000209:
+    case 1010000210:
+    case 1010000211:
+    case 1010000212:
+    case 1010000213:
+    case 1010000214:
+    case 1010000215:
+    case 1010000216:
+    case 1010000217:
+    case 1010000218:
+    case 1010000299:
+    case 1010000300:
+    case 1010000301:
+    case 1010000302:
+    case 1010000399:
+    case 1010010000:
+    case 1010010001:
+    case 1010010002:
+    case 1010010003:
+    case 1010010004:
+    case 1010099999:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* State_descriptor() {
+  protobuf_center_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_center_2eproto::file_level_enum_descriptors[1];
 }
 bool State_IsValid(int value) {
   switch (value) {
@@ -245,7 +328,7 @@ bool State_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* Level_descriptor() {
   protobuf_center_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_center_2eproto::file_level_enum_descriptors[1];
+  return protobuf_center_2eproto::file_level_enum_descriptors[2];
 }
 bool Level_IsValid(int value) {
   switch (value) {
