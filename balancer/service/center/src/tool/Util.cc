@@ -257,3 +257,35 @@ int Util::daemon_run()
 
 	//daemon(0, 0);
 }
+
+short Util::str_2_short(const std::string& str)
+{
+	std::istringstream is(str);
+	short i;
+	is >> i;
+	return i;
+}
+
+unsigned short Util::str_2_ushort(const std::string& str)
+{
+	std::istringstream is(str);
+	unsigned short i;
+	is >> i;
+	return i;
+}
+
+int Util::str_2_int(const std::string& str)
+{
+	std::istringstream is(str);
+	int i;
+	is >> i;
+	return i;
+}
+
+unsigned int Util::str_2_uint(const std::string& str)
+{
+	std::istringstream is(str);
+	unsigned int i;
+	is >> i;
+	return i;
+}

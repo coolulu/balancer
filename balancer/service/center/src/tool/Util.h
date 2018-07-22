@@ -22,6 +22,11 @@ namespace Util
 
 	int daemon_run();
 
+	short str_2_short(const std::string& str);
+	unsigned short str_2_ushort(const std::string& str);
+	int str_2_int(const std::string& str);
+	unsigned int str_2_uint(const std::string& str);
+
 }
 
 
