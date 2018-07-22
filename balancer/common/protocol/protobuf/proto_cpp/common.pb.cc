@@ -80,11 +80,34 @@ namespace {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\014common.proto\022\006common*\030\n\tErrorCode\022\013\n\007S"
-      "UCCESS\020\000b\006proto3"
+      "\n\014common.proto\022\006common*\246\007\n\tErrorCode\022\013\n\007"
+      "SUCCESS\020\000\022\021\n\rERR_SYS_BEGIN\020d\022\024\n\020ERR_SYS_"
+      "OVERLOAD\020e\022\032\n\026ERR_SYS_REJECT_SERVICE\020f\022\030"
+      "\n\024ERR_SYS_SERVER_INNER\020g\022\023\n\017ERR_SYS_TIME"
+      "OUT\020h\022\035\n\031ERR_SYS_NO_INSERVICE_LIST\020i\022\026\n\022"
+      "ERR_SYS_TASK_STATE\020j\022\030\n\024ERR_SYS_TASK_DIS"
+      "CARD\020k\022\020\n\013ERR_SYS_END\020\307\001\022\025\n\020ERR_PACKET_B"
+      "EGIN\020\310\001\022\026\n\021ERR_PACKET_ENCODE\020\311\001\022\026\n\021ERR_P"
+      "ACKET_DECODE\020\312\001\022\026\n\021ERR_PACKET_HEADER\020\313\001\022"
+      "\023\n\016ERR_PACKET_LEN\020\314\001\022\027\n\022ERR_PACKET_VERSI"
+      "ON\020\315\001\022\037\n\032ERR_PACKET_FROM_SERVICE_ID\020\316\001\022\035"
+      "\n\030ERR_PACKET_TO_SERVICE_ID\020\317\001\022\026\n\021ERR_PAC"
+      "KET_APP_ID\020\320\001\022\033\n\026ERR_PACKET_APP_VERSION\020"
+      "\321\001\022\033\n\026ERR_PACKET_CONN_SEQ_ID\020\322\001\022\032\n\025ERR_P"
+      "ACKET_MSG_SEQ_ID\020\323\001\022\033\n\026ERR_PACKET_DATA_F"
+      "ORMAT\020\324\001\022\034\n\027ERR_PACKET_DATA_FIELD_0\020\325\001\022\034"
+      "\n\027ERR_PACKET_DATA_FIELD_1\020\326\001\022\034\n\027ERR_PACK"
+      "ET_DATA_FIELD_2\020\327\001\022\034\n\027ERR_PACKET_DATA_FI"
+      "ELD_3\020\330\001\022\031\n\024ERR_PACKET_CHECK_SUM\020\331\001\022\037\n\032E"
+      "RR_PACKET_UNKNOWN_REQUEST\020\332\001\022\023\n\016ERR_PACK"
+      "ET_END\020\253\002\022\030\n\023ERR_INTERFACE_BEGIN\020\254\002\022\030\n\023E"
+      "RR_INTERFACE_PARAM\020\255\002\022\027\n\022ERR_INTERFACE_P"
+      "ERM\020\256\002\022\026\n\021ERR_INTERFACE_END\020\217\003\022\027\n\022ERR_BU"
+      "SINESS_BEGIN\020\220N\022\026\n\020ERR_BUSINESS_END\020\237\215\006b"
+      "\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 56);
+      descriptor, 967);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
 }
@@ -110,6 +133,41 @@ const ::google::protobuf::EnumDescriptor* ErrorCode_descriptor() {
 bool ErrorCode_IsValid(int value) {
   switch (value) {
     case 0:
+    case 100:
+    case 101:
+    case 102:
+    case 103:
+    case 104:
+    case 105:
+    case 106:
+    case 107:
+    case 199:
+    case 200:
+    case 201:
+    case 202:
+    case 203:
+    case 204:
+    case 205:
+    case 206:
+    case 207:
+    case 208:
+    case 209:
+    case 210:
+    case 211:
+    case 212:
+    case 213:
+    case 214:
+    case 215:
+    case 216:
+    case 217:
+    case 218:
+    case 299:
+    case 300:
+    case 301:
+    case 302:
+    case 399:
+    case 10000:
+    case 99999:
       return true;
     default:
       return false;

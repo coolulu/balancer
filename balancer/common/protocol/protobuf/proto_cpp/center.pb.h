@@ -66,6 +66,66 @@ void AddDescriptors();
 void InitDefaults();
 }  // namespace protobuf_center_2eproto
 
+enum ErrorCode {
+  SUCCESS = 0,
+  ERR_BEGIN = 1010000000,
+  ERR_SYS_BEGIN = 1010000100,
+  ERR_SYS_OVERLOAD = 1010000101,
+  ERR_SYS_REJECT_SERVICE = 1010000102,
+  ERR_SYS_SERVER_INNER = 1010000103,
+  ERR_SYS_TIMEOUT = 1010000104,
+  ERR_SYS_NO_INSERVICE_LIST = 1010000105,
+  ERR_SYS_TASK_STATE = 1010000106,
+  ERR_SYS_TASK_DISCARD = 1010000107,
+  ERR_SYS_END = 1010000199,
+  ERR_PACKET_BEGIN = 1010000200,
+  ERR_PACKET_ENCODE = 1010000201,
+  ERR_PACKET_DECODE = 1010000202,
+  ERR_PACKET_HEADER = 1010000203,
+  ERR_PACKET_LEN = 1010000204,
+  ERR_PACKET_VERSION = 1010000205,
+  ERR_PACKET_FROM_SERVICE_ID = 1010000206,
+  ERR_PACKET_TO_SERVICE_ID = 1010000207,
+  ERR_PACKET_APP_ID = 1010000208,
+  ERR_PACKET_APP_VERSION = 1010000209,
+  ERR_PACKET_CONN_SEQ_ID = 1010000210,
+  ERR_PACKET_MSG_SEQ_ID = 1010000211,
+  ERR_PACKET_DATA_FORMAT = 1010000212,
+  ERR_PACKET_DATA_FIELD_0 = 1010000213,
+  ERR_PACKET_DATA_FIELD_1 = 1010000214,
+  ERR_PACKET_DATA_FIELD_2 = 1010000215,
+  ERR_PACKET_DATA_FIELD_3 = 1010000216,
+  ERR_PACKET_CHECK_SUM = 1010000217,
+  ERR_PACKET_UNKNOWN_REQUEST = 1010000218,
+  ERR_PACKET_END = 1010000299,
+  ERR_INTERFACE_BEGIN = 1010000300,
+  ERR_INTERFACE_PARAM = 1010000301,
+  ERR_INTERFACE_PERM = 1010000302,
+  ERR_INTERFACE_END = 1010000399,
+  ERR_BUSINESS_BEGIN = 1010010000,
+  ERR_PROBER_SERVICE_TIMEOUT = 1010010001,
+  ERR_PROBER_SERVICE_ID = 1010010002,
+  ERR_PROBER_CONF_JSON_TO_MAP = 1010010003,
+  ERR_PROBER_CONF_LOAD_IP_INFO = 1010010004,
+  ERR_END = 1010099999,
+  ErrorCode_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ErrorCode_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool ErrorCode_IsValid(int value);
+const ErrorCode ErrorCode_MIN = SUCCESS;
+const ErrorCode ErrorCode_MAX = ERR_END;
+const int ErrorCode_ARRAYSIZE = ErrorCode_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ErrorCode_descriptor();
+inline const ::std::string& ErrorCode_Name(ErrorCode value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ErrorCode_descriptor(), value);
+}
+inline bool ErrorCode_Parse(
+    const ::std::string& name, ErrorCode* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ErrorCode>(
+    ErrorCode_descriptor(), name, value);
+}
 enum State {
   STATE_BEGIN = 0,
   HEARTBEAT = 100,
@@ -1238,6 +1298,11 @@ inline CenterMsg::ChoiceCase CenterMsg::choice_case() const {
 namespace google {
 namespace protobuf {
 
+template <> struct is_proto_enum< ::center::ErrorCode> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::center::ErrorCode>() {
+  return ::center::ErrorCode_descriptor();
+}
 template <> struct is_proto_enum< ::center::State> : ::google::protobuf::internal::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::center::State>() {
