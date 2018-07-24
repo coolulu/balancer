@@ -19,7 +19,7 @@
 #include <signal.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-
+#include <sys/time.h> 
 
 int Util::get_local_ip(const char *pEthName,int& local_ip)
 {
@@ -288,4 +288,12 @@ unsigned int Util::str_2_uint(const std::string& str)
 	unsigned int i;
 	is >> i;
 	return i;
+}
+
+unsigned long long Util::get_us()
+{
+	struct timeval tv; 
+	::gettimeofday(&tv, NULL);  
+	return tv.tv_sec * 1000000 + tv.tv_usec;
+
 }

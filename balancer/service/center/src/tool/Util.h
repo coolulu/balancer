@@ -27,6 +27,7 @@ namespace Util
 	int str_2_int(const std::string& str);
 	unsigned int str_2_uint(const std::string& str);
 
+	unsigned long long get_us();
 }
 
 
