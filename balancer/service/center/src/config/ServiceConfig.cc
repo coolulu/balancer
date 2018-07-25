@@ -416,6 +416,9 @@ bool ServiceConfig::set_service_heartbeat(unsigned short service_id, const Heart
 		if(p != nullptr)
 		{
 			p->heartbeat = heartbeat;
+
+			// 触发center同步
+			_config_derivative.sync_config();
 			return true;
 		}
 	}
@@ -437,6 +440,9 @@ bool ServiceConfig::add_service_depend(unsigned short service_id, unsigned short
 				Depend depend;
 				depend.depend_service_id = depend_service_id;
 				p->depend_map.insert(std::make_pair(depend.depend_service_id, depend));
+
+				// 触发serivce配置同步，触发center配置同步
+				_config_derivative.sync_config(p->_service_derivative.sync_service());
 				return true;
 			}
 		}
@@ -456,6 +462,9 @@ bool ServiceConfig::del_service_depend(unsigned short service_id, unsigned short
 			if(it != p->depend_map.end())
 			{
 				p->depend_map.erase(it);
+
+				// 触发serivce配置同步，触发center配置同步
+				_config_derivative.sync_config(p->_service_derivative.sync_service());
 				return true;
 			}
 		}
@@ -475,6 +484,9 @@ bool ServiceConfig::set_service_kv(unsigned short service_id, const KV& kv)
 			if(it != p->kv_map.end())
 			{
 				it->second = kv;
+
+				// 触发serivce配置同步，触发center配置同步
+				_config_derivative.sync_config(p->_service_derivative.sync_service());
 				return true;
 			}
 		}
@@ -494,6 +506,9 @@ bool ServiceConfig::add_service_kv(unsigned short service_id, const KV& kv)
 			if(it == p->kv_map.end())
 			{
 				p->kv_map.insert(std::make_pair(kv.key, kv));
+
+				// 触发serivce配置同步，触发center配置同步
+				_config_derivative.sync_config(p->_service_derivative.sync_service());
 				return true;
 			}
 		}
@@ -513,6 +528,9 @@ bool ServiceConfig::del_service_kv(unsigned short service_id, const std::string&
 			if(it != p->kv_map.end())
 			{
 				p->kv_map.erase(key);
+
+				// 触发serivce配置同步，触发center配置同步
+				_config_derivative.sync_config(p->_service_derivative.sync_service());
 				return true;
 			}
 		}
@@ -533,6 +551,9 @@ bool ServiceConfig::add_service_heartbeat_list(unsigned short service_id, const 
 			if(it_heartbeat_list == p->heartbeat_list.end() && it_inservice_list == p->inservice_list.end())
 			{
 				p->heartbeat_list.push_back(ip_info);
+
+				// 只触发config配置同步，service配置不需要同步
+				_config_derivative.sync_config(ip_info._ip_info_derivative.update_time);
 				return true;
 			}
 		}
@@ -552,6 +573,9 @@ bool ServiceConfig::del_service_heartbeat_list(unsigned short service_id, unsign
 			if(it != p->heartbeat_list.end())
 			{
 				p->heartbeat_list.erase(it);
+
+				// 只触发config配置同步，service配置不需要同步
+				_config_derivative.sync_config();
 				return true;
 			}
 		}
@@ -572,6 +596,11 @@ bool ServiceConfig::add_service_inservice_list(unsigned short service_id, unsign
 			if(it_heartbeat_list != p->heartbeat_list.end() && it_inservice_list ==  p->inservice_list.end())
 			{
 				IPInfo ip_info = *it_heartbeat_list;
+
+				// 触发serivce配置同步，触发center配置同步
+				_config_derivative.sync_config(p->_service_derivative.sync_service(
+					ip_info._ip_info_derivative.update_time_now()));
+
 				p->heartbeat_list.erase(it_heartbeat_list);
 				p->inservice_list.push_back(ip_info);
 				return true;
@@ -594,6 +623,11 @@ bool ServiceConfig::del_service_inservice_list(unsigned short service_id, unsign
 			if(it_heartbeat_list == p->heartbeat_list.end() && it_inservice_list !=  p->inservice_list.end())
 			{
 				IPInfo ip_info = *it_inservice_list;
+
+				// 触发serivce配置同步，触发center配置同步
+				_config_derivative.sync_config(p->_service_derivative.sync_service(
+					ip_info._ip_info_derivative.update_time_now()));
+
 				p->inservice_list.erase(it_inservice_list);
 				p->heartbeat_list.push_back(ip_info);
 				return true;
@@ -621,6 +655,9 @@ bool ServiceConfig::add_service(unsigned short service_id, const std::string& se
 		service.service_name = service_name;	
 		service.heartbeat = heartbeat;
 		_service_map.insert(std::make_pair(service.service_id, service));
+
+		// 触发config配置同步
+		_config_derivative.sync_config(service._service_derivative.update_time);
 		return true;
 	}
 
@@ -635,6 +672,9 @@ bool ServiceConfig::del_service(unsigned short service_id)
 		if(it != _service_map.end())
 		{
 			_service_map.erase(it);
+
+			// 触发config配置同步
+			_config_derivative.sync_config();
 			return true;
 		}
 	}

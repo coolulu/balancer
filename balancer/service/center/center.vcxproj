@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\config\Config.cc" />
+    <ClCompile Include="src\config\Derivative.cc" />
     <ClCompile Include="src\config\ServiceConfig.cc" />
     <ClCompile Include="src\core\BHttpServer.cc" />
     <ClCompile Include="src\core\BTcpClient.cc" />
@@ -110,6 +111,7 @@
   <ItemGroup>
     <ClInclude Include="src\config\Config.h" />
     <ClInclude Include="src\config\ServiceConfig.h" />
+    <ClInclude Include="src\config\Derivative.h" />
     <ClInclude Include="src\core\BHttpServer.h" />
     <ClInclude Include="src\core\BTcpClient.h" />
     <ClInclude Include="src\core\BTcpClientPool.h" />

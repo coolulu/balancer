@@ -4,6 +4,7 @@
 #include <vector>
 #include <map>
 #include <rapidjson/document.h>
+#include "Derivative.h"
 
 namespace KeyServiceConfig
 {
@@ -73,6 +74,9 @@ public:
 		//不是配置文件里的变量
 		unsigned int		ip;					// in_ip转换过来
 		unsigned long long	key_ip_port;		// ip和port的组合key
+
+		// 附加属性
+		IPInfoDerivative _ip_info_derivative;
 	};
 
 	struct Service
@@ -86,6 +90,9 @@ public:
 		std::map<std::string, KV>			kv_map;
 		std::vector<IPInfo>					heartbeat_list;
 		std::vector<IPInfo>					inservice_list;
+
+		// 附加属性
+		ServiceDerivative _service_derivative;
 	};
 
 public:
@@ -164,5 +171,7 @@ private:
 private:
 	std::map<unsigned short, Service> _service_map;
 
+	// 附加属性
+	ConfigDerivative _config_derivative;
 };
 
