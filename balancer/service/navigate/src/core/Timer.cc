@@ -1,6 +1,7 @@
 #include "Timer.h"
 #include "log/Log.h"
 #include "Proc.h"
+#include "tool/Util.h"
 
 Timer::Timer(Proc& proc) : _proc(proc)
 {
@@ -14,23 +15,7 @@ Timer::~Timer()
 
 void Timer::check_timeout()
 {
-	if(_proc.reload())
-	{
-		_proc.set_reload(false);
-		B_LOG_INFO << "reload start";
+	unsigned long long now_us = Util::get_us();	
 
-		
-
-		B_LOG_INFO << "reload end";
-	}
-
-	if(_proc.stop())
-	{
-		_proc.set_stop(false);
-		B_LOG_INFO << "stop start";
-		_proc.quit();
-	}
-
-//	B_LOG_INFO << "seq=" << _proc._seq.make_seq();
-
+	_proc.check_flag();
 }
