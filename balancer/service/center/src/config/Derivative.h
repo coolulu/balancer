@@ -21,6 +21,7 @@ struct ServiceDerivative
 	unsigned long long sync_service();
 
 	unsigned long long update_time;
+	unsigned int probe_time;	//ÃΩ≤‚ ±º‰(√Î)
 };
 
 

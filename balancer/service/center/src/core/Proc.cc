@@ -89,3 +89,21 @@ void Proc::loop()
 	B_LOG_INFO;
 	_loop.loop();
 }
+
+void Proc::check_flag()
+{
+	if(s_reload_flag)
+	{
+		s_reload_flag = false;
+		B_LOG_INFO << "reload start";
+
+		B_LOG_INFO << "reload end";
+	}
+
+	if(s_stop_flag)
+	{
+		s_stop_flag = false;
+		B_LOG_INFO << "stop start";
+		quit();
+	}
+}

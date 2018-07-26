@@ -13,15 +13,14 @@ Prober::~Prober()
 
 }
 
-void Prober::probe()
+void Prober::probe(unsigned long long now_us)
 {
-	unsigned int t_now = ::time(nullptr);
+	unsigned int t_now = now_us / 1000 / 1000;
 	auto& service_map = _proc._sc.get_service_map();
 	for(auto it_service_map = service_map.begin(); it_service_map != service_map.end(); it_service_map++)	
 	{
 		ServiceConfig::Service& service = it_service_map->second;
-		auto p = get_service_probetime(service.service_id);
-		unsigned int gap = t_now - p->probe_time;
+		unsigned int gap = t_now - service._service_derivative.probe_time;
 		if(gap >= service.heartbeat.heartbeat_gap)
 		{
 			// 间隔时间到，需要发探测心跳
@@ -41,7 +40,7 @@ void Prober::probe()
 							<< ", heartbeat_enable=" << (service.heartbeat.heartbeat_enable ? "true" : "false")
 							<< ", heartbeat_gap=" << service.heartbeat.heartbeat_gap
 							<< ", t_now=" << t_now
-							<< ", probe_time=" << p->probe_time
+							<< ", probe_time=" << service._service_derivative.probe_time
 							<< ", gap=" << gap
 							<< ", heartbeat_list.size=" << heartbeat_list.size()
 							<< ", inservice_list.size=" << inservice_list.size();
@@ -55,7 +54,7 @@ void Prober::probe()
 								<< ", heartbeat_enable=" << (service.heartbeat.heartbeat_enable ? "true" : "false")
 								<< ", heartbeat_gap=" << service.heartbeat.heartbeat_gap
 								<< ", t_now=" << t_now
-								<< ", probe_time=" << p->probe_time
+								<< ", probe_time=" << service._service_derivative.probe_time
 								<< ", gap=" << gap
 								<< ", proc_id=" << ip_info.proc_id
 								<< ", proc_des=" << ip_info.proc_des
@@ -86,7 +85,7 @@ void Prober::probe()
 								<< ", heartbeat_enable=" << (service.heartbeat.heartbeat_enable ? "true" : "false")
 								<< ", heartbeat_gap=" << service.heartbeat.heartbeat_gap
 								<< ", t_now=" << t_now
-								<< ", probe_time=" << p->probe_time
+								<< ", probe_time=" << service._service_derivative.probe_time
 								<< ", gap=" << gap
 								<< ", proc_id=" << ip_info.proc_id
 								<< ", proc_des=" << ip_info.proc_des
@@ -116,25 +115,12 @@ void Prober::probe()
 							<< ", heartbeat_enable=" << (service.heartbeat.heartbeat_enable ? "true" : "false")
 							<< ", heartbeat_gap=" << service.heartbeat.heartbeat_gap
 							<< ", t_now=" << t_now
-							<< ", probe_time=" << p->probe_time
+							<< ", probe_time=" << service._service_derivative.probe_time
 							<< ", gap=" << gap;
 			}
 
-			p->probe_time = t_now;	// 更新最新探测时间
+			service._service_derivative.probe_time = t_now;	// 更新最新探测时间
 		}
 		
 	}
-}
-
-Probetime* Prober::get_service_probetime(unsigned short service_id)
-{
-	auto it = _service_probetime_map.find(service_id);
-	if(it == _service_probetime_map.end())
-	{
-		Probetime pt(service_id);
-		_service_probetime_map.insert(std::make_pair(pt.service_id, pt));
-		return get_service_probetime(service_id);
-	}
-
-	return &it->second;
 }

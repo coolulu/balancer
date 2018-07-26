@@ -19,7 +19,8 @@ void ConfigDerivative::sync_config()
 
 
 ServiceDerivative::ServiceDerivative()
-	:	update_time(Util::get_us())
+	:	update_time(Util::get_us()),
+		probe_time(0)
 {
 
 }

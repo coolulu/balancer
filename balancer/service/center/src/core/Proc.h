@@ -25,12 +25,11 @@ public:
 	void start();
 	void quit();
 	void loop();
+	void check_flag();
 
 public:
 	static inline void set_reload(bool b)	{Proc::s_reload_flag = b;}
 	static inline void set_stop(bool b)		{Proc::s_stop_flag = b;}
-	static inline bool reload()				{return Proc::s_reload_flag;}
-	static inline bool stop()				{return Proc::s_stop_flag;}
 
 private:
 	static bool s_reload_flag;

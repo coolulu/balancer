@@ -32,9 +32,9 @@ BTcpClientPtr BTcpClientPool::get_client(const ServiceConfig::IPInfo& ip_info)
 	return tcp_client_ptr;
 }
 
-void BTcpClientPool::check_idle()
+void BTcpClientPool::check_idle(unsigned long long now_us)
 {
-	unsigned int t_now = ::time(nullptr);
+	unsigned int t_now = now_us / 1000 / 1000;
 	for(auto it = _client_map.begin(); it != _client_map.end();)
 	{
 		bool b = it->second->check_idle(t_now);
