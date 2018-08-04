@@ -285,11 +285,11 @@
         (listen http * 1, connect tcp * n)
         10100:核心服务,cpu密集型,进程数等于cpu数
 
-        navigate -> [], <- [client, gate]
+        navigate -> [gate], <- [client]
         (listen http * 1, listen tcp * 1)
         10200:核心服务,cpu密集型,进程数等于cpu数
 
-        gate -> [client, navigate, logic, proxy], <- [client, logic]
+        gate -> [client, logic, proxy], <- [client, logic]
         (listen http * 1, listen tcp * 1, connect tcp * n)
         10300:核心服务,cpu密集型,进程数等于cpu数
 
