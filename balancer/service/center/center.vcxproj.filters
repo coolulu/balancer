@@ -39,8 +39,8 @@
     <Filter Include="src\handle">
       <UniqueIdentifier>{de8267a8-cee1-46d8-84e0-ebe45ea2cbcf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\handle\rsp">
-      <UniqueIdentifier>{d1befe3d-8ef1-453f-a5b7-34a16322cf2f}</UniqueIdentifier>
+    <Filter Include="src\handle\client">
+      <UniqueIdentifier>{5feb5165-992c-47a2-8888-c138b201689a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -167,14 +167,20 @@
     <ClCompile Include="src\config\ServiceConfig.cc">
       <Filter>src\config</Filter>
     </ClCompile>
-    <ClCompile Include="src\handle\HandleRsp.cc">
-      <Filter>src\handle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\handle\rsp\HeartbeatRsp.cc">
-      <Filter>src\handle\rsp</Filter>
-    </ClCompile>
     <ClCompile Include="src\config\Derivative.cc">
       <Filter>src\config</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\TaskMsgPool.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\handle\HandleClient.cc">
+      <Filter>src\handle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\handle\client\Heartbeat.cc">
+      <Filter>src\handle\client</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\TaskMsgBase.cc">
+      <Filter>src\core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -259,14 +265,20 @@
     <ClInclude Include="src\config\ServiceConfig.h">
       <Filter>src\config</Filter>
     </ClInclude>
-    <ClInclude Include="src\handle\HandleRsp.h">
-      <Filter>src\handle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\handle\rsp\HeartbeatRsp.h">
-      <Filter>src\handle\rsp</Filter>
-    </ClInclude>
     <ClInclude Include="src\config\Derivative.h">
       <Filter>src\config</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\TaskMsgPool.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\HandleClient.h">
+      <Filter>src\handle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\client\Heartbeat.h">
+      <Filter>src\handle\client</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\TaskMsgBase.h">
+      <Filter>src\core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
