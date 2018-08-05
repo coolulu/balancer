@@ -5,11 +5,11 @@
 
 class Proc;
 
-class HandleReq
+class HandleServer
 {
 public:
-	HandleReq(Proc& proc);
-	~HandleReq();
+	HandleServer(Proc& proc);
+	~HandleServer();
 
 public:
 	void handle(const muduo::net::TcpConnectionPtr& conn, 

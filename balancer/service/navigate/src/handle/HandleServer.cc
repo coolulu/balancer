@@ -1,22 +1,22 @@
-#include "HandleReq.h"
+#include "HandleServer.h"
 
 #include "core/Proc.h"
 #include "protocol/Protocol.h"
 
-#include "handle/req/HeartbeatReq.h"
+#include "handle/server/Heartbeat.h"
 
-HandleReq::HandleReq(Proc& proc)
+HandleServer::HandleServer(Proc& proc)
 	: _proc(proc)
 {
 
 }
 
-HandleReq::~HandleReq()
+HandleServer::~HandleServer()
 {
 
 }
 
-void HandleReq::handle(const muduo::net::TcpConnectionPtr& conn, 
+void HandleServer::handle(const muduo::net::TcpConnectionPtr& conn, 
 					   PacketPtr& packet_ptr, 
 					   muduo::Timestamp time)
 {
@@ -31,8 +31,8 @@ void HandleReq::handle(const muduo::net::TcpConnectionPtr& conn,
 		case center::CenterMsg::kHeartbeatReq:
 			{
 				B_LOG_INFO << "center::HeartbeatReq, _msg_seq_id=" << packet_ptr->_msg_seq_id;
-				HeartbeatReq req(_proc, conn, packet_ptr, time);
-				req.handle(msg);
+				Heartbeat hb(_proc, conn, packet_ptr, time);
+				hb.handle(msg);
 			}
 			break;
 

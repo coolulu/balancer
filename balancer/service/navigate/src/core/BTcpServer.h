@@ -4,7 +4,7 @@
 #include <muduo/net/TcpServer.h>
 
 #include "Codec.h"
-#include "handle/HandleReq.h"
+#include "handle/HandleServer.h"
 
 class Proc;
 
@@ -43,5 +43,5 @@ private:
 	std::map<unsigned long long, muduo::net::TcpConnectionPtr> _conn_map;
 
 	Codec _codec;
-	HandleReq _handle_req;
+	HandleServer _handle_server;
 };
