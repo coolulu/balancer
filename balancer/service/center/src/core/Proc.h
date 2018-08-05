@@ -10,6 +10,7 @@
 #include "Seq.h"
 #include "Prober.h"
 #include "BTcpClientPool.h"
+#include "TaskMsgPool.h"
 
 
 class Proc
@@ -45,6 +46,7 @@ public:
 	ServiceConfig _sc;
 	Prober _prober;
 	BTcpClientPool _tcp_client_pool;
+	TaskMsgPool _task_msg_pool;
 
 	Timer _timer;
 	BHttpServer _http_server;

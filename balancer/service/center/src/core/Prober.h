@@ -11,7 +11,7 @@ public:
 	~Prober();
 
 public:
-	void probe(unsigned long long now_us);
+	void probe();
 
 private:
 	Proc& _proc;

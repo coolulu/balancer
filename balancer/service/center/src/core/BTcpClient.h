@@ -7,7 +7,7 @@
 
 #include "config/ServiceConfig.h"
 #include "Codec.h"
-#include "handle/HandleRsp.h"
+#include "handle/HandleClient.h"
 
 class Proc;
 
@@ -49,7 +49,7 @@ private:
 	unsigned int _update_time;
 
 	Codec _codec;
-	HandleRsp _handle_rsp;
+	HandleClient _handle_client;
 };
 
 typedef boost::shared_ptr<BTcpClient> BTcpClientPtr;

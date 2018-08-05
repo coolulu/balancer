@@ -33,6 +33,7 @@ namespace KeyConfig
 	static const std::string& tcp_client_high_water_mark		= "tcp_client_high_water_mark";
 	static const std::string& tcp_client_msg_reduce_size		= "tcp_client_msg_reduce_size";
 	static const std::string& service_path						= "service_path";
+	static const std::string& prober_timeout_us					= "prober_timeout_us";
 }
 
 class Config
@@ -97,6 +98,7 @@ public:
 
 		unsigned short	level;
 		std::string		service_path;
+		unsigned int	prober_timeout_us;
 	};
 
 public:

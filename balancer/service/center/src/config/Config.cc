@@ -91,6 +91,8 @@ std::string Config::load(const std::string& json)
 			return err_is_not_uint(KeyConfig::level);
 		if(!get_string(cv, KeyConfig::service_path, proc.service_path))
 			return err_is_not_string(KeyConfig::service_path);
+		if(!get_uint(cv, KeyConfig::prober_timeout_us, proc.prober_timeout_us))
+			return err_is_not_uint(KeyConfig::prober_timeout_us);
 	}
 
 	return "";
@@ -225,7 +227,8 @@ std::string Config::to_string()
 			", proc.tcp_client_high_water_mark="		+ std::to_string(proc.tcp_client_high_water_mark) + 
 			", proc.tcp_client_msg_reduce_size="		+ std::to_string(proc.tcp_client_msg_reduce_size) + 
 			", proc.level="								+ std::to_string(proc.level) + 
-			", proc.service_path="						+ proc.service_path;
+			", proc.service_path="						+ proc.service_path + 
+			", proc.prober_timeout_us="					+ std::to_string(proc.prober_timeout_us);
 }
 
 

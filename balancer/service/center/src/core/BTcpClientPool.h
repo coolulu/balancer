@@ -16,7 +16,7 @@ public:
 
 public:
 	BTcpClientPtr get_client(const ServiceConfig::IPInfo& ip_info);
-	void check_idle(unsigned long long now_us);
+	void check_idle();
 
 public:
 	// key_ip_portµ½ClientµÄÓ³Éä

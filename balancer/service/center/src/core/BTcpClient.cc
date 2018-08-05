@@ -17,7 +17,7 @@ BTcpClient::BTcpClient(Proc& proc, const ServiceConfig::IPInfo& ip_info)
 		_codec(boost::bind(&BTcpClient::on_message, this, _1, _2, _3), ip_info.proc_des,
 			   proc._config.proc.tcp_client_recv_packet_len_max,
 			   proc._config.proc.tcp_client_send_packet_len_max),
-		_handle_rsp(proc)
+		_handle_client(proc)
 {
 	_create_time = ::time(nullptr);
 	_update_time = _create_time;
@@ -140,7 +140,18 @@ void BTcpClient::on_message(const muduo::net::TcpConnectionPtr& conn,
 			B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
 						<< ", msg_type is rsp" << ", code=" << msg_rsp.code() << ", info=" << msg_rsp.info();
 			
-			_handle_rsp.handle(conn, packet_ptr, time);
+			TaskMsgBase* task = _proc._task_msg_pool.find(packet_ptr->_msg_seq_id);
+			if(task == nullptr)
+			{
+				B_LOG_ERROR << "no find msg_seq_id=" << packet_ptr->_msg_seq_id;
+			}
+			else
+			{
+				task->_response = packet_ptr;
+				_handle_client.handle(conn, task, time);
+				_proc._task_msg_pool.del(packet_ptr->_msg_seq_id);
+				task = nullptr;
+			}	
 		}
 		break;
 

@@ -2,6 +2,9 @@
 #include "Proc.h"
 #include <ctime>
 #include "protocol/Protocol.h"
+#include "TaskMsgPool.h"
+#include "handle/client/Heartbeat.h"
+#include "tool/Util.h"
 
 Prober::Prober(Proc& proc) : _proc(proc)
 {
@@ -13,9 +16,11 @@ Prober::~Prober()
 
 }
 
-void Prober::probe(unsigned long long now_us)
+void Prober::probe()
 {
+	unsigned long long now_us = Util::get_us();	
 	unsigned int t_now = now_us / 1000 / 1000;
+
 	auto& service_map = _proc._sc.get_service_map();
 	for(auto it_service_map = service_map.begin(); it_service_map != service_map.end(); it_service_map++)	
 	{
@@ -64,16 +69,11 @@ void Prober::probe(unsigned long long now_us)
 								<< ", ip=" << ip_info.ip
 								<< ", key_ip_port=" << ip_info.key_ip_port;
 
-					PacketPtr packet_ptr(new Packet(service.service_id, 0, 0, 0, 0, _proc._seq.make_seq()));
-					CenterStack::HeartbeatReq(packet_ptr->_body,
-											  _proc._config.proc.level,
-											  service.service_id,
-											  ip_info.proc_id,
-											  center::HEARTBEAT,
-											  time(NULL), 
-											  "");
-
-					_proc._tcp_client_pool.get_client(ip_info)->send_msg(packet_ptr);
+					Heartbeat* hb = new Heartbeat(_proc,
+												  _proc._config.proc.prober_timeout_us,
+												  service.service_id,
+												  ip_info);
+					hb->run();
 				}
 
 				for(auto it = inservice_list.begin(); it != inservice_list.end(); it++)
@@ -95,16 +95,11 @@ void Prober::probe(unsigned long long now_us)
 								<< ", ip=" << ip_info.ip
 								<< ", key_ip_port=" << ip_info.key_ip_port;
 
-					PacketPtr packet_ptr(new Packet(service.service_id, 0, 0, 0, 0, _proc._seq.make_seq()));
-					CenterStack::HeartbeatReq(packet_ptr->_body,
-											  _proc._config.proc.level,
-											  service.service_id,
-											  ip_info.proc_id,
-											  center::HEARTBEAT,
-											  time(NULL), 
-											  "");
-
-					_proc._tcp_client_pool.get_client(ip_info)->send_msg(packet_ptr);
+					Heartbeat* hb = new Heartbeat(_proc,
+												  _proc._config.proc.prober_timeout_us,
+												  service.service_id,
+												  ip_info);
+					hb->run();
 				}
 			}
 			else
