@@ -36,6 +36,7 @@
 		"tcp_client_msg_reduce_size": 1000,
 
 		"level": 1,
-		"service_path": "./conf/service.json"
+		"service_path": "./conf/service.json",
+		"prober_timeout_us": 1000000
 	}
 }
