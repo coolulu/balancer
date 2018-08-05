@@ -18,9 +18,6 @@
     <Filter Include="src\handle">
       <UniqueIdentifier>{c20c95a0-541a-4f91-89c1-406ff21aceca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\handle\req">
-      <UniqueIdentifier>{757e8063-cdb5-478e-9083-fc5f907ce63a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\protocol\protobuf">
       <UniqueIdentifier>{2d4faed8-aaab-4f55-b035-1316b973a268}</UniqueIdentifier>
     </Filter>
@@ -41,6 +38,9 @@
     </Filter>
     <Filter Include="src\core">
       <UniqueIdentifier>{cb84ab17-c39c-4571-a831-bb3c3635776f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\handle\server">
+      <UniqueIdentifier>{cbae7937-575b-4048-8738-1dc059624dcf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -86,9 +86,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\handle\HandleReq.cc">
-      <Filter>src\handle</Filter>
-    </ClCompile>
     <ClCompile Include="src\protocol\protobuf\CenterStack.cc">
       <Filter>src\protocol\protobuf</Filter>
     </ClCompile>
@@ -124,9 +121,6 @@
     </ClCompile>
     <ClCompile Include="src\protocol\protobuf\proto_cpp\version.pb.cc">
       <Filter>src\protocol\protobuf\proto_cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="src\handle\req\HeartbeatReq.cc">
-      <Filter>src\handle\req</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cc">
       <Filter>src</Filter>
@@ -173,13 +167,16 @@
     <ClCompile Include="src\core\InserviceService.cc">
       <Filter>src\core</Filter>
     </ClCompile>
+    <ClCompile Include="src\handle\server\Heartbeat.cc">
+      <Filter>src\handle\server</Filter>
+    </ClCompile>
+    <ClCompile Include="src\handle\HandleServer.cc">
+      <Filter>src\handle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\protocol\Protocol.h">
       <Filter>src\protocol</Filter>
-    </ClInclude>
-    <ClInclude Include="src\handle\HandleReq.h">
-      <Filter>src\handle</Filter>
     </ClInclude>
     <ClInclude Include="src\protocol\protobuf\CenterStack.h">
       <Filter>src\protocol\protobuf</Filter>
@@ -216,9 +213,6 @@
     </ClInclude>
     <ClInclude Include="src\protocol\protobuf\proto_cpp\version.pb.h">
       <Filter>src\protocol\protobuf\proto_cpp</Filter>
-    </ClInclude>
-    <ClInclude Include="src\handle\req\HeartbeatReq.h">
-      <Filter>src\handle\req</Filter>
     </ClInclude>
     <ClInclude Include="src\define.h">
       <Filter>src</Filter>
@@ -264,6 +258,12 @@
     </ClInclude>
     <ClInclude Include="src\core\InserviceService.h">
       <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\server\Heartbeat.h">
+      <Filter>src\handle\server</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\HandleServer.h">
+      <Filter>src\handle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -89,8 +89,8 @@
     <ClCompile Include="src\core\Seq.cc" />
     <ClCompile Include="src\core\SignalHandle.cc" />
     <ClCompile Include="src\core\Timer.cc" />
-    <ClCompile Include="src\handle\HandleReq.cc" />
-    <ClCompile Include="src\handle\req\HeartbeatReq.cc" />
+    <ClCompile Include="src\handle\HandleServer.cc" />
+    <ClCompile Include="src\handle\server\Heartbeat.cc" />
     <ClCompile Include="src\log\Log.cc" />
     <ClCompile Include="src\main.cc" />
     <ClCompile Include="src\protocol\protobuf\CenterStack.cc" />
@@ -121,8 +121,8 @@
     <ClInclude Include="src\core\SignalHandle.h" />
     <ClInclude Include="src\core\Timer.h" />
     <ClInclude Include="src\define.h" />
-    <ClInclude Include="src\handle\HandleReq.h" />
-    <ClInclude Include="src\handle\req\HeartbeatReq.h" />
+    <ClInclude Include="src\handle\HandleServer.h" />
+    <ClInclude Include="src\handle\server\Heartbeat.h" />
     <ClInclude Include="src\log\Log.h" />
     <ClInclude Include="src\protocol\protobuf\CenterStack.h" />
     <ClInclude Include="src\protocol\protobuf\NavigateStack.h" />

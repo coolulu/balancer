@@ -23,7 +23,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := src/config/Config.cc src/config/ServiceConfig.cc src/core/BHttpServer.cc src/core/BTcpServer.cc src/core/Codec.cc src/core/InserviceService.cc src/core/Owner.cc src/core/Packet.cc src/core/Proc.cc src/core/Seq.cc src/core/SignalHandle.cc src/core/Timer.cc src/handle/HandleReq.cc src/handle/req/HeartbeatReq.cc src/log/Log.cc src/main.cc src/protocol/protobuf/CenterStack.cc src/protocol/protobuf/NavigateStack.cc src/protocol/protobuf/proto_cpp/center.pb.cc src/protocol/protobuf/proto_cpp/common.pb.cc src/protocol/protobuf/proto_cpp/data.pb.cc src/protocol/protobuf/proto_cpp/data_format.pb.cc src/protocol/protobuf/proto_cpp/gate.pb.cc src/protocol/protobuf/proto_cpp/logic.pb.cc src/protocol/protobuf/proto_cpp/navigate.pb.cc src/protocol/protobuf/proto_cpp/proxy.pb.cc src/protocol/protobuf/proto_cpp/service.pb.cc src/protocol/protobuf/proto_cpp/version.pb.cc src/tool/Util.cc
+SOURCEFILES := src/config/Config.cc src/config/ServiceConfig.cc src/core/BHttpServer.cc src/core/BTcpServer.cc src/core/Codec.cc src/core/InserviceService.cc src/core/Owner.cc src/core/Packet.cc src/core/Proc.cc src/core/Seq.cc src/core/SignalHandle.cc src/core/Timer.cc src/handle/HandleServer.cc src/handle/server/Heartbeat.cc src/log/Log.cc src/main.cc src/protocol/protobuf/CenterStack.cc src/protocol/protobuf/NavigateStack.cc src/protocol/protobuf/proto_cpp/center.pb.cc src/protocol/protobuf/proto_cpp/common.pb.cc src/protocol/protobuf/proto_cpp/data.pb.cc src/protocol/protobuf/proto_cpp/data_format.pb.cc src/protocol/protobuf/proto_cpp/gate.pb.cc src/protocol/protobuf/proto_cpp/logic.pb.cc src/protocol/protobuf/proto_cpp/navigate.pb.cc src/protocol/protobuf/proto_cpp/proxy.pb.cc src/protocol/protobuf/proto_cpp/service.pb.cc src/protocol/protobuf/proto_cpp/version.pb.cc src/tool/Util.cc
 EXTERNAL_LIBS := 
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
@@ -213,11 +213,11 @@ $(BINARYDIR)/Timer.o : src/core/Timer.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/HandleReq.o : src/handle/HandleReq.cc $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/HandleServer.o : src/handle/HandleServer.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/HeartbeatReq.o : src/handle/req/HeartbeatReq.cc $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/Heartbeat.o : src/handle/server/Heartbeat.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
