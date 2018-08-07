@@ -32,6 +32,7 @@ namespace KeyConfig
 	static const std::string& tcp_client_send_packet_len_max	= "tcp_client_send_packet_len_max";
 	static const std::string& tcp_client_high_water_mark		= "tcp_client_high_water_mark";
 	static const std::string& tcp_client_msg_reduce_size		= "tcp_client_msg_reduce_size";
+	static const std::string& level_expire_time					= "level_expire_time";
 	static const std::string& service_path						= "service_path";
 	static const std::string& prober_timeout_us					= "prober_timeout_us";
 }
@@ -81,7 +82,9 @@ public:
 				tcp_client_send_packet_len_max(0),
 				tcp_client_high_water_mark(0),
 				tcp_client_msg_reduce_size(0), 		
-				level(0){}
+				level(0),
+				level_expire_time(0),
+				prober_timeout_us(0){}
 
 		unsigned short	tcp_server_idle;
 		bool			tcp_server_no_delay;
@@ -97,6 +100,7 @@ public:
 		unsigned short	tcp_client_msg_reduce_size;
 
 		unsigned short	level;
+		unsigned int	level_expire_time;
 		std::string		service_path;
 		unsigned int	prober_timeout_us;
 	};
