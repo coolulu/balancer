@@ -425,6 +425,8 @@
 ##### 读操作:
     1.查询，返回service_id，service_name列表
     2.根据service_id查询，返回service_id，service_name，heartbeat，depend_map，kv_map，heartbeat_list，inservice_list
+    3.根据service_id查询，返回服务所有依赖的配置service_id，service_name，heartbeat，depend_map，kv_map，inservice_list,
+     （依赖服务inservice_list可用的ip_info，服务可以自己依赖自己）
 
 ##### 写操作:
     1.根据service_id，修改heartbeat成员值
