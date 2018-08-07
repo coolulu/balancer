@@ -25,12 +25,12 @@ Heartbeat::~Heartbeat()
 void Heartbeat::handle(const center::CenterMsg& msg)
 {
 	const center::HeartbeatReq& req = msg.heartbeat_req();
-	B_LOG_INFO << "level=" << req.level();
-	B_LOG_INFO << "service_id=" << req.service_id();
-	B_LOG_INFO << "proc_id=" << req.proc_id();
-	B_LOG_INFO << "state=" << req.state();
-	B_LOG_INFO << "conf_update_time=" << req.conf_update_time();
-	B_LOG_INFO << "conf_json=" << req.conf_json();
+	B_LOG_INFO	<< "level=" << req.level()
+				<< ", service_id=" << req.service_id()
+				<< ", proc_id=" << req.proc_id()
+				<< ", state=" << req.state()
+				<< ", conf_update_time=" << req.conf_update_time()
+				<< ", conf_json=" << req.conf_json();
 
 	int code = common::SUCCESS;
 	if(req.service_id() != Define::service_id)
@@ -45,6 +45,8 @@ void Heartbeat::handle(const center::CenterMsg& msg)
 		if(req.conf_json().size() > 0)
 		{
 			// ∏¸–¬≈‰÷√
+			B_LOG_ERROR << "update conf_json, start";
+
 			ServiceConfig sc;
 			std::string err = sc.json_to_map(req.conf_json());
 			if(err.empty())
@@ -60,30 +62,32 @@ void Heartbeat::handle(const center::CenterMsg& msg)
 					_proc._owner.update_owner_hb_time(now, req.level(), req.state());
 
 					save_conf(req);
+
+					B_LOG_ERROR << "update conf_json, success";
 				}
 				else
 				{
 					code = center::ERR_PROBER_CONF_LOAD_IP_INFO;
-					B_LOG_ERROR << "load_ip_info=false";
+					B_LOG_ERROR << "update conf_json, load_ip_info=false";
 				}
 			}
 			else
 			{
 				code = center::ERR_PROBER_CONF_JSON_TO_MAP;
-				B_LOG_ERROR << "json_to_map=false, err=" << err;
+				B_LOG_ERROR << "update conf_json, json_to_map=false, err=" << err;
 			}
 		}
 	}
 
 	PacketPtr packet_ptr_rsp(new Packet(_packet_ptr->_from_service_id, 0, 0, 0, 0, _packet_ptr->_msg_seq_id));
 	CenterStack::HeartbeatRsp(packet_ptr_rsp->_body,
-		code,
-		"",
-		req.level(),
-		req.service_id(),
-		req.proc_id(),
-		_proc._owner._conf_update_time,
-		_proc._owner._expire_second);
+							  code,
+							  "",
+							  req.level(),
+							  req.service_id(),
+							  req.proc_id(),
+							  _proc._owner._conf_update_time,
+							  _proc._owner._expire_second);
 
 	_proc._tcp_server.send_msg(_conn, packet_ptr_rsp);
 }
