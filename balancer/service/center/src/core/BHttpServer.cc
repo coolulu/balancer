@@ -14,6 +14,7 @@ BHttpServer::BHttpServer(Proc& proc) : _proc(proc), _p_http_server(nullptr)
 
 	_map_http_req.insert(std::make_pair("/get_service_list", &BHttpServer::get_service_list));
 	_map_http_req.insert(std::make_pair("/get_service_info", &BHttpServer::get_service_info));
+	_map_http_req.insert(std::make_pair("/get_service_conf", &BHttpServer::get_service_conf));
 
 	_map_http_req.insert(std::make_pair("/set_service_heartbeat", &BHttpServer::set_service_heartbeat));
 	_map_http_req.insert(std::make_pair("/add_service_depend", &BHttpServer::add_service_depend));
@@ -98,12 +99,26 @@ void BHttpServer::get_service_list(const muduo::net::HttpRequest& req, muduo::ne
 void BHttpServer::get_service_info(const muduo::net::HttpRequest& req, muduo::net::HttpResponse* rsp)
 {
 	unsigned short service_id = 0;
-	std::string json = "{}";
+	std::string json = "{\"code\": -1}";
 
 	bool b = get_key_val(req.query().c_str(), KeyServiceConfig::service_id, service_id);
 	if(b)
 	{
 		b = _proc._sc.get_service_info(service_id, json);
+	}
+
+	send_http_rsp(rsp, json);
+}
+
+void BHttpServer::get_service_conf(const muduo::net::HttpRequest& req, muduo::net::HttpResponse* rsp)
+{
+	unsigned short service_id = 0;
+	std::string json = "{\"code\": -1}";
+
+	bool b = get_key_val(req.query().c_str(), KeyServiceConfig::service_id, service_id);
+	if(b)
+	{
+		b = _proc._sc.get_service_conf(service_id, json);
 	}
 
 	send_http_rsp(rsp, json);
@@ -391,6 +406,8 @@ void BHttpServer::send_http_rsp(muduo::net::HttpResponse* rsp, const std::string
 	rsp->setBody(body.c_str());
 	rsp->setCloseConnection(true);
 }
+
+
 
 
 

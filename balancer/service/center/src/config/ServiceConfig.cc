@@ -408,6 +408,63 @@ bool ServiceConfig::get_service_info(unsigned short service_id, std::string& jso
 	return false;
 }
 
+bool ServiceConfig::get_service_conf(unsigned short service_id, std::string& json)
+{
+	auto p = get_service(service_id);
+	if(p !=nullptr)
+	{
+		ServiceConfig sc;
+
+		Service service_self = *p;
+		service_self.heartbeat_list.clear();
+		service_self.inservice_list.clear();
+
+		for(auto it = p->depend_map.begin();  it != p->depend_map.end(); it++)
+		{
+			auto p_depend_service = get_service(it->second.depend_service_id);
+			if(p_depend_service == nullptr)
+			{
+				return false;
+			}
+			
+			if(p_depend_service->service_id == service_id)
+			{
+				// 服务依赖自己的服务,加入正常服务的ip_info
+				for(unsigned int i = 0; i != p_depend_service->inservice_list.size(); i++)
+				{
+					const ServiceConfig::IPInfo& ip_info = p_depend_service->inservice_list[i];
+					if(ip_info._ip_info_derivative.is_run)
+					{
+						service_self.inservice_list.push_back(ip_info);
+					}
+				}
+			}
+			else
+			{
+				// 依赖别的服务,加入正常服务的ip_info
+				Service service;
+				service.service_id = p_depend_service->service_id;
+				service.service_name = p_depend_service->service_name;
+				for(unsigned int i = 0; i != p_depend_service->inservice_list.size(); i++)
+				{
+					const ServiceConfig::IPInfo& ip_info = p_depend_service->inservice_list[i];
+					if(ip_info._ip_info_derivative.is_run)
+					{
+						service.inservice_list.push_back(ip_info);
+					}
+				}
+				sc._service_map.insert(std::make_pair(service.service_id, service));
+			}
+		}
+
+		sc._service_map.insert(std::make_pair(service_self.service_id, service_self));
+		json = sc.map_to_json();
+		return true;
+	}
+
+	return false;
+}
+
 bool ServiceConfig::set_service_heartbeat(unsigned short service_id, const Heartbeat& heartbeat)
 {
 	if(heartbeat.heartbeat_gap != 0 && heartbeat.lose_time != 0 && heartbeat.recover_time != 0)

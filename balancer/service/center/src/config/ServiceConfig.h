@@ -116,6 +116,10 @@ public:
 	// 根据service_id查询，返回service_id，service_name，heartbeat，depend_map，kv_map，heartbeat_list，inservice_list
 	bool get_service_info(unsigned short service_id, std::string& json);	
 
+	// 根据service_id查询，返回服务所有依赖的配置service_id，service_name，heartbeat，depend_map，kv_map，inservice_list,
+	// （依赖服务inservice_list可用的ip_info，服务可以自己依赖自己）
+	bool get_service_conf(unsigned short service_id, std::string& json);
+
 public:
 	// write
 	// 根据service_id，修改heartbeat成员值

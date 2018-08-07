@@ -28,6 +28,7 @@ private:
 	// read
 	void get_service_list(const muduo::net::HttpRequest& req, muduo::net::HttpResponse* rsp);
 	void get_service_info(const muduo::net::HttpRequest& req, muduo::net::HttpResponse* rsp);
+	void get_service_conf(const muduo::net::HttpRequest& req, muduo::net::HttpResponse* rsp);
 
 	// write
 	void set_service_heartbeat(const muduo::net::HttpRequest& req, muduo::net::HttpResponse* rsp);
