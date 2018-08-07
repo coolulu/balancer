@@ -32,9 +32,8 @@ struct IPInfoDerivative
 	unsigned long long update_time_now();
 
 	bool is_run;
-	unsigned int heartbeat_success_count;
-	unsigned int heartbeat_error_count;
-	unsigned int recover_count;
+	unsigned int hb_success_count;
+	unsigned int hb_error_count;
 	unsigned long long update_time;
 };
 

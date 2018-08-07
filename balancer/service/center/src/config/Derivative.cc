@@ -38,9 +38,8 @@ unsigned long long ServiceDerivative::sync_service()
 
 IPInfoDerivative::IPInfoDerivative()
 	:	is_run(false),
-		heartbeat_success_count(0),
-		heartbeat_error_count(0),
-		recover_count(0),
+		hb_success_count(0),
+		hb_error_count(0),
 		update_time(Util::get_us())
 {
 
