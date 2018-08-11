@@ -19,6 +19,7 @@ struct ServiceDerivative
 	// 触发service同步
 	unsigned long long sync_service(long long update_time);
 	unsigned long long sync_service();
+	void set_update_time(long long update_time);
 
 	unsigned long long update_time;
 	unsigned int probe_time;	//探测时间(秒)

@@ -35,6 +35,10 @@ unsigned long long ServiceDerivative::sync_service()
 	return update_time = Util::get_us();
 }
 
+void ServiceDerivative::set_update_time(long long update_time)
+{
+	this->update_time = update_time;
+}
 
 IPInfoDerivative::IPInfoDerivative()
 	:	is_run(false),

@@ -72,6 +72,7 @@ void Prober::probe()
 					Heartbeat* hb = new Heartbeat(_proc,
 												  _proc._config.proc.prober_timeout_us,
 												  service.service_id,
+												  service._service_derivative.update_time,
 												  ip_info);
 					hb->run();
 				}
@@ -98,6 +99,7 @@ void Prober::probe()
 					Heartbeat* hb = new Heartbeat(_proc,
 												  _proc._config.proc.prober_timeout_us,
 												  service.service_id,
+												  service._service_derivative.update_time,
 												  ip_info);
 					hb->run();
 				}

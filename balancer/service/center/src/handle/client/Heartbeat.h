@@ -11,10 +11,13 @@ public:
 	Heartbeat(Proc& proc, 
 			  unsigned int gap_us,
 			  unsigned short service_id,
+			  unsigned long long service_update_time,
 			  const ServiceConfig::IPInfo& ip_info);
 	virtual ~Heartbeat();
 
 public:
+	static const std::string& s_task_name;
+
 	enum
 	{
 		EN_STATE_REQUEST = 10,
@@ -28,9 +31,18 @@ public:
 
 	int on_request();
 	int on_response(void* p);
+	int on_timeout(const ServiceConfig::Heartbeat& heartbeat,
+				   ServiceConfig::IPInfo& ip_info);
+
+	void update_count();
+	void on_count(const ServiceConfig::Heartbeat& heartbeat,
+				  ServiceConfig::IPInfo& ip_info);
+	void update_is_run(ServiceConfig::IPInfo& ip_info, bool is_run);
 
 private:
 	unsigned short _service_id;
+	unsigned long long _service_update_time;
 	ServiceConfig::IPInfo _ip_info;
-
+	bool _is_update_conf;
+	bool _is_send;
 };
