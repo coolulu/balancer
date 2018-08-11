@@ -38,6 +38,8 @@ public:
 	void on_count(const ServiceConfig::Heartbeat& heartbeat,
 				  ServiceConfig::IPInfo& ip_info);
 	void update_is_run(ServiceConfig::IPInfo& ip_info, bool is_run);
+	bool is_inservice_list();
+	void update_depend_service_time(const ServiceConfig::IPInfo& ip_info);
 
 private:
 	unsigned short _service_id;

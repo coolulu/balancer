@@ -319,7 +319,15 @@ void Heartbeat::update_is_run(ServiceConfig::IPInfo& ip_info, bool is_run)
 	ip_info._ip_info_derivative.update_time_now();
 
 	// 如果是上线服务，更新相关依赖服务时间，触发配置下发
-	bool is_inservice = false;
+	bool b = is_inservice_list();
+	if(b)
+	{
+		update_depend_service_time(ip_info);
+	}
+}
+
+bool Heartbeat::is_inservice_list()
+{
 	auto p = _proc._sc.get_service(_service_id);
 	if(p != nullptr)
 	{
@@ -327,29 +335,30 @@ void Heartbeat::update_is_run(ServiceConfig::IPInfo& ip_info, bool is_run)
 		{
 			if(it->proc_id == _ip_info.proc_id)
 			{
-				is_inservice = true;
-				break;
+				return true;
 			}
 		}
 	}
 
-	if(is_inservice)
+	return false;
+}
+
+void Heartbeat::update_depend_service_time(const ServiceConfig::IPInfo& ip_info)
+{
+	std::map<unsigned short, ServiceConfig::Service>& sc = _proc._sc.get_service_map();
+	for(auto it_sc = sc.begin(); it_sc != sc.end(); it_sc++)
 	{
-		std::map<unsigned short, ServiceConfig::Service>& sc = _proc._sc.get_service_map();
-		for(auto it_sc = sc.begin(); it_sc != sc.end(); it_sc++)
+		ServiceConfig::Service& service = it_sc->second;
+		auto it = service.depend_map.find(_service_id);
+		if(it != service.depend_map.end())
 		{
-			ServiceConfig::Service& service = it_sc->second;
-			auto it = service.depend_map.find(_service_id);
-			if(it != service.depend_map.end())
-			{
-				service._service_derivative.set_update_time(ip_info._ip_info_derivative.update_time);
-				B_LOG_INFO	<< "depend_service conf update inservice_list"
-							<< ", service_id=" << _service_id
-							<< ", proc_id=" << _ip_info.proc_id
-							<< ", update_time=" << _ip_info._ip_info_derivative.update_time
-							<< ", depend_service_id=" << service.service_id
-							<< ", depend_service_name=" << service.service_name;
-			}
+			service._service_derivative.set_update_time(ip_info._ip_info_derivative.update_time);
+			B_LOG_INFO	<< "depend_service conf update inservice_list"
+						<< ", service_id=" << _service_id
+						<< ", proc_id=" << _ip_info.proc_id
+						<< ", update_time=" << _ip_info._ip_info_derivative.update_time
+						<< ", depend_service_id=" << service.service_id
+						<< ", depend_service_name=" << service.service_name;
 		}
 	}
 }
