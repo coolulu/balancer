@@ -90,11 +90,7 @@ bool Packet::check()
 {
 	unsigned int check_sum = ::adler32(0, reinterpret_cast<const Bytef*>(_buffer + k_header_size), 
 									   _len + k_len_size - k_check_sum_size);
-	if(check_sum == _check_sum)
-	{
-		B_LOG_INFO << "check_sum is ok, _msg_seq_id=" << _msg_seq_id << ", check_sum=" << check_sum << ", _check_sum=" << _check_sum;
-	}
-	else
+	if(check_sum != _check_sum)
 	{
 		B_LOG_ERROR << "check_sum is error, _msg_seq_id=" << _msg_seq_id << ", check_sum=" << check_sum << ", _check_sum=" << _check_sum;
 		return false;
@@ -103,30 +99,33 @@ bool Packet::check()
 	switch (_data_format)
 	{
 	case data_format::PROTOBUF:
+		{
+			if(_body.ParseFromArray(_data, _data_len))
+			{
+				return true;
+			}
+
+			B_LOG_ERROR << "_msg_seq_id=" << _msg_seq_id << ", _body.ParseFromArray=false";
+			return false;
+		}
 		break;
 
 	case data_format::PROTOBUF_ZIP:
+		{
+
+		}
 		break;
 
 	case data_format::PROTOBUF_SNAPPY:
+		{
+
+		}
 		break;
 
 	default:
 		B_LOG_ERROR << "_msg_seq_id=" << _msg_seq_id << ", unknow _data_format=" << _data_format;
 		return false;
 	}
-
-	if(_body.ParseFromArray(_data, _data_len))
-	{
-		B_LOG_INFO << "_msg_seq_id=" << _msg_seq_id << ", _body.ParseFromArray=true";	
-	}
-	else
-	{
-		B_LOG_ERROR << "_msg_seq_id=" << _msg_seq_id << ", _body.ParseFromArray=false";
-		return false;
-	}
-
-	return true;
 }
 
 void Packet::print()
