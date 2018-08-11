@@ -68,8 +68,8 @@
 
     len(Packet) = 60 + data_len = [60, (unsigned short)-1]
 
-    check_sum = adler32(len + version + from_service_id + to_service_id + to_proc_id + app_id + app_version +
-                        conn_seq_id + msg_seq_id + data_format + reserve_field[4] + data[])
+    check_sum = zlib::adler32(len + version + from_service_id + to_service_id + to_proc_id + app_id + app_version +
+                              conn_seq_id + msg_seq_id + data_format + reserve_field[4] + data[])
 
 ### data
     common.proto
