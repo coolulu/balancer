@@ -131,23 +131,24 @@ bool Packet::check()
 
 void Packet::print()
 {
-	B_LOG_INFO << "_header="			<< _header;
-	B_LOG_INFO << "_len="				<< _len;
-	B_LOG_INFO << "_version="			<< _version;
-	B_LOG_INFO << "_from_service_id="	<< _from_service_id;
-	B_LOG_INFO << "_to_service_id="		<< _to_service_id;
-	B_LOG_INFO << "_to_proc_id="		<< _to_proc_id;
-	B_LOG_INFO << "_app_id="			<< _app_id;
-	B_LOG_INFO << "_app_version="		<< _app_version;
-	B_LOG_INFO << "_conn_seq_id="		<< _conn_seq_id;
-	B_LOG_INFO << "_msg_seq_id="		<< _msg_seq_id;
-	B_LOG_INFO << "_data_format="		<< _data_format;
-	B_LOG_INFO << "_reserve_field_0="	<< _reserve_field_0;
-	B_LOG_INFO << "_reserve_field_1="	<< _reserve_field_1;
-	B_LOG_INFO << "_reserve_field_2="	<< _reserve_field_2;
-	B_LOG_INFO << "_reserve_field_3="	<< _reserve_field_3;
-	B_LOG_INFO << "_check_sum="			<< _check_sum;
-	B_LOG_INFO << "_data_len="			<< _data_len;
+	B_LOG_INFO	<< "packet"
+				<< ", _header="				<< _header
+				<< ", _len="				<< _len
+				<< ", _version="			<< _version
+				<< ", _from_service_id="	<< _from_service_id
+				<< ", _to_service_id="		<< _to_service_id
+				<< ", _to_proc_id="			<< _to_proc_id
+				<< ", _app_id="				<< _app_id
+				<< ", _app_version="		<< _app_version
+				<< ", _conn_seq_id="		<< _conn_seq_id
+				<< ", _msg_seq_id="			<< _msg_seq_id
+				<< ", _data_format="		<< _data_format
+				<< ", _reserve_field_0="	<< _reserve_field_0
+				<< ", _reserve_field_1="	<< _reserve_field_1
+				<< ", _reserve_field_2="	<< _reserve_field_2
+				<< ", _reserve_field_3="	<< _reserve_field_3
+				<< ", _check_sum="			<< _check_sum
+				<< ", _data_len="			<< _data_len;
 }
 
 

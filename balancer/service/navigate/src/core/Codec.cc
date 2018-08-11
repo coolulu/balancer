@@ -23,13 +23,9 @@ void Codec::on_stream_message(const muduo::net::TcpConnectionPtr& conn,
 	size_t readableBytes = 0;
 	while ((readableBytes = buf->readableBytes()) > Packet::k_header_size + Packet::k_len_size)
 	{
-		B_LOG_INFO << "_name=" << _name << ", readableBytes=" << readableBytes;
-
 		const void* header_data = buf->peek();
 		uint32_t header_be = *static_cast<const uint32_t*>(header_data);
 		const uint32_t header = muduo::net::sockets::networkToHost32(header_be);
-
-		B_LOG_INFO << "_name=" << _name << ", recv header=" << header << ", header_be=" << header_be;
 
 		if(header != Packet::k_header)
 		{
@@ -42,7 +38,12 @@ void Codec::on_stream_message(const muduo::net::TcpConnectionPtr& conn,
 		uint32_t len_be = *static_cast<const uint32_t*>(len_data); // SIGBUS
 		const uint32_t len = muduo::net::sockets::networkToHost32(len_be);
 
-		B_LOG_INFO << "_name=" << _name << ", recv len=" << len << ", len_be=" << len_be;
+		B_LOG_INFO	<< "_name="				<< _name 
+					<< ", readableBytes="	<< readableBytes 
+					<< ", header="			<< header 
+					<< ", header_be="		<< header_be
+					<< ", len="				<< len
+					<< ", len_be="			<< len_be;
 
 		if (len > _tcp_recv_packet_len_max)
 		{
