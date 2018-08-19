@@ -83,7 +83,7 @@ void Heartbeat::handle(const center::CenterMsg& msg)
 	CenterStack::HeartbeatRsp(packet_ptr_rsp->_body,
 							  code,
 							  "",
-							  req.level(),
+							  _proc._owner._level,
 							  req.service_id(),
 							  req.proc_id(),
 							  _proc._owner._conf_update_time,
