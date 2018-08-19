@@ -111,7 +111,7 @@ int Heartbeat::on_request()
 	if(_is_update_conf)
 	{
 		//需要下发配置
-		if(_proc._sc.get_service_info(_service_id, conf_json))
+		if(_proc._sc.get_service_conf(_service_id, conf_json))
 		{
 			print("update conf_json");
 		}
