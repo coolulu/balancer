@@ -49,11 +49,15 @@ public:
 
 	struct Depend
 	{
+		Depend() : depend_service_id(0){}
+
 		unsigned short	depend_service_id;
 	};
 
 	struct KV
 	{
+		KV(){}
+
 		std::string	key;
 		std::string	val;
 	};

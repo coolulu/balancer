@@ -91,10 +91,11 @@ int main(int argc, char *argv[])
 		return ret;
 	}
 
+	proc.logging();
 	proc.start();
 	proc.loop();
 
-	B_LOG_INFO << "stop end";
+	B_LOG_ERROR << "stop end";
 
 	return 0;
 }

@@ -17,7 +17,7 @@ class Proc
 {
 public:
 	Proc(muduo::net::EventLoop& loop, 
-		 const std::string& config_file, 
+		 const std::string& config_file,
 		 unsigned int conf_id);
 	~Proc();
 
@@ -26,7 +26,9 @@ public:
 	void start();
 	void quit();
 	void loop();
+	void logging();
 	void check_flag();
+	bool reload();
 
 public:
 	static inline void set_reload(bool b)	{Proc::s_reload_flag = b;}

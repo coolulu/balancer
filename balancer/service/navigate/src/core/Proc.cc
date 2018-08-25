@@ -46,10 +46,6 @@ int Proc::init()
 	}
 
 	B_LOG_INFO << _config.to_string();
-
-	_log.init(_config.log.level, _config.log.console, _config.log.file_path, _config.log.roll_size,
-			  _config.log.thread_safe, _config.log.flush_interval, _config.log.check_every_n);
-
 	return 0;
 }
 
@@ -73,20 +69,61 @@ void Proc::loop()
 	_loop.loop();
 }
 
+void Proc::logging()
+{
+	_log.init(_config.log.level, _config.log.console, _config.log.file_path, _config.log.roll_size,
+			  _config.log.thread_safe, _config.log.flush_interval, _config.log.check_every_n);
+}
+
 void Proc::check_flag()
 {
 	if(s_reload_flag)
 	{
 		s_reload_flag = false;
-		B_LOG_INFO << "reload start";
+		B_LOG_ERROR << "reload start";
 
-		B_LOG_INFO << "reload end";
+		if(reload())
+		{
+			B_LOG_ERROR << "reload end";
+			logging();
+		}
+		else
+		{
+			B_LOG_ERROR << "reload failed";
+		}	
 	}
 
 	if(s_stop_flag)
 	{
 		s_stop_flag = false;
-		B_LOG_INFO << "stop start";
+		B_LOG_ERROR << "stop start";
 		quit();
 	}
 }
+
+bool Proc::reload()
+{
+	// 有错误，则不重新加载
+	int ret = 0;
+	std::string err;
+
+	char config_json[Define::BUFFER_SIZE] = {0};
+	ret = Util::file_2_bin(_config_file, config_json, sizeof(config_json)/sizeof(char));
+	if(ret != 0)
+	{
+		B_LOG_ERROR << "open file config_file=" << _config_file;
+		return false;
+	}
+
+	err = _config.load(config_json);
+	if(err.size() > 0)
+	{
+		B_LOG_ERROR << "config load err=" << err;
+		return false;
+	}
+
+	B_LOG_INFO << _config.to_string();
+	return true;
+}
+
+

@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
 
 	B_LOG_INFO << Util::print_cpu_mask(cpu_mask);
 	B_LOG_INFO << "conf_id="<< conf_id << ", bind cpu_id=" << cpu_id;
-	
+
 	SignalHandle::init_signal();
 
 	muduo::net::EventLoop loop;	//安全关闭，loop声明周期要长于proc
@@ -91,10 +91,11 @@ int main(int argc, char *argv[])
 		return ret;
 	}
 
+	proc.logging();
 	proc.start();
 	proc.loop();
 
-	B_LOG_INFO << "stop end";
+	B_LOG_ERROR << "stop end";
 
 	return 0;
 }
