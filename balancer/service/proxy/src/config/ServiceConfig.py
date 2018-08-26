@@ -17,13 +17,17 @@ class Heartbeat:
         self.recover_time = d['recover_time']
 
         heartbeat = Heartbeat()
-        if type(heartbeat.heartbeat_enable) != type(self.heartbeat_enable):
+        if type(heartbeat.heartbeat_enable) != type(self.heartbeat_enable) or \
+                heartbeat.heartbeat_enable == self.heartbeat_enable:
             raise Exception('type failed')
-        if type(heartbeat.heartbeat_gap) != type(self.heartbeat_gap):
+        if type(heartbeat.heartbeat_gap) != type(self.heartbeat_gap) or \
+                heartbeat.heartbeat_gap == self.heartbeat_gap:
             raise Exception('type failed')
-        if type(heartbeat.lose_time) != type(self.lose_time):
+        if type(heartbeat.lose_time) != type(self.lose_time) or \
+                heartbeat.lose_time == self.lose_time:
             raise Exception('type failed')
-        if type(heartbeat.recover_time) != type(self.recover_time):
+        if type(heartbeat.recover_time) != type(self.recover_time) or \
+                heartbeat.recover_time == self.recover_time:
             raise Exception('type failed')
 
 
@@ -35,7 +39,8 @@ class Depend:
         self.depend_service_id = d['depend_service_id']
 
         depend = Depend()
-        if type(depend.depend_service_id) != type(self.depend_service_id):
+        if type(depend.depend_service_id) != type(self.depend_service_id) or \
+                depend.depend_service_id == self.depend_service_id:
             raise Exception('type failed')
 
 
@@ -49,9 +54,9 @@ class KV:
         self.val = d['val']
 
         kv = KV()
-        if type(kv.key) != type(self.key):
+        if type(kv.key) != type(self.key) or kv.key == self.key:
             raise Exception('type failed')
-        if type(kv.val) != type(self.val):
+        if type(kv.val) != type(self.val) or kv.val == self.val:
             raise Exception('type failed')
 
 
@@ -71,15 +76,15 @@ class IPInfo:
         self.port = d['port']
 
         ip_info = IPInfo()
-        if type(ip_info.proc_id) != type(self.proc_id):
+        if type(ip_info.proc_id) != type(self.proc_id) or ip_info.proc_id == self.proc_id:
             raise Exception('type failed')
-        if type(ip_info.proc_des) != type(self.proc_des):
+        if type(ip_info.proc_des) != type(self.proc_des) or ip_info.proc_des == self.proc_des:
             raise Exception('type failed')
-        if type(ip_info.in_ip) != type(self.in_ip):
+        if type(ip_info.in_ip) != type(self.in_ip) or ip_info.in_ip == self.in_ip:
             raise Exception('type failed')
-        if type(ip_info.out_ip) != type(self.out_ip):
+        if type(ip_info.out_ip) != type(self.out_ip) or ip_info.out_ip == self.out_ip:
             raise Exception('type failed')
-        if type(ip_info.port) != type(self.port):
+        if type(ip_info.port) != type(self.port) or ip_info.port == self.port:
             raise Exception('type failed')
 
 
@@ -115,9 +120,9 @@ class Service:
             self.inservice_list.append(ip_info)
 
         service = Service()
-        if type(service.service_id) != type(self.service_id):
+        if type(service.service_id) != type(self.service_id) or service.service_id == self.service_id:
             raise Exception('type failed')
-        if type(service.service_name) != type(self.service_name):
+        if type(service.service_name) != type(self.service_name) or service.service_name == self.service_name:
             raise Exception('type failed')
         if type(service.heartbeat) != type(self.heartbeat):
             raise Exception('type failed')

@@ -8,7 +8,7 @@ def main():
         str = fd.read(1024 * 1024)
 
     c = Config()
-    c.load(str)
+    b = c.load(str)
 
     c.reload(str)
     pass

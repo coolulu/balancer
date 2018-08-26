@@ -142,58 +142,66 @@ class Config:
 
     def check(self):
         c = Config()
-        if type(self.net.tcp.ip) != type(c.net.tcp.ip):
+        if type(self.net.tcp.ip) != type(c.net.tcp.ip) or self.net.tcp.ip == c.net.tcp.ip:
             return False
-        if type(self.net.tcp.port) != type(c.net.tcp.port):
+        if type(self.net.tcp.port) != type(c.net.tcp.port) or self.net.tcp.port == c.net.tcp.port:
             return False
-        if type(self.net.http.ip) != type(c.net.http.ip):
+        if type(self.net.http.ip) != type(c.net.http.ip) or self.net.http.ip == c.net.http.ip:
             return False
-        if type(self.net.http.port) != type(c.net.http.port):
-            return False
-
-        if type(self.log.module) != type(c.log.module):
-            return False
-        if type(self.log.path) != type(c.log.path):
-            return False
-        if type(self.log.size) != type(c.log.size):
-            return False
-        if type(self.log.level) != type(c.log.level):
+        if type(self.net.http.port) != type(c.net.http.port) or self.net.http.port == c.net.http.port:
             return False
 
-        if type(self.proc.tcp_server_idle) != type(c.proc.tcp_server_idle):
+        if type(self.log.module) != type(c.log.module) or self.log.module == c.log.module:
             return False
-        if type(self.proc.tcp_server_recv_packet_len_max) != type(c.proc.tcp_server_recv_packet_len_max):
+        if type(self.log.path) != type(c.log.path) or self.log.path == c.log.path:
             return False
-        if type(self.proc.tcp_server_send_packet_len_max) != type(c.proc.tcp_server_send_packet_len_max):
+        if type(self.log.size) != type(c.log.size) or self.log.size == c.log.size:
+            return False
+        if type(self.log.level) != type(c.log.level) or self.log.level == c.log.level:
             return False
 
-        if type(self.proxy.mysql.host) != type(c.proxy.mysql.host):
+        if type(self.proc.tcp_server_idle) != type(c.proc.tcp_server_idle) or \
+                self.proc.tcp_server_idle == c.proc.tcp_server_idle:
             return False
-        if type(self.proxy.mysql.port) != type(c.proxy.mysql.port):
+        if type(self.proc.tcp_server_recv_packet_len_max) != type(c.proc.tcp_server_recv_packet_len_max) or \
+                self.proc.tcp_server_recv_packet_len_max == c.proc.tcp_server_recv_packet_len_max:
             return False
-        if type(self.proxy.mysql.user) != type(c.proxy.mysql.user):
+        if type(self.proc.tcp_server_send_packet_len_max) != type(c.proc.tcp_server_send_packet_len_max) or \
+                self.proc.tcp_server_send_packet_len_max == c.proc.tcp_server_send_packet_len_max:
             return False
-        if type(self.proxy.mysql.passwd) != type(c.proxy.mysql.passwd):
+
+        if type(self.proxy.mysql.host) != type(c.proxy.mysql.host) or self.proxy.mysql.host == c.proxy.mysql.host:
             return False
-        if type(self.proxy.mysql.db) != type(c.proxy.mysql.db):
+        if type(self.proxy.mysql.port) != type(c.proxy.mysql.port) or self.proxy.mysql.port == c.proxy.mysql.port:
+            return False
+        if type(self.proxy.mysql.user) != type(c.proxy.mysql.user) or self.proxy.mysql.user == c.proxy.mysql.user:
+            return False
+        if type(self.proxy.mysql.passwd) != type(c.proxy.mysql.passwd) or self.proxy.mysql.passwd == c.proxy.mysql.passwd:
+            return False
+        if type(self.proxy.mysql.db) != type(c.proxy.mysql.db) or self.proxy.mysql.db == c.proxy.mysql.db:
             return False
         
-        if type(self.proxy.redis.host) != type(c.proxy.redis.host):
+        if type(self.proxy.redis.host) != type(c.proxy.redis.host) or self.proxy.redis.host == c.proxy.redis.host:
             return False
-        if type(self.proxy.redis.port) != type(c.proxy.redis.port):
+        if type(self.proxy.redis.port) != type(c.proxy.redis.port) or self.proxy.redis.port == c.proxy.redis.port:
             return False
-        if type(self.proxy.redis.passwd) != type(c.proxy.redis.passwd):
+        if type(self.proxy.redis.passwd) != type(c.proxy.redis.passwd) or self.proxy.redis.passwd == c.proxy.redis.passwd:
             return False
 
-        if type(self.proxy.mongodb.host) != type(c.proxy.mongodb.host):
+        if type(self.proxy.mongodb.host) != type(c.proxy.mongodb.host) or \
+                self.proxy.mongodb.host == c.proxy.mongodb.host:
             return False
-        if type(self.proxy.mongodb.port) != type(c.proxy.mongodb.port):
+        if type(self.proxy.mongodb.port) != type(c.proxy.mongodb.port) or \
+                self.proxy.mongodb.port == c.proxy.mongodb.port:
             return False
-        if type(self.proxy.mongodb.username) != type(c.proxy.mongodb.username):
+        if type(self.proxy.mongodb.username) != type(c.proxy.mongodb.username) or \
+                self.proxy.mongodb.username == c.proxy.mongodb.username:
             return False
-        if type(self.proxy.mongodb.password) != type(c.proxy.mongodb.password):
+        if type(self.proxy.mongodb.password) != type(c.proxy.mongodb.password) or \
+                self.proxy.mongodb.password == c.proxy.mongodb.password:
             return False
-        if type(self.proxy.mongodb.authSource) != type(c.proxy.mongodb.authSource):
+        if type(self.proxy.mongodb.authSource) != type(c.proxy.mongodb.authSource) or \
+                self.proxy.mongodb.authSource == c.proxy.mongodb.authSource:
             return False
 
         return True

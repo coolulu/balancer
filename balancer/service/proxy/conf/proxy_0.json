@@ -26,25 +26,25 @@
 
 	"proxy": {
 		"mysql": {
-			"host": "111.230.141.42",
-			"port": 3306,
-			"user": "tps",
-			"passwd": "TPS$1tps",
-			"db": "im_backend_test"
+			"host": "",
+			"port": 0,
+			"user": "",
+			"passwd": "",
+			"db": ""
 		},
 
 		"redis": {
-			"host": "10.1.1.81",
-			"port": 6379,
-			"passwd": "tps#test"
+			"host": "",
+			"port": 0,
+			"passwd": ""
 		},
 
 		"mongodb": {
-			"host": "10.1.1.80",
-            "port": 27017,
-            "username": "im_test",
-            "password": "tpstest",
-            "authSource": "im_test"
+			"host": "",
+            "port": 0,
+            "username": "",
+            "password": "",
+            "authSource": ""
 		}
 	}
 }
