@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
 	if(argc == 1)
 	{
-		B_LOG_ERROR << "bin/navigate -f conf/navigate_1.json -d";
+		B_LOG_ERROR << "bin/navigate -f conf/navigate_0.json -d";
 		return -10;
 	}
 
