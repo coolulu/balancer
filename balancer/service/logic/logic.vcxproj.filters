@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Make files">
+      <UniqueIdentifier>{84efbf75-83c4-402b-b0b5-25d821c7f049}</UniqueIdentifier>
+      <Extensions>*.mak</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{190c6e4c-6189-43ec-9072-3c66cc260487}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="conf">
+      <UniqueIdentifier>{9e4882cb-5429-41d5-a88d-e9b1d665f36d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\config">
+      <UniqueIdentifier>{f982f5ad-0ea5-493f-800a-aaa0e24b9a11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\core">
+      <UniqueIdentifier>{9cbf878f-39df-4f71-8cc9-ffde177cc38d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\handle">
+      <UniqueIdentifier>{a8f2bd54-f812-4479-bb9d-b727075b381f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\log">
+      <UniqueIdentifier>{5d0934cf-44b7-4018-82a1-50312a567e23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\protocol">
+      <UniqueIdentifier>{eeff6f94-2511-462d-819f-7033ac6fe4e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tool">
+      <UniqueIdentifier>{e272cc9e-26f6-49b3-b949-a5421f17afc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\handle\server">
+      <UniqueIdentifier>{5821fbb5-cbc1-4758-a150-c1bd4bec9d97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\protocol\protobuf">
+      <UniqueIdentifier>{59ee4fde-61c6-4cf4-b4fc-007a55411968}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\protocol\protobuf\proto">
+      <UniqueIdentifier>{71844179-2be4-4760-a8f6-7464e3552f4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\protocol\protobuf\proto_cpp">
+      <UniqueIdentifier>{af89b40a-481a-4233-aa54-d4b0b26aba22}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+    <None Include="debug.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="release.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="conf\logic_0.json">
+      <Filter>conf</Filter>
+    </None>
+    <None Include="src\protocol\protobuf\proto\center.proto">
+      <Filter>src\protocol\protobuf\proto</Filter>
+    </None>
+    <None Include="src\protocol\protobuf\proto\common.proto">
+      <Filter>src\protocol\protobuf\proto</Filter>
+    </None>
+    <None Include="src\protocol\protobuf\proto\data.proto">
+      <Filter>src\protocol\protobuf\proto</Filter>
+    </None>
+    <None Include="src\protocol\protobuf\proto\data_format.proto">
+      <Filter>src\protocol\protobuf\proto</Filter>
+    </None>
+    <None Include="src\protocol\protobuf\proto\gate.proto">
+      <Filter>src\protocol\protobuf\proto</Filter>
+    </None>
+    <None Include="src\protocol\protobuf\proto\logic.proto">
+      <Filter>src\protocol\protobuf\proto</Filter>
+    </None>
+    <None Include="src\protocol\protobuf\proto\proxy.proto">
+      <Filter>src\protocol\protobuf\proto</Filter>
+    </None>
+    <None Include="src\protocol\protobuf\proto\service.proto">
+      <Filter>src\protocol\protobuf\proto</Filter>
+    </None>
+    <None Include="src\protocol\protobuf\proto\version.proto">
+      <Filter>src\protocol\protobuf\proto</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\define.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\config\Config.h">
+      <Filter>src\config</Filter>
+    </ClInclude>
+    <ClInclude Include="src\config\ServiceConfig.h">
+      <Filter>src\config</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\BHttpServer.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\BTcpServer.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Codec.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\InserviceService.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Owner.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Packet.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Proc.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Seq.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\SignalHandle.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Timer.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\HandleServer.h">
+      <Filter>src\handle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\server\Heartbeat.h">
+      <Filter>src\handle\server</Filter>
+    </ClInclude>
+    <ClInclude Include="src\log\Log.h">
+      <Filter>src\log</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tool\Util.h">
+      <Filter>src\tool</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\Protocol.h">
+      <Filter>src\protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\protobuf\CenterStack.h">
+      <Filter>src\protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\center.pb.h">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\common.pb.h">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\data.pb.h">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\data_format.pb.h">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\gate.pb.h">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\logic.pb.h">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\proxy.pb.h">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\service.pb.h">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\version.pb.h">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\protobuf\LogicStack.h">
+      <Filter>src\protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\BTcpClient.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\BTcpClientPool.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\TaskMsgBase.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\TaskMsgPool.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\HandleClient.h">
+      <Filter>src\handle</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\config\Config.cc">
+      <Filter>src\config</Filter>
+    </ClCompile>
+    <ClCompile Include="src\config\ServiceConfig.cc">
+      <Filter>src\config</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\BHttpServer.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\BTcpServer.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Codec.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\InserviceService.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Owner.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Packet.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Proc.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Seq.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\SignalHandle.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Timer.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\handle\HandleServer.cc">
+      <Filter>src\handle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\handle\server\Heartbeat.cc">
+      <Filter>src\handle\server</Filter>
+    </ClCompile>
+    <ClCompile Include="src\log\Log.cc">
+      <Filter>src\log</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tool\Util.cc">
+      <Filter>src\tool</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\protobuf\CenterStack.cc">
+      <Filter>src\protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\center.pb.cc">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\common.pb.cc">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\data.pb.cc">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\data_format.pb.cc">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\gate.pb.cc">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\logic.pb.cc">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\proxy.pb.cc">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\service.pb.cc">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\version.pb.cc">
+      <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol\protobuf\LogicStack.cc">
+      <Filter>src\protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\BTcpClient.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\BTcpClientPool.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\TaskMsgBase.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\TaskMsgPool.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\handle\HandleClient.cc">
+      <Filter>src\handle</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

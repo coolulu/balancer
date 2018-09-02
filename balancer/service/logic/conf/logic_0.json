@@ -1,0 +1,38 @@
+{
+	"net": {
+		"tcp": {
+			"ip": "0.0.0.0",
+			"port": 10400
+		},
+
+		"http": {
+			"ip": "0.0.0.0",
+			"port": 10450
+		}
+	},
+
+	"log": {
+		"level": 1,
+		"console": true,
+		"file_path": "./log/0/logic",
+		"roll_size": 10000000,
+		"thread_safe": false,
+		"flush_interval": 0,
+		"check_every_n": 0
+	},
+
+	"proc": {
+		"tcp_server_idle": 90,
+		"tcp_server_no_delay": true,
+		"tcp_server_recv_packet_len_max": 65535,	
+		"tcp_server_send_packet_len_max": 65535,	
+		"tcp_server_high_water_mark": 65535,	
+
+		"tcp_client_idle": 60,
+		"tcp_client_no_delay": true,
+		"tcp_client_recv_packet_len_max": 65535,
+		"tcp_client_send_packet_len_max": 65535,
+		"tcp_client_high_water_mark": 65535,
+		"tcp_client_msg_reduce_size": 1000
+	}
+}

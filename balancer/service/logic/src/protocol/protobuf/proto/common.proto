@@ -1,0 +1,51 @@
+syntax="proto3";
+
+package common;
+
+// 公共错误码
+enum ErrorCode {
+    SUCCESS                         = 0;
+
+    // 公共系统错误码 (各个服务service_id * 100000 + 公共系统错误码)
+    ERR_SYS_BEGIN                   = 100;
+    ERR_SYS_OVERLOAD                = 101;          // 服务过载
+    ERR_SYS_REJECT_SERVICE          = 102;          // 拒绝服务
+    ERR_SYS_SERVER_INNER            = 103;          // 服务内部错误
+    ERR_SYS_TIMEOUT                 = 104;          // 超时错误
+    ERR_SYS_NO_INSERVICE_LIST       = 105;          // 没有可用服务ip
+    ERR_SYS_TASK_STATE              = 106;          // 任务状态错误
+    ERR_SYS_TASK_DISCARD            = 107;          // 任务丢弃
+    ERR_SYS_END                     = 199;
+
+    // 公共数据包错误码 (各个服务service_id * 100000 + 公共数据包错误码)
+    ERR_PACKET_BEGIN                = 200;
+    ERR_PACKET_ENCODE               = 201;          // 打包失败
+    ERR_PACKET_DECODE               = 202;          // 解码失败
+    ERR_PACKET_HEADER               = 203;
+    ERR_PACKET_LEN                  = 204;
+    ERR_PACKET_VERSION              = 205;
+    ERR_PACKET_FROM_SERVICE_ID      = 206;
+    ERR_PACKET_TO_SERVICE_ID        = 207;
+    ERR_PACKET_APP_ID               = 208;
+    ERR_PACKET_APP_VERSION          = 209;
+    ERR_PACKET_CONN_SEQ_ID          = 210;
+    ERR_PACKET_MSG_SEQ_ID           = 211;
+    ERR_PACKET_DATA_FORMAT          = 212;
+    ERR_PACKET_DATA_FIELD_0         = 213;
+    ERR_PACKET_DATA_FIELD_1         = 214;
+    ERR_PACKET_DATA_FIELD_2         = 215;
+    ERR_PACKET_DATA_FIELD_3         = 216;
+    ERR_PACKET_CHECK_SUM            = 217;
+    ERR_PACKET_UNKNOWN_REQUEST      = 218;          // 不明请求
+    ERR_PACKET_END                  = 299;
+
+    // 公共接口错误码 (各个服务service_id * 100000 + 公共接口错误码)
+    ERR_INTERFACE_BEGIN             = 300;
+    ERR_INTERFACE_PARAM             = 301;          // 参数错误
+    ERR_INTERFACE_PERM              = 302;          // 权限错误
+    ERR_INTERFACE_END               = 399;
+
+    // 公共业务错误码 (各个服务service_id * 100000 + 公共业务错误码)
+    ERR_BUSINESS_BEGIN              = 10000;
+    ERR_BUSINESS_END                = 99999;
+}

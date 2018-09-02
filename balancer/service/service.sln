@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "navigate", "navigate\naviga
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "center", "center\center.vcxproj", "{BB668541-7B61-483B-B55D-52A581491AF3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "logic", "logic\logic.vcxproj", "{DF8B897D-634A-4292-A997-F5C6E3A729BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +21,10 @@ Global
 		{BB668541-7B61-483B-B55D-52A581491AF3}.Debug|Win32.Build.0 = Debug|Win32
 		{BB668541-7B61-483B-B55D-52A581491AF3}.Release|Win32.ActiveCfg = Release|Win32
 		{BB668541-7B61-483B-B55D-52A581491AF3}.Release|Win32.Build.0 = Release|Win32
+		{DF8B897D-634A-4292-A997-F5C6E3A729BC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DF8B897D-634A-4292-A997-F5C6E3A729BC}.Debug|Win32.Build.0 = Debug|Win32
+		{DF8B897D-634A-4292-A997-F5C6E3A729BC}.Release|Win32.ActiveCfg = Release|Win32
+		{DF8B897D-634A-4292-A997-F5C6E3A729BC}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
