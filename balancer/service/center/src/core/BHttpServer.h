@@ -54,6 +54,7 @@ private:
 private:
 	void send_http_rsp(muduo::net::HttpResponse* rsp, bool b);
 	void send_http_rsp(muduo::net::HttpResponse* rsp, const std::string& body);
+	void save(bool b);
 	
 private:
 	Proc& _proc;

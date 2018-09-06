@@ -137,6 +137,7 @@ void BHttpServer::set_service_heartbeat(const muduo::net::HttpRequest& req, mudu
 	if(b)
 	{
 		b = _proc._sc.set_service_heartbeat(service_id, heartbeat);
+		save(b);
 	}
 
 	send_http_rsp(rsp, b);
@@ -152,6 +153,7 @@ void BHttpServer::add_service_depend(const muduo::net::HttpRequest& req, muduo::
 	if(b)
 	{
 		b = _proc._sc.add_service_depend(service_id, depend_service_id);
+		save(b);
 	}
 
 	send_http_rsp(rsp, b);
@@ -167,6 +169,7 @@ void BHttpServer::del_service_depend(const muduo::net::HttpRequest& req, muduo::
 	if(b)
 	{
 		b = _proc._sc.del_service_depend(service_id, depend_service_id);
+		save(b);
 	}
 
 	send_http_rsp(rsp, b);
@@ -183,6 +186,7 @@ void BHttpServer::set_service_kv(const muduo::net::HttpRequest& req, muduo::net:
 	if(b)
 	{
 		b = _proc._sc.set_service_kv(service_id, kv);
+		save(b);
 	}
 
 	send_http_rsp(rsp, b);
@@ -199,6 +203,7 @@ void BHttpServer::add_service_kv(const muduo::net::HttpRequest& req, muduo::net:
 	if(b)
 	{
 		b = _proc._sc.add_service_kv(service_id, kv);
+		save(b);
 	}
 
 	send_http_rsp(rsp, b);
@@ -214,6 +219,7 @@ void BHttpServer::del_service_kv(const muduo::net::HttpRequest& req, muduo::net:
 	if(b)
 	{
 		b = _proc._sc.del_service_kv(service_id, key);
+		save(b);
 	}
 
 	send_http_rsp(rsp, b);
@@ -233,6 +239,7 @@ void BHttpServer::add_service_heartbeat_list(const muduo::net::HttpRequest& req,
 	if(b)
 	{
 		b = _proc._sc.add_service_heartbeat_list(service_id, ip_info);
+		save(b);
 	}
 
 	send_http_rsp(rsp, b);
@@ -248,6 +255,7 @@ void BHttpServer::del_service_heartbeat_list(const muduo::net::HttpRequest& req,
 	if(b)
 	{
 		b = _proc._sc.del_service_heartbeat_list(service_id, proc_id);
+		save(b);
 	}
 
 	send_http_rsp(rsp, b);
@@ -263,6 +271,7 @@ void BHttpServer::add_service_inservice_list(const muduo::net::HttpRequest& req,
 	if(b)
 	{
 		b = _proc._sc.add_service_inservice_list(service_id, proc_id);
+		save(b);
 	}
 
 	send_http_rsp(rsp, b);
@@ -278,6 +287,7 @@ void BHttpServer::del_service_inservice_list(const muduo::net::HttpRequest& req,
 	if(b)
 	{
 		b = _proc._sc.del_service_inservice_list(service_id, proc_id);
+		save(b);
 	}
 
 	send_http_rsp(rsp, b);
@@ -298,6 +308,7 @@ void BHttpServer::add_service(const muduo::net::HttpRequest& req, muduo::net::Ht
 	if(b)
 	{
 		b = _proc._sc.add_service(service_id, service_name, heartbeat);
+		save(b);
 	}
 
 	send_http_rsp(rsp, b);
@@ -311,6 +322,7 @@ void BHttpServer::del_service(const muduo::net::HttpRequest& req, muduo::net::Ht
 	if(b)
 	{
 		b = _proc._sc.del_service(service_id);
+		save(b);
 	}
 
 	send_http_rsp(rsp, b);
@@ -405,6 +417,15 @@ void BHttpServer::send_http_rsp(muduo::net::HttpResponse* rsp, const std::string
 	rsp->setStatusMessage("OK");
 	rsp->setBody(body.c_str());
 	rsp->setCloseConnection(true);
+}
+
+void BHttpServer::save(bool b)
+{
+	if(b)
+	{
+		std::string json = _proc._sc.map_to_json();
+		Util::bin_2_file(_proc._config.proc.service_path, json.c_str(), json.size());
+	}
 }
 
 
