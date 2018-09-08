@@ -429,8 +429,9 @@ bool ServiceConfig::add_service_depend(unsigned short service_id, unsigned short
 	{
 		auto p = get_service(service_id);
 		auto p_depend_service_id = get_service(depend_service_id);
-		if(p != nullptr && p_depend_service_id != nullptr)
+		if(p != nullptr && p_depend_service_id != nullptr && p_depend_service_id->inservice_list.size() > 0)
 		{
+			// 依赖服务的inservice_list必须有可服务的机器才能加入依赖
 			auto it = p->depend_map.find(depend_service_id);
 			if(it == p->depend_map.end())
 			{
@@ -634,6 +635,20 @@ bool ServiceConfig::del_service(unsigned short service_id)
 		auto it = _service_map.find(service_id);
 		if(it != _service_map.end())
 		{
+			// 删除service要检查是否有其他service的依赖,除自己依赖自己以外
+			for(auto it_service = _service_map.begin(); it_service != _service_map.end(); it++)
+			{
+				if(it_service->second.service_id != service_id)
+				{
+					auto it_find = it_service->second.depend_map.find(service_id);
+					if(it_find != it_service->second.depend_map.end())
+					{
+						return false;	// 还有其他服务在依赖该service
+					}
+				}
+			}
+
+			// 删除service没有其他service的依赖，可以删除依赖
 			_service_map.erase(it);
 			return true;
 		}
