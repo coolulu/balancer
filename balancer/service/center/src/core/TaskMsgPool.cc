@@ -35,13 +35,7 @@ void TaskMsgPool::del(unsigned long long seq_id)
 	unsigned int i = index(seq_id);
 	std::map<unsigned long long, TaskMsgBase*>& m = _map_v_task[i];
 
-	auto it = m.find(seq_id);
-	if(it != m.end())
-	{
-		delete it->second;
-		it->second = nullptr;
-		m.erase(it);
-	}
+	m.erase(seq_id);
 }
 
 void TaskMsgPool::clear()
