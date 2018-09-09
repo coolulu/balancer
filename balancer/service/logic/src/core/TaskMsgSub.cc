@@ -5,9 +5,12 @@
 #include "tool/Util.h"
 
 TaskMsgSub::TaskMsgSub(Proc& proc, const std::string& task_name, unsigned int gap_us,
-					   unsigned short depend_service_id, TaskMsgMaster* p_task_msg_master)
+					   unsigned short depend_service_id, 
+					   unsigned int proc_id,
+					   TaskMsgMaster* p_task_msg_master)
 	:	TaskMsgBase(proc, task_name, gap_us),
 		_depend_service_id(depend_service_id),
+		_proc_id(proc_id),
 		_p_task_msg_master(p_task_msg_master)
 {
 	_state = EN_STATE_REQUEST;
@@ -46,7 +49,16 @@ int TaskMsgSub::run(void* p)
 			_state = EN_STATE_RESPONSE;
 			_begin_time_us = Util::get_us();
 
-			bool b = _proc._is.get_ip_info(_depend_service_id, _ip_info);
+			bool b = false;
+			if(_proc_id == 0)
+			{
+				b = _proc._is.get_ip_info(_depend_service_id, _ip_info);	// ÂÖÑ¯
+			}
+			else
+			{
+				b = _proc._is.get_ip_info(_depend_service_id, _proc_id, _ip_info);	// Ö¸¶¨proc_id
+			}
+				
 			if(b)
 			{
 				bool is_send = _proc._tcp_client_pool.get_client(_ip_info)->send_msg(_request);
@@ -107,6 +119,7 @@ void TaskMsgSub::print(const std::string& prefix)
 	_p_task_msg_master->print(prefix);
 	::TaskMsgBase::print(prefix);	
 	B_LOG_INFO	<< "_depend_service_id=" << _depend_service_id
+				<< ", _proc_id=" << _proc_id
 				<< ", _ip_info.proc_id=" << _ip_info.proc_id
 				<< ", _ip_info.proc_des=" << _ip_info.proc_des
 				<< ", _ip_info.in_ip=" << _ip_info.in_ip
