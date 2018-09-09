@@ -4,7 +4,7 @@
 #include "core/TaskMsgSub.h"
 
 TaskMsgMaster::TaskMsgMaster(Proc& proc, const std::string& task_name, unsigned int gap_us)
-	:	TaskMsgBase(proc, task_name, gap_us), _state(EN_STATE_INIT)
+	:	TaskMsgBase(proc, task_name, gap_us)
 {
 
 }

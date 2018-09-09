@@ -38,7 +38,6 @@ public:
 	};
 
 public:
-	int _state;
 	std::set<unsigned long long> _sub_set;
 };
 
