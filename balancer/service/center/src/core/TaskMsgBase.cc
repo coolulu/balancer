@@ -16,12 +16,12 @@ TaskMsgBase::TaskMsgBase(Proc& proc,
 		_state(0),
 		_code(0)
 {
-
+	TaskMsgBase::print("task begin");
 }
 
 TaskMsgBase::~TaskMsgBase()
 {
-
+	TaskMsgBase::print("task end");
 }
 
 bool TaskMsgBase::check_timeout(unsigned long long now_us)

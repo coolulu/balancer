@@ -136,7 +136,7 @@ int Heartbeat::on_request()
 	}
 	else
 	{
-		B_LOG_INFO << "send_msg=false, _seq_id=" << _seq_id;
+		B_LOG_WARN << "send_msg=false, _seq_id=" << _seq_id;
 	}
 
 	return 0;
