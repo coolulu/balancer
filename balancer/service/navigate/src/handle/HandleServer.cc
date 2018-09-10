@@ -43,7 +43,7 @@ void HandleServer::handle(const muduo::net::TcpConnectionPtr& conn,
 			break;
 
 		default:
-
+			B_LOG_ERROR << "unknow CenterMsg, choice_case=" << msg.choice_case();
 			break;
 		}
 
@@ -64,11 +64,23 @@ void HandleServer::handle(const muduo::net::TcpConnectionPtr& conn,
 	
 	if(service_msg.Is<navigate::NavigateMsg>())
 	{
+		navigate::NavigateMsg msg;
+		service_msg.UnpackTo(&msg);
 		
-		
+		switch (msg.choice_case())
+		{
+		case navigate::NavigateMsg::kTestReq:
+			
+			break;
+
+		default:
+			B_LOG_ERROR << "unknow NavigateMsg, choice_case=" << msg.choice_case();
+			break;
+		}
 	}
 	else
 	{
-
+		B_LOG_ERROR << "unknow service, _msg_seq_id=" << packet_ptr->_msg_seq_id;
+		packet_ptr->print();
 	}
 }
