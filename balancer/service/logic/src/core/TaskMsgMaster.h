@@ -14,7 +14,6 @@ public:
 	virtual ~TaskMsgMaster();
 
 public:
-	virtual bool init() = 0;
 	virtual int timeout_by_sub(TaskMsgSub& sub) = 0;
 	virtual int timeout() = 0;
 	virtual int run(void* p = nullptr) = 0;

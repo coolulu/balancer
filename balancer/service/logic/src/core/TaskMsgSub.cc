@@ -73,7 +73,9 @@ int TaskMsgSub::run(void* p)
 			}
 			else
 			{
-				B_LOG_ERROR << "get_ip_info not find, _depend_service_id=" << _depend_service_id;
+				B_LOG_ERROR << "get_ip_info not find"
+							<< ", _depend_service_id=" << _depend_service_id
+							<< ", _proc_id=" << _proc_id;
 			}
 
 			if(_gap_us != 0)	// 超时时间不为0，加入定时器
