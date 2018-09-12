@@ -83,7 +83,6 @@ void BTcpServer::on_connection(const muduo::net::TcpConnectionPtr& conn)
 	}
 }
 
-//#include "protocol/Protocol.h"
 void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn, 
 							PacketPtr& packet_ptr,
 							muduo::Timestamp time)
