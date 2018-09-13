@@ -12,9 +12,9 @@ public:
 	~HandleClient();
 
 public:
-	void handle(const muduo::net::TcpConnectionPtr& conn, 
-				TaskMsgBase* task,
-				muduo::Timestamp time);
+	void handle_response(const muduo::net::TcpConnectionPtr& conn,
+						 TaskMsgBase* task,
+						 muduo::Timestamp time);
 
 
 private:

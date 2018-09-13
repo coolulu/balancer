@@ -17,16 +17,10 @@ HandleServer::~HandleServer()
 
 }
 
-void HandleServer::handle(const muduo::net::TcpConnectionPtr& conn, 
-					   PacketPtr& packet_ptr, 
-					   muduo::Timestamp time)
+void HandleServer::handle_request(const muduo::net::TcpConnectionPtr& conn, 
+								  PacketPtr& packet_ptr, 
+								  muduo::Timestamp time)
 {
-	if(packet_ptr->_body.msg_type_case() != data::Body::kMsgReq)
-	{
-		B_LOG_ERROR << "error msg_type=" << packet_ptr->_body.msg_type_case();
-		return;
-	}
-
 	const ::google::protobuf::Any& service_msg = packet_ptr->_body.service_msg();
 	if(service_msg.Is<center::CenterMsg>())
 	{
