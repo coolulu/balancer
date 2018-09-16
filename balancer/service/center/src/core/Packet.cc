@@ -88,6 +88,12 @@ Packet::~Packet()
 
 bool Packet::check()
 {
+	if(_data_len == 0)
+	{
+		B_LOG_ERROR << "data_len is error, _msg_seq_id=" << _msg_seq_id << ", _data_len=" << _data_len;
+		return false;
+	}
+
 	unsigned int check_sum = ::adler32(0, reinterpret_cast<const Bytef*>(_buffer + k_header_size), 
 									   _len + k_len_size - k_check_sum_size);
 	if(check_sum != _check_sum)
@@ -105,7 +111,7 @@ bool Packet::check()
 				return true;
 			}
 
-			B_LOG_ERROR << "_msg_seq_id=" << _msg_seq_id << ", _body.ParseFromArray=false";
+			B_LOG_ERROR << "_msg_seq_id=" << _msg_seq_id << ", _body.ParseFromArray=false, _data_len=" << _data_len;
 			return false;
 		}
 		break;
