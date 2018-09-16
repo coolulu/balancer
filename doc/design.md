@@ -42,23 +42,23 @@
 
     struct Packet
     {
-        unsigned int            header              :4              // 包头标识
-        unsigned int            len                 :4              // 长度
-        unsigned short          version             :2              // 协议版本
-        unsigned short          from_service_id     :2              // 发送的service_id
-        unsigned short          to_service_id       :2              // 发送到service_id
-        unsigned int            to_proc_id          :4              // 0为负载均衡，非0则请求到proc_id的服务
+        unsigned int            header              :4          // 包头标识
+        unsigned int            len                 :4          // 长度
+        unsigned short          version             :2          // 协议版本
+        unsigned short          from_service_id     :2          // 发送的service_id
+        unsigned short          to_service_id       :2          // 发送到service_id
+        unsigned int            to_proc_id          :4          // 0为负载均衡，非0则请求到proc_id的服务
         unsigned int            app_id              :4
         unsigned int            app_version         :4
-        unsigned long long      conn_seq_id         :8              // 客户端连接序列id(用在网关转发)
-        unsigned long long      msg_seq_id          :8              // 消息序列id
-        unsigned char           data_format         :1              // 数据格式，详见data_format.proto
-        unsigned char           reserve_field_0     :1              // 保留字段0
-        unsigned int            reserve_field_1     :4              // 保留字段1
-        unsigned int            reserve_field_2     :4              // 保留字段2
-        unsigned int            reserve_field_3     :4              // 保留字段3
-        unsigned char           data[]              :data_len
-        unsigned int            check_sum           :4              // 校验和
+        unsigned long long      conn_seq_id         :8          // 网关转发(前端请求填前端连接id，后端请求网关填后端连接id）
+        unsigned long long      msg_seq_id          :8          // 消息序列id
+        unsigned char           data_format         :1          // 数据格式，详见data_format.proto
+        unsigned char           reserve_field_0     :1          // 保留字段0
+        unsigned int            reserve_field_1     :4          // 保留字段1
+        unsigned int            reserve_field_2     :4          // 保留字段2
+        unsigned int            reserve_field_3     :4          // 保留字段3
+        unsigned char           data[]              :data_len   // data_len不能为0
+        unsigned int            check_sum           :4          // 校验和
     }
 
     header = [0x00,0x00,0x00,0x00]
