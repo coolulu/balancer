@@ -125,6 +125,7 @@ void TaskMsgSub::print(const std::string& prefix)
 				<< ", _ip_info.proc_id=" << _ip_info.proc_id
 				<< ", _ip_info.proc_des=" << _ip_info.proc_des
 				<< ", _ip_info.in_ip=" << _ip_info.in_ip
+				<< ", _ip_info.in_port=" << _ip_info.in_port
 				<< ", _ip_info.out_ip=" << _ip_info.out_ip
-				<< ", _ip_info.port=" << _ip_info.port;
+				<< ", _ip_info.out_port=" << _ip_info.out_port;
 }

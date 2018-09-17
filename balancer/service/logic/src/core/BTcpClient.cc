@@ -12,7 +12,7 @@ BTcpClient::BTcpClient(Proc& proc, const ServiceConfig::IPInfo& ip_info)
 		_connect(false), 
 		_ip_info(ip_info), 
 		_tcp_client(&proc._loop, 
-					muduo::net::InetAddress(ip_info.in_ip, ip_info.port), 
+					muduo::net::InetAddress(ip_info.in_ip, ip_info.in_port), 
 					ip_info.proc_des.c_str()),
 		_codec(boost::bind(&BTcpClient::on_message, this, _1, _2, _3), ip_info.proc_des,
 			   proc._config.proc.tcp_client_recv_packet_len_max,
@@ -49,7 +49,7 @@ bool BTcpClient::check_idle(unsigned int now)
 
 void BTcpClient::connect()
 {
-	B_LOG_INFO << "proc_id=" << _ip_info.proc_id << ", in_ip=" << _ip_info.in_ip << ", port=" << _ip_info.port;
+	B_LOG_INFO << "proc_id=" << _ip_info.proc_id << ", in_ip=" << _ip_info.in_ip << ", in_port=" << _ip_info.in_port;
 	_tcp_client.connect();
 
 	_update_time = ::time(nullptr);

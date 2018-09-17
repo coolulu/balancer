@@ -19,7 +19,7 @@ public:
 	void check_idle();
 
 public:
-	// key_ip_port到Client的映射
+	// key_in_ip_port到Client的映射
 	std::map<unsigned long long, BTcpClientPtr> _client_map;
 	Proc& _proc;
 };
