@@ -14,8 +14,8 @@ Context::Context(unsigned int seq_id)
 BTcpServer::BTcpServer(Proc& proc)
 	:	_proc(proc), _p_tcp_server(nullptr),
 		_codec(	boost::bind(&BTcpServer::on_message, this, _1, _2, _3), "TcpServer",
-				proc._config.proc.tcp_client_recv_packet_len_max,
-				proc._config.proc.tcp_client_send_packet_len_max),
+				proc._config.proc.tcp_server_recv_packet_len_max,
+				proc._config.proc.tcp_server_send_packet_len_max),
 		_handle_server(proc)
 {
 	
