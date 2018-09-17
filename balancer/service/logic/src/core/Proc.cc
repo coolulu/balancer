@@ -116,7 +116,7 @@ bool Proc::reload()
 		return false;
 	}
 
-	err = _config.load(config_json);
+	err = _config.reload(config_json);
 	if(err.size() > 0)
 	{
 		B_LOG_ERROR << "config load err=" << err;
