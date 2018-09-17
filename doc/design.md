@@ -290,7 +290,7 @@
         10200:核心服务,cpu密集型,进程数等于cpu数
 
         gate -> [client, navigate, logic, proxy], <- [center, client, logic]
-        (listen http * 1, listen tcp * 1, connect tcp * n)
+        (listen http * 1, listen tcp * 2(前后端端口分离), connect tcp * n)
         10300:核心服务,cpu密集型,进程数等于cpu数
 
         logic -> [proxy, gate], <- [center, gate]
@@ -474,8 +474,9 @@
                         "proc_id": 1000,            //程序id
                         "proc_des": "gate_1_0",     //程序描述
                         "in_ip": "121.1.1.1",       //内网ip,心跳探测,服务通信(如果要跨机房通讯，全部用外网ip连接)
+                        "in_port": 10100,
                         "out_ip": "11.1.1.1",       //外网ip,没外网ip就填内网ip
-                        "port": 10100
+                        "out_port": 30000           //外网port,没外网port就和in_port一样
                     }
                 ],
                 "inservice_list": [                 //上线(有心跳探测,在服务)
@@ -483,8 +484,9 @@
                         "proc_id": 2000,
                         "proc_des": "gate_2_0",
                         "in_ip": "121.1.1.2",
+                        "in_port": 10100
                         "out_ip": "11.1.1.2",
-                        "port": 10100
+                        "out_port": 30000
                     }
                 ]
             },
@@ -517,8 +519,9 @@
                         "proc_id": 1000,
                         "proc_des": "group_1_0",
                         "in_ip": "121.1.1.10",
+                        "in_port": 10200
                         "out_ip": "11.1.1.10",
-                        "port": 10200
+                        "out_port": 10200
                     }
                 ],
                 "inservice_list": [
@@ -526,15 +529,17 @@
                         "proc_id": 2000,
                         "proc_des": "group_2_0",
                         "in_ip": "121.1.1.20",
+                        "in_port": 10200
                         "out_ip": "11.1.1.20",
-                        "port": 10200
+                        "out_port": 10200
                     },
                     {
                         "proc_id": 2001,
                         "proc_des": "group_2_1",
                         "in_ip": "121.1.1.21",
+                        "in_port": 10201
                         "out_ip": "11.1.1.21",
-                        "port": 10201
+                        "out_port": 10201
                     }
                 ]
             }
@@ -542,6 +547,8 @@
     }
 
 #### 心跳探测
+    只探测in_ip和in_port，service之间通过in_ip和in_port连接
+
     message HeartbeatReq {
         int32      level               = 1;     // center的等级
         int32      service_id          = 2;
