@@ -28,9 +28,10 @@
                 {
                     "proc_id": 100,
                     "proc_des": "gate_1_0",
-                    "in_ip": "121.1.1.1",       
+                    "in_ip": "121.1.1.1",
+					"in_port": 10100,
                     "out_ip": "11.1.1.1",       
-                    "port": 10100
+                    "out_port": 30000
                 }
             ],
             "inservice_list": [                 
@@ -38,8 +39,9 @@
                     "proc_id": 200,
                     "proc_des": "gate_2_0",
                     "in_ip": "121.1.1.2",
+					"in_port": 10100,
                     "out_ip": "11.1.1.2",
-                    "port": 10100
+                    "out_port": 30000
                 }
             ]
         },
@@ -72,8 +74,9 @@
                     "proc_id": 100,
                     "proc_des": "group_1_0",
                     "in_ip": "121.1.1.10",
+					"in_port": 10200
                     "out_ip": "11.1.1.10",
-                    "port": 10200
+                    "out_port": 10200
                 }
             ],
             "inservice_list": [
@@ -81,15 +84,17 @@
                     "proc_id": 200,
                     "proc_des": "group_2_0",
                     "in_ip": "121.1.1.20",
+					"in_port": 10200
                     "out_ip": "11.1.1.20",
-                    "port": 10200
+                    "out_port": 10200
                 },
                 {
                     "proc_id": 201,
                     "proc_des": "group_2_1",
                     "in_ip": "121.1.1.21",
+					"in_port": 10201
                     "out_ip": "11.1.1.21",
-                    "port": 10201
+                    "out_port": 10201
                 }
             ]
         }

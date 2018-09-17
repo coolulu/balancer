@@ -101,8 +101,9 @@ void Heartbeat::print(const std::string& prefix)
 				<< ", _ip_info.proc_id=" << _ip_info.proc_id
 				<< ", _ip_info.proc_des=" << _ip_info.proc_des
 				<< ", _ip_info.in_ip=" << _ip_info.in_ip
+				<< ", _ip_info.in_port=" << _ip_info.in_port
 				<< ", _ip_info.out_ip=" << _ip_info.out_ip
-				<< ", _ip_info.port=" << _ip_info.port;
+				<< ", _ip_info.out_port=" << _ip_info.out_port;
 }
 
 int Heartbeat::on_request()
@@ -217,8 +218,9 @@ int Heartbeat::on_timeout(const ServiceConfig::Heartbeat& heartbeat,
 				<< ", _ip_info.proc_id=" << ip_info.proc_id
 				<< ", _ip_info.proc_des=" << ip_info.proc_des
 				<< ", _ip_info.in_ip=" << ip_info.in_ip
+				<< ", _ip_info.in_port=" << ip_info.in_port
 				<< ", _ip_info.out_ip=" << ip_info.out_ip
-				<< ", _ip_info.port=" << ip_info.port
+				<< ", _ip_info.out_port=" << ip_info.out_port
 				<< ", is_run=" << ip_info._ip_info_derivative.is_run
 				<< ", hb_success_count=" <<  ip_info._ip_info_derivative.hb_success_count
 				<< ", hb_error_count=" <<  ip_info._ip_info_derivative.hb_error_count
@@ -304,8 +306,9 @@ void Heartbeat::on_count(const ServiceConfig::Heartbeat& heartbeat,
 				<< ", _ip_info.proc_id=" << ip_info.proc_id
 				<< ", _ip_info.proc_des=" << ip_info.proc_des
 				<< ", _ip_info.in_ip=" << ip_info.in_ip
+				<< ", _ip_info.in_port=" << ip_info.in_port
 				<< ", _ip_info.out_ip=" << ip_info.out_ip
-				<< ", _ip_info.port=" << ip_info.port
+				<< ", _ip_info.out_port=" << ip_info.out_port
 				<< ", is_run=" << ip_info._ip_info_derivative.is_run
 				<< ", hb_success_count=" <<  ip_info._ip_info_derivative.hb_success_count
 				<< ", hb_error_count=" <<  ip_info._ip_info_derivative.hb_error_count

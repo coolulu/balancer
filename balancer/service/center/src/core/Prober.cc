@@ -64,10 +64,11 @@ void Prober::probe()
 								<< ", proc_id=" << ip_info.proc_id
 								<< ", proc_des=" << ip_info.proc_des
 								<< ", in_ip=" << ip_info.in_ip
+								<< ", in_port=" << ip_info.in_port
 								<< ", out_ip=" << ip_info.out_ip
-								<< ", port=" << ip_info.port
+								<< ", out_port=" << ip_info.out_port
 								<< ", ip=" << ip_info.ip
-								<< ", key_ip_port=" << ip_info.key_ip_port;
+								<< ", key_in_ip_port=" << ip_info.key_in_ip_port;
 
 					Heartbeat* hb = new Heartbeat(_proc,
 												  _proc._config.proc.prober_timeout_us,
@@ -91,10 +92,11 @@ void Prober::probe()
 								<< ", proc_id=" << ip_info.proc_id
 								<< ", proc_des=" << ip_info.proc_des
 								<< ", in_ip=" << ip_info.in_ip
+								<< ", in_port=" << ip_info.in_port
 								<< ", out_ip=" << ip_info.out_ip
-								<< ", port=" << ip_info.port
+								<< ", out_port=" << ip_info.out_port
 								<< ", ip=" << ip_info.ip
-								<< ", key_ip_port=" << ip_info.key_ip_port;
+								<< ", key_in_ip_port=" << ip_info.key_in_ip_port;
 
 					Heartbeat* hb = new Heartbeat(_proc,
 												  _proc._config.proc.prober_timeout_us,

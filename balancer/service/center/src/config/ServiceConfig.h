@@ -30,8 +30,9 @@ namespace KeyServiceConfig
 	static const std::string& proc_id				= "proc_id";
 	static const std::string& proc_des				= "proc_des";
 	static const std::string& in_ip					= "in_ip";
+	static const std::string& in_port				= "in_port";
 	static const std::string& out_ip				= "out_ip";
-	static const std::string& port					= "port";
+	static const std::string& out_port				= "out_port";
 	
 }
 
@@ -65,19 +66,20 @@ public:
 
 	struct IPInfo
 	{
-		IPInfo() : proc_id(0), port(0), ip(0), key_ip_port(0){}
+		IPInfo() : proc_id(0), in_port(0), out_port(0), ip(0), key_in_ip_port(0){}
 		inline bool operator== (unsigned int proc_id) {return this->proc_id == proc_id;}
-		void change();	//赋值ip,key_ip_port
+		void change();	//赋值ip,key_in_ip_port
 
 		unsigned int		proc_id;
 		std::string			proc_des;
 		std::string			in_ip;
+		unsigned short		in_port;
 		std::string			out_ip;
-		unsigned short		port;
+		unsigned short		out_port;
 
 		//不是配置文件里的变量
 		unsigned int		ip;					// in_ip转换过来
-		unsigned long long	key_ip_port;		// ip和port的组合key
+		unsigned long long	key_in_ip_port;		// in_ip和in_port的组合key
 
 		// 附加属性
 		IPInfoDerivative _ip_info_derivative;

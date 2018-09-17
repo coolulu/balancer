@@ -112,10 +112,12 @@ std::string ServiceConfig::json_to_map(const std::string& json)
 						return err_is_not_string(KeyServiceConfig::proc_des, service.service_name);
 					if(!get_string(b, KeyServiceConfig::in_ip, ip_info.in_ip))
 						return err_is_not_string(KeyServiceConfig::in_ip, service.service_name);
+					if(!get_uint(b, KeyServiceConfig::in_port, ip_info.in_port))
+						return err_is_not_uint(KeyServiceConfig::in_port, service.service_name);
 					if(!get_string(b, KeyServiceConfig::out_ip, ip_info.out_ip))
 						return err_is_not_string(KeyServiceConfig::out_ip, service.service_name);
-					if(!get_uint(b, KeyServiceConfig::port, ip_info.port))
-						return err_is_not_uint(KeyServiceConfig::port, service.service_name);
+					if(!get_uint(b, KeyServiceConfig::out_port, ip_info.out_port))
+						return err_is_not_uint(KeyServiceConfig::out_port, service.service_name);
 
 					ip_info.change();
 					service.heartbeat_list.push_back(ip_info);
@@ -140,10 +142,12 @@ std::string ServiceConfig::json_to_map(const std::string& json)
 						return err_is_not_string(KeyServiceConfig::proc_des, service.service_name);
 					if(!get_string(b, KeyServiceConfig::in_ip, ip_info.in_ip))
 						return err_is_not_string(KeyServiceConfig::in_ip, service.service_name);
+					if(!get_uint(b, KeyServiceConfig::in_port, ip_info.in_port))
+						return err_is_not_uint(KeyServiceConfig::in_port, service.service_name);
 					if(!get_string(b, KeyServiceConfig::out_ip, ip_info.out_ip))
 						return err_is_not_string(KeyServiceConfig::out_ip, service.service_name);
-					if(!get_uint(b, KeyServiceConfig::port, ip_info.port))
-						return err_is_not_uint(KeyServiceConfig::port, service.service_name);
+					if(!get_uint(b, KeyServiceConfig::out_port, ip_info.out_port))
+						return err_is_not_uint(KeyServiceConfig::out_port, service.service_name);
 
 					ip_info.change();
 					service.inservice_list.push_back(ip_info);
@@ -261,10 +265,12 @@ std::string ServiceConfig::map_to_json()
 								writer.String(ip_info.proc_des.c_str());
 								writer.Key(KeyServiceConfig::in_ip.c_str());
 								writer.String(ip_info.in_ip.c_str());
+								writer.Key(KeyServiceConfig::in_port.c_str());
+								writer.Uint(ip_info.in_port);
 								writer.Key(KeyServiceConfig::out_ip.c_str());
 								writer.String(ip_info.out_ip.c_str());
-								writer.Key(KeyServiceConfig::port.c_str());
-								writer.Uint(ip_info.port);
+								writer.Key(KeyServiceConfig::out_port.c_str());
+								writer.Uint(ip_info.out_port);
 							}
 							writer.EndObject();
 						}
@@ -284,10 +290,12 @@ std::string ServiceConfig::map_to_json()
 								writer.String(ip_info.proc_des.c_str());
 								writer.Key(KeyServiceConfig::in_ip.c_str());
 								writer.String(ip_info.in_ip.c_str());
+								writer.Key(KeyServiceConfig::in_port.c_str());
+								writer.Uint(ip_info.in_port);
 								writer.Key(KeyServiceConfig::out_ip.c_str());
 								writer.String(ip_info.out_ip.c_str());
-								writer.Key(KeyServiceConfig::port.c_str());
-								writer.Uint(ip_info.port);
+								writer.Key(KeyServiceConfig::out_port.c_str());
+								writer.Uint(ip_info.out_port);
 							}
 							writer.EndObject();
 						}
@@ -599,7 +607,7 @@ bool ServiceConfig::del_service_kv(unsigned short service_id, const std::string&
 
 bool ServiceConfig::add_service_heartbeat_list(unsigned short service_id, const IPInfo& ip_info)
 {
-	if(ip_info.proc_id != 0 && ip_info.proc_des.size() > 0 && ip_info.in_ip.size() > 0 && ip_info.out_ip.size() > 0 && ip_info.port != 0)
+	if(ip_info.proc_id != 0 && ip_info.proc_des.size() > 0 && ip_info.in_ip.size() > 0 && ip_info.in_port != 0 && ip_info.out_ip.size() > 0 && ip_info.out_port != 0)
 	{
 		auto p = get_service(service_id);
 		if(p != nullptr)
@@ -758,10 +766,10 @@ void ServiceConfig::IPInfo::change()
 {
 	ip = Util::sip_2_uip(in_ip.c_str());
 	/*
-	memcpy((char*)&key_ip_port, (char*)&ip, sizeof(ip));
-	memcpy((char*)&key_ip_port + sizeof(ip), (char*)&port, sizeof(port));
+	memcpy((char*)&key_in_ip_port, (char*)&ip, sizeof(ip));
+	memcpy((char*)&key_in_ip_port + sizeof(ip), (char*)&in_port, sizeof(in_port));
 	*/
-	key_ip_port = Util::uiui2ull(ip, port);
+	key_in_ip_port = Util::uiui2ull(ip, in_port);
 }
 
 

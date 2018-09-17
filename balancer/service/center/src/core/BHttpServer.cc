@@ -234,8 +234,9 @@ void BHttpServer::add_service_heartbeat_list(const muduo::net::HttpRequest& req,
 			 get_key_val(req.query().c_str(), KeyServiceConfig::proc_id, ip_info.proc_id) &&
 			 get_key_val(req.query().c_str(), KeyServiceConfig::proc_des, ip_info.proc_des) &&
 			 get_key_val(req.query().c_str(), KeyServiceConfig::in_ip, ip_info.in_ip) &&
+			 get_key_val(req.query().c_str(), KeyServiceConfig::in_port, ip_info.in_port) &&
 			 get_key_val(req.query().c_str(), KeyServiceConfig::out_ip, ip_info.out_ip) &&
-			 get_key_val(req.query().c_str(), KeyServiceConfig::port, ip_info.port);
+			 get_key_val(req.query().c_str(), KeyServiceConfig::out_port, ip_info.out_port);
 	if(b)
 	{
 		b = _proc._sc.add_service_heartbeat_list(service_id, ip_info);
