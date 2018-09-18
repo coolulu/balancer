@@ -288,7 +288,7 @@
 
         navigate -> [], <- [center, client, gate]
         (listen http * 2(前后端端口分离), listen tcp * 1)
-        10200:核心服务(c++),cpu密集型,进程数等于cpu数
+        10200:核心服务(c++),cpu密集型,工作线程数等于cpu数和一个主线程
         多线程单进程，每个节点运行一个进程，进程不绑定cpu
 
         gate -> [client, navigate, logic, proxy], <- [center, client, logic]
@@ -303,7 +303,7 @@
 
         proxy -> [], <-[center, gate, logic]
         (listen http * 1, listen tcp * 1)
-        10500:业务服务(python),io密集型,进程数等于cpu数乘2或3
+        10500:业务服务(python),io密集型,工作线程数等于[2,8]和一个网络io线程
         多线程单进程，每个节点运行多个进程，进程绑定cpu
 
     frontend:
