@@ -283,28 +283,33 @@
     backend:
         center -> [navigate, gate, logic, proxy]
         (listen http * 1, connect tcp * n)
-        10100:核心服务,cpu密集型,进程数等于cpu数
+        10100:核心服务(c++),cpu密集型,进程数等于cpu数
+        单线程单进程，每个节点运行一个进程，进程绑定cpu
 
         navigate -> [], <- [center, client, gate]
-        (listen http * 1, listen tcp * 1)
-        10200:核心服务,cpu密集型,进程数等于cpu数
+        (listen http * 2(前后端端口分离), listen tcp * 1)
+        10200:核心服务(c++),cpu密集型,进程数等于cpu数
+        多线程单进程，每个节点运行一个进程，进程不绑定cpu
 
         gate -> [client, navigate, logic, proxy], <- [center, client, logic]
         (listen http * 1, listen tcp * 2(前后端端口分离), connect tcp * n)
-        10300:核心服务,cpu密集型,进程数等于cpu数
+        10300:核心服务(c++),cpu密集型,进程数等于cpu数
+        单线程单进程，每个节点运行多个进程，进程绑定cpu
 
         logic -> [proxy, gate], <- [center, gate]
         (listen http * 1, listen tcp * 1, connect tcp * n)
-        10400:业务服务,cpu密集型,进程数等于cpu数
+        10400:业务服务(c++),cpu密集型,进程数等于cpu数
+        单线程单进程，每个节点运行多个进程，进程绑定cpu
 
         proxy -> [], <-[center, gate, logic]
         (listen http * 1, listen tcp * 1)
-        10500:业务服务,io密集型,进程数等于cpu数乘2或3
+        10500:业务服务(python),io密集型,进程数等于cpu数乘2或3
+        多线程单进程，每个节点运行多个进程，进程绑定cpu
 
     frontend:
         client -> [navigate, gate], <- [gate]
         (listen http * 1, connect tcp * n)
-        10600:业务服务,cpu密集型,进程数等于cpu数
+        10600:业务服务(python),cpu密集型,单线程单进程
 
 ### 资源管理服务
 
@@ -605,6 +610,8 @@
     service_type: gate
     （不考虑）gate要做user对tcp的绑定，保证user断开重连之后tcp连接不同，但还能找回user的新tcp连接
     每次gate被接管时，要赋值center发送给的proc_id，以便同步navigate时报上自己proc_id，方便navigate根据proc_id更新
+
+    navigate每秒检查一次找出最小负载，最小负载proc_id变换时，更新到每个httpsrver的最小proc_id
 
 ### 逻辑服务
     service_type: logic
