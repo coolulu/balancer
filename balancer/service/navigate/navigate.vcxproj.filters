@@ -155,6 +155,9 @@
     <ClCompile Include="src\handle\HandleServer.cc">
       <Filter>src\handle</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\NavigateServer.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\protocol\Protocol.h">
@@ -237,6 +240,9 @@
     </ClInclude>
     <ClInclude Include="src\handle\HandleServer.h">
       <Filter>src\handle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\NavigateServer.h">
+      <Filter>src\core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
