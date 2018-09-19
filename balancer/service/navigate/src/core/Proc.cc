@@ -15,6 +15,7 @@ Proc::Proc(muduo::net::EventLoop& loop,
 		_conf_id(conf_id),
 		_tcp_server(*this),
 		_http_server(*this),
+		_navigate_pool(*this),
 		_timer(*this)
 {
 
@@ -54,6 +55,7 @@ void Proc::start()
 	B_LOG_INFO;
 	_tcp_server.start();
 	_http_server.start();
+	_navigate_pool.start();
 	_loop.runEvery(0.1, boost::bind(&Timer::check_timeout, &_timer));
 }
 

@@ -8,6 +8,7 @@
 #include "Timer.h"
 #include "BTcpServer.h"
 #include "BHttpServer.h"
+#include "NavigateServer.h"
 #include "Seq.h"
 #include "Owner.h"
 #include "InserviceService.h"
@@ -48,6 +49,7 @@ public:
 	
 	BTcpServer _tcp_server;
 	BHttpServer _http_server;
+	NavigatePool _navigate_pool;
 	Timer _timer;
 
 	Owner _owner;
