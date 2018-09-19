@@ -8,6 +8,11 @@
 		"http": {
 			"ip": "0.0.0.0",
 			"port": 10250
+		},
+
+		"navigate": {
+			"ip": "0.0.0.0",
+			"port": 20000
 		}
 	},
 
@@ -16,7 +21,7 @@
 		"console": true,
 		"file_path": "./log/0/navigate",
 		"roll_size": 10000000,
-		"thread_safe": false,
+		"thread_safe": true,
 		"flush_interval": 0,
 		"check_every_n": 0
 	},
