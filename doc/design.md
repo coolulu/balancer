@@ -606,6 +606,10 @@
 
     如果要统一外网端口或减少外网ip机器数量(成本)，则在前面放nginx转后到后方多个端口的navigate
 
+    登录流程client去navigate拿key_client = key(uint64) xor {当前时间戳(uint32)，userid(uint32)}，
+    logic请求client返回得到key_client和key异或出拿key的时间戳和userid，
+    比较当前时间大于60秒key失效和userid是否和登录接口userid一致
+
 ### 网关服务
     service_type: gate
     （不考虑）gate要做user对tcp的绑定，保证user断开重连之后tcp连接不同，但还能找回user的新tcp连接
