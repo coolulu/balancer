@@ -10,6 +10,7 @@ namespace KeyConfig
 	static const std::string& ip								= "ip";
 	static const std::string& port								= "port";
 	static const std::string& http								= "http";
+	static const std::string& navigate							= "navigate";
 
 	static const std::string& log								= "log";
 	static const std::string& level								= "level";
@@ -51,6 +52,7 @@ public:
 
 		Listen tcp;
 		Listen http;
+		Listen navigate;
 	};
 
 	struct Log

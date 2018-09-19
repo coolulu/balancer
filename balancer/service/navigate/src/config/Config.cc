@@ -30,6 +30,14 @@ std::string Config::load(const std::string& json)
 				return err_is_not_string(KeyConfig::ip);
 			if(!get_uint(cv_http, KeyConfig::port, net.http.port))
 				return err_is_not_uint(KeyConfig::port);
+
+			const rapidjson::Value& cv_navigate = cv[KeyConfig::navigate.c_str()];
+			if(!cv_navigate.IsObject())
+				return err_is_not_object(KeyConfig::navigate);
+			if(!get_string(cv_navigate, KeyConfig::ip, net.navigate.ip))
+				return err_is_not_string(KeyConfig::ip);
+			if(!get_uint(cv_navigate, KeyConfig::port, net.navigate.port))
+				return err_is_not_uint(KeyConfig::port);
 		}	
 	}
 	
@@ -201,6 +209,8 @@ std::string Config::to_string()
 			", net.tcp.port="							+ std::to_string(net.tcp.port) + 
 			", net.http.ip="							+ net.http.ip + 
 			", net.http.port="							+ std::to_string(net.http.port) + 
+			", net.navigate.ip="						+ net.navigate.ip + 
+			", net.navigate.port="						+ std::to_string(net.navigate.port) + 
 			", log.level="								+ std::to_string(log.level) + 
 			", log.console="							+ (log.console ? "true" : "false") + 
 			", log.file_path="							+ log.file_path + 
