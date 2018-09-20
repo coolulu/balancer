@@ -25,7 +25,8 @@ public:
 	~Packet();
 
 public:
-	bool check();
+	bool check();	// 检查包返回false，外层断开连接
+	bool parse();	// 反序列化返回false，外层丢包
 	void print();
 
 public:

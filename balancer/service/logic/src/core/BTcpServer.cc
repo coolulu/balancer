@@ -87,29 +87,37 @@ void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 							PacketPtr& packet_ptr,
 							muduo::Timestamp time)
 {
-	int msg_type = packet_ptr->_body.msg_type_case();
-	switch(msg_type)
+	bool b = packet_ptr->parse();
+	if(b)
 	{
-	case data::Body::kMsgReq:
+		int msg_type = packet_ptr->_body.msg_type_case();
+		switch(msg_type)
 		{
-			const ::data::Body_MsgReq& msg_req = packet_ptr->_body.msg_req();
+		case data::Body::kMsgReq:
+			{
+				const ::data::Body_MsgReq& msg_req = packet_ptr->_body.msg_req();
 
-			B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
-						<< ", msg_type is req";
+				B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
+							<< ", msg_type is req";
 
-			_handle_server.handle_request(conn, packet_ptr, time);
-		}		
-		break;
+				_handle_server.handle_request(conn, packet_ptr, time);
+			}		
+			break;
 
-	case data::Body::kMsgRsp:
-		B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
-					<< ", msg_type is rsp";
-		break;
+		case data::Body::kMsgRsp:
+			B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
+						<< ", msg_type is rsp";
+			break;
 
-	default:
-		B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString() 
-					<< ", unknow msg_type=" << msg_type;
-		break;
+		default:
+			B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString() 
+						<< ", unknow msg_type=" << msg_type;
+			break;
+		}
+	}
+	else
+	{
+		// ¶ª°ü
 	}
 
 	Context* p_context = boost::any_cast<Context>(conn->getMutableContext());

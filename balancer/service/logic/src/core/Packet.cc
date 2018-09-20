@@ -90,6 +90,7 @@ bool Packet::check()
 {
 	if(_data_len == 0)
 	{
+		// protobuf反序列化ParseFromArray遇到0长度会返回true
 		B_LOG_ERROR << "data_len is error, _msg_seq_id=" << _msg_seq_id << ", _data_len=" << _data_len;
 		return false;
 	}
@@ -102,6 +103,11 @@ bool Packet::check()
 		return false;
 	}
 
+	return true;
+}
+
+bool Packet::parse()
+{
 	switch (_data_format)
 	{
 	case data_format::PROTOBUF:
@@ -132,6 +138,8 @@ bool Packet::check()
 		B_LOG_ERROR << "_msg_seq_id=" << _msg_seq_id << ", unknow _data_format=" << _data_format;
 		return false;
 	}
+
+	return false;
 }
 
 void Packet::print()
