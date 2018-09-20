@@ -60,7 +60,7 @@ NavigatePool::NavigatePool(Proc& proc)
 	:	_proc(proc),
 		_thread_size(::sysconf(_SC_NPROCESSORS_CONF))
 {
-	_thread_size = 8;
+
 }
 
 NavigatePool::~NavigatePool()
