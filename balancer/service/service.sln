@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "center", "center\center.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "logic", "logic\logic.vcxproj", "{DF8B897D-634A-4292-A997-F5C6E3A729BC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gate", "gate\gate.vcxproj", "{D34F160F-A2A6-4165-9FB3-9ABAF89026AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -25,6 +27,10 @@ Global
 		{DF8B897D-634A-4292-A997-F5C6E3A729BC}.Debug|Win32.Build.0 = Debug|Win32
 		{DF8B897D-634A-4292-A997-F5C6E3A729BC}.Release|Win32.ActiveCfg = Release|Win32
 		{DF8B897D-634A-4292-A997-F5C6E3A729BC}.Release|Win32.Build.0 = Release|Win32
+		{D34F160F-A2A6-4165-9FB3-9ABAF89026AC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D34F160F-A2A6-4165-9FB3-9ABAF89026AC}.Debug|Win32.Build.0 = Debug|Win32
+		{D34F160F-A2A6-4165-9FB3-9ABAF89026AC}.Release|Win32.ActiveCfg = Release|Win32
+		{D34F160F-A2A6-4165-9FB3-9ABAF89026AC}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

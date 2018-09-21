@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D34F160F-A2A6-4165-9FB3-9ABAF89026AC}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeIncludeSearchPath>$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5\x86_64-redhat-linux;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5\backward;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0002\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0003\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0000\include;$(ProjectDir)\.\src;$(ProjectDir)\..\..\..\depend\cpp\muduo;$(ProjectDir)\..\..\..\depend\cpp\rapidjson\include;$(ProjectDir)\..\..\..\depend\cpp\zlib;$(ProjectDir)\..\..\..\depend\cpp\protobuf\src;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(ProjectDir)\gcc_Debug.h;$(VISUALGDB_DIR)\gcc_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)gate-Debug.vgdbsettings</NMakeOutput>
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+    <NMakePreprocessorDefinitions>__VisualGDB_CFG_Debug;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeIncludeSearchPath>$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5\x86_64-redhat-linux;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0001\4.8.5\backward;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0002\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0003\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.154.130\0000\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(ProjectDir)\gcc_Release.h;$(VISUALGDB_DIR)\gcc_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakePreprocessorDefinitions>__VisualGDB_CFG_Release;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)gate-Release.vgdbsettings</NMakeOutput>
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="conf\gate_0.json" />
+    <None Include="debug.mak" />
+    <None Include="Makefile" />
+    <None Include="release.mak" />
+    <None Include="src\protocol\protobuf\proto\center.proto" />
+    <None Include="src\protocol\protobuf\proto\common.proto" />
+    <None Include="src\protocol\protobuf\proto\data.proto" />
+    <None Include="src\protocol\protobuf\proto\data_format.proto" />
+    <None Include="src\protocol\protobuf\proto\gate.proto" />
+    <None Include="src\protocol\protobuf\proto\navigate.proto" />
+    <None Include="src\protocol\protobuf\proto\service.proto" />
+    <None Include="src\protocol\protobuf\proto\version.proto" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\config\Config.cc" />
+    <ClCompile Include="src\config\ServiceConfig.cc" />
+    <ClCompile Include="src\core\BHttpServer.cc" />
+    <ClCompile Include="src\core\BTcpClient.cc" />
+    <ClCompile Include="src\core\BTcpClientPool.cc" />
+    <ClCompile Include="src\core\BTcpServer.cc" />
+    <ClCompile Include="src\core\Codec.cc" />
+    <ClCompile Include="src\core\GateServer.cc" />
+    <ClCompile Include="src\core\InserviceService.cc" />
+    <ClCompile Include="src\core\Owner.cc" />
+    <ClCompile Include="src\core\Packet.cc" />
+    <ClCompile Include="src\core\Proc.cc" />
+    <ClCompile Include="src\core\Seq.cc" />
+    <ClCompile Include="src\core\SignalHandle.cc" />
+    <ClCompile Include="src\core\TaskMsgBase.cc" />
+    <ClCompile Include="src\core\TaskMsgMaster.cc" />
+    <ClCompile Include="src\core\TaskMsgPool.cc" />
+    <ClCompile Include="src\core\TaskMsgSub.cc" />
+    <ClCompile Include="src\core\Timer.cc" />
+    <ClCompile Include="src\handle\HandleClient.cc" />
+    <ClCompile Include="src\handle\HandleServer.cc" />
+    <ClCompile Include="src\handle\server\Heartbeat.cc" />
+    <ClCompile Include="src\log\Log.cc" />
+    <ClCompile Include="src\main.cc" />
+    <ClCompile Include="src\protocol\protobuf\CenterStack.cc" />
+    <ClCompile Include="src\protocol\protobuf\GateStack.cc" />
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\center.pb.cc" />
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\common.pb.cc" />
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\data.pb.cc" />
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\data_format.pb.cc" />
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\gate.pb.cc" />
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\navigate.pb.cc" />
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\service.pb.cc" />
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\version.pb.cc" />
+    <ClCompile Include="src\tool\Util.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\config\Config.h" />
+    <ClInclude Include="src\config\ServiceConfig.h" />
+    <ClInclude Include="src\core\BHttpServer.h" />
+    <ClInclude Include="src\core\BTcpClient.h" />
+    <ClInclude Include="src\core\BTcpClientPool.h" />
+    <ClInclude Include="src\core\BTcpServer.h" />
+    <ClInclude Include="src\core\Codec.h" />
+    <ClInclude Include="src\core\GateServer.h" />
+    <ClInclude Include="src\core\InserviceService.h" />
+    <ClInclude Include="src\core\Owner.h" />
+    <ClInclude Include="src\core\Packet.h" />
+    <ClInclude Include="src\core\Proc.h" />
+    <ClInclude Include="src\core\Seq.h" />
+    <ClInclude Include="src\core\SignalHandle.h" />
+    <ClInclude Include="src\core\TaskMsgBase.h" />
+    <ClInclude Include="src\core\TaskMsgMaster.h" />
+    <ClInclude Include="src\core\TaskMsgPool.h" />
+    <ClInclude Include="src\core\TaskMsgSub.h" />
+    <ClInclude Include="src\core\Timer.h" />
+    <ClInclude Include="src\define.h" />
+    <ClInclude Include="src\handle\HandleClient.h" />
+    <ClInclude Include="src\handle\HandleServer.h" />
+    <ClInclude Include="src\handle\server\Heartbeat.h" />
+    <ClInclude Include="src\log\Log.h" />
+    <ClInclude Include="src\protocol\protobuf\CenterStack.h" />
+    <ClInclude Include="src\protocol\protobuf\GateStack.h" />
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\center.pb.h" />
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\common.pb.h" />
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\data.pb.h" />
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\data_format.pb.h" />
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\gate.pb.h" />
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\navigate.pb.h" />
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\service.pb.h" />
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\version.pb.h" />
+    <ClInclude Include="src\protocol\Protocol.h" />
+    <ClInclude Include="src\tool\Util.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
