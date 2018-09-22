@@ -87,10 +87,10 @@ void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 							PacketPtr& packet_ptr,
 							muduo::Timestamp time)
 {
-	bool b = packet_ptr->parse();
-	if(b)
+	if(packet_ptr->_conn_seq_id == 0)
 	{
-		if(packet_ptr->_conn_seq_id == 0)
+		bool b = packet_ptr->parse();
+		if(b)
 		{
 			int msg_type = packet_ptr->_body.msg_type_case();
 			switch(msg_type)
@@ -119,12 +119,12 @@ void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 		}
 		else
 		{
-			// 转发给client
+			// 丢包
 		}
 	}
 	else
 	{
-		// 丢包
+		// 转发给client
 	}
 
 	Context* p_context = boost::any_cast<Context>(conn->getMutableContext());
