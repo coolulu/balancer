@@ -4,7 +4,7 @@
 #include <muduo/net/TcpServer.h>
 
 #include "Codec.h"
-#include "handle/HandleServer.h"
+#include "handle/HandleGate.h"
 
 class Proc;
 
@@ -15,6 +15,7 @@ struct GateContext
 	unsigned int _seq_id;
 	unsigned int _create_time;
 	unsigned int _update_time;
+	bool		 _get_conn_id;
 };
 
 class GateServer
@@ -43,5 +44,5 @@ private:
 	std::map<unsigned long long, muduo::net::TcpConnectionPtr> _conn_map;
 
 	Codec _codec;
-	HandleServer _handle_server;
+	HandleGate _handle_gate;
 };

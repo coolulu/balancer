@@ -42,6 +42,9 @@
     <Filter Include="src\protocol\protobuf\proto_cpp">
       <UniqueIdentifier>{1965a4db-d99e-4c56-82d4-821dfd4bef1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\handle\gate">
+      <UniqueIdentifier>{db159fd1-fed0-47d0-aafe-b8d02e45e47c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -185,6 +188,9 @@
     <ClCompile Include="src\core\GateServer.cc">
       <Filter>src\core</Filter>
     </ClCompile>
+    <ClCompile Include="src\handle\HandleGate.cc">
+      <Filter>src\handle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\config\Config.h">
@@ -294,6 +300,9 @@
     </ClInclude>
     <ClInclude Include="src\core\GateServer.h">
       <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\HandleGate.h">
+      <Filter>src\handle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

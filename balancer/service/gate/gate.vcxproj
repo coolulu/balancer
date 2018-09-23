@@ -95,6 +95,7 @@
     <ClCompile Include="src\core\TaskMsgSub.cc" />
     <ClCompile Include="src\core\Timer.cc" />
     <ClCompile Include="src\handle\HandleClient.cc" />
+    <ClCompile Include="src\handle\HandleGate.cc" />
     <ClCompile Include="src\handle\HandleServer.cc" />
     <ClCompile Include="src\handle\server\Heartbeat.cc" />
     <ClCompile Include="src\log\Log.cc" />
@@ -133,6 +134,7 @@
     <ClInclude Include="src\core\Timer.h" />
     <ClInclude Include="src\define.h" />
     <ClInclude Include="src\handle\HandleClient.h" />
+    <ClInclude Include="src\handle\HandleGate.h" />
     <ClInclude Include="src\handle\HandleServer.h" />
     <ClInclude Include="src\handle\server\Heartbeat.h" />
     <ClInclude Include="src\log\Log.h" />
