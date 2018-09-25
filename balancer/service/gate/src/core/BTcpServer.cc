@@ -100,7 +100,7 @@ void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 					const ::data::Body_MsgReq& msg_req = packet_ptr->_body.msg_req();
 
 					B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
-						<< ", msg_type is req";
+								<< ", msg_type is req";
 
 					_handle_server.handle_request(conn, packet_ptr, time);
 				}		
@@ -108,12 +108,12 @@ void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 
 			case data::Body::kMsgRsp:
 				B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
-					<< ", msg_type is rsp";
+							<< ", msg_type is rsp";
 				break;
 
 			default:
 				B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString() 
-					<< ", unknow msg_type=" << msg_type;
+							<< ", unknow msg_type=" << msg_type;
 				break;
 			}
 		}
@@ -125,6 +125,7 @@ void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 	else
 	{
 		// ×ª·¢¸øclient
+		_handle_server.forward_request_to_client(conn, packet_ptr, time);
 	}
 
 	Context* p_context = boost::any_cast<Context>(conn->getMutableContext());

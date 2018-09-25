@@ -103,3 +103,10 @@ void HandleServer::handle_request(const muduo::net::TcpConnectionPtr& conn,
 		// 转发给客户端
 	}
 }
+
+void HandleServer::forward_request_to_client(const muduo::net::TcpConnectionPtr& conn, 
+											 PacketPtr& packet_ptr,
+											 muduo::Timestamp time)
+{
+
+}

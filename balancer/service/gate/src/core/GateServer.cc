@@ -130,11 +130,13 @@ void GateServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 		// 没获取到连接id
 		if(packet_ptr->_conn_seq_id == p_gate_context->_seq_id)
 		{
-			// 转发请求 s out -> c
+			// 转发请求到内部服务TcpClient, s out -> c in
+			_handle_gate.forward_request_to_service(conn, packet_ptr, time);
 		}
 		else
 		{
-			// 转发响应 s out -> s in
+			// 转发响应到内部服务TcpServer, s out -> s in
+			_handle_gate.forward_response_to_service(conn, packet_ptr, time);
 		}
 	}
 

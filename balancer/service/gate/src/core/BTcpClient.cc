@@ -125,50 +125,8 @@ void BTcpClient::on_message(const muduo::net::TcpConnectionPtr& conn,
 							PacketPtr& packet_ptr, 
 							muduo::Timestamp time)
 {
-	bool b = packet_ptr->parse();
-	if(b)
-	{
-		int msg_type = packet_ptr->_body.msg_type_case();
-		switch(msg_type)
-		{
-		case data::Body::kMsgReq:
-			B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
-				<< ", msg_type is req";
-			break;
-
-		case data::Body::kMsgRsp:
-			{
-				const ::data::Body_MsgRsq& msg_rsp = packet_ptr->_body.msg_rsp();
-
-				B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
-							<< ", msg_type is rsp" << ", code=" << msg_rsp.code() << ", info=" << msg_rsp.info();
-
-				TaskMsgBase* task = _proc._task_msg_pool.find(packet_ptr->_msg_seq_id);
-				if(task == nullptr)
-				{
-					B_LOG_ERROR << "no find msg_seq_id=" << packet_ptr->_msg_seq_id;
-				}
-				else
-				{
-					task->_response = packet_ptr;
-					_handle_client.handle_response(conn, task, time);
-					_proc._task_msg_pool.del(packet_ptr->_msg_seq_id);
-					task = nullptr;
-				}	
-			}
-			break;
-
-		default:
-			B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString() 
-						<< ", unknow msg_type=" << msg_type;
-			break;
-		}
-	}
-	else
-	{
-		// 丢包
-	}
-
+	// 转发响应给client
+	_handle_client.forward_response_to_client(conn, packet_ptr, time);
 	_update_time = ::time(nullptr);
 }
 
