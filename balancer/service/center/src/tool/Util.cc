@@ -103,20 +103,41 @@ const int Util::hex2bin(const char* hex_str,char* buf,int& len)
    return 0;
 }
 
-unsigned Util::sip_2_uip(const char* s_ip)
+unsigned int get_ethernet_ip(const char* ethernet_name)
+{
+	struct ifreq req;
+	int sock_fd;
+	strncpy (req.ifr_name, ethernet_name, IFNAMSIZ);
+	if ((sock_fd = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
+	{
+		return 0;
+	}
+
+	if (ioctl(sock_fd, SIOCGIFADDR, (char *)&req) < 0)
+	{
+		close(sock_fd);
+		return 0;
+	}
+
+	close(sock_fd);
+	unsigned int ip = (((struct sockaddr_in*)(&req.ifr_addr))->sin_addr).s_addr;
+	return ip;
+}
+
+unsigned int Util::sip_2_uip(const char* sip)
 {
         struct in_addr addr;
-        inet_aton(s_ip,&addr);
+        inet_aton(sip,&addr);
         return addr.s_addr;
 }
 
 std::string Util::uip_2_sip(unsigned uip)
 {
-	std::string s_ip;
+	std::string sip;
 	struct in_addr addr;
 	addr.s_addr = uip;
-	s_ip = inet_ntoa(addr);
-	return s_ip;
+	sip = inet_ntoa(addr);
+	return sip;
 }
 
 int Util::bin_2_file(const std::string &filepath,const char* ptr,int filelen)
