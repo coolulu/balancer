@@ -65,7 +65,6 @@ void GateServer::on_connection(const muduo::net::TcpConnectionPtr& conn)
 	B_LOG_INFO	<< conn->name() << " " 
 				<< conn->peerAddress().toIpPort() << " -> " 
 				<< conn->localAddress().toIpPort() << " is " << (conn->connected() ? "UP" : "DOWN");
-	B_LOG_INFO << conn->peerAddress().toIpPort() << " : " << conn->peerAddress().toIp();
 	
 	if(conn->connected())
 	{
