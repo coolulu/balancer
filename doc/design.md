@@ -299,7 +299,7 @@
         session -> [], <- [center, gate, logic]
         (listen http * 1, listen tcp * 1)
         10400:核心服务(python),io密集型,工作线程数等于[2,8]和一个网络io线程
-        多线程单进程，每个节点运行多个进程，进程绑定cpu
+        多线程单进程，每个节点运行多个进程，进程不绑定cpu
 
         logic -> [gate, session, proxy], <- [center, gate]
         (listen http * 1, listen tcp * 1, connect tcp * n)
@@ -309,7 +309,7 @@
         proxy -> [], <- [center, gate, logic]
         (listen http * 1, listen tcp * 1)
         10600:业务服务(python),io密集型,工作线程数等于[2,8]和一个网络io线程
-        多线程单进程，每个节点运行多个进程，进程绑定cpu
+        多线程单进程，每个节点运行多个进程，进程不绑定cpu
 
     frontend:
         client -> [navigate, gate], <- [gate]
