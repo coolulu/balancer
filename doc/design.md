@@ -281,7 +281,7 @@
     recv: <-
 
     backend:
-        center -> [navigate, gate, logic, proxy]
+        center -> [navigate, gate, session, logic, proxy]
         (listen http * 1, connect tcp * n)
         10100:核心服务(c++),cpu密集型,进程数等于cpu数
         单线程单进程，每个节点运行一个进程，进程绑定cpu
@@ -291,19 +291,24 @@
         10200:核心服务(c++),cpu密集型,工作线程数等于cpu数和一个主线程
         多线程单进程，每个节点运行一个进程，进程不绑定cpu
 
-        gate -> [client, navigate, logic, proxy], <- [center, client, logic]
+        gate -> [client, navigate, session, logic, proxy], <- [center, client, logic]
         (listen http * 1, listen tcp * 2(前后端端口分离), connect tcp * n)
         10300:核心服务(c++),cpu密集型,进程数等于cpu数
         单线程单进程，每个节点运行多个进程，进程绑定cpu
 
-        logic -> [proxy, gate], <- [center, gate]
+        session -> [], <- [center, gate, logic]
+        (listen http * 1, listen tcp * 1)
+        10400:核心服务(python),io密集型,工作线程数等于[2,8]和一个网络io线程
+        多线程单进程，每个节点运行多个进程，进程绑定cpu
+
+        logic -> [gate, session, proxy], <- [center, gate]
         (listen http * 1, listen tcp * 1, connect tcp * n)
-        10400:业务服务(c++),cpu密集型,进程数等于cpu数
+        10500:业务服务(c++),cpu密集型,进程数等于cpu数
         单线程单进程，每个节点运行多个进程，进程绑定cpu
 
-        proxy -> [], <-[center, gate, logic]
+        proxy -> [], <- [center, gate, logic]
         (listen http * 1, listen tcp * 1)
-        10500:业务服务(python),io密集型,工作线程数等于[2,8]和一个网络io线程
+        10600:业务服务(python),io密集型,工作线程数等于[2,8]和一个网络io线程
         多线程单进程，每个节点运行多个进程，进程绑定cpu
 
     frontend:
@@ -616,6 +621,36 @@
     每次gate被接管时，要赋值center发送给的proc_id，以便同步navigate时报上自己proc_id，方便navigate根据proc_id更新
 
     navigate每秒检查一次找出最小负载，最小负载proc_id变换时，更新到每个httpsrver的最小proc_id
+
+### 会话服务
+    service_type: session
+    Session {
+        // session查询使用（主动触发）
+        user_id : user{user_id, conn_id, gate_id, gate_ip, gate_port, ...}
+        eg: session:user:user_id:123
+            session:user:123
+
+        // gate和client连接断开使用（主动触发）
+        gate_id_conn_id : user_id   eg: session:user_id:gate_id:10300:conn_id:1234567890
+                                        session:user_id:10300:1234567890
+        gate_ip_conn_id : user_id   eg: session:user_id:gate_ip:127.0.0.1:conn_id:1234567890
+                                        session:user_id:127.0.0.1:1234567890
+
+        // gate挂掉使用（被动触发）
+        gate_id : user_set[{user_id, conn_id}]      eg: session:user_set:gate_id:10300
+                                                        session:user_set:10300
+        gate_ip : user_set[{user_id, conn_id}]      eg: session:user_set:gate_ip:127.0.0.1
+                                                        session:user_set:127.0.0.1
+    }
+
+    key = service_name + val名 + key值
+
+    gate_id：怕误操作变化
+    gate_ip：同一个云下内网ip不会重复
+    ip(uint) or ip(string)
+
+    结论：用gate_ip，内网ip字符串
+
 
 ### 逻辑服务
     service_type: logic
