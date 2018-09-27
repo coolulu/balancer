@@ -44,6 +44,8 @@
 		"gate_server_no_delay": true,
 		"gate_server_recv_packet_len_max": 65535,	
 		"gate_server_send_packet_len_max": 65535,	
-		"gate_server_high_water_mark": 65535
+		"gate_server_high_water_mark": 65535,
+
+		"local_ethernet": "eno16777736"
 	}
 }

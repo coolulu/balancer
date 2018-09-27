@@ -1,5 +1,7 @@
 #include "Config.h"
 
+#include "tool/Util.h"
+
 std::string Config::load(const std::string& json)
 {
 	rapidjson::Document document;
@@ -105,6 +107,13 @@ std::string Config::load(const std::string& json)
 			return err_is_not_uint(KeyConfig::gate_server_send_packet_len_max);
 		if(!get_uint(cv, KeyConfig::gate_server_high_water_mark, proc.gate_server_high_water_mark))
 			return err_is_not_uint(KeyConfig::gate_server_high_water_mark);
+
+		if(!get_string(cv, KeyConfig::local_ethernet, proc.local_ethernet))
+			return err_is_not_uint(KeyConfig::local_ethernet);
+		unsigned int ip = Util::get_ethernet_ip(proc.local_ethernet.c_str());
+		if(ip == 0)
+			return "ip is 0";
+		proc.local_ip = Util::uip_2_sip(ip);
 	}
 
 	return "";
@@ -244,7 +253,9 @@ std::string Config::to_string()
 			", proc.gate_server_no_delay="				+ (proc.gate_server_no_delay ? "true" : "false") + 
 			", proc.gate_server_recv_packet_len_max="	+ std::to_string(proc.gate_server_recv_packet_len_max) + 
 			", proc.gate_server_send_packet_len_max="	+ std::to_string(proc.gate_server_send_packet_len_max) + 
-			", proc.gate_server_high_water_mark="		+ std::to_string(proc.gate_server_high_water_mark);
+			", proc.gate_server_high_water_mark="		+ std::to_string(proc.gate_server_high_water_mark) +
+			", proc.local_ethernet="					+ proc.local_ethernet + 
+			", proc.local_ip="							+ proc.local_ip;
 }
 
 

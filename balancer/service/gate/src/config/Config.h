@@ -38,6 +38,7 @@ namespace KeyConfig
 	static const std::string& gate_server_recv_packet_len_max	= "gate_server_recv_packet_len_max";
 	static const std::string& gate_server_send_packet_len_max	= "gate_server_send_packet_len_max";
 	static const std::string& gate_server_high_water_mark		= "gate_server_high_water_mark";
+	static const std::string& local_ethernet					= "local_ethernet";
 }
 
 class Config
@@ -110,6 +111,9 @@ public:
 		unsigned int	gate_server_recv_packet_len_max;
 		unsigned int	gate_server_send_packet_len_max;
 		unsigned int	gate_server_high_water_mark;
+
+		std::string		local_ethernet;
+		std::string		local_ip;
 	};
 
 public:
