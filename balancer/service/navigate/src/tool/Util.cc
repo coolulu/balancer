@@ -21,28 +21,6 @@
 #include <fcntl.h>
 #include <sys/time.h> 
 
-int Util::get_local_ip(const char *pEthName,int& local_ip)
-{
-    struct ifreq req;
-    int sock_fd;
-    strncpy (req.ifr_name, pEthName, IFNAMSIZ);
-    if ((sock_fd = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
-   {
-        printf("get_local_ip: socket error!\r\n");
-        return -1;
-    }
- 
-    if (ioctl(sock_fd, SIOCGIFADDR, (char *)&req) < 0)
-    {
-        printf("get_local_ip: ioctl error!\r\n");
-        close(sock_fd);
-        return -1;
-    }
-	local_ip = (((struct sockaddr_in*)(&req.ifr_addr))->sin_addr).s_addr;
-    close(sock_fd);
-	return 0;
-}
-
 const char* Util::bin2hex(const char* buf,int len)
 {
    static char temp[10240];
@@ -103,7 +81,7 @@ const int Util::hex2bin(const char* hex_str,char* buf,int& len)
    return 0;
 }
 
-unsigned int get_ethernet_ip(const char* ethernet_name)
+unsigned int Util::get_ethernet_ip(const char* ethernet_name)
 {
 	struct ifreq req;
 	int sock_fd;

@@ -4,7 +4,6 @@
 
 namespace Util
 {
-	int get_local_ip(const char *pEthName,int& local_ip);
 	const char* bin2hex(const char* buf,int len);
 	char char2int(char ch);
 	const int hex2bin(const char* hex_str,char* buf,int& len);
