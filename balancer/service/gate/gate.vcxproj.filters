@@ -191,6 +191,9 @@
     <ClCompile Include="src\handle\HandleGate.cc">
       <Filter>src\handle</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\PacketStream.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\config\Config.h">
@@ -303,6 +306,9 @@
     </ClInclude>
     <ClInclude Include="src\handle\HandleGate.h">
       <Filter>src\handle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\PacketStream.h">
+      <Filter>src\core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
