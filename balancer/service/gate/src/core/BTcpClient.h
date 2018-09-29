@@ -31,7 +31,7 @@ private:
 	void on_write_complete(const muduo::net::TcpConnectionPtr& conn);
 	void on_high_water_mark(const muduo::net::TcpConnectionPtr& conn, size_t len);
 
-	void check_send_buffer_reduce();
+	void check_msg_send_buffer_reduce();
 	
 private:
 	static int s_count;

@@ -72,14 +72,14 @@ bool BTcpClient::send_msg(PacketPtr& msg)
 
 			_msg_send_buffer.insert(std::make_pair(msg->_msg_seq_id, msg));
 			B_LOG_WARN << "save msg, _msg_seq_id=" << msg->_msg_seq_id << ", _msg_send_buffer.size=" << _msg_send_buffer.size();
-			check_send_buffer_reduce();
+			check_msg_send_buffer_reduce();
 		}
 	}
 	else
 	{
 		_msg_send_buffer.insert(std::make_pair(msg->_msg_seq_id, msg));
 		B_LOG_INFO << "connecting, _msg_seq_id=" << msg->_msg_seq_id << ", _msg_send_buffer.size=" << _msg_send_buffer.size();
-		check_send_buffer_reduce();
+		check_msg_send_buffer_reduce();
 	}
 
 	_update_time = ::time(nullptr);
@@ -186,7 +186,7 @@ void BTcpClient::on_high_water_mark(const muduo::net::TcpConnectionPtr& conn, si
 	_update_time = ::time(nullptr);
 }
 
-void BTcpClient::check_send_buffer_reduce()
+void BTcpClient::check_msg_send_buffer_reduce()
 {
 	if(_msg_send_buffer.size() >= _proc._config.proc.tcp_client_msg_reduce_size)
 	{
