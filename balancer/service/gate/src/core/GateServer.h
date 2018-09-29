@@ -10,12 +10,12 @@ class Proc;
 
 struct GateContext
 {
-	GateContext(unsigned int seq_id);
+	GateContext(unsigned long long conn_seq_id);
 
-	unsigned int _seq_id;
+	unsigned long long _conn_seq_id;
 	unsigned int _create_time;
 	unsigned int _update_time;
-	bool		 _get_conn_id;
+	bool		 _is_client_init_conn_seq_id;
 };
 
 class GateServer

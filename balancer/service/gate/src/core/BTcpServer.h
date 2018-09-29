@@ -10,9 +10,9 @@ class Proc;
 
 struct Context
 {
-	Context(unsigned int seq_id);
+	Context(unsigned long long conn_seq_id);
 
-	unsigned int _seq_id;
+	unsigned long long _conn_seq_id;
 	unsigned int _create_time;
 	unsigned int _update_time;
 };

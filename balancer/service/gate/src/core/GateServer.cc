@@ -4,8 +4,11 @@
 #include "Proc.h"
 #include "log/Log.h"
 
-GateContext::GateContext(unsigned int seq_id)
-	: _seq_id(seq_id), _create_time(0), _update_time(0), _get_conn_id(false)
+GateContext::GateContext(unsigned long long conn_seq_id)
+	:	_conn_seq_id(conn_seq_id), 
+		_create_time(0), 
+		_update_time(0), 
+		_is_client_init_conn_seq_id(false)
 {
 	_create_time = time(nullptr);
 	_update_time = _create_time;
@@ -74,12 +77,12 @@ void GateServer::on_connection(const muduo::net::TcpConnectionPtr& conn)
 
 		GateContext gate_context(_proc._seq.make_seq());
 		conn->setContext(gate_context);
-		_conn_map.insert(std::make_pair(gate_context._seq_id, conn));
+		_conn_map.insert(std::make_pair(gate_context._conn_seq_id, conn));
 	}
 	else
 	{
 		const GateContext& gate_context = boost::any_cast<const GateContext&>(conn->getContext());
-		_conn_map.erase(gate_context._seq_id);
+		_conn_map.erase(gate_context._conn_seq_id);
 	}
 }
 
@@ -88,9 +91,23 @@ void GateServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 							muduo::Timestamp time)
 {
 	GateContext* p_gate_context = boost::any_cast<GateContext>(conn->getMutableContext());
-	if(p_gate_context->_get_conn_id)
+	if(p_gate_context->_is_client_init_conn_seq_id)
 	{
-		// 获取到连接id
+		// 客户端获取到连接id
+		if(packet_ptr->_conn_seq_id == p_gate_context->_conn_seq_id)
+		{
+			// 转发请求到内部服务TcpClient, s out -> c in
+			_handle_gate.forward_request_to_service(conn, packet_ptr, time);
+		}
+		else
+		{
+			// 转发响应到内部服务TcpServer, s out -> s in
+			_handle_gate.forward_response_to_service(conn, packet_ptr, time);
+		}
+	}
+	else
+	{
+		// 客户端没获取到连接id
 		bool b = packet_ptr->parse();
 		if(b)
 		{
@@ -122,20 +139,6 @@ void GateServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 		else
 		{
 			// 丢包
-		}
-	}
-	else
-	{
-		// 没获取到连接id
-		if(packet_ptr->_conn_seq_id == p_gate_context->_seq_id)
-		{
-			// 转发请求到内部服务TcpClient, s out -> c in
-			_handle_gate.forward_request_to_service(conn, packet_ptr, time);
-		}
-		else
-		{
-			// 转发响应到内部服务TcpServer, s out -> s in
-			_handle_gate.forward_response_to_service(conn, packet_ptr, time);
 		}
 	}
 

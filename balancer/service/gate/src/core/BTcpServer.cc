@@ -4,8 +4,8 @@
 #include "Proc.h"
 #include "log/Log.h"
 
-Context::Context(unsigned int seq_id)
-	: _seq_id(seq_id), _create_time(0), _update_time(0)
+Context::Context(unsigned long long conn_seq_id)
+	: _conn_seq_id(conn_seq_id), _create_time(0), _update_time(0)
 {
 	_create_time = time(nullptr);
 	_update_time = _create_time;
@@ -74,12 +74,12 @@ void BTcpServer::on_connection(const muduo::net::TcpConnectionPtr& conn)
 
 		Context context(_proc._seq.make_seq());
 		conn->setContext(context);
-		_conn_map.insert(std::make_pair(context._seq_id, conn));
+		_conn_map.insert(std::make_pair(context._conn_seq_id, conn));
 	}
 	else
 	{
 		const Context& context = boost::any_cast<const Context&>(conn->getContext());
-		_conn_map.erase(context._seq_id);
+		_conn_map.erase(context._conn_seq_id);
 	}
 }
 
