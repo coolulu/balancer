@@ -5,6 +5,7 @@
 
 #include "Codec.h"
 #include "handle/HandleServer.h"
+#include "core/PacketStream.h"
 
 class Proc;
 
@@ -26,6 +27,7 @@ public:
 public:
 	void start();
 	bool send_msg(const muduo::net::TcpConnectionPtr& conn, PacketPtr& msg);
+	bool send_stream(unsigned long long conn_seq_id, PacketStreamPtr& stream);
 
 private:
 	void on_connection(const muduo::net::TcpConnectionPtr& conn);

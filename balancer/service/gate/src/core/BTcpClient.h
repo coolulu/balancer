@@ -8,6 +8,7 @@
 #include "config/ServiceConfig.h"
 #include "Codec.h"
 #include "handle/HandleClient.h"
+#include "core/PacketStream.h"
 
 class Proc;
 
@@ -21,6 +22,7 @@ public:
 	bool check_idle(unsigned int now);
 	void connect(); 
 	bool send_msg(PacketPtr& msg);
+	bool send_stream(PacketStreamPtr& stream);
 	bool reomve_msg_send_buffer(unsigned long long msg_seq_id);
 
 private:
@@ -32,6 +34,7 @@ private:
 	void on_high_water_mark(const muduo::net::TcpConnectionPtr& conn, size_t len);
 
 	void check_msg_send_buffer_reduce();
+	void check_stream_send_buffer_reduce();
 	
 private:
 	static int s_count;
@@ -42,6 +45,7 @@ private:
 	bool _connect;
 	ServiceConfig::IPInfo _ip_info;
 	std::map<unsigned long long, PacketPtr> _msg_send_buffer;
+	std::map<unsigned long long, PacketStreamPtr> _stream_send_buffer;
 
 	muduo::net::TcpClient _tcp_client;
 

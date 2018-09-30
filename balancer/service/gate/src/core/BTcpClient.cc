@@ -86,6 +86,37 @@ bool BTcpClient::send_msg(PacketPtr& msg)
 	return b;
 }
 
+bool BTcpClient::send_stream(PacketStreamPtr& stream)
+{
+	bool b = false;
+	if(_connect)
+	{	
+		muduo::net::TcpConnectionPtr tcpConnectionPtr = _tcp_client.connection();
+		if(tcpConnectionPtr)
+		{
+			tcpConnectionPtr->send(stream->_buffer, stream->_buffer_len);
+			b = true;
+		}
+		else
+		{
+			_connect = false;
+
+			_stream_send_buffer.insert(std::make_pair(stream->_packet_ptr->_msg_seq_id, stream));
+			B_LOG_WARN << "save msg, _msg_seq_id=" << stream->_packet_ptr->_msg_seq_id << ", _stream_send_buffer.size=" << _stream_send_buffer.size();
+			check_stream_send_buffer_reduce();
+		}
+	}
+	else
+	{
+		_stream_send_buffer.insert(std::make_pair(stream->_packet_ptr->_msg_seq_id, stream));
+		B_LOG_INFO << "connecting, _msg_seq_id=" << stream->_packet_ptr->_msg_seq_id << ", _stream_send_buffer.size=" << _stream_send_buffer.size();
+		check_stream_send_buffer_reduce();
+	}
+
+	_update_time = ::time(nullptr);
+	return b;
+}
+
 void BTcpClient::on_connection(const muduo::net::TcpConnectionPtr& conn)
 {
 	B_LOG_INFO	<< conn->name() << " " 
@@ -111,6 +142,20 @@ void BTcpClient::on_connection(const muduo::net::TcpConnectionPtr& conn)
 				_codec.send_stream(get_pointer(conn), it.second);
 			}
 			_msg_send_buffer.clear();
+		}
+
+		if(_stream_send_buffer.empty())
+		{
+			B_LOG_INFO << "_stream_send_buffer is empty";
+		}
+		else
+		{
+			B_LOG_INFO << "_stream_send_buffer.size=" << _stream_send_buffer.size();
+			for(auto& it : _stream_send_buffer)
+			{
+				conn->send(it.second->_buffer, it.second->_buffer_len);
+			}
+			_stream_send_buffer.clear();
 		}
 
 		_update_time = ::time(nullptr);
@@ -165,6 +210,30 @@ void BTcpClient::check_msg_send_buffer_reduce()
 		}
 
 		B_LOG_WARN << "reduce _msg_send_buffer.size=" << _msg_send_buffer.size();
+	}
+}
+
+void BTcpClient::check_stream_send_buffer_reduce()
+{
+	if(_stream_send_buffer.size() >= _proc._config.proc.tcp_client_msg_reduce_size)
+	{
+		int count = 0;
+		int reduce_size = _proc._config.proc.tcp_client_msg_reduce_size / 2;
+
+		for(auto it = _stream_send_buffer.begin(); it != _stream_send_buffer.end();)
+		{
+			if(++count <= reduce_size)
+			{
+				B_LOG_WARN << "discard msg, _msg_seq_id=" << it->second->_packet_ptr->_msg_seq_id;
+				_stream_send_buffer.erase(it++);
+			}
+			else
+			{
+				break;
+			}
+		}
+
+		B_LOG_WARN << "reduce _stream_send_buffer.size=" << _stream_send_buffer.size();
 	}
 }
 
