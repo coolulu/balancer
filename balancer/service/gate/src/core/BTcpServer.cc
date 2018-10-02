@@ -60,24 +60,24 @@ bool BTcpServer::send_msg(const muduo::net::TcpConnectionPtr& conn, PacketPtr& m
 	return false;
 }
 
-bool BTcpServer::send_stream(unsigned long long conn_seq_id, PacketStreamPtr& stream)
+bool BTcpServer::send_stream(PacketPtr& msg)
 {
-	auto it = _conn_map.find(conn_seq_id);
+	auto it = _conn_map.find(msg->_conn_seq_id);
 	if(it == _conn_map.end())
 	{
-		B_LOG_WARN	<< "conn_seq_id not find, msg is lose, _msg_seq_id=" << stream->_packet_ptr->_msg_seq_id
-					<< ", conn_seq_id=" << conn_seq_id;
+		B_LOG_WARN	<< "conn_seq_id not find, msg is lose, _msg_seq_id=" << msg->_msg_seq_id
+					<< ", _conn_seq_id=" << msg->_conn_seq_id;
 		return false;
 	}
 
 	if(it->second)
 	{
-		it->second->send(stream->_buffer, stream->_buffer_len);
+		it->second->send(msg->_buffer, msg->_buffer_len);
 		return true;
 	}
 
-	B_LOG_WARN	<< "conn is null, msg is lose, _msg_seq_id=" << stream->_packet_ptr->_msg_seq_id
-				<< ", conn_seq_id=" << conn_seq_id;
+	B_LOG_WARN	<< "conn is null, msg is lose, _msg_seq_id=" << msg->_msg_seq_id
+				<< ", _conn_seq_id=" << msg->_conn_seq_id;
 	return false;
 }
 

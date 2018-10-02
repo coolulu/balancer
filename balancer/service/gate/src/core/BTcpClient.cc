@@ -86,7 +86,7 @@ bool BTcpClient::send_msg(PacketPtr& msg)
 	return b;
 }
 
-bool BTcpClient::send_stream(PacketStreamPtr& stream)
+bool BTcpClient::send_stream(PacketPtr& msg)
 {
 	bool b = false;
 	if(_connect)
@@ -94,13 +94,14 @@ bool BTcpClient::send_stream(PacketStreamPtr& stream)
 		muduo::net::TcpConnectionPtr tcpConnectionPtr = _tcp_client.connection();
 		if(tcpConnectionPtr)
 		{
-			tcpConnectionPtr->send(stream->_buffer, stream->_buffer_len);
+			tcpConnectionPtr->send(msg->_buffer, msg->_buffer_len);
 			b = true;
 		}
 		else
 		{
 			_connect = false;
 
+			PacketStreamPtr stream(new PacketStream(msg));
 			_stream_send_buffer.insert(std::make_pair(stream->_packet_ptr->_msg_seq_id, stream));
 			B_LOG_WARN << "save msg, _msg_seq_id=" << stream->_packet_ptr->_msg_seq_id << ", _stream_send_buffer.size=" << _stream_send_buffer.size();
 			check_stream_send_buffer_reduce();
@@ -108,6 +109,7 @@ bool BTcpClient::send_stream(PacketStreamPtr& stream)
 	}
 	else
 	{
+		PacketStreamPtr stream(new PacketStream(msg));
 		_stream_send_buffer.insert(std::make_pair(stream->_packet_ptr->_msg_seq_id, stream));
 		B_LOG_INFO << "connecting, _msg_seq_id=" << stream->_packet_ptr->_msg_seq_id << ", _stream_send_buffer.size=" << _stream_send_buffer.size();
 		check_stream_send_buffer_reduce();

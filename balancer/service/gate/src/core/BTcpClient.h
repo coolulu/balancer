@@ -22,7 +22,7 @@ public:
 	bool check_idle(unsigned int now);
 	void connect(); 
 	bool send_msg(PacketPtr& msg);
-	bool send_stream(PacketStreamPtr& stream);
+	bool send_stream(PacketPtr& msg);
 	bool reomve_msg_send_buffer(unsigned long long msg_seq_id);
 
 private:
