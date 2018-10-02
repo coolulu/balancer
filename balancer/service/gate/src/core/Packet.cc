@@ -8,7 +8,8 @@
 #include "log/Log.h"
 
 Packet::Packet(unsigned int header, const char* buffer, unsigned int len)
-	:	_buffer(buffer), 
+	:	_buffer(buffer),
+		_buffer_len(Packet::k_header_size + Packet::k_len_size + len),
 		_data_len(0),
 		_header(header),
 		_len(len),
@@ -42,7 +43,7 @@ Packet::Packet(unsigned int header, const char* buffer, unsigned int len)
 	_reserve_field_2	= muduo::net::sockets::networkToHost32(*(unsigned int*)(_buffer + s_reserve_field_2_offset));
 	_reserve_field_3	= muduo::net::sockets::networkToHost32(*(unsigned int*)(_buffer + s_reserve_field_3_offset));
 	_data				= (unsigned char*)(_buffer + s_data_offset);
-	_data_len			= len + s_version_offset - s_data_offset - k_check_sum_size;
+	_data_len			= _buffer_len - s_data_offset - k_check_sum_size;
 	_check_sum			= muduo::net::sockets::networkToHost32(*(unsigned int*)(_buffer + s_data_offset + _data_len));
 }
 
@@ -58,6 +59,7 @@ Packet::Packet(unsigned short to_service_id,
 			   unsigned int reserve_field_2, 
 			   unsigned int reserve_field_3)
 	:	_buffer(nullptr),
+		_buffer_len(0),
 		_data_len(0),
 		_header(0),
 		_len(0),
@@ -161,6 +163,7 @@ void Packet::print()
 				<< ", _reserve_field_2="	<< _reserve_field_2
 				<< ", _reserve_field_3="	<< _reserve_field_3
 				<< ", _check_sum="			<< _check_sum
+				<< ", _buffer_len="			<< _buffer_len
 				<< ", _data_len="			<< _data_len;
 }
 

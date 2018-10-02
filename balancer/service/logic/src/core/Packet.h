@@ -31,6 +31,7 @@ public:
 
 public:
 	const char*					_buffer;			// 从header开始
+	unsigned int				_buffer_len;		// _buffer的长度
 	unsigned int				_data_len;			// _data的长度
 
 public:
