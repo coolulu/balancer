@@ -18,5 +18,5 @@ void HandleClient::forward_response_to_client(const muduo::net::TcpConnectionPtr
 											  PacketPtr& packet_ptr,
 											  muduo::Timestamp time)
 {
-
+	_proc._gate_server.send_stream(packet_ptr);
 }
