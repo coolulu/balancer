@@ -84,6 +84,27 @@ bool GateServer::send_stream(PacketPtr& msg)
 	return false;
 }
 
+bool GateServer::send_stream(PacketStreamPtr& stream)
+{
+	auto it = _conn_map.find(stream->_packet_ptr->_conn_seq_id);
+	if(it == _conn_map.end())
+	{
+		B_LOG_WARN	<< "conn_seq_id not find, msg is lose, _msg_seq_id=" << stream->_packet_ptr->_msg_seq_id
+					<< ", _conn_seq_id=" << stream->_packet_ptr->_conn_seq_id;
+		return false;
+	}
+
+	if(it->second)
+	{
+		it->second->send(stream->_buffer, stream->_buffer_len);
+		return true;
+	}
+
+	B_LOG_WARN	<< "conn is null, msg is lose, _msg_seq_id=" << stream->_packet_ptr->_msg_seq_id
+				<< ", _conn_seq_id=" << stream->_packet_ptr->_conn_seq_id;
+	return false;
+}
+
 void GateServer::on_connection(const muduo::net::TcpConnectionPtr& conn)
 {
 	B_LOG_INFO	<< conn->name() << " " 

@@ -12,6 +12,9 @@ public:
 	~PacketStream();
 
 public:
+	void set_buffer_conn_seq_id(unsigned long long conn_seq_id);
+
+public:
 	PacketPtr		_packet_ptr;
 	char*			_buffer;
 	unsigned int	_buffer_len;
