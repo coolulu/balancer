@@ -20,23 +20,6 @@ void HandleGate::handle_request(const muduo::net::TcpConnectionPtr& conn,
 								muduo::Timestamp time)
 {
 	const ::google::protobuf::Any& service_msg = packet_ptr->_body.service_msg();
-	if(service_msg.Is<center::CenterMsg>())
-	{
-		center::CenterMsg msg;
-		service_msg.UnpackTo(&msg);
-
-		switch(msg.choice_case())
-		{
-
-
-
-		default:
-			B_LOG_ERROR << "unknow CenterMsg, choice_case=" << msg.choice_case();
-			break;
-		}
-
-		return;
-	}
 
 	if(false)
 	{
