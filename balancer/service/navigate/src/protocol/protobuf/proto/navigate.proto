@@ -23,6 +23,16 @@ message GetAccessRsp {
     int32   out_port            = 5;
 }
 
+message PutLoadReq {
+    int32   service_id          = 1;
+    uint32  proc_id             = 2;
+    int32   load_val            = 3;
+}
+
+message PutLoadRsp {
+
+}
+
 message NavigateMsg {                           // 奇数是请求，偶数是响应
     oneof choice {
         TestReq         test_req        = 1;    // 请求
@@ -30,6 +40,9 @@ message NavigateMsg {                           // 奇数是请求，偶数是�
 
         GetAccessReq    get_access_req  = 3;    // 获取接入点
         GetAccessRsp    get_access_rsp  = 4;  
+
+        PutLoadReq      put_load_req    = 5;    // 上传负载
+        PutLoadRsp      put_load_rsp    = 6;
 
     }
 }
