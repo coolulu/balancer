@@ -3,7 +3,7 @@ syntax="proto3";
 package navigate;
 
 message TestReq {
-    int32   service_id        = 1;
+    int32   service_id          = 1;
 }
 
 message TestRsp {
@@ -11,16 +11,16 @@ message TestRsp {
 }
 
 message GetAccessReq {
-    uint32  service_id          = 1;
+    int32   service_id          = 1;
     uint64  user_id             = 2;
 }
 
 message GetAccessRsp {
     uint64  access_key          = 1;
-    uint32  service_id          = 2;
+    int32   service_id          = 2;
     uint32  proc_id             = 3;
     bytes   out_ip              = 4;
-    uint32  out_port            = 5;
+    int32   out_port            = 5;
 }
 
 message NavigateMsg {                           // 奇数是请求，偶数是响应

@@ -3,27 +3,29 @@ syntax="proto3";
 package logic;
 
 message TestReq {
-    int32   service_id        = 1;
+    int32   service_id          = 1;
 }
 
 message TestRsp {
-    bytes   service_name      = 1;
+    bytes   service_name        = 1;
 }
 
 message LoginReq {
-    bytes   user_id       = 1;
-    bytes   passwd        = 2;  // 字符串不安全，抓包显示出来太明显
-    uint32  dev_type      = 3;
-    bytes   dev_token     = 4;
+    int32   service_id          = 1;    // navigate::GetAccessRsp.service_id
+    uint32  proc_id             = 2;    // navigate::GetAccessRsp.proc_id
+    uint64  user_id             = 3;
+    bytes   passwd              = 4;    // 字符串不安全，抓包显示出来太明显
+    uint32  dev_type            = 5;
+    bytes   dev_token           = 6;
 }
 
 message LoginRsp {
-    bytes   login_token     = 1;   
+    bytes   login_token         = 1;   
 }
 
 message LogoutReq {
-    bytes   user_id         = 1;
-    bytes   login_token     = 2; 
+    uint64  user_id             = 1;
+    bytes   login_token         = 2; 
 }
 
 message LogoutRsp {
@@ -35,7 +37,7 @@ message GetAccessKeyReq {
 }
 
 message GetAccessKeyRsp {
-    uint64  access_key      = 1;
+    uint64  access_key          = 1;
 }
 
 message LogicMsg {                              // 奇数是请求，偶数是响应

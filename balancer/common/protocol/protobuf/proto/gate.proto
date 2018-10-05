@@ -11,13 +11,21 @@ message TestRsp {
 }
 
 message GetConnIdReq {
-    int64   client_time         = 1;    // 客户端的时间
+    uint64   client_time        = 1;    // 客户端的时间
 }
 
 message GetConnIdRsp {
-    int64   server_time         = 1;    // 服务端的时间
-    int64   conn_create_time    = 2;    // 客户端连接创建时间
-    int64   conn_id             = 3;    // 客户端的连接id
+    uint64   server_time        = 1;    // 服务端的时间
+    uint32   conn_create_time   = 2;    // 客户端连接创建时间
+    uint64   conn_id            = 3;    // 客户端的连接id
+}
+
+message CloseConnIdReq {
+    uint64   conn_id            = 1;
+}
+
+message CloseConnIdRsp {
+
 }
 
 message GateMsg {                                   // 奇数是请求，偶数是响应
@@ -27,5 +35,8 @@ message GateMsg {                                   // 奇数是请求，偶数�
 
         GetConnIdReq    get_conn_id_req     = 3;    // 获取连接id
         GetConnIdReq    get_conn_id_rsp     = 4;
+
+        CloseConnIdReq  close_conn_id_req   = 5;    // 关闭连接id
+        CloseConnIdRsp  close_conn_id_rsp   = 6;
     }
 }
