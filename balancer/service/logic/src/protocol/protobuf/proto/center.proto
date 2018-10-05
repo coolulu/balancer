@@ -87,7 +87,7 @@ message HeartbeatReq {
 message HeartbeatRsp {
     int32      level               = 1;     // 接管center的等级
     int32      service_id          = 2;     // 返回和HeartbeatReq.service_id的值一样
-    int32      proc_id             = 3;     // 返回和HeartbeatReq.proc_id的值一样
+    uint32     proc_id             = 3;     // 返回和HeartbeatReq.proc_id的值一样
     uint64     conf_update_time    = 4;     // 配置更新时间(微妙)
     uint32     expire_second       = 5;     // 接管center的到期秒数，
                                             // 服务当前时间和接管center最新心跳请求时间相减秒数，

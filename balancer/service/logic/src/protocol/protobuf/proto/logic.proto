@@ -3,16 +3,55 @@ syntax="proto3";
 package logic;
 
 message TestReq {
-    int32   service_id        = 1;
+    int32   service_id          = 1;
 }
 
 message TestRsp {
-    bytes   service_name      = 1;
+    bytes   service_name        = 1;
+}
+
+message LoginReq {
+    int32   service_id          = 1;    // navigate::GetAccessRsp.service_id
+    uint32  proc_id             = 2;    // navigate::GetAccessRsp.proc_id
+    uint64  user_id             = 3;
+    bytes   passwd              = 4;    // 字符串不安全，抓包显示出来太明显
+    uint32  dev_type            = 5;
+    bytes   dev_token           = 6;
+}
+
+message LoginRsp {
+    bytes   login_token         = 1;   
+}
+
+message LogoutReq {
+    uint64  user_id             = 1;
+    bytes   login_token         = 2; 
+}
+
+message LogoutRsp {
+
+}
+
+message GetAccessKeyReq {
+
+}
+
+message GetAccessKeyRsp {
+    uint64  access_key          = 1;
 }
 
 message LogicMsg {                              // 奇数是请求，偶数是响应
     oneof choice {
-        TestReq        test_req       = 1;      // 请求
-        TestRsp        test_rsp       = 2;      // 响应
+        TestReq         test_req        = 1;    // 请求
+        TestRsp         test_rsp        = 2;    // 响应
+
+        LoginReq        login_req       = 3;    // 登录
+        LoginRsp        login_rsp       = 4;
+
+        LogoutReq       logout_req      = 5;    // 登出
+        LogoutRsp       Logout_rsp      = 6;   
+
+        GetAccessKeyReq get_access_key_req  = 7;    // 获取access_key
+        GetAccessKeyRsp get_access_key_rsp  = 8;
     }
 }

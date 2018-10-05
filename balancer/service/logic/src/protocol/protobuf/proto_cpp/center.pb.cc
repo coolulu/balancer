@@ -198,7 +198,7 @@ void AddDescriptorsImpl() {
       "ate\030\004 \001(\r\022\030\n\020conf_update_time\030\005 \001(\004\022\021\n\tc"
       "onf_json\030\006 \001(\014\"s\n\014HeartbeatRsp\022\r\n\005level\030"
       "\001 \001(\005\022\022\n\nservice_id\030\002 \001(\005\022\017\n\007proc_id\030\003 \001"
-      "(\005\022\030\n\020conf_update_time\030\004 \001(\004\022\025\n\rexpire_s"
+      "(\r\022\030\n\020conf_update_time\030\004 \001(\004\022\025\n\rexpire_s"
       "econd\030\005 \001(\r\"\275\001\n\tCenterMsg\022#\n\010test_req\030\001 "
       "\001(\0132\017.center.TestReqH\000\022#\n\010test_rsp\030\002 \001(\013"
       "2\017.center.TestRspH\000\022-\n\rHeartbeat_req\030\003 \001"
@@ -1569,13 +1569,13 @@ bool HeartbeatRsp::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 proc_id = 3;
+      // uint32 proc_id = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &proc_id_)));
         } else {
           goto handle_unusual;
@@ -1647,9 +1647,9 @@ void HeartbeatRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->service_id(), output);
   }
 
-  // int32 proc_id = 3;
+  // uint32 proc_id = 3;
   if (this->proc_id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->proc_id(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->proc_id(), output);
   }
 
   // uint64 conf_update_time = 4;
@@ -1686,9 +1686,9 @@ void HeartbeatRsp::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->service_id(), target);
   }
 
-  // int32 proc_id = 3;
+  // uint32 proc_id = 3;
   if (this->proc_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->proc_id(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->proc_id(), target);
   }
 
   // uint64 conf_update_time = 4;
@@ -1739,10 +1739,10 @@ size_t HeartbeatRsp::ByteSizeLong() const {
         this->conf_update_time());
   }
 
-  // int32 proc_id = 3;
+  // uint32 proc_id = 3;
   if (this->proc_id() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->proc_id());
   }
 
@@ -1868,15 +1868,15 @@ void HeartbeatRsp::set_service_id(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:center.HeartbeatRsp.service_id)
 }
 
-// int32 proc_id = 3;
+// uint32 proc_id = 3;
 void HeartbeatRsp::clear_proc_id() {
-  proc_id_ = 0;
+  proc_id_ = 0u;
 }
-::google::protobuf::int32 HeartbeatRsp::proc_id() const {
+::google::protobuf::uint32 HeartbeatRsp::proc_id() const {
   // @@protoc_insertion_point(field_get:center.HeartbeatRsp.proc_id)
   return proc_id_;
 }
-void HeartbeatRsp::set_proc_id(::google::protobuf::int32 value) {
+void HeartbeatRsp::set_proc_id(::google::protobuf::uint32 value) {
   
   proc_id_ = value;
   // @@protoc_insertion_point(field_set:center.HeartbeatRsp.proc_id)
