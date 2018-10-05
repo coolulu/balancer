@@ -73,6 +73,26 @@ void HandleGate::handle_request(const muduo::net::TcpConnectionPtr& conn,
 	}
 }
 
+void HandleGate::handle_response(const muduo::net::TcpConnectionPtr& conn, 
+								 TaskMsgBase* task,
+								 muduo::Timestamp time)
+{
+	const::data::Body_MsgRsq& msg_rsp = task->_response->_body.msg_rsp();
+	task->_code = msg_rsp.code();
+	task->_info = msg_rsp.info();
+
+	if(task->_code != ::common::SUCCESS)
+	{
+		B_LOG_ERROR	<< "_code is not success"
+					<< ", _task_name=" << task->_task_name 
+					<< ", _seq_id=" << task->_seq_id 
+					<< ", _code=" << task->_code 
+					<< ", _info=" << task->_info;
+	}
+
+	task->run();
+}
+
 void HandleGate::forward_request_to_service(const muduo::net::TcpConnectionPtr& conn, 
 											PacketPtr& packet_ptr, 
 											muduo::Timestamp time)
@@ -107,3 +127,5 @@ void HandleGate::forward_response_to_service(const muduo::net::TcpConnectionPtr&
 {
 	_proc._tcp_server.send_stream(packet_ptr);
 }
+
+

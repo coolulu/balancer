@@ -3,6 +3,7 @@
 #include <boost/bind.hpp>
 #include "Proc.h"
 #include "log/Log.h"
+#include "define.h"
 
 GateContext::GateContext(unsigned long long conn_seq_id)
 	:	_conn_seq_id(conn_seq_id), 
@@ -136,7 +137,54 @@ void GateServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 	if(p_gate_context->_is_client_init_conn_seq_id)
 	{
 		// 客户端获取到连接id
-		if(packet_ptr->_conn_seq_id == p_gate_context->_conn_seq_id)
+		if(packet_ptr->_to_service_id == Define::service_id)
+		{
+			// 处理client返回gate的rsp
+			TaskMsgBase* task = _proc._task_msg_pool.find(packet_ptr->_msg_seq_id);
+			if(task == nullptr)
+			{
+				B_LOG_ERROR << "no find msg_seq_id=" << packet_ptr->_msg_seq_id;
+			}
+			else
+			{
+				bool b = packet_ptr->parse();
+				if(b)
+				{
+					int msg_type = packet_ptr->_body.msg_type_case();
+					switch(msg_type)
+					{
+					case data::Body::kMsgReq:
+						B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
+									<< ", msg_type is req";
+						break;
+
+					case data::Body::kMsgRsp:
+						{
+							const ::data::Body_MsgRsq& msg_rsp = packet_ptr->_body.msg_rsp();
+
+							B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
+										<< ", msg_type is rsp" << ", code=" << msg_rsp.code() << ", info=" << msg_rsp.info();
+
+							task->_response = packet_ptr;
+							_handle_gate.handle_response(conn, task, time);
+							_proc._task_msg_pool.del(packet_ptr->_msg_seq_id);
+							task = nullptr;
+						}
+						break;
+
+					default:
+						B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString() 
+									<< ", unknow msg_type=" << msg_type;
+						break;
+					}
+				}
+				else
+				{
+					// 丢包
+				}
+			}
+		}
+		else if(packet_ptr->_conn_seq_id == p_gate_context->_conn_seq_id)
 		{
 			// 转发请求到内部服务TcpClient, s out -> c in
 			_handle_gate.forward_request_to_service(conn, packet_ptr, time);
