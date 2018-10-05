@@ -78,7 +78,7 @@ int Heartbeat::run(void* p)
 		{
 			_end_time_us = Util::get_us();
 			_delay_us = _end_time_us - _begin_time_us;
-			on_response(p);
+			on_response();
 
 			print("on_response");
 		}
@@ -143,7 +143,7 @@ int Heartbeat::on_request()
 	return 0;
 }
 
-int Heartbeat::on_response(void* p)
+int Heartbeat::on_response()
 {
 	if(_code != ::common::SUCCESS)
 	{
@@ -158,29 +158,37 @@ int Heartbeat::on_response(void* p)
 	}
 
 	update_count();	// 更新计数
-		
-	const center::CenterMsg& msg = *(center::CenterMsg*)p;
-	const center::HeartbeatRsp& req = msg.heartbeat_rsp();
-	B_LOG_INFO	<< "level=" << req.level()
-				<< ", service_id=" << req.service_id()
-				<< ", proc_id=" << req.proc_id()
-				<< ", conf_update_time=" << req.conf_update_time()
-				<< ", expire_second=" << req.expire_second();
 
-	if(req.conf_update_time() != _service_update_time)
+	const ::google::protobuf::Any& service_msg = _response->_body.service_msg();
+	if(service_msg.Is<center::CenterMsg>())
 	{
-		if(	req.level() >= _proc._config.proc.level || 
-			req.expire_second() >= _proc._config.proc.level_expire_time)
+		center::CenterMsg msg;
+		service_msg.UnpackTo(&msg);
+		if(msg.choice_case() == center::CenterMsg::kHeartbeatRsp)
 		{
-			// 当前接管的center等级低于当前center的等级, 或
-			// 当前接管的过期时间大于等于当前最大接管过期时间，则接管
-			Heartbeat* hb = new Heartbeat(_proc,
-										  _proc._config.proc.prober_timeout_us,
-										  _service_id,
-										  _service_update_time,
-										  _ip_info);
-			hb->_is_update_conf = true;
-			hb->run();
+			const center::HeartbeatRsp& req = msg.heartbeat_rsp();
+			B_LOG_INFO	<< "level=" << req.level()
+						<< ", service_id=" << req.service_id()
+						<< ", proc_id=" << req.proc_id()
+						<< ", conf_update_time=" << req.conf_update_time()
+						<< ", expire_second=" << req.expire_second();
+
+			if(req.conf_update_time() != _service_update_time)
+			{
+				if(	req.level() >= _proc._config.proc.level || 
+					req.expire_second() >= _proc._config.proc.level_expire_time)
+				{
+					// 当前接管的center等级低于当前center的等级, 或
+					// 当前接管的过期时间大于等于当前最大接管过期时间，则接管
+					Heartbeat* hb = new Heartbeat(_proc,
+												  _proc._config.proc.prober_timeout_us,
+												  _service_id,
+												  _service_update_time,
+												  _ip_info);
+					hb->_is_update_conf = true;
+					hb->run();
+				}
+			}
 		}
 	}
 

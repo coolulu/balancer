@@ -30,7 +30,7 @@ public:
 	virtual void print(const std::string& prefix = "");
 
 	int on_request();
-	int on_response(void* p);
+	int on_response();
 	int on_timeout(const ServiceConfig::Heartbeat& heartbeat,
 				   ServiceConfig::IPInfo& ip_info);
 
