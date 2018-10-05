@@ -10,6 +10,14 @@ message TestRsp {
     bytes   service_name        = 1;
 }
 
+message HeartbeatReq {
+    uint64  server_time         = 1;
+}
+
+message HeartbeatRsp {
+    uint64  client_time         = 1;
+}
+
 message GetConnIdReq {
     uint64   client_time        = 1;    // 客户端的时间
 }
@@ -33,10 +41,13 @@ message GateMsg {                                   // 奇数是请求，偶数�
         TestReq         test_req            = 1;    // 请求
         TestRsp         test_rsp            = 2;    // 响应
 
-        GetConnIdReq    get_conn_id_req     = 3;    // 获取连接id
-        GetConnIdReq    get_conn_id_rsp     = 4;
+        HeartbeatReq    heartbeat_req       = 3;    // 心跳
+        HeartbeatRsp    heartbeat_rsp       = 4;
 
-        CloseConnIdReq  close_conn_id_req   = 5;    // 关闭连接id
-        CloseConnIdRsp  close_conn_id_rsp   = 6;
+        GetConnIdReq    get_conn_id_req     = 5;    // 获取连接id
+        GetConnIdReq    get_conn_id_rsp     = 6;
+
+        CloseConnIdReq  close_conn_id_req   = 7;    // 关闭连接id
+        CloseConnIdRsp  close_conn_id_rsp   = 8;
     }
 }
