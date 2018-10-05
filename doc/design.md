@@ -631,16 +631,16 @@
             session:user:123
 
         // gate和client连接断开使用（主动触发）
-        gate_id_conn_id : user_id   eg: session:user_id:gate_id:10300:conn_id:1234567890
-                                        session:user_id:10300:1234567890
-        gate_ip_conn_id : user_id   eg: session:user_id:gate_ip:127.0.0.1:conn_id:1234567890
-                                        session:user_id:127.0.0.1:1234567890
+        gate_id_conn_id : user_id   	eg: session:user_id:gate_id:10300:conn_id:1234567890
+                                        	session:user_id:10300:1234567890
+        gate_ip_port_conn_id : user_id  eg: session:user_id:gate_ip:127.0.0.1:port:10301:conn_id:1234567890
+                                        	session:user_id:127.0.0.1:10301:1234567890
 
         // gate挂掉使用（被动触发）
-        gate_id : user_set[{user_id, conn_id}]      eg: session:user_set:gate_id:10300
-                                                        session:user_set:10300
-        gate_ip : user_set[{user_id, conn_id}]      eg: session:user_set:gate_ip:127.0.0.1
-                                                        session:user_set:127.0.0.1
+        gate_id : user_set[{user_id, conn_id}]      	 eg: session:user_set:gate_id:10300
+                                                        	 session:user_set:10300
+        gate_ip_port : user_set[{user_id, conn_id}]      eg: session:user_set:gate_ip:127.0.0.1:port:10301
+                                                        	 session:user_set:127.0.0.1:10301
     }
 
     key = service_name + val名 + key值
