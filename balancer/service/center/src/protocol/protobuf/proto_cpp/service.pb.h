@@ -55,8 +55,9 @@ enum ServiceId {
   CENTER = 10100,
   NAVIGATE = 10200,
   GATE = 10300,
-  LOGIC = 10400,
-  PROXY = 10500,
+  SESSION = 10400,
+  LOGIC = 10500,
+  PROXY = 10600,
   END = 65535,
   ServiceId_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ServiceId_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max

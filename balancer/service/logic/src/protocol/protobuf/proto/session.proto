@@ -1,0 +1,78 @@
+syntax="proto3";
+
+package session;
+
+import "common.proto";
+
+message Session {
+    bool    is_online           = 1;
+    uint64  user_id             = 2;
+    uint64  conn_id             = 3;
+    uint32  proc_id             = 4;
+    bytes   in_ip               = 5;
+    int32   in_port             = 6;
+    uint32  create_time         = 7;
+    int32   version             = 8;
+    uint32  app_id              = 9;
+    uint32  app_version         = 10;
+    uint32  dev_type            = 11;    
+}
+
+message SessionList {
+    repeated Session list       = 1;
+}
+
+message ConnKey {
+    bytes   in_ip       = 1;
+    int32   in_port     = 2;
+    uint64  conn_id     = 3;
+}
+
+message TestReq {
+    int32   service_id          = 1;
+}
+
+message TestRsp {
+    bytes   service_name        = 1;
+}
+
+message QuerySessionListReq {
+    common.UserIdList   user_id_list    = 1;
+ }
+
+message QuerySessionListRsp {
+    SessionList     session_list        = 1;
+}
+
+message CreateSessionReq {
+    Session         session         = 1;
+}
+
+message CreateSessionRsp {
+
+}
+
+message DelSessionReq {
+    uint64  user_id         = 1;    // user_id优先(user_id为0时，用conn_key删除)
+    ConnKey conn_key        = 2;
+}
+
+message DelSessionRsp {
+
+}
+
+message SessionMsg {                                // 奇数是请求，偶数是响应
+    oneof choice {
+        TestReq        test_req     = 1;    // 请求
+        TestRsp        test_rsp     = 2;    // 响应
+
+        QuerySessionListReq query_session_list_req  = 3;  // 查询会话
+        QuerySessionListRsp query_session_list_rsp  = 4;
+
+        CreateSessionReq    create_session_req = 5;    // 创建会话  
+        CreateSessionRsp    create_session_rsp = 6;
+
+        DelSessionReq       del_session_req = 7;       // 删除会话
+        DelSessionRsp       del_session_rsp = 8;
+    }
+}
