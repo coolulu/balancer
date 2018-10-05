@@ -31,9 +31,21 @@
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 namespace gate {
+class CloseConnIdReq;
+class CloseConnIdReqDefaultTypeInternal;
+extern CloseConnIdReqDefaultTypeInternal _CloseConnIdReq_default_instance_;
+class CloseConnIdRsp;
+class CloseConnIdRspDefaultTypeInternal;
+extern CloseConnIdRspDefaultTypeInternal _CloseConnIdRsp_default_instance_;
 class GateMsg;
 class GateMsgDefaultTypeInternal;
 extern GateMsgDefaultTypeInternal _GateMsg_default_instance_;
+class GetConnIdReq;
+class GetConnIdReqDefaultTypeInternal;
+extern GetConnIdReqDefaultTypeInternal _GetConnIdReq_default_instance_;
+class GetConnIdRsp;
+class GetConnIdRspDefaultTypeInternal;
+extern GetConnIdRspDefaultTypeInternal _GetConnIdRsp_default_instance_;
 class TestReq;
 class TestReqDefaultTypeInternal;
 extern TestReqDefaultTypeInternal _TestReq_default_instance_;
@@ -263,6 +275,401 @@ class TestRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 };
 // -------------------------------------------------------------------
 
+class GetConnIdReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.GetConnIdReq) */ {
+ public:
+  GetConnIdReq();
+  virtual ~GetConnIdReq();
+
+  GetConnIdReq(const GetConnIdReq& from);
+
+  inline GetConnIdReq& operator=(const GetConnIdReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetConnIdReq(GetConnIdReq&& from) noexcept
+    : GetConnIdReq() {
+    *this = ::std::move(from);
+  }
+
+  inline GetConnIdReq& operator=(GetConnIdReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetConnIdReq& default_instance();
+
+  static inline const GetConnIdReq* internal_default_instance() {
+    return reinterpret_cast<const GetConnIdReq*>(
+               &_GetConnIdReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    2;
+
+  void Swap(GetConnIdReq* other);
+  friend void swap(GetConnIdReq& a, GetConnIdReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetConnIdReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  GetConnIdReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const GetConnIdReq& from);
+  void MergeFrom(const GetConnIdReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(GetConnIdReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 client_time = 1;
+  void clear_client_time();
+  static const int kClientTimeFieldNumber = 1;
+  ::google::protobuf::uint64 client_time() const;
+  void set_client_time(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:gate.GetConnIdReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 client_time_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class GetConnIdRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.GetConnIdRsp) */ {
+ public:
+  GetConnIdRsp();
+  virtual ~GetConnIdRsp();
+
+  GetConnIdRsp(const GetConnIdRsp& from);
+
+  inline GetConnIdRsp& operator=(const GetConnIdRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetConnIdRsp(GetConnIdRsp&& from) noexcept
+    : GetConnIdRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline GetConnIdRsp& operator=(GetConnIdRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetConnIdRsp& default_instance();
+
+  static inline const GetConnIdRsp* internal_default_instance() {
+    return reinterpret_cast<const GetConnIdRsp*>(
+               &_GetConnIdRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    3;
+
+  void Swap(GetConnIdRsp* other);
+  friend void swap(GetConnIdRsp& a, GetConnIdRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetConnIdRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  GetConnIdRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const GetConnIdRsp& from);
+  void MergeFrom(const GetConnIdRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(GetConnIdRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 server_time = 1;
+  void clear_server_time();
+  static const int kServerTimeFieldNumber = 1;
+  ::google::protobuf::uint64 server_time() const;
+  void set_server_time(::google::protobuf::uint64 value);
+
+  // uint64 conn_id = 3;
+  void clear_conn_id();
+  static const int kConnIdFieldNumber = 3;
+  ::google::protobuf::uint64 conn_id() const;
+  void set_conn_id(::google::protobuf::uint64 value);
+
+  // uint32 conn_create_time = 2;
+  void clear_conn_create_time();
+  static const int kConnCreateTimeFieldNumber = 2;
+  ::google::protobuf::uint32 conn_create_time() const;
+  void set_conn_create_time(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:gate.GetConnIdRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 server_time_;
+  ::google::protobuf::uint64 conn_id_;
+  ::google::protobuf::uint32 conn_create_time_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class CloseConnIdReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.CloseConnIdReq) */ {
+ public:
+  CloseConnIdReq();
+  virtual ~CloseConnIdReq();
+
+  CloseConnIdReq(const CloseConnIdReq& from);
+
+  inline CloseConnIdReq& operator=(const CloseConnIdReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CloseConnIdReq(CloseConnIdReq&& from) noexcept
+    : CloseConnIdReq() {
+    *this = ::std::move(from);
+  }
+
+  inline CloseConnIdReq& operator=(CloseConnIdReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CloseConnIdReq& default_instance();
+
+  static inline const CloseConnIdReq* internal_default_instance() {
+    return reinterpret_cast<const CloseConnIdReq*>(
+               &_CloseConnIdReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    4;
+
+  void Swap(CloseConnIdReq* other);
+  friend void swap(CloseConnIdReq& a, CloseConnIdReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CloseConnIdReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  CloseConnIdReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const CloseConnIdReq& from);
+  void MergeFrom(const CloseConnIdReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(CloseConnIdReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 conn_id = 1;
+  void clear_conn_id();
+  static const int kConnIdFieldNumber = 1;
+  ::google::protobuf::uint64 conn_id() const;
+  void set_conn_id(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:gate.CloseConnIdReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 conn_id_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class CloseConnIdRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.CloseConnIdRsp) */ {
+ public:
+  CloseConnIdRsp();
+  virtual ~CloseConnIdRsp();
+
+  CloseConnIdRsp(const CloseConnIdRsp& from);
+
+  inline CloseConnIdRsp& operator=(const CloseConnIdRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CloseConnIdRsp(CloseConnIdRsp&& from) noexcept
+    : CloseConnIdRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline CloseConnIdRsp& operator=(CloseConnIdRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CloseConnIdRsp& default_instance();
+
+  static inline const CloseConnIdRsp* internal_default_instance() {
+    return reinterpret_cast<const CloseConnIdRsp*>(
+               &_CloseConnIdRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    5;
+
+  void Swap(CloseConnIdRsp* other);
+  friend void swap(CloseConnIdRsp& a, CloseConnIdRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CloseConnIdRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  CloseConnIdRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const CloseConnIdRsp& from);
+  void MergeFrom(const CloseConnIdRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(CloseConnIdRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:gate.CloseConnIdRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.GateMsg) */ {
  public:
   GateMsg();
@@ -295,6 +702,10 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   enum ChoiceCase {
     kTestReq = 1,
     kTestRsp = 2,
+    kGetConnIdReq = 3,
+    kGetConnIdRsp = 4,
+    kCloseConnIdReq = 5,
+    kCloseConnIdRsp = 6,
     CHOICE_NOT_SET = 0,
   };
 
@@ -303,7 +714,7 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
                &_GateMsg_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    2;
+    6;
 
   void Swap(GateMsg* other);
   friend void swap(GateMsg& a, GateMsg& b) {
@@ -368,11 +779,51 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::gate::TestRsp* release_test_rsp();
   void set_allocated_test_rsp(::gate::TestRsp* test_rsp);
 
+  // .gate.GetConnIdReq get_conn_id_req = 3;
+  bool has_get_conn_id_req() const;
+  void clear_get_conn_id_req();
+  static const int kGetConnIdReqFieldNumber = 3;
+  const ::gate::GetConnIdReq& get_conn_id_req() const;
+  ::gate::GetConnIdReq* mutable_get_conn_id_req();
+  ::gate::GetConnIdReq* release_get_conn_id_req();
+  void set_allocated_get_conn_id_req(::gate::GetConnIdReq* get_conn_id_req);
+
+  // .gate.GetConnIdReq get_conn_id_rsp = 4;
+  bool has_get_conn_id_rsp() const;
+  void clear_get_conn_id_rsp();
+  static const int kGetConnIdRspFieldNumber = 4;
+  const ::gate::GetConnIdReq& get_conn_id_rsp() const;
+  ::gate::GetConnIdReq* mutable_get_conn_id_rsp();
+  ::gate::GetConnIdReq* release_get_conn_id_rsp();
+  void set_allocated_get_conn_id_rsp(::gate::GetConnIdReq* get_conn_id_rsp);
+
+  // .gate.CloseConnIdReq close_conn_id_req = 5;
+  bool has_close_conn_id_req() const;
+  void clear_close_conn_id_req();
+  static const int kCloseConnIdReqFieldNumber = 5;
+  const ::gate::CloseConnIdReq& close_conn_id_req() const;
+  ::gate::CloseConnIdReq* mutable_close_conn_id_req();
+  ::gate::CloseConnIdReq* release_close_conn_id_req();
+  void set_allocated_close_conn_id_req(::gate::CloseConnIdReq* close_conn_id_req);
+
+  // .gate.CloseConnIdRsp close_conn_id_rsp = 6;
+  bool has_close_conn_id_rsp() const;
+  void clear_close_conn_id_rsp();
+  static const int kCloseConnIdRspFieldNumber = 6;
+  const ::gate::CloseConnIdRsp& close_conn_id_rsp() const;
+  ::gate::CloseConnIdRsp* mutable_close_conn_id_rsp();
+  ::gate::CloseConnIdRsp* release_close_conn_id_rsp();
+  void set_allocated_close_conn_id_rsp(::gate::CloseConnIdRsp* close_conn_id_rsp);
+
   ChoiceCase choice_case() const;
   // @@protoc_insertion_point(class_scope:gate.GateMsg)
  private:
   void set_has_test_req();
   void set_has_test_rsp();
+  void set_has_get_conn_id_req();
+  void set_has_get_conn_id_rsp();
+  void set_has_close_conn_id_req();
+  void set_has_close_conn_id_rsp();
 
   inline bool has_choice() const;
   void clear_choice();
@@ -383,6 +834,10 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
     ChoiceUnion() {}
     ::gate::TestReq* test_req_;
     ::gate::TestRsp* test_rsp_;
+    ::gate::GetConnIdReq* get_conn_id_req_;
+    ::gate::GetConnIdReq* get_conn_id_rsp_;
+    ::gate::CloseConnIdReq* close_conn_id_req_;
+    ::gate::CloseConnIdRsp* close_conn_id_rsp_;
   } choice_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -471,6 +926,92 @@ inline void TestRsp::set_allocated_service_name(::std::string* service_name) {
   service_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), service_name);
   // @@protoc_insertion_point(field_set_allocated:gate.TestRsp.service_name)
 }
+
+// -------------------------------------------------------------------
+
+// GetConnIdReq
+
+// uint64 client_time = 1;
+inline void GetConnIdReq::clear_client_time() {
+  client_time_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 GetConnIdReq::client_time() const {
+  // @@protoc_insertion_point(field_get:gate.GetConnIdReq.client_time)
+  return client_time_;
+}
+inline void GetConnIdReq::set_client_time(::google::protobuf::uint64 value) {
+  
+  client_time_ = value;
+  // @@protoc_insertion_point(field_set:gate.GetConnIdReq.client_time)
+}
+
+// -------------------------------------------------------------------
+
+// GetConnIdRsp
+
+// uint64 server_time = 1;
+inline void GetConnIdRsp::clear_server_time() {
+  server_time_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 GetConnIdRsp::server_time() const {
+  // @@protoc_insertion_point(field_get:gate.GetConnIdRsp.server_time)
+  return server_time_;
+}
+inline void GetConnIdRsp::set_server_time(::google::protobuf::uint64 value) {
+  
+  server_time_ = value;
+  // @@protoc_insertion_point(field_set:gate.GetConnIdRsp.server_time)
+}
+
+// uint32 conn_create_time = 2;
+inline void GetConnIdRsp::clear_conn_create_time() {
+  conn_create_time_ = 0u;
+}
+inline ::google::protobuf::uint32 GetConnIdRsp::conn_create_time() const {
+  // @@protoc_insertion_point(field_get:gate.GetConnIdRsp.conn_create_time)
+  return conn_create_time_;
+}
+inline void GetConnIdRsp::set_conn_create_time(::google::protobuf::uint32 value) {
+  
+  conn_create_time_ = value;
+  // @@protoc_insertion_point(field_set:gate.GetConnIdRsp.conn_create_time)
+}
+
+// uint64 conn_id = 3;
+inline void GetConnIdRsp::clear_conn_id() {
+  conn_id_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 GetConnIdRsp::conn_id() const {
+  // @@protoc_insertion_point(field_get:gate.GetConnIdRsp.conn_id)
+  return conn_id_;
+}
+inline void GetConnIdRsp::set_conn_id(::google::protobuf::uint64 value) {
+  
+  conn_id_ = value;
+  // @@protoc_insertion_point(field_set:gate.GetConnIdRsp.conn_id)
+}
+
+// -------------------------------------------------------------------
+
+// CloseConnIdReq
+
+// uint64 conn_id = 1;
+inline void CloseConnIdReq::clear_conn_id() {
+  conn_id_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 CloseConnIdReq::conn_id() const {
+  // @@protoc_insertion_point(field_get:gate.CloseConnIdReq.conn_id)
+  return conn_id_;
+}
+inline void CloseConnIdReq::set_conn_id(::google::protobuf::uint64 value) {
+  
+  conn_id_ = value;
+  // @@protoc_insertion_point(field_set:gate.CloseConnIdReq.conn_id)
+}
+
+// -------------------------------------------------------------------
+
+// CloseConnIdRsp
 
 // -------------------------------------------------------------------
 
@@ -572,6 +1113,198 @@ inline void GateMsg::set_allocated_test_rsp(::gate::TestRsp* test_rsp) {
   // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.test_rsp)
 }
 
+// .gate.GetConnIdReq get_conn_id_req = 3;
+inline bool GateMsg::has_get_conn_id_req() const {
+  return choice_case() == kGetConnIdReq;
+}
+inline void GateMsg::set_has_get_conn_id_req() {
+  _oneof_case_[0] = kGetConnIdReq;
+}
+inline void GateMsg::clear_get_conn_id_req() {
+  if (has_get_conn_id_req()) {
+    delete choice_.get_conn_id_req_;
+    clear_has_choice();
+  }
+}
+inline  const ::gate::GetConnIdReq& GateMsg::get_conn_id_req() const {
+  // @@protoc_insertion_point(field_get:gate.GateMsg.get_conn_id_req)
+  return has_get_conn_id_req()
+      ? *choice_.get_conn_id_req_
+      : ::gate::GetConnIdReq::default_instance();
+}
+inline ::gate::GetConnIdReq* GateMsg::mutable_get_conn_id_req() {
+  if (!has_get_conn_id_req()) {
+    clear_choice();
+    set_has_get_conn_id_req();
+    choice_.get_conn_id_req_ = new ::gate::GetConnIdReq;
+  }
+  // @@protoc_insertion_point(field_mutable:gate.GateMsg.get_conn_id_req)
+  return choice_.get_conn_id_req_;
+}
+inline ::gate::GetConnIdReq* GateMsg::release_get_conn_id_req() {
+  // @@protoc_insertion_point(field_release:gate.GateMsg.get_conn_id_req)
+  if (has_get_conn_id_req()) {
+    clear_has_choice();
+    ::gate::GetConnIdReq* temp = choice_.get_conn_id_req_;
+    choice_.get_conn_id_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void GateMsg::set_allocated_get_conn_id_req(::gate::GetConnIdReq* get_conn_id_req) {
+  clear_choice();
+  if (get_conn_id_req) {
+    set_has_get_conn_id_req();
+    choice_.get_conn_id_req_ = get_conn_id_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.get_conn_id_req)
+}
+
+// .gate.GetConnIdReq get_conn_id_rsp = 4;
+inline bool GateMsg::has_get_conn_id_rsp() const {
+  return choice_case() == kGetConnIdRsp;
+}
+inline void GateMsg::set_has_get_conn_id_rsp() {
+  _oneof_case_[0] = kGetConnIdRsp;
+}
+inline void GateMsg::clear_get_conn_id_rsp() {
+  if (has_get_conn_id_rsp()) {
+    delete choice_.get_conn_id_rsp_;
+    clear_has_choice();
+  }
+}
+inline  const ::gate::GetConnIdReq& GateMsg::get_conn_id_rsp() const {
+  // @@protoc_insertion_point(field_get:gate.GateMsg.get_conn_id_rsp)
+  return has_get_conn_id_rsp()
+      ? *choice_.get_conn_id_rsp_
+      : ::gate::GetConnIdReq::default_instance();
+}
+inline ::gate::GetConnIdReq* GateMsg::mutable_get_conn_id_rsp() {
+  if (!has_get_conn_id_rsp()) {
+    clear_choice();
+    set_has_get_conn_id_rsp();
+    choice_.get_conn_id_rsp_ = new ::gate::GetConnIdReq;
+  }
+  // @@protoc_insertion_point(field_mutable:gate.GateMsg.get_conn_id_rsp)
+  return choice_.get_conn_id_rsp_;
+}
+inline ::gate::GetConnIdReq* GateMsg::release_get_conn_id_rsp() {
+  // @@protoc_insertion_point(field_release:gate.GateMsg.get_conn_id_rsp)
+  if (has_get_conn_id_rsp()) {
+    clear_has_choice();
+    ::gate::GetConnIdReq* temp = choice_.get_conn_id_rsp_;
+    choice_.get_conn_id_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void GateMsg::set_allocated_get_conn_id_rsp(::gate::GetConnIdReq* get_conn_id_rsp) {
+  clear_choice();
+  if (get_conn_id_rsp) {
+    set_has_get_conn_id_rsp();
+    choice_.get_conn_id_rsp_ = get_conn_id_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.get_conn_id_rsp)
+}
+
+// .gate.CloseConnIdReq close_conn_id_req = 5;
+inline bool GateMsg::has_close_conn_id_req() const {
+  return choice_case() == kCloseConnIdReq;
+}
+inline void GateMsg::set_has_close_conn_id_req() {
+  _oneof_case_[0] = kCloseConnIdReq;
+}
+inline void GateMsg::clear_close_conn_id_req() {
+  if (has_close_conn_id_req()) {
+    delete choice_.close_conn_id_req_;
+    clear_has_choice();
+  }
+}
+inline  const ::gate::CloseConnIdReq& GateMsg::close_conn_id_req() const {
+  // @@protoc_insertion_point(field_get:gate.GateMsg.close_conn_id_req)
+  return has_close_conn_id_req()
+      ? *choice_.close_conn_id_req_
+      : ::gate::CloseConnIdReq::default_instance();
+}
+inline ::gate::CloseConnIdReq* GateMsg::mutable_close_conn_id_req() {
+  if (!has_close_conn_id_req()) {
+    clear_choice();
+    set_has_close_conn_id_req();
+    choice_.close_conn_id_req_ = new ::gate::CloseConnIdReq;
+  }
+  // @@protoc_insertion_point(field_mutable:gate.GateMsg.close_conn_id_req)
+  return choice_.close_conn_id_req_;
+}
+inline ::gate::CloseConnIdReq* GateMsg::release_close_conn_id_req() {
+  // @@protoc_insertion_point(field_release:gate.GateMsg.close_conn_id_req)
+  if (has_close_conn_id_req()) {
+    clear_has_choice();
+    ::gate::CloseConnIdReq* temp = choice_.close_conn_id_req_;
+    choice_.close_conn_id_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void GateMsg::set_allocated_close_conn_id_req(::gate::CloseConnIdReq* close_conn_id_req) {
+  clear_choice();
+  if (close_conn_id_req) {
+    set_has_close_conn_id_req();
+    choice_.close_conn_id_req_ = close_conn_id_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.close_conn_id_req)
+}
+
+// .gate.CloseConnIdRsp close_conn_id_rsp = 6;
+inline bool GateMsg::has_close_conn_id_rsp() const {
+  return choice_case() == kCloseConnIdRsp;
+}
+inline void GateMsg::set_has_close_conn_id_rsp() {
+  _oneof_case_[0] = kCloseConnIdRsp;
+}
+inline void GateMsg::clear_close_conn_id_rsp() {
+  if (has_close_conn_id_rsp()) {
+    delete choice_.close_conn_id_rsp_;
+    clear_has_choice();
+  }
+}
+inline  const ::gate::CloseConnIdRsp& GateMsg::close_conn_id_rsp() const {
+  // @@protoc_insertion_point(field_get:gate.GateMsg.close_conn_id_rsp)
+  return has_close_conn_id_rsp()
+      ? *choice_.close_conn_id_rsp_
+      : ::gate::CloseConnIdRsp::default_instance();
+}
+inline ::gate::CloseConnIdRsp* GateMsg::mutable_close_conn_id_rsp() {
+  if (!has_close_conn_id_rsp()) {
+    clear_choice();
+    set_has_close_conn_id_rsp();
+    choice_.close_conn_id_rsp_ = new ::gate::CloseConnIdRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:gate.GateMsg.close_conn_id_rsp)
+  return choice_.close_conn_id_rsp_;
+}
+inline ::gate::CloseConnIdRsp* GateMsg::release_close_conn_id_rsp() {
+  // @@protoc_insertion_point(field_release:gate.GateMsg.close_conn_id_rsp)
+  if (has_close_conn_id_rsp()) {
+    clear_has_choice();
+    ::gate::CloseConnIdRsp* temp = choice_.close_conn_id_rsp_;
+    choice_.close_conn_id_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void GateMsg::set_allocated_close_conn_id_rsp(::gate::CloseConnIdRsp* close_conn_id_rsp) {
+  clear_choice();
+  if (close_conn_id_rsp) {
+    set_has_close_conn_id_rsp();
+    choice_.close_conn_id_rsp_ = close_conn_id_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.close_conn_id_rsp)
+}
+
 inline bool GateMsg::has_choice() const {
   return choice_case() != CHOICE_NOT_SET;
 }
@@ -585,6 +1318,14 @@ inline GateMsg::ChoiceCase GateMsg::choice_case() const {
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

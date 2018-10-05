@@ -25,11 +25,25 @@
 #include <google/protobuf/generated_message_table_driven.h>
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/metadata.h>
+#include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_reflection.h>
+#include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 namespace common {
+class UserId;
+class UserIdDefaultTypeInternal;
+extern UserIdDefaultTypeInternal _UserId_default_instance_;
+class UserIdList;
+class UserIdListDefaultTypeInternal;
+extern UserIdListDefaultTypeInternal _UserIdList_default_instance_;
+class UserInfo;
+class UserInfoDefaultTypeInternal;
+extern UserInfoDefaultTypeInternal _UserInfo_default_instance_;
+class UserInfoList;
+class UserInfoListDefaultTypeInternal;
+extern UserInfoListDefaultTypeInternal _UserInfoList_default_instance_;
 }  // namespace common
 
 namespace common {
@@ -106,7 +120,404 @@ inline bool ErrorCode_Parse(
 }
 // ===================================================================
 
+class UserId : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:common.UserId) */ {
+ public:
+  UserId();
+  virtual ~UserId();
 
+  UserId(const UserId& from);
+
+  inline UserId& operator=(const UserId& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  UserId(UserId&& from) noexcept
+    : UserId() {
+    *this = ::std::move(from);
+  }
+
+  inline UserId& operator=(UserId&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UserId& default_instance();
+
+  static inline const UserId* internal_default_instance() {
+    return reinterpret_cast<const UserId*>(
+               &_UserId_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    0;
+
+  void Swap(UserId* other);
+  friend void swap(UserId& a, UserId& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline UserId* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  UserId* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const UserId& from);
+  void MergeFrom(const UserId& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(UserId* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 user_id = 1;
+  void clear_user_id();
+  static const int kUserIdFieldNumber = 1;
+  ::google::protobuf::uint64 user_id() const;
+  void set_user_id(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:common.UserId)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 user_id_;
+  mutable int _cached_size_;
+  friend struct protobuf_common_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class UserIdList : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:common.UserIdList) */ {
+ public:
+  UserIdList();
+  virtual ~UserIdList();
+
+  UserIdList(const UserIdList& from);
+
+  inline UserIdList& operator=(const UserIdList& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  UserIdList(UserIdList&& from) noexcept
+    : UserIdList() {
+    *this = ::std::move(from);
+  }
+
+  inline UserIdList& operator=(UserIdList&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UserIdList& default_instance();
+
+  static inline const UserIdList* internal_default_instance() {
+    return reinterpret_cast<const UserIdList*>(
+               &_UserIdList_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    1;
+
+  void Swap(UserIdList* other);
+  friend void swap(UserIdList& a, UserIdList& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline UserIdList* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  UserIdList* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const UserIdList& from);
+  void MergeFrom(const UserIdList& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(UserIdList* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .common.UserId list = 2;
+  int list_size() const;
+  void clear_list();
+  static const int kListFieldNumber = 2;
+  const ::common::UserId& list(int index) const;
+  ::common::UserId* mutable_list(int index);
+  ::common::UserId* add_list();
+  ::google::protobuf::RepeatedPtrField< ::common::UserId >*
+      mutable_list();
+  const ::google::protobuf::RepeatedPtrField< ::common::UserId >&
+      list() const;
+
+  // @@protoc_insertion_point(class_scope:common.UserIdList)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::common::UserId > list_;
+  mutable int _cached_size_;
+  friend struct protobuf_common_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class UserInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:common.UserInfo) */ {
+ public:
+  UserInfo();
+  virtual ~UserInfo();
+
+  UserInfo(const UserInfo& from);
+
+  inline UserInfo& operator=(const UserInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  UserInfo(UserInfo&& from) noexcept
+    : UserInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline UserInfo& operator=(UserInfo&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UserInfo& default_instance();
+
+  static inline const UserInfo* internal_default_instance() {
+    return reinterpret_cast<const UserInfo*>(
+               &_UserInfo_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    2;
+
+  void Swap(UserInfo* other);
+  friend void swap(UserInfo& a, UserInfo& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline UserInfo* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  UserInfo* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const UserInfo& from);
+  void MergeFrom(const UserInfo& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(UserInfo* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 user_id = 1;
+  void clear_user_id();
+  static const int kUserIdFieldNumber = 1;
+  ::google::protobuf::uint64 user_id() const;
+  void set_user_id(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:common.UserInfo)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 user_id_;
+  mutable int _cached_size_;
+  friend struct protobuf_common_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class UserInfoList : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:common.UserInfoList) */ {
+ public:
+  UserInfoList();
+  virtual ~UserInfoList();
+
+  UserInfoList(const UserInfoList& from);
+
+  inline UserInfoList& operator=(const UserInfoList& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  UserInfoList(UserInfoList&& from) noexcept
+    : UserInfoList() {
+    *this = ::std::move(from);
+  }
+
+  inline UserInfoList& operator=(UserInfoList&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UserInfoList& default_instance();
+
+  static inline const UserInfoList* internal_default_instance() {
+    return reinterpret_cast<const UserInfoList*>(
+               &_UserInfoList_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    3;
+
+  void Swap(UserInfoList* other);
+  friend void swap(UserInfoList& a, UserInfoList& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline UserInfoList* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  UserInfoList* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const UserInfoList& from);
+  void MergeFrom(const UserInfoList& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(UserInfoList* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .common.UserInfo list = 2;
+  int list_size() const;
+  void clear_list();
+  static const int kListFieldNumber = 2;
+  const ::common::UserInfo& list(int index) const;
+  ::common::UserInfo* mutable_list(int index);
+  ::common::UserInfo* add_list();
+  ::google::protobuf::RepeatedPtrField< ::common::UserInfo >*
+      mutable_list();
+  const ::google::protobuf::RepeatedPtrField< ::common::UserInfo >&
+      list() const;
+
+  // @@protoc_insertion_point(class_scope:common.UserInfoList)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::common::UserInfo > list_;
+  mutable int _cached_size_;
+  friend struct protobuf_common_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -117,10 +528,118 @@ inline bool ErrorCode_Parse(
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// UserId
+
+// uint64 user_id = 1;
+inline void UserId::clear_user_id() {
+  user_id_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 UserId::user_id() const {
+  // @@protoc_insertion_point(field_get:common.UserId.user_id)
+  return user_id_;
+}
+inline void UserId::set_user_id(::google::protobuf::uint64 value) {
+  
+  user_id_ = value;
+  // @@protoc_insertion_point(field_set:common.UserId.user_id)
+}
+
+// -------------------------------------------------------------------
+
+// UserIdList
+
+// repeated .common.UserId list = 2;
+inline int UserIdList::list_size() const {
+  return list_.size();
+}
+inline void UserIdList::clear_list() {
+  list_.Clear();
+}
+inline const ::common::UserId& UserIdList::list(int index) const {
+  // @@protoc_insertion_point(field_get:common.UserIdList.list)
+  return list_.Get(index);
+}
+inline ::common::UserId* UserIdList::mutable_list(int index) {
+  // @@protoc_insertion_point(field_mutable:common.UserIdList.list)
+  return list_.Mutable(index);
+}
+inline ::common::UserId* UserIdList::add_list() {
+  // @@protoc_insertion_point(field_add:common.UserIdList.list)
+  return list_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::common::UserId >*
+UserIdList::mutable_list() {
+  // @@protoc_insertion_point(field_mutable_list:common.UserIdList.list)
+  return &list_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::common::UserId >&
+UserIdList::list() const {
+  // @@protoc_insertion_point(field_list:common.UserIdList.list)
+  return list_;
+}
+
+// -------------------------------------------------------------------
+
+// UserInfo
+
+// uint64 user_id = 1;
+inline void UserInfo::clear_user_id() {
+  user_id_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 UserInfo::user_id() const {
+  // @@protoc_insertion_point(field_get:common.UserInfo.user_id)
+  return user_id_;
+}
+inline void UserInfo::set_user_id(::google::protobuf::uint64 value) {
+  
+  user_id_ = value;
+  // @@protoc_insertion_point(field_set:common.UserInfo.user_id)
+}
+
+// -------------------------------------------------------------------
+
+// UserInfoList
+
+// repeated .common.UserInfo list = 2;
+inline int UserInfoList::list_size() const {
+  return list_.size();
+}
+inline void UserInfoList::clear_list() {
+  list_.Clear();
+}
+inline const ::common::UserInfo& UserInfoList::list(int index) const {
+  // @@protoc_insertion_point(field_get:common.UserInfoList.list)
+  return list_.Get(index);
+}
+inline ::common::UserInfo* UserInfoList::mutable_list(int index) {
+  // @@protoc_insertion_point(field_mutable:common.UserInfoList.list)
+  return list_.Mutable(index);
+}
+inline ::common::UserInfo* UserInfoList::add_list() {
+  // @@protoc_insertion_point(field_add:common.UserInfoList.list)
+  return list_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::common::UserInfo >*
+UserInfoList::mutable_list() {
+  // @@protoc_insertion_point(field_mutable_list:common.UserInfoList.list)
+  return &list_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::common::UserInfo >&
+UserInfoList::list() const {
+  // @@protoc_insertion_point(field_list:common.UserInfoList.list)
+  return list_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
