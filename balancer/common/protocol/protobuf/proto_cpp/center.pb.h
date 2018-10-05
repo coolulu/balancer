@@ -612,11 +612,11 @@ class HeartbeatRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::uint64 conf_update_time() const;
   void set_conf_update_time(::google::protobuf::uint64 value);
 
-  // int32 proc_id = 3;
+  // uint32 proc_id = 3;
   void clear_proc_id();
   static const int kProcIdFieldNumber = 3;
-  ::google::protobuf::int32 proc_id() const;
-  void set_proc_id(::google::protobuf::int32 value);
+  ::google::protobuf::uint32 proc_id() const;
+  void set_proc_id(::google::protobuf::uint32 value);
 
   // uint32 expire_second = 5;
   void clear_expire_second();
@@ -631,7 +631,7 @@ class HeartbeatRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::int32 level_;
   ::google::protobuf::int32 service_id_;
   ::google::protobuf::uint64 conf_update_time_;
-  ::google::protobuf::int32 proc_id_;
+  ::google::protobuf::uint32 proc_id_;
   ::google::protobuf::uint32 expire_second_;
   mutable int _cached_size_;
   friend struct protobuf_center_2eproto::TableStruct;
@@ -1030,15 +1030,15 @@ inline void HeartbeatRsp::set_service_id(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:center.HeartbeatRsp.service_id)
 }
 
-// int32 proc_id = 3;
+// uint32 proc_id = 3;
 inline void HeartbeatRsp::clear_proc_id() {
-  proc_id_ = 0;
+  proc_id_ = 0u;
 }
-inline ::google::protobuf::int32 HeartbeatRsp::proc_id() const {
+inline ::google::protobuf::uint32 HeartbeatRsp::proc_id() const {
   // @@protoc_insertion_point(field_get:center.HeartbeatRsp.proc_id)
   return proc_id_;
 }
-inline void HeartbeatRsp::set_proc_id(::google::protobuf::int32 value) {
+inline void HeartbeatRsp::set_proc_id(::google::protobuf::uint32 value) {
   
   proc_id_ = value;
   // @@protoc_insertion_point(field_set:center.HeartbeatRsp.proc_id)
