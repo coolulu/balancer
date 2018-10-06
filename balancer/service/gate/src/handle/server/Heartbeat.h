@@ -8,9 +8,9 @@ class Heartbeat
 {
 public:
 	Heartbeat(Proc& proc, 
-				 const muduo::net::TcpConnectionPtr& conn,
-				 PacketPtr& packet_ptr,
-				 muduo::Timestamp time);
+			  const muduo::net::TcpConnectionPtr& conn,
+			  PacketPtr& packet_ptr,
+			  muduo::Timestamp time);
 	~Heartbeat();
 
 public:
