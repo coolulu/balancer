@@ -320,6 +320,7 @@
     service_type: client
 
 ### 中心服务
+    service_type: center
 
 #### 服务列表
     service.conf
@@ -596,7 +597,6 @@
 #### 故障恢复
 
 #### center之间配置同步
-    service_type: center
     只有全局配置，先不搞局部配置和精细化控制
     同步配置(http请求定时查询同步)
     1 <-----2 <-----3 <--|
