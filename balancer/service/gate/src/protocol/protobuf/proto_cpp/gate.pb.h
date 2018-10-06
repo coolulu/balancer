@@ -46,18 +46,18 @@ extern GetConnIdReqDefaultTypeInternal _GetConnIdReq_default_instance_;
 class GetConnIdRsp;
 class GetConnIdRspDefaultTypeInternal;
 extern GetConnIdRspDefaultTypeInternal _GetConnIdRsp_default_instance_;
-class HeartbeatReq;
-class HeartbeatReqDefaultTypeInternal;
-extern HeartbeatReqDefaultTypeInternal _HeartbeatReq_default_instance_;
-class HeartbeatRsp;
-class HeartbeatRspDefaultTypeInternal;
-extern HeartbeatRspDefaultTypeInternal _HeartbeatRsp_default_instance_;
 class TestReq;
 class TestReqDefaultTypeInternal;
 extern TestReqDefaultTypeInternal _TestReq_default_instance_;
 class TestRsp;
 class TestRspDefaultTypeInternal;
 extern TestRspDefaultTypeInternal _TestRsp_default_instance_;
+class WakeHeartbeatReq;
+class WakeHeartbeatReqDefaultTypeInternal;
+extern WakeHeartbeatReqDefaultTypeInternal _WakeHeartbeatReq_default_instance_;
+class WakeHeartbeatRsp;
+class WakeHeartbeatRspDefaultTypeInternal;
+extern WakeHeartbeatRspDefaultTypeInternal _WakeHeartbeatRsp_default_instance_;
 }  // namespace gate
 
 namespace gate {
@@ -281,24 +281,24 @@ class TestRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 };
 // -------------------------------------------------------------------
 
-class HeartbeatReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.HeartbeatReq) */ {
+class WakeHeartbeatReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.WakeHeartbeatReq) */ {
  public:
-  HeartbeatReq();
-  virtual ~HeartbeatReq();
+  WakeHeartbeatReq();
+  virtual ~WakeHeartbeatReq();
 
-  HeartbeatReq(const HeartbeatReq& from);
+  WakeHeartbeatReq(const WakeHeartbeatReq& from);
 
-  inline HeartbeatReq& operator=(const HeartbeatReq& from) {
+  inline WakeHeartbeatReq& operator=(const WakeHeartbeatReq& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  HeartbeatReq(HeartbeatReq&& from) noexcept
-    : HeartbeatReq() {
+  WakeHeartbeatReq(WakeHeartbeatReq&& from) noexcept
+    : WakeHeartbeatReq() {
     *this = ::std::move(from);
   }
 
-  inline HeartbeatReq& operator=(HeartbeatReq&& from) noexcept {
+  inline WakeHeartbeatReq& operator=(WakeHeartbeatReq&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -308,29 +308,29 @@ class HeartbeatReq : public ::google::protobuf::Message /* @@protoc_insertion_po
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const HeartbeatReq& default_instance();
+  static const WakeHeartbeatReq& default_instance();
 
-  static inline const HeartbeatReq* internal_default_instance() {
-    return reinterpret_cast<const HeartbeatReq*>(
-               &_HeartbeatReq_default_instance_);
+  static inline const WakeHeartbeatReq* internal_default_instance() {
+    return reinterpret_cast<const WakeHeartbeatReq*>(
+               &_WakeHeartbeatReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     2;
 
-  void Swap(HeartbeatReq* other);
-  friend void swap(HeartbeatReq& a, HeartbeatReq& b) {
+  void Swap(WakeHeartbeatReq* other);
+  friend void swap(WakeHeartbeatReq& a, WakeHeartbeatReq& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline HeartbeatReq* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline WakeHeartbeatReq* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  HeartbeatReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  WakeHeartbeatReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const HeartbeatReq& from);
-  void MergeFrom(const HeartbeatReq& from);
+  void CopyFrom(const WakeHeartbeatReq& from);
+  void MergeFrom(const WakeHeartbeatReq& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -346,7 +346,7 @@ class HeartbeatReq : public ::google::protobuf::Message /* @@protoc_insertion_po
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(HeartbeatReq* other);
+  void InternalSwap(WakeHeartbeatReq* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -368,7 +368,7 @@ class HeartbeatReq : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::uint64 server_time() const;
   void set_server_time(::google::protobuf::uint64 value);
 
-  // @@protoc_insertion_point(class_scope:gate.HeartbeatReq)
+  // @@protoc_insertion_point(class_scope:gate.WakeHeartbeatReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -378,24 +378,24 @@ class HeartbeatReq : public ::google::protobuf::Message /* @@protoc_insertion_po
 };
 // -------------------------------------------------------------------
 
-class HeartbeatRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.HeartbeatRsp) */ {
+class WakeHeartbeatRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.WakeHeartbeatRsp) */ {
  public:
-  HeartbeatRsp();
-  virtual ~HeartbeatRsp();
+  WakeHeartbeatRsp();
+  virtual ~WakeHeartbeatRsp();
 
-  HeartbeatRsp(const HeartbeatRsp& from);
+  WakeHeartbeatRsp(const WakeHeartbeatRsp& from);
 
-  inline HeartbeatRsp& operator=(const HeartbeatRsp& from) {
+  inline WakeHeartbeatRsp& operator=(const WakeHeartbeatRsp& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  HeartbeatRsp(HeartbeatRsp&& from) noexcept
-    : HeartbeatRsp() {
+  WakeHeartbeatRsp(WakeHeartbeatRsp&& from) noexcept
+    : WakeHeartbeatRsp() {
     *this = ::std::move(from);
   }
 
-  inline HeartbeatRsp& operator=(HeartbeatRsp&& from) noexcept {
+  inline WakeHeartbeatRsp& operator=(WakeHeartbeatRsp&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -405,29 +405,29 @@ class HeartbeatRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const HeartbeatRsp& default_instance();
+  static const WakeHeartbeatRsp& default_instance();
 
-  static inline const HeartbeatRsp* internal_default_instance() {
-    return reinterpret_cast<const HeartbeatRsp*>(
-               &_HeartbeatRsp_default_instance_);
+  static inline const WakeHeartbeatRsp* internal_default_instance() {
+    return reinterpret_cast<const WakeHeartbeatRsp*>(
+               &_WakeHeartbeatRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     3;
 
-  void Swap(HeartbeatRsp* other);
-  friend void swap(HeartbeatRsp& a, HeartbeatRsp& b) {
+  void Swap(WakeHeartbeatRsp* other);
+  friend void swap(WakeHeartbeatRsp& a, WakeHeartbeatRsp& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline HeartbeatRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline WakeHeartbeatRsp* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  HeartbeatRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  WakeHeartbeatRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const HeartbeatRsp& from);
-  void MergeFrom(const HeartbeatRsp& from);
+  void CopyFrom(const WakeHeartbeatRsp& from);
+  void MergeFrom(const WakeHeartbeatRsp& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -443,7 +443,7 @@ class HeartbeatRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(HeartbeatRsp* other);
+  void InternalSwap(WakeHeartbeatRsp* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -465,7 +465,7 @@ class HeartbeatRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::uint64 client_time() const;
   void set_client_time(::google::protobuf::uint64 value);
 
-  // @@protoc_insertion_point(class_scope:gate.HeartbeatRsp)
+  // @@protoc_insertion_point(class_scope:gate.WakeHeartbeatRsp)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -902,8 +902,8 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   enum ChoiceCase {
     kTestReq = 1,
     kTestRsp = 2,
-    kHeartbeatReq = 3,
-    kHeartbeatRsp = 4,
+    kWakeHeartbeatReq = 3,
+    kWakeHeartbeatRsp = 4,
     kGetConnIdReq = 5,
     kGetConnIdRsp = 6,
     kCloseConnIdReq = 7,
@@ -981,23 +981,23 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::gate::TestRsp* release_test_rsp();
   void set_allocated_test_rsp(::gate::TestRsp* test_rsp);
 
-  // .gate.HeartbeatReq heartbeat_req = 3;
-  bool has_heartbeat_req() const;
-  void clear_heartbeat_req();
-  static const int kHeartbeatReqFieldNumber = 3;
-  const ::gate::HeartbeatReq& heartbeat_req() const;
-  ::gate::HeartbeatReq* mutable_heartbeat_req();
-  ::gate::HeartbeatReq* release_heartbeat_req();
-  void set_allocated_heartbeat_req(::gate::HeartbeatReq* heartbeat_req);
+  // .gate.WakeHeartbeatReq wake_heartbeat_req = 3;
+  bool has_wake_heartbeat_req() const;
+  void clear_wake_heartbeat_req();
+  static const int kWakeHeartbeatReqFieldNumber = 3;
+  const ::gate::WakeHeartbeatReq& wake_heartbeat_req() const;
+  ::gate::WakeHeartbeatReq* mutable_wake_heartbeat_req();
+  ::gate::WakeHeartbeatReq* release_wake_heartbeat_req();
+  void set_allocated_wake_heartbeat_req(::gate::WakeHeartbeatReq* wake_heartbeat_req);
 
-  // .gate.HeartbeatRsp heartbeat_rsp = 4;
-  bool has_heartbeat_rsp() const;
-  void clear_heartbeat_rsp();
-  static const int kHeartbeatRspFieldNumber = 4;
-  const ::gate::HeartbeatRsp& heartbeat_rsp() const;
-  ::gate::HeartbeatRsp* mutable_heartbeat_rsp();
-  ::gate::HeartbeatRsp* release_heartbeat_rsp();
-  void set_allocated_heartbeat_rsp(::gate::HeartbeatRsp* heartbeat_rsp);
+  // .gate.WakeHeartbeatRsp wake_heartbeat_rsp = 4;
+  bool has_wake_heartbeat_rsp() const;
+  void clear_wake_heartbeat_rsp();
+  static const int kWakeHeartbeatRspFieldNumber = 4;
+  const ::gate::WakeHeartbeatRsp& wake_heartbeat_rsp() const;
+  ::gate::WakeHeartbeatRsp* mutable_wake_heartbeat_rsp();
+  ::gate::WakeHeartbeatRsp* release_wake_heartbeat_rsp();
+  void set_allocated_wake_heartbeat_rsp(::gate::WakeHeartbeatRsp* wake_heartbeat_rsp);
 
   // .gate.GetConnIdReq get_conn_id_req = 5;
   bool has_get_conn_id_req() const;
@@ -1008,14 +1008,14 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::gate::GetConnIdReq* release_get_conn_id_req();
   void set_allocated_get_conn_id_req(::gate::GetConnIdReq* get_conn_id_req);
 
-  // .gate.GetConnIdReq get_conn_id_rsp = 6;
+  // .gate.GetConnIdRsp get_conn_id_rsp = 6;
   bool has_get_conn_id_rsp() const;
   void clear_get_conn_id_rsp();
   static const int kGetConnIdRspFieldNumber = 6;
-  const ::gate::GetConnIdReq& get_conn_id_rsp() const;
-  ::gate::GetConnIdReq* mutable_get_conn_id_rsp();
-  ::gate::GetConnIdReq* release_get_conn_id_rsp();
-  void set_allocated_get_conn_id_rsp(::gate::GetConnIdReq* get_conn_id_rsp);
+  const ::gate::GetConnIdRsp& get_conn_id_rsp() const;
+  ::gate::GetConnIdRsp* mutable_get_conn_id_rsp();
+  ::gate::GetConnIdRsp* release_get_conn_id_rsp();
+  void set_allocated_get_conn_id_rsp(::gate::GetConnIdRsp* get_conn_id_rsp);
 
   // .gate.CloseConnIdReq close_conn_id_req = 7;
   bool has_close_conn_id_req() const;
@@ -1040,8 +1040,8 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
  private:
   void set_has_test_req();
   void set_has_test_rsp();
-  void set_has_heartbeat_req();
-  void set_has_heartbeat_rsp();
+  void set_has_wake_heartbeat_req();
+  void set_has_wake_heartbeat_rsp();
   void set_has_get_conn_id_req();
   void set_has_get_conn_id_rsp();
   void set_has_close_conn_id_req();
@@ -1056,10 +1056,10 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
     ChoiceUnion() {}
     ::gate::TestReq* test_req_;
     ::gate::TestRsp* test_rsp_;
-    ::gate::HeartbeatReq* heartbeat_req_;
-    ::gate::HeartbeatRsp* heartbeat_rsp_;
+    ::gate::WakeHeartbeatReq* wake_heartbeat_req_;
+    ::gate::WakeHeartbeatRsp* wake_heartbeat_rsp_;
     ::gate::GetConnIdReq* get_conn_id_req_;
-    ::gate::GetConnIdReq* get_conn_id_rsp_;
+    ::gate::GetConnIdRsp* get_conn_id_rsp_;
     ::gate::CloseConnIdReq* close_conn_id_req_;
     ::gate::CloseConnIdRsp* close_conn_id_rsp_;
   } choice_;
@@ -1153,38 +1153,38 @@ inline void TestRsp::set_allocated_service_name(::std::string* service_name) {
 
 // -------------------------------------------------------------------
 
-// HeartbeatReq
+// WakeHeartbeatReq
 
 // uint64 server_time = 1;
-inline void HeartbeatReq::clear_server_time() {
+inline void WakeHeartbeatReq::clear_server_time() {
   server_time_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 HeartbeatReq::server_time() const {
-  // @@protoc_insertion_point(field_get:gate.HeartbeatReq.server_time)
+inline ::google::protobuf::uint64 WakeHeartbeatReq::server_time() const {
+  // @@protoc_insertion_point(field_get:gate.WakeHeartbeatReq.server_time)
   return server_time_;
 }
-inline void HeartbeatReq::set_server_time(::google::protobuf::uint64 value) {
+inline void WakeHeartbeatReq::set_server_time(::google::protobuf::uint64 value) {
   
   server_time_ = value;
-  // @@protoc_insertion_point(field_set:gate.HeartbeatReq.server_time)
+  // @@protoc_insertion_point(field_set:gate.WakeHeartbeatReq.server_time)
 }
 
 // -------------------------------------------------------------------
 
-// HeartbeatRsp
+// WakeHeartbeatRsp
 
 // uint64 client_time = 1;
-inline void HeartbeatRsp::clear_client_time() {
+inline void WakeHeartbeatRsp::clear_client_time() {
   client_time_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 HeartbeatRsp::client_time() const {
-  // @@protoc_insertion_point(field_get:gate.HeartbeatRsp.client_time)
+inline ::google::protobuf::uint64 WakeHeartbeatRsp::client_time() const {
+  // @@protoc_insertion_point(field_get:gate.WakeHeartbeatRsp.client_time)
   return client_time_;
 }
-inline void HeartbeatRsp::set_client_time(::google::protobuf::uint64 value) {
+inline void WakeHeartbeatRsp::set_client_time(::google::protobuf::uint64 value) {
   
   client_time_ = value;
-  // @@protoc_insertion_point(field_set:gate.HeartbeatRsp.client_time)
+  // @@protoc_insertion_point(field_set:gate.WakeHeartbeatRsp.client_time)
 }
 
 // -------------------------------------------------------------------
@@ -1373,100 +1373,100 @@ inline void GateMsg::set_allocated_test_rsp(::gate::TestRsp* test_rsp) {
   // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.test_rsp)
 }
 
-// .gate.HeartbeatReq heartbeat_req = 3;
-inline bool GateMsg::has_heartbeat_req() const {
-  return choice_case() == kHeartbeatReq;
+// .gate.WakeHeartbeatReq wake_heartbeat_req = 3;
+inline bool GateMsg::has_wake_heartbeat_req() const {
+  return choice_case() == kWakeHeartbeatReq;
 }
-inline void GateMsg::set_has_heartbeat_req() {
-  _oneof_case_[0] = kHeartbeatReq;
+inline void GateMsg::set_has_wake_heartbeat_req() {
+  _oneof_case_[0] = kWakeHeartbeatReq;
 }
-inline void GateMsg::clear_heartbeat_req() {
-  if (has_heartbeat_req()) {
-    delete choice_.heartbeat_req_;
+inline void GateMsg::clear_wake_heartbeat_req() {
+  if (has_wake_heartbeat_req()) {
+    delete choice_.wake_heartbeat_req_;
     clear_has_choice();
   }
 }
-inline  const ::gate::HeartbeatReq& GateMsg::heartbeat_req() const {
-  // @@protoc_insertion_point(field_get:gate.GateMsg.heartbeat_req)
-  return has_heartbeat_req()
-      ? *choice_.heartbeat_req_
-      : ::gate::HeartbeatReq::default_instance();
+inline  const ::gate::WakeHeartbeatReq& GateMsg::wake_heartbeat_req() const {
+  // @@protoc_insertion_point(field_get:gate.GateMsg.wake_heartbeat_req)
+  return has_wake_heartbeat_req()
+      ? *choice_.wake_heartbeat_req_
+      : ::gate::WakeHeartbeatReq::default_instance();
 }
-inline ::gate::HeartbeatReq* GateMsg::mutable_heartbeat_req() {
-  if (!has_heartbeat_req()) {
+inline ::gate::WakeHeartbeatReq* GateMsg::mutable_wake_heartbeat_req() {
+  if (!has_wake_heartbeat_req()) {
     clear_choice();
-    set_has_heartbeat_req();
-    choice_.heartbeat_req_ = new ::gate::HeartbeatReq;
+    set_has_wake_heartbeat_req();
+    choice_.wake_heartbeat_req_ = new ::gate::WakeHeartbeatReq;
   }
-  // @@protoc_insertion_point(field_mutable:gate.GateMsg.heartbeat_req)
-  return choice_.heartbeat_req_;
+  // @@protoc_insertion_point(field_mutable:gate.GateMsg.wake_heartbeat_req)
+  return choice_.wake_heartbeat_req_;
 }
-inline ::gate::HeartbeatReq* GateMsg::release_heartbeat_req() {
-  // @@protoc_insertion_point(field_release:gate.GateMsg.heartbeat_req)
-  if (has_heartbeat_req()) {
+inline ::gate::WakeHeartbeatReq* GateMsg::release_wake_heartbeat_req() {
+  // @@protoc_insertion_point(field_release:gate.GateMsg.wake_heartbeat_req)
+  if (has_wake_heartbeat_req()) {
     clear_has_choice();
-    ::gate::HeartbeatReq* temp = choice_.heartbeat_req_;
-    choice_.heartbeat_req_ = NULL;
+    ::gate::WakeHeartbeatReq* temp = choice_.wake_heartbeat_req_;
+    choice_.wake_heartbeat_req_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void GateMsg::set_allocated_heartbeat_req(::gate::HeartbeatReq* heartbeat_req) {
+inline void GateMsg::set_allocated_wake_heartbeat_req(::gate::WakeHeartbeatReq* wake_heartbeat_req) {
   clear_choice();
-  if (heartbeat_req) {
-    set_has_heartbeat_req();
-    choice_.heartbeat_req_ = heartbeat_req;
+  if (wake_heartbeat_req) {
+    set_has_wake_heartbeat_req();
+    choice_.wake_heartbeat_req_ = wake_heartbeat_req;
   }
-  // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.heartbeat_req)
+  // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.wake_heartbeat_req)
 }
 
-// .gate.HeartbeatRsp heartbeat_rsp = 4;
-inline bool GateMsg::has_heartbeat_rsp() const {
-  return choice_case() == kHeartbeatRsp;
+// .gate.WakeHeartbeatRsp wake_heartbeat_rsp = 4;
+inline bool GateMsg::has_wake_heartbeat_rsp() const {
+  return choice_case() == kWakeHeartbeatRsp;
 }
-inline void GateMsg::set_has_heartbeat_rsp() {
-  _oneof_case_[0] = kHeartbeatRsp;
+inline void GateMsg::set_has_wake_heartbeat_rsp() {
+  _oneof_case_[0] = kWakeHeartbeatRsp;
 }
-inline void GateMsg::clear_heartbeat_rsp() {
-  if (has_heartbeat_rsp()) {
-    delete choice_.heartbeat_rsp_;
+inline void GateMsg::clear_wake_heartbeat_rsp() {
+  if (has_wake_heartbeat_rsp()) {
+    delete choice_.wake_heartbeat_rsp_;
     clear_has_choice();
   }
 }
-inline  const ::gate::HeartbeatRsp& GateMsg::heartbeat_rsp() const {
-  // @@protoc_insertion_point(field_get:gate.GateMsg.heartbeat_rsp)
-  return has_heartbeat_rsp()
-      ? *choice_.heartbeat_rsp_
-      : ::gate::HeartbeatRsp::default_instance();
+inline  const ::gate::WakeHeartbeatRsp& GateMsg::wake_heartbeat_rsp() const {
+  // @@protoc_insertion_point(field_get:gate.GateMsg.wake_heartbeat_rsp)
+  return has_wake_heartbeat_rsp()
+      ? *choice_.wake_heartbeat_rsp_
+      : ::gate::WakeHeartbeatRsp::default_instance();
 }
-inline ::gate::HeartbeatRsp* GateMsg::mutable_heartbeat_rsp() {
-  if (!has_heartbeat_rsp()) {
+inline ::gate::WakeHeartbeatRsp* GateMsg::mutable_wake_heartbeat_rsp() {
+  if (!has_wake_heartbeat_rsp()) {
     clear_choice();
-    set_has_heartbeat_rsp();
-    choice_.heartbeat_rsp_ = new ::gate::HeartbeatRsp;
+    set_has_wake_heartbeat_rsp();
+    choice_.wake_heartbeat_rsp_ = new ::gate::WakeHeartbeatRsp;
   }
-  // @@protoc_insertion_point(field_mutable:gate.GateMsg.heartbeat_rsp)
-  return choice_.heartbeat_rsp_;
+  // @@protoc_insertion_point(field_mutable:gate.GateMsg.wake_heartbeat_rsp)
+  return choice_.wake_heartbeat_rsp_;
 }
-inline ::gate::HeartbeatRsp* GateMsg::release_heartbeat_rsp() {
-  // @@protoc_insertion_point(field_release:gate.GateMsg.heartbeat_rsp)
-  if (has_heartbeat_rsp()) {
+inline ::gate::WakeHeartbeatRsp* GateMsg::release_wake_heartbeat_rsp() {
+  // @@protoc_insertion_point(field_release:gate.GateMsg.wake_heartbeat_rsp)
+  if (has_wake_heartbeat_rsp()) {
     clear_has_choice();
-    ::gate::HeartbeatRsp* temp = choice_.heartbeat_rsp_;
-    choice_.heartbeat_rsp_ = NULL;
+    ::gate::WakeHeartbeatRsp* temp = choice_.wake_heartbeat_rsp_;
+    choice_.wake_heartbeat_rsp_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void GateMsg::set_allocated_heartbeat_rsp(::gate::HeartbeatRsp* heartbeat_rsp) {
+inline void GateMsg::set_allocated_wake_heartbeat_rsp(::gate::WakeHeartbeatRsp* wake_heartbeat_rsp) {
   clear_choice();
-  if (heartbeat_rsp) {
-    set_has_heartbeat_rsp();
-    choice_.heartbeat_rsp_ = heartbeat_rsp;
+  if (wake_heartbeat_rsp) {
+    set_has_wake_heartbeat_rsp();
+    choice_.wake_heartbeat_rsp_ = wake_heartbeat_rsp;
   }
-  // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.heartbeat_rsp)
+  // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.wake_heartbeat_rsp)
 }
 
 // .gate.GetConnIdReq get_conn_id_req = 5;
@@ -1517,7 +1517,7 @@ inline void GateMsg::set_allocated_get_conn_id_req(::gate::GetConnIdReq* get_con
   // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.get_conn_id_req)
 }
 
-// .gate.GetConnIdReq get_conn_id_rsp = 6;
+// .gate.GetConnIdRsp get_conn_id_rsp = 6;
 inline bool GateMsg::has_get_conn_id_rsp() const {
   return choice_case() == kGetConnIdRsp;
 }
@@ -1530,33 +1530,33 @@ inline void GateMsg::clear_get_conn_id_rsp() {
     clear_has_choice();
   }
 }
-inline  const ::gate::GetConnIdReq& GateMsg::get_conn_id_rsp() const {
+inline  const ::gate::GetConnIdRsp& GateMsg::get_conn_id_rsp() const {
   // @@protoc_insertion_point(field_get:gate.GateMsg.get_conn_id_rsp)
   return has_get_conn_id_rsp()
       ? *choice_.get_conn_id_rsp_
-      : ::gate::GetConnIdReq::default_instance();
+      : ::gate::GetConnIdRsp::default_instance();
 }
-inline ::gate::GetConnIdReq* GateMsg::mutable_get_conn_id_rsp() {
+inline ::gate::GetConnIdRsp* GateMsg::mutable_get_conn_id_rsp() {
   if (!has_get_conn_id_rsp()) {
     clear_choice();
     set_has_get_conn_id_rsp();
-    choice_.get_conn_id_rsp_ = new ::gate::GetConnIdReq;
+    choice_.get_conn_id_rsp_ = new ::gate::GetConnIdRsp;
   }
   // @@protoc_insertion_point(field_mutable:gate.GateMsg.get_conn_id_rsp)
   return choice_.get_conn_id_rsp_;
 }
-inline ::gate::GetConnIdReq* GateMsg::release_get_conn_id_rsp() {
+inline ::gate::GetConnIdRsp* GateMsg::release_get_conn_id_rsp() {
   // @@protoc_insertion_point(field_release:gate.GateMsg.get_conn_id_rsp)
   if (has_get_conn_id_rsp()) {
     clear_has_choice();
-    ::gate::GetConnIdReq* temp = choice_.get_conn_id_rsp_;
+    ::gate::GetConnIdRsp* temp = choice_.get_conn_id_rsp_;
     choice_.get_conn_id_rsp_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void GateMsg::set_allocated_get_conn_id_rsp(::gate::GetConnIdReq* get_conn_id_rsp) {
+inline void GateMsg::set_allocated_get_conn_id_rsp(::gate::GetConnIdRsp* get_conn_id_rsp) {
   clear_choice();
   if (get_conn_id_rsp) {
     set_has_get_conn_id_rsp();
