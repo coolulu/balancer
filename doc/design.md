@@ -280,6 +280,11 @@
     send: ->
     recv: <-
 
+    frontend:
+        client -> [navigate, gate], <- [gate]
+        (listen http * 1, connect tcp * n)
+        100:业务服务(python),cpu密集型,单线程单进程，进程绑定cpu
+
     backend:
         center -> [navigate, gate, session, logic, proxy]
         (listen http * 1, connect tcp * n)
@@ -299,7 +304,7 @@
         session -> [], <- [center, gate, logic]
         (listen http * 1, listen tcp * 1)
         10400:核心服务(python),io密集型,工作线程数等于[2,8]和一个网络io线程
-        多线程单进程，每个节点运行多个进程，进程不绑定cpu
+        多线程单进程，每个节点运行多个进程，进程绑定cpu
 
         logic -> [gate, session, proxy], <- [center, gate]
         (listen http * 1, listen tcp * 1, connect tcp * n)
@@ -309,14 +314,12 @@
         proxy -> [], <- [center, gate, logic]
         (listen http * 1, listen tcp * 1)
         10600:业务服务(python),io密集型,工作线程数等于[2,8]和一个网络io线程
-        多线程单进程，每个节点运行多个进程，进程不绑定cpu
+        多线程单进程，每个节点运行多个进程，进程绑定cpu
 
-    frontend:
-        client -> [navigate, gate], <- [gate]
-        (listen http * 1, connect tcp * n)
-        10600:业务服务(python),cpu密集型,单线程单进程
+### 客户端
+    service_type: client
 
-### 资源管理服务
+### 中心服务
 
 #### 服务列表
     service.conf
@@ -631,16 +634,16 @@
             session:user:123
 
         // gate和client连接断开使用（主动触发）
-        gate_id_conn_id : user_id   	eg: session:user_id:gate_id:10300:conn_id:1234567890
-                                        	session:user_id:10300:1234567890
+        gate_id_conn_id : user_id       eg: session:user_id:gate_id:10300:conn_id:1234567890
+                                            session:user_id:10300:1234567890
         gate_ip_port_conn_id : user_id  eg: session:user_id:gate_ip:127.0.0.1:port:10301:conn_id:1234567890
-                                        	session:user_id:127.0.0.1:10301:1234567890
+                                            session:user_id:127.0.0.1:10301:1234567890
 
         // gate挂掉使用（被动触发）
-        gate_id : user_set[{user_id, conn_id}]      	 eg: session:user_set:gate_id:10300
-                                                        	 session:user_set:10300
+        gate_id : user_set[{user_id, conn_id}]           eg: session:user_set:gate_id:10300
+                                                             session:user_set:10300
         gate_ip_port : user_set[{user_id, conn_id}]      eg: session:user_set:gate_ip:127.0.0.1:port:10301
-                                                        	 session:user_set:127.0.0.1:10301
+                                                             session:user_set:127.0.0.1:10301
     }
 
     key = service_name + val名 + key值
@@ -658,9 +661,6 @@
 ### 代理服务
     service_type: proxy
     数据库，第三方接口等对接
-
-### 客户端
-    service_type: client
 
 ## id生成
     用unsigned long long类型，占64位，单调递增
