@@ -96,6 +96,7 @@
     <ClCompile Include="src\core\TaskMsgPool.cc" />
     <ClCompile Include="src\core\TaskMsgSub.cc" />
     <ClCompile Include="src\core\Timer.cc" />
+    <ClCompile Include="src\handle\gate\CloseConnId.cc" />
     <ClCompile Include="src\handle\gate\GetConnId.cc" />
     <ClCompile Include="src\handle\gate\WakeHeartbeat.cc" />
     <ClCompile Include="src\handle\HandleClient.cc" />
@@ -139,6 +140,7 @@
     <ClInclude Include="src\core\TaskMsgSub.h" />
     <ClInclude Include="src\core\Timer.h" />
     <ClInclude Include="src\define.h" />
+    <ClInclude Include="src\handle\gate\CloseConnId.h" />
     <ClInclude Include="src\handle\gate\GetConnId.h" />
     <ClInclude Include="src\handle\gate\WakeHeartbeat.h" />
     <ClInclude Include="src\handle\HandleClient.h" />
