@@ -31,6 +31,12 @@
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 namespace gate {
+class CloseClientReq;
+class CloseClientReqDefaultTypeInternal;
+extern CloseClientReqDefaultTypeInternal _CloseClientReq_default_instance_;
+class CloseClientRsp;
+class CloseClientRspDefaultTypeInternal;
+extern CloseClientRspDefaultTypeInternal _CloseClientRsp_default_instance_;
 class CloseConnIdReq;
 class CloseConnIdReqDefaultTypeInternal;
 extern CloseConnIdReqDefaultTypeInternal _CloseConnIdReq_default_instance_;
@@ -877,6 +883,186 @@ class CloseConnIdRsp : public ::google::protobuf::Message /* @@protoc_insertion_
 };
 // -------------------------------------------------------------------
 
+class CloseClientReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.CloseClientReq) */ {
+ public:
+  CloseClientReq();
+  virtual ~CloseClientReq();
+
+  CloseClientReq(const CloseClientReq& from);
+
+  inline CloseClientReq& operator=(const CloseClientReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CloseClientReq(CloseClientReq&& from) noexcept
+    : CloseClientReq() {
+    *this = ::std::move(from);
+  }
+
+  inline CloseClientReq& operator=(CloseClientReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CloseClientReq& default_instance();
+
+  static inline const CloseClientReq* internal_default_instance() {
+    return reinterpret_cast<const CloseClientReq*>(
+               &_CloseClientReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    8;
+
+  void Swap(CloseClientReq* other);
+  friend void swap(CloseClientReq& a, CloseClientReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CloseClientReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  CloseClientReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const CloseClientReq& from);
+  void MergeFrom(const CloseClientReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(CloseClientReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:gate.CloseClientReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class CloseClientRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.CloseClientRsp) */ {
+ public:
+  CloseClientRsp();
+  virtual ~CloseClientRsp();
+
+  CloseClientRsp(const CloseClientRsp& from);
+
+  inline CloseClientRsp& operator=(const CloseClientRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CloseClientRsp(CloseClientRsp&& from) noexcept
+    : CloseClientRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline CloseClientRsp& operator=(CloseClientRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CloseClientRsp& default_instance();
+
+  static inline const CloseClientRsp* internal_default_instance() {
+    return reinterpret_cast<const CloseClientRsp*>(
+               &_CloseClientRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    9;
+
+  void Swap(CloseClientRsp* other);
+  friend void swap(CloseClientRsp& a, CloseClientRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CloseClientRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  CloseClientRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const CloseClientRsp& from);
+  void MergeFrom(const CloseClientRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(CloseClientRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:gate.CloseClientRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.GateMsg) */ {
  public:
   GateMsg();
@@ -915,6 +1101,8 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
     kGetConnIdRsp = 6,
     kCloseConnIdReq = 7,
     kCloseConnIdRsp = 8,
+    kCloseClientReq = 9,
+    kCloseClientRsp = 10,
     CHOICE_NOT_SET = 0,
   };
 
@@ -923,7 +1111,7 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
                &_GateMsg_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    8;
+    10;
 
   void Swap(GateMsg* other);
   friend void swap(GateMsg& a, GateMsg& b) {
@@ -1042,6 +1230,24 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::gate::CloseConnIdRsp* release_close_conn_id_rsp();
   void set_allocated_close_conn_id_rsp(::gate::CloseConnIdRsp* close_conn_id_rsp);
 
+  // .gate.CloseClientReq close_client_req = 9;
+  bool has_close_client_req() const;
+  void clear_close_client_req();
+  static const int kCloseClientReqFieldNumber = 9;
+  const ::gate::CloseClientReq& close_client_req() const;
+  ::gate::CloseClientReq* mutable_close_client_req();
+  ::gate::CloseClientReq* release_close_client_req();
+  void set_allocated_close_client_req(::gate::CloseClientReq* close_client_req);
+
+  // .gate.CloseClientRsp close_client_rsp = 10;
+  bool has_close_client_rsp() const;
+  void clear_close_client_rsp();
+  static const int kCloseClientRspFieldNumber = 10;
+  const ::gate::CloseClientRsp& close_client_rsp() const;
+  ::gate::CloseClientRsp* mutable_close_client_rsp();
+  ::gate::CloseClientRsp* release_close_client_rsp();
+  void set_allocated_close_client_rsp(::gate::CloseClientRsp* close_client_rsp);
+
   ChoiceCase choice_case() const;
   // @@protoc_insertion_point(class_scope:gate.GateMsg)
  private:
@@ -1053,6 +1259,8 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void set_has_get_conn_id_rsp();
   void set_has_close_conn_id_req();
   void set_has_close_conn_id_rsp();
+  void set_has_close_client_req();
+  void set_has_close_client_rsp();
 
   inline bool has_choice() const;
   void clear_choice();
@@ -1069,6 +1277,8 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
     ::gate::GetConnIdRsp* get_conn_id_rsp_;
     ::gate::CloseConnIdReq* close_conn_id_req_;
     ::gate::CloseConnIdRsp* close_conn_id_rsp_;
+    ::gate::CloseClientReq* close_client_req_;
+    ::gate::CloseClientRsp* close_client_rsp_;
   } choice_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -1293,6 +1503,14 @@ inline void CloseConnIdReq::set_conn_id(::google::protobuf::uint64 value) {
 // -------------------------------------------------------------------
 
 // CloseConnIdRsp
+
+// -------------------------------------------------------------------
+
+// CloseClientReq
+
+// -------------------------------------------------------------------
+
+// CloseClientRsp
 
 // -------------------------------------------------------------------
 
@@ -1682,6 +1900,102 @@ inline void GateMsg::set_allocated_close_conn_id_rsp(::gate::CloseConnIdRsp* clo
   // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.close_conn_id_rsp)
 }
 
+// .gate.CloseClientReq close_client_req = 9;
+inline bool GateMsg::has_close_client_req() const {
+  return choice_case() == kCloseClientReq;
+}
+inline void GateMsg::set_has_close_client_req() {
+  _oneof_case_[0] = kCloseClientReq;
+}
+inline void GateMsg::clear_close_client_req() {
+  if (has_close_client_req()) {
+    delete choice_.close_client_req_;
+    clear_has_choice();
+  }
+}
+inline  const ::gate::CloseClientReq& GateMsg::close_client_req() const {
+  // @@protoc_insertion_point(field_get:gate.GateMsg.close_client_req)
+  return has_close_client_req()
+      ? *choice_.close_client_req_
+      : ::gate::CloseClientReq::default_instance();
+}
+inline ::gate::CloseClientReq* GateMsg::mutable_close_client_req() {
+  if (!has_close_client_req()) {
+    clear_choice();
+    set_has_close_client_req();
+    choice_.close_client_req_ = new ::gate::CloseClientReq;
+  }
+  // @@protoc_insertion_point(field_mutable:gate.GateMsg.close_client_req)
+  return choice_.close_client_req_;
+}
+inline ::gate::CloseClientReq* GateMsg::release_close_client_req() {
+  // @@protoc_insertion_point(field_release:gate.GateMsg.close_client_req)
+  if (has_close_client_req()) {
+    clear_has_choice();
+    ::gate::CloseClientReq* temp = choice_.close_client_req_;
+    choice_.close_client_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void GateMsg::set_allocated_close_client_req(::gate::CloseClientReq* close_client_req) {
+  clear_choice();
+  if (close_client_req) {
+    set_has_close_client_req();
+    choice_.close_client_req_ = close_client_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.close_client_req)
+}
+
+// .gate.CloseClientRsp close_client_rsp = 10;
+inline bool GateMsg::has_close_client_rsp() const {
+  return choice_case() == kCloseClientRsp;
+}
+inline void GateMsg::set_has_close_client_rsp() {
+  _oneof_case_[0] = kCloseClientRsp;
+}
+inline void GateMsg::clear_close_client_rsp() {
+  if (has_close_client_rsp()) {
+    delete choice_.close_client_rsp_;
+    clear_has_choice();
+  }
+}
+inline  const ::gate::CloseClientRsp& GateMsg::close_client_rsp() const {
+  // @@protoc_insertion_point(field_get:gate.GateMsg.close_client_rsp)
+  return has_close_client_rsp()
+      ? *choice_.close_client_rsp_
+      : ::gate::CloseClientRsp::default_instance();
+}
+inline ::gate::CloseClientRsp* GateMsg::mutable_close_client_rsp() {
+  if (!has_close_client_rsp()) {
+    clear_choice();
+    set_has_close_client_rsp();
+    choice_.close_client_rsp_ = new ::gate::CloseClientRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:gate.GateMsg.close_client_rsp)
+  return choice_.close_client_rsp_;
+}
+inline ::gate::CloseClientRsp* GateMsg::release_close_client_rsp() {
+  // @@protoc_insertion_point(field_release:gate.GateMsg.close_client_rsp)
+  if (has_close_client_rsp()) {
+    clear_has_choice();
+    ::gate::CloseClientRsp* temp = choice_.close_client_rsp_;
+    choice_.close_client_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void GateMsg::set_allocated_close_client_rsp(::gate::CloseClientRsp* close_client_rsp) {
+  clear_choice();
+  if (close_client_rsp) {
+    set_has_close_client_rsp();
+    choice_.close_client_rsp_ = close_client_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.close_client_rsp)
+}
+
 inline bool GateMsg::has_choice() const {
   return choice_case() != CHOICE_NOT_SET;
 }
@@ -1695,6 +2009,10 @@ inline GateMsg::ChoiceCase GateMsg::choice_case() const {
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

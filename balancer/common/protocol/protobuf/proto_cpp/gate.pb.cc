@@ -58,6 +58,16 @@ public:
  ::google::protobuf::internal::ExplicitlyConstructed<CloseConnIdRsp>
      _instance;
 } _CloseConnIdRsp_default_instance_;
+class CloseClientReqDefaultTypeInternal {
+public:
+ ::google::protobuf::internal::ExplicitlyConstructed<CloseClientReq>
+     _instance;
+} _CloseClientReq_default_instance_;
+class CloseClientRspDefaultTypeInternal {
+public:
+ ::google::protobuf::internal::ExplicitlyConstructed<CloseClientRsp>
+     _instance;
+} _CloseClientRsp_default_instance_;
 class GateMsgDefaultTypeInternal {
 public:
  ::google::protobuf::internal::ExplicitlyConstructed<GateMsg>
@@ -70,6 +80,8 @@ public:
   const ::gate::GetConnIdRsp* get_conn_id_rsp_;
   const ::gate::CloseConnIdReq* close_conn_id_req_;
   const ::gate::CloseConnIdRsp* close_conn_id_rsp_;
+  const ::gate::CloseClientReq* close_client_req_;
+  const ::gate::CloseClientRsp* close_client_rsp_;
 } _GateMsg_default_instance_;
 
 namespace protobuf_gate_2eproto {
@@ -77,7 +89,7 @@ namespace protobuf_gate_2eproto {
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[9];
+::google::protobuf::Metadata file_level_metadata[11];
 
 }  // namespace
 
@@ -92,6 +104,8 @@ PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::AuxillaryParseTableField
 };
 PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::ParseTable const
     TableStruct::schema[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
+  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
@@ -155,6 +169,16 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CloseClientReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CloseClientRsp, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GateMsg, _internal_metadata_),
   ~0u,  // no _extensions_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GateMsg, _oneof_case_[0]),
@@ -167,6 +191,8 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   offsetof(GateMsgDefaultTypeInternal, get_conn_id_rsp_),
   offsetof(GateMsgDefaultTypeInternal, close_conn_id_req_),
   offsetof(GateMsgDefaultTypeInternal, close_conn_id_rsp_),
+  offsetof(GateMsgDefaultTypeInternal, close_client_req_),
+  offsetof(GateMsgDefaultTypeInternal, close_client_rsp_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GateMsg, choice_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -178,7 +204,9 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTR
   { 31, -1, sizeof(GetConnIdRsp)},
   { 39, -1, sizeof(CloseConnIdReq)},
   { 45, -1, sizeof(CloseConnIdRsp)},
-  { 50, -1, sizeof(GateMsg)},
+  { 50, -1, sizeof(CloseClientReq)},
+  { 55, -1, sizeof(CloseClientRsp)},
+  { 60, -1, sizeof(GateMsg)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -190,6 +218,8 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&_GetConnIdRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_CloseConnIdReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_CloseConnIdRsp_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_CloseClientReq_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_CloseClientRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_GateMsg_default_instance_),
 };
 
@@ -211,7 +241,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 9);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 11);
 }
 
 }  // namespace
@@ -235,7 +265,11 @@ void TableStruct::InitDefaultsImpl() {
   ::google::protobuf::internal::OnShutdownDestroyMessage(
       &_CloseConnIdReq_default_instance_);_CloseConnIdRsp_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_CloseConnIdRsp_default_instance_);_GateMsg_default_instance_._instance.DefaultConstruct();
+      &_CloseConnIdRsp_default_instance_);_CloseClientReq_default_instance_._instance.DefaultConstruct();
+  ::google::protobuf::internal::OnShutdownDestroyMessage(
+      &_CloseClientReq_default_instance_);_CloseClientRsp_default_instance_._instance.DefaultConstruct();
+  ::google::protobuf::internal::OnShutdownDestroyMessage(
+      &_CloseClientRsp_default_instance_);_GateMsg_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
       &_GateMsg_default_instance_);_GateMsg_default_instance_.test_req_ = const_cast< ::gate::TestReq*>(
       ::gate::TestReq::internal_default_instance());
@@ -253,6 +287,10 @@ void TableStruct::InitDefaultsImpl() {
       ::gate::CloseConnIdReq::internal_default_instance());
   _GateMsg_default_instance_.close_conn_id_rsp_ = const_cast< ::gate::CloseConnIdRsp*>(
       ::gate::CloseConnIdRsp::internal_default_instance());
+  _GateMsg_default_instance_.close_client_req_ = const_cast< ::gate::CloseClientReq*>(
+      ::gate::CloseClientReq::internal_default_instance());
+  _GateMsg_default_instance_.close_client_rsp_ = const_cast< ::gate::CloseClientRsp*>(
+      ::gate::CloseClientRsp::internal_default_instance());
 }
 
 void InitDefaults() {
@@ -271,20 +309,24 @@ void AddDescriptorsImpl() {
       "ent_time\030\001 \001(\004\"N\n\014GetConnIdRsp\022\023\n\013server"
       "_time\030\001 \001(\004\022\030\n\020conn_create_time\030\002 \001(\r\022\017\n"
       "\007conn_id\030\003 \001(\004\"!\n\016CloseConnIdReq\022\017\n\007conn"
-      "_id\030\001 \001(\004\"\020\n\016CloseConnIdRsp\"\211\003\n\007GateMsg\022"
-      "!\n\010test_req\030\001 \001(\0132\r.gate.TestReqH\000\022!\n\010te"
-      "st_rsp\030\002 \001(\0132\r.gate.TestRspH\000\0224\n\022wake_he"
-      "artbeat_req\030\003 \001(\0132\026.gate.WakeHeartbeatRe"
-      "qH\000\0224\n\022wake_heartbeat_rsp\030\004 \001(\0132\026.gate.W"
-      "akeHeartbeatRspH\000\022-\n\017get_conn_id_req\030\005 \001"
-      "(\0132\022.gate.GetConnIdReqH\000\022-\n\017get_conn_id_"
-      "rsp\030\006 \001(\0132\022.gate.GetConnIdRspH\000\0221\n\021close"
-      "_conn_id_req\030\007 \001(\0132\024.gate.CloseConnIdReq"
-      "H\000\0221\n\021close_conn_id_rsp\030\010 \001(\0132\024.gate.Clo"
-      "seConnIdRspH\000B\010\n\006choiceb\006proto3"
+      "_id\030\001 \001(\004\"\020\n\016CloseConnIdRsp\"\020\n\016CloseClie"
+      "ntReq\"\020\n\016CloseClientRsp\"\355\003\n\007GateMsg\022!\n\010t"
+      "est_req\030\001 \001(\0132\r.gate.TestReqH\000\022!\n\010test_r"
+      "sp\030\002 \001(\0132\r.gate.TestRspH\000\0224\n\022wake_heartb"
+      "eat_req\030\003 \001(\0132\026.gate.WakeHeartbeatReqH\000\022"
+      "4\n\022wake_heartbeat_rsp\030\004 \001(\0132\026.gate.WakeH"
+      "eartbeatRspH\000\022-\n\017get_conn_id_req\030\005 \001(\0132\022"
+      ".gate.GetConnIdReqH\000\022-\n\017get_conn_id_rsp\030"
+      "\006 \001(\0132\022.gate.GetConnIdRspH\000\0221\n\021close_con"
+      "n_id_req\030\007 \001(\0132\024.gate.CloseConnIdReqH\000\0221"
+      "\n\021close_conn_id_rsp\030\010 \001(\0132\024.gate.CloseCo"
+      "nnIdRspH\000\0220\n\020close_client_req\030\t \001(\0132\024.ga"
+      "te.CloseClientReqH\000\0220\n\020close_client_rsp\030"
+      "\n \001(\0132\024.gate.CloseClientRspH\000B\010\n\006choiceb"
+      "\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 751);
+      descriptor, 887);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "gate.proto", &protobuf_RegisterTypes);
 }
@@ -2488,6 +2530,398 @@ void CloseConnIdRsp::InternalSwap(CloseConnIdRsp* other) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CloseClientReq::CloseClientReq()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_gate_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:gate.CloseClientReq)
+}
+CloseClientReq::CloseClientReq(const CloseClientReq& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:gate.CloseClientReq)
+}
+
+void CloseClientReq::SharedCtor() {
+  _cached_size_ = 0;
+}
+
+CloseClientReq::~CloseClientReq() {
+  // @@protoc_insertion_point(destructor:gate.CloseClientReq)
+  SharedDtor();
+}
+
+void CloseClientReq::SharedDtor() {
+}
+
+void CloseClientReq::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CloseClientReq::descriptor() {
+  protobuf_gate_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_gate_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const CloseClientReq& CloseClientReq::default_instance() {
+  protobuf_gate_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+CloseClientReq* CloseClientReq::New(::google::protobuf::Arena* arena) const {
+  CloseClientReq* n = new CloseClientReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void CloseClientReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:gate.CloseClientReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _internal_metadata_.Clear();
+}
+
+bool CloseClientReq::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:gate.CloseClientReq)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, _internal_metadata_.mutable_unknown_fields()));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:gate.CloseClientReq)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:gate.CloseClientReq)
+  return false;
+#undef DO_
+}
+
+void CloseClientReq::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:gate.CloseClientReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:gate.CloseClientReq)
+}
+
+::google::protobuf::uint8* CloseClientReq::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:gate.CloseClientReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:gate.CloseClientReq)
+  return target;
+}
+
+size_t CloseClientReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:gate.CloseClientReq)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CloseClientReq::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:gate.CloseClientReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CloseClientReq* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const CloseClientReq>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:gate.CloseClientReq)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:gate.CloseClientReq)
+    MergeFrom(*source);
+  }
+}
+
+void CloseClientReq::MergeFrom(const CloseClientReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:gate.CloseClientReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+}
+
+void CloseClientReq::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:gate.CloseClientReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CloseClientReq::CopyFrom(const CloseClientReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:gate.CloseClientReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CloseClientReq::IsInitialized() const {
+  return true;
+}
+
+void CloseClientReq::Swap(CloseClientReq* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CloseClientReq::InternalSwap(CloseClientReq* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata CloseClientReq::GetMetadata() const {
+  protobuf_gate_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_gate_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// CloseClientReq
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CloseClientRsp::CloseClientRsp()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_gate_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:gate.CloseClientRsp)
+}
+CloseClientRsp::CloseClientRsp(const CloseClientRsp& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:gate.CloseClientRsp)
+}
+
+void CloseClientRsp::SharedCtor() {
+  _cached_size_ = 0;
+}
+
+CloseClientRsp::~CloseClientRsp() {
+  // @@protoc_insertion_point(destructor:gate.CloseClientRsp)
+  SharedDtor();
+}
+
+void CloseClientRsp::SharedDtor() {
+}
+
+void CloseClientRsp::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CloseClientRsp::descriptor() {
+  protobuf_gate_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_gate_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const CloseClientRsp& CloseClientRsp::default_instance() {
+  protobuf_gate_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+CloseClientRsp* CloseClientRsp::New(::google::protobuf::Arena* arena) const {
+  CloseClientRsp* n = new CloseClientRsp;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void CloseClientRsp::Clear() {
+// @@protoc_insertion_point(message_clear_start:gate.CloseClientRsp)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _internal_metadata_.Clear();
+}
+
+bool CloseClientRsp::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:gate.CloseClientRsp)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, _internal_metadata_.mutable_unknown_fields()));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:gate.CloseClientRsp)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:gate.CloseClientRsp)
+  return false;
+#undef DO_
+}
+
+void CloseClientRsp::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:gate.CloseClientRsp)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:gate.CloseClientRsp)
+}
+
+::google::protobuf::uint8* CloseClientRsp::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:gate.CloseClientRsp)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:gate.CloseClientRsp)
+  return target;
+}
+
+size_t CloseClientRsp::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:gate.CloseClientRsp)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CloseClientRsp::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:gate.CloseClientRsp)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CloseClientRsp* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const CloseClientRsp>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:gate.CloseClientRsp)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:gate.CloseClientRsp)
+    MergeFrom(*source);
+  }
+}
+
+void CloseClientRsp::MergeFrom(const CloseClientRsp& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:gate.CloseClientRsp)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+}
+
+void CloseClientRsp::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:gate.CloseClientRsp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CloseClientRsp::CopyFrom(const CloseClientRsp& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:gate.CloseClientRsp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CloseClientRsp::IsInitialized() const {
+  return true;
+}
+
+void CloseClientRsp::Swap(CloseClientRsp* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CloseClientRsp::InternalSwap(CloseClientRsp* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata CloseClientRsp::GetMetadata() const {
+  protobuf_gate_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_gate_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// CloseClientRsp
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int GateMsg::kTestReqFieldNumber;
 const int GateMsg::kTestRspFieldNumber;
 const int GateMsg::kWakeHeartbeatReqFieldNumber;
@@ -2496,6 +2930,8 @@ const int GateMsg::kGetConnIdReqFieldNumber;
 const int GateMsg::kGetConnIdRspFieldNumber;
 const int GateMsg::kCloseConnIdReqFieldNumber;
 const int GateMsg::kCloseConnIdRspFieldNumber;
+const int GateMsg::kCloseClientReqFieldNumber;
+const int GateMsg::kCloseClientRspFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 GateMsg::GateMsg()
@@ -2543,6 +2979,14 @@ GateMsg::GateMsg(const GateMsg& from)
     }
     case kCloseConnIdRsp: {
       mutable_close_conn_id_rsp()->::gate::CloseConnIdRsp::MergeFrom(from.close_conn_id_rsp());
+      break;
+    }
+    case kCloseClientReq: {
+      mutable_close_client_req()->::gate::CloseClientReq::MergeFrom(from.close_client_req());
+      break;
+    }
+    case kCloseClientRsp: {
+      mutable_close_client_rsp()->::gate::CloseClientRsp::MergeFrom(from.close_client_rsp());
       break;
     }
     case CHOICE_NOT_SET: {
@@ -2624,6 +3068,14 @@ void GateMsg::clear_choice() {
     }
     case kCloseConnIdRsp: {
       delete choice_.close_conn_id_rsp_;
+      break;
+    }
+    case kCloseClientReq: {
+      delete choice_.close_client_req_;
+      break;
+    }
+    case kCloseClientRsp: {
+      delete choice_.close_client_rsp_;
       break;
     }
     case CHOICE_NOT_SET: {
@@ -2750,6 +3202,30 @@ bool GateMsg::MergePartialFromCodedStream(
         break;
       }
 
+      // .gate.CloseClientReq close_client_req = 9;
+      case 9: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(74u /* 74 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_close_client_req()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .gate.CloseClientRsp close_client_rsp = 10;
+      case 10: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(82u /* 82 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_close_client_rsp()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -2824,6 +3300,18 @@ void GateMsg::SerializeWithCachedSizes(
       8, *choice_.close_conn_id_rsp_, output);
   }
 
+  // .gate.CloseClientReq close_client_req = 9;
+  if (has_close_client_req()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, *choice_.close_client_req_, output);
+  }
+
+  // .gate.CloseClientRsp close_client_rsp = 10;
+  if (has_close_client_rsp()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      10, *choice_.close_client_rsp_, output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -2892,6 +3380,20 @@ void GateMsg::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         8, *choice_.close_conn_id_rsp_, deterministic, target);
+  }
+
+  // .gate.CloseClientReq close_client_req = 9;
+  if (has_close_client_req()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        9, *choice_.close_client_req_, deterministic, target);
+  }
+
+  // .gate.CloseClientRsp close_client_rsp = 10;
+  if (has_close_client_rsp()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        10, *choice_.close_client_rsp_, deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2968,6 +3470,20 @@ size_t GateMsg::ByteSizeLong() const {
           *choice_.close_conn_id_rsp_);
       break;
     }
+    // .gate.CloseClientReq close_client_req = 9;
+    case kCloseClientReq: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.close_client_req_);
+      break;
+    }
+    // .gate.CloseClientRsp close_client_rsp = 10;
+    case kCloseClientRsp: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.close_client_rsp_);
+      break;
+    }
     case CHOICE_NOT_SET: {
       break;
     }
@@ -3032,6 +3548,14 @@ void GateMsg::MergeFrom(const GateMsg& from) {
     }
     case kCloseConnIdRsp: {
       mutable_close_conn_id_rsp()->::gate::CloseConnIdRsp::MergeFrom(from.close_conn_id_rsp());
+      break;
+    }
+    case kCloseClientReq: {
+      mutable_close_client_req()->::gate::CloseClientReq::MergeFrom(from.close_client_req());
+      break;
+    }
+    case kCloseClientRsp: {
+      mutable_close_client_rsp()->::gate::CloseClientRsp::MergeFrom(from.close_client_rsp());
       break;
     }
     case CHOICE_NOT_SET: {
@@ -3460,6 +3984,102 @@ void GateMsg::set_allocated_close_conn_id_rsp(::gate::CloseConnIdRsp* close_conn
     choice_.close_conn_id_rsp_ = close_conn_id_rsp;
   }
   // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.close_conn_id_rsp)
+}
+
+// .gate.CloseClientReq close_client_req = 9;
+bool GateMsg::has_close_client_req() const {
+  return choice_case() == kCloseClientReq;
+}
+void GateMsg::set_has_close_client_req() {
+  _oneof_case_[0] = kCloseClientReq;
+}
+void GateMsg::clear_close_client_req() {
+  if (has_close_client_req()) {
+    delete choice_.close_client_req_;
+    clear_has_choice();
+  }
+}
+ const ::gate::CloseClientReq& GateMsg::close_client_req() const {
+  // @@protoc_insertion_point(field_get:gate.GateMsg.close_client_req)
+  return has_close_client_req()
+      ? *choice_.close_client_req_
+      : ::gate::CloseClientReq::default_instance();
+}
+::gate::CloseClientReq* GateMsg::mutable_close_client_req() {
+  if (!has_close_client_req()) {
+    clear_choice();
+    set_has_close_client_req();
+    choice_.close_client_req_ = new ::gate::CloseClientReq;
+  }
+  // @@protoc_insertion_point(field_mutable:gate.GateMsg.close_client_req)
+  return choice_.close_client_req_;
+}
+::gate::CloseClientReq* GateMsg::release_close_client_req() {
+  // @@protoc_insertion_point(field_release:gate.GateMsg.close_client_req)
+  if (has_close_client_req()) {
+    clear_has_choice();
+    ::gate::CloseClientReq* temp = choice_.close_client_req_;
+    choice_.close_client_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void GateMsg::set_allocated_close_client_req(::gate::CloseClientReq* close_client_req) {
+  clear_choice();
+  if (close_client_req) {
+    set_has_close_client_req();
+    choice_.close_client_req_ = close_client_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.close_client_req)
+}
+
+// .gate.CloseClientRsp close_client_rsp = 10;
+bool GateMsg::has_close_client_rsp() const {
+  return choice_case() == kCloseClientRsp;
+}
+void GateMsg::set_has_close_client_rsp() {
+  _oneof_case_[0] = kCloseClientRsp;
+}
+void GateMsg::clear_close_client_rsp() {
+  if (has_close_client_rsp()) {
+    delete choice_.close_client_rsp_;
+    clear_has_choice();
+  }
+}
+ const ::gate::CloseClientRsp& GateMsg::close_client_rsp() const {
+  // @@protoc_insertion_point(field_get:gate.GateMsg.close_client_rsp)
+  return has_close_client_rsp()
+      ? *choice_.close_client_rsp_
+      : ::gate::CloseClientRsp::default_instance();
+}
+::gate::CloseClientRsp* GateMsg::mutable_close_client_rsp() {
+  if (!has_close_client_rsp()) {
+    clear_choice();
+    set_has_close_client_rsp();
+    choice_.close_client_rsp_ = new ::gate::CloseClientRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:gate.GateMsg.close_client_rsp)
+  return choice_.close_client_rsp_;
+}
+::gate::CloseClientRsp* GateMsg::release_close_client_rsp() {
+  // @@protoc_insertion_point(field_release:gate.GateMsg.close_client_rsp)
+  if (has_close_client_rsp()) {
+    clear_has_choice();
+    ::gate::CloseClientRsp* temp = choice_.close_client_rsp_;
+    choice_.close_client_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void GateMsg::set_allocated_close_client_rsp(::gate::CloseClientRsp* close_client_rsp) {
+  clear_choice();
+  if (close_client_rsp) {
+    set_has_close_client_rsp();
+    choice_.close_client_rsp_ = close_client_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.close_client_rsp)
 }
 
 bool GateMsg::has_choice() const {

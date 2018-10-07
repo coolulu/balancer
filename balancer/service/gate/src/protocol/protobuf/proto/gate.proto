@@ -37,6 +37,14 @@ message CloseConnIdRsp {
 
 }
 
+message CloseClientReq {
+
+}
+
+message CloseClientRsp {
+
+}
+
 message GateMsg {                                   // 奇数是请求，偶数是响应
     oneof choice {
         TestReq         test_req            = 1;    // 请求
@@ -50,5 +58,8 @@ message GateMsg {                                   // 奇数是请求，偶数�
 
         CloseConnIdReq  close_conn_id_req   = 7;    // 关闭连接id
         CloseConnIdRsp  close_conn_id_rsp   = 8;
+
+        CloseClientReq  close_client_req    = 9;    // 关闭客户端（告诉客户端不要重连）
+        CloseClientRsp  close_client_rsp    = 10;
     }
 }
