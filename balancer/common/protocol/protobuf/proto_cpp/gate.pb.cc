@@ -128,6 +128,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WakeHeartbeatRsp, client_time_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WakeHeartbeatRsp, key_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetConnIdReq, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -173,11 +174,11 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTR
   { 6, -1, sizeof(TestRsp)},
   { 12, -1, sizeof(WakeHeartbeatReq)},
   { 18, -1, sizeof(WakeHeartbeatRsp)},
-  { 24, -1, sizeof(GetConnIdReq)},
-  { 30, -1, sizeof(GetConnIdRsp)},
-  { 38, -1, sizeof(CloseConnIdReq)},
-  { 44, -1, sizeof(CloseConnIdRsp)},
-  { 49, -1, sizeof(GateMsg)},
+  { 25, -1, sizeof(GetConnIdReq)},
+  { 31, -1, sizeof(GetConnIdRsp)},
+  { 39, -1, sizeof(CloseConnIdReq)},
+  { 45, -1, sizeof(CloseConnIdRsp)},
+  { 50, -1, sizeof(GateMsg)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -265,25 +266,25 @@ void AddDescriptorsImpl() {
       "\n\ngate.proto\022\004gate\"\035\n\007TestReq\022\022\n\nservice"
       "_id\030\001 \001(\005\"\037\n\007TestRsp\022\024\n\014service_name\030\001 \001"
       "(\014\"\'\n\020WakeHeartbeatReq\022\023\n\013server_time\030\001 "
-      "\001(\004\"\'\n\020WakeHeartbeatRsp\022\023\n\013client_time\030\001"
-      " \001(\004\"#\n\014GetConnIdReq\022\023\n\013client_time\030\001 \001("
-      "\004\"N\n\014GetConnIdRsp\022\023\n\013server_time\030\001 \001(\004\022\030"
-      "\n\020conn_create_time\030\002 \001(\r\022\017\n\007conn_id\030\003 \001("
-      "\004\"!\n\016CloseConnIdReq\022\017\n\007conn_id\030\001 \001(\004\"\020\n\016"
-      "CloseConnIdRsp\"\211\003\n\007GateMsg\022!\n\010test_req\030\001"
-      " \001(\0132\r.gate.TestReqH\000\022!\n\010test_rsp\030\002 \001(\0132"
-      "\r.gate.TestRspH\000\0224\n\022wake_heartbeat_req\030\003"
-      " \001(\0132\026.gate.WakeHeartbeatReqH\000\0224\n\022wake_h"
-      "eartbeat_rsp\030\004 \001(\0132\026.gate.WakeHeartbeatR"
-      "spH\000\022-\n\017get_conn_id_req\030\005 \001(\0132\022.gate.Get"
-      "ConnIdReqH\000\022-\n\017get_conn_id_rsp\030\006 \001(\0132\022.g"
-      "ate.GetConnIdRspH\000\0221\n\021close_conn_id_req\030"
-      "\007 \001(\0132\024.gate.CloseConnIdReqH\000\0221\n\021close_c"
-      "onn_id_rsp\030\010 \001(\0132\024.gate.CloseConnIdRspH\000"
-      "B\010\n\006choiceb\006proto3"
+      "\001(\004\"4\n\020WakeHeartbeatRsp\022\023\n\013client_time\030\001"
+      " \001(\004\022\013\n\003key\030\002 \001(\004\"#\n\014GetConnIdReq\022\023\n\013cli"
+      "ent_time\030\001 \001(\004\"N\n\014GetConnIdRsp\022\023\n\013server"
+      "_time\030\001 \001(\004\022\030\n\020conn_create_time\030\002 \001(\r\022\017\n"
+      "\007conn_id\030\003 \001(\004\"!\n\016CloseConnIdReq\022\017\n\007conn"
+      "_id\030\001 \001(\004\"\020\n\016CloseConnIdRsp\"\211\003\n\007GateMsg\022"
+      "!\n\010test_req\030\001 \001(\0132\r.gate.TestReqH\000\022!\n\010te"
+      "st_rsp\030\002 \001(\0132\r.gate.TestRspH\000\0224\n\022wake_he"
+      "artbeat_req\030\003 \001(\0132\026.gate.WakeHeartbeatRe"
+      "qH\000\0224\n\022wake_heartbeat_rsp\030\004 \001(\0132\026.gate.W"
+      "akeHeartbeatRspH\000\022-\n\017get_conn_id_req\030\005 \001"
+      "(\0132\022.gate.GetConnIdReqH\000\022-\n\017get_conn_id_"
+      "rsp\030\006 \001(\0132\022.gate.GetConnIdRspH\000\0221\n\021close"
+      "_conn_id_req\030\007 \001(\0132\024.gate.CloseConnIdReq"
+      "H\000\0221\n\021close_conn_id_rsp\030\010 \001(\0132\024.gate.Clo"
+      "seConnIdRspH\000B\010\n\006choiceb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 738);
+      descriptor, 751);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "gate.proto", &protobuf_RegisterTypes);
 }
@@ -1114,6 +1115,7 @@ void WakeHeartbeatReq::set_server_time(::google::protobuf::uint64 value) {
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int WakeHeartbeatRsp::kClientTimeFieldNumber;
+const int WakeHeartbeatRsp::kKeyFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 WakeHeartbeatRsp::WakeHeartbeatRsp()
@@ -1129,12 +1131,16 @@ WakeHeartbeatRsp::WakeHeartbeatRsp(const WakeHeartbeatRsp& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  client_time_ = from.client_time_;
+  ::memcpy(&client_time_, &from.client_time_,
+    static_cast<size_t>(reinterpret_cast<char*>(&key_) -
+    reinterpret_cast<char*>(&client_time_)) + sizeof(key_));
   // @@protoc_insertion_point(copy_constructor:gate.WakeHeartbeatRsp)
 }
 
 void WakeHeartbeatRsp::SharedCtor() {
-  client_time_ = GOOGLE_ULONGLONG(0);
+  ::memset(&client_time_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&key_) -
+      reinterpret_cast<char*>(&client_time_)) + sizeof(key_));
   _cached_size_ = 0;
 }
 
@@ -1175,7 +1181,9 @@ void WakeHeartbeatRsp::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  client_time_ = GOOGLE_ULONGLONG(0);
+  ::memset(&client_time_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&key_) -
+      reinterpret_cast<char*>(&client_time_)) + sizeof(key_));
   _internal_metadata_.Clear();
 }
 
@@ -1197,6 +1205,20 @@ bool WakeHeartbeatRsp::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &client_time_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 key = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &key_)));
         } else {
           goto handle_unusual;
         }
@@ -1234,6 +1256,11 @@ void WakeHeartbeatRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->client_time(), output);
   }
 
+  // uint64 key = 2;
+  if (this->key() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->key(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -1251,6 +1278,11 @@ void WakeHeartbeatRsp::SerializeWithCachedSizes(
   // uint64 client_time = 1;
   if (this->client_time() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->client_time(), target);
+  }
+
+  // uint64 key = 2;
+  if (this->key() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->key(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1275,6 +1307,13 @@ size_t WakeHeartbeatRsp::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->client_time());
+  }
+
+  // uint64 key = 2;
+  if (this->key() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->key());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -1309,6 +1348,9 @@ void WakeHeartbeatRsp::MergeFrom(const WakeHeartbeatRsp& from) {
   if (from.client_time() != 0) {
     set_client_time(from.client_time());
   }
+  if (from.key() != 0) {
+    set_key(from.key());
+  }
 }
 
 void WakeHeartbeatRsp::CopyFrom(const ::google::protobuf::Message& from) {
@@ -1336,6 +1378,7 @@ void WakeHeartbeatRsp::Swap(WakeHeartbeatRsp* other) {
 void WakeHeartbeatRsp::InternalSwap(WakeHeartbeatRsp* other) {
   using std::swap;
   swap(client_time_, other->client_time_);
+  swap(key_, other->key_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -1360,6 +1403,20 @@ void WakeHeartbeatRsp::set_client_time(::google::protobuf::uint64 value) {
   
   client_time_ = value;
   // @@protoc_insertion_point(field_set:gate.WakeHeartbeatRsp.client_time)
+}
+
+// uint64 key = 2;
+void WakeHeartbeatRsp::clear_key() {
+  key_ = GOOGLE_ULONGLONG(0);
+}
+::google::protobuf::uint64 WakeHeartbeatRsp::key() const {
+  // @@protoc_insertion_point(field_get:gate.WakeHeartbeatRsp.key)
+  return key_;
+}
+void WakeHeartbeatRsp::set_key(::google::protobuf::uint64 value) {
+  
+  key_ = value;
+  // @@protoc_insertion_point(field_set:gate.WakeHeartbeatRsp.key)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

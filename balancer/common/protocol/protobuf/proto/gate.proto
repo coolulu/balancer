@@ -16,6 +16,7 @@ message WakeHeartbeatReq {
 
 message WakeHeartbeatRsp {
     uint64  client_time         = 1;
+    uint64  key                 = 2;    // server_time xor conn_id
 }
 
 message GetConnIdReq {
