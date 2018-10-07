@@ -62,6 +62,15 @@ bool BTcpServer::send_msg(const muduo::net::TcpConnectionPtr& conn, PacketPtr& m
 
 bool BTcpServer::send_stream(PacketPtr& msg)
 {
+	if(msg->_buffer == nullptr ||  msg->_buffer_len == 0)
+	{
+		B_LOG_WARN	<< "_buffer=nullptr or _buffer_len=0, msg is lose, _msg_seq_id=" << msg->_msg_seq_id
+					<< ", _conn_seq_id=" << msg->_conn_seq_id
+					<< ", _buffer=" << msg->_buffer
+					<< ", _buffer_len=" << msg->_buffer_len;
+		return false;
+	}
+
 	auto it = _conn_map.find(msg->_conn_seq_id);
 	if(it == _conn_map.end())
 	{
