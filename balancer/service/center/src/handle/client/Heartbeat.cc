@@ -2,7 +2,6 @@
 
 #include "core/Proc.h"
 #include "protocol/Protocol.h"
-#include "tool/Util.h"
 #include "log/Log.h"
 
 const std::string& Heartbeat::s_task_name = "Heartbeat";
@@ -75,8 +74,6 @@ int Heartbeat::run(void* p)
 
 	case EN_STATE_RESPONSE:
 		{
-			_end_time_us = Util::get_us();
-			_delay_us = _end_time_us - _begin_time_us;
 			on_response();
 
 			print("on_response");

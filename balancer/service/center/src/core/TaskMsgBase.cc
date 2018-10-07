@@ -40,6 +40,12 @@ bool TaskMsgBase::check_timeout(unsigned long long now_us)
 	return true;
 }
 
+void TaskMsgBase::finish()
+{
+	_end_time_us = Util::get_us();
+	_delay_us = _end_time_us - _begin_time_us;
+}
+
 void TaskMsgBase::print(const std::string& prefix)
 {
 	B_LOG_INFO	<< "prefix=" << prefix

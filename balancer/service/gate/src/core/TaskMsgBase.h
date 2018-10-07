@@ -16,6 +16,7 @@ public:
 
 public:
 	bool check_timeout(unsigned long long now_us);
+	void finish();
 	virtual int timeout() = 0;
 	virtual int run(void* p = nullptr) = 0;
 	virtual void print(const std::string& prefix = "");

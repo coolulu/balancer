@@ -2,7 +2,6 @@
 
 #include "core/Proc.h"
 #include "core/TaskMsgMaster.h"
-#include "tool/Util.h"
 
 TaskMsgSub::TaskMsgSub(Proc& proc, const std::string& task_name, unsigned int gap_us,
 					   unsigned short depend_service_id, 
@@ -87,9 +86,6 @@ int TaskMsgSub::run(void* p)
 	case EN_STATE_RESPONSE:
 		{
 			// rsp返回后，由外层函数释放
-			_end_time_us = Util::get_us();
-			_delay_us = _end_time_us - _begin_time_us;
-
 			_p_task_msg_master->sub_remove(_seq_id);	//子任务完成，断开与主任务的联系
 			int ret = _p_task_msg_master->run(this);
 			if(ret != 0)

@@ -31,5 +31,6 @@ void HandleClient::handle_response(const muduo::net::TcpConnectionPtr& conn,
 					<< ", _info=" << task->_info;
 	}
 
+	task->finish();
 	task->run();
 }
