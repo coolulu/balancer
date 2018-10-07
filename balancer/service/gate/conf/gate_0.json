@@ -46,6 +46,9 @@
 		"gate_server_send_packet_len_max": 65535,	
 		"gate_server_high_water_mark": 65535,
 
+		"wake_heartbeat_timeout_us": 5000000,
+		"del_session_timeout_us": 5000000,
+
 		"local_ethernet": "eno16777736"
 	}
 }
