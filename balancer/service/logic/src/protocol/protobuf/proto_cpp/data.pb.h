@@ -35,12 +35,12 @@ namespace data {
 class Body;
 class BodyDefaultTypeInternal;
 extern BodyDefaultTypeInternal _Body_default_instance_;
-class Body_MsgReq;
-class Body_MsgReqDefaultTypeInternal;
-extern Body_MsgReqDefaultTypeInternal _Body_MsgReq_default_instance_;
-class Body_MsgRsq;
-class Body_MsgRsqDefaultTypeInternal;
-extern Body_MsgRsqDefaultTypeInternal _Body_MsgRsq_default_instance_;
+class MsgReq;
+class MsgReqDefaultTypeInternal;
+extern MsgReqDefaultTypeInternal _MsgReq_default_instance_;
+class MsgRsp;
+class MsgRspDefaultTypeInternal;
+extern MsgRspDefaultTypeInternal _MsgRsp_default_instance_;
 }  // namespace data
 
 namespace data {
@@ -62,24 +62,24 @@ void InitDefaults();
 
 // ===================================================================
 
-class Body_MsgReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:data.Body.MsgReq) */ {
+class MsgReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:data.MsgReq) */ {
  public:
-  Body_MsgReq();
-  virtual ~Body_MsgReq();
+  MsgReq();
+  virtual ~MsgReq();
 
-  Body_MsgReq(const Body_MsgReq& from);
+  MsgReq(const MsgReq& from);
 
-  inline Body_MsgReq& operator=(const Body_MsgReq& from) {
+  inline MsgReq& operator=(const MsgReq& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  Body_MsgReq(Body_MsgReq&& from) noexcept
-    : Body_MsgReq() {
+  MsgReq(MsgReq&& from) noexcept
+    : MsgReq() {
     *this = ::std::move(from);
   }
 
-  inline Body_MsgReq& operator=(Body_MsgReq&& from) noexcept {
+  inline MsgReq& operator=(MsgReq&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -89,29 +89,29 @@ class Body_MsgReq : public ::google::protobuf::Message /* @@protoc_insertion_poi
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Body_MsgReq& default_instance();
+  static const MsgReq& default_instance();
 
-  static inline const Body_MsgReq* internal_default_instance() {
-    return reinterpret_cast<const Body_MsgReq*>(
-               &_Body_MsgReq_default_instance_);
+  static inline const MsgReq* internal_default_instance() {
+    return reinterpret_cast<const MsgReq*>(
+               &_MsgReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     0;
 
-  void Swap(Body_MsgReq* other);
-  friend void swap(Body_MsgReq& a, Body_MsgReq& b) {
+  void Swap(MsgReq* other);
+  friend void swap(MsgReq& a, MsgReq& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline Body_MsgReq* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline MsgReq* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Body_MsgReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  MsgReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const Body_MsgReq& from);
-  void MergeFrom(const Body_MsgReq& from);
+  void CopyFrom(const MsgReq& from);
+  void MergeFrom(const MsgReq& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -127,7 +127,7 @@ class Body_MsgReq : public ::google::protobuf::Message /* @@protoc_insertion_poi
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(Body_MsgReq* other);
+  void InternalSwap(MsgReq* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -143,7 +143,7 @@ class Body_MsgReq : public ::google::protobuf::Message /* @@protoc_insertion_poi
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:data.Body.MsgReq)
+  // @@protoc_insertion_point(class_scope:data.MsgReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -152,24 +152,24 @@ class Body_MsgReq : public ::google::protobuf::Message /* @@protoc_insertion_poi
 };
 // -------------------------------------------------------------------
 
-class Body_MsgRsq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:data.Body.MsgRsq) */ {
+class MsgRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:data.MsgRsp) */ {
  public:
-  Body_MsgRsq();
-  virtual ~Body_MsgRsq();
+  MsgRsp();
+  virtual ~MsgRsp();
 
-  Body_MsgRsq(const Body_MsgRsq& from);
+  MsgRsp(const MsgRsp& from);
 
-  inline Body_MsgRsq& operator=(const Body_MsgRsq& from) {
+  inline MsgRsp& operator=(const MsgRsp& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  Body_MsgRsq(Body_MsgRsq&& from) noexcept
-    : Body_MsgRsq() {
+  MsgRsp(MsgRsp&& from) noexcept
+    : MsgRsp() {
     *this = ::std::move(from);
   }
 
-  inline Body_MsgRsq& operator=(Body_MsgRsq&& from) noexcept {
+  inline MsgRsp& operator=(MsgRsp&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -179,29 +179,29 @@ class Body_MsgRsq : public ::google::protobuf::Message /* @@protoc_insertion_poi
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Body_MsgRsq& default_instance();
+  static const MsgRsp& default_instance();
 
-  static inline const Body_MsgRsq* internal_default_instance() {
-    return reinterpret_cast<const Body_MsgRsq*>(
-               &_Body_MsgRsq_default_instance_);
+  static inline const MsgRsp* internal_default_instance() {
+    return reinterpret_cast<const MsgRsp*>(
+               &_MsgRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     1;
 
-  void Swap(Body_MsgRsq* other);
-  friend void swap(Body_MsgRsq& a, Body_MsgRsq& b) {
+  void Swap(MsgRsp* other);
+  friend void swap(MsgRsp& a, MsgRsp& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline Body_MsgRsq* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline MsgRsp* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Body_MsgRsq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  MsgRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const Body_MsgRsq& from);
-  void MergeFrom(const Body_MsgRsq& from);
+  void CopyFrom(const MsgRsp& from);
+  void MergeFrom(const MsgRsp& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -217,7 +217,7 @@ class Body_MsgRsq : public ::google::protobuf::Message /* @@protoc_insertion_poi
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(Body_MsgRsq* other);
+  void InternalSwap(MsgRsp* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -253,7 +253,7 @@ class Body_MsgRsq : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::google::protobuf::int32 code() const;
   void set_code(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:data.Body.MsgRsq)
+  // @@protoc_insertion_point(class_scope:data.MsgRsp)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -349,9 +349,6 @@ class Body : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
 
   // nested types ----------------------------------------------------
 
-  typedef Body_MsgReq MsgReq;
-  typedef Body_MsgRsq MsgRsq;
-
   // accessors -------------------------------------------------------
 
   // .google.protobuf.Any service_msg = 3;
@@ -363,23 +360,23 @@ class Body : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::google::protobuf::Any* release_service_msg();
   void set_allocated_service_msg(::google::protobuf::Any* service_msg);
 
-  // .data.Body.MsgReq msg_req = 1;
+  // .data.MsgReq msg_req = 1;
   bool has_msg_req() const;
   void clear_msg_req();
   static const int kMsgReqFieldNumber = 1;
-  const ::data::Body_MsgReq& msg_req() const;
-  ::data::Body_MsgReq* mutable_msg_req();
-  ::data::Body_MsgReq* release_msg_req();
-  void set_allocated_msg_req(::data::Body_MsgReq* msg_req);
+  const ::data::MsgReq& msg_req() const;
+  ::data::MsgReq* mutable_msg_req();
+  ::data::MsgReq* release_msg_req();
+  void set_allocated_msg_req(::data::MsgReq* msg_req);
 
-  // .data.Body.MsgRsq msg_rsp = 2;
+  // .data.MsgRsp msg_rsp = 2;
   bool has_msg_rsp() const;
   void clear_msg_rsp();
   static const int kMsgRspFieldNumber = 2;
-  const ::data::Body_MsgRsq& msg_rsp() const;
-  ::data::Body_MsgRsq* mutable_msg_rsp();
-  ::data::Body_MsgRsq* release_msg_rsp();
-  void set_allocated_msg_rsp(::data::Body_MsgRsq* msg_rsp);
+  const ::data::MsgRsp& msg_rsp() const;
+  ::data::MsgRsp* mutable_msg_rsp();
+  ::data::MsgRsp* release_msg_rsp();
+  void set_allocated_msg_rsp(::data::MsgRsp* msg_rsp);
 
   MsgTypeCase msg_type_case() const;
   // @@protoc_insertion_point(class_scope:data.Body)
@@ -395,8 +392,8 @@ class Body : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::google::protobuf::Any* service_msg_;
   union MsgTypeUnion {
     MsgTypeUnion() {}
-    ::data::Body_MsgReq* msg_req_;
-    ::data::Body_MsgRsq* msg_rsp_;
+    ::data::MsgReq* msg_req_;
+    ::data::MsgRsp* msg_rsp_;
   } msg_type_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -413,84 +410,84 @@ class Body : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// Body_MsgReq
+// MsgReq
 
 // -------------------------------------------------------------------
 
-// Body_MsgRsq
+// MsgRsp
 
 // int32 code = 1;
-inline void Body_MsgRsq::clear_code() {
+inline void MsgRsp::clear_code() {
   code_ = 0;
 }
-inline ::google::protobuf::int32 Body_MsgRsq::code() const {
-  // @@protoc_insertion_point(field_get:data.Body.MsgRsq.code)
+inline ::google::protobuf::int32 MsgRsp::code() const {
+  // @@protoc_insertion_point(field_get:data.MsgRsp.code)
   return code_;
 }
-inline void Body_MsgRsq::set_code(::google::protobuf::int32 value) {
+inline void MsgRsp::set_code(::google::protobuf::int32 value) {
   
   code_ = value;
-  // @@protoc_insertion_point(field_set:data.Body.MsgRsq.code)
+  // @@protoc_insertion_point(field_set:data.MsgRsp.code)
 }
 
 // bytes info = 2;
-inline void Body_MsgRsq::clear_info() {
+inline void MsgRsp::clear_info() {
   info_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& Body_MsgRsq::info() const {
-  // @@protoc_insertion_point(field_get:data.Body.MsgRsq.info)
+inline const ::std::string& MsgRsp::info() const {
+  // @@protoc_insertion_point(field_get:data.MsgRsp.info)
   return info_.GetNoArena();
 }
-inline void Body_MsgRsq::set_info(const ::std::string& value) {
+inline void MsgRsp::set_info(const ::std::string& value) {
   
   info_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:data.Body.MsgRsq.info)
+  // @@protoc_insertion_point(field_set:data.MsgRsp.info)
 }
 #if LANG_CXX11
-inline void Body_MsgRsq::set_info(::std::string&& value) {
+inline void MsgRsp::set_info(::std::string&& value) {
   
   info_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:data.Body.MsgRsq.info)
+  // @@protoc_insertion_point(field_set_rvalue:data.MsgRsp.info)
 }
 #endif
-inline void Body_MsgRsq::set_info(const char* value) {
+inline void MsgRsp::set_info(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   info_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:data.Body.MsgRsq.info)
+  // @@protoc_insertion_point(field_set_char:data.MsgRsp.info)
 }
-inline void Body_MsgRsq::set_info(const void* value, size_t size) {
+inline void MsgRsp::set_info(const void* value, size_t size) {
   
   info_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:data.Body.MsgRsq.info)
+  // @@protoc_insertion_point(field_set_pointer:data.MsgRsp.info)
 }
-inline ::std::string* Body_MsgRsq::mutable_info() {
+inline ::std::string* MsgRsp::mutable_info() {
   
-  // @@protoc_insertion_point(field_mutable:data.Body.MsgRsq.info)
+  // @@protoc_insertion_point(field_mutable:data.MsgRsp.info)
   return info_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* Body_MsgRsq::release_info() {
-  // @@protoc_insertion_point(field_release:data.Body.MsgRsq.info)
+inline ::std::string* MsgRsp::release_info() {
+  // @@protoc_insertion_point(field_release:data.MsgRsp.info)
   
   return info_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void Body_MsgRsq::set_allocated_info(::std::string* info) {
+inline void MsgRsp::set_allocated_info(::std::string* info) {
   if (info != NULL) {
     
   } else {
     
   }
   info_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), info);
-  // @@protoc_insertion_point(field_set_allocated:data.Body.MsgRsq.info)
+  // @@protoc_insertion_point(field_set_allocated:data.MsgRsp.info)
 }
 
 // -------------------------------------------------------------------
 
 // Body
 
-// .data.Body.MsgReq msg_req = 1;
+// .data.MsgReq msg_req = 1;
 inline bool Body::has_msg_req() const {
   return msg_type_case() == kMsgReq;
 }
@@ -503,33 +500,33 @@ inline void Body::clear_msg_req() {
     clear_has_msg_type();
   }
 }
-inline  const ::data::Body_MsgReq& Body::msg_req() const {
+inline  const ::data::MsgReq& Body::msg_req() const {
   // @@protoc_insertion_point(field_get:data.Body.msg_req)
   return has_msg_req()
       ? *msg_type_.msg_req_
-      : ::data::Body_MsgReq::default_instance();
+      : ::data::MsgReq::default_instance();
 }
-inline ::data::Body_MsgReq* Body::mutable_msg_req() {
+inline ::data::MsgReq* Body::mutable_msg_req() {
   if (!has_msg_req()) {
     clear_msg_type();
     set_has_msg_req();
-    msg_type_.msg_req_ = new ::data::Body_MsgReq;
+    msg_type_.msg_req_ = new ::data::MsgReq;
   }
   // @@protoc_insertion_point(field_mutable:data.Body.msg_req)
   return msg_type_.msg_req_;
 }
-inline ::data::Body_MsgReq* Body::release_msg_req() {
+inline ::data::MsgReq* Body::release_msg_req() {
   // @@protoc_insertion_point(field_release:data.Body.msg_req)
   if (has_msg_req()) {
     clear_has_msg_type();
-    ::data::Body_MsgReq* temp = msg_type_.msg_req_;
+    ::data::MsgReq* temp = msg_type_.msg_req_;
     msg_type_.msg_req_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void Body::set_allocated_msg_req(::data::Body_MsgReq* msg_req) {
+inline void Body::set_allocated_msg_req(::data::MsgReq* msg_req) {
   clear_msg_type();
   if (msg_req) {
     set_has_msg_req();
@@ -538,7 +535,7 @@ inline void Body::set_allocated_msg_req(::data::Body_MsgReq* msg_req) {
   // @@protoc_insertion_point(field_set_allocated:data.Body.msg_req)
 }
 
-// .data.Body.MsgRsq msg_rsp = 2;
+// .data.MsgRsp msg_rsp = 2;
 inline bool Body::has_msg_rsp() const {
   return msg_type_case() == kMsgRsp;
 }
@@ -551,33 +548,33 @@ inline void Body::clear_msg_rsp() {
     clear_has_msg_type();
   }
 }
-inline  const ::data::Body_MsgRsq& Body::msg_rsp() const {
+inline  const ::data::MsgRsp& Body::msg_rsp() const {
   // @@protoc_insertion_point(field_get:data.Body.msg_rsp)
   return has_msg_rsp()
       ? *msg_type_.msg_rsp_
-      : ::data::Body_MsgRsq::default_instance();
+      : ::data::MsgRsp::default_instance();
 }
-inline ::data::Body_MsgRsq* Body::mutable_msg_rsp() {
+inline ::data::MsgRsp* Body::mutable_msg_rsp() {
   if (!has_msg_rsp()) {
     clear_msg_type();
     set_has_msg_rsp();
-    msg_type_.msg_rsp_ = new ::data::Body_MsgRsq;
+    msg_type_.msg_rsp_ = new ::data::MsgRsp;
   }
   // @@protoc_insertion_point(field_mutable:data.Body.msg_rsp)
   return msg_type_.msg_rsp_;
 }
-inline ::data::Body_MsgRsq* Body::release_msg_rsp() {
+inline ::data::MsgRsp* Body::release_msg_rsp() {
   // @@protoc_insertion_point(field_release:data.Body.msg_rsp)
   if (has_msg_rsp()) {
     clear_has_msg_type();
-    ::data::Body_MsgRsq* temp = msg_type_.msg_rsp_;
+    ::data::MsgRsp* temp = msg_type_.msg_rsp_;
     msg_type_.msg_rsp_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void Body::set_allocated_msg_rsp(::data::Body_MsgRsq* msg_rsp) {
+inline void Body::set_allocated_msg_rsp(::data::MsgRsp* msg_rsp) {
   clear_msg_type();
   if (msg_rsp) {
     set_has_msg_rsp();

@@ -95,7 +95,7 @@ void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 		{
 		case data::Body::kMsgReq:
 			{
-				const ::data::Body_MsgReq& msg_req = packet_ptr->_body.msg_req();
+				const ::data::MsgReq& msg_req = packet_ptr->_body.msg_req();
 
 				B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
 							<< ", msg_type is req";

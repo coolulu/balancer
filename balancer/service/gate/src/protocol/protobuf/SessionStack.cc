@@ -21,7 +21,7 @@ void SessionStack::DelSessionReq(data::Body& body,
 		conn_key->set_conn_id(conn_id);
 	}
 
-	::data::Body_MsgReq* msg_req = body.mutable_msg_req();
+	::data::MsgReq* msg_req = body.mutable_msg_req();
 
 	body.mutable_service_msg()->PackFrom(msg);
 }

@@ -4,22 +4,22 @@ import "google/protobuf/any.proto";
 
 package data;
 
+message MsgReq {
+    // 方便以后扩展
+}
+
+message MsgRsp {
+    int32           code  = 1;
+    bytes           info  = 2;
+}
+
 message Body {
 
     oneof msg_type {
         MsgReq  msg_req = 1;
-        MsgRsq  msg_rsp = 2;
+        MsgRsp  msg_rsp = 2;
     }
 
     google.protobuf.Any service_msg = 3;    // 扩展各个服务消息
-
-
-    message MsgReq {
-        // 方便以后扩展
-    }
-
-    message MsgRsq {
-        int32           code  = 1;
-        bytes           info  = 2;
-    }
 }
+

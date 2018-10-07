@@ -145,7 +145,7 @@ void BTcpClient::on_message(const muduo::net::TcpConnectionPtr& conn,
 
 			case data::Body::kMsgRsp:
 				{
-					const ::data::Body_MsgRsq& msg_rsp = packet_ptr->_body.msg_rsp();
+					const ::data::MsgRsp& msg_rsp = packet_ptr->_body.msg_rsp();
 
 					B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
 								<< ", msg_type is rsp" << ", code=" << msg_rsp.code() << ", info=" << msg_rsp.info();

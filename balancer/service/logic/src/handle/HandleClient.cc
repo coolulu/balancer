@@ -18,7 +18,7 @@ void HandleClient::handle_response(const muduo::net::TcpConnectionPtr& conn,
 								   TaskMsgBase* task,
 								   muduo::Timestamp time)
 {
-	const::data::Body_MsgRsq& msg_rsp = task->_response->_body.msg_rsp();
+	const::data::MsgRsp& msg_rsp = task->_response->_body.msg_rsp();
 	task->_code = msg_rsp.code();
 	task->_info = msg_rsp.info();
 
