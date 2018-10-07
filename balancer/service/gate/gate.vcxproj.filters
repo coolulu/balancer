@@ -206,6 +206,12 @@
     <ClCompile Include="src\handle\gate\WakeHeartbeat.cc">
       <Filter>src\handle\gate</Filter>
     </ClCompile>
+    <ClCompile Include="src\protocol\protobuf\SessionStack.cc">
+      <Filter>src\protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="src\handle\gate\DelSession.cc">
+      <Filter>src\handle\gate</Filter>
+    </ClCompile>
     <ClCompile Include="src\handle\gate\CloseConnId.cc">
       <Filter>src\handle\gate</Filter>
     </ClCompile>
@@ -332,6 +338,12 @@
       <Filter>src\handle\gate</Filter>
     </ClInclude>
     <ClInclude Include="src\handle\gate\WakeHeartbeat.h">
+      <Filter>src\handle\gate</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\protobuf\SessionStack.h">
+      <Filter>src\protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\gate\DelSession.h">
       <Filter>src\handle\gate</Filter>
     </ClInclude>
     <ClInclude Include="src\handle\gate\CloseConnId.h">
