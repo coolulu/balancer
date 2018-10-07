@@ -1,5 +1,17 @@
 #include "GateStack.h"
 
+void GateStack::WakeHeartbeatReq(data::Body& body, unsigned long long server_time)
+{
+	gate::GateMsg msg;
+
+	gate::WakeHeartbeatReq* req = msg.mutable_wake_heartbeat_req();
+	req->set_server_time(server_time);
+
+	::data::Body_MsgReq* msg_req = body.mutable_msg_req();
+
+	body.mutable_service_msg()->PackFrom(msg);
+}
+
 void GateStack::GetConnIdRsp(data::Body& body,
 							 int code,
 							 const std::string& info,
@@ -20,3 +32,4 @@ void GateStack::GetConnIdRsp(data::Body& body,
 
 	body.mutable_service_msg()->PackFrom(msg);
 }
+

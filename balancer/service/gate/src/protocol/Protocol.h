@@ -4,4 +4,5 @@
 #include "protocol/protobuf/proto_cpp/common.pb.h"
 #include "protobuf/CenterStack.h"
 #include "protobuf/GateStack.h"
+#include "protobuf/SessionStack.h"
 
