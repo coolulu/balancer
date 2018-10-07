@@ -17,6 +17,7 @@ struct GateContext
 	unsigned int _create_time;
 	unsigned int _update_time;
 	bool		 _is_client_init_conn_seq_id;
+	bool		 _is_wake_heartbeat_wait;
 };
 
 class GateServer
@@ -40,6 +41,9 @@ private:
 	void on_high_water_mark(const muduo::net::TcpConnectionPtr& conn, size_t len);
 
 	void on_check_idle();
+
+public:
+	bool find(unsigned long long conn_seq_id, muduo::net::TcpConnectionPtr& conn);
 
 private:
 	Proc& _proc;

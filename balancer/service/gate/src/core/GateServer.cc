@@ -4,12 +4,15 @@
 #include "Proc.h"
 #include "log/Log.h"
 #include "define.h"
+#include "handle/gate/WakeHeartbeat.h"
+#include "handle/gate/DelSession.h"
 
 GateContext::GateContext(unsigned long long conn_seq_id)
 	:	_conn_seq_id(conn_seq_id), 
 		_create_time(0), 
 		_update_time(0), 
-		_is_client_init_conn_seq_id(false)
+		_is_client_init_conn_seq_id(false),
+		_is_wake_heartbeat_wait(false)
 {
 	_create_time = time(nullptr);
 	_update_time = _create_time;
@@ -22,7 +25,7 @@ GateServer::GateServer(Proc& proc)
 		proc._config.proc.gate_server_send_packet_len_max),
 		_handle_gate(proc)
 {
-	
+
 }
 
 GateServer::~GateServer()
@@ -66,6 +69,15 @@ bool GateServer::send_msg(const muduo::net::TcpConnectionPtr& conn, PacketPtr& m
 
 bool GateServer::send_stream(PacketPtr& msg)
 {
+	if(msg->_buffer == nullptr ||  msg->_buffer_len == 0)
+	{
+		B_LOG_WARN	<< "_buffer=nullptr or _buffer_len=0, msg is lose, _msg_seq_id=" << msg->_msg_seq_id
+					<< ", _conn_seq_id=" << msg->_conn_seq_id
+					<< ", _buffer=" << msg->_buffer
+					<< ", _buffer_len=" << msg->_buffer_len;
+		return false;
+	}
+
 	auto it = _conn_map.find(msg->_conn_seq_id);
 	if(it == _conn_map.end())
 	{
@@ -87,6 +99,15 @@ bool GateServer::send_stream(PacketPtr& msg)
 
 bool GateServer::send_stream(PacketStreamPtr& stream)
 {
+	if(stream->_buffer == nullptr ||  stream->_buffer_len == 0)
+	{
+		B_LOG_WARN	<< "_buffer=nullptr or _buffer_len=0, msg is lose, _msg_seq_id=" << stream->_packet_ptr->_msg_seq_id
+					<< ", _conn_seq_id=" << stream->_packet_ptr->_conn_seq_id
+					<< ", _buffer=" << stream->_buffer
+					<< ", _buffer_len=" << stream->_buffer_len;
+		return false;
+	}
+
 	auto it = _conn_map.find(stream->_packet_ptr->_conn_seq_id);
 	if(it == _conn_map.end())
 	{
@@ -111,7 +132,7 @@ void GateServer::on_connection(const muduo::net::TcpConnectionPtr& conn)
 	B_LOG_INFO	<< conn->name() << " " 
 				<< conn->peerAddress().toIpPort() << " -> " 
 				<< conn->localAddress().toIpPort() << " is " << (conn->connected() ? "UP" : "DOWN");
-	
+
 	if(conn->connected())
 	{
 		conn->setTcpNoDelay(_proc._config.proc.gate_server_no_delay);
@@ -126,6 +147,12 @@ void GateServer::on_connection(const muduo::net::TcpConnectionPtr& conn)
 	{
 		const GateContext& gate_context = boost::any_cast<const GateContext&>(conn->getContext());
 		_conn_map.erase(gate_context._conn_seq_id);
+
+		B_LOG_INFO << "conn is close, _conn_seq_id=" << gate_context._conn_seq_id;
+	
+		// 删除连接对应的session
+		DelSession* ds = new DelSession(_proc, gate_context._conn_seq_id);
+		ds->del_session();
 	}
 }
 
@@ -239,8 +266,13 @@ void GateServer::on_write_complete(const muduo::net::TcpConnectionPtr& conn)
 {
 	B_LOG_INFO	<< conn->name();
 
+	/*
+	GateServer发送给client时不用更新时间，避免与主动发送GateMsg::WakeHeartbeatReq的功能冲突，
+	导致p_gate_context->_update_time一直更新，不能触发on_check_idle关闭连接
+
 	GateContext* p_gate_context = boost::any_cast<GateContext>(conn->getMutableContext());
 	p_gate_context->_update_time = ::time(nullptr);
+	*/
 }
 
 void GateServer::on_high_water_mark(const muduo::net::TcpConnectionPtr& conn, size_t len)
@@ -259,11 +291,16 @@ void GateServer::on_check_idle()
 		muduo::net::TcpConnectionPtr conn = it->second;
 		if(conn)
 		{
-			const GateContext& gate_context = boost::any_cast<const GateContext&>(conn->getContext());
-			if(t_now - gate_context._update_time >= _proc._config.proc.gate_server_idle)
+			GateContext* p_gate_context = boost::any_cast<GateContext>(conn->getMutableContext());
+			if(p_gate_context->_is_wake_heartbeat_wait)
 			{
-				B_LOG_INFO << conn->name() << " is idle, shutdown";
-				conn->shutdown();
+				// 等待客户端心跳返回，无需处理
+			}
+			else if(t_now - p_gate_context->_update_time >= _proc._config.proc.gate_server_idle)
+			{
+				// 给客户端发送心跳请求
+				WakeHeartbeat* whb = new WakeHeartbeat(_proc, p_gate_context->_conn_seq_id);
+				whb->wake_client(conn, p_gate_context);
 			}
 
 			++it;
@@ -274,6 +311,18 @@ void GateServer::on_check_idle()
 			_conn_map.erase(it++);
 		}
 	}
+}
+
+bool GateServer::find(unsigned long long conn_seq_id, muduo::net::TcpConnectionPtr& conn)
+{
+	auto it = _conn_map.find(conn_seq_id);
+	if(it != _conn_map.end())
+	{
+		conn = it->second;
+		return true;
+	}
+
+	return false;
 }
 
 
