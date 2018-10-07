@@ -465,11 +465,18 @@ class WakeHeartbeatRsp : public ::google::protobuf::Message /* @@protoc_insertio
   ::google::protobuf::uint64 client_time() const;
   void set_client_time(::google::protobuf::uint64 value);
 
+  // uint64 key = 2;
+  void clear_key();
+  static const int kKeyFieldNumber = 2;
+  ::google::protobuf::uint64 key() const;
+  void set_key(::google::protobuf::uint64 value);
+
   // @@protoc_insertion_point(class_scope:gate.WakeHeartbeatRsp)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint64 client_time_;
+  ::google::protobuf::uint64 key_;
   mutable int _cached_size_;
   friend struct protobuf_gate_2eproto::TableStruct;
 };
@@ -1185,6 +1192,20 @@ inline void WakeHeartbeatRsp::set_client_time(::google::protobuf::uint64 value) 
   
   client_time_ = value;
   // @@protoc_insertion_point(field_set:gate.WakeHeartbeatRsp.client_time)
+}
+
+// uint64 key = 2;
+inline void WakeHeartbeatRsp::clear_key() {
+  key_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 WakeHeartbeatRsp::key() const {
+  // @@protoc_insertion_point(field_get:gate.WakeHeartbeatRsp.key)
+  return key_;
+}
+inline void WakeHeartbeatRsp::set_key(::google::protobuf::uint64 value) {
+  
+  key_ = value;
+  // @@protoc_insertion_point(field_set:gate.WakeHeartbeatRsp.key)
 }
 
 // -------------------------------------------------------------------
