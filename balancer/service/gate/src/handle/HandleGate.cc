@@ -40,12 +40,6 @@ void HandleGate::handle_request(const muduo::net::TcpConnectionPtr& conn,
 
 		switch(msg.choice_case())
 		{
-		case gate::GateMsg::kTestReq:
-			{
-
-			}
-			break;
-
 		case gate::GateMsg::kCloseConnIdReq:
 			{
 				GetConnId get_conn_id(_proc, conn, packet_ptr, time);
@@ -54,7 +48,8 @@ void HandleGate::handle_request(const muduo::net::TcpConnectionPtr& conn,
 			break;
 
 		default:
-			B_LOG_ERROR << "unknow GateMsg, choice_case=" << msg.choice_case();
+			B_LOG_ERROR << "unknow GateMsg, shutdown, choice_case=" << msg.choice_case();
+			conn->shutdown();	// 关闭客户端连接
 			break;
 		}
 	}
