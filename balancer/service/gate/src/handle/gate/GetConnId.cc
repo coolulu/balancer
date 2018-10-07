@@ -24,10 +24,12 @@ void GetConnId::handle(const gate::GateMsg& msg)
 	const gate::GetConnIdReq& req = msg.get_conn_id_req();
 	B_LOG_INFO << "client_time=" << req.client_time();
 
-	const Context& context = boost::any_cast<const Context&>(_conn->getContext());
+	GateContext* p_gate_context = boost::any_cast<GateContext>(_conn->getMutableContext());
+	p_gate_context->_is_client_init_conn_seq_id = true;		// client已获取到conn_seq_id，连接可以开始处理业务
+
 	unsigned long long server_time = Util::get_us();
-	unsigned int conn_create_time = context._create_time;
-	unsigned long long conn_id = context._conn_seq_id;
+	unsigned int conn_create_time = p_gate_context->_create_time;
+	unsigned long long conn_id = p_gate_context->_conn_seq_id;
 	B_LOG_INFO	<< "server_time=" << server_time 
 				<< ", conn_create_time=" << conn_create_time 
 				<< ", conn_id=" << conn_id;
