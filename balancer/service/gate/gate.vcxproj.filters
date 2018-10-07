@@ -212,7 +212,10 @@
     <ClCompile Include="src\handle\gate\DelSession.cc">
       <Filter>src\handle\gate</Filter>
     </ClCompile>
-    <ClCompile Include="src\handle\gate\CloseConnId.cc">
+    <ClCompile Include="src\handle\server\CloseConnId.cc">
+      <Filter>src\handle\server</Filter>
+    </ClCompile>
+    <ClCompile Include="src\handle\gate\CloseClient.cc">
       <Filter>src\handle\gate</Filter>
     </ClCompile>
   </ItemGroup>
@@ -346,7 +349,10 @@
     <ClInclude Include="src\handle\gate\DelSession.h">
       <Filter>src\handle\gate</Filter>
     </ClInclude>
-    <ClInclude Include="src\handle\gate\CloseConnId.h">
+    <ClInclude Include="src\handle\server\CloseConnId.h">
+      <Filter>src\handle\server</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\gate\CloseClient.h">
       <Filter>src\handle\gate</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,9 +2,9 @@
 
 #include "core/Proc.h"
 #include "protocol/Protocol.h"
-#include "core/TaskMsgMaster.h"
 #include "handle/server/Heartbeat.h"
 #include "core/PacketStream.h"
+#include "handle/server/CloseConnId.h"
 
 HandleServer::HandleServer(Proc& proc)
 	: _proc(proc)
@@ -59,35 +59,25 @@ void HandleServer::handle_request(const muduo::net::TcpConnectionPtr& conn,
 
 	if(service_msg.Is<gate::GateMsg>())
 	{
-		TaskMsgMaster* task = nullptr;
-
 		gate::GateMsg msg;
 		service_msg.UnpackTo(&msg);
 
 		switch(msg.choice_case())
 		{
 		case gate::GateMsg::kTestReq:
-			task = nullptr;
+			break;
+
+		case gate::GateMsg::kCloseConnIdReq:
+			{
+				B_LOG_INFO << "gate::CloseConnIdReq, _msg_seq_id=" << packet_ptr->_msg_seq_id;
+				CloseConnId cci(_proc, conn, packet_ptr, time);
+				cci.handle(msg);
+			}
 			break;
 
 		default:
 			B_LOG_ERROR << "unknow GateMsg, choice_case=" << msg.choice_case();
 			break;
-		}
-
-		if(task != nullptr)
-		{
-			int ret = task->run((void*)&msg);
-			if(ret == 0)
-			{
-				// 加入定时器
-				_proc._task_msg_pool.add(task);
-			}
-			else
-			{
-				delete task;
-				task = nullptr;
-			}
 		}
 	}
 	else
