@@ -47,7 +47,6 @@ int TaskMsgSub::run(void* p)
 	case EN_STATE_REQUEST:
 		{
 			_state = EN_STATE_RESPONSE;
-			_begin_time_us = Util::get_us();
 
 			bool b = false;
 			if(_proc_id == 0)

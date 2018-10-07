@@ -66,7 +66,6 @@ int Heartbeat::run(void* p)
 	case EN_STATE_REQUEST:
 		{
 			on_request();
-			_begin_time_us = Util::get_us();
 			_proc._task_msg_pool.add(this);
 			_state = EN_STATE_RESPONSE;
 

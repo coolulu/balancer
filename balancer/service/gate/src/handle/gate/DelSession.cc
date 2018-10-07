@@ -14,7 +14,7 @@ DelSession::DelSession(Proc& proc, unsigned long long conn_seq_id)
 		_in_port(proc._config.net.tcp.port),
 		_conn_seq_id(conn_seq_id)
 {
-	_begin_time_us = Util::get_us();
+
 }
 
 DelSession::~DelSession()

@@ -1,6 +1,7 @@
 #include "TaskMsgBase.h"
 
 #include "core/Proc.h"
+#include "tool/Util.h"
 
 TaskMsgBase::TaskMsgBase(Proc& proc, 
 						 const std::string& task_name, 
@@ -10,7 +11,7 @@ TaskMsgBase::TaskMsgBase(Proc& proc,
 		_seq_id(proc._seq.make_seq()),
 		_gap_us(gap_us),
 		_is_timeout(false),
-		_begin_time_us(0),
+		_begin_time_us(Util::get_us()),
 		_end_time_us(0),
 		_delay_us(0),
 		_state(0),

@@ -11,9 +11,9 @@ const std::string& WakeHeartbeat::s_task_name = "WakeHeartbeat";
 WakeHeartbeat::WakeHeartbeat(Proc& proc, unsigned long long conn_seq_id)
 	:	TaskMsgBase(proc, s_task_name, proc._config.proc.wake_heartbeat_timeout_us),
 		_conn_seq_id(conn_seq_id),
-		_server_time(Util::get_us())
+		_server_time(_begin_time_us)
 {
-	_begin_time_us = _server_time;
+
 }
 
 WakeHeartbeat::~WakeHeartbeat()
