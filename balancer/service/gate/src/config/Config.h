@@ -40,6 +40,7 @@ namespace KeyConfig
 	static const std::string& gate_server_high_water_mark		= "gate_server_high_water_mark";
 	static const std::string& wake_heartbeat_timeout_us			= "wake_heartbeat_timeout_us";
 	static const std::string& del_session_timeout_us			= "del_session_timeout_us";
+	static const std::string& close_client_timeout_us			= "close_client_timeout_us";
 	static const std::string& local_ethernet					= "local_ethernet";
 }
 
@@ -95,7 +96,8 @@ public:
 				gate_server_send_packet_len_max(0),
 				gate_server_high_water_mark(0),
 				wake_heartbeat_timeout_us(0),
-				del_session_timeout_us(0){}
+				del_session_timeout_us(0),
+				close_client_timeout_us(0){}
 
 		unsigned short	tcp_server_idle;
 		bool			tcp_server_no_delay;
@@ -117,6 +119,7 @@ public:
 		unsigned int	gate_server_high_water_mark;
 		unsigned int	wake_heartbeat_timeout_us;
 		unsigned int	del_session_timeout_us;
+		unsigned int	close_client_timeout_us;
 
 		std::string		local_ethernet;
 		std::string		local_ip;
