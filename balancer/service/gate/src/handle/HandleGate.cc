@@ -55,8 +55,9 @@ void HandleGate::handle_request(const muduo::net::TcpConnectionPtr& conn,
 	}
 	else
 	{
-		B_LOG_ERROR << "unknow service, _msg_seq_id=" << packet_ptr->_msg_seq_id;
+		B_LOG_ERROR << "unknow service, shutdown, _msg_seq_id=" << packet_ptr->_msg_seq_id;
 		packet_ptr->print();
+		conn->shutdown();		// 关闭客户端连接
 	}
 }
 
