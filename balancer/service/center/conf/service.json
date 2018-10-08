@@ -74,7 +74,7 @@
                     "proc_id": 100,
                     "proc_des": "group_1_0",
                     "in_ip": "121.1.1.10",
-					"in_port": 10200
+					"in_port": 10200,
                     "out_ip": "11.1.1.10",
                     "out_port": 10200
                 }
@@ -84,7 +84,7 @@
                     "proc_id": 200,
                     "proc_des": "group_2_0",
                     "in_ip": "121.1.1.20",
-					"in_port": 10200
+					"in_port": 10200,
                     "out_ip": "11.1.1.20",
                     "out_port": 10200
                 },
@@ -92,7 +92,7 @@
                     "proc_id": 201,
                     "proc_des": "group_2_1",
                     "in_ip": "121.1.1.21",
-					"in_port": 10201
+					"in_port": 10201,
                     "out_ip": "11.1.1.21",
                     "out_port": 10201
                 }
