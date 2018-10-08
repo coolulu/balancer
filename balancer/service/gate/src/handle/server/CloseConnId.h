@@ -18,4 +18,7 @@ public:
 
 private:
 	Proc& _proc;
+	const muduo::net::TcpConnectionPtr& _conn;
+	PacketPtr _packet_ptr;
+	muduo::Timestamp _time;
 };
