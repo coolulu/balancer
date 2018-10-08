@@ -26,6 +26,7 @@ public:
 public:
 	void start();
 	bool send_msg(const muduo::net::TcpConnectionPtr& conn, PacketPtr& msg);
+	bool send_msg(unsigned long long conn_seq_id, PacketPtr& msg);
 	bool send_stream(PacketPtr& msg);
 
 private:
