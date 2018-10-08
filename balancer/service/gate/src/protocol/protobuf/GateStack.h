@@ -15,4 +15,7 @@ namespace GateStack
 					  unsigned int conn_create_time,
 					  unsigned long long conn_id);
 
+	void CloseConnIdRsp(data::Body& body, int code, const std::string& info);
+
+	void CloseClientReq(data::Body& body);
 };

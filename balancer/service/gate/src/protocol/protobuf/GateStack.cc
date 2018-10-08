@@ -33,3 +33,27 @@ void GateStack::GetConnIdRsp(data::Body& body,
 	body.mutable_service_msg()->PackFrom(msg);
 }
 
+void GateStack::CloseConnIdRsp(data::Body& body, int code, const std::string& info)
+{
+	gate::GateMsg msg;
+
+	gate::CloseConnIdRsp* rsp = msg.mutable_close_conn_id_rsp();
+
+	::data::MsgRsp* msg_rsp = body.mutable_msg_rsp();
+	msg_rsp->set_code(code);
+	msg_rsp->set_info(info);
+
+	body.mutable_service_msg()->PackFrom(msg);
+}
+
+void GateStack::CloseClientReq(data::Body& body)
+{
+	gate::GateMsg msg;
+
+	gate::CloseClientReq* req = msg.mutable_close_client_req();
+
+	::data::MsgReq* msg_req = body.mutable_msg_req();
+
+	body.mutable_service_msg()->PackFrom(msg);
+}
+
