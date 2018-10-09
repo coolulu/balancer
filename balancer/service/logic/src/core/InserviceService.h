@@ -31,6 +31,7 @@ public:
 	bool load_ip_info(unsigned short service_id, ServiceConfig& sc);
 	bool get_ip_info(unsigned short depend_service_id, ServiceConfig::IPInfo& ip_info);
 	bool get_ip_info(unsigned short depend_service_id, unsigned int proc_id, ServiceConfig::IPInfo& ip_info);
+	InserviceList* get_inservice_list(unsigned short depend_service_id);
 
 private:
 	bool _is_ok;

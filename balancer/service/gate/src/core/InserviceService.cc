@@ -68,4 +68,15 @@ bool InserviceService::get_ip_info(unsigned short depend_service_id, unsigned in
 	return false;
 }
 
+InserviceList* InserviceService::get_inservice_list(unsigned short depend_service_id)
+{
+	auto it = _map.find(depend_service_id);
+	if(it != _map.end())
+	{
+		return &it->second;
+	}
+
+	return nullptr;
+}
+
 
