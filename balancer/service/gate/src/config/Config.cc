@@ -113,6 +113,10 @@ std::string Config::load(const std::string& json)
 			return err_is_not_uint(KeyConfig::del_session_timeout_us);
 		if(!get_uint(cv, KeyConfig::close_client_timeout_us, proc.close_client_timeout_us))
 			return err_is_not_uint(KeyConfig::close_client_timeout_us);
+		if(!get_uint(cv, KeyConfig::put_load_sync_count, proc.put_load_sync_count))
+			return err_is_not_uint(KeyConfig::put_load_sync_count);
+		if(!get_uint(cv, KeyConfig::put_load_sync_gap, proc.put_load_sync_gap))
+			return err_is_not_uint(KeyConfig::put_load_sync_gap);
 
 		if(!get_string(cv, KeyConfig::local_ethernet, proc.local_ethernet))
 			return err_is_not_uint(KeyConfig::local_ethernet);
@@ -263,6 +267,8 @@ std::string Config::to_string()
 			", proc.wake_heartbeat_timeout_us="			+ std::to_string(proc.wake_heartbeat_timeout_us) +
 			", proc.del_session_timeout_us="			+ std::to_string(proc.del_session_timeout_us) +
 			", proc.close_client_timeout_us="			+ std::to_string(proc.close_client_timeout_us) +
+			", proc.put_load_sync_count="				+ std::to_string(proc.put_load_sync_count) +
+			", proc.put_load_sync_gap="					+ std::to_string(proc.put_load_sync_gap) +
 			", proc.local_ethernet="					+ proc.local_ethernet + 
 			", proc.local_ip="							+ proc.local_ip;
 }

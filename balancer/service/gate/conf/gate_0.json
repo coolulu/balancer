@@ -49,6 +49,8 @@
 		"wake_heartbeat_timeout_us": 5000000,
 		"del_session_timeout_us": 5000000,
 		"close_client_timeout_us": 5000000,
+		"put_load_sync_count": 1,
+		"put_load_sync_gap": 30,
 
 		"local_ethernet": "eno16777736"
 	}

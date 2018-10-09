@@ -41,6 +41,8 @@ namespace KeyConfig
 	static const std::string& wake_heartbeat_timeout_us			= "wake_heartbeat_timeout_us";
 	static const std::string& del_session_timeout_us			= "del_session_timeout_us";
 	static const std::string& close_client_timeout_us			= "close_client_timeout_us";
+	static const std::string& put_load_sync_count				= "put_load_sync_count";
+	static const std::string& put_load_sync_gap					= "put_load_sync_gap";
 	static const std::string& local_ethernet					= "local_ethernet";
 }
 
@@ -97,7 +99,9 @@ public:
 				gate_server_high_water_mark(0),
 				wake_heartbeat_timeout_us(0),
 				del_session_timeout_us(0),
-				close_client_timeout_us(0){}
+				close_client_timeout_us(0),
+				put_load_sync_count(0),
+				put_load_sync_gap(0){}
 
 		unsigned short	tcp_server_idle;
 		bool			tcp_server_no_delay;
@@ -120,6 +124,8 @@ public:
 		unsigned int	wake_heartbeat_timeout_us;
 		unsigned int	del_session_timeout_us;
 		unsigned int	close_client_timeout_us;
+		unsigned short	put_load_sync_count;
+		unsigned short	put_load_sync_gap;
 
 		std::string		local_ethernet;
 		std::string		local_ip;
