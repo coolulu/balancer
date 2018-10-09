@@ -7,7 +7,7 @@
 Context::Context(unsigned long long conn_seq_id)
 	: _conn_seq_id(conn_seq_id), _create_time(0), _update_time(0)
 {
-	_create_time = time(nullptr);
+	_create_time = ::time(nullptr);
 	_update_time = _create_time;
 }
 

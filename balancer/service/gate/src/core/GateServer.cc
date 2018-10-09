@@ -14,7 +14,7 @@ GateContext::GateContext(unsigned long long conn_seq_id)
 		_is_client_init_conn_seq_id(false),
 		_is_wake_heartbeat_wait(false)
 {
-	_create_time = time(nullptr);
+	_create_time = ::time(nullptr);
 	_update_time = _create_time;
 }
 
