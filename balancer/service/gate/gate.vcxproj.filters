@@ -218,6 +218,9 @@
     <ClCompile Include="src\handle\gate\CloseClient.cc">
       <Filter>src\handle\gate</Filter>
     </ClCompile>
+    <ClCompile Include="src\protocol\protobuf\NavigateStack.cc">
+      <Filter>src\protocol\protobuf</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\config\Config.h">
@@ -354,6 +357,9 @@
     </ClInclude>
     <ClInclude Include="src\handle\gate\CloseClient.h">
       <Filter>src\handle\gate</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol\protobuf\NavigateStack.h">
+      <Filter>src\protocol\protobuf</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

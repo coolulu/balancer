@@ -5,4 +5,5 @@
 #include "protobuf/CenterStack.h"
 #include "protobuf/GateStack.h"
 #include "protobuf/SessionStack.h"
+#include "protobuf/NavigateStack.h"
 

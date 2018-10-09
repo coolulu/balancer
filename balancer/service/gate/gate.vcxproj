@@ -109,6 +109,7 @@
     <ClCompile Include="src\main.cc" />
     <ClCompile Include="src\protocol\protobuf\CenterStack.cc" />
     <ClCompile Include="src\protocol\protobuf\GateStack.cc" />
+    <ClCompile Include="src\protocol\protobuf\NavigateStack.cc" />
     <ClCompile Include="src\protocol\protobuf\proto_cpp\center.pb.cc" />
     <ClCompile Include="src\protocol\protobuf\proto_cpp\common.pb.cc" />
     <ClCompile Include="src\protocol\protobuf\proto_cpp\data.pb.cc" />
@@ -155,6 +156,7 @@
     <ClInclude Include="src\log\Log.h" />
     <ClInclude Include="src\protocol\protobuf\CenterStack.h" />
     <ClInclude Include="src\protocol\protobuf\GateStack.h" />
+    <ClInclude Include="src\protocol\protobuf\NavigateStack.h" />
     <ClInclude Include="src\protocol\protobuf\proto_cpp\center.pb.h" />
     <ClInclude Include="src\protocol\protobuf\proto_cpp\common.pb.h" />
     <ClInclude Include="src\protocol\protobuf\proto_cpp\data.pb.h" />
