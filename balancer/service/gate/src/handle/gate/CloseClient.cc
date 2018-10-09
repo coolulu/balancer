@@ -39,7 +39,7 @@ void CloseClient::close_client(muduo::net::TcpConnectionPtr& conn)
 {
 	_request.reset(new Packet(service::CLIENT, 0, 0, 0, 0, _seq_id));
 	GateStack::CloseClientReq(_request->_body);
-	_proc._tcp_server.send_msg(_rsp_conn_id, _request);
+	_proc._gate_server.send_msg(conn, _request);
 }
 
 void CloseClient::handle(bool is_timeout)
@@ -56,35 +56,22 @@ void CloseClient::handle(bool is_timeout)
 	}
 
 	// 找到客户端连接，关闭客户端连接
+	muduo::net::TcpConnectionPtr client_conn;
+	bool b = _proc._gate_server.find(_client_conn_id, client_conn);
+	if(b)
 	{
-		muduo::net::TcpConnectionPtr client_conn;
-		bool b = _proc._gate_server.find(_client_conn_id, client_conn);
-		if(b)
-		{
-			B_LOG_INFO << "CloseClient is find conn, shutdown, _client_conn_id=" << _client_conn_id;
-			client_conn->shutdown();	// 关闭客户端连接
-		}
-		else
-		{
-			B_LOG_WARN << "CloseClient is not find conn, _client_conn_id=" << _client_conn_id;
-		}
+		B_LOG_INFO << "CloseClient is find conn, shutdown, _client_conn_id=" << _client_conn_id;
+		client_conn->shutdown();	// 关闭客户端连接
+	}
+	else
+	{
+		B_LOG_WARN << "CloseClient is not find conn, _client_conn_id=" << _client_conn_id;
 	}
 	
 	// 发送rsp
-	{
-		muduo::net::TcpConnectionPtr rsp_conn;
-		bool b = _proc._gate_server.find(_rsp_conn_id, rsp_conn);
-		if(b)
-		{
-			PacketPtr packet_ptr_rsp(new Packet(_packet_ptr_req->_from_service_id, 0, 0, 0, 0, _packet_ptr_req->_msg_seq_id));
-			GateStack::CloseConnIdRsp(packet_ptr_rsp->_body, common::SUCCESS, "");
+	PacketPtr packet_ptr_rsp(new Packet(_packet_ptr_req->_from_service_id, 0, 0, 0, 0, _packet_ptr_req->_msg_seq_id));
+	GateStack::CloseConnIdRsp(packet_ptr_rsp->_body, common::SUCCESS, "");
 
-			_proc._tcp_server.send_msg(rsp_conn, packet_ptr_rsp);
-		}
-		else
-		{
-			B_LOG_WARN << "not find conn, _rsp_conn_id=" << _rsp_conn_id;
-		}
-	}
+	_proc._tcp_server.send_msg(_rsp_conn_id, packet_ptr_rsp);
 
 }
