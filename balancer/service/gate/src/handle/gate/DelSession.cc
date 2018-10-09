@@ -66,5 +66,4 @@ void DelSession::del_session()
 					<< ", _to_proc_id=" << _request->_to_proc_id;
 	}
 
-	_proc._task_msg_pool.add(this);					// 加入定时器
 }

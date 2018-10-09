@@ -91,6 +91,5 @@ void WakeHeartbeat::wake_client(muduo::net::TcpConnectionPtr& conn, GateContext*
 	GateStack::WakeHeartbeatReq(_request->_body, _server_time);
 	_proc._gate_server.send_msg(conn, _request);
 	
-	_proc._task_msg_pool.add(this);					// 加入定时器
 	p_gate_context->_is_wake_heartbeat_wait = true;	// 设置为等待客户端心跳回复
 }

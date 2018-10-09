@@ -32,6 +32,7 @@ void CloseConnId::handle(const gate::GateMsg& msg)
 		CloseClient* cc = new CloseClient(_proc, _packet_ptr, req.conn_id(),
 										  boost::any_cast<const Context&>(_conn->getContext())._conn_seq_id);
 		cc->close_client(client_conn);
+		_proc._task_msg_pool.add(cc);	// 加入定时器
 	}
 	else
 	{

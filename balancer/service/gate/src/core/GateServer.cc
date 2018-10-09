@@ -153,6 +153,7 @@ void GateServer::on_connection(const muduo::net::TcpConnectionPtr& conn)
 		// 删除连接对应的session
 		DelSession* ds = new DelSession(_proc, gate_context._conn_seq_id);
 		ds->del_session();
+		_proc._task_msg_pool.add(ds);	// 加入定时器
 	}
 }
 
@@ -301,6 +302,7 @@ void GateServer::on_check_idle()
 				// 给客户端发送心跳请求
 				WakeHeartbeat* whb = new WakeHeartbeat(_proc, p_gate_context->_conn_seq_id);
 				whb->wake_client(conn, p_gate_context);
+				_proc._task_msg_pool.add(whb);	// 加入定时器
 			}
 
 			++it;

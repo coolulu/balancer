@@ -40,8 +40,6 @@ void CloseClient::close_client(muduo::net::TcpConnectionPtr& conn)
 	_request.reset(new Packet(service::CLIENT, 0, 0, 0, 0, _seq_id));
 	GateStack::CloseClientReq(_request->_body);
 	_proc._tcp_server.send_msg(_rsp_conn_id, _request);
-
-	_proc._task_msg_pool.add(this);					// 加入定时器
 }
 
 void CloseClient::handle(bool is_timeout)
