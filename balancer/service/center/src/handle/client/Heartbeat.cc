@@ -123,7 +123,7 @@ int Heartbeat::on_request()
 							  _proc._config.proc.level,
 							  _service_id,
 							  _ip_info.proc_id,
-							  center::HEARTBEAT,
+							  _ip_info._ip_info_derivative.is_run ? center::INSERVICE : center::HEARTBEAT,
 							  _service_update_time, 
 							  conf_json);
 	_is_send = _proc._tcp_client_pool.get_client(_ip_info)->send_msg(_request);
