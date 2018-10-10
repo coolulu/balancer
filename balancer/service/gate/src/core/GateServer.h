@@ -44,6 +44,8 @@ private:
 
 public:
 	bool find(unsigned long long conn_seq_id, muduo::net::TcpConnectionPtr& conn);
+	void shutdown_all_conn();
+	unsigned int conn_size();
 
 private:
 	Proc& _proc;

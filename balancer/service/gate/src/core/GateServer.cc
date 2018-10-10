@@ -135,6 +135,14 @@ void GateServer::on_connection(const muduo::net::TcpConnectionPtr& conn)
 
 	if(conn->connected())
 	{
+		if(_proc._owner.is_not_inservice())
+		{
+			// 服务不在上线状态时，建立新连接时则断开连接
+			B_LOG_WARN << "service is not inservice, new conn is shutdown";
+			conn->shutdown();
+			return;
+		}
+
 		conn->setTcpNoDelay(_proc._config.proc.gate_server_no_delay);
 		conn->setHighWaterMarkCallback(boost::bind(&GateServer::on_high_water_mark, this, _1, _2),
 			_proc._config.proc.gate_server_high_water_mark);
@@ -148,13 +156,16 @@ void GateServer::on_connection(const muduo::net::TcpConnectionPtr& conn)
 		const GateContext& gate_context = boost::any_cast<const GateContext&>(conn->getContext());
 		_conn_map.erase(gate_context._conn_seq_id);
 
-		B_LOG_INFO << "conn is close, _conn_seq_id=" << gate_context._conn_seq_id;
+		B_LOG_INFO << "conn is close, del session, _conn_seq_id=" << gate_context._conn_seq_id;
 	
 		// 删除连接对应的session
 		DelSession* ds = new DelSession(_proc, gate_context._conn_seq_id);
 		ds->del_session();
 		_proc._task_msg_pool.add(ds);	// 加入定时器
 	}
+
+	// 每次建立连接/断开连接触发同步
+	_proc._put_load.trigger_sync_count();
 }
 
 void GateServer::on_message(const muduo::net::TcpConnectionPtr& conn, 
@@ -325,6 +336,28 @@ bool GateServer::find(unsigned long long conn_seq_id, muduo::net::TcpConnectionP
 	}
 
 	return false;
+}
+
+void GateServer::shutdown_all_conn()
+{
+	B_LOG_WARN << "start, _conn_map.size=" << _conn_map.size();
+	unsigned int close_conn_count = 0;
+	for(auto it = _conn_map.begin(); it != _conn_map.end();)
+	{
+		muduo::net::TcpConnectionPtr conn = it->second;
+		if(conn)
+		{
+			conn->shutdown();
+			++close_conn_count;
+		}
+	}
+
+	B_LOG_WARN << "end, close_conn_count=" << close_conn_count;
+}
+
+unsigned int GateServer::conn_size()
+{
+	return _conn_map.size();
 }
 
 
