@@ -41,7 +41,18 @@ void Heartbeat::handle(const center::CenterMsg& msg)
 	else
 	{
 		unsigned int now = ::time(nullptr);
-		_proc._owner.update_owner_hb_time(now, req.level(), req.state());
+		int ret = _proc._owner.update_owner_hb_time(now, req.level(), req.state());
+		if(ret == Owner::EN_CHANGE_INSERVICE)
+		{
+			// 下线状态切换到上线状态，需要的特殊动作
+			B_LOG_ERROR << "state is HEARTBEAT -> INSERVICE";
+		}
+		else if(ret == Owner::EN_CHANGE_HEARTBEAT)
+		{
+			// 上线状态切换到下线状态，需要的特殊动作
+			B_LOG_ERROR << "state is INSERVICE -> HEARTBEAT";
+		}
+
 		if(req.conf_json().size() > 0)
 		{
 			// 更新配置
@@ -58,7 +69,7 @@ void Heartbeat::handle(const center::CenterMsg& msg)
 					_proc._sc.assign(sc);
 					_proc._is.assign(is);
 
-					_proc._owner.update_owner(req.level(), req.conf_update_time(), _packet_ptr->_msg_seq_id);
+					_proc._owner.update_owner(req.level(), req.proc_id(), req.conf_update_time(), _packet_ptr->_msg_seq_id);
 					_proc._owner.update_owner_hb_time(now, req.level(), req.state());
 
 					save_conf(req);
@@ -103,6 +114,7 @@ void Heartbeat::save_conf(const center::HeartbeatReq& req)
 		<< "req.conf_json=" << req.conf_json() << std::endl
 		<< std::endl
 		<< "_owner._level=" << _proc._owner._level << std::endl
+		<< "_owner._proc_id=" << _proc._owner._proc_id << std::endl
 		<< "_owner._state=" << _proc._owner._state << std::endl
 		<< "_owner._owner_hb_time=" << _proc._owner._owner_hb_time << std::endl
 		<< "_owner._expire_second=" << _proc._owner._expire_second << std::endl
