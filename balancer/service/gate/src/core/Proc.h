@@ -14,6 +14,7 @@
 #include "InserviceService.h"
 #include "BTcpClientPool.h"
 #include "TaskMsgPool.h"
+#include "PutLoad.h"
 
 class Proc
 {
@@ -50,7 +51,8 @@ public:
 	ServiceConfig _sc;
 	BTcpClientPool _tcp_client_pool;
 	TaskMsgPool _task_msg_pool;
-	
+	PutLoad _put_load;
+
 	BTcpServer _tcp_server;
 	BHttpServer _http_server;
 	GateServer _gate_server;
