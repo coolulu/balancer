@@ -221,6 +221,9 @@
     <ClCompile Include="src\protocol\protobuf\NavigateStack.cc">
       <Filter>src\protocol\protobuf</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\PutLoad.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\config\Config.h">
@@ -360,6 +363,9 @@
     </ClInclude>
     <ClInclude Include="src\protocol\protobuf\NavigateStack.h">
       <Filter>src\protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\PutLoad.h">
+      <Filter>src\core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

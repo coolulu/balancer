@@ -89,6 +89,7 @@
     <ClCompile Include="src\core\Packet.cc" />
     <ClCompile Include="src\core\PacketStream.cc" />
     <ClCompile Include="src\core\Proc.cc" />
+    <ClCompile Include="src\core\PutLoad.cc" />
     <ClCompile Include="src\core\Seq.cc" />
     <ClCompile Include="src\core\SignalHandle.cc" />
     <ClCompile Include="src\core\TaskMsgBase.cc" />
@@ -136,6 +137,7 @@
     <ClInclude Include="src\core\Packet.h" />
     <ClInclude Include="src\core\PacketStream.h" />
     <ClInclude Include="src\core\Proc.h" />
+    <ClInclude Include="src\core\PutLoad.h" />
     <ClInclude Include="src\core\Seq.h" />
     <ClInclude Include="src\core\SignalHandle.h" />
     <ClInclude Include="src\core\TaskMsgBase.h" />
