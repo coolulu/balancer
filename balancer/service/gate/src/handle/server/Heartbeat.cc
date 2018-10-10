@@ -51,6 +51,9 @@ void Heartbeat::handle(const center::CenterMsg& msg)
 		{
 			// 上线状态切换到下线状态，需要的特殊动作
 			B_LOG_ERROR << "state is INSERVICE -> HEARTBEAT";
+
+			// 断开所有client的连接
+			_proc._gate_server.shutdown_all_conn();
 		}
 
 		if(req.conf_json().size() > 0)
