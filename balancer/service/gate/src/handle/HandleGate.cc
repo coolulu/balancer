@@ -86,24 +86,23 @@ void HandleGate::forward_request_to_service(const muduo::net::TcpConnectionPtr& 
 											PacketPtr& packet_ptr, 
 											muduo::Timestamp time)
 {
-	bool b = false;
-	ServiceConfig::IPInfo ip_info;
+	ServiceConfig::IPInfo* ip_info = nullptr;
 	if(packet_ptr->_to_proc_id == 0)
 	{
-		b = _proc._is.get_ip_info(packet_ptr->_to_service_id, ip_info);
+		ip_info = _proc._is.get_ip_info(packet_ptr->_to_service_id);
 	}
 	else
 	{
-		b = _proc._is.get_ip_info(packet_ptr->_to_service_id, packet_ptr->_to_proc_id, ip_info);
+		ip_info = _proc._is.get_ip_info(packet_ptr->_to_service_id, packet_ptr->_to_proc_id);
 	}
 
-	if(b)
+	if(ip_info != nullptr)
 	{
-		_proc._tcp_client_pool.get_client(ip_info)->send_stream(packet_ptr);
+		_proc._tcp_client_pool.get_client(*ip_info)->send_stream(packet_ptr);
 	}
 	else
 	{
-		B_LOG_WARN	<< "_is.get_ip_info is false"
+		B_LOG_WARN	<< "_is.get_ip_info is nullptr"
 					<< ", _msg_seq_id=" << packet_ptr->_msg_seq_id
 					<< ", _to_service_id=" << packet_ptr->_to_service_id
 					<< ", _to_proc_id=" << packet_ptr->_to_proc_id;

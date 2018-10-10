@@ -52,15 +52,15 @@ void DelSession::del_session()
 	_request.reset(new Packet(service::SESSION, 0, 0, 0, 0, _seq_id));
 	SessionStack::DelSessionReq(_request->_body, 0, _in_ip, _in_port, _conn_seq_id);
 
-	ServiceConfig::IPInfo ip_info;
-	bool b = _proc._is.get_ip_info(_request->_to_service_id, ip_info);
-	if(b)
+	ServiceConfig::IPInfo* ip_info;
+	ip_info = _proc._is.get_ip_info(_request->_to_service_id);
+	if(ip_info != nullptr)
 	{
-		_proc._tcp_client_pool.get_client(ip_info)->send_msg(_request);
+		_proc._tcp_client_pool.get_client(*ip_info)->send_msg(_request);
 	}
 	else
 	{
-		B_LOG_WARN	<< "_is.get_ip_info is false"
+		B_LOG_WARN	<< "_is.get_ip_info is nullptr"
 					<< ", _msg_seq_id=" << _request->_msg_seq_id
 					<< ", _to_service_id=" << _request->_to_service_id
 					<< ", _to_proc_id=" << _request->_to_proc_id;

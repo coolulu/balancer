@@ -33,7 +33,7 @@ bool InserviceService::load_ip_info(unsigned short service_id, ServiceConfig& sc
 	return _is_ok = true;
 }
 
-bool InserviceService::get_ip_info(unsigned short depend_service_id, ServiceConfig::IPInfo& ip_info)
+ServiceConfig::IPInfo* InserviceService::get_ip_info(unsigned short depend_service_id)
 {
 	auto it = _map.find(depend_service_id);
 	if(it != _map.end())
@@ -43,15 +43,14 @@ bool InserviceService::get_ip_info(unsigned short depend_service_id, ServiceConf
 		if(size > 0)
 		{
 			unsigned int index = (++il.count) % size;
-			ip_info = il.inservice_list[index];
-			return true;
+			return &il.inservice_list[index];
 		}
 	}
 
-	return false;
+	return nullptr;
 }
 
-bool InserviceService::get_ip_info(unsigned short depend_service_id, unsigned int proc_id, ServiceConfig::IPInfo& ip_info)
+ServiceConfig::IPInfo* InserviceService::get_ip_info(unsigned short depend_service_id, unsigned int proc_id)
 {
 	auto it = _map.find(depend_service_id);
 	if(it != _map.end())
@@ -60,12 +59,11 @@ bool InserviceService::get_ip_info(unsigned short depend_service_id, unsigned in
 		auto it_ip_info = il.inservice_map.find(proc_id);
 		if(it_ip_info != il.inservice_map.end())
 		{
-			ip_info = it_ip_info->second;
-			return true;
+			return &it_ip_info->second;
 		}
 	}
 
-	return false;
+	return nullptr;
 }
 
 InserviceList* InserviceService::get_inservice_list(unsigned short depend_service_id)

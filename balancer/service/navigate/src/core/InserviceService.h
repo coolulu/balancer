@@ -29,8 +29,8 @@ public:
 
 	// 用本服务的service_id拿到依赖service_id,加载依赖服务ipinfo
 	bool load_ip_info(unsigned short service_id, ServiceConfig& sc);
-	bool get_ip_info(unsigned short depend_service_id, ServiceConfig::IPInfo& ip_info);
-	bool get_ip_info(unsigned short depend_service_id, unsigned int proc_id, ServiceConfig::IPInfo& ip_info);
+	ServiceConfig::IPInfo* get_ip_info(unsigned short depend_service_id);
+	ServiceConfig::IPInfo* get_ip_info(unsigned short depend_service_id, unsigned int proc_id);
 	InserviceList* get_inservice_list(unsigned short depend_service_id);
 
 private:

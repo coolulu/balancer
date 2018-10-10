@@ -47,18 +47,19 @@ int TaskMsgSub::run(void* p)
 		{
 			_state = EN_STATE_RESPONSE;
 
-			bool b = false;
+			ServiceConfig::IPInfo* ip_info = nullptr;
 			if(_proc_id == 0)
 			{
-				b = _proc._is.get_ip_info(_depend_service_id, _ip_info);	// 轮询
+				ip_info = _proc._is.get_ip_info(_depend_service_id);	// 轮询
 			}
 			else
 			{
-				b = _proc._is.get_ip_info(_depend_service_id, _proc_id, _ip_info);	// 指定proc_id
+				ip_info = _proc._is.get_ip_info(_depend_service_id, _proc_id);	// 指定proc_id
 			}
 				
-			if(b)
+			if(ip_info != nullptr)
 			{
+				_ip_info = *ip_info;
 				bool is_send = _proc._tcp_client_pool.get_client(_ip_info)->send_msg(_request);
 				if(is_send)
 				{
