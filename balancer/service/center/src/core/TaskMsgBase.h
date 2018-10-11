@@ -22,6 +22,13 @@ public:
 	virtual void print(const std::string& prefix = "");
 
 public:
+	static bool is_empty(){return s_count == 0;}
+	static int count(){return s_count;}
+
+private:
+	static int s_count;
+
+public:
 	Proc& _proc;
 
 	const std::string& _task_name;

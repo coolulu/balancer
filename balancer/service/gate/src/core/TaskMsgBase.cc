@@ -3,6 +3,8 @@
 #include "core/Proc.h"
 #include "tool/Util.h"
 
+int TaskMsgBase::s_count = 0;
+
 TaskMsgBase::TaskMsgBase(Proc& proc, 
 						 const std::string& task_name, 
 						 unsigned int gap_us)
@@ -18,11 +20,13 @@ TaskMsgBase::TaskMsgBase(Proc& proc,
 		_code(0)
 {
 	TaskMsgBase::print("task begin");
+	++s_count;
 }
 
 TaskMsgBase::~TaskMsgBase()
 {
 	TaskMsgBase::print("task end");
+	--s_count;
 }
 
 bool TaskMsgBase::check_timeout(unsigned long long now_us)
