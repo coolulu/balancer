@@ -71,8 +71,12 @@ unsigned int TaskMsgPool::size()
 
 void TaskMsgPool::check_timeout()
 {
-	unsigned long long now_us = Util::get_us();	
+	if(TaskMsgBase::is_empty())
+	{
+		return;
+	}
 
+	unsigned long long now_us = Util::get_us();	
 	for(auto i = 0; i != s_size; i++)
 	{
 		std::map<unsigned long long, TaskMsgBase*>& m = _map_v_task[i];
