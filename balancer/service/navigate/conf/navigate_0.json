@@ -38,6 +38,8 @@
 		"tcp_client_recv_packet_len_max": 65535,
 		"tcp_client_send_packet_len_max": 65535,
 		"tcp_client_high_water_mark": 65535,
-		"tcp_client_msg_reduce_size": 1000
+		"tcp_client_msg_reduce_size": 1000,
+
+		"count_load_check_gap": 1
 	}
 }

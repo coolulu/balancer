@@ -33,6 +33,7 @@ namespace KeyConfig
 	static const std::string& tcp_client_send_packet_len_max	= "tcp_client_send_packet_len_max";
 	static const std::string& tcp_client_high_water_mark		= "tcp_client_high_water_mark";
 	static const std::string& tcp_client_msg_reduce_size		= "tcp_client_msg_reduce_size";
+	static const std::string& count_load_check_gap				= "count_load_check_gap";
 }
 
 class Config
@@ -80,7 +81,8 @@ public:
 				tcp_client_recv_packet_len_max(0),
 				tcp_client_send_packet_len_max(0),
 				tcp_client_high_water_mark(0),
-				tcp_client_msg_reduce_size(0){}
+				tcp_client_msg_reduce_size(0),
+				count_load_check_gap(0){}
 
 		unsigned short	tcp_server_idle;
 		bool			tcp_server_no_delay;
@@ -94,6 +96,7 @@ public:
 		unsigned int	tcp_client_send_packet_len_max;		
 		unsigned int	tcp_client_high_water_mark;
 		unsigned short	tcp_client_msg_reduce_size;
+		unsigned short	count_load_check_gap;
 	};
 
 public:
