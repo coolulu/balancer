@@ -26,6 +26,7 @@ namespace Util
 	unsigned short str_2_ushort(const std::string& str);
 	int str_2_int(const std::string& str);
 	unsigned int str_2_uint(const std::string& str);
+	unsigned long long str_2_ull(const std::string& str);
 
 	unsigned long long get_us();
 }

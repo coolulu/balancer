@@ -289,6 +289,14 @@ unsigned int Util::str_2_uint(const std::string& str)
 	return i;
 }
 
+unsigned long long Util::str_2_ull(const std::string& str)
+{
+	std::istringstream is(str);
+	unsigned long long i;
+	is >> i;
+	return i;
+}
+
 unsigned long long Util::get_us()
 {
 	struct timeval tv; 
