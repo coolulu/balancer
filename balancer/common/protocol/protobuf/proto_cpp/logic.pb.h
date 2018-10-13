@@ -907,17 +907,25 @@ class GetAccessKeyRsp : public ::google::protobuf::Message /* @@protoc_insertion
 
   // accessors -------------------------------------------------------
 
-  // uint64 access_key = 1;
+  // bytes access_key = 1;
   void clear_access_key();
   static const int kAccessKeyFieldNumber = 1;
-  ::google::protobuf::uint64 access_key() const;
-  void set_access_key(::google::protobuf::uint64 value);
+  const ::std::string& access_key() const;
+  void set_access_key(const ::std::string& value);
+  #if LANG_CXX11
+  void set_access_key(::std::string&& value);
+  #endif
+  void set_access_key(const char* value);
+  void set_access_key(const void* value, size_t size);
+  ::std::string* mutable_access_key();
+  ::std::string* release_access_key();
+  void set_allocated_access_key(::std::string* access_key);
 
   // @@protoc_insertion_point(class_scope:logic.GetAccessKeyRsp)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint64 access_key_;
+  ::google::protobuf::internal::ArenaStringPtr access_key_;
   mutable int _cached_size_;
   friend struct protobuf_logic_2eproto::TableStruct;
 };
@@ -1510,18 +1518,57 @@ inline void LogoutReq::set_allocated_login_token(::std::string* login_token) {
 
 // GetAccessKeyRsp
 
-// uint64 access_key = 1;
+// bytes access_key = 1;
 inline void GetAccessKeyRsp::clear_access_key() {
-  access_key_ = GOOGLE_ULONGLONG(0);
+  access_key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint64 GetAccessKeyRsp::access_key() const {
+inline const ::std::string& GetAccessKeyRsp::access_key() const {
   // @@protoc_insertion_point(field_get:logic.GetAccessKeyRsp.access_key)
-  return access_key_;
+  return access_key_.GetNoArena();
 }
-inline void GetAccessKeyRsp::set_access_key(::google::protobuf::uint64 value) {
+inline void GetAccessKeyRsp::set_access_key(const ::std::string& value) {
   
-  access_key_ = value;
+  access_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:logic.GetAccessKeyRsp.access_key)
+}
+#if LANG_CXX11
+inline void GetAccessKeyRsp::set_access_key(::std::string&& value) {
+  
+  access_key_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:logic.GetAccessKeyRsp.access_key)
+}
+#endif
+inline void GetAccessKeyRsp::set_access_key(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  access_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:logic.GetAccessKeyRsp.access_key)
+}
+inline void GetAccessKeyRsp::set_access_key(const void* value, size_t size) {
+  
+  access_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:logic.GetAccessKeyRsp.access_key)
+}
+inline ::std::string* GetAccessKeyRsp::mutable_access_key() {
+  
+  // @@protoc_insertion_point(field_mutable:logic.GetAccessKeyRsp.access_key)
+  return access_key_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetAccessKeyRsp::release_access_key() {
+  // @@protoc_insertion_point(field_release:logic.GetAccessKeyRsp.access_key)
+  
+  return access_key_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetAccessKeyRsp::set_allocated_access_key(::std::string* access_key) {
+  if (access_key != NULL) {
+    
+  } else {
+    
+  }
+  access_key_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), access_key);
+  // @@protoc_insertion_point(field_set_allocated:logic.GetAccessKeyRsp.access_key)
 }
 
 // -------------------------------------------------------------------

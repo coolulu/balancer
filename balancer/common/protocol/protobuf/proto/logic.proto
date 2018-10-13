@@ -37,7 +37,7 @@ message GetAccessKeyReq {
 }
 
 message GetAccessKeyRsp {
-    uint64  access_key          = 1;
+    bytes   access_key          = 1;
 }
 
 message LogicMsg {                              // 奇数是请求，偶数是响应

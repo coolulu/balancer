@@ -16,7 +16,7 @@ message GetAccessReq {
 }
 
 message GetAccessRsp {
-    uint64  access_key          = 1;
+    bytes   access_key          = 1;
     int32   service_id          = 2;
     uint32  proc_id             = 3;
     bytes   out_ip              = 4;
