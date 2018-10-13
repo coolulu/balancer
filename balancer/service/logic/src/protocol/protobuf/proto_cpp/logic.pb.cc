@@ -273,7 +273,7 @@ void AddDescriptorsImpl() {
       "\001(\014\"\037\n\010LoginRsp\022\023\n\013login_token\030\001 \001(\014\"1\n\t"
       "LogoutReq\022\017\n\007user_id\030\001 \001(\004\022\023\n\013login_toke"
       "n\030\002 \001(\014\"\013\n\tLogoutRsp\"\021\n\017GetAccessKeyReq\""
-      "%\n\017GetAccessKeyRsp\022\022\n\naccess_key\030\001 \001(\004\"\344"
+      "%\n\017GetAccessKeyRsp\022\022\n\naccess_key\030\001 \001(\014\"\344"
       "\002\n\010LogicMsg\022\"\n\010test_req\030\001 \001(\0132\016.logic.Te"
       "stReqH\000\022\"\n\010test_rsp\030\002 \001(\0132\016.logic.TestRs"
       "pH\000\022$\n\tlogin_req\030\003 \001(\0132\017.logic.LoginReqH"
@@ -2527,12 +2527,15 @@ GetAccessKeyRsp::GetAccessKeyRsp(const GetAccessKeyRsp& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  access_key_ = from.access_key_;
+  access_key_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.access_key().size() > 0) {
+    access_key_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.access_key_);
+  }
   // @@protoc_insertion_point(copy_constructor:logic.GetAccessKeyRsp)
 }
 
 void GetAccessKeyRsp::SharedCtor() {
-  access_key_ = GOOGLE_ULONGLONG(0);
+  access_key_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _cached_size_ = 0;
 }
 
@@ -2542,6 +2545,7 @@ GetAccessKeyRsp::~GetAccessKeyRsp() {
 }
 
 void GetAccessKeyRsp::SharedDtor() {
+  access_key_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void GetAccessKeyRsp::SetCachedSize(int size) const {
@@ -2573,7 +2577,7 @@ void GetAccessKeyRsp::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  access_key_ = GOOGLE_ULONGLONG(0);
+  access_key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
@@ -2587,14 +2591,12 @@ bool GetAccessKeyRsp::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint64 access_key = 1;
+      // bytes access_key = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &access_key_)));
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_access_key()));
         } else {
           goto handle_unusual;
         }
@@ -2627,9 +2629,10 @@ void GetAccessKeyRsp::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint64 access_key = 1;
-  if (this->access_key() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->access_key(), output);
+  // bytes access_key = 1;
+  if (this->access_key().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      1, this->access_key(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2646,9 +2649,11 @@ void GetAccessKeyRsp::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint64 access_key = 1;
-  if (this->access_key() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->access_key(), target);
+  // bytes access_key = 1;
+  if (this->access_key().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        1, this->access_key(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2668,10 +2673,10 @@ size_t GetAccessKeyRsp::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // uint64 access_key = 1;
-  if (this->access_key() != 0) {
+  // bytes access_key = 1;
+  if (this->access_key().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->access_key());
   }
 
@@ -2704,8 +2709,9 @@ void GetAccessKeyRsp::MergeFrom(const GetAccessKeyRsp& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.access_key() != 0) {
-    set_access_key(from.access_key());
+  if (from.access_key().size() > 0) {
+
+    access_key_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.access_key_);
   }
 }
 
@@ -2733,7 +2739,7 @@ void GetAccessKeyRsp::Swap(GetAccessKeyRsp* other) {
 }
 void GetAccessKeyRsp::InternalSwap(GetAccessKeyRsp* other) {
   using std::swap;
-  swap(access_key_, other->access_key_);
+  access_key_.Swap(&other->access_key_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -2746,18 +2752,57 @@ void GetAccessKeyRsp::InternalSwap(GetAccessKeyRsp* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // GetAccessKeyRsp
 
-// uint64 access_key = 1;
+// bytes access_key = 1;
 void GetAccessKeyRsp::clear_access_key() {
-  access_key_ = GOOGLE_ULONGLONG(0);
+  access_key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-::google::protobuf::uint64 GetAccessKeyRsp::access_key() const {
+const ::std::string& GetAccessKeyRsp::access_key() const {
   // @@protoc_insertion_point(field_get:logic.GetAccessKeyRsp.access_key)
-  return access_key_;
+  return access_key_.GetNoArena();
 }
-void GetAccessKeyRsp::set_access_key(::google::protobuf::uint64 value) {
+void GetAccessKeyRsp::set_access_key(const ::std::string& value) {
   
-  access_key_ = value;
+  access_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:logic.GetAccessKeyRsp.access_key)
+}
+#if LANG_CXX11
+void GetAccessKeyRsp::set_access_key(::std::string&& value) {
+  
+  access_key_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:logic.GetAccessKeyRsp.access_key)
+}
+#endif
+void GetAccessKeyRsp::set_access_key(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  access_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:logic.GetAccessKeyRsp.access_key)
+}
+void GetAccessKeyRsp::set_access_key(const void* value, size_t size) {
+  
+  access_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:logic.GetAccessKeyRsp.access_key)
+}
+::std::string* GetAccessKeyRsp::mutable_access_key() {
+  
+  // @@protoc_insertion_point(field_mutable:logic.GetAccessKeyRsp.access_key)
+  return access_key_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+::std::string* GetAccessKeyRsp::release_access_key() {
+  // @@protoc_insertion_point(field_release:logic.GetAccessKeyRsp.access_key)
+  
+  return access_key_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+void GetAccessKeyRsp::set_allocated_access_key(::std::string* access_key) {
+  if (access_key != NULL) {
+    
+  } else {
+    
+  }
+  access_key_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), access_key);
+  // @@protoc_insertion_point(field_set_allocated:logic.GetAccessKeyRsp.access_key)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

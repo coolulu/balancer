@@ -130,6 +130,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Session, is_online_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Session, user_id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Session, conn_id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Session, service_id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Session, proc_id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Session, in_ip_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Session, in_port_),
@@ -216,17 +217,17 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(Session)},
-  { 16, -1, sizeof(SessionList)},
-  { 22, -1, sizeof(ConnKey)},
-  { 30, -1, sizeof(TestReq)},
-  { 36, -1, sizeof(TestRsp)},
-  { 42, -1, sizeof(QuerySessionListReq)},
-  { 48, -1, sizeof(QuerySessionListRsp)},
-  { 54, -1, sizeof(CreateSessionReq)},
-  { 60, -1, sizeof(CreateSessionRsp)},
-  { 65, -1, sizeof(DelSessionReq)},
-  { 72, -1, sizeof(DelSessionRsp)},
-  { 77, -1, sizeof(SessionMsg)},
+  { 17, -1, sizeof(SessionList)},
+  { 23, -1, sizeof(ConnKey)},
+  { 31, -1, sizeof(TestReq)},
+  { 37, -1, sizeof(TestRsp)},
+  { 43, -1, sizeof(QuerySessionListReq)},
+  { 49, -1, sizeof(QuerySessionListRsp)},
+  { 55, -1, sizeof(CreateSessionReq)},
+  { 61, -1, sizeof(CreateSessionRsp)},
+  { 66, -1, sizeof(DelSessionReq)},
+  { 73, -1, sizeof(DelSessionRsp)},
+  { 78, -1, sizeof(SessionMsg)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -329,39 +330,39 @@ namespace {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\rsession.proto\022\007session\032\014common.proto\"\314"
+      "\n\rsession.proto\022\007session\032\014common.proto\"\340"
       "\001\n\007Session\022\021\n\tis_online\030\001 \001(\010\022\017\n\007user_id"
-      "\030\002 \001(\004\022\017\n\007conn_id\030\003 \001(\004\022\017\n\007proc_id\030\004 \001(\r"
-      "\022\r\n\005in_ip\030\005 \001(\014\022\017\n\007in_port\030\006 \001(\005\022\023\n\013crea"
-      "te_time\030\007 \001(\r\022\017\n\007version\030\010 \001(\005\022\016\n\006app_id"
-      "\030\t \001(\r\022\023\n\013app_version\030\n \001(\r\022\020\n\010dev_type\030"
-      "\013 \001(\r\"-\n\013SessionList\022\036\n\004list\030\001 \003(\0132\020.ses"
-      "sion.Session\":\n\007ConnKey\022\r\n\005in_ip\030\001 \001(\014\022\017"
-      "\n\007in_port\030\002 \001(\005\022\017\n\007conn_id\030\003 \001(\004\"\035\n\007Test"
-      "Req\022\022\n\nservice_id\030\001 \001(\005\"\037\n\007TestRsp\022\024\n\014se"
-      "rvice_name\030\001 \001(\014\"\?\n\023QuerySessionListReq\022"
-      "(\n\014user_id_list\030\001 \001(\0132\022.common.UserIdLis"
-      "t\"A\n\023QuerySessionListRsp\022*\n\014session_list"
-      "\030\001 \001(\0132\024.session.SessionList\"5\n\020CreateSe"
-      "ssionReq\022!\n\007session\030\001 \001(\0132\020.session.Sess"
-      "ion\"\022\n\020CreateSessionRsp\"D\n\rDelSessionReq"
-      "\022\017\n\007user_id\030\001 \001(\004\022\"\n\010conn_key\030\002 \001(\0132\020.se"
-      "ssion.ConnKey\"\017\n\rDelSessionRsp\"\272\003\n\nSessi"
-      "onMsg\022$\n\010test_req\030\001 \001(\0132\020.session.TestRe"
-      "qH\000\022$\n\010test_rsp\030\002 \001(\0132\020.session.TestRspH"
-      "\000\022>\n\026query_session_list_req\030\003 \001(\0132\034.sess"
-      "ion.QuerySessionListReqH\000\022>\n\026query_sessi"
-      "on_list_rsp\030\004 \001(\0132\034.session.QuerySession"
-      "ListRspH\000\0227\n\022create_session_req\030\005 \001(\0132\031."
-      "session.CreateSessionReqH\000\0227\n\022create_ses"
-      "sion_rsp\030\006 \001(\0132\031.session.CreateSessionRs"
-      "pH\000\0221\n\017del_session_req\030\007 \001(\0132\026.session.D"
-      "elSessionReqH\000\0221\n\017del_session_rsp\030\010 \001(\0132"
-      "\026.session.DelSessionRspH\000B\010\n\006choiceb\006pro"
-      "to3"
+      "\030\002 \001(\004\022\017\n\007conn_id\030\003 \001(\004\022\022\n\nservice_id\030\004 "
+      "\001(\005\022\017\n\007proc_id\030\005 \001(\r\022\r\n\005in_ip\030\006 \001(\014\022\017\n\007i"
+      "n_port\030\007 \001(\005\022\023\n\013create_time\030\010 \001(\r\022\017\n\007ver"
+      "sion\030\t \001(\005\022\016\n\006app_id\030\n \001(\r\022\023\n\013app_versio"
+      "n\030\013 \001(\r\022\020\n\010dev_type\030\014 \001(\r\"-\n\013SessionList"
+      "\022\036\n\004list\030\001 \003(\0132\020.session.Session\":\n\007Conn"
+      "Key\022\r\n\005in_ip\030\001 \001(\014\022\017\n\007in_port\030\002 \001(\005\022\017\n\007c"
+      "onn_id\030\003 \001(\004\"\035\n\007TestReq\022\022\n\nservice_id\030\001 "
+      "\001(\005\"\037\n\007TestRsp\022\024\n\014service_name\030\001 \001(\014\"\?\n\023"
+      "QuerySessionListReq\022(\n\014user_id_list\030\001 \001("
+      "\0132\022.common.UserIdList\"A\n\023QuerySessionLis"
+      "tRsp\022*\n\014session_list\030\001 \001(\0132\024.session.Ses"
+      "sionList\"5\n\020CreateSessionReq\022!\n\007session\030"
+      "\001 \001(\0132\020.session.Session\"\022\n\020CreateSession"
+      "Rsp\"D\n\rDelSessionReq\022\017\n\007user_id\030\001 \001(\004\022\"\n"
+      "\010conn_key\030\002 \001(\0132\020.session.ConnKey\"\017\n\rDel"
+      "SessionRsp\"\272\003\n\nSessionMsg\022$\n\010test_req\030\001 "
+      "\001(\0132\020.session.TestReqH\000\022$\n\010test_rsp\030\002 \001("
+      "\0132\020.session.TestRspH\000\022>\n\026query_session_l"
+      "ist_req\030\003 \001(\0132\034.session.QuerySessionList"
+      "ReqH\000\022>\n\026query_session_list_rsp\030\004 \001(\0132\034."
+      "session.QuerySessionListRspH\000\0227\n\022create_"
+      "session_req\030\005 \001(\0132\031.session.CreateSessio"
+      "nReqH\000\0227\n\022create_session_rsp\030\006 \001(\0132\031.ses"
+      "sion.CreateSessionRspH\000\0221\n\017del_session_r"
+      "eq\030\007 \001(\0132\026.session.DelSessionReqH\000\0221\n\017de"
+      "l_session_rsp\030\010 \001(\0132\026.session.DelSession"
+      "RspH\000B\010\n\006choiceb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1163);
+      descriptor, 1183);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "session.proto", &protobuf_RegisterTypes);
   ::common::protobuf_common_2eproto::AddDescriptors();
@@ -388,6 +389,7 @@ struct StaticDescriptorInitializer {
 const int Session::kIsOnlineFieldNumber;
 const int Session::kUserIdFieldNumber;
 const int Session::kConnIdFieldNumber;
+const int Session::kServiceIdFieldNumber;
 const int Session::kProcIdFieldNumber;
 const int Session::kInIpFieldNumber;
 const int Session::kInPortFieldNumber;
@@ -526,10 +528,24 @@ bool Session::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 proc_id = 4;
+      // int32 service_id = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &service_id_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 proc_id = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
@@ -540,10 +556,10 @@ bool Session::MergePartialFromCodedStream(
         break;
       }
 
-      // bytes in_ip = 5;
-      case 5: {
+      // bytes in_ip = 6;
+      case 6: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_in_ip()));
         } else {
@@ -552,10 +568,10 @@ bool Session::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 in_port = 6;
-      case 6: {
+      // int32 in_port = 7;
+      case 7: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(48u /* 48 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(56u /* 56 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -566,10 +582,10 @@ bool Session::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 create_time = 7;
-      case 7: {
+      // uint32 create_time = 8;
+      case 8: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(56u /* 56 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(64u /* 64 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
@@ -580,10 +596,10 @@ bool Session::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 version = 8;
-      case 8: {
+      // int32 version = 9;
+      case 9: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(64u /* 64 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(72u /* 72 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -594,10 +610,10 @@ bool Session::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 app_id = 9;
-      case 9: {
+      // uint32 app_id = 10;
+      case 10: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(72u /* 72 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(80u /* 80 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
@@ -608,10 +624,10 @@ bool Session::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 app_version = 10;
-      case 10: {
+      // uint32 app_version = 11;
+      case 11: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(80u /* 80 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(88u /* 88 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
@@ -622,10 +638,10 @@ bool Session::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 dev_type = 11;
-      case 11: {
+      // uint32 dev_type = 12;
+      case 12: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(88u /* 88 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(96u /* 96 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
@@ -677,45 +693,50 @@ void Session::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->conn_id(), output);
   }
 
-  // uint32 proc_id = 4;
-  if (this->proc_id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->proc_id(), output);
+  // int32 service_id = 4;
+  if (this->service_id() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->service_id(), output);
   }
 
-  // bytes in_ip = 5;
+  // uint32 proc_id = 5;
+  if (this->proc_id() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->proc_id(), output);
+  }
+
+  // bytes in_ip = 6;
   if (this->in_ip().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      5, this->in_ip(), output);
+      6, this->in_ip(), output);
   }
 
-  // int32 in_port = 6;
+  // int32 in_port = 7;
   if (this->in_port() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->in_port(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->in_port(), output);
   }
 
-  // uint32 create_time = 7;
+  // uint32 create_time = 8;
   if (this->create_time() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->create_time(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->create_time(), output);
   }
 
-  // int32 version = 8;
+  // int32 version = 9;
   if (this->version() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->version(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->version(), output);
   }
 
-  // uint32 app_id = 9;
+  // uint32 app_id = 10;
   if (this->app_id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->app_id(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(10, this->app_id(), output);
   }
 
-  // uint32 app_version = 10;
+  // uint32 app_version = 11;
   if (this->app_version() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(10, this->app_version(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(11, this->app_version(), output);
   }
 
-  // uint32 dev_type = 11;
+  // uint32 dev_type = 12;
   if (this->dev_type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(11, this->dev_type(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(12, this->dev_type(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -747,46 +768,51 @@ void Session::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->conn_id(), target);
   }
 
-  // uint32 proc_id = 4;
-  if (this->proc_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->proc_id(), target);
+  // int32 service_id = 4;
+  if (this->service_id() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->service_id(), target);
   }
 
-  // bytes in_ip = 5;
+  // uint32 proc_id = 5;
+  if (this->proc_id() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->proc_id(), target);
+  }
+
+  // bytes in_ip = 6;
   if (this->in_ip().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        5, this->in_ip(), target);
+        6, this->in_ip(), target);
   }
 
-  // int32 in_port = 6;
+  // int32 in_port = 7;
   if (this->in_port() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->in_port(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->in_port(), target);
   }
 
-  // uint32 create_time = 7;
+  // uint32 create_time = 8;
   if (this->create_time() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->create_time(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->create_time(), target);
   }
 
-  // int32 version = 8;
+  // int32 version = 9;
   if (this->version() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->version(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->version(), target);
   }
 
-  // uint32 app_id = 9;
+  // uint32 app_id = 10;
   if (this->app_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->app_id(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(10, this->app_id(), target);
   }
 
-  // uint32 app_version = 10;
+  // uint32 app_version = 11;
   if (this->app_version() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(10, this->app_version(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(11, this->app_version(), target);
   }
 
-  // uint32 dev_type = 11;
+  // uint32 dev_type = 12;
   if (this->dev_type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(11, this->dev_type(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(12, this->dev_type(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -806,7 +832,7 @@ size_t Session::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bytes in_ip = 5;
+  // bytes in_ip = 6;
   if (this->in_ip().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
@@ -825,11 +851,11 @@ size_t Session::ByteSizeLong() const {
     total_size += 1 + 1;
   }
 
-  // uint32 proc_id = 4;
-  if (this->proc_id() != 0) {
+  // int32 service_id = 4;
+  if (this->service_id() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->proc_id());
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->service_id());
   }
 
   // uint64 conn_id = 3;
@@ -839,42 +865,49 @@ size_t Session::ByteSizeLong() const {
         this->conn_id());
   }
 
-  // int32 in_port = 6;
+  // uint32 proc_id = 5;
+  if (this->proc_id() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->proc_id());
+  }
+
+  // int32 in_port = 7;
   if (this->in_port() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->in_port());
   }
 
-  // uint32 create_time = 7;
+  // uint32 create_time = 8;
   if (this->create_time() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->create_time());
   }
 
-  // int32 version = 8;
+  // int32 version = 9;
   if (this->version() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->version());
   }
 
-  // uint32 app_id = 9;
+  // uint32 app_id = 10;
   if (this->app_id() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->app_id());
   }
 
-  // uint32 app_version = 10;
+  // uint32 app_version = 11;
   if (this->app_version() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->app_version());
   }
 
-  // uint32 dev_type = 11;
+  // uint32 dev_type = 12;
   if (this->dev_type() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -920,11 +953,14 @@ void Session::MergeFrom(const Session& from) {
   if (from.is_online() != 0) {
     set_is_online(from.is_online());
   }
-  if (from.proc_id() != 0) {
-    set_proc_id(from.proc_id());
+  if (from.service_id() != 0) {
+    set_service_id(from.service_id());
   }
   if (from.conn_id() != 0) {
     set_conn_id(from.conn_id());
+  }
+  if (from.proc_id() != 0) {
+    set_proc_id(from.proc_id());
   }
   if (from.in_port() != 0) {
     set_in_port(from.in_port());
@@ -973,8 +1009,9 @@ void Session::InternalSwap(Session* other) {
   in_ip_.Swap(&other->in_ip_);
   swap(user_id_, other->user_id_);
   swap(is_online_, other->is_online_);
-  swap(proc_id_, other->proc_id_);
+  swap(service_id_, other->service_id_);
   swap(conn_id_, other->conn_id_);
+  swap(proc_id_, other->proc_id_);
   swap(in_port_, other->in_port_);
   swap(create_time_, other->create_time_);
   swap(version_, other->version_);
@@ -1035,7 +1072,21 @@ void Session::set_conn_id(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:session.Session.conn_id)
 }
 
-// uint32 proc_id = 4;
+// int32 service_id = 4;
+void Session::clear_service_id() {
+  service_id_ = 0;
+}
+::google::protobuf::int32 Session::service_id() const {
+  // @@protoc_insertion_point(field_get:session.Session.service_id)
+  return service_id_;
+}
+void Session::set_service_id(::google::protobuf::int32 value) {
+  
+  service_id_ = value;
+  // @@protoc_insertion_point(field_set:session.Session.service_id)
+}
+
+// uint32 proc_id = 5;
 void Session::clear_proc_id() {
   proc_id_ = 0u;
 }
@@ -1049,7 +1100,7 @@ void Session::set_proc_id(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:session.Session.proc_id)
 }
 
-// bytes in_ip = 5;
+// bytes in_ip = 6;
 void Session::clear_in_ip() {
   in_ip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1102,7 +1153,7 @@ void Session::set_allocated_in_ip(::std::string* in_ip) {
   // @@protoc_insertion_point(field_set_allocated:session.Session.in_ip)
 }
 
-// int32 in_port = 6;
+// int32 in_port = 7;
 void Session::clear_in_port() {
   in_port_ = 0;
 }
@@ -1116,7 +1167,7 @@ void Session::set_in_port(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:session.Session.in_port)
 }
 
-// uint32 create_time = 7;
+// uint32 create_time = 8;
 void Session::clear_create_time() {
   create_time_ = 0u;
 }
@@ -1130,7 +1181,7 @@ void Session::set_create_time(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:session.Session.create_time)
 }
 
-// int32 version = 8;
+// int32 version = 9;
 void Session::clear_version() {
   version_ = 0;
 }
@@ -1144,7 +1195,7 @@ void Session::set_version(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:session.Session.version)
 }
 
-// uint32 app_id = 9;
+// uint32 app_id = 10;
 void Session::clear_app_id() {
   app_id_ = 0u;
 }
@@ -1158,7 +1209,7 @@ void Session::set_app_id(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:session.Session.app_id)
 }
 
-// uint32 app_version = 10;
+// uint32 app_version = 11;
 void Session::clear_app_version() {
   app_version_ = 0u;
 }
@@ -1172,7 +1223,7 @@ void Session::set_app_version(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:session.Session.app_version)
 }
 
-// uint32 dev_type = 11;
+// uint32 dev_type = 12;
 void Session::clear_dev_type() {
   dev_type_ = 0u;
 }

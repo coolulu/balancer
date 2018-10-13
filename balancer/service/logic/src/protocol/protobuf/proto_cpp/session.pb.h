@@ -170,9 +170,9 @@ class Session : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // bytes in_ip = 5;
+  // bytes in_ip = 6;
   void clear_in_ip();
-  static const int kInIpFieldNumber = 5;
+  static const int kInIpFieldNumber = 6;
   const ::std::string& in_ip() const;
   void set_in_ip(const ::std::string& value);
   #if LANG_CXX11
@@ -196,11 +196,11 @@ class Session : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   bool is_online() const;
   void set_is_online(bool value);
 
-  // uint32 proc_id = 4;
-  void clear_proc_id();
-  static const int kProcIdFieldNumber = 4;
-  ::google::protobuf::uint32 proc_id() const;
-  void set_proc_id(::google::protobuf::uint32 value);
+  // int32 service_id = 4;
+  void clear_service_id();
+  static const int kServiceIdFieldNumber = 4;
+  ::google::protobuf::int32 service_id() const;
+  void set_service_id(::google::protobuf::int32 value);
 
   // uint64 conn_id = 3;
   void clear_conn_id();
@@ -208,39 +208,45 @@ class Session : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::google::protobuf::uint64 conn_id() const;
   void set_conn_id(::google::protobuf::uint64 value);
 
-  // int32 in_port = 6;
+  // uint32 proc_id = 5;
+  void clear_proc_id();
+  static const int kProcIdFieldNumber = 5;
+  ::google::protobuf::uint32 proc_id() const;
+  void set_proc_id(::google::protobuf::uint32 value);
+
+  // int32 in_port = 7;
   void clear_in_port();
-  static const int kInPortFieldNumber = 6;
+  static const int kInPortFieldNumber = 7;
   ::google::protobuf::int32 in_port() const;
   void set_in_port(::google::protobuf::int32 value);
 
-  // uint32 create_time = 7;
+  // uint32 create_time = 8;
   void clear_create_time();
-  static const int kCreateTimeFieldNumber = 7;
+  static const int kCreateTimeFieldNumber = 8;
   ::google::protobuf::uint32 create_time() const;
   void set_create_time(::google::protobuf::uint32 value);
 
-  // int32 version = 8;
+  // int32 version = 9;
   void clear_version();
-  static const int kVersionFieldNumber = 8;
+  static const int kVersionFieldNumber = 9;
   ::google::protobuf::int32 version() const;
   void set_version(::google::protobuf::int32 value);
 
-  // uint32 app_id = 9;
+  // uint32 app_id = 10;
   void clear_app_id();
-  static const int kAppIdFieldNumber = 9;
+  static const int kAppIdFieldNumber = 10;
   ::google::protobuf::uint32 app_id() const;
   void set_app_id(::google::protobuf::uint32 value);
 
-  // uint32 app_version = 10;
+  // uint32 app_version = 11;
   void clear_app_version();
-  static const int kAppVersionFieldNumber = 10;
+  static const int kAppVersionFieldNumber = 11;
   ::google::protobuf::uint32 app_version() const;
   void set_app_version(::google::protobuf::uint32 value);
 
-  // uint32 dev_type = 11;
+  // uint32 dev_type = 12;
   void clear_dev_type();
-  static const int kDevTypeFieldNumber = 11;
+  static const int kDevTypeFieldNumber = 12;
   ::google::protobuf::uint32 dev_type() const;
   void set_dev_type(::google::protobuf::uint32 value);
 
@@ -251,8 +257,9 @@ class Session : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::google::protobuf::internal::ArenaStringPtr in_ip_;
   ::google::protobuf::uint64 user_id_;
   bool is_online_;
-  ::google::protobuf::uint32 proc_id_;
+  ::google::protobuf::int32 service_id_;
   ::google::protobuf::uint64 conn_id_;
+  ::google::protobuf::uint32 proc_id_;
   ::google::protobuf::int32 in_port_;
   ::google::protobuf::uint32 create_time_;
   ::google::protobuf::int32 version_;
@@ -1527,7 +1534,21 @@ inline void Session::set_conn_id(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:session.Session.conn_id)
 }
 
-// uint32 proc_id = 4;
+// int32 service_id = 4;
+inline void Session::clear_service_id() {
+  service_id_ = 0;
+}
+inline ::google::protobuf::int32 Session::service_id() const {
+  // @@protoc_insertion_point(field_get:session.Session.service_id)
+  return service_id_;
+}
+inline void Session::set_service_id(::google::protobuf::int32 value) {
+  
+  service_id_ = value;
+  // @@protoc_insertion_point(field_set:session.Session.service_id)
+}
+
+// uint32 proc_id = 5;
 inline void Session::clear_proc_id() {
   proc_id_ = 0u;
 }
@@ -1541,7 +1562,7 @@ inline void Session::set_proc_id(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:session.Session.proc_id)
 }
 
-// bytes in_ip = 5;
+// bytes in_ip = 6;
 inline void Session::clear_in_ip() {
   in_ip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1594,7 +1615,7 @@ inline void Session::set_allocated_in_ip(::std::string* in_ip) {
   // @@protoc_insertion_point(field_set_allocated:session.Session.in_ip)
 }
 
-// int32 in_port = 6;
+// int32 in_port = 7;
 inline void Session::clear_in_port() {
   in_port_ = 0;
 }
@@ -1608,7 +1629,7 @@ inline void Session::set_in_port(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:session.Session.in_port)
 }
 
-// uint32 create_time = 7;
+// uint32 create_time = 8;
 inline void Session::clear_create_time() {
   create_time_ = 0u;
 }
@@ -1622,7 +1643,7 @@ inline void Session::set_create_time(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:session.Session.create_time)
 }
 
-// int32 version = 8;
+// int32 version = 9;
 inline void Session::clear_version() {
   version_ = 0;
 }
@@ -1636,7 +1657,7 @@ inline void Session::set_version(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:session.Session.version)
 }
 
-// uint32 app_id = 9;
+// uint32 app_id = 10;
 inline void Session::clear_app_id() {
   app_id_ = 0u;
 }
@@ -1650,7 +1671,7 @@ inline void Session::set_app_id(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:session.Session.app_id)
 }
 
-// uint32 app_version = 10;
+// uint32 app_version = 11;
 inline void Session::clear_app_version() {
   app_version_ = 0u;
 }
@@ -1664,7 +1685,7 @@ inline void Session::set_app_version(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:session.Session.app_version)
 }
 
-// uint32 dev_type = 11;
+// uint32 dev_type = 12;
 inline void Session::clear_dev_type() {
   dev_type_ = 0u;
 }
