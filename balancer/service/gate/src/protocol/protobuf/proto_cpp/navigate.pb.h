@@ -460,6 +460,20 @@ class GetAccessRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // accessors -------------------------------------------------------
 
+  // bytes access_key = 1;
+  void clear_access_key();
+  static const int kAccessKeyFieldNumber = 1;
+  const ::std::string& access_key() const;
+  void set_access_key(const ::std::string& value);
+  #if LANG_CXX11
+  void set_access_key(::std::string&& value);
+  #endif
+  void set_access_key(const char* value);
+  void set_access_key(const void* value, size_t size);
+  ::std::string* mutable_access_key();
+  ::std::string* release_access_key();
+  void set_allocated_access_key(::std::string* access_key);
+
   // bytes out_ip = 4;
   void clear_out_ip();
   static const int kOutIpFieldNumber = 4;
@@ -473,12 +487,6 @@ class GetAccessRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::std::string* mutable_out_ip();
   ::std::string* release_out_ip();
   void set_allocated_out_ip(::std::string* out_ip);
-
-  // uint64 access_key = 1;
-  void clear_access_key();
-  static const int kAccessKeyFieldNumber = 1;
-  ::google::protobuf::uint64 access_key() const;
-  void set_access_key(::google::protobuf::uint64 value);
 
   // int32 service_id = 2;
   void clear_service_id();
@@ -502,8 +510,8 @@ class GetAccessRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr access_key_;
   ::google::protobuf::internal::ArenaStringPtr out_ip_;
-  ::google::protobuf::uint64 access_key_;
   ::google::protobuf::int32 service_id_;
   ::google::protobuf::uint32 proc_id_;
   ::google::protobuf::int32 out_port_;
@@ -1006,18 +1014,57 @@ inline void GetAccessReq::set_user_id(::google::protobuf::uint64 value) {
 
 // GetAccessRsp
 
-// uint64 access_key = 1;
+// bytes access_key = 1;
 inline void GetAccessRsp::clear_access_key() {
-  access_key_ = GOOGLE_ULONGLONG(0);
+  access_key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint64 GetAccessRsp::access_key() const {
+inline const ::std::string& GetAccessRsp::access_key() const {
   // @@protoc_insertion_point(field_get:navigate.GetAccessRsp.access_key)
-  return access_key_;
+  return access_key_.GetNoArena();
 }
-inline void GetAccessRsp::set_access_key(::google::protobuf::uint64 value) {
+inline void GetAccessRsp::set_access_key(const ::std::string& value) {
   
-  access_key_ = value;
+  access_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:navigate.GetAccessRsp.access_key)
+}
+#if LANG_CXX11
+inline void GetAccessRsp::set_access_key(::std::string&& value) {
+  
+  access_key_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:navigate.GetAccessRsp.access_key)
+}
+#endif
+inline void GetAccessRsp::set_access_key(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  access_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:navigate.GetAccessRsp.access_key)
+}
+inline void GetAccessRsp::set_access_key(const void* value, size_t size) {
+  
+  access_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:navigate.GetAccessRsp.access_key)
+}
+inline ::std::string* GetAccessRsp::mutable_access_key() {
+  
+  // @@protoc_insertion_point(field_mutable:navigate.GetAccessRsp.access_key)
+  return access_key_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetAccessRsp::release_access_key() {
+  // @@protoc_insertion_point(field_release:navigate.GetAccessRsp.access_key)
+  
+  return access_key_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetAccessRsp::set_allocated_access_key(::std::string* access_key) {
+  if (access_key != NULL) {
+    
+  } else {
+    
+  }
+  access_key_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), access_key);
+  // @@protoc_insertion_point(field_set_allocated:navigate.GetAccessRsp.access_key)
 }
 
 // int32 service_id = 2;
