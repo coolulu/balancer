@@ -75,6 +75,8 @@ void Heartbeat::handle(const center::CenterMsg& msg)
 					save_conf(req);
 
 					B_LOG_ERROR << "update conf_json, success";
+
+					_proc._count_load.check_inservice();
 				}
 				else
 				{
