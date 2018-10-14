@@ -7,11 +7,21 @@
 
 ### 服务id
     unsigned short max  = 65535
-    eg:
-    gate:
-        11000
-    group:
-        12000
+
+    enum ServiceId {
+        BEGIN        = 0;
+
+        CLIENT       = 100;
+
+        CENTER       = 10100;
+        NAVIGATE     = 10200;
+        GATE         = 10300;
+        SESSION      = 10400;
+        LOGIC        = 10500;
+        PROXY        = 10600;
+
+        END          = 65535;
+    }
 
 ### 端口
     unsigned short max  = 65535
@@ -122,98 +132,25 @@
         ERR_BUSINESS_END                = 99999;
     }
 
-#### protobuf 2
     data.proto
 
-    message Body {
-        optional uint32     error_code      = 1;        // rsp必填
-        optional bytes      error_info      = 2;        // rsp必填
-
-        extensions 10000 to 60000;                      // 扩展各个服务消息
+    message MsgReq {
+        // 方便以后扩展
     }
 
-    gate.proto
-
-    enum ErrorCode {
-        ERR_BEGIN                       = 1010000000;
-
-        // 系统错误码
-        ERR_SYS_BEGIN                   = 1010000100;
-        ERR_SYS_OVERLOAD                = 1010000101;       // 服务过载
-        ERR_SYS_REJECT_SERVICE          = 1010000102;       // 拒绝服务
-        ERR_SYS_SERVER_INNER            = 1010000103;       // 服务内部错误
-        ERR_SYS_TIMEOUT                 = 1010000104;       // 超时错误
-        ERR_SYS_NO_INSERVICE_LIST       = 1010000105;       // 没有可用服务ip
-        ERR_SYS_TASK_STATE              = 1010000106;       // 任务状态错误
-        ERR_SYS_TASK_DISCARD            = 1010000107;       // 任务丢弃
-        ERR_SYS_END                     = 1010000199;
-
-        // 数据包错误码
-        ERR_PACKET_BEGIN                = 1010000200;
-        ERR_PACKET_ENCODE               = 1010000201;          // 打包失败
-        ERR_PACKET_DECODE               = 1010000202;          // 解码失败
-        ERR_PACKET_HEADER               = 1010000203;
-        ERR_PACKET_LEN                  = 1010000204;
-        ERR_PACKET_VERSION              = 1010000205;
-        ERR_PACKET_FROM_SERVICE_ID      = 1010000206;
-        ERR_PACKET_TO_SERVICE_ID        = 1010000207;
-        ERR_PACKET_APP_ID               = 1010000208;
-        ERR_PACKET_APP_VERSION          = 1010000209;
-        ERR_PACKET_CONN_SEQ_ID          = 1010000210;
-        ERR_PACKET_MSG_SEQ_ID           = 1010000211;
-        ERR_PACKET_DATA_FORMAT          = 1010000212;
-        ERR_PACKET_DATA_FIELD_0         = 1010000213;
-        ERR_PACKET_DATA_FIELD_1         = 1010000214;
-        ERR_PACKET_DATA_FIELD_2         = 1010000215;
-        ERR_PACKET_DATA_FIELD_3         = 1010000216;
-        ERR_PACKET_CHECK_SUM            = 1010000217;
-        ERR_PACKET_UNKNOWN_REQUEST      = 1010000218;          // 不明请求
-        ERR_PACKET_END                  = 1010000299;
-
-        // 接口错误码
-        ERR_INTERFACE_BEGIN             = 1010000300;
-        ERR_INTERFACE_PARAM             = 1010000301;       // 参数错误
-        ERR_INTERFACE_PERM              = 1010000302;       // 权限错误
-        ERR_INTERFACE_END               = 1010000399;
-
-        // 业务错误码
-        ERR_BUSINESS_BEGIN              = 1010010000;
-        ERR_USERID_NO_EXIST             = 1010010001;
-
-        ERR_END                         = 1010099999;
+    message MsgRsp {
+        int32           code  = 1;
+        bytes           info  = 2;
     }
-
-    message GateMsg {                                       // 奇数是请求，偶数是响应
-        oneof choice {
-            LoginReq        login_req       = 1;            // 登录请求
-            LoginRsp        login_rsp       = 2;            // 登录响应
-        }
-    }
-
-    extend Data.Body {
-        optional GateMsg    gate_msg        = 10100;        // gate的service_id
-    }
-
-#### protobuf 3
-    data.proto
 
     message Body {
+
         oneof msg_type {
             MsgReq  msg_req = 1;
             MsgRsq  msg_rsp = 2;
         }
 
         google.protobuf.Any service_msg    = 3;        // 扩展各个服务消息
-
-
-        message MsgReq {
-            // 方便以后扩展
-        }
-
-        message MsgRsq {
-            int32           code  = 1;
-            bytes           info  = 2;
-        }
     }
 
     gate.proto
@@ -236,8 +173,8 @@
 
         // 数据包错误码
         ERR_PACKET_BEGIN                = 1010000200;
-        ERR_PACKET_ENCODE               = 1010000201;          // 打包失败
-        ERR_PACKET_DECODE               = 1010000202;          // 解码失败
+        ERR_PACKET_ENCODE               = 1010000201;       // 打包失败
+        ERR_PACKET_DECODE               = 1010000202;       // 解码失败
         ERR_PACKET_HEADER               = 1010000203;
         ERR_PACKET_LEN                  = 1010000204;
         ERR_PACKET_VERSION              = 1010000205;
@@ -253,7 +190,7 @@
         ERR_PACKET_DATA_FIELD_2         = 1010000215;
         ERR_PACKET_DATA_FIELD_3         = 1010000216;
         ERR_PACKET_CHECK_SUM            = 1010000217;
-        ERR_PACKET_UNKNOWN_REQUEST      = 1010000218;          // 不明请求
+        ERR_PACKET_UNKNOWN_REQUEST      = 1010000218;       // 不明请求
         ERR_PACKET_END                  = 1010000299;
 
         // 接口错误码
@@ -269,10 +206,18 @@
         ERR_END                         = 1010099999;
     }
 
+    message TestReq {
+        int32   service_id          = 1;
+    }
+
+    message TestRsp {
+        bytes   service_name        = 1;
+    }
+
     message GateMsg {                                       // 奇数是请求，偶数是响应
         oneof choice {
-            LoginReq        login_req       = 1;            // 登录请求
-            LoginRsp        login_rsp       = 2;            // 登录响应
+            TestReq        test_req       = 1;              // test请求
+            TestRsp        test_rsp       = 2;              // test响应
         }
     }
 
@@ -322,111 +267,12 @@
 ### 中心服务
     service_type: center
 
-#### 服务列表
-    service.conf
-    {
-        "service_list": [
-            {
-                "service": "gate",
-                "service_id": 1,
-                "heartbeat": {
-                    "heartbeat_ip": in_ip",             // 用in_ip或out_ip做心跳
-                    "heartbeat_gap": 5,                 // 心跳探测间隔
-                    "lose_time": 3,                     // 服务丢失次数
-                    "recover_time": 5                   // 服务恢复次数
-                },
-                "file_path": {
-                    "depend": "./depend_gate.conf",
-                    "idc": "./idc_gate.conf",
-                    "kv": "./kv_gate.conf"
-                }
-            },
-            {
-                "service": "group",
-                "service_id": 2,
-                "heartbeat": {
-                    "heartbeat_ip": "out_ip",
-                    "heartbeat_gap": 5,
-                    "lose_time": 3,
-                    "recover_time": 5
-                },
-                "file_path": {
-                    "depend": "./depend_gate.conf",
-                    "idc": "./idc_gate.conf",
-                    "kv": "./kv_gate.conf"
-                }
-            }
-        ]
-    }
-
-#### 服务依赖列表
-    depend_gate.conf
-    {
-        "service": "gate",
-        "depend_list": [
-            {
-                "service": "group"
-            },
-            {
-                "service": "buddy"
-            }
-        ]
-    }
-
-#### 服务idc列表
-    idc_gate.conf
-    {
-        "service": "gate",
-        "idc_list": [
-            {
-                "idc": "shenzhen_01",                       // 地区机房分组
-                "set_list": [
-                    {
-                        "set": "set_01",                    // 机房内部分组
-                        "heartbeat_list": [
-                            {
-                                "id": "id_01",
-                                "in_ip": "121.1.1.1",       // 内网ip
-                                "out_ip": "11.1.1.1",       // 外网ip,没外网填内网ip
-                                "port": 11001
-                            }
-                        ],
-                        "inservice_list": [
-                            {
-                                "id": "id_02",
-                                "in_ip": "121.1.1.2",
-                                "out_ip": "11.1.1.2",
-                                "port": 11002
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
-
-#### 模块kv配置列表
-    kv_gate.conf
-    {
-        "service": "gate",
-        "kv_list": [
-            {
-                "key": "timeout",
-                "val": "30"
-            },
-            {
-                "key": "env",
-                "val": "test"
-            }
-        ]
-    }
-
-#### 集中简化
+#### 编号规则
     proc_id编号规则 x[n]:y[2]，相同service下不能重复
     x:机器编号
     y:该机器的进程编号(占最后两位)
 
-##### 字段检查:
+#### 字段检查:
     1.所有字段名必须存在
     2.字段值字符串不能为空
     3.字段值数值类型不能小于等于0
@@ -436,13 +282,13 @@
     7.同一个service内，depend_map.depend_service_name不能重复
     8.depend_map.depend_service_name必须存在service_map.service_name中
 
-##### 读操作:
+#### 读操作:
     1.查询，返回service_id，service_name列表
     2.根据service_id查询，返回service_id，service_name，heartbeat，depend_map，kv_map，heartbeat_list，inservice_list
     3.根据service_id查询，返回服务所有依赖的配置service_id，service_name，heartbeat，depend_map，kv_map，inservice_list,
      （依赖服务inservice_list可用的ip_info，服务可以自己依赖自己）
 
-##### 写操作:
+#### 写操作:
     1.根据service_id，修改heartbeat成员值
     2.根据service_id，depend_service_id，增加depend_map的depend_service_id
     3.根据service_id，depend_service_id，删除depend_map的depend_service_id
@@ -456,7 +302,7 @@
     11.根据service_id，service_id，heartbeat增加service
     12.根据service_id，删除service
 
-##### service.json
+#### service.json
     {
         "service_map": [
             {
@@ -597,14 +443,18 @@
 #### 故障恢复
 
 #### center之间配置同步
-    只有全局配置，先不搞局部配置和精细化控制
+    1.只有全局配置，先不搞局部配置和精细化控制
     同步配置(http请求定时查询同步)
-    1 <-----2 <-----3 <--|
+    1 <---- 2 <---- 3 <--|
     |--------—-----------|
 
     1为最高角色，当1设置为‘同步’状态，2定时请求1拉的配置，当2请求配置跟新完毕后返回，1设置为‘同步中’，
     3定时请求2拉的配置，1定时请求拉3的配置，由于3等级比1小，3收到比自己大等级的请求说明自己是最后一个，
     返回3的配置信息，1收到3的返回比较本地配置信息，设置为‘同步完成’
+
+    2.主-从
+    1 <----- 2
+    2定时请求1，2请求带上配置时间，当1接收请求发现配置时间不同时就下发配置，2接收配置更新配置时间
 
 ### 导航服务
     service_type: navigate
@@ -614,9 +464,10 @@
 
     如果要统一外网端口或减少外网ip机器数量(成本)，则在前面放nginx转后到后方多个端口的navigate
 
-    登录流程client去navigate拿key_client = key(uint64) xor {当前时间戳(uint32)，userid(uint32)}，
-    logic请求client返回得到key_client和key异或出拿key的时间戳和userid，
-    比较当前时间大于60秒key失效和userid是否和登录接口userid一致
+    登录流程client去navigate拿client_key,
+    client_key = navigate_key XOR fun(userid, time_now_us + navigate_key_timeout_us)
+    logic请求client返回得到client_key和navigate_key异或出拿userid和时间，
+    userid是否和登录接口userid一致 和 比较当前时间大于等时间失效
 
 ### 网关服务
     service_type: gate
@@ -624,6 +475,11 @@
     每次gate被接管时，要赋值center发送给的proc_id，以便同步navigate时报上自己proc_id，方便navigate根据proc_id更新
 
     navigate每秒检查一次找出最小负载，最小负载proc_id变换时，更新到每个httpsrver的最小proc_id
+
+#### 客户端连接
+    1.当客户(主动or被动)连接断开完成后，触发调用Session.DelSession，删除客户端session
+
+#### 登录
 
 ### 会话服务
     service_type: session
@@ -653,7 +509,6 @@
     ip(uint) or ip(string)
 
     结论：用gate_ip，内网ip字符串
-
 
 ### 逻辑服务
     service_type: logic
@@ -763,9 +618,10 @@
 
 
 ## 负载均衡
+    根据Packet.proc_id来判断，0为负载均衡，以轮询的方式
 
 ## 请求路由
-    proc_id
+    根据Packet.proc_id来判断，非0则请求到proc_id的服务
 
 ## 过载保护
 
@@ -776,3 +632,7 @@
 ### 有状态服务灰度发布
 
 ## 就近接入
+    通过给依赖服务增加新的service_id来区分
+    eg:
+    navigate[cn] <---> gate[cn]
+    navigate[hk] <---> gate[hk]
