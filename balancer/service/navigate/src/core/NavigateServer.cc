@@ -92,22 +92,22 @@ void NavigateServer::on_http_request(const muduo::net::HttpRequest& req, muduo::
 		ss_user_id << std::setfill('0') << std::setw(20) << user_id;
 		std::string str_user_id = ss_user_id.str();
 
-		unsigned long long now = Util::get_us();
-		std::stringstream ss_now;
-		ss_now << std::setfill('0') << std::setw(20) << now;
-		std::string str_now = ss_now.str();
+		unsigned long long last_time = Util::get_us() + _proc._is.kv()._navigate_key_timeout_us;
+		std::stringstream ss_last_time;
+		ss_last_time << std::setfill('0') << std::setw(20) << last_time;
+		std::string str_last_time = ss_last_time.str();
 
-		if(str_user_id.size() != 20 || str_now.size() != 20)
+		if(str_user_id.size() != 20 || str_last_time.size() != 20)
 		{
-			B_LOG_ERROR << "str_user_id.size() != 20 or str_now.size() != 20"
+			B_LOG_ERROR << "str_user_id.size() != 20 or str_last_time.size() != 20"
 						<< ", user_id=" << user_id
 						<< ", str_user_id=" << str_user_id
-						<< ", now=" << now
-						<< ", str_now=" << str_now;
+						<< ", last_time=" << last_time
+						<< ", str_last_time=" << str_last_time;
 			return;
 		}
 
-		std::string navigate_key = "1";
+		const std::string& navigate_key = _proc._is.kv()._navigate_key;
 		if(navigate_key.empty())
 		{
 			B_LOG_ERROR << "navigate_key is empty";
@@ -115,26 +115,26 @@ void NavigateServer::on_http_request(const muduo::net::HttpRequest& req, muduo::
 		}
 
 		std::string user_key;
-		user_key = str_user_id[18] + str_now[19] 
-				 + str_user_id[16] + str_now[17] 
-				 + str_user_id[14] + str_now[15] 
-				 + str_user_id[12] + str_now[13] 
-				 + str_user_id[10] + str_now[11] 
-				 + str_user_id[8]  + str_now[9] 
-				 + str_user_id[6]  + str_now[7] 
-				 + str_user_id[4]  + str_now[5] 
-				 + str_user_id[2]  + str_now[3] 
-				 + str_user_id[0]  + str_now[1] 
-				 + str_user_id[1]  + str_now[0]
-				 + str_user_id[3]  + str_now[2]
-				 + str_user_id[5]  + str_now[4]
-				 + str_user_id[7]  + str_now[6]
-				 + str_user_id[9]  + str_now[8]
-				 + str_user_id[11] + str_now[10]
-				 + str_user_id[13] + str_now[12]
-				 + str_user_id[15] + str_now[14]
-				 + str_user_id[17] + str_now[16]
-				 + str_user_id[19] + str_now[18];
+		user_key = str_user_id[18] + str_last_time[19] 
+				 + str_user_id[16] + str_last_time[17] 
+				 + str_user_id[14] + str_last_time[15] 
+				 + str_user_id[12] + str_last_time[13] 
+				 + str_user_id[10] + str_last_time[11] 
+				 + str_user_id[8]  + str_last_time[9] 
+				 + str_user_id[6]  + str_last_time[7] 
+				 + str_user_id[4]  + str_last_time[5] 
+				 + str_user_id[2]  + str_last_time[3] 
+				 + str_user_id[0]  + str_last_time[1] 
+				 + str_user_id[1]  + str_last_time[0]
+				 + str_user_id[3]  + str_last_time[2]
+				 + str_user_id[5]  + str_last_time[4]
+				 + str_user_id[7]  + str_last_time[6]
+				 + str_user_id[9]  + str_last_time[8]
+				 + str_user_id[11] + str_last_time[10]
+				 + str_user_id[13] + str_last_time[12]
+				 + str_user_id[15] + str_last_time[14]
+				 + str_user_id[17] + str_last_time[16]
+				 + str_user_id[19] + str_last_time[18];
 
 		std::string access_key;
 		for(unsigned int i = 0; i != user_key.size(); i++)
