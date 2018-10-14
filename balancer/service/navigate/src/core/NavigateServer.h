@@ -6,6 +6,9 @@
 #include <muduo/net/http/HttpRequest.h>
 #include <muduo/net/http/HttpResponse.h>
 #include <muduo/net/EventLoopThreadPool.h>
+#include "muduo/base/Mutex.h"
+
+#include "CountLoad.h"
 
 class Proc;
 
@@ -20,10 +23,15 @@ public:
 	void ready_destroy();
 	void destroy();
 
+	void update_load_result(const LoadResult& load_result);
+
 public:
 	Proc& _proc;
 	unsigned int _index;
 	muduo::net::HttpServer _http_server;
+
+	muduo::MutexLock _mutex_load_result;
+	LoadResult _load_result;
 };
 
 class NavigatePool
@@ -35,7 +43,7 @@ public:
 public:
 	void start();
 	
-private:
+public:
 	Proc& _proc;
 	int _thread_size;
 	muduo::net::EventLoopThreadPool* _p_event_loop_thread_pool;
