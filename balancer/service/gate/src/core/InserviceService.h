@@ -4,6 +4,7 @@
 #include <map>
 
 #include "config/ServiceConfig.h"
+#include "Kv.h"
 
 struct InserviceList
 {
@@ -27,6 +28,8 @@ public:
 	// 依赖服务ip列表是否可用，不可用则拒绝服务
 	inline bool is_ok(){return _is_ok;}
 
+	inline const Kv& kv(){return _kv;}
+
 	// 用本服务的service_id拿到依赖service_id,加载依赖服务ipinfo
 	bool load_ip_info(unsigned short service_id, ServiceConfig& sc);
 	ServiceConfig::IPInfo* get_ip_info(unsigned short depend_service_id);
@@ -36,6 +39,6 @@ public:
 private:
 	bool _is_ok;
 	std::map<unsigned short, InserviceList> _map;
-	
+	Kv _kv;
 
 };

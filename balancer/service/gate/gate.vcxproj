@@ -85,6 +85,7 @@
     <ClCompile Include="src\core\Codec.cc" />
     <ClCompile Include="src\core\GateServer.cc" />
     <ClCompile Include="src\core\InserviceService.cc" />
+    <ClCompile Include="src\core\Kv.cc" />
     <ClCompile Include="src\core\Owner.cc" />
     <ClCompile Include="src\core\Packet.cc" />
     <ClCompile Include="src\core\PacketStream.cc" />
@@ -133,6 +134,7 @@
     <ClInclude Include="src\core\Codec.h" />
     <ClInclude Include="src\core\GateServer.h" />
     <ClInclude Include="src\core\InserviceService.h" />
+    <ClInclude Include="src\core\Kv.h" />
     <ClInclude Include="src\core\Owner.h" />
     <ClInclude Include="src\core\Packet.h" />
     <ClInclude Include="src\core\PacketStream.h" />

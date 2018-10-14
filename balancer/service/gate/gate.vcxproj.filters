@@ -224,6 +224,9 @@
     <ClCompile Include="src\core\PutLoad.cc">
       <Filter>src\core</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\Kv.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\config\Config.h">
@@ -365,6 +368,9 @@
       <Filter>src\protocol\protobuf</Filter>
     </ClInclude>
     <ClInclude Include="src\core\PutLoad.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Kv.h">
       <Filter>src\core</Filter>
     </ClInclude>
   </ItemGroup>

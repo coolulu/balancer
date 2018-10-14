@@ -30,7 +30,7 @@ bool InserviceService::load_ip_info(unsigned short service_id, ServiceConfig& sc
 			InserviceList(it->second.depend_service_id, p_depend_service->inservice_list)));
 	}
 
-	return _is_ok = true;
+	return _is_ok = _kv.load_kv(p->kv_map);
 }
 
 ServiceConfig::IPInfo* InserviceService::get_ip_info(unsigned short depend_service_id)
