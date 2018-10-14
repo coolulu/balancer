@@ -4,6 +4,7 @@
 #include "protocol/Protocol.h"
 
 #include "handle/server/Heartbeat.h"
+#include "handle/server/PutLoad.h"
 
 HandleServer::HandleServer(Proc& proc)
 	: _proc(proc)
@@ -64,7 +65,11 @@ void HandleServer::handle_request(const muduo::net::TcpConnectionPtr& conn,
 		switch (msg.choice_case())
 		{
 		case navigate::NavigateMsg::kTestReq:
-			
+			{
+				B_LOG_INFO << "navigate::PutLoadReq, _msg_seq_id=" << packet_ptr->_msg_seq_id;
+				PutLoad pl(_proc, conn, packet_ptr, time);
+				pl.handle(msg);
+			}
 			break;
 
 		default:
