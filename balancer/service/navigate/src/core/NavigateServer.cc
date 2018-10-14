@@ -1,5 +1,8 @@
 #include "NavigateServer.h"
 
+#include <sstream>
+#include <iomanip>
+
 #include <boost/bind.hpp>
 #include "Proc.h"
 #include "log/Log.h"
@@ -83,8 +86,68 @@ void NavigateServer::on_http_request(const muduo::net::HttpRequest& req, muduo::
 			return;	
 		}
 
+		// unsigned long long范围[0, 18446744073709551615], strlen("18446744073709551615") = 20
+		// unsigned long long转字符串不足20位前面补0
+		std::stringstream ss_user_id;
+		ss_user_id << std::setfill('0') << std::setw(20) << user_id;
+		std::string str_user_id = ss_user_id.str();
+
+		unsigned long long now = Util::get_us();
+		std::stringstream ss_now;
+		ss_now << std::setfill('0') << std::setw(20) << now;
+		std::string str_now = ss_now.str();
+
+		if(str_user_id.size() != 20 || str_now.size() != 20)
+		{
+			B_LOG_ERROR << "str_user_id.size() != 20 or str_now.size() != 20"
+						<< ", user_id=" << user_id
+						<< ", str_user_id=" << str_user_id
+						<< ", now=" << now
+						<< ", str_now=" << str_now;
+			return;
+		}
+
+		std::string navigate_key = "1";
+		if(navigate_key.empty())
+		{
+			B_LOG_ERROR << "navigate_key is empty";
+			return;
+		}
+
+		std::string user_key;
+		user_key = str_user_id[18] + str_now[19] 
+				 + str_user_id[16] + str_now[17] 
+				 + str_user_id[14] + str_now[15] 
+				 + str_user_id[12] + str_now[13] 
+				 + str_user_id[10] + str_now[11] 
+				 + str_user_id[8]  + str_now[9] 
+				 + str_user_id[6]  + str_now[7] 
+				 + str_user_id[4]  + str_now[5] 
+				 + str_user_id[2]  + str_now[3] 
+				 + str_user_id[0]  + str_now[1] 
+				 + str_user_id[1]  + str_now[0]
+				 + str_user_id[3]  + str_now[2]
+				 + str_user_id[5]  + str_now[4]
+				 + str_user_id[7]  + str_now[6]
+				 + str_user_id[9]  + str_now[8]
+				 + str_user_id[11] + str_now[10]
+				 + str_user_id[13] + str_now[12]
+				 + str_user_id[15] + str_now[14]
+				 + str_user_id[17] + str_now[16]
+				 + str_user_id[19] + str_now[18];
+
+		std::string access_key;
+		for(unsigned int i = 0; i != user_key.size(); i++)
+		{
+			access_key += user_key[i] ^ navigate_key[i % navigate_key.size()];
+		}
+
+		B_LOG_INFO	<< "navigate_key=" << navigate_key
+					<< ", user_key=" << user_key
+					<< ", access_key=" << access_key;
+
 		navigate::GetAccessRsp getAccessRsp;
-		getAccessRsp.set_access_key("");
+		getAccessRsp.set_access_key(access_key);
 		getAccessRsp.set_service_id(load_proc._service_id);
 		getAccessRsp.set_proc_id(load_proc._ip_info.proc_id);
 		getAccessRsp.set_out_ip(load_proc._ip_info.out_ip);
