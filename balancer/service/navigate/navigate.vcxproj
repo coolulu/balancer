@@ -79,6 +79,7 @@
     <ClCompile Include="src\core\BHttpServer.cc" />
     <ClCompile Include="src\core\BTcpServer.cc" />
     <ClCompile Include="src\core\Codec.cc" />
+    <ClCompile Include="src\core\CountLoad.cc" />
     <ClCompile Include="src\core\InserviceService.cc" />
     <ClCompile Include="src\core\NavigateServer.cc" />
     <ClCompile Include="src\core\Owner.cc" />
@@ -89,6 +90,7 @@
     <ClCompile Include="src\core\Timer.cc" />
     <ClCompile Include="src\handle\HandleServer.cc" />
     <ClCompile Include="src\handle\server\Heartbeat.cc" />
+    <ClCompile Include="src\handle\server\PutLoad.cc" />
     <ClCompile Include="src\log\Log.cc" />
     <ClCompile Include="src\main.cc" />
     <ClCompile Include="src\protocol\protobuf\CenterStack.cc" />
@@ -108,6 +110,7 @@
     <ClInclude Include="src\core\BHttpServer.h" />
     <ClInclude Include="src\core\BTcpServer.h" />
     <ClInclude Include="src\core\Codec.h" />
+    <ClInclude Include="src\core\CountLoad.h" />
     <ClInclude Include="src\core\InserviceService.h" />
     <ClInclude Include="src\core\NavigateServer.h" />
     <ClInclude Include="src\core\Owner.h" />
@@ -119,6 +122,7 @@
     <ClInclude Include="src\define.h" />
     <ClInclude Include="src\handle\HandleServer.h" />
     <ClInclude Include="src\handle\server\Heartbeat.h" />
+    <ClInclude Include="src\handle\server\PutLoad.h" />
     <ClInclude Include="src\log\Log.h" />
     <ClInclude Include="src\protocol\protobuf\CenterStack.h" />
     <ClInclude Include="src\protocol\protobuf\NavigateStack.h" />
