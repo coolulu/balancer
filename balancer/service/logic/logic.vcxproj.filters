@@ -191,6 +191,9 @@
     <ClInclude Include="src\protocol\protobuf\proto_cpp\session.pb.h">
       <Filter>src\protocol\protobuf\proto_cpp</Filter>
     </ClInclude>
+    <ClInclude Include="src\core\Kv.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cc">
@@ -297,6 +300,9 @@
     </ClCompile>
     <ClCompile Include="src\protocol\protobuf\proto_cpp\session.pb.cc">
       <Filter>src\protocol\protobuf\proto_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Kv.cc">
+      <Filter>src\core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
