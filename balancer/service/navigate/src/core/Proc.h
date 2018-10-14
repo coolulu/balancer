@@ -12,6 +12,7 @@
 #include "Seq.h"
 #include "Owner.h"
 #include "InserviceService.h"
+#include "CountLoad.h"
 
 class Proc
 {
@@ -46,6 +47,7 @@ public:
 	Log _log;
 	Config _config;
 	ServiceConfig _sc;
+	CountLoad _count_load;
 	
 	BTcpServer _tcp_server;
 	BHttpServer _http_server;

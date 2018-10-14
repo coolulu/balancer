@@ -15,4 +15,5 @@ Timer::~Timer()
 void Timer::check_timeout()
 {
 	_proc.check_flag();
+	_proc._count_load.check_count();
 }

@@ -16,7 +16,8 @@ Proc::Proc(muduo::net::EventLoop& loop,
 		_tcp_server(*this),
 		_http_server(*this),
 		_navigate_pool(*this),
-		_timer(*this)
+		_timer(*this),
+		_count_load(*this)
 {
 
 }
