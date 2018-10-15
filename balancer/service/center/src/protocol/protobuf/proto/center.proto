@@ -94,14 +94,25 @@ message HeartbeatRsp {
                                             // 非接管center根据expire_second判断是否需要接管服务
 }
 
+message SyncServiceReq {
+    uint64   conf_update_time	    = 1;
+}
+
+message SyncServiceRsp {
+	uint64   conf_update_time	    = 1;
+    bytes    conf_json      	    = 2;
+}
+
 message CenterMsg {                         // 奇数是请求，偶数是响应
     oneof choice {
-        //测试
+
         TestReq         test_req        = 1;        // 请求
         TestRsp         test_rsp        = 2;        // 响应
+   
+        HeartbeatReq    heartbeat_req   = 3;        // 心跳探测
+        HeartbeatRsp    heartbeat_rsp   = 4;
 
-        //心跳探测
-        HeartbeatReq    Heartbeat_req   = 3;
-        HeartbeatRsp    Heartbeat_rsp   = 4;
+        SyncServiceReq  sync_service_req = 5;       // center主从同步
+        SyncServiceRsp  sync_service_rsp = 6;
     }
 }

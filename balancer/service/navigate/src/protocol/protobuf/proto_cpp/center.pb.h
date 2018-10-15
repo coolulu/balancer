@@ -41,6 +41,12 @@ extern HeartbeatReqDefaultTypeInternal _HeartbeatReq_default_instance_;
 class HeartbeatRsp;
 class HeartbeatRspDefaultTypeInternal;
 extern HeartbeatRspDefaultTypeInternal _HeartbeatRsp_default_instance_;
+class SyncServiceReq;
+class SyncServiceReqDefaultTypeInternal;
+extern SyncServiceReqDefaultTypeInternal _SyncServiceReq_default_instance_;
+class SyncServiceRsp;
+class SyncServiceRspDefaultTypeInternal;
+extern SyncServiceRspDefaultTypeInternal _SyncServiceRsp_default_instance_;
 class TestReq;
 class TestReqDefaultTypeInternal;
 extern TestReqDefaultTypeInternal _TestReq_default_instance_;
@@ -638,6 +644,215 @@ class HeartbeatRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
 };
 // -------------------------------------------------------------------
 
+class SyncServiceReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:center.SyncServiceReq) */ {
+ public:
+  SyncServiceReq();
+  virtual ~SyncServiceReq();
+
+  SyncServiceReq(const SyncServiceReq& from);
+
+  inline SyncServiceReq& operator=(const SyncServiceReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  SyncServiceReq(SyncServiceReq&& from) noexcept
+    : SyncServiceReq() {
+    *this = ::std::move(from);
+  }
+
+  inline SyncServiceReq& operator=(SyncServiceReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SyncServiceReq& default_instance();
+
+  static inline const SyncServiceReq* internal_default_instance() {
+    return reinterpret_cast<const SyncServiceReq*>(
+               &_SyncServiceReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    4;
+
+  void Swap(SyncServiceReq* other);
+  friend void swap(SyncServiceReq& a, SyncServiceReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SyncServiceReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  SyncServiceReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const SyncServiceReq& from);
+  void MergeFrom(const SyncServiceReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(SyncServiceReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 conf_update_time = 1;
+  void clear_conf_update_time();
+  static const int kConfUpdateTimeFieldNumber = 1;
+  ::google::protobuf::uint64 conf_update_time() const;
+  void set_conf_update_time(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:center.SyncServiceReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 conf_update_time_;
+  mutable int _cached_size_;
+  friend struct protobuf_center_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class SyncServiceRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:center.SyncServiceRsp) */ {
+ public:
+  SyncServiceRsp();
+  virtual ~SyncServiceRsp();
+
+  SyncServiceRsp(const SyncServiceRsp& from);
+
+  inline SyncServiceRsp& operator=(const SyncServiceRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  SyncServiceRsp(SyncServiceRsp&& from) noexcept
+    : SyncServiceRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline SyncServiceRsp& operator=(SyncServiceRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SyncServiceRsp& default_instance();
+
+  static inline const SyncServiceRsp* internal_default_instance() {
+    return reinterpret_cast<const SyncServiceRsp*>(
+               &_SyncServiceRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    5;
+
+  void Swap(SyncServiceRsp* other);
+  friend void swap(SyncServiceRsp& a, SyncServiceRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SyncServiceRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  SyncServiceRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const SyncServiceRsp& from);
+  void MergeFrom(const SyncServiceRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(SyncServiceRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bytes conf_json = 2;
+  void clear_conf_json();
+  static const int kConfJsonFieldNumber = 2;
+  const ::std::string& conf_json() const;
+  void set_conf_json(const ::std::string& value);
+  #if LANG_CXX11
+  void set_conf_json(::std::string&& value);
+  #endif
+  void set_conf_json(const char* value);
+  void set_conf_json(const void* value, size_t size);
+  ::std::string* mutable_conf_json();
+  ::std::string* release_conf_json();
+  void set_allocated_conf_json(::std::string* conf_json);
+
+  // uint64 conf_update_time = 1;
+  void clear_conf_update_time();
+  static const int kConfUpdateTimeFieldNumber = 1;
+  ::google::protobuf::uint64 conf_update_time() const;
+  void set_conf_update_time(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:center.SyncServiceRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr conf_json_;
+  ::google::protobuf::uint64 conf_update_time_;
+  mutable int _cached_size_;
+  friend struct protobuf_center_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class CenterMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:center.CenterMsg) */ {
  public:
   CenterMsg();
@@ -672,6 +887,8 @@ class CenterMsg : public ::google::protobuf::Message /* @@protoc_insertion_point
     kTestRsp = 2,
     kHeartbeatReq = 3,
     kHeartbeatRsp = 4,
+    kSyncServiceReq = 5,
+    kSyncServiceRsp = 6,
     CHOICE_NOT_SET = 0,
   };
 
@@ -680,7 +897,7 @@ class CenterMsg : public ::google::protobuf::Message /* @@protoc_insertion_point
                &_CenterMsg_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    4;
+    6;
 
   void Swap(CenterMsg* other);
   friend void swap(CenterMsg& a, CenterMsg& b) {
@@ -745,7 +962,7 @@ class CenterMsg : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::center::TestRsp* release_test_rsp();
   void set_allocated_test_rsp(::center::TestRsp* test_rsp);
 
-  // .center.HeartbeatReq Heartbeat_req = 3;
+  // .center.HeartbeatReq heartbeat_req = 3;
   bool has_heartbeat_req() const;
   void clear_heartbeat_req();
   static const int kHeartbeatReqFieldNumber = 3;
@@ -754,7 +971,7 @@ class CenterMsg : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::center::HeartbeatReq* release_heartbeat_req();
   void set_allocated_heartbeat_req(::center::HeartbeatReq* heartbeat_req);
 
-  // .center.HeartbeatRsp Heartbeat_rsp = 4;
+  // .center.HeartbeatRsp heartbeat_rsp = 4;
   bool has_heartbeat_rsp() const;
   void clear_heartbeat_rsp();
   static const int kHeartbeatRspFieldNumber = 4;
@@ -763,6 +980,24 @@ class CenterMsg : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::center::HeartbeatRsp* release_heartbeat_rsp();
   void set_allocated_heartbeat_rsp(::center::HeartbeatRsp* heartbeat_rsp);
 
+  // .center.SyncServiceReq sync_service_req = 5;
+  bool has_sync_service_req() const;
+  void clear_sync_service_req();
+  static const int kSyncServiceReqFieldNumber = 5;
+  const ::center::SyncServiceReq& sync_service_req() const;
+  ::center::SyncServiceReq* mutable_sync_service_req();
+  ::center::SyncServiceReq* release_sync_service_req();
+  void set_allocated_sync_service_req(::center::SyncServiceReq* sync_service_req);
+
+  // .center.SyncServiceRsp sync_service_rsp = 6;
+  bool has_sync_service_rsp() const;
+  void clear_sync_service_rsp();
+  static const int kSyncServiceRspFieldNumber = 6;
+  const ::center::SyncServiceRsp& sync_service_rsp() const;
+  ::center::SyncServiceRsp* mutable_sync_service_rsp();
+  ::center::SyncServiceRsp* release_sync_service_rsp();
+  void set_allocated_sync_service_rsp(::center::SyncServiceRsp* sync_service_rsp);
+
   ChoiceCase choice_case() const;
   // @@protoc_insertion_point(class_scope:center.CenterMsg)
  private:
@@ -770,6 +1005,8 @@ class CenterMsg : public ::google::protobuf::Message /* @@protoc_insertion_point
   void set_has_test_rsp();
   void set_has_heartbeat_req();
   void set_has_heartbeat_rsp();
+  void set_has_sync_service_req();
+  void set_has_sync_service_rsp();
 
   inline bool has_choice() const;
   void clear_choice();
@@ -782,6 +1019,8 @@ class CenterMsg : public ::google::protobuf::Message /* @@protoc_insertion_point
     ::center::TestRsp* test_rsp_;
     ::center::HeartbeatReq* heartbeat_req_;
     ::center::HeartbeatRsp* heartbeat_rsp_;
+    ::center::SyncServiceReq* sync_service_req_;
+    ::center::SyncServiceRsp* sync_service_rsp_;
   } choice_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -1074,6 +1313,95 @@ inline void HeartbeatRsp::set_expire_second(::google::protobuf::uint32 value) {
 
 // -------------------------------------------------------------------
 
+// SyncServiceReq
+
+// uint64 conf_update_time = 1;
+inline void SyncServiceReq::clear_conf_update_time() {
+  conf_update_time_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 SyncServiceReq::conf_update_time() const {
+  // @@protoc_insertion_point(field_get:center.SyncServiceReq.conf_update_time)
+  return conf_update_time_;
+}
+inline void SyncServiceReq::set_conf_update_time(::google::protobuf::uint64 value) {
+  
+  conf_update_time_ = value;
+  // @@protoc_insertion_point(field_set:center.SyncServiceReq.conf_update_time)
+}
+
+// -------------------------------------------------------------------
+
+// SyncServiceRsp
+
+// uint64 conf_update_time = 1;
+inline void SyncServiceRsp::clear_conf_update_time() {
+  conf_update_time_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 SyncServiceRsp::conf_update_time() const {
+  // @@protoc_insertion_point(field_get:center.SyncServiceRsp.conf_update_time)
+  return conf_update_time_;
+}
+inline void SyncServiceRsp::set_conf_update_time(::google::protobuf::uint64 value) {
+  
+  conf_update_time_ = value;
+  // @@protoc_insertion_point(field_set:center.SyncServiceRsp.conf_update_time)
+}
+
+// bytes conf_json = 2;
+inline void SyncServiceRsp::clear_conf_json() {
+  conf_json_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& SyncServiceRsp::conf_json() const {
+  // @@protoc_insertion_point(field_get:center.SyncServiceRsp.conf_json)
+  return conf_json_.GetNoArena();
+}
+inline void SyncServiceRsp::set_conf_json(const ::std::string& value) {
+  
+  conf_json_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:center.SyncServiceRsp.conf_json)
+}
+#if LANG_CXX11
+inline void SyncServiceRsp::set_conf_json(::std::string&& value) {
+  
+  conf_json_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:center.SyncServiceRsp.conf_json)
+}
+#endif
+inline void SyncServiceRsp::set_conf_json(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  conf_json_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:center.SyncServiceRsp.conf_json)
+}
+inline void SyncServiceRsp::set_conf_json(const void* value, size_t size) {
+  
+  conf_json_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:center.SyncServiceRsp.conf_json)
+}
+inline ::std::string* SyncServiceRsp::mutable_conf_json() {
+  
+  // @@protoc_insertion_point(field_mutable:center.SyncServiceRsp.conf_json)
+  return conf_json_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SyncServiceRsp::release_conf_json() {
+  // @@protoc_insertion_point(field_release:center.SyncServiceRsp.conf_json)
+  
+  return conf_json_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SyncServiceRsp::set_allocated_conf_json(::std::string* conf_json) {
+  if (conf_json != NULL) {
+    
+  } else {
+    
+  }
+  conf_json_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), conf_json);
+  // @@protoc_insertion_point(field_set_allocated:center.SyncServiceRsp.conf_json)
+}
+
+// -------------------------------------------------------------------
+
 // CenterMsg
 
 // .center.TestReq test_req = 1;
@@ -1172,7 +1500,7 @@ inline void CenterMsg::set_allocated_test_rsp(::center::TestRsp* test_rsp) {
   // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.test_rsp)
 }
 
-// .center.HeartbeatReq Heartbeat_req = 3;
+// .center.HeartbeatReq heartbeat_req = 3;
 inline bool CenterMsg::has_heartbeat_req() const {
   return choice_case() == kHeartbeatReq;
 }
@@ -1186,7 +1514,7 @@ inline void CenterMsg::clear_heartbeat_req() {
   }
 }
 inline  const ::center::HeartbeatReq& CenterMsg::heartbeat_req() const {
-  // @@protoc_insertion_point(field_get:center.CenterMsg.Heartbeat_req)
+  // @@protoc_insertion_point(field_get:center.CenterMsg.heartbeat_req)
   return has_heartbeat_req()
       ? *choice_.heartbeat_req_
       : ::center::HeartbeatReq::default_instance();
@@ -1197,11 +1525,11 @@ inline ::center::HeartbeatReq* CenterMsg::mutable_heartbeat_req() {
     set_has_heartbeat_req();
     choice_.heartbeat_req_ = new ::center::HeartbeatReq;
   }
-  // @@protoc_insertion_point(field_mutable:center.CenterMsg.Heartbeat_req)
+  // @@protoc_insertion_point(field_mutable:center.CenterMsg.heartbeat_req)
   return choice_.heartbeat_req_;
 }
 inline ::center::HeartbeatReq* CenterMsg::release_heartbeat_req() {
-  // @@protoc_insertion_point(field_release:center.CenterMsg.Heartbeat_req)
+  // @@protoc_insertion_point(field_release:center.CenterMsg.heartbeat_req)
   if (has_heartbeat_req()) {
     clear_has_choice();
     ::center::HeartbeatReq* temp = choice_.heartbeat_req_;
@@ -1217,10 +1545,10 @@ inline void CenterMsg::set_allocated_heartbeat_req(::center::HeartbeatReq* heart
     set_has_heartbeat_req();
     choice_.heartbeat_req_ = heartbeat_req;
   }
-  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.Heartbeat_req)
+  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.heartbeat_req)
 }
 
-// .center.HeartbeatRsp Heartbeat_rsp = 4;
+// .center.HeartbeatRsp heartbeat_rsp = 4;
 inline bool CenterMsg::has_heartbeat_rsp() const {
   return choice_case() == kHeartbeatRsp;
 }
@@ -1234,7 +1562,7 @@ inline void CenterMsg::clear_heartbeat_rsp() {
   }
 }
 inline  const ::center::HeartbeatRsp& CenterMsg::heartbeat_rsp() const {
-  // @@protoc_insertion_point(field_get:center.CenterMsg.Heartbeat_rsp)
+  // @@protoc_insertion_point(field_get:center.CenterMsg.heartbeat_rsp)
   return has_heartbeat_rsp()
       ? *choice_.heartbeat_rsp_
       : ::center::HeartbeatRsp::default_instance();
@@ -1245,11 +1573,11 @@ inline ::center::HeartbeatRsp* CenterMsg::mutable_heartbeat_rsp() {
     set_has_heartbeat_rsp();
     choice_.heartbeat_rsp_ = new ::center::HeartbeatRsp;
   }
-  // @@protoc_insertion_point(field_mutable:center.CenterMsg.Heartbeat_rsp)
+  // @@protoc_insertion_point(field_mutable:center.CenterMsg.heartbeat_rsp)
   return choice_.heartbeat_rsp_;
 }
 inline ::center::HeartbeatRsp* CenterMsg::release_heartbeat_rsp() {
-  // @@protoc_insertion_point(field_release:center.CenterMsg.Heartbeat_rsp)
+  // @@protoc_insertion_point(field_release:center.CenterMsg.heartbeat_rsp)
   if (has_heartbeat_rsp()) {
     clear_has_choice();
     ::center::HeartbeatRsp* temp = choice_.heartbeat_rsp_;
@@ -1265,7 +1593,103 @@ inline void CenterMsg::set_allocated_heartbeat_rsp(::center::HeartbeatRsp* heart
     set_has_heartbeat_rsp();
     choice_.heartbeat_rsp_ = heartbeat_rsp;
   }
-  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.Heartbeat_rsp)
+  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.heartbeat_rsp)
+}
+
+// .center.SyncServiceReq sync_service_req = 5;
+inline bool CenterMsg::has_sync_service_req() const {
+  return choice_case() == kSyncServiceReq;
+}
+inline void CenterMsg::set_has_sync_service_req() {
+  _oneof_case_[0] = kSyncServiceReq;
+}
+inline void CenterMsg::clear_sync_service_req() {
+  if (has_sync_service_req()) {
+    delete choice_.sync_service_req_;
+    clear_has_choice();
+  }
+}
+inline  const ::center::SyncServiceReq& CenterMsg::sync_service_req() const {
+  // @@protoc_insertion_point(field_get:center.CenterMsg.sync_service_req)
+  return has_sync_service_req()
+      ? *choice_.sync_service_req_
+      : ::center::SyncServiceReq::default_instance();
+}
+inline ::center::SyncServiceReq* CenterMsg::mutable_sync_service_req() {
+  if (!has_sync_service_req()) {
+    clear_choice();
+    set_has_sync_service_req();
+    choice_.sync_service_req_ = new ::center::SyncServiceReq;
+  }
+  // @@protoc_insertion_point(field_mutable:center.CenterMsg.sync_service_req)
+  return choice_.sync_service_req_;
+}
+inline ::center::SyncServiceReq* CenterMsg::release_sync_service_req() {
+  // @@protoc_insertion_point(field_release:center.CenterMsg.sync_service_req)
+  if (has_sync_service_req()) {
+    clear_has_choice();
+    ::center::SyncServiceReq* temp = choice_.sync_service_req_;
+    choice_.sync_service_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void CenterMsg::set_allocated_sync_service_req(::center::SyncServiceReq* sync_service_req) {
+  clear_choice();
+  if (sync_service_req) {
+    set_has_sync_service_req();
+    choice_.sync_service_req_ = sync_service_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.sync_service_req)
+}
+
+// .center.SyncServiceRsp sync_service_rsp = 6;
+inline bool CenterMsg::has_sync_service_rsp() const {
+  return choice_case() == kSyncServiceRsp;
+}
+inline void CenterMsg::set_has_sync_service_rsp() {
+  _oneof_case_[0] = kSyncServiceRsp;
+}
+inline void CenterMsg::clear_sync_service_rsp() {
+  if (has_sync_service_rsp()) {
+    delete choice_.sync_service_rsp_;
+    clear_has_choice();
+  }
+}
+inline  const ::center::SyncServiceRsp& CenterMsg::sync_service_rsp() const {
+  // @@protoc_insertion_point(field_get:center.CenterMsg.sync_service_rsp)
+  return has_sync_service_rsp()
+      ? *choice_.sync_service_rsp_
+      : ::center::SyncServiceRsp::default_instance();
+}
+inline ::center::SyncServiceRsp* CenterMsg::mutable_sync_service_rsp() {
+  if (!has_sync_service_rsp()) {
+    clear_choice();
+    set_has_sync_service_rsp();
+    choice_.sync_service_rsp_ = new ::center::SyncServiceRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:center.CenterMsg.sync_service_rsp)
+  return choice_.sync_service_rsp_;
+}
+inline ::center::SyncServiceRsp* CenterMsg::release_sync_service_rsp() {
+  // @@protoc_insertion_point(field_release:center.CenterMsg.sync_service_rsp)
+  if (has_sync_service_rsp()) {
+    clear_has_choice();
+    ::center::SyncServiceRsp* temp = choice_.sync_service_rsp_;
+    choice_.sync_service_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void CenterMsg::set_allocated_sync_service_rsp(::center::SyncServiceRsp* sync_service_rsp) {
+  clear_choice();
+  if (sync_service_rsp) {
+    set_has_sync_service_rsp();
+    choice_.sync_service_rsp_ = sync_service_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.sync_service_rsp)
 }
 
 inline bool CenterMsg::has_choice() const {
@@ -1281,6 +1705,10 @@ inline CenterMsg::ChoiceCase CenterMsg::choice_case() const {
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
