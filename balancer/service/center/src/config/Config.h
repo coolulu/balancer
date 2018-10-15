@@ -35,6 +35,11 @@ namespace KeyConfig
 	static const std::string& level_expire_time					= "level_expire_time";
 	static const std::string& service_path						= "service_path";
 	static const std::string& prober_timeout_us					= "prober_timeout_us";
+	static const std::string& sync								= "sync";
+	static const std::string& sync_ip							= "sync_ip";
+	static const std::string& sync_port							= "sync_port";
+	static const std::string& sync_timeout_us					= "sync_timeout_us";
+	static const std::string& sync_gap							= "sync_gap";
 }
 
 class Config
@@ -84,7 +89,11 @@ public:
 				tcp_client_msg_reduce_size(0), 		
 				level(0),
 				level_expire_time(0),
-				prober_timeout_us(0){}
+				prober_timeout_us(0),
+				sync(false),
+				sync_port(0),
+				sync_timeout_us(0),
+				sync_gap(0){}
 
 		unsigned short	tcp_server_idle;
 		bool			tcp_server_no_delay;
@@ -103,6 +112,12 @@ public:
 		unsigned int	level_expire_time;
 		std::string		service_path;
 		unsigned int	prober_timeout_us;
+
+		bool			sync;
+		std::string		sync_ip;
+		unsigned short	sync_port;
+		unsigned int	sync_timeout_us;
+		unsigned short	sync_gap;
 	};
 
 public:

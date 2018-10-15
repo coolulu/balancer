@@ -38,6 +38,12 @@
 		"level": 1,
 		"level_expire_time": 120,
 		"service_path": "./conf/service.json",
-		"prober_timeout_us": 1000000
+		"prober_timeout_us": 1000000,
+
+		"sync": false,
+		"sync_ip": "127.0.0.1",
+		"sync_port": 10100,
+		"sync_timeout_us": 5000000,
+		"sync_gap": 30
 	}
 }

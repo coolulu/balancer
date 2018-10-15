@@ -95,6 +95,17 @@ std::string Config::load(const std::string& json)
 			return err_is_not_string(KeyConfig::service_path);
 		if(!get_uint(cv, KeyConfig::prober_timeout_us, proc.prober_timeout_us))
 			return err_is_not_uint(KeyConfig::prober_timeout_us);
+
+		if(!get_bool(cv, KeyConfig::sync, proc.sync))
+			return err_is_not_bool(KeyConfig::sync);
+		if(!get_string(cv, KeyConfig::sync_ip, proc.sync_ip))
+			return err_is_not_string(KeyConfig::sync_ip);
+		if(!get_uint(cv, KeyConfig::sync_port, proc.sync_port))
+			return err_is_not_uint(KeyConfig::sync_port);
+		if(!get_uint(cv, KeyConfig::sync_timeout_us, proc.sync_timeout_us))
+			return err_is_not_uint(KeyConfig::sync_timeout_us);
+		if(!get_uint(cv, KeyConfig::sync_gap, proc.sync_gap))
+			return err_is_not_uint(KeyConfig::sync_gap);
 	}
 
 	return "";
@@ -231,7 +242,12 @@ std::string Config::to_string()
 			", proc.level="								+ std::to_string(proc.level) + 
 			", proc.level_expire_time="					+ std::to_string(proc.level_expire_time) + 
 			", proc.service_path="						+ proc.service_path + 
-			", proc.prober_timeout_us="					+ std::to_string(proc.prober_timeout_us);
+			", proc.prober_timeout_us="					+ std::to_string(proc.prober_timeout_us) +
+			", proc.sync="								+ (proc.sync ? "true" : "false") + 
+			", proc.sync_ip="							+ proc.sync_ip +
+			", proc.sync_port="							+ std::to_string(proc.sync_port) +
+			", proc.sync_timeout_us="					+ std::to_string(proc.sync_timeout_us) +
+			", proc.sync_gap="							+ std::to_string(proc.sync_gap);
 }
 
 
