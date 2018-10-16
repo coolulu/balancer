@@ -52,6 +52,7 @@
 		"put_load_sync_count": 10,
 		"put_load_sync_gap": 30,
 
-		"local_ethernet": "eno16777736"
+		"local_ethernet": "eno16777736",
+		"local_service_id": 10300
 	}
 }

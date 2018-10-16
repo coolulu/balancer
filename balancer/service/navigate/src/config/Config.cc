@@ -96,6 +96,8 @@ std::string Config::load(const std::string& json)
 			return err_is_not_uint(KeyConfig::tcp_client_msg_reduce_size);
 		if(!get_uint(cv, KeyConfig::count_load_check_gap, proc.count_load_check_gap))
 			return err_is_not_uint(KeyConfig::count_load_check_gap);
+		if(!get_uint(cv, KeyConfig::local_service_id, proc.local_service_id))
+			return err_is_not_uint(KeyConfig::local_service_id);
 	}
 
 	return "";
@@ -231,7 +233,8 @@ std::string Config::to_string()
 			", proc.tcp_client_send_packet_len_max="	+ std::to_string(proc.tcp_client_send_packet_len_max) + 
 			", proc.tcp_client_high_water_mark="		+ std::to_string(proc.tcp_client_high_water_mark) + 
 			", proc.tcp_client_msg_reduce_size="		+ std::to_string(proc.tcp_client_msg_reduce_size) +
-			", proc.count_load_check_gap="				+ std::to_string(proc.count_load_check_gap);
+			", proc.count_load_check_gap="				+ std::to_string(proc.count_load_check_gap) +
+			", proc.local_service_id="					+ std::to_string(proc.local_service_id);
 }
 
 

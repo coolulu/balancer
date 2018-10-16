@@ -12,7 +12,7 @@ namespace Define
 
 	static const std::string& service_version = "0.1.0";
 
-	static const unsigned short service_id = service::GATE;
+	static unsigned short service_id = 0;	// 赋值区域性service_id,赋值于proc.local_service_id
 	static const std::string& service_name = "gate";
 
 	static const std::string& conf_file_postfix = ".conf";

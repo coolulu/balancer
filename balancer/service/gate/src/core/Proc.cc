@@ -48,6 +48,7 @@ int Proc::init()
 		return -200;
 	}
 
+	Define::service_id = _config.proc.local_service_id;	// 赋值区域性service_id
 	B_LOG_INFO << _config.to_string();
 	return 0;
 }
@@ -126,6 +127,7 @@ bool Proc::reload()
 		return false;
 	}
 
+	Define::service_id = _config.proc.local_service_id;	// 赋值区域性service_id
 	B_LOG_INFO << _config.to_string();
 	return true;
 }

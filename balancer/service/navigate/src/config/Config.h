@@ -34,6 +34,7 @@ namespace KeyConfig
 	static const std::string& tcp_client_high_water_mark		= "tcp_client_high_water_mark";
 	static const std::string& tcp_client_msg_reduce_size		= "tcp_client_msg_reduce_size";
 	static const std::string& count_load_check_gap				= "count_load_check_gap";
+	static const std::string& local_service_id					= "local_service_id";
 }
 
 class Config
@@ -82,7 +83,8 @@ public:
 				tcp_client_send_packet_len_max(0),
 				tcp_client_high_water_mark(0),
 				tcp_client_msg_reduce_size(0),
-				count_load_check_gap(0){}
+				count_load_check_gap(0),
+				local_service_id(0){}
 
 		unsigned short	tcp_server_idle;
 		bool			tcp_server_no_delay;
@@ -97,6 +99,8 @@ public:
 		unsigned int	tcp_client_high_water_mark;
 		unsigned short	tcp_client_msg_reduce_size;
 		unsigned short	count_load_check_gap;
+
+		unsigned short	local_service_id;
 	};
 
 public:

@@ -44,6 +44,7 @@ namespace KeyConfig
 	static const std::string& put_load_sync_count				= "put_load_sync_count";
 	static const std::string& put_load_sync_gap					= "put_load_sync_gap";
 	static const std::string& local_ethernet					= "local_ethernet";
+	static const std::string& local_service_id					= "local_service_id";
 }
 
 class Config
@@ -101,7 +102,8 @@ public:
 				del_session_timeout_us(0),
 				close_client_timeout_us(0),
 				put_load_sync_count(0),
-				put_load_sync_gap(0){}
+				put_load_sync_gap(0),
+				local_service_id(0){}
 
 		unsigned short	tcp_server_idle;
 		bool			tcp_server_no_delay;
@@ -129,6 +131,7 @@ public:
 
 		std::string		local_ethernet;
 		std::string		local_ip;
+		unsigned short	local_service_id;
 	};
 
 public:

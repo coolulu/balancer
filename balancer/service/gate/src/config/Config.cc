@@ -117,6 +117,8 @@ std::string Config::load(const std::string& json)
 			return err_is_not_uint(KeyConfig::put_load_sync_count);
 		if(!get_uint(cv, KeyConfig::put_load_sync_gap, proc.put_load_sync_gap))
 			return err_is_not_uint(KeyConfig::put_load_sync_gap);
+		if(!get_uint(cv, KeyConfig::local_service_id, proc.local_service_id))
+			return err_is_not_uint(KeyConfig::local_service_id);
 
 		if(!get_string(cv, KeyConfig::local_ethernet, proc.local_ethernet))
 			return err_is_not_uint(KeyConfig::local_ethernet);
@@ -270,7 +272,8 @@ std::string Config::to_string()
 			", proc.put_load_sync_count="				+ std::to_string(proc.put_load_sync_count) +
 			", proc.put_load_sync_gap="					+ std::to_string(proc.put_load_sync_gap) +
 			", proc.local_ethernet="					+ proc.local_ethernet + 
-			", proc.local_ip="							+ proc.local_ip;
+			", proc.local_ip="							+ proc.local_ip +
+			", proc.local_service_id="					+ std::to_string(proc.local_service_id);
 }
 
 
