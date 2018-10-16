@@ -227,6 +227,9 @@
     <ClCompile Include="src\core\Kv.cc">
       <Filter>src\core</Filter>
     </ClCompile>
+    <ClCompile Include="src\define.cc">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\config\Config.h">

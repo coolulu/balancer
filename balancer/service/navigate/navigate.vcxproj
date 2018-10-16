@@ -89,6 +89,7 @@
     <ClCompile Include="src\core\Seq.cc" />
     <ClCompile Include="src\core\SignalHandle.cc" />
     <ClCompile Include="src\core\Timer.cc" />
+    <ClCompile Include="src\define.cc" />
     <ClCompile Include="src\handle\HandleServer.cc" />
     <ClCompile Include="src\handle\server\Heartbeat.cc" />
     <ClCompile Include="src\handle\server\PutLoad.cc" />

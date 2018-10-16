@@ -98,6 +98,7 @@
     <ClCompile Include="src\core\TaskMsgPool.cc" />
     <ClCompile Include="src\core\TaskMsgSub.cc" />
     <ClCompile Include="src\core\Timer.cc" />
+    <ClCompile Include="src\define.cc" />
     <ClCompile Include="src\handle\gate\CloseClient.cc" />
     <ClCompile Include="src\handle\gate\DelSession.cc" />
     <ClCompile Include="src\handle\gate\GetConnId.cc" />
