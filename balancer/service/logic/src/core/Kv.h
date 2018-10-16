@@ -28,6 +28,11 @@ private:
 				  unsigned int& i,
 				  bool& b);
 
+	void get_uint(std::map<std::string, ServiceConfig::KV>& kv_map,
+				  const std::string& key, 
+				  unsigned short& i,
+				  bool& b);
+
 public:
 
 };
