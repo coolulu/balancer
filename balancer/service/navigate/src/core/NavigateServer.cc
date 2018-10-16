@@ -72,12 +72,30 @@ void NavigateServer::on_http_request(const muduo::net::HttpRequest& req, muduo::
 			return;
 		}
 
-		B_LOG_INFO	<< "GetAccessReq" << ", service_id=" << service_id << ", user_id=" << user_id;
+		unsigned short map_service_id = 0;
+		switch (service_id)
+		{
+		case service::GATE:
+			map_service_id = _proc._is.kv()._map_gate_service_id;
+			break;
+
+		default:
+			B_LOG_WARN	<< "map service_id failed"
+						<< ", service_id=" << service_id 
+						<< ", user_id=" << user_id
+						<< ", map_service_id=" << map_service_id;
+			return;
+		}
+
+		B_LOG_INFO	<< "map service_id ok"
+					<< ", service_id=" << service_id 
+					<< ", user_id=" << user_id
+					<< ", map_service_id=" << map_service_id;
 
 		LoadProc load_proc;
 		{
 			muduo::MutexLockGuard mlg(_mutex_load_result);
-			b = _load_result.find(service_id, load_proc);
+			b = _load_result.find(map_service_id, load_proc);
 		}
 
 		if(!b)
