@@ -54,9 +54,6 @@
     <None Include="release.mak">
       <Filter>Make files</Filter>
     </None>
-    <None Include="conf\service.json">
-      <Filter>conf</Filter>
-    </None>
     <None Include="conf\center_0.json">
       <Filter>conf</Filter>
     </None>
@@ -77,6 +74,15 @@
     </None>
     <None Include="src\protocol\protobuf\proto\version.proto">
       <Filter>src\protocol\protobuf\proto</Filter>
+    </None>
+    <None Include="conf\center_1.json">
+      <Filter>conf</Filter>
+    </None>
+    <None Include="conf\service_0.json">
+      <Filter>conf</Filter>
+    </None>
+    <None Include="conf\service_1.json">
+      <Filter>conf</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
