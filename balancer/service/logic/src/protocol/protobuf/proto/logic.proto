@@ -20,23 +20,14 @@ message LoginReq {
 }
 
 message LoginRsp {
-    bytes   login_token         = 1;   
-}
-
-message LogoutReq {
-    uint64  user_id             = 1;
-    bytes   login_token         = 2; 
-}
-
-message LogoutRsp {
 
 }
 
-message GetAccessKeyReq {
+message AccessKeyReq {
 
 }
 
-message GetAccessKeyRsp {
+message AccessKeyRsp {
     bytes   access_key          = 1;
 }
 
@@ -48,10 +39,7 @@ message LogicMsg {                              // 奇数是请求，偶数是�
         LoginReq        login_req       = 3;    // 登录
         LoginRsp        login_rsp       = 4;
 
-        LogoutReq       logout_req      = 5;    // 登出
-        LogoutRsp       Logout_rsp      = 6;   
-
-        GetAccessKeyReq get_access_key_req  = 7;    // 获取access_key
-        GetAccessKeyRsp get_access_key_rsp  = 8;
+        AccessKeyReq    access_key_req  = 5;    // 获取access_key
+        AccessKeyRsp    access_key_rsp  = 6;
     }
 }

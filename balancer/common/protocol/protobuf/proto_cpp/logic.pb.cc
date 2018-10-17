@@ -38,26 +38,16 @@ public:
  ::google::protobuf::internal::ExplicitlyConstructed<LoginRsp>
      _instance;
 } _LoginRsp_default_instance_;
-class LogoutReqDefaultTypeInternal {
+class AccessKeyReqDefaultTypeInternal {
 public:
- ::google::protobuf::internal::ExplicitlyConstructed<LogoutReq>
+ ::google::protobuf::internal::ExplicitlyConstructed<AccessKeyReq>
      _instance;
-} _LogoutReq_default_instance_;
-class LogoutRspDefaultTypeInternal {
+} _AccessKeyReq_default_instance_;
+class AccessKeyRspDefaultTypeInternal {
 public:
- ::google::protobuf::internal::ExplicitlyConstructed<LogoutRsp>
+ ::google::protobuf::internal::ExplicitlyConstructed<AccessKeyRsp>
      _instance;
-} _LogoutRsp_default_instance_;
-class GetAccessKeyReqDefaultTypeInternal {
-public:
- ::google::protobuf::internal::ExplicitlyConstructed<GetAccessKeyReq>
-     _instance;
-} _GetAccessKeyReq_default_instance_;
-class GetAccessKeyRspDefaultTypeInternal {
-public:
- ::google::protobuf::internal::ExplicitlyConstructed<GetAccessKeyRsp>
-     _instance;
-} _GetAccessKeyRsp_default_instance_;
+} _AccessKeyRsp_default_instance_;
 class LogicMsgDefaultTypeInternal {
 public:
  ::google::protobuf::internal::ExplicitlyConstructed<LogicMsg>
@@ -66,10 +56,8 @@ public:
   const ::logic::TestRsp* test_rsp_;
   const ::logic::LoginReq* login_req_;
   const ::logic::LoginRsp* login_rsp_;
-  const ::logic::LogoutReq* logout_req_;
-  const ::logic::LogoutRsp* logout_rsp_;
-  const ::logic::GetAccessKeyReq* get_access_key_req_;
-  const ::logic::GetAccessKeyRsp* get_access_key_rsp_;
+  const ::logic::AccessKeyReq* access_key_req_;
+  const ::logic::AccessKeyRsp* access_key_rsp_;
 } _LogicMsg_default_instance_;
 
 namespace protobuf_logic_2eproto {
@@ -77,7 +65,7 @@ namespace protobuf_logic_2eproto {
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[9];
+::google::protobuf::Metadata file_level_metadata[7];
 
 }  // namespace
 
@@ -92,8 +80,6 @@ PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::AuxillaryParseTableField
 };
 PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::ParseTable const
     TableStruct::schema[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
-  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
@@ -132,30 +118,17 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRsp, login_token_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LogoutReq, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LogoutReq, user_id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LogoutReq, login_token_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LogoutRsp, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AccessKeyReq, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetAccessKeyReq, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AccessKeyRsp, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetAccessKeyRsp, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetAccessKeyRsp, access_key_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AccessKeyRsp, access_key_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LogicMsg, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -165,10 +138,8 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   offsetof(LogicMsgDefaultTypeInternal, test_rsp_),
   offsetof(LogicMsgDefaultTypeInternal, login_req_),
   offsetof(LogicMsgDefaultTypeInternal, login_rsp_),
-  offsetof(LogicMsgDefaultTypeInternal, logout_req_),
-  offsetof(LogicMsgDefaultTypeInternal, logout_rsp_),
-  offsetof(LogicMsgDefaultTypeInternal, get_access_key_req_),
-  offsetof(LogicMsgDefaultTypeInternal, get_access_key_rsp_),
+  offsetof(LogicMsgDefaultTypeInternal, access_key_req_),
+  offsetof(LogicMsgDefaultTypeInternal, access_key_rsp_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LogicMsg, choice_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -176,11 +147,9 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTR
   { 6, -1, sizeof(TestRsp)},
   { 12, -1, sizeof(LoginReq)},
   { 23, -1, sizeof(LoginRsp)},
-  { 29, -1, sizeof(LogoutReq)},
-  { 36, -1, sizeof(LogoutRsp)},
-  { 41, -1, sizeof(GetAccessKeyReq)},
-  { 46, -1, sizeof(GetAccessKeyRsp)},
-  { 52, -1, sizeof(LogicMsg)},
+  { 28, -1, sizeof(AccessKeyReq)},
+  { 33, -1, sizeof(AccessKeyRsp)},
+  { 39, -1, sizeof(LogicMsg)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -188,10 +157,8 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&_TestRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_LoginReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_LoginRsp_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_LogoutReq_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_LogoutRsp_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_GetAccessKeyReq_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_GetAccessKeyRsp_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_AccessKeyReq_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_AccessKeyRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_LogicMsg_default_instance_),
 };
 
@@ -213,7 +180,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 9);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 7);
 }
 
 }  // namespace
@@ -229,15 +196,11 @@ void TableStruct::InitDefaultsImpl() {
   ::google::protobuf::internal::OnShutdownDestroyMessage(
       &_LoginReq_default_instance_);_LoginRsp_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_LoginRsp_default_instance_);_LogoutReq_default_instance_._instance.DefaultConstruct();
+      &_LoginRsp_default_instance_);_AccessKeyReq_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_LogoutReq_default_instance_);_LogoutRsp_default_instance_._instance.DefaultConstruct();
+      &_AccessKeyReq_default_instance_);_AccessKeyRsp_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_LogoutRsp_default_instance_);_GetAccessKeyReq_default_instance_._instance.DefaultConstruct();
-  ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_GetAccessKeyReq_default_instance_);_GetAccessKeyRsp_default_instance_._instance.DefaultConstruct();
-  ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_GetAccessKeyRsp_default_instance_);_LogicMsg_default_instance_._instance.DefaultConstruct();
+      &_AccessKeyRsp_default_instance_);_LogicMsg_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
       &_LogicMsg_default_instance_);_LogicMsg_default_instance_.test_req_ = const_cast< ::logic::TestReq*>(
       ::logic::TestReq::internal_default_instance());
@@ -247,14 +210,10 @@ void TableStruct::InitDefaultsImpl() {
       ::logic::LoginReq::internal_default_instance());
   _LogicMsg_default_instance_.login_rsp_ = const_cast< ::logic::LoginRsp*>(
       ::logic::LoginRsp::internal_default_instance());
-  _LogicMsg_default_instance_.logout_req_ = const_cast< ::logic::LogoutReq*>(
-      ::logic::LogoutReq::internal_default_instance());
-  _LogicMsg_default_instance_.logout_rsp_ = const_cast< ::logic::LogoutRsp*>(
-      ::logic::LogoutRsp::internal_default_instance());
-  _LogicMsg_default_instance_.get_access_key_req_ = const_cast< ::logic::GetAccessKeyReq*>(
-      ::logic::GetAccessKeyReq::internal_default_instance());
-  _LogicMsg_default_instance_.get_access_key_rsp_ = const_cast< ::logic::GetAccessKeyRsp*>(
-      ::logic::GetAccessKeyRsp::internal_default_instance());
+  _LogicMsg_default_instance_.access_key_req_ = const_cast< ::logic::AccessKeyReq*>(
+      ::logic::AccessKeyReq::internal_default_instance());
+  _LogicMsg_default_instance_.access_key_rsp_ = const_cast< ::logic::AccessKeyRsp*>(
+      ::logic::AccessKeyRsp::internal_default_instance());
 }
 
 void InitDefaults() {
@@ -270,23 +229,18 @@ void AddDescriptorsImpl() {
       " \001(\014\"u\n\010LoginReq\022\022\n\nservice_id\030\001 \001(\005\022\017\n\007"
       "proc_id\030\002 \001(\r\022\017\n\007user_id\030\003 \001(\004\022\016\n\006passwd"
       "\030\004 \001(\014\022\020\n\010dev_type\030\005 \001(\r\022\021\n\tdev_token\030\006 "
-      "\001(\014\"\037\n\010LoginRsp\022\023\n\013login_token\030\001 \001(\014\"1\n\t"
-      "LogoutReq\022\017\n\007user_id\030\001 \001(\004\022\023\n\013login_toke"
-      "n\030\002 \001(\014\"\013\n\tLogoutRsp\"\021\n\017GetAccessKeyReq\""
-      "%\n\017GetAccessKeyRsp\022\022\n\naccess_key\030\001 \001(\014\"\344"
-      "\002\n\010LogicMsg\022\"\n\010test_req\030\001 \001(\0132\016.logic.Te"
-      "stReqH\000\022\"\n\010test_rsp\030\002 \001(\0132\016.logic.TestRs"
-      "pH\000\022$\n\tlogin_req\030\003 \001(\0132\017.logic.LoginReqH"
-      "\000\022$\n\tlogin_rsp\030\004 \001(\0132\017.logic.LoginRspH\000\022"
-      "&\n\nlogout_req\030\005 \001(\0132\020.logic.LogoutReqH\000\022"
-      "&\n\nLogout_rsp\030\006 \001(\0132\020.logic.LogoutRspH\000\022"
-      "4\n\022get_access_key_req\030\007 \001(\0132\026.logic.GetA"
-      "ccessKeyReqH\000\0224\n\022get_access_key_rsp\030\010 \001("
-      "\0132\026.logic.GetAccessKeyRspH\000B\010\n\006choiceb\006p"
-      "roto3"
+      "\001(\014\"\n\n\010LoginRsp\"\016\n\014AccessKeyReq\"\"\n\014Acces"
+      "sKeyRsp\022\022\n\naccess_key\030\001 \001(\014\"\206\002\n\010LogicMsg"
+      "\022\"\n\010test_req\030\001 \001(\0132\016.logic.TestReqH\000\022\"\n\010"
+      "test_rsp\030\002 \001(\0132\016.logic.TestRspH\000\022$\n\tlogi"
+      "n_req\030\003 \001(\0132\017.logic.LoginReqH\000\022$\n\tlogin_"
+      "rsp\030\004 \001(\0132\017.logic.LoginRspH\000\022-\n\016access_k"
+      "ey_req\030\005 \001(\0132\023.logic.AccessKeyReqH\000\022-\n\016a"
+      "ccess_key_rsp\030\006 \001(\0132\023.logic.AccessKeyRsp"
+      "H\000B\010\n\006choiceb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 725);
+      descriptor, 540);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "logic.proto", &protobuf_RegisterTypes);
 }
@@ -1468,7 +1422,6 @@ void LoginReq::set_allocated_dev_token(::std::string* dev_token) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int LoginRsp::kLoginTokenFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 LoginRsp::LoginRsp()
@@ -1484,15 +1437,10 @@ LoginRsp::LoginRsp(const LoginRsp& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  login_token_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.login_token().size() > 0) {
-    login_token_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.login_token_);
-  }
   // @@protoc_insertion_point(copy_constructor:logic.LoginRsp)
 }
 
 void LoginRsp::SharedCtor() {
-  login_token_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _cached_size_ = 0;
 }
 
@@ -1502,7 +1450,6 @@ LoginRsp::~LoginRsp() {
 }
 
 void LoginRsp::SharedDtor() {
-  login_token_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void LoginRsp::SetCachedSize(int size) const {
@@ -1534,7 +1481,6 @@ void LoginRsp::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  login_token_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
@@ -1547,29 +1493,12 @@ bool LoginRsp::MergePartialFromCodedStream(
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes login_token = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_login_token()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
+  handle_unusual:
+    if (tag == 0) {
+      goto success;
     }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, _internal_metadata_.mutable_unknown_fields()));
   }
 success:
   // @@protoc_insertion_point(parse_success:logic.LoginRsp)
@@ -1586,12 +1515,6 @@ void LoginRsp::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes login_token = 1;
-  if (this->login_token().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->login_token(), output);
-  }
-
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -1605,13 +1528,6 @@ void LoginRsp::SerializeWithCachedSizes(
   // @@protoc_insertion_point(serialize_to_array_start:logic.LoginRsp)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
-
-  // bytes login_token = 1;
-  if (this->login_token().size() > 0) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->login_token(), target);
-  }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
@@ -1630,13 +1546,6 @@ size_t LoginRsp::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bytes login_token = 1;
-  if (this->login_token().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->login_token());
-  }
-
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = cached_size;
@@ -1666,10 +1575,6 @@ void LoginRsp::MergeFrom(const LoginRsp& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.login_token().size() > 0) {
-
-    login_token_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.login_token_);
-  }
 }
 
 void LoginRsp::CopyFrom(const ::google::protobuf::Message& from) {
@@ -1696,7 +1601,6 @@ void LoginRsp::Swap(LoginRsp* other) {
 }
 void LoginRsp::InternalSwap(LoginRsp* other) {
   using std::swap;
-  login_token_.Swap(&other->login_token_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -1709,411 +1613,6 @@ void LoginRsp::InternalSwap(LoginRsp* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // LoginRsp
 
-// bytes login_token = 1;
-void LoginRsp::clear_login_token() {
-  login_token_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-const ::std::string& LoginRsp::login_token() const {
-  // @@protoc_insertion_point(field_get:logic.LoginRsp.login_token)
-  return login_token_.GetNoArena();
-}
-void LoginRsp::set_login_token(const ::std::string& value) {
-  
-  login_token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:logic.LoginRsp.login_token)
-}
-#if LANG_CXX11
-void LoginRsp::set_login_token(::std::string&& value) {
-  
-  login_token_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:logic.LoginRsp.login_token)
-}
-#endif
-void LoginRsp::set_login_token(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  login_token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:logic.LoginRsp.login_token)
-}
-void LoginRsp::set_login_token(const void* value, size_t size) {
-  
-  login_token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:logic.LoginRsp.login_token)
-}
-::std::string* LoginRsp::mutable_login_token() {
-  
-  // @@protoc_insertion_point(field_mutable:logic.LoginRsp.login_token)
-  return login_token_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-::std::string* LoginRsp::release_login_token() {
-  // @@protoc_insertion_point(field_release:logic.LoginRsp.login_token)
-  
-  return login_token_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-void LoginRsp::set_allocated_login_token(::std::string* login_token) {
-  if (login_token != NULL) {
-    
-  } else {
-    
-  }
-  login_token_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), login_token);
-  // @@protoc_insertion_point(field_set_allocated:logic.LoginRsp.login_token)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int LogoutReq::kUserIdFieldNumber;
-const int LogoutReq::kLoginTokenFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-LogoutReq::LogoutReq()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    protobuf_logic_2eproto::InitDefaults();
-  }
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:logic.LogoutReq)
-}
-LogoutReq::LogoutReq(const LogoutReq& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  login_token_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.login_token().size() > 0) {
-    login_token_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.login_token_);
-  }
-  user_id_ = from.user_id_;
-  // @@protoc_insertion_point(copy_constructor:logic.LogoutReq)
-}
-
-void LogoutReq::SharedCtor() {
-  login_token_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  user_id_ = GOOGLE_ULONGLONG(0);
-  _cached_size_ = 0;
-}
-
-LogoutReq::~LogoutReq() {
-  // @@protoc_insertion_point(destructor:logic.LogoutReq)
-  SharedDtor();
-}
-
-void LogoutReq::SharedDtor() {
-  login_token_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void LogoutReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* LogoutReq::descriptor() {
-  protobuf_logic_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_logic_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const LogoutReq& LogoutReq::default_instance() {
-  protobuf_logic_2eproto::InitDefaults();
-  return *internal_default_instance();
-}
-
-LogoutReq* LogoutReq::New(::google::protobuf::Arena* arena) const {
-  LogoutReq* n = new LogoutReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void LogoutReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:logic.LogoutReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  login_token_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  user_id_ = GOOGLE_ULONGLONG(0);
-  _internal_metadata_.Clear();
-}
-
-bool LogoutReq::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:logic.LogoutReq)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint64 user_id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &user_id_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // bytes login_token = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_login_token()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:logic.LogoutReq)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:logic.LogoutReq)
-  return false;
-#undef DO_
-}
-
-void LogoutReq::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:logic.LogoutReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // uint64 user_id = 1;
-  if (this->user_id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->user_id(), output);
-  }
-
-  // bytes login_token = 2;
-  if (this->login_token().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      2, this->login_token(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:logic.LogoutReq)
-}
-
-::google::protobuf::uint8* LogoutReq::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:logic.LogoutReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // uint64 user_id = 1;
-  if (this->user_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->user_id(), target);
-  }
-
-  // bytes login_token = 2;
-  if (this->login_token().size() > 0) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        2, this->login_token(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:logic.LogoutReq)
-  return target;
-}
-
-size_t LogoutReq::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:logic.LogoutReq)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // bytes login_token = 2;
-  if (this->login_token().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->login_token());
-  }
-
-  // uint64 user_id = 1;
-  if (this->user_id() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->user_id());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void LogoutReq::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:logic.LogoutReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  const LogoutReq* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const LogoutReq>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:logic.LogoutReq)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:logic.LogoutReq)
-    MergeFrom(*source);
-  }
-}
-
-void LogoutReq::MergeFrom(const LogoutReq& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:logic.LogoutReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.login_token().size() > 0) {
-
-    login_token_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.login_token_);
-  }
-  if (from.user_id() != 0) {
-    set_user_id(from.user_id());
-  }
-}
-
-void LogoutReq::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:logic.LogoutReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void LogoutReq::CopyFrom(const LogoutReq& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:logic.LogoutReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool LogoutReq::IsInitialized() const {
-  return true;
-}
-
-void LogoutReq::Swap(LogoutReq* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void LogoutReq::InternalSwap(LogoutReq* other) {
-  using std::swap;
-  login_token_.Swap(&other->login_token_);
-  swap(user_id_, other->user_id_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata LogoutReq::GetMetadata() const {
-  protobuf_logic_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_logic_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// LogoutReq
-
-// uint64 user_id = 1;
-void LogoutReq::clear_user_id() {
-  user_id_ = GOOGLE_ULONGLONG(0);
-}
-::google::protobuf::uint64 LogoutReq::user_id() const {
-  // @@protoc_insertion_point(field_get:logic.LogoutReq.user_id)
-  return user_id_;
-}
-void LogoutReq::set_user_id(::google::protobuf::uint64 value) {
-  
-  user_id_ = value;
-  // @@protoc_insertion_point(field_set:logic.LogoutReq.user_id)
-}
-
-// bytes login_token = 2;
-void LogoutReq::clear_login_token() {
-  login_token_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-const ::std::string& LogoutReq::login_token() const {
-  // @@protoc_insertion_point(field_get:logic.LogoutReq.login_token)
-  return login_token_.GetNoArena();
-}
-void LogoutReq::set_login_token(const ::std::string& value) {
-  
-  login_token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:logic.LogoutReq.login_token)
-}
-#if LANG_CXX11
-void LogoutReq::set_login_token(::std::string&& value) {
-  
-  login_token_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:logic.LogoutReq.login_token)
-}
-#endif
-void LogoutReq::set_login_token(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  login_token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:logic.LogoutReq.login_token)
-}
-void LogoutReq::set_login_token(const void* value, size_t size) {
-  
-  login_token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:logic.LogoutReq.login_token)
-}
-::std::string* LogoutReq::mutable_login_token() {
-  
-  // @@protoc_insertion_point(field_mutable:logic.LogoutReq.login_token)
-  return login_token_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-::std::string* LogoutReq::release_login_token() {
-  // @@protoc_insertion_point(field_release:logic.LogoutReq.login_token)
-  
-  return login_token_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-void LogoutReq::set_allocated_login_token(::std::string* login_token) {
-  if (login_token != NULL) {
-    
-  } else {
-    
-  }
-  login_token_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), login_token);
-  // @@protoc_insertion_point(field_set_allocated:logic.LogoutReq.login_token)
-}
-
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
@@ -2121,59 +1620,59 @@ void LogoutReq::set_allocated_login_token(::std::string* login_token) {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-LogoutRsp::LogoutRsp()
+AccessKeyReq::AccessKeyReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
     protobuf_logic_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:logic.LogoutRsp)
+  // @@protoc_insertion_point(constructor:logic.AccessKeyReq)
 }
-LogoutRsp::LogoutRsp(const LogoutRsp& from)
+AccessKeyReq::AccessKeyReq(const AccessKeyReq& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:logic.LogoutRsp)
+  // @@protoc_insertion_point(copy_constructor:logic.AccessKeyReq)
 }
 
-void LogoutRsp::SharedCtor() {
+void AccessKeyReq::SharedCtor() {
   _cached_size_ = 0;
 }
 
-LogoutRsp::~LogoutRsp() {
-  // @@protoc_insertion_point(destructor:logic.LogoutRsp)
+AccessKeyReq::~AccessKeyReq() {
+  // @@protoc_insertion_point(destructor:logic.AccessKeyReq)
   SharedDtor();
 }
 
-void LogoutRsp::SharedDtor() {
+void AccessKeyReq::SharedDtor() {
 }
 
-void LogoutRsp::SetCachedSize(int size) const {
+void AccessKeyReq::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* LogoutRsp::descriptor() {
+const ::google::protobuf::Descriptor* AccessKeyReq::descriptor() {
   protobuf_logic_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_logic_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const LogoutRsp& LogoutRsp::default_instance() {
+const AccessKeyReq& AccessKeyReq::default_instance() {
   protobuf_logic_2eproto::InitDefaults();
   return *internal_default_instance();
 }
 
-LogoutRsp* LogoutRsp::New(::google::protobuf::Arena* arena) const {
-  LogoutRsp* n = new LogoutRsp;
+AccessKeyReq* AccessKeyReq::New(::google::protobuf::Arena* arena) const {
+  AccessKeyReq* n = new AccessKeyReq;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void LogoutRsp::Clear() {
-// @@protoc_insertion_point(message_clear_start:logic.LogoutRsp)
+void AccessKeyReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:logic.AccessKeyReq)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2181,11 +1680,11 @@ void LogoutRsp::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool LogoutRsp::MergePartialFromCodedStream(
+bool AccessKeyReq::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:logic.LogoutRsp)
+  // @@protoc_insertion_point(parse_start:logic.AccessKeyReq)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -2198,17 +1697,17 @@ bool LogoutRsp::MergePartialFromCodedStream(
           input, tag, _internal_metadata_.mutable_unknown_fields()));
   }
 success:
-  // @@protoc_insertion_point(parse_success:logic.LogoutRsp)
+  // @@protoc_insertion_point(parse_success:logic.AccessKeyReq)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:logic.LogoutRsp)
+  // @@protoc_insertion_point(parse_failure:logic.AccessKeyReq)
   return false;
 #undef DO_
 }
 
-void LogoutRsp::SerializeWithCachedSizes(
+void AccessKeyReq::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:logic.LogoutRsp)
+  // @@protoc_insertion_point(serialize_start:logic.AccessKeyReq)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2216,13 +1715,13 @@ void LogoutRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:logic.LogoutRsp)
+  // @@protoc_insertion_point(serialize_end:logic.AccessKeyReq)
 }
 
-::google::protobuf::uint8* LogoutRsp::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* AccessKeyReq::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:logic.LogoutRsp)
+  // @@protoc_insertion_point(serialize_to_array_start:logic.AccessKeyReq)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2230,12 +1729,12 @@ void LogoutRsp::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:logic.LogoutRsp)
+  // @@protoc_insertion_point(serialize_to_array_end:logic.AccessKeyReq)
   return target;
 }
 
-size_t LogoutRsp::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:logic.LogoutRsp)
+size_t AccessKeyReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:logic.AccessKeyReq)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2250,23 +1749,23 @@ size_t LogoutRsp::ByteSizeLong() const {
   return total_size;
 }
 
-void LogoutRsp::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:logic.LogoutRsp)
+void AccessKeyReq::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:logic.AccessKeyReq)
   GOOGLE_DCHECK_NE(&from, this);
-  const LogoutRsp* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const LogoutRsp>(
+  const AccessKeyReq* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const AccessKeyReq>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:logic.LogoutRsp)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:logic.AccessKeyReq)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:logic.LogoutRsp)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:logic.AccessKeyReq)
     MergeFrom(*source);
   }
 }
 
-void LogoutRsp::MergeFrom(const LogoutRsp& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:logic.LogoutRsp)
+void AccessKeyReq::MergeFrom(const AccessKeyReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:logic.AccessKeyReq)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -2274,255 +1773,59 @@ void LogoutRsp::MergeFrom(const LogoutRsp& from) {
 
 }
 
-void LogoutRsp::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:logic.LogoutRsp)
+void AccessKeyReq::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:logic.AccessKeyReq)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void LogoutRsp::CopyFrom(const LogoutRsp& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:logic.LogoutRsp)
+void AccessKeyReq::CopyFrom(const AccessKeyReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:logic.AccessKeyReq)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool LogoutRsp::IsInitialized() const {
+bool AccessKeyReq::IsInitialized() const {
   return true;
 }
 
-void LogoutRsp::Swap(LogoutRsp* other) {
+void AccessKeyReq::Swap(AccessKeyReq* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void LogoutRsp::InternalSwap(LogoutRsp* other) {
+void AccessKeyReq::InternalSwap(AccessKeyReq* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata LogoutRsp::GetMetadata() const {
+::google::protobuf::Metadata AccessKeyReq::GetMetadata() const {
   protobuf_logic_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_logic_2eproto::file_level_metadata[kIndexInFileMessages];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// LogoutRsp
+// AccessKeyReq
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int AccessKeyRsp::kAccessKeyFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-GetAccessKeyReq::GetAccessKeyReq()
+AccessKeyRsp::AccessKeyRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
     protobuf_logic_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:logic.GetAccessKeyReq)
+  // @@protoc_insertion_point(constructor:logic.AccessKeyRsp)
 }
-GetAccessKeyReq::GetAccessKeyReq(const GetAccessKeyReq& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:logic.GetAccessKeyReq)
-}
-
-void GetAccessKeyReq::SharedCtor() {
-  _cached_size_ = 0;
-}
-
-GetAccessKeyReq::~GetAccessKeyReq() {
-  // @@protoc_insertion_point(destructor:logic.GetAccessKeyReq)
-  SharedDtor();
-}
-
-void GetAccessKeyReq::SharedDtor() {
-}
-
-void GetAccessKeyReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* GetAccessKeyReq::descriptor() {
-  protobuf_logic_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_logic_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const GetAccessKeyReq& GetAccessKeyReq::default_instance() {
-  protobuf_logic_2eproto::InitDefaults();
-  return *internal_default_instance();
-}
-
-GetAccessKeyReq* GetAccessKeyReq::New(::google::protobuf::Arena* arena) const {
-  GetAccessKeyReq* n = new GetAccessKeyReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void GetAccessKeyReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:logic.GetAccessKeyReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _internal_metadata_.Clear();
-}
-
-bool GetAccessKeyReq::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:logic.GetAccessKeyReq)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-  handle_unusual:
-    if (tag == 0) {
-      goto success;
-    }
-    DO_(::google::protobuf::internal::WireFormat::SkipField(
-          input, tag, _internal_metadata_.mutable_unknown_fields()));
-  }
-success:
-  // @@protoc_insertion_point(parse_success:logic.GetAccessKeyReq)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:logic.GetAccessKeyReq)
-  return false;
-#undef DO_
-}
-
-void GetAccessKeyReq::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:logic.GetAccessKeyReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:logic.GetAccessKeyReq)
-}
-
-::google::protobuf::uint8* GetAccessKeyReq::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:logic.GetAccessKeyReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:logic.GetAccessKeyReq)
-  return target;
-}
-
-size_t GetAccessKeyReq::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:logic.GetAccessKeyReq)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void GetAccessKeyReq::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:logic.GetAccessKeyReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  const GetAccessKeyReq* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const GetAccessKeyReq>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:logic.GetAccessKeyReq)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:logic.GetAccessKeyReq)
-    MergeFrom(*source);
-  }
-}
-
-void GetAccessKeyReq::MergeFrom(const GetAccessKeyReq& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:logic.GetAccessKeyReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-}
-
-void GetAccessKeyReq::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:logic.GetAccessKeyReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void GetAccessKeyReq::CopyFrom(const GetAccessKeyReq& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:logic.GetAccessKeyReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool GetAccessKeyReq::IsInitialized() const {
-  return true;
-}
-
-void GetAccessKeyReq::Swap(GetAccessKeyReq* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void GetAccessKeyReq::InternalSwap(GetAccessKeyReq* other) {
-  using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata GetAccessKeyReq::GetMetadata() const {
-  protobuf_logic_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_logic_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// GetAccessKeyReq
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int GetAccessKeyRsp::kAccessKeyFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-GetAccessKeyRsp::GetAccessKeyRsp()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    protobuf_logic_2eproto::InitDefaults();
-  }
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:logic.GetAccessKeyRsp)
-}
-GetAccessKeyRsp::GetAccessKeyRsp(const GetAccessKeyRsp& from)
+AccessKeyRsp::AccessKeyRsp(const AccessKeyRsp& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _cached_size_(0) {
@@ -2531,48 +1834,48 @@ GetAccessKeyRsp::GetAccessKeyRsp(const GetAccessKeyRsp& from)
   if (from.access_key().size() > 0) {
     access_key_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.access_key_);
   }
-  // @@protoc_insertion_point(copy_constructor:logic.GetAccessKeyRsp)
+  // @@protoc_insertion_point(copy_constructor:logic.AccessKeyRsp)
 }
 
-void GetAccessKeyRsp::SharedCtor() {
+void AccessKeyRsp::SharedCtor() {
   access_key_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _cached_size_ = 0;
 }
 
-GetAccessKeyRsp::~GetAccessKeyRsp() {
-  // @@protoc_insertion_point(destructor:logic.GetAccessKeyRsp)
+AccessKeyRsp::~AccessKeyRsp() {
+  // @@protoc_insertion_point(destructor:logic.AccessKeyRsp)
   SharedDtor();
 }
 
-void GetAccessKeyRsp::SharedDtor() {
+void AccessKeyRsp::SharedDtor() {
   access_key_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
-void GetAccessKeyRsp::SetCachedSize(int size) const {
+void AccessKeyRsp::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* GetAccessKeyRsp::descriptor() {
+const ::google::protobuf::Descriptor* AccessKeyRsp::descriptor() {
   protobuf_logic_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_logic_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const GetAccessKeyRsp& GetAccessKeyRsp::default_instance() {
+const AccessKeyRsp& AccessKeyRsp::default_instance() {
   protobuf_logic_2eproto::InitDefaults();
   return *internal_default_instance();
 }
 
-GetAccessKeyRsp* GetAccessKeyRsp::New(::google::protobuf::Arena* arena) const {
-  GetAccessKeyRsp* n = new GetAccessKeyRsp;
+AccessKeyRsp* AccessKeyRsp::New(::google::protobuf::Arena* arena) const {
+  AccessKeyRsp* n = new AccessKeyRsp;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void GetAccessKeyRsp::Clear() {
-// @@protoc_insertion_point(message_clear_start:logic.GetAccessKeyRsp)
+void AccessKeyRsp::Clear() {
+// @@protoc_insertion_point(message_clear_start:logic.AccessKeyRsp)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2581,11 +1884,11 @@ void GetAccessKeyRsp::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool GetAccessKeyRsp::MergePartialFromCodedStream(
+bool AccessKeyRsp::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:logic.GetAccessKeyRsp)
+  // @@protoc_insertion_point(parse_start:logic.AccessKeyRsp)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -2615,17 +1918,17 @@ bool GetAccessKeyRsp::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:logic.GetAccessKeyRsp)
+  // @@protoc_insertion_point(parse_success:logic.AccessKeyRsp)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:logic.GetAccessKeyRsp)
+  // @@protoc_insertion_point(parse_failure:logic.AccessKeyRsp)
   return false;
 #undef DO_
 }
 
-void GetAccessKeyRsp::SerializeWithCachedSizes(
+void AccessKeyRsp::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:logic.GetAccessKeyRsp)
+  // @@protoc_insertion_point(serialize_start:logic.AccessKeyRsp)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2639,13 +1942,13 @@ void GetAccessKeyRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:logic.GetAccessKeyRsp)
+  // @@protoc_insertion_point(serialize_end:logic.AccessKeyRsp)
 }
 
-::google::protobuf::uint8* GetAccessKeyRsp::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* AccessKeyRsp::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:logic.GetAccessKeyRsp)
+  // @@protoc_insertion_point(serialize_to_array_start:logic.AccessKeyRsp)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2660,12 +1963,12 @@ void GetAccessKeyRsp::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:logic.GetAccessKeyRsp)
+  // @@protoc_insertion_point(serialize_to_array_end:logic.AccessKeyRsp)
   return target;
 }
 
-size_t GetAccessKeyRsp::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:logic.GetAccessKeyRsp)
+size_t AccessKeyRsp::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:logic.AccessKeyRsp)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2687,23 +1990,23 @@ size_t GetAccessKeyRsp::ByteSizeLong() const {
   return total_size;
 }
 
-void GetAccessKeyRsp::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:logic.GetAccessKeyRsp)
+void AccessKeyRsp::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:logic.AccessKeyRsp)
   GOOGLE_DCHECK_NE(&from, this);
-  const GetAccessKeyRsp* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const GetAccessKeyRsp>(
+  const AccessKeyRsp* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const AccessKeyRsp>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:logic.GetAccessKeyRsp)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:logic.AccessKeyRsp)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:logic.GetAccessKeyRsp)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:logic.AccessKeyRsp)
     MergeFrom(*source);
   }
 }
 
-void GetAccessKeyRsp::MergeFrom(const GetAccessKeyRsp& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:logic.GetAccessKeyRsp)
+void AccessKeyRsp::MergeFrom(const AccessKeyRsp& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:logic.AccessKeyRsp)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -2715,94 +2018,94 @@ void GetAccessKeyRsp::MergeFrom(const GetAccessKeyRsp& from) {
   }
 }
 
-void GetAccessKeyRsp::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:logic.GetAccessKeyRsp)
+void AccessKeyRsp::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:logic.AccessKeyRsp)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void GetAccessKeyRsp::CopyFrom(const GetAccessKeyRsp& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:logic.GetAccessKeyRsp)
+void AccessKeyRsp::CopyFrom(const AccessKeyRsp& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:logic.AccessKeyRsp)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool GetAccessKeyRsp::IsInitialized() const {
+bool AccessKeyRsp::IsInitialized() const {
   return true;
 }
 
-void GetAccessKeyRsp::Swap(GetAccessKeyRsp* other) {
+void AccessKeyRsp::Swap(AccessKeyRsp* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void GetAccessKeyRsp::InternalSwap(GetAccessKeyRsp* other) {
+void AccessKeyRsp::InternalSwap(AccessKeyRsp* other) {
   using std::swap;
   access_key_.Swap(&other->access_key_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata GetAccessKeyRsp::GetMetadata() const {
+::google::protobuf::Metadata AccessKeyRsp::GetMetadata() const {
   protobuf_logic_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_logic_2eproto::file_level_metadata[kIndexInFileMessages];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// GetAccessKeyRsp
+// AccessKeyRsp
 
 // bytes access_key = 1;
-void GetAccessKeyRsp::clear_access_key() {
+void AccessKeyRsp::clear_access_key() {
   access_key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-const ::std::string& GetAccessKeyRsp::access_key() const {
-  // @@protoc_insertion_point(field_get:logic.GetAccessKeyRsp.access_key)
+const ::std::string& AccessKeyRsp::access_key() const {
+  // @@protoc_insertion_point(field_get:logic.AccessKeyRsp.access_key)
   return access_key_.GetNoArena();
 }
-void GetAccessKeyRsp::set_access_key(const ::std::string& value) {
+void AccessKeyRsp::set_access_key(const ::std::string& value) {
   
   access_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:logic.GetAccessKeyRsp.access_key)
+  // @@protoc_insertion_point(field_set:logic.AccessKeyRsp.access_key)
 }
 #if LANG_CXX11
-void GetAccessKeyRsp::set_access_key(::std::string&& value) {
+void AccessKeyRsp::set_access_key(::std::string&& value) {
   
   access_key_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:logic.GetAccessKeyRsp.access_key)
+  // @@protoc_insertion_point(field_set_rvalue:logic.AccessKeyRsp.access_key)
 }
 #endif
-void GetAccessKeyRsp::set_access_key(const char* value) {
+void AccessKeyRsp::set_access_key(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   access_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:logic.GetAccessKeyRsp.access_key)
+  // @@protoc_insertion_point(field_set_char:logic.AccessKeyRsp.access_key)
 }
-void GetAccessKeyRsp::set_access_key(const void* value, size_t size) {
+void AccessKeyRsp::set_access_key(const void* value, size_t size) {
   
   access_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:logic.GetAccessKeyRsp.access_key)
+  // @@protoc_insertion_point(field_set_pointer:logic.AccessKeyRsp.access_key)
 }
-::std::string* GetAccessKeyRsp::mutable_access_key() {
+::std::string* AccessKeyRsp::mutable_access_key() {
   
-  // @@protoc_insertion_point(field_mutable:logic.GetAccessKeyRsp.access_key)
+  // @@protoc_insertion_point(field_mutable:logic.AccessKeyRsp.access_key)
   return access_key_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-::std::string* GetAccessKeyRsp::release_access_key() {
-  // @@protoc_insertion_point(field_release:logic.GetAccessKeyRsp.access_key)
+::std::string* AccessKeyRsp::release_access_key() {
+  // @@protoc_insertion_point(field_release:logic.AccessKeyRsp.access_key)
   
   return access_key_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-void GetAccessKeyRsp::set_allocated_access_key(::std::string* access_key) {
+void AccessKeyRsp::set_allocated_access_key(::std::string* access_key) {
   if (access_key != NULL) {
     
   } else {
     
   }
   access_key_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), access_key);
-  // @@protoc_insertion_point(field_set_allocated:logic.GetAccessKeyRsp.access_key)
+  // @@protoc_insertion_point(field_set_allocated:logic.AccessKeyRsp.access_key)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -2814,10 +2117,8 @@ const int LogicMsg::kTestReqFieldNumber;
 const int LogicMsg::kTestRspFieldNumber;
 const int LogicMsg::kLoginReqFieldNumber;
 const int LogicMsg::kLoginRspFieldNumber;
-const int LogicMsg::kLogoutReqFieldNumber;
-const int LogicMsg::kLogoutRspFieldNumber;
-const int LogicMsg::kGetAccessKeyReqFieldNumber;
-const int LogicMsg::kGetAccessKeyRspFieldNumber;
+const int LogicMsg::kAccessKeyReqFieldNumber;
+const int LogicMsg::kAccessKeyRspFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 LogicMsg::LogicMsg()
@@ -2851,20 +2152,12 @@ LogicMsg::LogicMsg(const LogicMsg& from)
       mutable_login_rsp()->::logic::LoginRsp::MergeFrom(from.login_rsp());
       break;
     }
-    case kLogoutReq: {
-      mutable_logout_req()->::logic::LogoutReq::MergeFrom(from.logout_req());
+    case kAccessKeyReq: {
+      mutable_access_key_req()->::logic::AccessKeyReq::MergeFrom(from.access_key_req());
       break;
     }
-    case kLogoutRsp: {
-      mutable_logout_rsp()->::logic::LogoutRsp::MergeFrom(from.logout_rsp());
-      break;
-    }
-    case kGetAccessKeyReq: {
-      mutable_get_access_key_req()->::logic::GetAccessKeyReq::MergeFrom(from.get_access_key_req());
-      break;
-    }
-    case kGetAccessKeyRsp: {
-      mutable_get_access_key_rsp()->::logic::GetAccessKeyRsp::MergeFrom(from.get_access_key_rsp());
+    case kAccessKeyRsp: {
+      mutable_access_key_rsp()->::logic::AccessKeyRsp::MergeFrom(from.access_key_rsp());
       break;
     }
     case CHOICE_NOT_SET: {
@@ -2932,20 +2225,12 @@ void LogicMsg::clear_choice() {
       delete choice_.login_rsp_;
       break;
     }
-    case kLogoutReq: {
-      delete choice_.logout_req_;
+    case kAccessKeyReq: {
+      delete choice_.access_key_req_;
       break;
     }
-    case kLogoutRsp: {
-      delete choice_.logout_rsp_;
-      break;
-    }
-    case kGetAccessKeyReq: {
-      delete choice_.get_access_key_req_;
-      break;
-    }
-    case kGetAccessKeyRsp: {
-      delete choice_.get_access_key_rsp_;
+    case kAccessKeyRsp: {
+      delete choice_.access_key_rsp_;
       break;
     }
     case CHOICE_NOT_SET: {
@@ -3024,48 +2309,24 @@ bool LogicMsg::MergePartialFromCodedStream(
         break;
       }
 
-      // .logic.LogoutReq logout_req = 5;
+      // .logic.AccessKeyReq access_key_req = 5;
       case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_logout_req()));
+               input, mutable_access_key_req()));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // .logic.LogoutRsp Logout_rsp = 6;
+      // .logic.AccessKeyRsp access_key_rsp = 6;
       case 6: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_logout_rsp()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .logic.GetAccessKeyReq get_access_key_req = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(58u /* 58 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_get_access_key_req()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .logic.GetAccessKeyRsp get_access_key_rsp = 8;
-      case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(66u /* 66 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_get_access_key_rsp()));
+               input, mutable_access_key_rsp()));
         } else {
           goto handle_unusual;
         }
@@ -3122,28 +2383,16 @@ void LogicMsg::SerializeWithCachedSizes(
       4, *choice_.login_rsp_, output);
   }
 
-  // .logic.LogoutReq logout_req = 5;
-  if (has_logout_req()) {
+  // .logic.AccessKeyReq access_key_req = 5;
+  if (has_access_key_req()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, *choice_.logout_req_, output);
+      5, *choice_.access_key_req_, output);
   }
 
-  // .logic.LogoutRsp Logout_rsp = 6;
-  if (has_logout_rsp()) {
+  // .logic.AccessKeyRsp access_key_rsp = 6;
+  if (has_access_key_rsp()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, *choice_.logout_rsp_, output);
-  }
-
-  // .logic.GetAccessKeyReq get_access_key_req = 7;
-  if (has_get_access_key_req()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      7, *choice_.get_access_key_req_, output);
-  }
-
-  // .logic.GetAccessKeyRsp get_access_key_rsp = 8;
-  if (has_get_access_key_rsp()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      8, *choice_.get_access_key_rsp_, output);
+      6, *choice_.access_key_rsp_, output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -3188,32 +2437,18 @@ void LogicMsg::SerializeWithCachedSizes(
         4, *choice_.login_rsp_, deterministic, target);
   }
 
-  // .logic.LogoutReq logout_req = 5;
-  if (has_logout_req()) {
+  // .logic.AccessKeyReq access_key_req = 5;
+  if (has_access_key_req()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
-        5, *choice_.logout_req_, deterministic, target);
+        5, *choice_.access_key_req_, deterministic, target);
   }
 
-  // .logic.LogoutRsp Logout_rsp = 6;
-  if (has_logout_rsp()) {
+  // .logic.AccessKeyRsp access_key_rsp = 6;
+  if (has_access_key_rsp()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
-        6, *choice_.logout_rsp_, deterministic, target);
-  }
-
-  // .logic.GetAccessKeyReq get_access_key_req = 7;
-  if (has_get_access_key_req()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        7, *choice_.get_access_key_req_, deterministic, target);
-  }
-
-  // .logic.GetAccessKeyRsp get_access_key_rsp = 8;
-  if (has_get_access_key_rsp()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        8, *choice_.get_access_key_rsp_, deterministic, target);
+        6, *choice_.access_key_rsp_, deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -3262,32 +2497,18 @@ size_t LogicMsg::ByteSizeLong() const {
           *choice_.login_rsp_);
       break;
     }
-    // .logic.LogoutReq logout_req = 5;
-    case kLogoutReq: {
+    // .logic.AccessKeyReq access_key_req = 5;
+    case kAccessKeyReq: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.logout_req_);
+          *choice_.access_key_req_);
       break;
     }
-    // .logic.LogoutRsp Logout_rsp = 6;
-    case kLogoutRsp: {
+    // .logic.AccessKeyRsp access_key_rsp = 6;
+    case kAccessKeyRsp: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.logout_rsp_);
-      break;
-    }
-    // .logic.GetAccessKeyReq get_access_key_req = 7;
-    case kGetAccessKeyReq: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.get_access_key_req_);
-      break;
-    }
-    // .logic.GetAccessKeyRsp get_access_key_rsp = 8;
-    case kGetAccessKeyRsp: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.get_access_key_rsp_);
+          *choice_.access_key_rsp_);
       break;
     }
     case CHOICE_NOT_SET: {
@@ -3340,20 +2561,12 @@ void LogicMsg::MergeFrom(const LogicMsg& from) {
       mutable_login_rsp()->::logic::LoginRsp::MergeFrom(from.login_rsp());
       break;
     }
-    case kLogoutReq: {
-      mutable_logout_req()->::logic::LogoutReq::MergeFrom(from.logout_req());
+    case kAccessKeyReq: {
+      mutable_access_key_req()->::logic::AccessKeyReq::MergeFrom(from.access_key_req());
       break;
     }
-    case kLogoutRsp: {
-      mutable_logout_rsp()->::logic::LogoutRsp::MergeFrom(from.logout_rsp());
-      break;
-    }
-    case kGetAccessKeyReq: {
-      mutable_get_access_key_req()->::logic::GetAccessKeyReq::MergeFrom(from.get_access_key_req());
-      break;
-    }
-    case kGetAccessKeyRsp: {
-      mutable_get_access_key_rsp()->::logic::GetAccessKeyRsp::MergeFrom(from.get_access_key_rsp());
+    case kAccessKeyRsp: {
+      mutable_access_key_rsp()->::logic::AccessKeyRsp::MergeFrom(from.access_key_rsp());
       break;
     }
     case CHOICE_NOT_SET: {
@@ -3592,196 +2805,100 @@ void LogicMsg::set_allocated_login_rsp(::logic::LoginRsp* login_rsp) {
   // @@protoc_insertion_point(field_set_allocated:logic.LogicMsg.login_rsp)
 }
 
-// .logic.LogoutReq logout_req = 5;
-bool LogicMsg::has_logout_req() const {
-  return choice_case() == kLogoutReq;
+// .logic.AccessKeyReq access_key_req = 5;
+bool LogicMsg::has_access_key_req() const {
+  return choice_case() == kAccessKeyReq;
 }
-void LogicMsg::set_has_logout_req() {
-  _oneof_case_[0] = kLogoutReq;
+void LogicMsg::set_has_access_key_req() {
+  _oneof_case_[0] = kAccessKeyReq;
 }
-void LogicMsg::clear_logout_req() {
-  if (has_logout_req()) {
-    delete choice_.logout_req_;
+void LogicMsg::clear_access_key_req() {
+  if (has_access_key_req()) {
+    delete choice_.access_key_req_;
     clear_has_choice();
   }
 }
- const ::logic::LogoutReq& LogicMsg::logout_req() const {
-  // @@protoc_insertion_point(field_get:logic.LogicMsg.logout_req)
-  return has_logout_req()
-      ? *choice_.logout_req_
-      : ::logic::LogoutReq::default_instance();
+ const ::logic::AccessKeyReq& LogicMsg::access_key_req() const {
+  // @@protoc_insertion_point(field_get:logic.LogicMsg.access_key_req)
+  return has_access_key_req()
+      ? *choice_.access_key_req_
+      : ::logic::AccessKeyReq::default_instance();
 }
-::logic::LogoutReq* LogicMsg::mutable_logout_req() {
-  if (!has_logout_req()) {
+::logic::AccessKeyReq* LogicMsg::mutable_access_key_req() {
+  if (!has_access_key_req()) {
     clear_choice();
-    set_has_logout_req();
-    choice_.logout_req_ = new ::logic::LogoutReq;
+    set_has_access_key_req();
+    choice_.access_key_req_ = new ::logic::AccessKeyReq;
   }
-  // @@protoc_insertion_point(field_mutable:logic.LogicMsg.logout_req)
-  return choice_.logout_req_;
+  // @@protoc_insertion_point(field_mutable:logic.LogicMsg.access_key_req)
+  return choice_.access_key_req_;
 }
-::logic::LogoutReq* LogicMsg::release_logout_req() {
-  // @@protoc_insertion_point(field_release:logic.LogicMsg.logout_req)
-  if (has_logout_req()) {
+::logic::AccessKeyReq* LogicMsg::release_access_key_req() {
+  // @@protoc_insertion_point(field_release:logic.LogicMsg.access_key_req)
+  if (has_access_key_req()) {
     clear_has_choice();
-    ::logic::LogoutReq* temp = choice_.logout_req_;
-    choice_.logout_req_ = NULL;
+    ::logic::AccessKeyReq* temp = choice_.access_key_req_;
+    choice_.access_key_req_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-void LogicMsg::set_allocated_logout_req(::logic::LogoutReq* logout_req) {
+void LogicMsg::set_allocated_access_key_req(::logic::AccessKeyReq* access_key_req) {
   clear_choice();
-  if (logout_req) {
-    set_has_logout_req();
-    choice_.logout_req_ = logout_req;
+  if (access_key_req) {
+    set_has_access_key_req();
+    choice_.access_key_req_ = access_key_req;
   }
-  // @@protoc_insertion_point(field_set_allocated:logic.LogicMsg.logout_req)
+  // @@protoc_insertion_point(field_set_allocated:logic.LogicMsg.access_key_req)
 }
 
-// .logic.LogoutRsp Logout_rsp = 6;
-bool LogicMsg::has_logout_rsp() const {
-  return choice_case() == kLogoutRsp;
+// .logic.AccessKeyRsp access_key_rsp = 6;
+bool LogicMsg::has_access_key_rsp() const {
+  return choice_case() == kAccessKeyRsp;
 }
-void LogicMsg::set_has_logout_rsp() {
-  _oneof_case_[0] = kLogoutRsp;
+void LogicMsg::set_has_access_key_rsp() {
+  _oneof_case_[0] = kAccessKeyRsp;
 }
-void LogicMsg::clear_logout_rsp() {
-  if (has_logout_rsp()) {
-    delete choice_.logout_rsp_;
+void LogicMsg::clear_access_key_rsp() {
+  if (has_access_key_rsp()) {
+    delete choice_.access_key_rsp_;
     clear_has_choice();
   }
 }
- const ::logic::LogoutRsp& LogicMsg::logout_rsp() const {
-  // @@protoc_insertion_point(field_get:logic.LogicMsg.Logout_rsp)
-  return has_logout_rsp()
-      ? *choice_.logout_rsp_
-      : ::logic::LogoutRsp::default_instance();
+ const ::logic::AccessKeyRsp& LogicMsg::access_key_rsp() const {
+  // @@protoc_insertion_point(field_get:logic.LogicMsg.access_key_rsp)
+  return has_access_key_rsp()
+      ? *choice_.access_key_rsp_
+      : ::logic::AccessKeyRsp::default_instance();
 }
-::logic::LogoutRsp* LogicMsg::mutable_logout_rsp() {
-  if (!has_logout_rsp()) {
+::logic::AccessKeyRsp* LogicMsg::mutable_access_key_rsp() {
+  if (!has_access_key_rsp()) {
     clear_choice();
-    set_has_logout_rsp();
-    choice_.logout_rsp_ = new ::logic::LogoutRsp;
+    set_has_access_key_rsp();
+    choice_.access_key_rsp_ = new ::logic::AccessKeyRsp;
   }
-  // @@protoc_insertion_point(field_mutable:logic.LogicMsg.Logout_rsp)
-  return choice_.logout_rsp_;
+  // @@protoc_insertion_point(field_mutable:logic.LogicMsg.access_key_rsp)
+  return choice_.access_key_rsp_;
 }
-::logic::LogoutRsp* LogicMsg::release_logout_rsp() {
-  // @@protoc_insertion_point(field_release:logic.LogicMsg.Logout_rsp)
-  if (has_logout_rsp()) {
+::logic::AccessKeyRsp* LogicMsg::release_access_key_rsp() {
+  // @@protoc_insertion_point(field_release:logic.LogicMsg.access_key_rsp)
+  if (has_access_key_rsp()) {
     clear_has_choice();
-    ::logic::LogoutRsp* temp = choice_.logout_rsp_;
-    choice_.logout_rsp_ = NULL;
+    ::logic::AccessKeyRsp* temp = choice_.access_key_rsp_;
+    choice_.access_key_rsp_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-void LogicMsg::set_allocated_logout_rsp(::logic::LogoutRsp* logout_rsp) {
+void LogicMsg::set_allocated_access_key_rsp(::logic::AccessKeyRsp* access_key_rsp) {
   clear_choice();
-  if (logout_rsp) {
-    set_has_logout_rsp();
-    choice_.logout_rsp_ = logout_rsp;
+  if (access_key_rsp) {
+    set_has_access_key_rsp();
+    choice_.access_key_rsp_ = access_key_rsp;
   }
-  // @@protoc_insertion_point(field_set_allocated:logic.LogicMsg.Logout_rsp)
-}
-
-// .logic.GetAccessKeyReq get_access_key_req = 7;
-bool LogicMsg::has_get_access_key_req() const {
-  return choice_case() == kGetAccessKeyReq;
-}
-void LogicMsg::set_has_get_access_key_req() {
-  _oneof_case_[0] = kGetAccessKeyReq;
-}
-void LogicMsg::clear_get_access_key_req() {
-  if (has_get_access_key_req()) {
-    delete choice_.get_access_key_req_;
-    clear_has_choice();
-  }
-}
- const ::logic::GetAccessKeyReq& LogicMsg::get_access_key_req() const {
-  // @@protoc_insertion_point(field_get:logic.LogicMsg.get_access_key_req)
-  return has_get_access_key_req()
-      ? *choice_.get_access_key_req_
-      : ::logic::GetAccessKeyReq::default_instance();
-}
-::logic::GetAccessKeyReq* LogicMsg::mutable_get_access_key_req() {
-  if (!has_get_access_key_req()) {
-    clear_choice();
-    set_has_get_access_key_req();
-    choice_.get_access_key_req_ = new ::logic::GetAccessKeyReq;
-  }
-  // @@protoc_insertion_point(field_mutable:logic.LogicMsg.get_access_key_req)
-  return choice_.get_access_key_req_;
-}
-::logic::GetAccessKeyReq* LogicMsg::release_get_access_key_req() {
-  // @@protoc_insertion_point(field_release:logic.LogicMsg.get_access_key_req)
-  if (has_get_access_key_req()) {
-    clear_has_choice();
-    ::logic::GetAccessKeyReq* temp = choice_.get_access_key_req_;
-    choice_.get_access_key_req_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-void LogicMsg::set_allocated_get_access_key_req(::logic::GetAccessKeyReq* get_access_key_req) {
-  clear_choice();
-  if (get_access_key_req) {
-    set_has_get_access_key_req();
-    choice_.get_access_key_req_ = get_access_key_req;
-  }
-  // @@protoc_insertion_point(field_set_allocated:logic.LogicMsg.get_access_key_req)
-}
-
-// .logic.GetAccessKeyRsp get_access_key_rsp = 8;
-bool LogicMsg::has_get_access_key_rsp() const {
-  return choice_case() == kGetAccessKeyRsp;
-}
-void LogicMsg::set_has_get_access_key_rsp() {
-  _oneof_case_[0] = kGetAccessKeyRsp;
-}
-void LogicMsg::clear_get_access_key_rsp() {
-  if (has_get_access_key_rsp()) {
-    delete choice_.get_access_key_rsp_;
-    clear_has_choice();
-  }
-}
- const ::logic::GetAccessKeyRsp& LogicMsg::get_access_key_rsp() const {
-  // @@protoc_insertion_point(field_get:logic.LogicMsg.get_access_key_rsp)
-  return has_get_access_key_rsp()
-      ? *choice_.get_access_key_rsp_
-      : ::logic::GetAccessKeyRsp::default_instance();
-}
-::logic::GetAccessKeyRsp* LogicMsg::mutable_get_access_key_rsp() {
-  if (!has_get_access_key_rsp()) {
-    clear_choice();
-    set_has_get_access_key_rsp();
-    choice_.get_access_key_rsp_ = new ::logic::GetAccessKeyRsp;
-  }
-  // @@protoc_insertion_point(field_mutable:logic.LogicMsg.get_access_key_rsp)
-  return choice_.get_access_key_rsp_;
-}
-::logic::GetAccessKeyRsp* LogicMsg::release_get_access_key_rsp() {
-  // @@protoc_insertion_point(field_release:logic.LogicMsg.get_access_key_rsp)
-  if (has_get_access_key_rsp()) {
-    clear_has_choice();
-    ::logic::GetAccessKeyRsp* temp = choice_.get_access_key_rsp_;
-    choice_.get_access_key_rsp_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-void LogicMsg::set_allocated_get_access_key_rsp(::logic::GetAccessKeyRsp* get_access_key_rsp) {
-  clear_choice();
-  if (get_access_key_rsp) {
-    set_has_get_access_key_rsp();
-    choice_.get_access_key_rsp_ = get_access_key_rsp;
-  }
-  // @@protoc_insertion_point(field_set_allocated:logic.LogicMsg.get_access_key_rsp)
+  // @@protoc_insertion_point(field_set_allocated:logic.LogicMsg.access_key_rsp)
 }
 
 bool LogicMsg::has_choice() const {
