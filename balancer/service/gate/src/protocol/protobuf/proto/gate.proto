@@ -45,6 +45,14 @@ message CloseClientRsp {
 
 }
 
+message LogoutReq {
+
+}
+
+message LogoutRsp {
+
+}
+
 message GateMsg {                                   // 奇数是请求，偶数是响应
     oneof choice {
         TestReq         test_req            = 1;    // 请求
@@ -61,5 +69,8 @@ message GateMsg {                                   // 奇数是请求，偶数�
 
         CloseClientReq  close_client_req    = 9;    // 关闭客户端（告诉客户端不要重连）
         CloseClientRsp  close_client_rsp    = 10;
+
+        LogoutReq       logout_req          = 11;    // 登出
+        LogoutRsp       logout_rsp          = 12;   
     }
 }

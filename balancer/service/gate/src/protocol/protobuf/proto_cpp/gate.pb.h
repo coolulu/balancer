@@ -52,6 +52,12 @@ extern GetConnIdReqDefaultTypeInternal _GetConnIdReq_default_instance_;
 class GetConnIdRsp;
 class GetConnIdRspDefaultTypeInternal;
 extern GetConnIdRspDefaultTypeInternal _GetConnIdRsp_default_instance_;
+class LogoutReq;
+class LogoutReqDefaultTypeInternal;
+extern LogoutReqDefaultTypeInternal _LogoutReq_default_instance_;
+class LogoutRsp;
+class LogoutRspDefaultTypeInternal;
+extern LogoutRspDefaultTypeInternal _LogoutRsp_default_instance_;
 class TestReq;
 class TestReqDefaultTypeInternal;
 extern TestReqDefaultTypeInternal _TestReq_default_instance_;
@@ -1063,6 +1069,186 @@ class CloseClientRsp : public ::google::protobuf::Message /* @@protoc_insertion_
 };
 // -------------------------------------------------------------------
 
+class LogoutReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.LogoutReq) */ {
+ public:
+  LogoutReq();
+  virtual ~LogoutReq();
+
+  LogoutReq(const LogoutReq& from);
+
+  inline LogoutReq& operator=(const LogoutReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  LogoutReq(LogoutReq&& from) noexcept
+    : LogoutReq() {
+    *this = ::std::move(from);
+  }
+
+  inline LogoutReq& operator=(LogoutReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const LogoutReq& default_instance();
+
+  static inline const LogoutReq* internal_default_instance() {
+    return reinterpret_cast<const LogoutReq*>(
+               &_LogoutReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    10;
+
+  void Swap(LogoutReq* other);
+  friend void swap(LogoutReq& a, LogoutReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline LogoutReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  LogoutReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const LogoutReq& from);
+  void MergeFrom(const LogoutReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(LogoutReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:gate.LogoutReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class LogoutRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.LogoutRsp) */ {
+ public:
+  LogoutRsp();
+  virtual ~LogoutRsp();
+
+  LogoutRsp(const LogoutRsp& from);
+
+  inline LogoutRsp& operator=(const LogoutRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  LogoutRsp(LogoutRsp&& from) noexcept
+    : LogoutRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline LogoutRsp& operator=(LogoutRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const LogoutRsp& default_instance();
+
+  static inline const LogoutRsp* internal_default_instance() {
+    return reinterpret_cast<const LogoutRsp*>(
+               &_LogoutRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    11;
+
+  void Swap(LogoutRsp* other);
+  friend void swap(LogoutRsp& a, LogoutRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline LogoutRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  LogoutRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const LogoutRsp& from);
+  void MergeFrom(const LogoutRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(LogoutRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:gate.LogoutRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.GateMsg) */ {
  public:
   GateMsg();
@@ -1103,6 +1289,8 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
     kCloseConnIdRsp = 8,
     kCloseClientReq = 9,
     kCloseClientRsp = 10,
+    kLogoutReq = 11,
+    kLogoutRsp = 12,
     CHOICE_NOT_SET = 0,
   };
 
@@ -1111,7 +1299,7 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
                &_GateMsg_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    10;
+    12;
 
   void Swap(GateMsg* other);
   friend void swap(GateMsg& a, GateMsg& b) {
@@ -1248,6 +1436,24 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::gate::CloseClientRsp* release_close_client_rsp();
   void set_allocated_close_client_rsp(::gate::CloseClientRsp* close_client_rsp);
 
+  // .gate.LogoutReq logout_req = 11;
+  bool has_logout_req() const;
+  void clear_logout_req();
+  static const int kLogoutReqFieldNumber = 11;
+  const ::gate::LogoutReq& logout_req() const;
+  ::gate::LogoutReq* mutable_logout_req();
+  ::gate::LogoutReq* release_logout_req();
+  void set_allocated_logout_req(::gate::LogoutReq* logout_req);
+
+  // .gate.LogoutRsp logout_rsp = 12;
+  bool has_logout_rsp() const;
+  void clear_logout_rsp();
+  static const int kLogoutRspFieldNumber = 12;
+  const ::gate::LogoutRsp& logout_rsp() const;
+  ::gate::LogoutRsp* mutable_logout_rsp();
+  ::gate::LogoutRsp* release_logout_rsp();
+  void set_allocated_logout_rsp(::gate::LogoutRsp* logout_rsp);
+
   ChoiceCase choice_case() const;
   // @@protoc_insertion_point(class_scope:gate.GateMsg)
  private:
@@ -1261,6 +1467,8 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void set_has_close_conn_id_rsp();
   void set_has_close_client_req();
   void set_has_close_client_rsp();
+  void set_has_logout_req();
+  void set_has_logout_rsp();
 
   inline bool has_choice() const;
   void clear_choice();
@@ -1279,6 +1487,8 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
     ::gate::CloseConnIdRsp* close_conn_id_rsp_;
     ::gate::CloseClientReq* close_client_req_;
     ::gate::CloseClientRsp* close_client_rsp_;
+    ::gate::LogoutReq* logout_req_;
+    ::gate::LogoutRsp* logout_rsp_;
   } choice_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -1511,6 +1721,14 @@ inline void CloseConnIdReq::set_conn_id(::google::protobuf::uint64 value) {
 // -------------------------------------------------------------------
 
 // CloseClientRsp
+
+// -------------------------------------------------------------------
+
+// LogoutReq
+
+// -------------------------------------------------------------------
+
+// LogoutRsp
 
 // -------------------------------------------------------------------
 
@@ -1996,6 +2214,102 @@ inline void GateMsg::set_allocated_close_client_rsp(::gate::CloseClientRsp* clos
   // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.close_client_rsp)
 }
 
+// .gate.LogoutReq logout_req = 11;
+inline bool GateMsg::has_logout_req() const {
+  return choice_case() == kLogoutReq;
+}
+inline void GateMsg::set_has_logout_req() {
+  _oneof_case_[0] = kLogoutReq;
+}
+inline void GateMsg::clear_logout_req() {
+  if (has_logout_req()) {
+    delete choice_.logout_req_;
+    clear_has_choice();
+  }
+}
+inline  const ::gate::LogoutReq& GateMsg::logout_req() const {
+  // @@protoc_insertion_point(field_get:gate.GateMsg.logout_req)
+  return has_logout_req()
+      ? *choice_.logout_req_
+      : ::gate::LogoutReq::default_instance();
+}
+inline ::gate::LogoutReq* GateMsg::mutable_logout_req() {
+  if (!has_logout_req()) {
+    clear_choice();
+    set_has_logout_req();
+    choice_.logout_req_ = new ::gate::LogoutReq;
+  }
+  // @@protoc_insertion_point(field_mutable:gate.GateMsg.logout_req)
+  return choice_.logout_req_;
+}
+inline ::gate::LogoutReq* GateMsg::release_logout_req() {
+  // @@protoc_insertion_point(field_release:gate.GateMsg.logout_req)
+  if (has_logout_req()) {
+    clear_has_choice();
+    ::gate::LogoutReq* temp = choice_.logout_req_;
+    choice_.logout_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void GateMsg::set_allocated_logout_req(::gate::LogoutReq* logout_req) {
+  clear_choice();
+  if (logout_req) {
+    set_has_logout_req();
+    choice_.logout_req_ = logout_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.logout_req)
+}
+
+// .gate.LogoutRsp logout_rsp = 12;
+inline bool GateMsg::has_logout_rsp() const {
+  return choice_case() == kLogoutRsp;
+}
+inline void GateMsg::set_has_logout_rsp() {
+  _oneof_case_[0] = kLogoutRsp;
+}
+inline void GateMsg::clear_logout_rsp() {
+  if (has_logout_rsp()) {
+    delete choice_.logout_rsp_;
+    clear_has_choice();
+  }
+}
+inline  const ::gate::LogoutRsp& GateMsg::logout_rsp() const {
+  // @@protoc_insertion_point(field_get:gate.GateMsg.logout_rsp)
+  return has_logout_rsp()
+      ? *choice_.logout_rsp_
+      : ::gate::LogoutRsp::default_instance();
+}
+inline ::gate::LogoutRsp* GateMsg::mutable_logout_rsp() {
+  if (!has_logout_rsp()) {
+    clear_choice();
+    set_has_logout_rsp();
+    choice_.logout_rsp_ = new ::gate::LogoutRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:gate.GateMsg.logout_rsp)
+  return choice_.logout_rsp_;
+}
+inline ::gate::LogoutRsp* GateMsg::release_logout_rsp() {
+  // @@protoc_insertion_point(field_release:gate.GateMsg.logout_rsp)
+  if (has_logout_rsp()) {
+    clear_has_choice();
+    ::gate::LogoutRsp* temp = choice_.logout_rsp_;
+    choice_.logout_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void GateMsg::set_allocated_logout_rsp(::gate::LogoutRsp* logout_rsp) {
+  clear_choice();
+  if (logout_rsp) {
+    set_has_logout_rsp();
+    choice_.logout_rsp_ = logout_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.logout_rsp)
+}
+
 inline bool GateMsg::has_choice() const {
   return choice_case() != CHOICE_NOT_SET;
 }
@@ -2009,6 +2323,10 @@ inline GateMsg::ChoiceCase GateMsg::choice_case() const {
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
