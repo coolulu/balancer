@@ -67,7 +67,19 @@
                 {
                     "key": "buffer_max_size",
                     "val": "1024"
-                }
+                },
+				{
+					"key": "navigate_key",
+					"val": "qsdjkajwojfdowjowj"
+				},
+				{
+					"key": "navigate_key_timeout_us",
+					"val": "60000000"
+				},
+				{
+					"key": "map_gate_service_id",
+					"val": "10300"
+				}
             ],
             "heartbeat_list": [
                 {
