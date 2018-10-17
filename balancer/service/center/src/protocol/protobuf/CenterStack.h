@@ -14,4 +14,13 @@ namespace CenterStack
 					  unsigned long long conf_update_time,
 					  const std::string& conf_json);
 
+	void SyncServiceReq(data::Body& body, 
+						unsigned long long conf_update_time);
+
+	void SyncServiceRsp(data::Body& body,
+						int code,
+						const std::string& info,
+						unsigned long long conf_update_time,
+						const std::string& conf_json);
+
 };
