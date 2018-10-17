@@ -13,9 +13,11 @@ Proc::Proc(muduo::net::EventLoop& loop,
 	:	_loop(loop), 
 		_config_file(config_file),
 		_conf_id(conf_id),
+		_tcp_server(*this),
 		_http_server(*this),
 		_timer(*this), 
 		_prober(*this),
+		_synchro(*this),
 		_tcp_client_pool(*this)
 {
 
@@ -71,6 +73,7 @@ int Proc::init()
 void Proc::start()
 {
 	B_LOG_INFO;
+	_tcp_server.start();
 	_http_server.start();
 	_loop.runEvery(0.1, boost::bind(&Timer::check_timeout, &_timer));
 }

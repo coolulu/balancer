@@ -6,11 +6,13 @@
 #include "config/Config.h"
 #include "config/ServiceConfig.h"
 #include "Timer.h"
+#include "BTcpServer.h"
 #include "BHttpServer.h"
 #include "Seq.h"
 #include "Prober.h"
 #include "BTcpClientPool.h"
 #include "TaskMsgPool.h"
+#include "Synchro.h"
 
 
 class Proc
@@ -47,10 +49,12 @@ public:
 	Config _config;
 	ServiceConfig _sc;
 	Prober _prober;
+	Synchro _synchro;
 	BTcpClientPool _tcp_client_pool;
 	TaskMsgPool _task_msg_pool;
 
 	Timer _timer;
+	BTcpServer _tcp_server;
 	BHttpServer _http_server;
 	
 	muduo::net::EventLoop& _loop;

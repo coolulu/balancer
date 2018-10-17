@@ -18,4 +18,5 @@ void Timer::check_timeout()
 	_proc._prober.probe();
 	_proc._tcp_client_pool.check_idle();
 	_proc._task_msg_pool.check_timeout();	
+	_proc._synchro.check_sync();
 }
