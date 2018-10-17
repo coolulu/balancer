@@ -1,17 +1,17 @@
 #pragma once
 
 #include <string>
-#include "protocol/protobuf/proto_cpp/service.pb.h"
 
-namespace Define
+class Define
 {
+public:
 	enum
 	{
 		BUFFER_SIZE = 1024 * 1024,
 	};
 
-	static const std::string& service_version = "0.1.0";
+	static const std::string& service_version;
 
-	static const unsigned short service_id = service::CENTER;
-	static const std::string& service_name = "center";
+	static const unsigned short service_id;
+	static const std::string& service_name;
 };
