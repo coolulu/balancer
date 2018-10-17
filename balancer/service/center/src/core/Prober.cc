@@ -4,7 +4,6 @@
 #include "protocol/Protocol.h"
 #include "TaskMsgPool.h"
 #include "handle/client/Heartbeat.h"
-#include "tool/Util.h"
 
 Prober::Prober(Proc& proc) : _proc(proc)
 {
@@ -18,8 +17,7 @@ Prober::~Prober()
 
 void Prober::probe()
 {
-	unsigned long long now_us = Util::get_us();	
-	unsigned int t_now = now_us / 1000 / 1000;
+	unsigned int t_now = ::time(nullptr);
 
 	auto& service_map = _proc._sc.get_service_map();
 	for(auto it_service_map = service_map.begin(); it_service_map != service_map.end(); it_service_map++)	
