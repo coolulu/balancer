@@ -2,19 +2,19 @@
 	"net": {
 		"tcp": {
 			"ip": "0.0.0.0",
-			"port": 10100
+			"port": 10101
 		},
 
 		"http": {
 			"ip": "0.0.0.0",
-			"port": 10150
+			"port": 10151
 		}
 	},
 
 	"log": {
 		"level": 1,
 		"console": true,
-		"file_path": "./log/0/center",
+		"file_path": "./log/1/center",
 		"roll_size": 10000000,
 		"thread_safe": false,
 		"flush_interval": 0,
@@ -35,13 +35,13 @@
 		"tcp_client_high_water_mark": 65535,
 		"tcp_client_msg_reduce_size": 1000,
 
-		"level": 100,
+		"level": 101,
 		"level_expire_time": 120,
 		"service_path": "./conf/service.json",
 		"prober_timeout_us": 1000000,
 
-		"sync": false,
-		"sync_ip": "127.0.0.1",
+		"sync": true,
+		"sync_ip": "192.168.154.130",
 		"sync_port": 10100,
 		"sync_timeout_us": 5000000,
 		"sync_gap": 30
