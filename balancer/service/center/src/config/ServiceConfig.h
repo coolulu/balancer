@@ -108,6 +108,7 @@ public:
 	inline ServiceConfig copy(){return *this;}
 	inline void assign(const ServiceConfig& sc){*this = sc;}
 	inline std::map<unsigned short, Service>& get_service_map(){return _service_map;}
+	inline ConfigDerivative& get_config_derivative(){return _config_derivative;}
 
 	std::string json_to_map(const std::string& json);
 	std::string map_to_json();
