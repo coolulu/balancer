@@ -23,7 +23,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := src/config/Config.cc src/config/Derivative.cc src/config/ServiceConfig.cc src/core/BHttpServer.cc src/core/BTcpClient.cc src/core/BTcpClientPool.cc src/core/Codec.cc src/core/Packet.cc src/core/Prober.cc src/core/Proc.cc src/core/Seq.cc src/core/SignalHandle.cc src/core/TaskMsgBase.cc src/core/TaskMsgPool.cc src/core/Timer.cc src/handle/client/Heartbeat.cc src/handle/HandleClient.cc src/log/Log.cc src/main.cc src/protocol/protobuf/CenterStack.cc src/protocol/protobuf/proto_cpp/center.pb.cc src/protocol/protobuf/proto_cpp/common.pb.cc src/protocol/protobuf/proto_cpp/data.pb.cc src/protocol/protobuf/proto_cpp/data_format.pb.cc src/protocol/protobuf/proto_cpp/service.pb.cc src/protocol/protobuf/proto_cpp/version.pb.cc src/tool/Util.cc
+SOURCEFILES := src/config/Config.cc src/config/Derivative.cc src/config/ServiceConfig.cc src/core/BHttpServer.cc src/core/BTcpClient.cc src/core/BTcpClientPool.cc src/core/BTcpServer.cc src/core/Codec.cc src/core/Packet.cc src/core/Prober.cc src/core/Proc.cc src/core/Seq.cc src/core/SignalHandle.cc src/core/Synchro.cc src/core/TaskMsgBase.cc src/core/TaskMsgPool.cc src/core/Timer.cc src/define.cc src/handle/client/Heartbeat.cc src/handle/client/SyncServiceReq.cc src/handle/HandleClient.cc src/handle/HandleServer.cc src/handle/server/SyncServiceRsp.cc src/log/Log.cc src/main.cc src/protocol/protobuf/CenterStack.cc src/protocol/protobuf/proto_cpp/center.pb.cc src/protocol/protobuf/proto_cpp/common.pb.cc src/protocol/protobuf/proto_cpp/data.pb.cc src/protocol/protobuf/proto_cpp/data_format.pb.cc src/protocol/protobuf/proto_cpp/service.pb.cc src/protocol/protobuf/proto_cpp/version.pb.cc src/tool/Util.cc
 EXTERNAL_LIBS := 
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
@@ -189,6 +189,10 @@ $(BINARYDIR)/BTcpClientPool.o : src/core/BTcpClientPool.cc $(all_make_files) |$(
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
+$(BINARYDIR)/BTcpServer.o : src/core/BTcpServer.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
 $(BINARYDIR)/Codec.o : src/core/Codec.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
@@ -213,6 +217,10 @@ $(BINARYDIR)/SignalHandle.o : src/core/SignalHandle.cc $(all_make_files) |$(BINA
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
+$(BINARYDIR)/Synchro.o : src/core/Synchro.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
 $(BINARYDIR)/TaskMsgBase.o : src/core/TaskMsgBase.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
@@ -225,11 +233,27 @@ $(BINARYDIR)/Timer.o : src/core/Timer.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
+$(BINARYDIR)/define.o : src/define.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
 $(BINARYDIR)/Heartbeat.o : src/handle/client/Heartbeat.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
+$(BINARYDIR)/SyncServiceReq.o : src/handle/client/SyncServiceReq.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
 $(BINARYDIR)/HandleClient.o : src/handle/HandleClient.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/HandleServer.o : src/handle/HandleServer.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/SyncServiceRsp.o : src/handle/server/SyncServiceRsp.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 

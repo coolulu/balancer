@@ -42,6 +42,9 @@
     <Filter Include="src\handle\client">
       <UniqueIdentifier>{5feb5165-992c-47a2-8888-c138b201689a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\handle\server">
+      <UniqueIdentifier>{e6edd7a5-a914-4592-8ffe-8e2629ebd71c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -158,6 +161,24 @@
     <ClCompile Include="src\core\TaskMsgBase.cc">
       <Filter>src\core</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\BTcpServer.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\handle\HandleServer.cc">
+      <Filter>src\handle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Synchro.cc">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\handle\server\SyncServiceRsp.cc">
+      <Filter>src\handle\server</Filter>
+    </ClCompile>
+    <ClCompile Include="src\handle\client\SyncServiceReq.cc">
+      <Filter>src\handle\client</Filter>
+    </ClCompile>
+    <ClCompile Include="src\define.cc">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\protocol\Protocol.h">
@@ -243,6 +264,21 @@
     </ClInclude>
     <ClInclude Include="src\core\TaskMsgBase.h">
       <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\BTcpServer.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\HandleServer.h">
+      <Filter>src\handle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Synchro.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\server\SyncServiceRsp.h">
+      <Filter>src\handle\server</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\client\SyncServiceReq.h">
+      <Filter>src\handle\client</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
