@@ -17,8 +17,9 @@
         NAVIGATE     = 10200;
         GATE         = 10300;
         SESSION      = 10400;
-        LOGIC        = 10500;
-        PROXY        = 10600;
+        LOGIN        = 10500;
+        LOGIC        = 10600;
+        PROXY        = 10700;
 
         END          = 65535;
     }
@@ -241,7 +242,7 @@
         10200:核心服务(c++),cpu密集型,工作线程数等于cpu数和一个主线程
         多线程单进程，每个节点运行一个进程，进程不绑定cpu
 
-        gate -> [client, navigate, session, logic, proxy], <- [center, client, logic]
+        gate -> [client, navigate, session, login, logic, proxy], <- [center, client, login, logic]
         (listen http * 1, listen tcp * 2(前后端端口分离), connect tcp * n)
         10300:核心服务(c++),cpu密集型,进程数等于cpu数
         单线程单进程，每个节点运行多个进程，进程绑定cpu
@@ -251,14 +252,19 @@
         10400:核心服务(python),io密集型,工作线程数等于[2,8]和一个网络io线程
         多线程单进程，每个节点运行多个进程，进程绑定cpu
 
+        login -> [gate, session, proxy], <- [center, gate]
+        (listen http * 1, listen tcp * 1, connect tcp * n)
+        10500:核心服务(c++),cpu密集型,进程数等于cpu数
+        单线程单进程，每个节点运行多个进程，进程绑定cpu
+
         logic -> [gate, session, proxy], <- [center, gate]
         (listen http * 1, listen tcp * 1, connect tcp * n)
-        10500:业务服务(c++),cpu密集型,进程数等于cpu数
+        10600:业务服务(c++),cpu密集型,进程数等于cpu数
         单线程单进程，每个节点运行多个进程，进程绑定cpu
 
         proxy -> [], <- [center, gate, logic]
         (listen http * 1, listen tcp * 1)
-        10600:业务服务(python),io密集型,工作线程数等于[2,8]和一个网络io线程
+        10700:业务服务(python),io密集型,工作线程数等于[2,8]和一个网络io线程
         多线程单进程，每个节点运行多个进程，进程绑定cpu
 
 ### 客户端
@@ -479,8 +485,6 @@
 #### 客户端连接
     1.当客户(主动or被动)连接断开完成后，触发调用Session.DelSession，删除客户端session
 
-#### 登录
-
 ### 会话服务
     service_type: session
     Session {
@@ -509,6 +513,9 @@
     ip(uint) or ip(string)
 
     结论：用gate_ip，内网ip字符串
+
+### 登录服务
+    service_type: login
 
 ### 逻辑服务
     service_type: logic
