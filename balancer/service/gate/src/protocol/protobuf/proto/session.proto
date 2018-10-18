@@ -2,25 +2,18 @@ syntax="proto3";
 
 package session;
 
-import "common.proto";
-
 message Session {
-    bool    is_online           = 1;
-    uint64  user_id             = 2;
-    uint64  conn_id             = 3;
-    int32   service_id          = 4;    // 方便gate就近接入使用,不同地区gate的service_id不同
-    uint32  proc_id             = 5;
-    bytes   in_ip               = 6;
-    int32   in_port             = 7;
-    uint32  create_time         = 8;
-    int32   version             = 9;
-    uint32  app_id              = 10;
-    uint32  app_version         = 11;
-    uint32  dev_type            = 12;    
-}
-
-message SessionList {
-    repeated Session list       = 1;
+    uint64  user_id             = 1;
+    int32   service_id          = 2;    // 方便gate就近接入使用,不同地区gate的service_id不同
+    uint32  proc_id             = 3;
+    bytes   in_ip               = 4;
+    int32   in_port             = 5;
+    uint64  conn_id             = 6;    // conn_id为0，表示离线
+    uint32  create_time         = 7;
+    int32   version             = 8;
+    uint32  app_id              = 9;
+    uint32  app_version         = 10;
+    uint32  dev_type            = 11;    
 }
 
 message ConnKey {
@@ -37,16 +30,8 @@ message TestRsp {
     bytes   service_name        = 1;
 }
 
-message QuerySessionListReq {
-    common.UserIdList   user_id_list    = 1;
- }
-
-message QuerySessionListRsp {
-    SessionList     session_list        = 1;
-}
-
 message CreateSessionReq {
-    Session         session         = 1;
+    Session     session     = 1;
 }
 
 message CreateSessionRsp {
@@ -62,18 +47,37 @@ message DelSessionRsp {
 
 }
 
+message QuerySessionReq {
+    uint64  user_id     = 1;
+ }
+
+message QuerySessionRsp {
+    Session session     = 1;
+}
+
+message QuerySessionListReq {
+    repeated uint64     user_id_list    = 1;
+ }
+
+message QuerySessionListRsp {
+    repeated Session    session_list    = 1;
+}
+
 message SessionMsg {                                // 奇数是请求，偶数是响应
     oneof choice {
         TestReq        test_req     = 1;    // 请求
         TestRsp        test_rsp     = 2;    // 响应
 
-        QuerySessionListReq query_session_list_req  = 3;  // 查询会话
-        QuerySessionListRsp query_session_list_rsp  = 4;
+        CreateSessionReq    create_session_req  = 3;    // 创建会话  
+        CreateSessionRsp    create_session_rsp  = 4;
 
-        CreateSessionReq    create_session_req = 5;    // 创建会话  
-        CreateSessionRsp    create_session_rsp = 6;
+        DelSessionReq       del_session_req     = 5;    // 删除会话
+        DelSessionRsp       del_session_rsp     = 6;
 
-        DelSessionReq       del_session_req = 7;       // 删除会话
-        DelSessionRsp       del_session_rsp = 8;
+        QuerySessionReq     query_session_req   = 7;    // 查询会话
+        QuerySessionRsp     query_session_rsp   = 8;
+
+        QuerySessionListReq query_session_list_req  = 9;  // 批量查询会话
+        QuerySessionListRsp query_session_list_rsp  = 10;
     }
 }

@@ -50,18 +50,3 @@ enum ErrorCode {
     ERR_BUSINESS_END                = 99999;
 }
 
-message UserId {
-    uint64 user_id              = 1;
-}
-
-message UserIdList {
-    repeated UserId list        = 2;
-}
-
-message UserInfo {
-    uint64 user_id              = 1;
-}
-
-message UserInfoList {
-    repeated UserInfo list      = 2;
-}

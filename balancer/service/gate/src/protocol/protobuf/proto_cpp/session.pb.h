@@ -29,7 +29,6 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
-#include "common.pb.h"
 // @@protoc_insertion_point(includes)
 namespace session {
 class ConnKey;
@@ -53,12 +52,15 @@ extern QuerySessionListReqDefaultTypeInternal _QuerySessionListReq_default_insta
 class QuerySessionListRsp;
 class QuerySessionListRspDefaultTypeInternal;
 extern QuerySessionListRspDefaultTypeInternal _QuerySessionListRsp_default_instance_;
+class QuerySessionReq;
+class QuerySessionReqDefaultTypeInternal;
+extern QuerySessionReqDefaultTypeInternal _QuerySessionReq_default_instance_;
+class QuerySessionRsp;
+class QuerySessionRspDefaultTypeInternal;
+extern QuerySessionRspDefaultTypeInternal _QuerySessionRsp_default_instance_;
 class Session;
 class SessionDefaultTypeInternal;
 extern SessionDefaultTypeInternal _Session_default_instance_;
-class SessionList;
-class SessionListDefaultTypeInternal;
-extern SessionListDefaultTypeInternal _SessionList_default_instance_;
 class SessionMsg;
 class SessionMsgDefaultTypeInternal;
 extern SessionMsgDefaultTypeInternal _SessionMsg_default_instance_;
@@ -170,9 +172,9 @@ class Session : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // bytes in_ip = 6;
+  // bytes in_ip = 4;
   void clear_in_ip();
-  static const int kInIpFieldNumber = 6;
+  static const int kInIpFieldNumber = 4;
   const ::std::string& in_ip() const;
   void set_in_ip(const ::std::string& value);
   #if LANG_CXX11
@@ -184,69 +186,63 @@ class Session : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::std::string* release_in_ip();
   void set_allocated_in_ip(::std::string* in_ip);
 
-  // uint64 user_id = 2;
+  // uint64 user_id = 1;
   void clear_user_id();
-  static const int kUserIdFieldNumber = 2;
+  static const int kUserIdFieldNumber = 1;
   ::google::protobuf::uint64 user_id() const;
   void set_user_id(::google::protobuf::uint64 value);
 
-  // bool is_online = 1;
-  void clear_is_online();
-  static const int kIsOnlineFieldNumber = 1;
-  bool is_online() const;
-  void set_is_online(bool value);
-
-  // int32 service_id = 4;
+  // int32 service_id = 2;
   void clear_service_id();
-  static const int kServiceIdFieldNumber = 4;
+  static const int kServiceIdFieldNumber = 2;
   ::google::protobuf::int32 service_id() const;
   void set_service_id(::google::protobuf::int32 value);
 
-  // uint64 conn_id = 3;
-  void clear_conn_id();
-  static const int kConnIdFieldNumber = 3;
-  ::google::protobuf::uint64 conn_id() const;
-  void set_conn_id(::google::protobuf::uint64 value);
-
-  // uint32 proc_id = 5;
+  // uint32 proc_id = 3;
   void clear_proc_id();
-  static const int kProcIdFieldNumber = 5;
+  static const int kProcIdFieldNumber = 3;
   ::google::protobuf::uint32 proc_id() const;
   void set_proc_id(::google::protobuf::uint32 value);
 
-  // int32 in_port = 7;
+  // uint64 conn_id = 6;
+  void clear_conn_id();
+  static const int kConnIdFieldNumber = 6;
+  ::google::protobuf::uint64 conn_id() const;
+  void set_conn_id(::google::protobuf::uint64 value);
+
+  // int32 in_port = 5;
   void clear_in_port();
-  static const int kInPortFieldNumber = 7;
+  static const int kInPortFieldNumber = 5;
   ::google::protobuf::int32 in_port() const;
   void set_in_port(::google::protobuf::int32 value);
 
-  // uint32 create_time = 8;
+  // uint32 create_time = 7;
   void clear_create_time();
-  static const int kCreateTimeFieldNumber = 8;
+  static const int kCreateTimeFieldNumber = 7;
   ::google::protobuf::uint32 create_time() const;
   void set_create_time(::google::protobuf::uint32 value);
 
-  // int32 version = 9;
+  // int32 version = 8;
   void clear_version();
-  static const int kVersionFieldNumber = 9;
+  static const int kVersionFieldNumber = 8;
   ::google::protobuf::int32 version() const;
   void set_version(::google::protobuf::int32 value);
 
-  // uint32 app_id = 10;
+  // uint32 app_id = 9;
   void clear_app_id();
-  static const int kAppIdFieldNumber = 10;
+  static const int kAppIdFieldNumber = 9;
   ::google::protobuf::uint32 app_id() const;
   void set_app_id(::google::protobuf::uint32 value);
 
-  // uint32 app_version = 11;
+  // uint32 app_version = 10;
   void clear_app_version();
-  static const int kAppVersionFieldNumber = 11;
+  static const int kAppVersionFieldNumber = 10;
   ::google::protobuf::uint32 app_version() const;
   void set_app_version(::google::protobuf::uint32 value);
 
-  // uint32 dev_type = 12;
+  // uint32 dev_type = 11;
   void clear_dev_type();
-  static const int kDevTypeFieldNumber = 12;
+  static const int kDevTypeFieldNumber = 11;
   ::google::protobuf::uint32 dev_type() const;
   void set_dev_type(::google::protobuf::uint32 value);
 
@@ -256,119 +252,15 @@ class Session : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr in_ip_;
   ::google::protobuf::uint64 user_id_;
-  bool is_online_;
   ::google::protobuf::int32 service_id_;
-  ::google::protobuf::uint64 conn_id_;
   ::google::protobuf::uint32 proc_id_;
+  ::google::protobuf::uint64 conn_id_;
   ::google::protobuf::int32 in_port_;
   ::google::protobuf::uint32 create_time_;
   ::google::protobuf::int32 version_;
   ::google::protobuf::uint32 app_id_;
   ::google::protobuf::uint32 app_version_;
   ::google::protobuf::uint32 dev_type_;
-  mutable int _cached_size_;
-  friend struct protobuf_session_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class SessionList : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:session.SessionList) */ {
- public:
-  SessionList();
-  virtual ~SessionList();
-
-  SessionList(const SessionList& from);
-
-  inline SessionList& operator=(const SessionList& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  SessionList(SessionList&& from) noexcept
-    : SessionList() {
-    *this = ::std::move(from);
-  }
-
-  inline SessionList& operator=(SessionList&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const SessionList& default_instance();
-
-  static inline const SessionList* internal_default_instance() {
-    return reinterpret_cast<const SessionList*>(
-               &_SessionList_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    1;
-
-  void Swap(SessionList* other);
-  friend void swap(SessionList& a, SessionList& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline SessionList* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  SessionList* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const SessionList& from);
-  void MergeFrom(const SessionList& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(SessionList* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .session.Session list = 1;
-  int list_size() const;
-  void clear_list();
-  static const int kListFieldNumber = 1;
-  const ::session::Session& list(int index) const;
-  ::session::Session* mutable_list(int index);
-  ::session::Session* add_list();
-  ::google::protobuf::RepeatedPtrField< ::session::Session >*
-      mutable_list();
-  const ::google::protobuf::RepeatedPtrField< ::session::Session >&
-      list() const;
-
-  // @@protoc_insertion_point(class_scope:session.SessionList)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::session::Session > list_;
   mutable int _cached_size_;
   friend struct protobuf_session_2eproto::TableStruct;
 };
@@ -408,7 +300,7 @@ class ConnKey : public ::google::protobuf::Message /* @@protoc_insertion_point(c
                &_ConnKey_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    2;
+    1;
 
   void Swap(ConnKey* other);
   friend void swap(ConnKey& a, ConnKey& b) {
@@ -527,7 +419,7 @@ class TestReq : public ::google::protobuf::Message /* @@protoc_insertion_point(c
                &_TestReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    3;
+    2;
 
   void Swap(TestReq* other);
   friend void swap(TestReq& a, TestReq& b) {
@@ -624,7 +516,7 @@ class TestRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(c
                &_TestRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    4;
+    3;
 
   void Swap(TestRsp* other);
   friend void swap(TestRsp& a, TestRsp& b) {
@@ -695,206 +587,6 @@ class TestRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 };
 // -------------------------------------------------------------------
 
-class QuerySessionListReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:session.QuerySessionListReq) */ {
- public:
-  QuerySessionListReq();
-  virtual ~QuerySessionListReq();
-
-  QuerySessionListReq(const QuerySessionListReq& from);
-
-  inline QuerySessionListReq& operator=(const QuerySessionListReq& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  QuerySessionListReq(QuerySessionListReq&& from) noexcept
-    : QuerySessionListReq() {
-    *this = ::std::move(from);
-  }
-
-  inline QuerySessionListReq& operator=(QuerySessionListReq&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const QuerySessionListReq& default_instance();
-
-  static inline const QuerySessionListReq* internal_default_instance() {
-    return reinterpret_cast<const QuerySessionListReq*>(
-               &_QuerySessionListReq_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    5;
-
-  void Swap(QuerySessionListReq* other);
-  friend void swap(QuerySessionListReq& a, QuerySessionListReq& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline QuerySessionListReq* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  QuerySessionListReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const QuerySessionListReq& from);
-  void MergeFrom(const QuerySessionListReq& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(QuerySessionListReq* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // .common.UserIdList user_id_list = 1;
-  bool has_user_id_list() const;
-  void clear_user_id_list();
-  static const int kUserIdListFieldNumber = 1;
-  const ::common::UserIdList& user_id_list() const;
-  ::common::UserIdList* mutable_user_id_list();
-  ::common::UserIdList* release_user_id_list();
-  void set_allocated_user_id_list(::common::UserIdList* user_id_list);
-
-  // @@protoc_insertion_point(class_scope:session.QuerySessionListReq)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::common::UserIdList* user_id_list_;
-  mutable int _cached_size_;
-  friend struct protobuf_session_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class QuerySessionListRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:session.QuerySessionListRsp) */ {
- public:
-  QuerySessionListRsp();
-  virtual ~QuerySessionListRsp();
-
-  QuerySessionListRsp(const QuerySessionListRsp& from);
-
-  inline QuerySessionListRsp& operator=(const QuerySessionListRsp& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  QuerySessionListRsp(QuerySessionListRsp&& from) noexcept
-    : QuerySessionListRsp() {
-    *this = ::std::move(from);
-  }
-
-  inline QuerySessionListRsp& operator=(QuerySessionListRsp&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const QuerySessionListRsp& default_instance();
-
-  static inline const QuerySessionListRsp* internal_default_instance() {
-    return reinterpret_cast<const QuerySessionListRsp*>(
-               &_QuerySessionListRsp_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    6;
-
-  void Swap(QuerySessionListRsp* other);
-  friend void swap(QuerySessionListRsp& a, QuerySessionListRsp& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline QuerySessionListRsp* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  QuerySessionListRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const QuerySessionListRsp& from);
-  void MergeFrom(const QuerySessionListRsp& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(QuerySessionListRsp* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // .session.SessionList session_list = 1;
-  bool has_session_list() const;
-  void clear_session_list();
-  static const int kSessionListFieldNumber = 1;
-  const ::session::SessionList& session_list() const;
-  ::session::SessionList* mutable_session_list();
-  ::session::SessionList* release_session_list();
-  void set_allocated_session_list(::session::SessionList* session_list);
-
-  // @@protoc_insertion_point(class_scope:session.QuerySessionListRsp)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::session::SessionList* session_list_;
-  mutable int _cached_size_;
-  friend struct protobuf_session_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
 class CreateSessionReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:session.CreateSessionReq) */ {
  public:
   CreateSessionReq();
@@ -929,7 +621,7 @@ class CreateSessionReq : public ::google::protobuf::Message /* @@protoc_insertio
                &_CreateSessionReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    7;
+    4;
 
   void Swap(CreateSessionReq* other);
   friend void swap(CreateSessionReq& a, CreateSessionReq& b) {
@@ -1029,7 +721,7 @@ class CreateSessionRsp : public ::google::protobuf::Message /* @@protoc_insertio
                &_CreateSessionRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    8;
+    5;
 
   void Swap(CreateSessionRsp* other);
   friend void swap(CreateSessionRsp& a, CreateSessionRsp& b) {
@@ -1119,7 +811,7 @@ class DelSessionReq : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_DelSessionReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    9;
+    6;
 
   void Swap(DelSessionReq* other);
   friend void swap(DelSessionReq& a, DelSessionReq& b) {
@@ -1226,7 +918,7 @@ class DelSessionRsp : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_DelSessionRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    10;
+    7;
 
   void Swap(DelSessionRsp* other);
   friend void swap(DelSessionRsp& a, DelSessionRsp& b) {
@@ -1282,6 +974,410 @@ class DelSessionRsp : public ::google::protobuf::Message /* @@protoc_insertion_p
 };
 // -------------------------------------------------------------------
 
+class QuerySessionReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:session.QuerySessionReq) */ {
+ public:
+  QuerySessionReq();
+  virtual ~QuerySessionReq();
+
+  QuerySessionReq(const QuerySessionReq& from);
+
+  inline QuerySessionReq& operator=(const QuerySessionReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  QuerySessionReq(QuerySessionReq&& from) noexcept
+    : QuerySessionReq() {
+    *this = ::std::move(from);
+  }
+
+  inline QuerySessionReq& operator=(QuerySessionReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const QuerySessionReq& default_instance();
+
+  static inline const QuerySessionReq* internal_default_instance() {
+    return reinterpret_cast<const QuerySessionReq*>(
+               &_QuerySessionReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    8;
+
+  void Swap(QuerySessionReq* other);
+  friend void swap(QuerySessionReq& a, QuerySessionReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline QuerySessionReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  QuerySessionReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const QuerySessionReq& from);
+  void MergeFrom(const QuerySessionReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(QuerySessionReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 user_id = 1;
+  void clear_user_id();
+  static const int kUserIdFieldNumber = 1;
+  ::google::protobuf::uint64 user_id() const;
+  void set_user_id(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:session.QuerySessionReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 user_id_;
+  mutable int _cached_size_;
+  friend struct protobuf_session_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class QuerySessionRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:session.QuerySessionRsp) */ {
+ public:
+  QuerySessionRsp();
+  virtual ~QuerySessionRsp();
+
+  QuerySessionRsp(const QuerySessionRsp& from);
+
+  inline QuerySessionRsp& operator=(const QuerySessionRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  QuerySessionRsp(QuerySessionRsp&& from) noexcept
+    : QuerySessionRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline QuerySessionRsp& operator=(QuerySessionRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const QuerySessionRsp& default_instance();
+
+  static inline const QuerySessionRsp* internal_default_instance() {
+    return reinterpret_cast<const QuerySessionRsp*>(
+               &_QuerySessionRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    9;
+
+  void Swap(QuerySessionRsp* other);
+  friend void swap(QuerySessionRsp& a, QuerySessionRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline QuerySessionRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  QuerySessionRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const QuerySessionRsp& from);
+  void MergeFrom(const QuerySessionRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(QuerySessionRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .session.Session session = 1;
+  bool has_session() const;
+  void clear_session();
+  static const int kSessionFieldNumber = 1;
+  const ::session::Session& session() const;
+  ::session::Session* mutable_session();
+  ::session::Session* release_session();
+  void set_allocated_session(::session::Session* session);
+
+  // @@protoc_insertion_point(class_scope:session.QuerySessionRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::session::Session* session_;
+  mutable int _cached_size_;
+  friend struct protobuf_session_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class QuerySessionListReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:session.QuerySessionListReq) */ {
+ public:
+  QuerySessionListReq();
+  virtual ~QuerySessionListReq();
+
+  QuerySessionListReq(const QuerySessionListReq& from);
+
+  inline QuerySessionListReq& operator=(const QuerySessionListReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  QuerySessionListReq(QuerySessionListReq&& from) noexcept
+    : QuerySessionListReq() {
+    *this = ::std::move(from);
+  }
+
+  inline QuerySessionListReq& operator=(QuerySessionListReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const QuerySessionListReq& default_instance();
+
+  static inline const QuerySessionListReq* internal_default_instance() {
+    return reinterpret_cast<const QuerySessionListReq*>(
+               &_QuerySessionListReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    10;
+
+  void Swap(QuerySessionListReq* other);
+  friend void swap(QuerySessionListReq& a, QuerySessionListReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline QuerySessionListReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  QuerySessionListReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const QuerySessionListReq& from);
+  void MergeFrom(const QuerySessionListReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(QuerySessionListReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated uint64 user_id_list = 1;
+  int user_id_list_size() const;
+  void clear_user_id_list();
+  static const int kUserIdListFieldNumber = 1;
+  ::google::protobuf::uint64 user_id_list(int index) const;
+  void set_user_id_list(int index, ::google::protobuf::uint64 value);
+  void add_user_id_list(::google::protobuf::uint64 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+      user_id_list() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+      mutable_user_id_list();
+
+  // @@protoc_insertion_point(class_scope:session.QuerySessionListReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > user_id_list_;
+  mutable int _user_id_list_cached_byte_size_;
+  mutable int _cached_size_;
+  friend struct protobuf_session_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class QuerySessionListRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:session.QuerySessionListRsp) */ {
+ public:
+  QuerySessionListRsp();
+  virtual ~QuerySessionListRsp();
+
+  QuerySessionListRsp(const QuerySessionListRsp& from);
+
+  inline QuerySessionListRsp& operator=(const QuerySessionListRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  QuerySessionListRsp(QuerySessionListRsp&& from) noexcept
+    : QuerySessionListRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline QuerySessionListRsp& operator=(QuerySessionListRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const QuerySessionListRsp& default_instance();
+
+  static inline const QuerySessionListRsp* internal_default_instance() {
+    return reinterpret_cast<const QuerySessionListRsp*>(
+               &_QuerySessionListRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    11;
+
+  void Swap(QuerySessionListRsp* other);
+  friend void swap(QuerySessionListRsp& a, QuerySessionListRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline QuerySessionListRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  QuerySessionListRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const QuerySessionListRsp& from);
+  void MergeFrom(const QuerySessionListRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(QuerySessionListRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .session.Session session_list = 1;
+  int session_list_size() const;
+  void clear_session_list();
+  static const int kSessionListFieldNumber = 1;
+  const ::session::Session& session_list(int index) const;
+  ::session::Session* mutable_session_list(int index);
+  ::session::Session* add_session_list();
+  ::google::protobuf::RepeatedPtrField< ::session::Session >*
+      mutable_session_list();
+  const ::google::protobuf::RepeatedPtrField< ::session::Session >&
+      session_list() const;
+
+  // @@protoc_insertion_point(class_scope:session.QuerySessionListRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::session::Session > session_list_;
+  mutable int _cached_size_;
+  friend struct protobuf_session_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class SessionMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:session.SessionMsg) */ {
  public:
   SessionMsg();
@@ -1314,12 +1410,14 @@ class SessionMsg : public ::google::protobuf::Message /* @@protoc_insertion_poin
   enum ChoiceCase {
     kTestReq = 1,
     kTestRsp = 2,
-    kQuerySessionListReq = 3,
-    kQuerySessionListRsp = 4,
-    kCreateSessionReq = 5,
-    kCreateSessionRsp = 6,
-    kDelSessionReq = 7,
-    kDelSessionRsp = 8,
+    kCreateSessionReq = 3,
+    kCreateSessionRsp = 4,
+    kDelSessionReq = 5,
+    kDelSessionRsp = 6,
+    kQuerySessionReq = 7,
+    kQuerySessionRsp = 8,
+    kQuerySessionListReq = 9,
+    kQuerySessionListRsp = 10,
     CHOICE_NOT_SET = 0,
   };
 
@@ -1328,7 +1426,7 @@ class SessionMsg : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_SessionMsg_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    11;
+    12;
 
   void Swap(SessionMsg* other);
   friend void swap(SessionMsg& a, SessionMsg& b) {
@@ -1393,71 +1491,91 @@ class SessionMsg : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::session::TestRsp* release_test_rsp();
   void set_allocated_test_rsp(::session::TestRsp* test_rsp);
 
-  // .session.QuerySessionListReq query_session_list_req = 3;
-  bool has_query_session_list_req() const;
-  void clear_query_session_list_req();
-  static const int kQuerySessionListReqFieldNumber = 3;
-  const ::session::QuerySessionListReq& query_session_list_req() const;
-  ::session::QuerySessionListReq* mutable_query_session_list_req();
-  ::session::QuerySessionListReq* release_query_session_list_req();
-  void set_allocated_query_session_list_req(::session::QuerySessionListReq* query_session_list_req);
-
-  // .session.QuerySessionListRsp query_session_list_rsp = 4;
-  bool has_query_session_list_rsp() const;
-  void clear_query_session_list_rsp();
-  static const int kQuerySessionListRspFieldNumber = 4;
-  const ::session::QuerySessionListRsp& query_session_list_rsp() const;
-  ::session::QuerySessionListRsp* mutable_query_session_list_rsp();
-  ::session::QuerySessionListRsp* release_query_session_list_rsp();
-  void set_allocated_query_session_list_rsp(::session::QuerySessionListRsp* query_session_list_rsp);
-
-  // .session.CreateSessionReq create_session_req = 5;
+  // .session.CreateSessionReq create_session_req = 3;
   bool has_create_session_req() const;
   void clear_create_session_req();
-  static const int kCreateSessionReqFieldNumber = 5;
+  static const int kCreateSessionReqFieldNumber = 3;
   const ::session::CreateSessionReq& create_session_req() const;
   ::session::CreateSessionReq* mutable_create_session_req();
   ::session::CreateSessionReq* release_create_session_req();
   void set_allocated_create_session_req(::session::CreateSessionReq* create_session_req);
 
-  // .session.CreateSessionRsp create_session_rsp = 6;
+  // .session.CreateSessionRsp create_session_rsp = 4;
   bool has_create_session_rsp() const;
   void clear_create_session_rsp();
-  static const int kCreateSessionRspFieldNumber = 6;
+  static const int kCreateSessionRspFieldNumber = 4;
   const ::session::CreateSessionRsp& create_session_rsp() const;
   ::session::CreateSessionRsp* mutable_create_session_rsp();
   ::session::CreateSessionRsp* release_create_session_rsp();
   void set_allocated_create_session_rsp(::session::CreateSessionRsp* create_session_rsp);
 
-  // .session.DelSessionReq del_session_req = 7;
+  // .session.DelSessionReq del_session_req = 5;
   bool has_del_session_req() const;
   void clear_del_session_req();
-  static const int kDelSessionReqFieldNumber = 7;
+  static const int kDelSessionReqFieldNumber = 5;
   const ::session::DelSessionReq& del_session_req() const;
   ::session::DelSessionReq* mutable_del_session_req();
   ::session::DelSessionReq* release_del_session_req();
   void set_allocated_del_session_req(::session::DelSessionReq* del_session_req);
 
-  // .session.DelSessionRsp del_session_rsp = 8;
+  // .session.DelSessionRsp del_session_rsp = 6;
   bool has_del_session_rsp() const;
   void clear_del_session_rsp();
-  static const int kDelSessionRspFieldNumber = 8;
+  static const int kDelSessionRspFieldNumber = 6;
   const ::session::DelSessionRsp& del_session_rsp() const;
   ::session::DelSessionRsp* mutable_del_session_rsp();
   ::session::DelSessionRsp* release_del_session_rsp();
   void set_allocated_del_session_rsp(::session::DelSessionRsp* del_session_rsp);
+
+  // .session.QuerySessionReq query_session_req = 7;
+  bool has_query_session_req() const;
+  void clear_query_session_req();
+  static const int kQuerySessionReqFieldNumber = 7;
+  const ::session::QuerySessionReq& query_session_req() const;
+  ::session::QuerySessionReq* mutable_query_session_req();
+  ::session::QuerySessionReq* release_query_session_req();
+  void set_allocated_query_session_req(::session::QuerySessionReq* query_session_req);
+
+  // .session.QuerySessionRsp query_session_rsp = 8;
+  bool has_query_session_rsp() const;
+  void clear_query_session_rsp();
+  static const int kQuerySessionRspFieldNumber = 8;
+  const ::session::QuerySessionRsp& query_session_rsp() const;
+  ::session::QuerySessionRsp* mutable_query_session_rsp();
+  ::session::QuerySessionRsp* release_query_session_rsp();
+  void set_allocated_query_session_rsp(::session::QuerySessionRsp* query_session_rsp);
+
+  // .session.QuerySessionListReq query_session_list_req = 9;
+  bool has_query_session_list_req() const;
+  void clear_query_session_list_req();
+  static const int kQuerySessionListReqFieldNumber = 9;
+  const ::session::QuerySessionListReq& query_session_list_req() const;
+  ::session::QuerySessionListReq* mutable_query_session_list_req();
+  ::session::QuerySessionListReq* release_query_session_list_req();
+  void set_allocated_query_session_list_req(::session::QuerySessionListReq* query_session_list_req);
+
+  // .session.QuerySessionListRsp query_session_list_rsp = 10;
+  bool has_query_session_list_rsp() const;
+  void clear_query_session_list_rsp();
+  static const int kQuerySessionListRspFieldNumber = 10;
+  const ::session::QuerySessionListRsp& query_session_list_rsp() const;
+  ::session::QuerySessionListRsp* mutable_query_session_list_rsp();
+  ::session::QuerySessionListRsp* release_query_session_list_rsp();
+  void set_allocated_query_session_list_rsp(::session::QuerySessionListRsp* query_session_list_rsp);
 
   ChoiceCase choice_case() const;
   // @@protoc_insertion_point(class_scope:session.SessionMsg)
  private:
   void set_has_test_req();
   void set_has_test_rsp();
-  void set_has_query_session_list_req();
-  void set_has_query_session_list_rsp();
   void set_has_create_session_req();
   void set_has_create_session_rsp();
   void set_has_del_session_req();
   void set_has_del_session_rsp();
+  void set_has_query_session_req();
+  void set_has_query_session_rsp();
+  void set_has_query_session_list_req();
+  void set_has_query_session_list_rsp();
 
   inline bool has_choice() const;
   void clear_choice();
@@ -1468,12 +1586,14 @@ class SessionMsg : public ::google::protobuf::Message /* @@protoc_insertion_poin
     ChoiceUnion() {}
     ::session::TestReq* test_req_;
     ::session::TestRsp* test_rsp_;
-    ::session::QuerySessionListReq* query_session_list_req_;
-    ::session::QuerySessionListRsp* query_session_list_rsp_;
     ::session::CreateSessionReq* create_session_req_;
     ::session::CreateSessionRsp* create_session_rsp_;
     ::session::DelSessionReq* del_session_req_;
     ::session::DelSessionRsp* del_session_rsp_;
+    ::session::QuerySessionReq* query_session_req_;
+    ::session::QuerySessionRsp* query_session_rsp_;
+    ::session::QuerySessionListReq* query_session_list_req_;
+    ::session::QuerySessionListRsp* query_session_list_rsp_;
   } choice_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -1492,21 +1612,7 @@ class SessionMsg : public ::google::protobuf::Message /* @@protoc_insertion_poin
 #endif  // __GNUC__
 // Session
 
-// bool is_online = 1;
-inline void Session::clear_is_online() {
-  is_online_ = false;
-}
-inline bool Session::is_online() const {
-  // @@protoc_insertion_point(field_get:session.Session.is_online)
-  return is_online_;
-}
-inline void Session::set_is_online(bool value) {
-  
-  is_online_ = value;
-  // @@protoc_insertion_point(field_set:session.Session.is_online)
-}
-
-// uint64 user_id = 2;
+// uint64 user_id = 1;
 inline void Session::clear_user_id() {
   user_id_ = GOOGLE_ULONGLONG(0);
 }
@@ -1520,21 +1626,7 @@ inline void Session::set_user_id(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:session.Session.user_id)
 }
 
-// uint64 conn_id = 3;
-inline void Session::clear_conn_id() {
-  conn_id_ = GOOGLE_ULONGLONG(0);
-}
-inline ::google::protobuf::uint64 Session::conn_id() const {
-  // @@protoc_insertion_point(field_get:session.Session.conn_id)
-  return conn_id_;
-}
-inline void Session::set_conn_id(::google::protobuf::uint64 value) {
-  
-  conn_id_ = value;
-  // @@protoc_insertion_point(field_set:session.Session.conn_id)
-}
-
-// int32 service_id = 4;
+// int32 service_id = 2;
 inline void Session::clear_service_id() {
   service_id_ = 0;
 }
@@ -1548,7 +1640,7 @@ inline void Session::set_service_id(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:session.Session.service_id)
 }
 
-// uint32 proc_id = 5;
+// uint32 proc_id = 3;
 inline void Session::clear_proc_id() {
   proc_id_ = 0u;
 }
@@ -1562,7 +1654,7 @@ inline void Session::set_proc_id(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:session.Session.proc_id)
 }
 
-// bytes in_ip = 6;
+// bytes in_ip = 4;
 inline void Session::clear_in_ip() {
   in_ip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1615,7 +1707,7 @@ inline void Session::set_allocated_in_ip(::std::string* in_ip) {
   // @@protoc_insertion_point(field_set_allocated:session.Session.in_ip)
 }
 
-// int32 in_port = 7;
+// int32 in_port = 5;
 inline void Session::clear_in_port() {
   in_port_ = 0;
 }
@@ -1629,7 +1721,21 @@ inline void Session::set_in_port(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:session.Session.in_port)
 }
 
-// uint32 create_time = 8;
+// uint64 conn_id = 6;
+inline void Session::clear_conn_id() {
+  conn_id_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 Session::conn_id() const {
+  // @@protoc_insertion_point(field_get:session.Session.conn_id)
+  return conn_id_;
+}
+inline void Session::set_conn_id(::google::protobuf::uint64 value) {
+  
+  conn_id_ = value;
+  // @@protoc_insertion_point(field_set:session.Session.conn_id)
+}
+
+// uint32 create_time = 7;
 inline void Session::clear_create_time() {
   create_time_ = 0u;
 }
@@ -1643,7 +1749,7 @@ inline void Session::set_create_time(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:session.Session.create_time)
 }
 
-// int32 version = 9;
+// int32 version = 8;
 inline void Session::clear_version() {
   version_ = 0;
 }
@@ -1657,7 +1763,7 @@ inline void Session::set_version(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:session.Session.version)
 }
 
-// uint32 app_id = 10;
+// uint32 app_id = 9;
 inline void Session::clear_app_id() {
   app_id_ = 0u;
 }
@@ -1671,7 +1777,7 @@ inline void Session::set_app_id(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:session.Session.app_id)
 }
 
-// uint32 app_version = 11;
+// uint32 app_version = 10;
 inline void Session::clear_app_version() {
   app_version_ = 0u;
 }
@@ -1685,7 +1791,7 @@ inline void Session::set_app_version(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:session.Session.app_version)
 }
 
-// uint32 dev_type = 12;
+// uint32 dev_type = 11;
 inline void Session::clear_dev_type() {
   dev_type_ = 0u;
 }
@@ -1697,40 +1803,6 @@ inline void Session::set_dev_type(::google::protobuf::uint32 value) {
   
   dev_type_ = value;
   // @@protoc_insertion_point(field_set:session.Session.dev_type)
-}
-
-// -------------------------------------------------------------------
-
-// SessionList
-
-// repeated .session.Session list = 1;
-inline int SessionList::list_size() const {
-  return list_.size();
-}
-inline void SessionList::clear_list() {
-  list_.Clear();
-}
-inline const ::session::Session& SessionList::list(int index) const {
-  // @@protoc_insertion_point(field_get:session.SessionList.list)
-  return list_.Get(index);
-}
-inline ::session::Session* SessionList::mutable_list(int index) {
-  // @@protoc_insertion_point(field_mutable:session.SessionList.list)
-  return list_.Mutable(index);
-}
-inline ::session::Session* SessionList::add_list() {
-  // @@protoc_insertion_point(field_add:session.SessionList.list)
-  return list_.Add();
-}
-inline ::google::protobuf::RepeatedPtrField< ::session::Session >*
-SessionList::mutable_list() {
-  // @@protoc_insertion_point(field_mutable_list:session.SessionList.list)
-  return &list_;
-}
-inline const ::google::protobuf::RepeatedPtrField< ::session::Session >&
-SessionList::list() const {
-  // @@protoc_insertion_point(field_list:session.SessionList.list)
-  return list_;
 }
 
 // -------------------------------------------------------------------
@@ -1895,94 +1967,6 @@ inline void TestRsp::set_allocated_service_name(::std::string* service_name) {
 
 // -------------------------------------------------------------------
 
-// QuerySessionListReq
-
-// .common.UserIdList user_id_list = 1;
-inline bool QuerySessionListReq::has_user_id_list() const {
-  return this != internal_default_instance() && user_id_list_ != NULL;
-}
-inline void QuerySessionListReq::clear_user_id_list() {
-  if (GetArenaNoVirtual() == NULL && user_id_list_ != NULL) delete user_id_list_;
-  user_id_list_ = NULL;
-}
-inline const ::common::UserIdList& QuerySessionListReq::user_id_list() const {
-  const ::common::UserIdList* p = user_id_list_;
-  // @@protoc_insertion_point(field_get:session.QuerySessionListReq.user_id_list)
-  return p != NULL ? *p : *reinterpret_cast<const ::common::UserIdList*>(
-      &::common::_UserIdList_default_instance_);
-}
-inline ::common::UserIdList* QuerySessionListReq::mutable_user_id_list() {
-  
-  if (user_id_list_ == NULL) {
-    user_id_list_ = new ::common::UserIdList;
-  }
-  // @@protoc_insertion_point(field_mutable:session.QuerySessionListReq.user_id_list)
-  return user_id_list_;
-}
-inline ::common::UserIdList* QuerySessionListReq::release_user_id_list() {
-  // @@protoc_insertion_point(field_release:session.QuerySessionListReq.user_id_list)
-  
-  ::common::UserIdList* temp = user_id_list_;
-  user_id_list_ = NULL;
-  return temp;
-}
-inline void QuerySessionListReq::set_allocated_user_id_list(::common::UserIdList* user_id_list) {
-  delete user_id_list_;
-  user_id_list_ = user_id_list;
-  if (user_id_list) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_set_allocated:session.QuerySessionListReq.user_id_list)
-}
-
-// -------------------------------------------------------------------
-
-// QuerySessionListRsp
-
-// .session.SessionList session_list = 1;
-inline bool QuerySessionListRsp::has_session_list() const {
-  return this != internal_default_instance() && session_list_ != NULL;
-}
-inline void QuerySessionListRsp::clear_session_list() {
-  if (GetArenaNoVirtual() == NULL && session_list_ != NULL) delete session_list_;
-  session_list_ = NULL;
-}
-inline const ::session::SessionList& QuerySessionListRsp::session_list() const {
-  const ::session::SessionList* p = session_list_;
-  // @@protoc_insertion_point(field_get:session.QuerySessionListRsp.session_list)
-  return p != NULL ? *p : *reinterpret_cast<const ::session::SessionList*>(
-      &::session::_SessionList_default_instance_);
-}
-inline ::session::SessionList* QuerySessionListRsp::mutable_session_list() {
-  
-  if (session_list_ == NULL) {
-    session_list_ = new ::session::SessionList;
-  }
-  // @@protoc_insertion_point(field_mutable:session.QuerySessionListRsp.session_list)
-  return session_list_;
-}
-inline ::session::SessionList* QuerySessionListRsp::release_session_list() {
-  // @@protoc_insertion_point(field_release:session.QuerySessionListRsp.session_list)
-  
-  ::session::SessionList* temp = session_list_;
-  session_list_ = NULL;
-  return temp;
-}
-inline void QuerySessionListRsp::set_allocated_session_list(::session::SessionList* session_list) {
-  delete session_list_;
-  session_list_ = session_list;
-  if (session_list) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_set_allocated:session.QuerySessionListRsp.session_list)
-}
-
-// -------------------------------------------------------------------
-
 // CreateSessionReq
 
 // .session.Session session = 1;
@@ -2093,6 +2077,136 @@ inline void DelSessionReq::set_allocated_conn_key(::session::ConnKey* conn_key) 
 
 // -------------------------------------------------------------------
 
+// QuerySessionReq
+
+// uint64 user_id = 1;
+inline void QuerySessionReq::clear_user_id() {
+  user_id_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 QuerySessionReq::user_id() const {
+  // @@protoc_insertion_point(field_get:session.QuerySessionReq.user_id)
+  return user_id_;
+}
+inline void QuerySessionReq::set_user_id(::google::protobuf::uint64 value) {
+  
+  user_id_ = value;
+  // @@protoc_insertion_point(field_set:session.QuerySessionReq.user_id)
+}
+
+// -------------------------------------------------------------------
+
+// QuerySessionRsp
+
+// .session.Session session = 1;
+inline bool QuerySessionRsp::has_session() const {
+  return this != internal_default_instance() && session_ != NULL;
+}
+inline void QuerySessionRsp::clear_session() {
+  if (GetArenaNoVirtual() == NULL && session_ != NULL) delete session_;
+  session_ = NULL;
+}
+inline const ::session::Session& QuerySessionRsp::session() const {
+  const ::session::Session* p = session_;
+  // @@protoc_insertion_point(field_get:session.QuerySessionRsp.session)
+  return p != NULL ? *p : *reinterpret_cast<const ::session::Session*>(
+      &::session::_Session_default_instance_);
+}
+inline ::session::Session* QuerySessionRsp::mutable_session() {
+  
+  if (session_ == NULL) {
+    session_ = new ::session::Session;
+  }
+  // @@protoc_insertion_point(field_mutable:session.QuerySessionRsp.session)
+  return session_;
+}
+inline ::session::Session* QuerySessionRsp::release_session() {
+  // @@protoc_insertion_point(field_release:session.QuerySessionRsp.session)
+  
+  ::session::Session* temp = session_;
+  session_ = NULL;
+  return temp;
+}
+inline void QuerySessionRsp::set_allocated_session(::session::Session* session) {
+  delete session_;
+  session_ = session;
+  if (session) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:session.QuerySessionRsp.session)
+}
+
+// -------------------------------------------------------------------
+
+// QuerySessionListReq
+
+// repeated uint64 user_id_list = 1;
+inline int QuerySessionListReq::user_id_list_size() const {
+  return user_id_list_.size();
+}
+inline void QuerySessionListReq::clear_user_id_list() {
+  user_id_list_.Clear();
+}
+inline ::google::protobuf::uint64 QuerySessionListReq::user_id_list(int index) const {
+  // @@protoc_insertion_point(field_get:session.QuerySessionListReq.user_id_list)
+  return user_id_list_.Get(index);
+}
+inline void QuerySessionListReq::set_user_id_list(int index, ::google::protobuf::uint64 value) {
+  user_id_list_.Set(index, value);
+  // @@protoc_insertion_point(field_set:session.QuerySessionListReq.user_id_list)
+}
+inline void QuerySessionListReq::add_user_id_list(::google::protobuf::uint64 value) {
+  user_id_list_.Add(value);
+  // @@protoc_insertion_point(field_add:session.QuerySessionListReq.user_id_list)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+QuerySessionListReq::user_id_list() const {
+  // @@protoc_insertion_point(field_list:session.QuerySessionListReq.user_id_list)
+  return user_id_list_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+QuerySessionListReq::mutable_user_id_list() {
+  // @@protoc_insertion_point(field_mutable_list:session.QuerySessionListReq.user_id_list)
+  return &user_id_list_;
+}
+
+// -------------------------------------------------------------------
+
+// QuerySessionListRsp
+
+// repeated .session.Session session_list = 1;
+inline int QuerySessionListRsp::session_list_size() const {
+  return session_list_.size();
+}
+inline void QuerySessionListRsp::clear_session_list() {
+  session_list_.Clear();
+}
+inline const ::session::Session& QuerySessionListRsp::session_list(int index) const {
+  // @@protoc_insertion_point(field_get:session.QuerySessionListRsp.session_list)
+  return session_list_.Get(index);
+}
+inline ::session::Session* QuerySessionListRsp::mutable_session_list(int index) {
+  // @@protoc_insertion_point(field_mutable:session.QuerySessionListRsp.session_list)
+  return session_list_.Mutable(index);
+}
+inline ::session::Session* QuerySessionListRsp::add_session_list() {
+  // @@protoc_insertion_point(field_add:session.QuerySessionListRsp.session_list)
+  return session_list_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::session::Session >*
+QuerySessionListRsp::mutable_session_list() {
+  // @@protoc_insertion_point(field_mutable_list:session.QuerySessionListRsp.session_list)
+  return &session_list_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::session::Session >&
+QuerySessionListRsp::session_list() const {
+  // @@protoc_insertion_point(field_list:session.QuerySessionListRsp.session_list)
+  return session_list_;
+}
+
+// -------------------------------------------------------------------
+
 // SessionMsg
 
 // .session.TestReq test_req = 1;
@@ -2191,103 +2305,7 @@ inline void SessionMsg::set_allocated_test_rsp(::session::TestRsp* test_rsp) {
   // @@protoc_insertion_point(field_set_allocated:session.SessionMsg.test_rsp)
 }
 
-// .session.QuerySessionListReq query_session_list_req = 3;
-inline bool SessionMsg::has_query_session_list_req() const {
-  return choice_case() == kQuerySessionListReq;
-}
-inline void SessionMsg::set_has_query_session_list_req() {
-  _oneof_case_[0] = kQuerySessionListReq;
-}
-inline void SessionMsg::clear_query_session_list_req() {
-  if (has_query_session_list_req()) {
-    delete choice_.query_session_list_req_;
-    clear_has_choice();
-  }
-}
-inline  const ::session::QuerySessionListReq& SessionMsg::query_session_list_req() const {
-  // @@protoc_insertion_point(field_get:session.SessionMsg.query_session_list_req)
-  return has_query_session_list_req()
-      ? *choice_.query_session_list_req_
-      : ::session::QuerySessionListReq::default_instance();
-}
-inline ::session::QuerySessionListReq* SessionMsg::mutable_query_session_list_req() {
-  if (!has_query_session_list_req()) {
-    clear_choice();
-    set_has_query_session_list_req();
-    choice_.query_session_list_req_ = new ::session::QuerySessionListReq;
-  }
-  // @@protoc_insertion_point(field_mutable:session.SessionMsg.query_session_list_req)
-  return choice_.query_session_list_req_;
-}
-inline ::session::QuerySessionListReq* SessionMsg::release_query_session_list_req() {
-  // @@protoc_insertion_point(field_release:session.SessionMsg.query_session_list_req)
-  if (has_query_session_list_req()) {
-    clear_has_choice();
-    ::session::QuerySessionListReq* temp = choice_.query_session_list_req_;
-    choice_.query_session_list_req_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-inline void SessionMsg::set_allocated_query_session_list_req(::session::QuerySessionListReq* query_session_list_req) {
-  clear_choice();
-  if (query_session_list_req) {
-    set_has_query_session_list_req();
-    choice_.query_session_list_req_ = query_session_list_req;
-  }
-  // @@protoc_insertion_point(field_set_allocated:session.SessionMsg.query_session_list_req)
-}
-
-// .session.QuerySessionListRsp query_session_list_rsp = 4;
-inline bool SessionMsg::has_query_session_list_rsp() const {
-  return choice_case() == kQuerySessionListRsp;
-}
-inline void SessionMsg::set_has_query_session_list_rsp() {
-  _oneof_case_[0] = kQuerySessionListRsp;
-}
-inline void SessionMsg::clear_query_session_list_rsp() {
-  if (has_query_session_list_rsp()) {
-    delete choice_.query_session_list_rsp_;
-    clear_has_choice();
-  }
-}
-inline  const ::session::QuerySessionListRsp& SessionMsg::query_session_list_rsp() const {
-  // @@protoc_insertion_point(field_get:session.SessionMsg.query_session_list_rsp)
-  return has_query_session_list_rsp()
-      ? *choice_.query_session_list_rsp_
-      : ::session::QuerySessionListRsp::default_instance();
-}
-inline ::session::QuerySessionListRsp* SessionMsg::mutable_query_session_list_rsp() {
-  if (!has_query_session_list_rsp()) {
-    clear_choice();
-    set_has_query_session_list_rsp();
-    choice_.query_session_list_rsp_ = new ::session::QuerySessionListRsp;
-  }
-  // @@protoc_insertion_point(field_mutable:session.SessionMsg.query_session_list_rsp)
-  return choice_.query_session_list_rsp_;
-}
-inline ::session::QuerySessionListRsp* SessionMsg::release_query_session_list_rsp() {
-  // @@protoc_insertion_point(field_release:session.SessionMsg.query_session_list_rsp)
-  if (has_query_session_list_rsp()) {
-    clear_has_choice();
-    ::session::QuerySessionListRsp* temp = choice_.query_session_list_rsp_;
-    choice_.query_session_list_rsp_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-inline void SessionMsg::set_allocated_query_session_list_rsp(::session::QuerySessionListRsp* query_session_list_rsp) {
-  clear_choice();
-  if (query_session_list_rsp) {
-    set_has_query_session_list_rsp();
-    choice_.query_session_list_rsp_ = query_session_list_rsp;
-  }
-  // @@protoc_insertion_point(field_set_allocated:session.SessionMsg.query_session_list_rsp)
-}
-
-// .session.CreateSessionReq create_session_req = 5;
+// .session.CreateSessionReq create_session_req = 3;
 inline bool SessionMsg::has_create_session_req() const {
   return choice_case() == kCreateSessionReq;
 }
@@ -2335,7 +2353,7 @@ inline void SessionMsg::set_allocated_create_session_req(::session::CreateSessio
   // @@protoc_insertion_point(field_set_allocated:session.SessionMsg.create_session_req)
 }
 
-// .session.CreateSessionRsp create_session_rsp = 6;
+// .session.CreateSessionRsp create_session_rsp = 4;
 inline bool SessionMsg::has_create_session_rsp() const {
   return choice_case() == kCreateSessionRsp;
 }
@@ -2383,7 +2401,7 @@ inline void SessionMsg::set_allocated_create_session_rsp(::session::CreateSessio
   // @@protoc_insertion_point(field_set_allocated:session.SessionMsg.create_session_rsp)
 }
 
-// .session.DelSessionReq del_session_req = 7;
+// .session.DelSessionReq del_session_req = 5;
 inline bool SessionMsg::has_del_session_req() const {
   return choice_case() == kDelSessionReq;
 }
@@ -2431,7 +2449,7 @@ inline void SessionMsg::set_allocated_del_session_req(::session::DelSessionReq* 
   // @@protoc_insertion_point(field_set_allocated:session.SessionMsg.del_session_req)
 }
 
-// .session.DelSessionRsp del_session_rsp = 8;
+// .session.DelSessionRsp del_session_rsp = 6;
 inline bool SessionMsg::has_del_session_rsp() const {
   return choice_case() == kDelSessionRsp;
 }
@@ -2479,6 +2497,198 @@ inline void SessionMsg::set_allocated_del_session_rsp(::session::DelSessionRsp* 
   // @@protoc_insertion_point(field_set_allocated:session.SessionMsg.del_session_rsp)
 }
 
+// .session.QuerySessionReq query_session_req = 7;
+inline bool SessionMsg::has_query_session_req() const {
+  return choice_case() == kQuerySessionReq;
+}
+inline void SessionMsg::set_has_query_session_req() {
+  _oneof_case_[0] = kQuerySessionReq;
+}
+inline void SessionMsg::clear_query_session_req() {
+  if (has_query_session_req()) {
+    delete choice_.query_session_req_;
+    clear_has_choice();
+  }
+}
+inline  const ::session::QuerySessionReq& SessionMsg::query_session_req() const {
+  // @@protoc_insertion_point(field_get:session.SessionMsg.query_session_req)
+  return has_query_session_req()
+      ? *choice_.query_session_req_
+      : ::session::QuerySessionReq::default_instance();
+}
+inline ::session::QuerySessionReq* SessionMsg::mutable_query_session_req() {
+  if (!has_query_session_req()) {
+    clear_choice();
+    set_has_query_session_req();
+    choice_.query_session_req_ = new ::session::QuerySessionReq;
+  }
+  // @@protoc_insertion_point(field_mutable:session.SessionMsg.query_session_req)
+  return choice_.query_session_req_;
+}
+inline ::session::QuerySessionReq* SessionMsg::release_query_session_req() {
+  // @@protoc_insertion_point(field_release:session.SessionMsg.query_session_req)
+  if (has_query_session_req()) {
+    clear_has_choice();
+    ::session::QuerySessionReq* temp = choice_.query_session_req_;
+    choice_.query_session_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void SessionMsg::set_allocated_query_session_req(::session::QuerySessionReq* query_session_req) {
+  clear_choice();
+  if (query_session_req) {
+    set_has_query_session_req();
+    choice_.query_session_req_ = query_session_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:session.SessionMsg.query_session_req)
+}
+
+// .session.QuerySessionRsp query_session_rsp = 8;
+inline bool SessionMsg::has_query_session_rsp() const {
+  return choice_case() == kQuerySessionRsp;
+}
+inline void SessionMsg::set_has_query_session_rsp() {
+  _oneof_case_[0] = kQuerySessionRsp;
+}
+inline void SessionMsg::clear_query_session_rsp() {
+  if (has_query_session_rsp()) {
+    delete choice_.query_session_rsp_;
+    clear_has_choice();
+  }
+}
+inline  const ::session::QuerySessionRsp& SessionMsg::query_session_rsp() const {
+  // @@protoc_insertion_point(field_get:session.SessionMsg.query_session_rsp)
+  return has_query_session_rsp()
+      ? *choice_.query_session_rsp_
+      : ::session::QuerySessionRsp::default_instance();
+}
+inline ::session::QuerySessionRsp* SessionMsg::mutable_query_session_rsp() {
+  if (!has_query_session_rsp()) {
+    clear_choice();
+    set_has_query_session_rsp();
+    choice_.query_session_rsp_ = new ::session::QuerySessionRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:session.SessionMsg.query_session_rsp)
+  return choice_.query_session_rsp_;
+}
+inline ::session::QuerySessionRsp* SessionMsg::release_query_session_rsp() {
+  // @@protoc_insertion_point(field_release:session.SessionMsg.query_session_rsp)
+  if (has_query_session_rsp()) {
+    clear_has_choice();
+    ::session::QuerySessionRsp* temp = choice_.query_session_rsp_;
+    choice_.query_session_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void SessionMsg::set_allocated_query_session_rsp(::session::QuerySessionRsp* query_session_rsp) {
+  clear_choice();
+  if (query_session_rsp) {
+    set_has_query_session_rsp();
+    choice_.query_session_rsp_ = query_session_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:session.SessionMsg.query_session_rsp)
+}
+
+// .session.QuerySessionListReq query_session_list_req = 9;
+inline bool SessionMsg::has_query_session_list_req() const {
+  return choice_case() == kQuerySessionListReq;
+}
+inline void SessionMsg::set_has_query_session_list_req() {
+  _oneof_case_[0] = kQuerySessionListReq;
+}
+inline void SessionMsg::clear_query_session_list_req() {
+  if (has_query_session_list_req()) {
+    delete choice_.query_session_list_req_;
+    clear_has_choice();
+  }
+}
+inline  const ::session::QuerySessionListReq& SessionMsg::query_session_list_req() const {
+  // @@protoc_insertion_point(field_get:session.SessionMsg.query_session_list_req)
+  return has_query_session_list_req()
+      ? *choice_.query_session_list_req_
+      : ::session::QuerySessionListReq::default_instance();
+}
+inline ::session::QuerySessionListReq* SessionMsg::mutable_query_session_list_req() {
+  if (!has_query_session_list_req()) {
+    clear_choice();
+    set_has_query_session_list_req();
+    choice_.query_session_list_req_ = new ::session::QuerySessionListReq;
+  }
+  // @@protoc_insertion_point(field_mutable:session.SessionMsg.query_session_list_req)
+  return choice_.query_session_list_req_;
+}
+inline ::session::QuerySessionListReq* SessionMsg::release_query_session_list_req() {
+  // @@protoc_insertion_point(field_release:session.SessionMsg.query_session_list_req)
+  if (has_query_session_list_req()) {
+    clear_has_choice();
+    ::session::QuerySessionListReq* temp = choice_.query_session_list_req_;
+    choice_.query_session_list_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void SessionMsg::set_allocated_query_session_list_req(::session::QuerySessionListReq* query_session_list_req) {
+  clear_choice();
+  if (query_session_list_req) {
+    set_has_query_session_list_req();
+    choice_.query_session_list_req_ = query_session_list_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:session.SessionMsg.query_session_list_req)
+}
+
+// .session.QuerySessionListRsp query_session_list_rsp = 10;
+inline bool SessionMsg::has_query_session_list_rsp() const {
+  return choice_case() == kQuerySessionListRsp;
+}
+inline void SessionMsg::set_has_query_session_list_rsp() {
+  _oneof_case_[0] = kQuerySessionListRsp;
+}
+inline void SessionMsg::clear_query_session_list_rsp() {
+  if (has_query_session_list_rsp()) {
+    delete choice_.query_session_list_rsp_;
+    clear_has_choice();
+  }
+}
+inline  const ::session::QuerySessionListRsp& SessionMsg::query_session_list_rsp() const {
+  // @@protoc_insertion_point(field_get:session.SessionMsg.query_session_list_rsp)
+  return has_query_session_list_rsp()
+      ? *choice_.query_session_list_rsp_
+      : ::session::QuerySessionListRsp::default_instance();
+}
+inline ::session::QuerySessionListRsp* SessionMsg::mutable_query_session_list_rsp() {
+  if (!has_query_session_list_rsp()) {
+    clear_choice();
+    set_has_query_session_list_rsp();
+    choice_.query_session_list_rsp_ = new ::session::QuerySessionListRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:session.SessionMsg.query_session_list_rsp)
+  return choice_.query_session_list_rsp_;
+}
+inline ::session::QuerySessionListRsp* SessionMsg::release_query_session_list_rsp() {
+  // @@protoc_insertion_point(field_release:session.SessionMsg.query_session_list_rsp)
+  if (has_query_session_list_rsp()) {
+    clear_has_choice();
+    ::session::QuerySessionListRsp* temp = choice_.query_session_list_rsp_;
+    choice_.query_session_list_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void SessionMsg::set_allocated_query_session_list_rsp(::session::QuerySessionListRsp* query_session_list_rsp) {
+  clear_choice();
+  if (query_session_list_rsp) {
+    set_has_query_session_list_rsp();
+    choice_.query_session_list_rsp_ = query_session_list_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:session.SessionMsg.query_session_list_rsp)
+}
+
 inline bool SessionMsg::has_choice() const {
   return choice_case() != CHOICE_NOT_SET;
 }
@@ -2492,6 +2702,8 @@ inline SessionMsg::ChoiceCase SessionMsg::choice_case() const {
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
