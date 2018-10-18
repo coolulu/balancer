@@ -80,13 +80,14 @@ namespace {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\rservice.proto\022\007service*z\n\tServiceId\022\t\n"
-      "\005BEGIN\020\000\022\n\n\006CLIENT\020d\022\013\n\006CENTER\020\364N\022\r\n\010NAV"
-      "IGATE\020\330O\022\t\n\004GATE\020\274P\022\014\n\007SESSION\020\240Q\022\n\n\005LOG"
-      "IC\020\204R\022\n\n\005PROXY\020\350R\022\t\n\003END\020\377\377\003b\006proto3"
+      "\n\rservice.proto\022\007service*\206\001\n\tServiceId\022\t"
+      "\n\005BEGIN\020\000\022\n\n\006CLIENT\020d\022\013\n\006CENTER\020\364N\022\r\n\010NA"
+      "VIGATE\020\330O\022\t\n\004GATE\020\274P\022\014\n\007SESSION\020\240Q\022\n\n\005LO"
+      "GIN\020\204R\022\n\n\005LOGIC\020\350R\022\n\n\005PROXY\020\314S\022\t\n\003END\020\377\377"
+      "\003b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 156);
+      descriptor, 169);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "service.proto", &protobuf_RegisterTypes);
 }
@@ -119,6 +120,7 @@ bool ServiceId_IsValid(int value) {
     case 10400:
     case 10500:
     case 10600:
+    case 10700:
     case 65535:
       return true;
     default:

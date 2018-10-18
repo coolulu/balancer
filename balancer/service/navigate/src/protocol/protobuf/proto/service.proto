@@ -11,8 +11,9 @@ enum ServiceId {
     NAVIGATE     = 10200;
     GATE         = 10300;
     SESSION      = 10400;
-    LOGIC        = 10500;
-    PROXY        = 10600;
+    LOGIN        = 10500;
+    LOGIC        = 10600;
+    PROXY        = 10700;
 
     END          = 65535;
 }

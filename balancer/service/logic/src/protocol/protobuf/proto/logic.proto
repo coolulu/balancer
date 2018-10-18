@@ -10,36 +10,9 @@ message TestRsp {
     bytes   service_name        = 1;
 }
 
-message LoginReq {
-    int32   service_id          = 1;    // navigate::GetAccessRsp.service_id
-    uint32  proc_id             = 2;    // navigate::GetAccessRsp.proc_id
-    uint64  user_id             = 3;
-    bytes   passwd              = 4;    // 字符串不安全，抓包显示出来太明显
-    uint32  dev_type            = 5;
-    bytes   dev_token           = 6;
-}
-
-message LoginRsp {
-
-}
-
-message AccessKeyReq {
-
-}
-
-message AccessKeyRsp {
-    bytes   access_key          = 1;
-}
-
 message LogicMsg {                              // 奇数是请求，偶数是响应
     oneof choice {
         TestReq         test_req        = 1;    // 请求
         TestRsp         test_rsp        = 2;    // 响应
-
-        LoginReq        login_req       = 3;    // 登录
-        LoginRsp        login_rsp       = 4;
-
-        AccessKeyReq    access_key_req  = 5;    // 获取access_key
-        AccessKeyRsp    access_key_rsp  = 6;
     }
 }
