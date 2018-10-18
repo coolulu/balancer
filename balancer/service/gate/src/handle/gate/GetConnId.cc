@@ -34,7 +34,7 @@ void GetConnId::handle(const gate::GateMsg& msg)
 				<< ", conn_create_time=" << conn_create_time 
 				<< ", conn_id=" << conn_id;
 
-	PacketPtr packet_ptr_rsp(new Packet(_packet_ptr->_from_service_id, 0, 0, 0, 0, _packet_ptr->_msg_seq_id));
+	PacketPtr packet_ptr_rsp(new Packet(_packet_ptr->_from_service_id, 0, 0, 0, _packet_ptr->_msg_seq_id, _packet_ptr->_msg_seq_id));
 	GateStack::GetConnIdRsp(packet_ptr_rsp->_body,
 							common::SUCCESS,
 							"",
