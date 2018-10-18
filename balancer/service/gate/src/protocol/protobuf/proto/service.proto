@@ -5,15 +5,21 @@ package service;
 enum ServiceId {
     BEGIN        = 0;
 
-    CLIENT       = 100;
+    // 客户端段(1000,10000)
+    CLIENT       = 1001;
 
+    // 核心服务段(10000,20000)
     CENTER       = 10100;
     NAVIGATE     = 10200;
     GATE         = 10300;
     SESSION      = 10400;
     LOGIN        = 10500;
-    LOGIC        = 10600;
-    PROXY        = 10700;
+
+    // 业务逻辑服务段(20000,30000)
+    LOGIC        = 20100;
+
+    // 业务代理服务段(30000,40000)
+    PROXY        = 30100;
 
     END          = 65535;
 }

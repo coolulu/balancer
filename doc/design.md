@@ -11,15 +11,21 @@
     enum ServiceId {
         BEGIN        = 0;
 
-        CLIENT       = 100;
+        // 客户端段(1000,10000)
+        CLIENT       = 1001;
 
+        // 核心服务段(10000,20000)
         CENTER       = 10100;
         NAVIGATE     = 10200;
         GATE         = 10300;
         SESSION      = 10400;
         LOGIN        = 10500;
-        LOGIC        = 10600;
-        PROXY        = 10700;
+
+        // 业务逻辑服务段(20000,30000)
+        LOGIC        = 20100;
+
+        // 业务代理服务段(30000,40000)
+        PROXY        = 30100;
 
         END          = 65535;
     }
@@ -229,7 +235,7 @@
     frontend:
         client -> [navigate, gate], <- [gate]
         (listen http * 1, connect tcp * n)
-        100:业务服务(python),cpu密集型,单线程单进程，进程绑定cpu
+        1001:业务服务(python),cpu密集型,单线程单进程，进程绑定cpu
 
     backend:
         center -> [navigate, gate, session, logic, proxy]
@@ -259,12 +265,12 @@
 
         logic -> [gate, session, proxy], <- [center, gate]
         (listen http * 1, listen tcp * 1, connect tcp * n)
-        10600:业务服务(c++),cpu密集型,进程数等于cpu数
+        20100:业务服务(c++),cpu密集型,进程数等于cpu数
         单线程单进程，每个节点运行多个进程，进程绑定cpu
 
         proxy -> [], <- [center, gate, logic]
         (listen http * 1, listen tcp * 1)
-        10700:业务服务(python),io密集型,工作线程数等于[2,8]和一个网络io线程
+        30100:业务服务(python),io密集型,工作线程数等于[2,8]和一个网络io线程
         多线程单进程，每个节点运行多个进程，进程绑定cpu
 
 ### 客户端
