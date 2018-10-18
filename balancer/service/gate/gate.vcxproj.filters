@@ -230,6 +230,9 @@
     <ClCompile Include="src\define.cc">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\handle\gate\Logout.cc">
+      <Filter>src\handle\gate</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\config\Config.h">
@@ -375,6 +378,9 @@
     </ClInclude>
     <ClInclude Include="src\core\Kv.h">
       <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\gate\Logout.h">
+      <Filter>src\handle\gate</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

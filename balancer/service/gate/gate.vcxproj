@@ -102,6 +102,7 @@
     <ClCompile Include="src\handle\gate\CloseClient.cc" />
     <ClCompile Include="src\handle\gate\DelSession.cc" />
     <ClCompile Include="src\handle\gate\GetConnId.cc" />
+    <ClCompile Include="src\handle\gate\Logout.cc" />
     <ClCompile Include="src\handle\gate\WakeHeartbeat.cc" />
     <ClCompile Include="src\handle\HandleClient.cc" />
     <ClCompile Include="src\handle\HandleGate.cc" />
@@ -152,6 +153,7 @@
     <ClInclude Include="src\handle\gate\CloseClient.h" />
     <ClInclude Include="src\handle\gate\DelSession.h" />
     <ClInclude Include="src\handle\gate\GetConnId.h" />
+    <ClInclude Include="src\handle\gate\Logout.h" />
     <ClInclude Include="src\handle\gate\WakeHeartbeat.h" />
     <ClInclude Include="src\handle\HandleClient.h" />
     <ClInclude Include="src\handle\HandleGate.h" />

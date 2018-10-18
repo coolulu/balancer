@@ -18,4 +18,7 @@ namespace GateStack
 	void CloseConnIdRsp(data::Body& body, int code, const std::string& info);
 
 	void CloseClientReq(data::Body& body);
+
+	void LogoutRsp(data::Body& body, int code, const std::string& info);
+
 };

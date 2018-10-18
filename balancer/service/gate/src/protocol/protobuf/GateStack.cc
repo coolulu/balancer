@@ -57,3 +57,16 @@ void GateStack::CloseClientReq(data::Body& body)
 	body.mutable_service_msg()->PackFrom(msg);
 }
 
+void GateStack::LogoutRsp(data::Body& body, int code, const std::string& info)
+{
+	gate::GateMsg msg;
+
+	gate::LogoutRsp* rsp = msg.mutable_logout_rsp();
+
+	::data::MsgRsp* msg_rsp = body.mutable_msg_rsp();
+	msg_rsp->set_code(code);
+	msg_rsp->set_info(info);
+
+	body.mutable_service_msg()->PackFrom(msg);
+}
+
