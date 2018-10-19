@@ -80,14 +80,17 @@ namespace {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\rservice.proto\022\007service*\211\001\n\tServiceId\022\t"
-      "\n\005BEGIN\020\000\022\013\n\006CLIENT\020\351\007\022\013\n\006CENTER\020\364N\022\r\n\010N"
-      "AVIGATE\020\330O\022\t\n\004GATE\020\274P\022\014\n\007SESSION\020\240Q\022\n\n\005L"
-      "OGIN\020\204R\022\013\n\005LOGIC\020\204\235\001\022\013\n\005PROXY\020\224\353\001\022\t\n\003END"
-      "\020\377\377\003b\006proto3"
+      "\n\rservice.proto\022\007service*\226\002\n\tServiceId\022\t"
+      "\n\005BEGIN\020\000\022\021\n\014CLIENT_BEGIN\020\350\007\022\013\n\006CLIENT\020\351"
+      "\007\022\017\n\nCLIENT_END\020\217N\022\017\n\nCORE_BEGIN\020\220N\022\013\n\006C"
+      "ENTER\020\364N\022\r\n\010NAVIGATE\020\330O\022\t\n\004GATE\020\274P\022\014\n\007SE"
+      "SSION\020\240Q\022\n\n\005LOGIN\020\204R\022\016\n\010CORE_END\020\237\234\001\022\021\n\013"
+      "LOGIC_BEGIN\020\240\234\001\022\013\n\005LOGIC\020\204\235\001\022\017\n\tLOGIC_EN"
+      "D\020\257\352\001\022\021\n\013PROXY_BEGIN\020\260\352\001\022\013\n\005PROXY\020\224\353\001\022\017\n"
+      "\tPROXY_END\020\277\270\002\022\t\n\003END\020\377\377\003b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 172);
+      descriptor, 313);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "service.proto", &protobuf_RegisterTypes);
 }
@@ -113,14 +116,22 @@ const ::google::protobuf::EnumDescriptor* ServiceId_descriptor() {
 bool ServiceId_IsValid(int value) {
   switch (value) {
     case 0:
+    case 1000:
     case 1001:
+    case 9999:
+    case 10000:
     case 10100:
     case 10200:
     case 10300:
     case 10400:
     case 10500:
+    case 19999:
+    case 20000:
     case 20100:
+    case 29999:
+    case 30000:
     case 30100:
+    case 39999:
     case 65535:
       return true;
     default:
