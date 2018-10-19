@@ -51,14 +51,22 @@ void InitDefaults();
 
 enum ServiceId {
   BEGIN = 0,
+  CLIENT_BEGIN = 1000,
   CLIENT = 1001,
+  CLIENT_END = 9999,
+  CORE_BEGIN = 10000,
   CENTER = 10100,
   NAVIGATE = 10200,
   GATE = 10300,
   SESSION = 10400,
   LOGIN = 10500,
+  CORE_END = 19999,
+  LOGIC_BEGIN = 20000,
   LOGIC = 20100,
+  LOGIC_END = 29999,
+  PROXY_BEGIN = 30000,
   PROXY = 30100,
+  PROXY_END = 39999,
   END = 65535,
   ServiceId_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ServiceId_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
