@@ -163,6 +163,7 @@ void BTcpServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 		else
 		{
 			// ¶ª°ü
+			B_LOG_ERROR << "lose packet, parse=false, _msg_seq_id=" << packet_ptr->_msg_seq_id;
 		}
 	}
 	else
