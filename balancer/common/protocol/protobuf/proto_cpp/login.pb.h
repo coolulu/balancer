@@ -28,7 +28,9 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "common.pb.h"
 // @@protoc_insertion_point(includes)
 namespace login {
 class AccessKeyReq;
@@ -46,12 +48,6 @@ extern LoginReqDefaultTypeInternal _LoginReq_default_instance_;
 class LoginRsp;
 class LoginRspDefaultTypeInternal;
 extern LoginRspDefaultTypeInternal _LoginRsp_default_instance_;
-class TestReq;
-class TestReqDefaultTypeInternal;
-extern TestReqDefaultTypeInternal _TestReq_default_instance_;
-class TestRsp;
-class TestRspDefaultTypeInternal;
-extern TestRspDefaultTypeInternal _TestRsp_default_instance_;
 }  // namespace login
 
 namespace login {
@@ -71,26 +67,82 @@ void AddDescriptors();
 void InitDefaults();
 }  // namespace protobuf_login_2eproto
 
+enum ErrorCode {
+  SUCCESS = 0,
+  ERR_SYS_BEGIN = 105000100,
+  ERR_SYS_OVERLOAD = 105000101,
+  ERR_SYS_REJECT_SERVICE = 105000102,
+  ERR_SYS_SERVER_INNER = 105000103,
+  ERR_SYS_TIMEOUT = 105000104,
+  ERR_SYS_NO_INSERVICE_LIST = 105000105,
+  ERR_SYS_TASK_STATE = 105000106,
+  ERR_SYS_TASK_DISCARD = 105000107,
+  ERR_SYS_END = 105000199,
+  ERR_PACKET_BEGIN = 105000200,
+  ERR_PACKET_ENCODE = 105000201,
+  ERR_PACKET_DECODE = 105000202,
+  ERR_PACKET_HEADER = 105000203,
+  ERR_PACKET_LEN = 105000204,
+  ERR_PACKET_VERSION = 105000205,
+  ERR_PACKET_FROM_SERVICE_ID = 105000206,
+  ERR_PACKET_TO_SERVICE_ID = 105000207,
+  ERR_PACKET_APP_ID = 105000208,
+  ERR_PACKET_APP_VERSION = 105000209,
+  ERR_PACKET_CONN_SEQ_ID = 105000210,
+  ERR_PACKET_MSG_SEQ_ID = 105000211,
+  ERR_PACKET_DATA_FORMAT = 105000212,
+  ERR_PACKET_DATA_FIELD_0 = 105000213,
+  ERR_PACKET_DATA_FIELD_1 = 105000214,
+  ERR_PACKET_DATA_FIELD_2 = 105000215,
+  ERR_PACKET_DATA_FIELD_3 = 105000216,
+  ERR_PACKET_CHECK_SUM = 105000217,
+  ERR_PACKET_UNKNOWN_REQUEST = 105000218,
+  ERR_PACKET_END = 105000299,
+  ERR_INTERFACE_BEGIN = 105000300,
+  ERR_INTERFACE_PARAM = 105000301,
+  ERR_INTERFACE_PERM = 105000302,
+  ERR_INTERFACE_TIMEOUT = 105000303,
+  ERR_INTERFACE_END = 105000399,
+  ERR_BUSINESS_BEGIN = 105001000,
+  ERR_BUSINESS_END = 105009999,
+  ErrorCode_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ErrorCode_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool ErrorCode_IsValid(int value);
+const ErrorCode ErrorCode_MIN = SUCCESS;
+const ErrorCode ErrorCode_MAX = ERR_BUSINESS_END;
+const int ErrorCode_ARRAYSIZE = ErrorCode_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ErrorCode_descriptor();
+inline const ::std::string& ErrorCode_Name(ErrorCode value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ErrorCode_descriptor(), value);
+}
+inline bool ErrorCode_Parse(
+    const ::std::string& name, ErrorCode* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ErrorCode>(
+    ErrorCode_descriptor(), name, value);
+}
 // ===================================================================
 
-class TestReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:login.TestReq) */ {
+class LoginMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:login.LoginMsg) */ {
  public:
-  TestReq();
-  virtual ~TestReq();
+  LoginMsg();
+  virtual ~LoginMsg();
 
-  TestReq(const TestReq& from);
+  LoginMsg(const LoginMsg& from);
 
-  inline TestReq& operator=(const TestReq& from) {
+  inline LoginMsg& operator=(const LoginMsg& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  TestReq(TestReq&& from) noexcept
-    : TestReq() {
+  LoginMsg(LoginMsg&& from) noexcept
+    : LoginMsg() {
     *this = ::std::move(from);
   }
 
-  inline TestReq& operator=(TestReq&& from) noexcept {
+  inline LoginMsg& operator=(LoginMsg&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -100,29 +152,39 @@ class TestReq : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const TestReq& default_instance();
+  static const LoginMsg& default_instance();
 
-  static inline const TestReq* internal_default_instance() {
-    return reinterpret_cast<const TestReq*>(
-               &_TestReq_default_instance_);
+  enum ChoiceCase {
+    kTestReq = 1,
+    kTestRsp = 2,
+    kLoginReq = 3,
+    kLoginRsp = 4,
+    kAccessKeyReq = 5,
+    kAccessKeyRsp = 6,
+    CHOICE_NOT_SET = 0,
+  };
+
+  static inline const LoginMsg* internal_default_instance() {
+    return reinterpret_cast<const LoginMsg*>(
+               &_LoginMsg_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     0;
 
-  void Swap(TestReq* other);
-  friend void swap(TestReq& a, TestReq& b) {
+  void Swap(LoginMsg* other);
+  friend void swap(LoginMsg& a, LoginMsg& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline TestReq* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline LoginMsg* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  TestReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  LoginMsg* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const TestReq& from);
-  void MergeFrom(const TestReq& from);
+  void CopyFrom(const LoginMsg& from);
+  void MergeFrom(const LoginMsg& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -138,7 +200,7 @@ class TestReq : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(TestReq* other);
+  void InternalSwap(LoginMsg* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -154,123 +216,87 @@ class TestReq : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // int32 service_id = 1;
-  void clear_service_id();
-  static const int kServiceIdFieldNumber = 1;
-  ::google::protobuf::int32 service_id() const;
-  void set_service_id(::google::protobuf::int32 value);
+  // .common.TestReq test_req = 1;
+  bool has_test_req() const;
+  void clear_test_req();
+  static const int kTestReqFieldNumber = 1;
+  const ::common::TestReq& test_req() const;
+  ::common::TestReq* mutable_test_req();
+  ::common::TestReq* release_test_req();
+  void set_allocated_test_req(::common::TestReq* test_req);
 
-  // @@protoc_insertion_point(class_scope:login.TestReq)
+  // .common.TestRsp test_rsp = 2;
+  bool has_test_rsp() const;
+  void clear_test_rsp();
+  static const int kTestRspFieldNumber = 2;
+  const ::common::TestRsp& test_rsp() const;
+  ::common::TestRsp* mutable_test_rsp();
+  ::common::TestRsp* release_test_rsp();
+  void set_allocated_test_rsp(::common::TestRsp* test_rsp);
+
+  // .login.LoginReq login_req = 3;
+  bool has_login_req() const;
+  void clear_login_req();
+  static const int kLoginReqFieldNumber = 3;
+  const ::login::LoginReq& login_req() const;
+  ::login::LoginReq* mutable_login_req();
+  ::login::LoginReq* release_login_req();
+  void set_allocated_login_req(::login::LoginReq* login_req);
+
+  // .login.LoginRsp login_rsp = 4;
+  bool has_login_rsp() const;
+  void clear_login_rsp();
+  static const int kLoginRspFieldNumber = 4;
+  const ::login::LoginRsp& login_rsp() const;
+  ::login::LoginRsp* mutable_login_rsp();
+  ::login::LoginRsp* release_login_rsp();
+  void set_allocated_login_rsp(::login::LoginRsp* login_rsp);
+
+  // .login.AccessKeyReq access_key_req = 5;
+  bool has_access_key_req() const;
+  void clear_access_key_req();
+  static const int kAccessKeyReqFieldNumber = 5;
+  const ::login::AccessKeyReq& access_key_req() const;
+  ::login::AccessKeyReq* mutable_access_key_req();
+  ::login::AccessKeyReq* release_access_key_req();
+  void set_allocated_access_key_req(::login::AccessKeyReq* access_key_req);
+
+  // .login.AccessKeyRsp access_key_rsp = 6;
+  bool has_access_key_rsp() const;
+  void clear_access_key_rsp();
+  static const int kAccessKeyRspFieldNumber = 6;
+  const ::login::AccessKeyRsp& access_key_rsp() const;
+  ::login::AccessKeyRsp* mutable_access_key_rsp();
+  ::login::AccessKeyRsp* release_access_key_rsp();
+  void set_allocated_access_key_rsp(::login::AccessKeyRsp* access_key_rsp);
+
+  ChoiceCase choice_case() const;
+  // @@protoc_insertion_point(class_scope:login.LoginMsg)
  private:
+  void set_has_test_req();
+  void set_has_test_rsp();
+  void set_has_login_req();
+  void set_has_login_rsp();
+  void set_has_access_key_req();
+  void set_has_access_key_rsp();
+
+  inline bool has_choice() const;
+  void clear_choice();
+  inline void clear_has_choice();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int32 service_id_;
+  union ChoiceUnion {
+    ChoiceUnion() {}
+    ::common::TestReq* test_req_;
+    ::common::TestRsp* test_rsp_;
+    ::login::LoginReq* login_req_;
+    ::login::LoginRsp* login_rsp_;
+    ::login::AccessKeyReq* access_key_req_;
+    ::login::AccessKeyRsp* access_key_rsp_;
+  } choice_;
   mutable int _cached_size_;
-  friend struct protobuf_login_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
+  ::google::protobuf::uint32 _oneof_case_[1];
 
-class TestRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:login.TestRsp) */ {
- public:
-  TestRsp();
-  virtual ~TestRsp();
-
-  TestRsp(const TestRsp& from);
-
-  inline TestRsp& operator=(const TestRsp& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  TestRsp(TestRsp&& from) noexcept
-    : TestRsp() {
-    *this = ::std::move(from);
-  }
-
-  inline TestRsp& operator=(TestRsp&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const TestRsp& default_instance();
-
-  static inline const TestRsp* internal_default_instance() {
-    return reinterpret_cast<const TestRsp*>(
-               &_TestRsp_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    1;
-
-  void Swap(TestRsp* other);
-  friend void swap(TestRsp& a, TestRsp& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline TestRsp* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  TestRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const TestRsp& from);
-  void MergeFrom(const TestRsp& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(TestRsp* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // bytes service_name = 1;
-  void clear_service_name();
-  static const int kServiceNameFieldNumber = 1;
-  const ::std::string& service_name() const;
-  void set_service_name(const ::std::string& value);
-  #if LANG_CXX11
-  void set_service_name(::std::string&& value);
-  #endif
-  void set_service_name(const char* value);
-  void set_service_name(const void* value, size_t size);
-  ::std::string* mutable_service_name();
-  ::std::string* release_service_name();
-  void set_allocated_service_name(::std::string* service_name);
-
-  // @@protoc_insertion_point(class_scope:login.TestRsp)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr service_name_;
-  mutable int _cached_size_;
   friend struct protobuf_login_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -309,7 +335,7 @@ class LoginReq : public ::google::protobuf::Message /* @@protoc_insertion_point(
                &_LoginReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    2;
+    1;
 
   void Swap(LoginReq* other);
   friend void swap(LoginReq& a, LoginReq& b) {
@@ -457,7 +483,7 @@ class LoginRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(
                &_LoginRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    3;
+    2;
 
   void Swap(LoginRsp* other);
   friend void swap(LoginRsp& a, LoginRsp& b) {
@@ -547,7 +573,7 @@ class AccessKeyReq : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_AccessKeyReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    4;
+    3;
 
   void Swap(AccessKeyReq* other);
   friend void swap(AccessKeyReq& a, AccessKeyReq& b) {
@@ -637,7 +663,7 @@ class AccessKeyRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_AccessKeyRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    5;
+    4;
 
   void Swap(AccessKeyRsp* other);
   friend void swap(AccessKeyRsp& a, AccessKeyRsp& b) {
@@ -706,182 +732,6 @@ class AccessKeyRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
   mutable int _cached_size_;
   friend struct protobuf_login_2eproto::TableStruct;
 };
-// -------------------------------------------------------------------
-
-class LoginMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:login.LoginMsg) */ {
- public:
-  LoginMsg();
-  virtual ~LoginMsg();
-
-  LoginMsg(const LoginMsg& from);
-
-  inline LoginMsg& operator=(const LoginMsg& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  LoginMsg(LoginMsg&& from) noexcept
-    : LoginMsg() {
-    *this = ::std::move(from);
-  }
-
-  inline LoginMsg& operator=(LoginMsg&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const LoginMsg& default_instance();
-
-  enum ChoiceCase {
-    kTestReq = 1,
-    kTestRsp = 2,
-    kLoginReq = 3,
-    kLoginRsp = 4,
-    kAccessKeyReq = 5,
-    kAccessKeyRsp = 6,
-    CHOICE_NOT_SET = 0,
-  };
-
-  static inline const LoginMsg* internal_default_instance() {
-    return reinterpret_cast<const LoginMsg*>(
-               &_LoginMsg_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    6;
-
-  void Swap(LoginMsg* other);
-  friend void swap(LoginMsg& a, LoginMsg& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline LoginMsg* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  LoginMsg* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const LoginMsg& from);
-  void MergeFrom(const LoginMsg& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(LoginMsg* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // .login.TestReq test_req = 1;
-  bool has_test_req() const;
-  void clear_test_req();
-  static const int kTestReqFieldNumber = 1;
-  const ::login::TestReq& test_req() const;
-  ::login::TestReq* mutable_test_req();
-  ::login::TestReq* release_test_req();
-  void set_allocated_test_req(::login::TestReq* test_req);
-
-  // .login.TestRsp test_rsp = 2;
-  bool has_test_rsp() const;
-  void clear_test_rsp();
-  static const int kTestRspFieldNumber = 2;
-  const ::login::TestRsp& test_rsp() const;
-  ::login::TestRsp* mutable_test_rsp();
-  ::login::TestRsp* release_test_rsp();
-  void set_allocated_test_rsp(::login::TestRsp* test_rsp);
-
-  // .login.LoginReq login_req = 3;
-  bool has_login_req() const;
-  void clear_login_req();
-  static const int kLoginReqFieldNumber = 3;
-  const ::login::LoginReq& login_req() const;
-  ::login::LoginReq* mutable_login_req();
-  ::login::LoginReq* release_login_req();
-  void set_allocated_login_req(::login::LoginReq* login_req);
-
-  // .login.LoginRsp login_rsp = 4;
-  bool has_login_rsp() const;
-  void clear_login_rsp();
-  static const int kLoginRspFieldNumber = 4;
-  const ::login::LoginRsp& login_rsp() const;
-  ::login::LoginRsp* mutable_login_rsp();
-  ::login::LoginRsp* release_login_rsp();
-  void set_allocated_login_rsp(::login::LoginRsp* login_rsp);
-
-  // .login.AccessKeyReq access_key_req = 5;
-  bool has_access_key_req() const;
-  void clear_access_key_req();
-  static const int kAccessKeyReqFieldNumber = 5;
-  const ::login::AccessKeyReq& access_key_req() const;
-  ::login::AccessKeyReq* mutable_access_key_req();
-  ::login::AccessKeyReq* release_access_key_req();
-  void set_allocated_access_key_req(::login::AccessKeyReq* access_key_req);
-
-  // .login.AccessKeyRsp access_key_rsp = 6;
-  bool has_access_key_rsp() const;
-  void clear_access_key_rsp();
-  static const int kAccessKeyRspFieldNumber = 6;
-  const ::login::AccessKeyRsp& access_key_rsp() const;
-  ::login::AccessKeyRsp* mutable_access_key_rsp();
-  ::login::AccessKeyRsp* release_access_key_rsp();
-  void set_allocated_access_key_rsp(::login::AccessKeyRsp* access_key_rsp);
-
-  ChoiceCase choice_case() const;
-  // @@protoc_insertion_point(class_scope:login.LoginMsg)
- private:
-  void set_has_test_req();
-  void set_has_test_rsp();
-  void set_has_login_req();
-  void set_has_login_rsp();
-  void set_has_access_key_req();
-  void set_has_access_key_rsp();
-
-  inline bool has_choice() const;
-  void clear_choice();
-  inline void clear_has_choice();
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  union ChoiceUnion {
-    ChoiceUnion() {}
-    ::login::TestReq* test_req_;
-    ::login::TestRsp* test_rsp_;
-    ::login::LoginReq* login_req_;
-    ::login::LoginRsp* login_rsp_;
-    ::login::AccessKeyReq* access_key_req_;
-    ::login::AccessKeyRsp* access_key_rsp_;
-  } choice_;
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _oneof_case_[1];
-
-  friend struct protobuf_login_2eproto::TableStruct;
-};
 // ===================================================================
 
 
@@ -892,79 +742,305 @@ class LoginMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// TestReq
+// LoginMsg
 
-// int32 service_id = 1;
-inline void TestReq::clear_service_id() {
-  service_id_ = 0;
+// .common.TestReq test_req = 1;
+inline bool LoginMsg::has_test_req() const {
+  return choice_case() == kTestReq;
 }
-inline ::google::protobuf::int32 TestReq::service_id() const {
-  // @@protoc_insertion_point(field_get:login.TestReq.service_id)
-  return service_id_;
+inline void LoginMsg::set_has_test_req() {
+  _oneof_case_[0] = kTestReq;
 }
-inline void TestReq::set_service_id(::google::protobuf::int32 value) {
-  
-  service_id_ = value;
-  // @@protoc_insertion_point(field_set:login.TestReq.service_id)
-}
-
-// -------------------------------------------------------------------
-
-// TestRsp
-
-// bytes service_name = 1;
-inline void TestRsp::clear_service_name() {
-  service_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& TestRsp::service_name() const {
-  // @@protoc_insertion_point(field_get:login.TestRsp.service_name)
-  return service_name_.GetNoArena();
-}
-inline void TestRsp::set_service_name(const ::std::string& value) {
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:login.TestRsp.service_name)
-}
-#if LANG_CXX11
-inline void TestRsp::set_service_name(::std::string&& value) {
-  
-  service_name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:login.TestRsp.service_name)
-}
-#endif
-inline void TestRsp::set_service_name(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:login.TestRsp.service_name)
-}
-inline void TestRsp::set_service_name(const void* value, size_t size) {
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:login.TestRsp.service_name)
-}
-inline ::std::string* TestRsp::mutable_service_name() {
-  
-  // @@protoc_insertion_point(field_mutable:login.TestRsp.service_name)
-  return service_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* TestRsp::release_service_name() {
-  // @@protoc_insertion_point(field_release:login.TestRsp.service_name)
-  
-  return service_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void TestRsp::set_allocated_service_name(::std::string* service_name) {
-  if (service_name != NULL) {
-    
-  } else {
-    
+inline void LoginMsg::clear_test_req() {
+  if (has_test_req()) {
+    delete choice_.test_req_;
+    clear_has_choice();
   }
-  service_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), service_name);
-  // @@protoc_insertion_point(field_set_allocated:login.TestRsp.service_name)
+}
+inline  const ::common::TestReq& LoginMsg::test_req() const {
+  // @@protoc_insertion_point(field_get:login.LoginMsg.test_req)
+  return has_test_req()
+      ? *choice_.test_req_
+      : ::common::TestReq::default_instance();
+}
+inline ::common::TestReq* LoginMsg::mutable_test_req() {
+  if (!has_test_req()) {
+    clear_choice();
+    set_has_test_req();
+    choice_.test_req_ = new ::common::TestReq;
+  }
+  // @@protoc_insertion_point(field_mutable:login.LoginMsg.test_req)
+  return choice_.test_req_;
+}
+inline ::common::TestReq* LoginMsg::release_test_req() {
+  // @@protoc_insertion_point(field_release:login.LoginMsg.test_req)
+  if (has_test_req()) {
+    clear_has_choice();
+    ::common::TestReq* temp = choice_.test_req_;
+    choice_.test_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void LoginMsg::set_allocated_test_req(::common::TestReq* test_req) {
+  clear_choice();
+  if (test_req) {
+    set_has_test_req();
+    choice_.test_req_ = test_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:login.LoginMsg.test_req)
 }
 
+// .common.TestRsp test_rsp = 2;
+inline bool LoginMsg::has_test_rsp() const {
+  return choice_case() == kTestRsp;
+}
+inline void LoginMsg::set_has_test_rsp() {
+  _oneof_case_[0] = kTestRsp;
+}
+inline void LoginMsg::clear_test_rsp() {
+  if (has_test_rsp()) {
+    delete choice_.test_rsp_;
+    clear_has_choice();
+  }
+}
+inline  const ::common::TestRsp& LoginMsg::test_rsp() const {
+  // @@protoc_insertion_point(field_get:login.LoginMsg.test_rsp)
+  return has_test_rsp()
+      ? *choice_.test_rsp_
+      : ::common::TestRsp::default_instance();
+}
+inline ::common::TestRsp* LoginMsg::mutable_test_rsp() {
+  if (!has_test_rsp()) {
+    clear_choice();
+    set_has_test_rsp();
+    choice_.test_rsp_ = new ::common::TestRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:login.LoginMsg.test_rsp)
+  return choice_.test_rsp_;
+}
+inline ::common::TestRsp* LoginMsg::release_test_rsp() {
+  // @@protoc_insertion_point(field_release:login.LoginMsg.test_rsp)
+  if (has_test_rsp()) {
+    clear_has_choice();
+    ::common::TestRsp* temp = choice_.test_rsp_;
+    choice_.test_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void LoginMsg::set_allocated_test_rsp(::common::TestRsp* test_rsp) {
+  clear_choice();
+  if (test_rsp) {
+    set_has_test_rsp();
+    choice_.test_rsp_ = test_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:login.LoginMsg.test_rsp)
+}
+
+// .login.LoginReq login_req = 3;
+inline bool LoginMsg::has_login_req() const {
+  return choice_case() == kLoginReq;
+}
+inline void LoginMsg::set_has_login_req() {
+  _oneof_case_[0] = kLoginReq;
+}
+inline void LoginMsg::clear_login_req() {
+  if (has_login_req()) {
+    delete choice_.login_req_;
+    clear_has_choice();
+  }
+}
+inline  const ::login::LoginReq& LoginMsg::login_req() const {
+  // @@protoc_insertion_point(field_get:login.LoginMsg.login_req)
+  return has_login_req()
+      ? *choice_.login_req_
+      : ::login::LoginReq::default_instance();
+}
+inline ::login::LoginReq* LoginMsg::mutable_login_req() {
+  if (!has_login_req()) {
+    clear_choice();
+    set_has_login_req();
+    choice_.login_req_ = new ::login::LoginReq;
+  }
+  // @@protoc_insertion_point(field_mutable:login.LoginMsg.login_req)
+  return choice_.login_req_;
+}
+inline ::login::LoginReq* LoginMsg::release_login_req() {
+  // @@protoc_insertion_point(field_release:login.LoginMsg.login_req)
+  if (has_login_req()) {
+    clear_has_choice();
+    ::login::LoginReq* temp = choice_.login_req_;
+    choice_.login_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void LoginMsg::set_allocated_login_req(::login::LoginReq* login_req) {
+  clear_choice();
+  if (login_req) {
+    set_has_login_req();
+    choice_.login_req_ = login_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:login.LoginMsg.login_req)
+}
+
+// .login.LoginRsp login_rsp = 4;
+inline bool LoginMsg::has_login_rsp() const {
+  return choice_case() == kLoginRsp;
+}
+inline void LoginMsg::set_has_login_rsp() {
+  _oneof_case_[0] = kLoginRsp;
+}
+inline void LoginMsg::clear_login_rsp() {
+  if (has_login_rsp()) {
+    delete choice_.login_rsp_;
+    clear_has_choice();
+  }
+}
+inline  const ::login::LoginRsp& LoginMsg::login_rsp() const {
+  // @@protoc_insertion_point(field_get:login.LoginMsg.login_rsp)
+  return has_login_rsp()
+      ? *choice_.login_rsp_
+      : ::login::LoginRsp::default_instance();
+}
+inline ::login::LoginRsp* LoginMsg::mutable_login_rsp() {
+  if (!has_login_rsp()) {
+    clear_choice();
+    set_has_login_rsp();
+    choice_.login_rsp_ = new ::login::LoginRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:login.LoginMsg.login_rsp)
+  return choice_.login_rsp_;
+}
+inline ::login::LoginRsp* LoginMsg::release_login_rsp() {
+  // @@protoc_insertion_point(field_release:login.LoginMsg.login_rsp)
+  if (has_login_rsp()) {
+    clear_has_choice();
+    ::login::LoginRsp* temp = choice_.login_rsp_;
+    choice_.login_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void LoginMsg::set_allocated_login_rsp(::login::LoginRsp* login_rsp) {
+  clear_choice();
+  if (login_rsp) {
+    set_has_login_rsp();
+    choice_.login_rsp_ = login_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:login.LoginMsg.login_rsp)
+}
+
+// .login.AccessKeyReq access_key_req = 5;
+inline bool LoginMsg::has_access_key_req() const {
+  return choice_case() == kAccessKeyReq;
+}
+inline void LoginMsg::set_has_access_key_req() {
+  _oneof_case_[0] = kAccessKeyReq;
+}
+inline void LoginMsg::clear_access_key_req() {
+  if (has_access_key_req()) {
+    delete choice_.access_key_req_;
+    clear_has_choice();
+  }
+}
+inline  const ::login::AccessKeyReq& LoginMsg::access_key_req() const {
+  // @@protoc_insertion_point(field_get:login.LoginMsg.access_key_req)
+  return has_access_key_req()
+      ? *choice_.access_key_req_
+      : ::login::AccessKeyReq::default_instance();
+}
+inline ::login::AccessKeyReq* LoginMsg::mutable_access_key_req() {
+  if (!has_access_key_req()) {
+    clear_choice();
+    set_has_access_key_req();
+    choice_.access_key_req_ = new ::login::AccessKeyReq;
+  }
+  // @@protoc_insertion_point(field_mutable:login.LoginMsg.access_key_req)
+  return choice_.access_key_req_;
+}
+inline ::login::AccessKeyReq* LoginMsg::release_access_key_req() {
+  // @@protoc_insertion_point(field_release:login.LoginMsg.access_key_req)
+  if (has_access_key_req()) {
+    clear_has_choice();
+    ::login::AccessKeyReq* temp = choice_.access_key_req_;
+    choice_.access_key_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void LoginMsg::set_allocated_access_key_req(::login::AccessKeyReq* access_key_req) {
+  clear_choice();
+  if (access_key_req) {
+    set_has_access_key_req();
+    choice_.access_key_req_ = access_key_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:login.LoginMsg.access_key_req)
+}
+
+// .login.AccessKeyRsp access_key_rsp = 6;
+inline bool LoginMsg::has_access_key_rsp() const {
+  return choice_case() == kAccessKeyRsp;
+}
+inline void LoginMsg::set_has_access_key_rsp() {
+  _oneof_case_[0] = kAccessKeyRsp;
+}
+inline void LoginMsg::clear_access_key_rsp() {
+  if (has_access_key_rsp()) {
+    delete choice_.access_key_rsp_;
+    clear_has_choice();
+  }
+}
+inline  const ::login::AccessKeyRsp& LoginMsg::access_key_rsp() const {
+  // @@protoc_insertion_point(field_get:login.LoginMsg.access_key_rsp)
+  return has_access_key_rsp()
+      ? *choice_.access_key_rsp_
+      : ::login::AccessKeyRsp::default_instance();
+}
+inline ::login::AccessKeyRsp* LoginMsg::mutable_access_key_rsp() {
+  if (!has_access_key_rsp()) {
+    clear_choice();
+    set_has_access_key_rsp();
+    choice_.access_key_rsp_ = new ::login::AccessKeyRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:login.LoginMsg.access_key_rsp)
+  return choice_.access_key_rsp_;
+}
+inline ::login::AccessKeyRsp* LoginMsg::release_access_key_rsp() {
+  // @@protoc_insertion_point(field_release:login.LoginMsg.access_key_rsp)
+  if (has_access_key_rsp()) {
+    clear_has_choice();
+    ::login::AccessKeyRsp* temp = choice_.access_key_rsp_;
+    choice_.access_key_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void LoginMsg::set_allocated_access_key_rsp(::login::AccessKeyRsp* access_key_rsp) {
+  clear_choice();
+  if (access_key_rsp) {
+    set_has_access_key_rsp();
+    choice_.access_key_rsp_ = access_key_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:login.LoginMsg.access_key_rsp)
+}
+
+inline bool LoginMsg::has_choice() const {
+  return choice_case() != CHOICE_NOT_SET;
+}
+inline void LoginMsg::clear_has_choice() {
+  _oneof_case_[0] = CHOICE_NOT_SET;
+}
+inline LoginMsg::ChoiceCase LoginMsg::choice_case() const {
+  return LoginMsg::ChoiceCase(_oneof_case_[0]);
+}
 // -------------------------------------------------------------------
 
 // LoginReq
@@ -1196,315 +1272,10 @@ inline void AccessKeyRsp::set_allocated_access_key(::std::string* access_key) {
   // @@protoc_insertion_point(field_set_allocated:login.AccessKeyRsp.access_key)
 }
 
-// -------------------------------------------------------------------
-
-// LoginMsg
-
-// .login.TestReq test_req = 1;
-inline bool LoginMsg::has_test_req() const {
-  return choice_case() == kTestReq;
-}
-inline void LoginMsg::set_has_test_req() {
-  _oneof_case_[0] = kTestReq;
-}
-inline void LoginMsg::clear_test_req() {
-  if (has_test_req()) {
-    delete choice_.test_req_;
-    clear_has_choice();
-  }
-}
-inline  const ::login::TestReq& LoginMsg::test_req() const {
-  // @@protoc_insertion_point(field_get:login.LoginMsg.test_req)
-  return has_test_req()
-      ? *choice_.test_req_
-      : ::login::TestReq::default_instance();
-}
-inline ::login::TestReq* LoginMsg::mutable_test_req() {
-  if (!has_test_req()) {
-    clear_choice();
-    set_has_test_req();
-    choice_.test_req_ = new ::login::TestReq;
-  }
-  // @@protoc_insertion_point(field_mutable:login.LoginMsg.test_req)
-  return choice_.test_req_;
-}
-inline ::login::TestReq* LoginMsg::release_test_req() {
-  // @@protoc_insertion_point(field_release:login.LoginMsg.test_req)
-  if (has_test_req()) {
-    clear_has_choice();
-    ::login::TestReq* temp = choice_.test_req_;
-    choice_.test_req_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-inline void LoginMsg::set_allocated_test_req(::login::TestReq* test_req) {
-  clear_choice();
-  if (test_req) {
-    set_has_test_req();
-    choice_.test_req_ = test_req;
-  }
-  // @@protoc_insertion_point(field_set_allocated:login.LoginMsg.test_req)
-}
-
-// .login.TestRsp test_rsp = 2;
-inline bool LoginMsg::has_test_rsp() const {
-  return choice_case() == kTestRsp;
-}
-inline void LoginMsg::set_has_test_rsp() {
-  _oneof_case_[0] = kTestRsp;
-}
-inline void LoginMsg::clear_test_rsp() {
-  if (has_test_rsp()) {
-    delete choice_.test_rsp_;
-    clear_has_choice();
-  }
-}
-inline  const ::login::TestRsp& LoginMsg::test_rsp() const {
-  // @@protoc_insertion_point(field_get:login.LoginMsg.test_rsp)
-  return has_test_rsp()
-      ? *choice_.test_rsp_
-      : ::login::TestRsp::default_instance();
-}
-inline ::login::TestRsp* LoginMsg::mutable_test_rsp() {
-  if (!has_test_rsp()) {
-    clear_choice();
-    set_has_test_rsp();
-    choice_.test_rsp_ = new ::login::TestRsp;
-  }
-  // @@protoc_insertion_point(field_mutable:login.LoginMsg.test_rsp)
-  return choice_.test_rsp_;
-}
-inline ::login::TestRsp* LoginMsg::release_test_rsp() {
-  // @@protoc_insertion_point(field_release:login.LoginMsg.test_rsp)
-  if (has_test_rsp()) {
-    clear_has_choice();
-    ::login::TestRsp* temp = choice_.test_rsp_;
-    choice_.test_rsp_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-inline void LoginMsg::set_allocated_test_rsp(::login::TestRsp* test_rsp) {
-  clear_choice();
-  if (test_rsp) {
-    set_has_test_rsp();
-    choice_.test_rsp_ = test_rsp;
-  }
-  // @@protoc_insertion_point(field_set_allocated:login.LoginMsg.test_rsp)
-}
-
-// .login.LoginReq login_req = 3;
-inline bool LoginMsg::has_login_req() const {
-  return choice_case() == kLoginReq;
-}
-inline void LoginMsg::set_has_login_req() {
-  _oneof_case_[0] = kLoginReq;
-}
-inline void LoginMsg::clear_login_req() {
-  if (has_login_req()) {
-    delete choice_.login_req_;
-    clear_has_choice();
-  }
-}
-inline  const ::login::LoginReq& LoginMsg::login_req() const {
-  // @@protoc_insertion_point(field_get:login.LoginMsg.login_req)
-  return has_login_req()
-      ? *choice_.login_req_
-      : ::login::LoginReq::default_instance();
-}
-inline ::login::LoginReq* LoginMsg::mutable_login_req() {
-  if (!has_login_req()) {
-    clear_choice();
-    set_has_login_req();
-    choice_.login_req_ = new ::login::LoginReq;
-  }
-  // @@protoc_insertion_point(field_mutable:login.LoginMsg.login_req)
-  return choice_.login_req_;
-}
-inline ::login::LoginReq* LoginMsg::release_login_req() {
-  // @@protoc_insertion_point(field_release:login.LoginMsg.login_req)
-  if (has_login_req()) {
-    clear_has_choice();
-    ::login::LoginReq* temp = choice_.login_req_;
-    choice_.login_req_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-inline void LoginMsg::set_allocated_login_req(::login::LoginReq* login_req) {
-  clear_choice();
-  if (login_req) {
-    set_has_login_req();
-    choice_.login_req_ = login_req;
-  }
-  // @@protoc_insertion_point(field_set_allocated:login.LoginMsg.login_req)
-}
-
-// .login.LoginRsp login_rsp = 4;
-inline bool LoginMsg::has_login_rsp() const {
-  return choice_case() == kLoginRsp;
-}
-inline void LoginMsg::set_has_login_rsp() {
-  _oneof_case_[0] = kLoginRsp;
-}
-inline void LoginMsg::clear_login_rsp() {
-  if (has_login_rsp()) {
-    delete choice_.login_rsp_;
-    clear_has_choice();
-  }
-}
-inline  const ::login::LoginRsp& LoginMsg::login_rsp() const {
-  // @@protoc_insertion_point(field_get:login.LoginMsg.login_rsp)
-  return has_login_rsp()
-      ? *choice_.login_rsp_
-      : ::login::LoginRsp::default_instance();
-}
-inline ::login::LoginRsp* LoginMsg::mutable_login_rsp() {
-  if (!has_login_rsp()) {
-    clear_choice();
-    set_has_login_rsp();
-    choice_.login_rsp_ = new ::login::LoginRsp;
-  }
-  // @@protoc_insertion_point(field_mutable:login.LoginMsg.login_rsp)
-  return choice_.login_rsp_;
-}
-inline ::login::LoginRsp* LoginMsg::release_login_rsp() {
-  // @@protoc_insertion_point(field_release:login.LoginMsg.login_rsp)
-  if (has_login_rsp()) {
-    clear_has_choice();
-    ::login::LoginRsp* temp = choice_.login_rsp_;
-    choice_.login_rsp_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-inline void LoginMsg::set_allocated_login_rsp(::login::LoginRsp* login_rsp) {
-  clear_choice();
-  if (login_rsp) {
-    set_has_login_rsp();
-    choice_.login_rsp_ = login_rsp;
-  }
-  // @@protoc_insertion_point(field_set_allocated:login.LoginMsg.login_rsp)
-}
-
-// .login.AccessKeyReq access_key_req = 5;
-inline bool LoginMsg::has_access_key_req() const {
-  return choice_case() == kAccessKeyReq;
-}
-inline void LoginMsg::set_has_access_key_req() {
-  _oneof_case_[0] = kAccessKeyReq;
-}
-inline void LoginMsg::clear_access_key_req() {
-  if (has_access_key_req()) {
-    delete choice_.access_key_req_;
-    clear_has_choice();
-  }
-}
-inline  const ::login::AccessKeyReq& LoginMsg::access_key_req() const {
-  // @@protoc_insertion_point(field_get:login.LoginMsg.access_key_req)
-  return has_access_key_req()
-      ? *choice_.access_key_req_
-      : ::login::AccessKeyReq::default_instance();
-}
-inline ::login::AccessKeyReq* LoginMsg::mutable_access_key_req() {
-  if (!has_access_key_req()) {
-    clear_choice();
-    set_has_access_key_req();
-    choice_.access_key_req_ = new ::login::AccessKeyReq;
-  }
-  // @@protoc_insertion_point(field_mutable:login.LoginMsg.access_key_req)
-  return choice_.access_key_req_;
-}
-inline ::login::AccessKeyReq* LoginMsg::release_access_key_req() {
-  // @@protoc_insertion_point(field_release:login.LoginMsg.access_key_req)
-  if (has_access_key_req()) {
-    clear_has_choice();
-    ::login::AccessKeyReq* temp = choice_.access_key_req_;
-    choice_.access_key_req_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-inline void LoginMsg::set_allocated_access_key_req(::login::AccessKeyReq* access_key_req) {
-  clear_choice();
-  if (access_key_req) {
-    set_has_access_key_req();
-    choice_.access_key_req_ = access_key_req;
-  }
-  // @@protoc_insertion_point(field_set_allocated:login.LoginMsg.access_key_req)
-}
-
-// .login.AccessKeyRsp access_key_rsp = 6;
-inline bool LoginMsg::has_access_key_rsp() const {
-  return choice_case() == kAccessKeyRsp;
-}
-inline void LoginMsg::set_has_access_key_rsp() {
-  _oneof_case_[0] = kAccessKeyRsp;
-}
-inline void LoginMsg::clear_access_key_rsp() {
-  if (has_access_key_rsp()) {
-    delete choice_.access_key_rsp_;
-    clear_has_choice();
-  }
-}
-inline  const ::login::AccessKeyRsp& LoginMsg::access_key_rsp() const {
-  // @@protoc_insertion_point(field_get:login.LoginMsg.access_key_rsp)
-  return has_access_key_rsp()
-      ? *choice_.access_key_rsp_
-      : ::login::AccessKeyRsp::default_instance();
-}
-inline ::login::AccessKeyRsp* LoginMsg::mutable_access_key_rsp() {
-  if (!has_access_key_rsp()) {
-    clear_choice();
-    set_has_access_key_rsp();
-    choice_.access_key_rsp_ = new ::login::AccessKeyRsp;
-  }
-  // @@protoc_insertion_point(field_mutable:login.LoginMsg.access_key_rsp)
-  return choice_.access_key_rsp_;
-}
-inline ::login::AccessKeyRsp* LoginMsg::release_access_key_rsp() {
-  // @@protoc_insertion_point(field_release:login.LoginMsg.access_key_rsp)
-  if (has_access_key_rsp()) {
-    clear_has_choice();
-    ::login::AccessKeyRsp* temp = choice_.access_key_rsp_;
-    choice_.access_key_rsp_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-inline void LoginMsg::set_allocated_access_key_rsp(::login::AccessKeyRsp* access_key_rsp) {
-  clear_choice();
-  if (access_key_rsp) {
-    set_has_access_key_rsp();
-    choice_.access_key_rsp_ = access_key_rsp;
-  }
-  // @@protoc_insertion_point(field_set_allocated:login.LoginMsg.access_key_rsp)
-}
-
-inline bool LoginMsg::has_choice() const {
-  return choice_case() != CHOICE_NOT_SET;
-}
-inline void LoginMsg::clear_has_choice() {
-  _oneof_case_[0] = CHOICE_NOT_SET;
-}
-inline LoginMsg::ChoiceCase LoginMsg::choice_case() const {
-  return LoginMsg::ChoiceCase(_oneof_case_[0]);
-}
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -1518,6 +1289,18 @@ inline LoginMsg::ChoiceCase LoginMsg::choice_case() const {
 
 
 }  // namespace login
+
+namespace google {
+namespace protobuf {
+
+template <> struct is_proto_enum< ::login::ErrorCode> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::login::ErrorCode>() {
+  return ::login::ErrorCode_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 

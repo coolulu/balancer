@@ -18,22 +18,12 @@
 // @@protoc_insertion_point(includes)
 
 namespace logic {
-class TestReqDefaultTypeInternal {
-public:
- ::google::protobuf::internal::ExplicitlyConstructed<TestReq>
-     _instance;
-} _TestReq_default_instance_;
-class TestRspDefaultTypeInternal {
-public:
- ::google::protobuf::internal::ExplicitlyConstructed<TestRsp>
-     _instance;
-} _TestRsp_default_instance_;
 class LogicMsgDefaultTypeInternal {
 public:
  ::google::protobuf::internal::ExplicitlyConstructed<LogicMsg>
      _instance;
-  const ::logic::TestReq* test_req_;
-  const ::logic::TestRsp* test_rsp_;
+  const ::common::TestReq* test_req_;
+  const ::common::TestRsp* test_rsp_;
 } _LogicMsg_default_instance_;
 
 namespace protobuf_logic_2eproto {
@@ -41,7 +31,8 @@ namespace protobuf_logic_2eproto {
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[3];
+::google::protobuf::Metadata file_level_metadata[1];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
 
 }  // namespace
 
@@ -57,23 +48,9 @@ PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::AuxillaryParseTableField
 PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::ParseTable const
     TableStruct::schema[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
-  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
-  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
 };
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestReq, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestReq, service_id_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestRsp, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestRsp, service_name_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LogicMsg, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -84,14 +61,10 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LogicMsg, choice_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(TestReq)},
-  { 6, -1, sizeof(TestRsp)},
-  { 12, -1, sizeof(LogicMsg)},
+  { 0, -1, sizeof(LogicMsg)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&_TestReq_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_TestRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_LogicMsg_default_instance_),
 };
 
@@ -102,7 +75,7 @@ void protobuf_AssignDescriptors() {
   ::google::protobuf::MessageFactory* factory = NULL;
   AssignDescriptors(
       "logic.proto", schemas, file_default_instances, TableStruct::offsets, factory,
-      file_level_metadata, NULL, NULL);
+      file_level_metadata, file_level_enum_descriptors, NULL);
 }
 
 void protobuf_AssignDescriptorsOnce() {
@@ -113,7 +86,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 3);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 1);
 }
 
 }  // namespace
@@ -121,16 +94,13 @@ void TableStruct::InitDefaultsImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::internal::InitProtobufDefaults();
-  _TestReq_default_instance_._instance.DefaultConstruct();
+  ::common::protobuf_common_2eproto::InitDefaults();
+  _LogicMsg_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_TestReq_default_instance_);_TestRsp_default_instance_._instance.DefaultConstruct();
-  ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_TestRsp_default_instance_);_LogicMsg_default_instance_._instance.DefaultConstruct();
-  ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_LogicMsg_default_instance_);_LogicMsg_default_instance_.test_req_ = const_cast< ::logic::TestReq*>(
-      ::logic::TestReq::internal_default_instance());
-  _LogicMsg_default_instance_.test_rsp_ = const_cast< ::logic::TestRsp*>(
-      ::logic::TestRsp::internal_default_instance());
+      &_LogicMsg_default_instance_);_LogicMsg_default_instance_.test_req_ = const_cast< ::common::TestReq*>(
+      ::common::TestReq::internal_default_instance());
+  _LogicMsg_default_instance_.test_rsp_ = const_cast< ::common::TestRsp*>(
+      ::common::TestRsp::internal_default_instance());
 }
 
 void InitDefaults() {
@@ -141,16 +111,42 @@ namespace {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\013logic.proto\022\005logic\"\035\n\007TestReq\022\022\n\nservi"
-      "ce_id\030\001 \001(\005\"\037\n\007TestRsp\022\024\n\014service_name\030\001"
-      " \001(\014\"\\\n\010LogicMsg\022\"\n\010test_req\030\001 \001(\0132\016.log"
-      "ic.TestReqH\000\022\"\n\010test_rsp\030\002 \001(\0132\016.logic.T"
-      "estRspH\000B\010\n\006choiceb\006proto3"
+      "\n\013logic.proto\022\005logic\032\014common.proto\"^\n\010Lo"
+      "gicMsg\022#\n\010test_req\030\001 \001(\0132\017.common.TestRe"
+      "qH\000\022#\n\010test_rsp\030\002 \001(\0132\017.common.TestRspH\000"
+      "B\010\n\006choice*\221\010\n\tErrorCode\022\013\n\007SUCCESS\020\000\022\024\n"
+      "\rERR_SYS_BEGIN\020\244\211\354_\022\027\n\020ERR_SYS_OVERLOAD\020"
+      "\245\211\354_\022\035\n\026ERR_SYS_REJECT_SERVICE\020\246\211\354_\022\033\n\024E"
+      "RR_SYS_SERVER_INNER\020\247\211\354_\022\026\n\017ERR_SYS_TIME"
+      "OUT\020\250\211\354_\022 \n\031ERR_SYS_NO_INSERVICE_LIST\020\251\211"
+      "\354_\022\031\n\022ERR_SYS_TASK_STATE\020\252\211\354_\022\033\n\024ERR_SYS"
+      "_TASK_DISCARD\020\253\211\354_\022\022\n\013ERR_SYS_END\020\207\212\354_\022\027"
+      "\n\020ERR_PACKET_BEGIN\020\210\212\354_\022\030\n\021ERR_PACKET_EN"
+      "CODE\020\211\212\354_\022\030\n\021ERR_PACKET_DECODE\020\212\212\354_\022\030\n\021E"
+      "RR_PACKET_HEADER\020\213\212\354_\022\025\n\016ERR_PACKET_LEN\020"
+      "\214\212\354_\022\031\n\022ERR_PACKET_VERSION\020\215\212\354_\022!\n\032ERR_P"
+      "ACKET_FROM_SERVICE_ID\020\216\212\354_\022\037\n\030ERR_PACKET"
+      "_TO_SERVICE_ID\020\217\212\354_\022\030\n\021ERR_PACKET_APP_ID"
+      "\020\220\212\354_\022\035\n\026ERR_PACKET_APP_VERSION\020\221\212\354_\022\035\n\026"
+      "ERR_PACKET_CONN_SEQ_ID\020\222\212\354_\022\034\n\025ERR_PACKE"
+      "T_MSG_SEQ_ID\020\223\212\354_\022\035\n\026ERR_PACKET_DATA_FOR"
+      "MAT\020\224\212\354_\022\036\n\027ERR_PACKET_DATA_FIELD_0\020\225\212\354_"
+      "\022\036\n\027ERR_PACKET_DATA_FIELD_1\020\226\212\354_\022\036\n\027ERR_"
+      "PACKET_DATA_FIELD_2\020\227\212\354_\022\036\n\027ERR_PACKET_D"
+      "ATA_FIELD_3\020\230\212\354_\022\033\n\024ERR_PACKET_CHECK_SUM"
+      "\020\231\212\354_\022!\n\032ERR_PACKET_UNKNOWN_REQUEST\020\232\212\354_"
+      "\022\025\n\016ERR_PACKET_END\020\353\212\354_\022\032\n\023ERR_INTERFACE"
+      "_BEGIN\020\354\212\354_\022\032\n\023ERR_INTERFACE_PARAM\020\355\212\354_\022"
+      "\031\n\022ERR_INTERFACE_PERM\020\356\212\354_\022\034\n\025ERR_INTERF"
+      "ACE_TIMEOUT\020\357\212\354_\022\030\n\021ERR_INTERFACE_END\020\317\213"
+      "\354_\022\031\n\022ERR_BUSINESS_BEGIN\020\250\220\354_\022\027\n\020ERR_BUS"
+      "INESS_END\020\317\326\354_b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 186);
+      descriptor, 1182);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "logic.proto", &protobuf_RegisterTypes);
+  ::common::protobuf_common_2eproto::AddDescriptors();
 }
 } // anonymous namespace
 
@@ -167,559 +163,55 @@ struct StaticDescriptorInitializer {
 
 }  // namespace protobuf_logic_2eproto
 
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TestReq::kServiceIdFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-TestReq::TestReq()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    protobuf_logic_2eproto::InitDefaults();
-  }
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:logic.TestReq)
-}
-TestReq::TestReq(const TestReq& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  service_id_ = from.service_id_;
-  // @@protoc_insertion_point(copy_constructor:logic.TestReq)
-}
-
-void TestReq::SharedCtor() {
-  service_id_ = 0;
-  _cached_size_ = 0;
-}
-
-TestReq::~TestReq() {
-  // @@protoc_insertion_point(destructor:logic.TestReq)
-  SharedDtor();
-}
-
-void TestReq::SharedDtor() {
-}
-
-void TestReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* TestReq::descriptor() {
+const ::google::protobuf::EnumDescriptor* ErrorCode_descriptor() {
   protobuf_logic_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_logic_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+  return protobuf_logic_2eproto::file_level_enum_descriptors[0];
 }
-
-const TestReq& TestReq::default_instance() {
-  protobuf_logic_2eproto::InitDefaults();
-  return *internal_default_instance();
-}
-
-TestReq* TestReq::New(::google::protobuf::Arena* arena) const {
-  TestReq* n = new TestReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void TestReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:logic.TestReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  service_id_ = 0;
-  _internal_metadata_.Clear();
-}
-
-bool TestReq::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:logic.TestReq)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 service_id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &service_id_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:logic.TestReq)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:logic.TestReq)
-  return false;
-#undef DO_
-}
-
-void TestReq::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:logic.TestReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 service_id = 1;
-  if (this->service_id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->service_id(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:logic.TestReq)
-}
-
-::google::protobuf::uint8* TestReq::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:logic.TestReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 service_id = 1;
-  if (this->service_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->service_id(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:logic.TestReq)
-  return target;
-}
-
-size_t TestReq::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:logic.TestReq)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // int32 service_id = 1;
-  if (this->service_id() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->service_id());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void TestReq::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:logic.TestReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TestReq* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TestReq>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:logic.TestReq)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:logic.TestReq)
-    MergeFrom(*source);
+bool ErrorCode_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 201000100:
+    case 201000101:
+    case 201000102:
+    case 201000103:
+    case 201000104:
+    case 201000105:
+    case 201000106:
+    case 201000107:
+    case 201000199:
+    case 201000200:
+    case 201000201:
+    case 201000202:
+    case 201000203:
+    case 201000204:
+    case 201000205:
+    case 201000206:
+    case 201000207:
+    case 201000208:
+    case 201000209:
+    case 201000210:
+    case 201000211:
+    case 201000212:
+    case 201000213:
+    case 201000214:
+    case 201000215:
+    case 201000216:
+    case 201000217:
+    case 201000218:
+    case 201000299:
+    case 201000300:
+    case 201000301:
+    case 201000302:
+    case 201000303:
+    case 201000399:
+    case 201001000:
+    case 201009999:
+      return true;
+    default:
+      return false;
   }
 }
 
-void TestReq::MergeFrom(const TestReq& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:logic.TestReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.service_id() != 0) {
-    set_service_id(from.service_id());
-  }
-}
-
-void TestReq::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:logic.TestReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void TestReq::CopyFrom(const TestReq& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:logic.TestReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool TestReq::IsInitialized() const {
-  return true;
-}
-
-void TestReq::Swap(TestReq* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void TestReq::InternalSwap(TestReq* other) {
-  using std::swap;
-  swap(service_id_, other->service_id_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata TestReq::GetMetadata() const {
-  protobuf_logic_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_logic_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// TestReq
-
-// int32 service_id = 1;
-void TestReq::clear_service_id() {
-  service_id_ = 0;
-}
-::google::protobuf::int32 TestReq::service_id() const {
-  // @@protoc_insertion_point(field_get:logic.TestReq.service_id)
-  return service_id_;
-}
-void TestReq::set_service_id(::google::protobuf::int32 value) {
-  
-  service_id_ = value;
-  // @@protoc_insertion_point(field_set:logic.TestReq.service_id)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TestRsp::kServiceNameFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-TestRsp::TestRsp()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    protobuf_logic_2eproto::InitDefaults();
-  }
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:logic.TestRsp)
-}
-TestRsp::TestRsp(const TestRsp& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  service_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.service_name().size() > 0) {
-    service_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.service_name_);
-  }
-  // @@protoc_insertion_point(copy_constructor:logic.TestRsp)
-}
-
-void TestRsp::SharedCtor() {
-  service_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
-}
-
-TestRsp::~TestRsp() {
-  // @@protoc_insertion_point(destructor:logic.TestRsp)
-  SharedDtor();
-}
-
-void TestRsp::SharedDtor() {
-  service_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void TestRsp::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* TestRsp::descriptor() {
-  protobuf_logic_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_logic_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const TestRsp& TestRsp::default_instance() {
-  protobuf_logic_2eproto::InitDefaults();
-  return *internal_default_instance();
-}
-
-TestRsp* TestRsp::New(::google::protobuf::Arena* arena) const {
-  TestRsp* n = new TestRsp;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void TestRsp::Clear() {
-// @@protoc_insertion_point(message_clear_start:logic.TestRsp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  service_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
-}
-
-bool TestRsp::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:logic.TestRsp)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes service_name = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_service_name()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:logic.TestRsp)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:logic.TestRsp)
-  return false;
-#undef DO_
-}
-
-void TestRsp::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:logic.TestRsp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // bytes service_name = 1;
-  if (this->service_name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->service_name(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:logic.TestRsp)
-}
-
-::google::protobuf::uint8* TestRsp::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:logic.TestRsp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // bytes service_name = 1;
-  if (this->service_name().size() > 0) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->service_name(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:logic.TestRsp)
-  return target;
-}
-
-size_t TestRsp::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:logic.TestRsp)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // bytes service_name = 1;
-  if (this->service_name().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->service_name());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void TestRsp::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:logic.TestRsp)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TestRsp* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TestRsp>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:logic.TestRsp)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:logic.TestRsp)
-    MergeFrom(*source);
-  }
-}
-
-void TestRsp::MergeFrom(const TestRsp& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:logic.TestRsp)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.service_name().size() > 0) {
-
-    service_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.service_name_);
-  }
-}
-
-void TestRsp::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:logic.TestRsp)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void TestRsp::CopyFrom(const TestRsp& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:logic.TestRsp)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool TestRsp::IsInitialized() const {
-  return true;
-}
-
-void TestRsp::Swap(TestRsp* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void TestRsp::InternalSwap(TestRsp* other) {
-  using std::swap;
-  service_name_.Swap(&other->service_name_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata TestRsp::GetMetadata() const {
-  protobuf_logic_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_logic_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// TestRsp
-
-// bytes service_name = 1;
-void TestRsp::clear_service_name() {
-  service_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-const ::std::string& TestRsp::service_name() const {
-  // @@protoc_insertion_point(field_get:logic.TestRsp.service_name)
-  return service_name_.GetNoArena();
-}
-void TestRsp::set_service_name(const ::std::string& value) {
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:logic.TestRsp.service_name)
-}
-#if LANG_CXX11
-void TestRsp::set_service_name(::std::string&& value) {
-  
-  service_name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:logic.TestRsp.service_name)
-}
-#endif
-void TestRsp::set_service_name(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:logic.TestRsp.service_name)
-}
-void TestRsp::set_service_name(const void* value, size_t size) {
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:logic.TestRsp.service_name)
-}
-::std::string* TestRsp::mutable_service_name() {
-  
-  // @@protoc_insertion_point(field_mutable:logic.TestRsp.service_name)
-  return service_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-::std::string* TestRsp::release_service_name() {
-  // @@protoc_insertion_point(field_release:logic.TestRsp.service_name)
-  
-  return service_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-void TestRsp::set_allocated_service_name(::std::string* service_name) {
-  if (service_name != NULL) {
-    
-  } else {
-    
-  }
-  service_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), service_name);
-  // @@protoc_insertion_point(field_set_allocated:logic.TestRsp.service_name)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -744,11 +236,11 @@ LogicMsg::LogicMsg(const LogicMsg& from)
   clear_has_choice();
   switch (from.choice_case()) {
     case kTestReq: {
-      mutable_test_req()->::logic::TestReq::MergeFrom(from.test_req());
+      mutable_test_req()->::common::TestReq::MergeFrom(from.test_req());
       break;
     }
     case kTestRsp: {
-      mutable_test_rsp()->::logic::TestRsp::MergeFrom(from.test_rsp());
+      mutable_test_rsp()->::common::TestRsp::MergeFrom(from.test_rsp());
       break;
     }
     case CHOICE_NOT_SET: {
@@ -836,7 +328,7 @@ bool LogicMsg::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .logic.TestReq test_req = 1;
+      // .common.TestReq test_req = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
@@ -848,7 +340,7 @@ bool LogicMsg::MergePartialFromCodedStream(
         break;
       }
 
-      // .logic.TestRsp test_rsp = 2;
+      // .common.TestRsp test_rsp = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
@@ -886,13 +378,13 @@ void LogicMsg::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .logic.TestReq test_req = 1;
+  // .common.TestReq test_req = 1;
   if (has_test_req()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, *choice_.test_req_, output);
   }
 
-  // .logic.TestRsp test_rsp = 2;
+  // .common.TestRsp test_rsp = 2;
   if (has_test_rsp()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, *choice_.test_rsp_, output);
@@ -912,14 +404,14 @@ void LogicMsg::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .logic.TestReq test_req = 1;
+  // .common.TestReq test_req = 1;
   if (has_test_req()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         1, *choice_.test_req_, deterministic, target);
   }
 
-  // .logic.TestRsp test_rsp = 2;
+  // .common.TestRsp test_rsp = 2;
   if (has_test_rsp()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
@@ -944,14 +436,14 @@ size_t LogicMsg::ByteSizeLong() const {
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
   switch (choice_case()) {
-    // .logic.TestReq test_req = 1;
+    // .common.TestReq test_req = 1;
     case kTestReq: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *choice_.test_req_);
       break;
     }
-    // .logic.TestRsp test_rsp = 2;
+    // .common.TestRsp test_rsp = 2;
     case kTestRsp: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -993,11 +485,11 @@ void LogicMsg::MergeFrom(const LogicMsg& from) {
 
   switch (from.choice_case()) {
     case kTestReq: {
-      mutable_test_req()->::logic::TestReq::MergeFrom(from.test_req());
+      mutable_test_req()->::common::TestReq::MergeFrom(from.test_req());
       break;
     }
     case kTestRsp: {
-      mutable_test_rsp()->::logic::TestRsp::MergeFrom(from.test_rsp());
+      mutable_test_rsp()->::common::TestRsp::MergeFrom(from.test_rsp());
       break;
     }
     case CHOICE_NOT_SET: {
@@ -1044,7 +536,7 @@ void LogicMsg::InternalSwap(LogicMsg* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // LogicMsg
 
-// .logic.TestReq test_req = 1;
+// .common.TestReq test_req = 1;
 bool LogicMsg::has_test_req() const {
   return choice_case() == kTestReq;
 }
@@ -1057,33 +549,33 @@ void LogicMsg::clear_test_req() {
     clear_has_choice();
   }
 }
- const ::logic::TestReq& LogicMsg::test_req() const {
+ const ::common::TestReq& LogicMsg::test_req() const {
   // @@protoc_insertion_point(field_get:logic.LogicMsg.test_req)
   return has_test_req()
       ? *choice_.test_req_
-      : ::logic::TestReq::default_instance();
+      : ::common::TestReq::default_instance();
 }
-::logic::TestReq* LogicMsg::mutable_test_req() {
+::common::TestReq* LogicMsg::mutable_test_req() {
   if (!has_test_req()) {
     clear_choice();
     set_has_test_req();
-    choice_.test_req_ = new ::logic::TestReq;
+    choice_.test_req_ = new ::common::TestReq;
   }
   // @@protoc_insertion_point(field_mutable:logic.LogicMsg.test_req)
   return choice_.test_req_;
 }
-::logic::TestReq* LogicMsg::release_test_req() {
+::common::TestReq* LogicMsg::release_test_req() {
   // @@protoc_insertion_point(field_release:logic.LogicMsg.test_req)
   if (has_test_req()) {
     clear_has_choice();
-    ::logic::TestReq* temp = choice_.test_req_;
+    ::common::TestReq* temp = choice_.test_req_;
     choice_.test_req_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-void LogicMsg::set_allocated_test_req(::logic::TestReq* test_req) {
+void LogicMsg::set_allocated_test_req(::common::TestReq* test_req) {
   clear_choice();
   if (test_req) {
     set_has_test_req();
@@ -1092,7 +584,7 @@ void LogicMsg::set_allocated_test_req(::logic::TestReq* test_req) {
   // @@protoc_insertion_point(field_set_allocated:logic.LogicMsg.test_req)
 }
 
-// .logic.TestRsp test_rsp = 2;
+// .common.TestRsp test_rsp = 2;
 bool LogicMsg::has_test_rsp() const {
   return choice_case() == kTestRsp;
 }
@@ -1105,33 +597,33 @@ void LogicMsg::clear_test_rsp() {
     clear_has_choice();
   }
 }
- const ::logic::TestRsp& LogicMsg::test_rsp() const {
+ const ::common::TestRsp& LogicMsg::test_rsp() const {
   // @@protoc_insertion_point(field_get:logic.LogicMsg.test_rsp)
   return has_test_rsp()
       ? *choice_.test_rsp_
-      : ::logic::TestRsp::default_instance();
+      : ::common::TestRsp::default_instance();
 }
-::logic::TestRsp* LogicMsg::mutable_test_rsp() {
+::common::TestRsp* LogicMsg::mutable_test_rsp() {
   if (!has_test_rsp()) {
     clear_choice();
     set_has_test_rsp();
-    choice_.test_rsp_ = new ::logic::TestRsp;
+    choice_.test_rsp_ = new ::common::TestRsp;
   }
   // @@protoc_insertion_point(field_mutable:logic.LogicMsg.test_rsp)
   return choice_.test_rsp_;
 }
-::logic::TestRsp* LogicMsg::release_test_rsp() {
+::common::TestRsp* LogicMsg::release_test_rsp() {
   // @@protoc_insertion_point(field_release:logic.LogicMsg.test_rsp)
   if (has_test_rsp()) {
     clear_has_choice();
-    ::logic::TestRsp* temp = choice_.test_rsp_;
+    ::common::TestRsp* temp = choice_.test_rsp_;
     choice_.test_rsp_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-void LogicMsg::set_allocated_test_rsp(::logic::TestRsp* test_rsp) {
+void LogicMsg::set_allocated_test_rsp(::common::TestRsp* test_rsp) {
   clear_choice();
   if (test_rsp) {
     set_has_test_rsp();

@@ -28,18 +28,14 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "common.pb.h"
 // @@protoc_insertion_point(includes)
 namespace proxy {
 class ProxyMsg;
 class ProxyMsgDefaultTypeInternal;
 extern ProxyMsgDefaultTypeInternal _ProxyMsg_default_instance_;
-class TestReq;
-class TestReqDefaultTypeInternal;
-extern TestReqDefaultTypeInternal _TestReq_default_instance_;
-class TestRsp;
-class TestRspDefaultTypeInternal;
-extern TestRspDefaultTypeInternal _TestRsp_default_instance_;
 }  // namespace proxy
 
 namespace proxy {
@@ -59,209 +55,63 @@ void AddDescriptors();
 void InitDefaults();
 }  // namespace protobuf_proxy_2eproto
 
+enum ErrorCode {
+  SUCCESS = 0,
+  ERR_SYS_BEGIN = 301000100,
+  ERR_SYS_OVERLOAD = 301000101,
+  ERR_SYS_REJECT_SERVICE = 301000102,
+  ERR_SYS_SERVER_INNER = 301000103,
+  ERR_SYS_TIMEOUT = 301000104,
+  ERR_SYS_NO_INSERVICE_LIST = 301000105,
+  ERR_SYS_TASK_STATE = 301000106,
+  ERR_SYS_TASK_DISCARD = 301000107,
+  ERR_SYS_END = 301000199,
+  ERR_PACKET_BEGIN = 301000200,
+  ERR_PACKET_ENCODE = 301000201,
+  ERR_PACKET_DECODE = 301000202,
+  ERR_PACKET_HEADER = 301000203,
+  ERR_PACKET_LEN = 301000204,
+  ERR_PACKET_VERSION = 301000205,
+  ERR_PACKET_FROM_SERVICE_ID = 301000206,
+  ERR_PACKET_TO_SERVICE_ID = 301000207,
+  ERR_PACKET_APP_ID = 301000208,
+  ERR_PACKET_APP_VERSION = 301000209,
+  ERR_PACKET_CONN_SEQ_ID = 301000210,
+  ERR_PACKET_MSG_SEQ_ID = 301000211,
+  ERR_PACKET_DATA_FORMAT = 301000212,
+  ERR_PACKET_DATA_FIELD_0 = 301000213,
+  ERR_PACKET_DATA_FIELD_1 = 301000214,
+  ERR_PACKET_DATA_FIELD_2 = 301000215,
+  ERR_PACKET_DATA_FIELD_3 = 301000216,
+  ERR_PACKET_CHECK_SUM = 301000217,
+  ERR_PACKET_UNKNOWN_REQUEST = 301000218,
+  ERR_PACKET_END = 301000299,
+  ERR_INTERFACE_BEGIN = 301000300,
+  ERR_INTERFACE_PARAM = 301000301,
+  ERR_INTERFACE_PERM = 301000302,
+  ERR_INTERFACE_TIMEOUT = 301000303,
+  ERR_INTERFACE_END = 301000399,
+  ERR_BUSINESS_BEGIN = 301001000,
+  ERR_BUSINESS_END = 301009999,
+  ErrorCode_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ErrorCode_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool ErrorCode_IsValid(int value);
+const ErrorCode ErrorCode_MIN = SUCCESS;
+const ErrorCode ErrorCode_MAX = ERR_BUSINESS_END;
+const int ErrorCode_ARRAYSIZE = ErrorCode_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ErrorCode_descriptor();
+inline const ::std::string& ErrorCode_Name(ErrorCode value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ErrorCode_descriptor(), value);
+}
+inline bool ErrorCode_Parse(
+    const ::std::string& name, ErrorCode* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ErrorCode>(
+    ErrorCode_descriptor(), name, value);
+}
 // ===================================================================
-
-class TestReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proxy.TestReq) */ {
- public:
-  TestReq();
-  virtual ~TestReq();
-
-  TestReq(const TestReq& from);
-
-  inline TestReq& operator=(const TestReq& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  TestReq(TestReq&& from) noexcept
-    : TestReq() {
-    *this = ::std::move(from);
-  }
-
-  inline TestReq& operator=(TestReq&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const TestReq& default_instance();
-
-  static inline const TestReq* internal_default_instance() {
-    return reinterpret_cast<const TestReq*>(
-               &_TestReq_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    0;
-
-  void Swap(TestReq* other);
-  friend void swap(TestReq& a, TestReq& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline TestReq* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  TestReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const TestReq& from);
-  void MergeFrom(const TestReq& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(TestReq* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // int32 service_id = 1;
-  void clear_service_id();
-  static const int kServiceIdFieldNumber = 1;
-  ::google::protobuf::int32 service_id() const;
-  void set_service_id(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:proxy.TestReq)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int32 service_id_;
-  mutable int _cached_size_;
-  friend struct protobuf_proxy_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class TestRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proxy.TestRsp) */ {
- public:
-  TestRsp();
-  virtual ~TestRsp();
-
-  TestRsp(const TestRsp& from);
-
-  inline TestRsp& operator=(const TestRsp& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  TestRsp(TestRsp&& from) noexcept
-    : TestRsp() {
-    *this = ::std::move(from);
-  }
-
-  inline TestRsp& operator=(TestRsp&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const TestRsp& default_instance();
-
-  static inline const TestRsp* internal_default_instance() {
-    return reinterpret_cast<const TestRsp*>(
-               &_TestRsp_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    1;
-
-  void Swap(TestRsp* other);
-  friend void swap(TestRsp& a, TestRsp& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline TestRsp* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  TestRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const TestRsp& from);
-  void MergeFrom(const TestRsp& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(TestRsp* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // bytes service_name = 1;
-  void clear_service_name();
-  static const int kServiceNameFieldNumber = 1;
-  const ::std::string& service_name() const;
-  void set_service_name(const ::std::string& value);
-  #if LANG_CXX11
-  void set_service_name(::std::string&& value);
-  #endif
-  void set_service_name(const char* value);
-  void set_service_name(const void* value, size_t size);
-  ::std::string* mutable_service_name();
-  ::std::string* release_service_name();
-  void set_allocated_service_name(::std::string* service_name);
-
-  // @@protoc_insertion_point(class_scope:proxy.TestRsp)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr service_name_;
-  mutable int _cached_size_;
-  friend struct protobuf_proxy_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
 
 class ProxyMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proxy.ProxyMsg) */ {
  public:
@@ -303,7 +153,7 @@ class ProxyMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(
                &_ProxyMsg_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    2;
+    0;
 
   void Swap(ProxyMsg* other);
   friend void swap(ProxyMsg& a, ProxyMsg& b) {
@@ -350,23 +200,23 @@ class ProxyMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(
 
   // accessors -------------------------------------------------------
 
-  // .proxy.TestReq test_req = 1;
+  // .common.TestReq test_req = 1;
   bool has_test_req() const;
   void clear_test_req();
   static const int kTestReqFieldNumber = 1;
-  const ::proxy::TestReq& test_req() const;
-  ::proxy::TestReq* mutable_test_req();
-  ::proxy::TestReq* release_test_req();
-  void set_allocated_test_req(::proxy::TestReq* test_req);
+  const ::common::TestReq& test_req() const;
+  ::common::TestReq* mutable_test_req();
+  ::common::TestReq* release_test_req();
+  void set_allocated_test_req(::common::TestReq* test_req);
 
-  // .proxy.TestRsp test_rsp = 2;
+  // .common.TestRsp test_rsp = 2;
   bool has_test_rsp() const;
   void clear_test_rsp();
   static const int kTestRspFieldNumber = 2;
-  const ::proxy::TestRsp& test_rsp() const;
-  ::proxy::TestRsp* mutable_test_rsp();
-  ::proxy::TestRsp* release_test_rsp();
-  void set_allocated_test_rsp(::proxy::TestRsp* test_rsp);
+  const ::common::TestRsp& test_rsp() const;
+  ::common::TestRsp* mutable_test_rsp();
+  ::common::TestRsp* release_test_rsp();
+  void set_allocated_test_rsp(::common::TestRsp* test_rsp);
 
   ChoiceCase choice_case() const;
   // @@protoc_insertion_point(class_scope:proxy.ProxyMsg)
@@ -381,8 +231,8 @@ class ProxyMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   union ChoiceUnion {
     ChoiceUnion() {}
-    ::proxy::TestReq* test_req_;
-    ::proxy::TestRsp* test_rsp_;
+    ::common::TestReq* test_req_;
+    ::common::TestRsp* test_rsp_;
   } choice_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -399,84 +249,9 @@ class ProxyMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// TestReq
-
-// int32 service_id = 1;
-inline void TestReq::clear_service_id() {
-  service_id_ = 0;
-}
-inline ::google::protobuf::int32 TestReq::service_id() const {
-  // @@protoc_insertion_point(field_get:proxy.TestReq.service_id)
-  return service_id_;
-}
-inline void TestReq::set_service_id(::google::protobuf::int32 value) {
-  
-  service_id_ = value;
-  // @@protoc_insertion_point(field_set:proxy.TestReq.service_id)
-}
-
-// -------------------------------------------------------------------
-
-// TestRsp
-
-// bytes service_name = 1;
-inline void TestRsp::clear_service_name() {
-  service_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& TestRsp::service_name() const {
-  // @@protoc_insertion_point(field_get:proxy.TestRsp.service_name)
-  return service_name_.GetNoArena();
-}
-inline void TestRsp::set_service_name(const ::std::string& value) {
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proxy.TestRsp.service_name)
-}
-#if LANG_CXX11
-inline void TestRsp::set_service_name(::std::string&& value) {
-  
-  service_name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proxy.TestRsp.service_name)
-}
-#endif
-inline void TestRsp::set_service_name(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proxy.TestRsp.service_name)
-}
-inline void TestRsp::set_service_name(const void* value, size_t size) {
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proxy.TestRsp.service_name)
-}
-inline ::std::string* TestRsp::mutable_service_name() {
-  
-  // @@protoc_insertion_point(field_mutable:proxy.TestRsp.service_name)
-  return service_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* TestRsp::release_service_name() {
-  // @@protoc_insertion_point(field_release:proxy.TestRsp.service_name)
-  
-  return service_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void TestRsp::set_allocated_service_name(::std::string* service_name) {
-  if (service_name != NULL) {
-    
-  } else {
-    
-  }
-  service_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), service_name);
-  // @@protoc_insertion_point(field_set_allocated:proxy.TestRsp.service_name)
-}
-
-// -------------------------------------------------------------------
-
 // ProxyMsg
 
-// .proxy.TestReq test_req = 1;
+// .common.TestReq test_req = 1;
 inline bool ProxyMsg::has_test_req() const {
   return choice_case() == kTestReq;
 }
@@ -489,33 +264,33 @@ inline void ProxyMsg::clear_test_req() {
     clear_has_choice();
   }
 }
-inline  const ::proxy::TestReq& ProxyMsg::test_req() const {
+inline  const ::common::TestReq& ProxyMsg::test_req() const {
   // @@protoc_insertion_point(field_get:proxy.ProxyMsg.test_req)
   return has_test_req()
       ? *choice_.test_req_
-      : ::proxy::TestReq::default_instance();
+      : ::common::TestReq::default_instance();
 }
-inline ::proxy::TestReq* ProxyMsg::mutable_test_req() {
+inline ::common::TestReq* ProxyMsg::mutable_test_req() {
   if (!has_test_req()) {
     clear_choice();
     set_has_test_req();
-    choice_.test_req_ = new ::proxy::TestReq;
+    choice_.test_req_ = new ::common::TestReq;
   }
   // @@protoc_insertion_point(field_mutable:proxy.ProxyMsg.test_req)
   return choice_.test_req_;
 }
-inline ::proxy::TestReq* ProxyMsg::release_test_req() {
+inline ::common::TestReq* ProxyMsg::release_test_req() {
   // @@protoc_insertion_point(field_release:proxy.ProxyMsg.test_req)
   if (has_test_req()) {
     clear_has_choice();
-    ::proxy::TestReq* temp = choice_.test_req_;
+    ::common::TestReq* temp = choice_.test_req_;
     choice_.test_req_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void ProxyMsg::set_allocated_test_req(::proxy::TestReq* test_req) {
+inline void ProxyMsg::set_allocated_test_req(::common::TestReq* test_req) {
   clear_choice();
   if (test_req) {
     set_has_test_req();
@@ -524,7 +299,7 @@ inline void ProxyMsg::set_allocated_test_req(::proxy::TestReq* test_req) {
   // @@protoc_insertion_point(field_set_allocated:proxy.ProxyMsg.test_req)
 }
 
-// .proxy.TestRsp test_rsp = 2;
+// .common.TestRsp test_rsp = 2;
 inline bool ProxyMsg::has_test_rsp() const {
   return choice_case() == kTestRsp;
 }
@@ -537,33 +312,33 @@ inline void ProxyMsg::clear_test_rsp() {
     clear_has_choice();
   }
 }
-inline  const ::proxy::TestRsp& ProxyMsg::test_rsp() const {
+inline  const ::common::TestRsp& ProxyMsg::test_rsp() const {
   // @@protoc_insertion_point(field_get:proxy.ProxyMsg.test_rsp)
   return has_test_rsp()
       ? *choice_.test_rsp_
-      : ::proxy::TestRsp::default_instance();
+      : ::common::TestRsp::default_instance();
 }
-inline ::proxy::TestRsp* ProxyMsg::mutable_test_rsp() {
+inline ::common::TestRsp* ProxyMsg::mutable_test_rsp() {
   if (!has_test_rsp()) {
     clear_choice();
     set_has_test_rsp();
-    choice_.test_rsp_ = new ::proxy::TestRsp;
+    choice_.test_rsp_ = new ::common::TestRsp;
   }
   // @@protoc_insertion_point(field_mutable:proxy.ProxyMsg.test_rsp)
   return choice_.test_rsp_;
 }
-inline ::proxy::TestRsp* ProxyMsg::release_test_rsp() {
+inline ::common::TestRsp* ProxyMsg::release_test_rsp() {
   // @@protoc_insertion_point(field_release:proxy.ProxyMsg.test_rsp)
   if (has_test_rsp()) {
     clear_has_choice();
-    ::proxy::TestRsp* temp = choice_.test_rsp_;
+    ::common::TestRsp* temp = choice_.test_rsp_;
     choice_.test_rsp_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void ProxyMsg::set_allocated_test_rsp(::proxy::TestRsp* test_rsp) {
+inline void ProxyMsg::set_allocated_test_rsp(::common::TestRsp* test_rsp) {
   clear_choice();
   if (test_rsp) {
     set_has_test_rsp();
@@ -585,15 +360,23 @@ inline ProxyMsg::ChoiceCase ProxyMsg::choice_case() const {
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 
 // @@protoc_insertion_point(namespace_scope)
 
 
 }  // namespace proxy
+
+namespace google {
+namespace protobuf {
+
+template <> struct is_proto_enum< ::proxy::ErrorCode> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::proxy::ErrorCode>() {
+  return ::proxy::ErrorCode_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 
