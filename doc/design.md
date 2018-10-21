@@ -95,7 +95,7 @@
     enum ErrorCode {
         SUCCESS                         = 0;
 
-        // 公共系统错误码 (各个服务service_id * 100000 + 公共系统错误码)
+        // 公共系统错误码 (各个服务service_id * 10000 + 公共系统错误码)
         ERR_SYS_BEGIN                   = 100;
         ERR_SYS_OVERLOAD                = 101;          // 服务过载
         ERR_SYS_REJECT_SERVICE          = 102;          // 拒绝服务
@@ -106,7 +106,7 @@
         ERR_SYS_TASK_DISCARD            = 107;          // 任务丢弃
         ERR_SYS_END                     = 199;
 
-        // 公共数据包错误码 (各个服务service_id * 100000 + 公共数据包错误码)
+        // 公共数据包错误码 (各个服务service_id * 10000 + 公共数据包错误码)
         ERR_PACKET_BEGIN                = 200;
         ERR_PACKET_ENCODE               = 201;          // 打包失败
         ERR_PACKET_DECODE               = 202;          // 解码失败
@@ -128,15 +128,24 @@
         ERR_PACKET_UNKNOWN_REQUEST      = 218;          // 不明请求
         ERR_PACKET_END                  = 299;
 
-        // 公共接口错误码 (各个服务service_id * 100000 + 公共接口错误码)
+        // 公共接口错误码 (各个服务service_id * 10000 + 公共接口错误码)
         ERR_INTERFACE_BEGIN             = 300;
         ERR_INTERFACE_PARAM             = 301;          // 参数错误
         ERR_INTERFACE_PERM              = 302;          // 权限错误
+        ERR_INTERFACE_TIMEOUT           = 303;          // 接口超时
         ERR_INTERFACE_END               = 399;
 
-        // 公共业务错误码 (各个服务service_id * 100000 + 公共业务错误码)
-        ERR_BUSINESS_BEGIN              = 10000;
-        ERR_BUSINESS_END                = 99999;
+        // 公共业务错误码 (各个服务service_id * 10000 + 公共业务错误码)
+        ERR_BUSINESS_BEGIN              = 1000;
+        ERR_BUSINESS_END                = 9999;
+    }
+
+    message TestReq {
+        int32   service_id          = 1;
+    }
+
+    message TestRsp {
+        bytes   service_name        = 1;
     }
 
     data.proto
@@ -162,70 +171,63 @@
 
     gate.proto
 
+    message GateMsg {                                      // 奇数是请求，偶数是响应
+        oneof choice {
+            common.TestReq  test_req       = 1;            // test请求
+            common.TestRsp  test_rsp       = 2;            // test响应
+        }
+    }
+
     enum ErrorCode {
         SUCCESS                         = 0;
 
-        ERR_BEGIN                       = 1010000000;
+        ERR_BEGIN                       = 101000000;
 
         // 系统错误码
-        ERR_SYS_BEGIN                   = 1010000100;
-        ERR_SYS_OVERLOAD                = 1010000101;       // 服务过载
-        ERR_SYS_REJECT_SERVICE          = 1010000102;       // 拒绝服务
-        ERR_SYS_SERVER_INNER            = 1010000103;       // 服务内部错误
-        ERR_SYS_TIMEOUT                 = 1010000104;       // 超时错误
-        ERR_SYS_NO_INSERVICE_LIST       = 1010000105;       // 没有可用服务ip
-        ERR_SYS_TASK_STATE              = 1010000106;       // 任务状态错误
-        ERR_SYS_TASK_DISCARD            = 1010000107;       // 任务丢弃
-        ERR_SYS_END                     = 1010000199;
+        ERR_SYS_BEGIN                   = 101000100;
+        ERR_SYS_OVERLOAD                = 101000101;       // 服务过载
+        ERR_SYS_REJECT_SERVICE          = 101000102;       // 拒绝服务
+        ERR_SYS_SERVER_INNER            = 101000103;       // 服务内部错误
+        ERR_SYS_TIMEOUT                 = 101000104;       // 超时错误
+        ERR_SYS_NO_INSERVICE_LIST       = 101000105;       // 没有可用服务ip
+        ERR_SYS_TASK_STATE              = 101000106;       // 任务状态错误
+        ERR_SYS_TASK_DISCARD            = 101000107;       // 任务丢弃
+        ERR_SYS_END                     = 101000199;
 
         // 数据包错误码
-        ERR_PACKET_BEGIN                = 1010000200;
-        ERR_PACKET_ENCODE               = 1010000201;       // 打包失败
-        ERR_PACKET_DECODE               = 1010000202;       // 解码失败
-        ERR_PACKET_HEADER               = 1010000203;
-        ERR_PACKET_LEN                  = 1010000204;
-        ERR_PACKET_VERSION              = 1010000205;
-        ERR_PACKET_FROM_SERVICE_ID      = 1010000206;
-        ERR_PACKET_TO_SERVICE_ID        = 1010000207;
-        ERR_PACKET_APP_ID               = 1010000208;
-        ERR_PACKET_APP_VERSION          = 1010000209;
-        ERR_PACKET_CONN_SEQ_ID          = 1010000210;
-        ERR_PACKET_MSG_SEQ_ID           = 1010000211;
-        ERR_PACKET_DATA_FORMAT          = 1010000212;
-        ERR_PACKET_DATA_FIELD_0         = 1010000213;
-        ERR_PACKET_DATA_FIELD_1         = 1010000214;
-        ERR_PACKET_DATA_FIELD_2         = 1010000215;
-        ERR_PACKET_DATA_FIELD_3         = 1010000216;
-        ERR_PACKET_CHECK_SUM            = 1010000217;
-        ERR_PACKET_UNKNOWN_REQUEST      = 1010000218;       // 不明请求
-        ERR_PACKET_END                  = 1010000299;
+        ERR_PACKET_BEGIN                = 101000200;
+        ERR_PACKET_ENCODE               = 101000201;       // 打包失败
+        ERR_PACKET_DECODE               = 101000202;       // 解码失败
+        ERR_PACKET_HEADER               = 101000203;
+        ERR_PACKET_LEN                  = 101000204;
+        ERR_PACKET_VERSION              = 101000205;
+        ERR_PACKET_FROM_SERVICE_ID      = 101000206;
+        ERR_PACKET_TO_SERVICE_ID        = 101000207;
+        ERR_PACKET_APP_ID               = 101000208;
+        ERR_PACKET_APP_VERSION          = 101000209;
+        ERR_PACKET_CONN_SEQ_ID          = 101000210;
+        ERR_PACKET_MSG_SEQ_ID           = 101000211;
+        ERR_PACKET_DATA_FORMAT          = 101000212;
+        ERR_PACKET_DATA_FIELD_0         = 101000213;
+        ERR_PACKET_DATA_FIELD_1         = 101000214;
+        ERR_PACKET_DATA_FIELD_2         = 101000215;
+        ERR_PACKET_DATA_FIELD_3         = 101000216;
+        ERR_PACKET_CHECK_SUM            = 101000217;
+        ERR_PACKET_UNKNOWN_REQUEST      = 101000218;       // 不明请求
+        ERR_PACKET_END                  = 101000299;
 
         // 接口错误码
-        ERR_INTERFACE_BEGIN             = 1010000300;
-        ERR_INTERFACE_PARAM             = 1010000301;       // 参数错误
-        ERR_INTERFACE_PERM              = 1010000302;       // 权限错误
-        ERR_INTERFACE_END               = 1010000399;
+        ERR_INTERFACE_BEGIN             = 101000300;
+        ERR_INTERFACE_PARAM             = 101000301;       // 参数错误
+        ERR_INTERFACE_PERM              = 101000302;       // 权限错误
+        ERR_INTERFACE_TIMEOUT           = 101000303;       // 接口超时
+        ERR_INTERFACE_END               = 101000399;
 
         // 业务错误码
-        ERR_BUSINESS_BEGIN              = 1010010000;
-        ERR_USERID_NO_EXIST             = 1010010001;
+        ERR_BUSINESS_BEGIN              = 101001000;
+        ERR_USERID_NO_EXIST             = 101001001;
 
-        ERR_END                         = 1010099999;
-    }
-
-    message TestReq {
-        int32   service_id          = 1;
-    }
-
-    message TestRsp {
-        bytes   service_name        = 1;
-    }
-
-    message GateMsg {                                       // 奇数是请求，偶数是响应
-        oneof choice {
-            TestReq        test_req       = 1;              // test请求
-            TestRsp        test_rsp       = 2;              // test响应
-        }
+        ERR_END                         = 101009999;
     }
 
 ## 服务类型
