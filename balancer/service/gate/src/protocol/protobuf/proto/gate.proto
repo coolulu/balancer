@@ -1,13 +1,81 @@
 syntax="proto3";
 
+import "common.proto";
+
 package gate;
 
-message TestReq {
-    int32   service_id          = 1;
+message GateMsg {                                   // 奇数是请求，偶数是响应
+    oneof choice {
+        common.TestReq  test_req            = 1;    // 请求
+        common.TestRsp  test_rsp            = 2;    // 响应
+
+        WakeHeartbeatReq    wake_heartbeat_req  = 3;    // 唤醒客户端心跳
+        WakeHeartbeatRsp    wake_heartbeat_rsp  = 4;
+
+        GetConnIdReq    get_conn_id_req     = 5;    // 获取连接id
+        GetConnIdRsp    get_conn_id_rsp     = 6;
+
+        CloseConnIdReq  close_conn_id_req   = 7;    // 关闭连接id
+        CloseConnIdRsp  close_conn_id_rsp   = 8;
+
+        CloseClientReq  close_client_req    = 9;    // 关闭客户端（告诉客户端不要重连）
+        CloseClientRsp  close_client_rsp    = 10;
+
+        LogoutReq       logout_req          = 11;   // 登出
+        LogoutRsp       logout_rsp          = 12;   
+
+        SetConnLoginReq set_conn_login_req  = 13;   // 设置连接为登录成功状态
+        SetConnLoginRsp set_conn_login_rsp  = 14;
+    }
 }
 
-message TestRsp {
-    bytes   service_name        = 1;
+enum ErrorCode {
+    SUCCESS                         = 0;
+
+    // 系统错误码 (各个服务service_id * 10000 + 公共系统错误码)
+    ERR_SYS_BEGIN                   = 103000100;
+    ERR_SYS_OVERLOAD                = 103000101;    // 服务过载
+    ERR_SYS_REJECT_SERVICE          = 103000102;    // 拒绝服务
+    ERR_SYS_SERVER_INNER            = 103000103;    // 服务内部错误
+    ERR_SYS_TIMEOUT                 = 103000104;    // 超时错误
+    ERR_SYS_NO_INSERVICE_LIST       = 103000105;    // 没有可用服务ip
+    ERR_SYS_TASK_STATE              = 103000106;    // 任务状态错误
+    ERR_SYS_TASK_DISCARD            = 103000107;    // 任务丢弃
+    ERR_SYS_END                     = 103000199;
+
+    // 数据包错误码 (各个服务service_id * 10000 + 公共数据包错误码)
+    ERR_PACKET_BEGIN                = 103000200;
+    ERR_PACKET_ENCODE               = 103000201;   	// 打包失败
+    ERR_PACKET_DECODE               = 103000202;   	// 解码失败
+    ERR_PACKET_HEADER               = 103000203;
+    ERR_PACKET_LEN                  = 103000204;
+    ERR_PACKET_VERSION              = 103000205;
+    ERR_PACKET_FROM_SERVICE_ID      = 103000206;
+    ERR_PACKET_TO_SERVICE_ID        = 103000207;
+    ERR_PACKET_APP_ID               = 103000208;
+    ERR_PACKET_APP_VERSION          = 103000209;
+    ERR_PACKET_CONN_SEQ_ID          = 103000210;
+    ERR_PACKET_MSG_SEQ_ID           = 103000211;
+    ERR_PACKET_DATA_FORMAT          = 103000212;
+    ERR_PACKET_DATA_FIELD_0         = 103000213;
+    ERR_PACKET_DATA_FIELD_1         = 103000214;
+    ERR_PACKET_DATA_FIELD_2         = 103000215;
+    ERR_PACKET_DATA_FIELD_3         = 103000216;
+    ERR_PACKET_CHECK_SUM            = 103000217;
+    ERR_PACKET_UNKNOWN_REQUEST      = 103000218;   	// 不明请求
+    ERR_PACKET_END                  = 103000299;
+
+    // 接口错误码 (各个服务service_id * 10000 + 公共接口错误码)
+    ERR_INTERFACE_BEGIN             = 103000300;
+    ERR_INTERFACE_PARAM             = 103000301;   	// 参数错误
+    ERR_INTERFACE_PERM              = 103000302;   	// 权限错误
+    ERR_INTERFACE_TIMEOUT           = 103000303;   	// 接口超时
+    ERR_INTERFACE_END               = 103000399;
+
+    // 业务错误码 (各个服务service_id * 10000 + 公共业务错误码)
+    ERR_BUSINESS_BEGIN              = 103001000;
+    ERR_BUSINESS_NOT_FIND_CONN_ID   = 103001001;   	// 找不到conn_id
+    ERR_BUSINESS_END                = 103009999;
 }
 
 message WakeHeartbeatReq {
@@ -61,27 +129,3 @@ message SetConnLoginRsp {
 
 }
 
-message GateMsg {                                   // 奇数是请求，偶数是响应
-    oneof choice {
-        TestReq         test_req            = 1;    // 请求
-        TestRsp         test_rsp            = 2;    // 响应
-
-        WakeHeartbeatReq    wake_heartbeat_req  = 3;    // 唤醒客户端心跳
-        WakeHeartbeatRsp    wake_heartbeat_rsp  = 4;
-
-        GetConnIdReq    get_conn_id_req     = 5;    // 获取连接id
-        GetConnIdRsp    get_conn_id_rsp     = 6;
-
-        CloseConnIdReq  close_conn_id_req   = 7;    // 关闭连接id
-        CloseConnIdRsp  close_conn_id_rsp   = 8;
-
-        CloseClientReq  close_client_req    = 9;    // 关闭客户端（告诉客户端不要重连）
-        CloseClientRsp  close_client_rsp    = 10;
-
-        LogoutReq       logout_req          = 11;   // 登出
-        LogoutRsp       logout_rsp          = 12;   
-
-        SetConnLoginReq set_conn_login_req  = 13;   // 设置连接为登录成功状态
-        SetConnLoginRsp set_conn_login_rsp  = 14;
-    }
-}

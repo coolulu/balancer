@@ -28,7 +28,9 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "common.pb.h"
 // @@protoc_insertion_point(includes)
 namespace gate {
 class CloseClientReq;
@@ -64,12 +66,6 @@ extern SetConnLoginReqDefaultTypeInternal _SetConnLoginReq_default_instance_;
 class SetConnLoginRsp;
 class SetConnLoginRspDefaultTypeInternal;
 extern SetConnLoginRspDefaultTypeInternal _SetConnLoginRsp_default_instance_;
-class TestReq;
-class TestReqDefaultTypeInternal;
-extern TestReqDefaultTypeInternal _TestReq_default_instance_;
-class TestRsp;
-class TestRspDefaultTypeInternal;
-extern TestRspDefaultTypeInternal _TestRsp_default_instance_;
 class WakeHeartbeatReq;
 class WakeHeartbeatReqDefaultTypeInternal;
 extern WakeHeartbeatReqDefaultTypeInternal _WakeHeartbeatReq_default_instance_;
@@ -95,1352 +91,64 @@ void AddDescriptors();
 void InitDefaults();
 }  // namespace protobuf_gate_2eproto
 
+enum ErrorCode {
+  SUCCESS = 0,
+  ERR_SYS_BEGIN = 103000100,
+  ERR_SYS_OVERLOAD = 103000101,
+  ERR_SYS_REJECT_SERVICE = 103000102,
+  ERR_SYS_SERVER_INNER = 103000103,
+  ERR_SYS_TIMEOUT = 103000104,
+  ERR_SYS_NO_INSERVICE_LIST = 103000105,
+  ERR_SYS_TASK_STATE = 103000106,
+  ERR_SYS_TASK_DISCARD = 103000107,
+  ERR_SYS_END = 103000199,
+  ERR_PACKET_BEGIN = 103000200,
+  ERR_PACKET_ENCODE = 103000201,
+  ERR_PACKET_DECODE = 103000202,
+  ERR_PACKET_HEADER = 103000203,
+  ERR_PACKET_LEN = 103000204,
+  ERR_PACKET_VERSION = 103000205,
+  ERR_PACKET_FROM_SERVICE_ID = 103000206,
+  ERR_PACKET_TO_SERVICE_ID = 103000207,
+  ERR_PACKET_APP_ID = 103000208,
+  ERR_PACKET_APP_VERSION = 103000209,
+  ERR_PACKET_CONN_SEQ_ID = 103000210,
+  ERR_PACKET_MSG_SEQ_ID = 103000211,
+  ERR_PACKET_DATA_FORMAT = 103000212,
+  ERR_PACKET_DATA_FIELD_0 = 103000213,
+  ERR_PACKET_DATA_FIELD_1 = 103000214,
+  ERR_PACKET_DATA_FIELD_2 = 103000215,
+  ERR_PACKET_DATA_FIELD_3 = 103000216,
+  ERR_PACKET_CHECK_SUM = 103000217,
+  ERR_PACKET_UNKNOWN_REQUEST = 103000218,
+  ERR_PACKET_END = 103000299,
+  ERR_INTERFACE_BEGIN = 103000300,
+  ERR_INTERFACE_PARAM = 103000301,
+  ERR_INTERFACE_PERM = 103000302,
+  ERR_INTERFACE_TIMEOUT = 103000303,
+  ERR_INTERFACE_END = 103000399,
+  ERR_BUSINESS_BEGIN = 103001000,
+  ERR_BUSINESS_NOT_FIND_CONN_ID = 103001001,
+  ERR_BUSINESS_END = 103009999,
+  ErrorCode_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ErrorCode_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool ErrorCode_IsValid(int value);
+const ErrorCode ErrorCode_MIN = SUCCESS;
+const ErrorCode ErrorCode_MAX = ERR_BUSINESS_END;
+const int ErrorCode_ARRAYSIZE = ErrorCode_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ErrorCode_descriptor();
+inline const ::std::string& ErrorCode_Name(ErrorCode value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ErrorCode_descriptor(), value);
+}
+inline bool ErrorCode_Parse(
+    const ::std::string& name, ErrorCode* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ErrorCode>(
+    ErrorCode_descriptor(), name, value);
+}
 // ===================================================================
-
-class TestReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.TestReq) */ {
- public:
-  TestReq();
-  virtual ~TestReq();
-
-  TestReq(const TestReq& from);
-
-  inline TestReq& operator=(const TestReq& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  TestReq(TestReq&& from) noexcept
-    : TestReq() {
-    *this = ::std::move(from);
-  }
-
-  inline TestReq& operator=(TestReq&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const TestReq& default_instance();
-
-  static inline const TestReq* internal_default_instance() {
-    return reinterpret_cast<const TestReq*>(
-               &_TestReq_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    0;
-
-  void Swap(TestReq* other);
-  friend void swap(TestReq& a, TestReq& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline TestReq* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  TestReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const TestReq& from);
-  void MergeFrom(const TestReq& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(TestReq* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // int32 service_id = 1;
-  void clear_service_id();
-  static const int kServiceIdFieldNumber = 1;
-  ::google::protobuf::int32 service_id() const;
-  void set_service_id(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:gate.TestReq)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int32 service_id_;
-  mutable int _cached_size_;
-  friend struct protobuf_gate_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class TestRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.TestRsp) */ {
- public:
-  TestRsp();
-  virtual ~TestRsp();
-
-  TestRsp(const TestRsp& from);
-
-  inline TestRsp& operator=(const TestRsp& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  TestRsp(TestRsp&& from) noexcept
-    : TestRsp() {
-    *this = ::std::move(from);
-  }
-
-  inline TestRsp& operator=(TestRsp&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const TestRsp& default_instance();
-
-  static inline const TestRsp* internal_default_instance() {
-    return reinterpret_cast<const TestRsp*>(
-               &_TestRsp_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    1;
-
-  void Swap(TestRsp* other);
-  friend void swap(TestRsp& a, TestRsp& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline TestRsp* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  TestRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const TestRsp& from);
-  void MergeFrom(const TestRsp& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(TestRsp* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // bytes service_name = 1;
-  void clear_service_name();
-  static const int kServiceNameFieldNumber = 1;
-  const ::std::string& service_name() const;
-  void set_service_name(const ::std::string& value);
-  #if LANG_CXX11
-  void set_service_name(::std::string&& value);
-  #endif
-  void set_service_name(const char* value);
-  void set_service_name(const void* value, size_t size);
-  ::std::string* mutable_service_name();
-  ::std::string* release_service_name();
-  void set_allocated_service_name(::std::string* service_name);
-
-  // @@protoc_insertion_point(class_scope:gate.TestRsp)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr service_name_;
-  mutable int _cached_size_;
-  friend struct protobuf_gate_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class WakeHeartbeatReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.WakeHeartbeatReq) */ {
- public:
-  WakeHeartbeatReq();
-  virtual ~WakeHeartbeatReq();
-
-  WakeHeartbeatReq(const WakeHeartbeatReq& from);
-
-  inline WakeHeartbeatReq& operator=(const WakeHeartbeatReq& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  WakeHeartbeatReq(WakeHeartbeatReq&& from) noexcept
-    : WakeHeartbeatReq() {
-    *this = ::std::move(from);
-  }
-
-  inline WakeHeartbeatReq& operator=(WakeHeartbeatReq&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const WakeHeartbeatReq& default_instance();
-
-  static inline const WakeHeartbeatReq* internal_default_instance() {
-    return reinterpret_cast<const WakeHeartbeatReq*>(
-               &_WakeHeartbeatReq_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    2;
-
-  void Swap(WakeHeartbeatReq* other);
-  friend void swap(WakeHeartbeatReq& a, WakeHeartbeatReq& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline WakeHeartbeatReq* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  WakeHeartbeatReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const WakeHeartbeatReq& from);
-  void MergeFrom(const WakeHeartbeatReq& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(WakeHeartbeatReq* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // uint64 server_time = 1;
-  void clear_server_time();
-  static const int kServerTimeFieldNumber = 1;
-  ::google::protobuf::uint64 server_time() const;
-  void set_server_time(::google::protobuf::uint64 value);
-
-  // @@protoc_insertion_point(class_scope:gate.WakeHeartbeatReq)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint64 server_time_;
-  mutable int _cached_size_;
-  friend struct protobuf_gate_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class WakeHeartbeatRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.WakeHeartbeatRsp) */ {
- public:
-  WakeHeartbeatRsp();
-  virtual ~WakeHeartbeatRsp();
-
-  WakeHeartbeatRsp(const WakeHeartbeatRsp& from);
-
-  inline WakeHeartbeatRsp& operator=(const WakeHeartbeatRsp& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  WakeHeartbeatRsp(WakeHeartbeatRsp&& from) noexcept
-    : WakeHeartbeatRsp() {
-    *this = ::std::move(from);
-  }
-
-  inline WakeHeartbeatRsp& operator=(WakeHeartbeatRsp&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const WakeHeartbeatRsp& default_instance();
-
-  static inline const WakeHeartbeatRsp* internal_default_instance() {
-    return reinterpret_cast<const WakeHeartbeatRsp*>(
-               &_WakeHeartbeatRsp_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    3;
-
-  void Swap(WakeHeartbeatRsp* other);
-  friend void swap(WakeHeartbeatRsp& a, WakeHeartbeatRsp& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline WakeHeartbeatRsp* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  WakeHeartbeatRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const WakeHeartbeatRsp& from);
-  void MergeFrom(const WakeHeartbeatRsp& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(WakeHeartbeatRsp* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // uint64 client_time = 1;
-  void clear_client_time();
-  static const int kClientTimeFieldNumber = 1;
-  ::google::protobuf::uint64 client_time() const;
-  void set_client_time(::google::protobuf::uint64 value);
-
-  // uint64 key = 2;
-  void clear_key();
-  static const int kKeyFieldNumber = 2;
-  ::google::protobuf::uint64 key() const;
-  void set_key(::google::protobuf::uint64 value);
-
-  // @@protoc_insertion_point(class_scope:gate.WakeHeartbeatRsp)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint64 client_time_;
-  ::google::protobuf::uint64 key_;
-  mutable int _cached_size_;
-  friend struct protobuf_gate_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class GetConnIdReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.GetConnIdReq) */ {
- public:
-  GetConnIdReq();
-  virtual ~GetConnIdReq();
-
-  GetConnIdReq(const GetConnIdReq& from);
-
-  inline GetConnIdReq& operator=(const GetConnIdReq& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  GetConnIdReq(GetConnIdReq&& from) noexcept
-    : GetConnIdReq() {
-    *this = ::std::move(from);
-  }
-
-  inline GetConnIdReq& operator=(GetConnIdReq&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const GetConnIdReq& default_instance();
-
-  static inline const GetConnIdReq* internal_default_instance() {
-    return reinterpret_cast<const GetConnIdReq*>(
-               &_GetConnIdReq_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    4;
-
-  void Swap(GetConnIdReq* other);
-  friend void swap(GetConnIdReq& a, GetConnIdReq& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline GetConnIdReq* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  GetConnIdReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const GetConnIdReq& from);
-  void MergeFrom(const GetConnIdReq& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(GetConnIdReq* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // uint64 client_time = 1;
-  void clear_client_time();
-  static const int kClientTimeFieldNumber = 1;
-  ::google::protobuf::uint64 client_time() const;
-  void set_client_time(::google::protobuf::uint64 value);
-
-  // @@protoc_insertion_point(class_scope:gate.GetConnIdReq)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint64 client_time_;
-  mutable int _cached_size_;
-  friend struct protobuf_gate_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class GetConnIdRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.GetConnIdRsp) */ {
- public:
-  GetConnIdRsp();
-  virtual ~GetConnIdRsp();
-
-  GetConnIdRsp(const GetConnIdRsp& from);
-
-  inline GetConnIdRsp& operator=(const GetConnIdRsp& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  GetConnIdRsp(GetConnIdRsp&& from) noexcept
-    : GetConnIdRsp() {
-    *this = ::std::move(from);
-  }
-
-  inline GetConnIdRsp& operator=(GetConnIdRsp&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const GetConnIdRsp& default_instance();
-
-  static inline const GetConnIdRsp* internal_default_instance() {
-    return reinterpret_cast<const GetConnIdRsp*>(
-               &_GetConnIdRsp_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    5;
-
-  void Swap(GetConnIdRsp* other);
-  friend void swap(GetConnIdRsp& a, GetConnIdRsp& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline GetConnIdRsp* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  GetConnIdRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const GetConnIdRsp& from);
-  void MergeFrom(const GetConnIdRsp& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(GetConnIdRsp* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // uint64 server_time = 1;
-  void clear_server_time();
-  static const int kServerTimeFieldNumber = 1;
-  ::google::protobuf::uint64 server_time() const;
-  void set_server_time(::google::protobuf::uint64 value);
-
-  // uint64 conn_id = 3;
-  void clear_conn_id();
-  static const int kConnIdFieldNumber = 3;
-  ::google::protobuf::uint64 conn_id() const;
-  void set_conn_id(::google::protobuf::uint64 value);
-
-  // uint32 conn_create_time = 2;
-  void clear_conn_create_time();
-  static const int kConnCreateTimeFieldNumber = 2;
-  ::google::protobuf::uint32 conn_create_time() const;
-  void set_conn_create_time(::google::protobuf::uint32 value);
-
-  // @@protoc_insertion_point(class_scope:gate.GetConnIdRsp)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint64 server_time_;
-  ::google::protobuf::uint64 conn_id_;
-  ::google::protobuf::uint32 conn_create_time_;
-  mutable int _cached_size_;
-  friend struct protobuf_gate_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class CloseConnIdReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.CloseConnIdReq) */ {
- public:
-  CloseConnIdReq();
-  virtual ~CloseConnIdReq();
-
-  CloseConnIdReq(const CloseConnIdReq& from);
-
-  inline CloseConnIdReq& operator=(const CloseConnIdReq& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  CloseConnIdReq(CloseConnIdReq&& from) noexcept
-    : CloseConnIdReq() {
-    *this = ::std::move(from);
-  }
-
-  inline CloseConnIdReq& operator=(CloseConnIdReq&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const CloseConnIdReq& default_instance();
-
-  static inline const CloseConnIdReq* internal_default_instance() {
-    return reinterpret_cast<const CloseConnIdReq*>(
-               &_CloseConnIdReq_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    6;
-
-  void Swap(CloseConnIdReq* other);
-  friend void swap(CloseConnIdReq& a, CloseConnIdReq& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline CloseConnIdReq* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  CloseConnIdReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const CloseConnIdReq& from);
-  void MergeFrom(const CloseConnIdReq& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(CloseConnIdReq* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // uint64 conn_id = 1;
-  void clear_conn_id();
-  static const int kConnIdFieldNumber = 1;
-  ::google::protobuf::uint64 conn_id() const;
-  void set_conn_id(::google::protobuf::uint64 value);
-
-  // @@protoc_insertion_point(class_scope:gate.CloseConnIdReq)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint64 conn_id_;
-  mutable int _cached_size_;
-  friend struct protobuf_gate_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class CloseConnIdRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.CloseConnIdRsp) */ {
- public:
-  CloseConnIdRsp();
-  virtual ~CloseConnIdRsp();
-
-  CloseConnIdRsp(const CloseConnIdRsp& from);
-
-  inline CloseConnIdRsp& operator=(const CloseConnIdRsp& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  CloseConnIdRsp(CloseConnIdRsp&& from) noexcept
-    : CloseConnIdRsp() {
-    *this = ::std::move(from);
-  }
-
-  inline CloseConnIdRsp& operator=(CloseConnIdRsp&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const CloseConnIdRsp& default_instance();
-
-  static inline const CloseConnIdRsp* internal_default_instance() {
-    return reinterpret_cast<const CloseConnIdRsp*>(
-               &_CloseConnIdRsp_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    7;
-
-  void Swap(CloseConnIdRsp* other);
-  friend void swap(CloseConnIdRsp& a, CloseConnIdRsp& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline CloseConnIdRsp* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  CloseConnIdRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const CloseConnIdRsp& from);
-  void MergeFrom(const CloseConnIdRsp& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(CloseConnIdRsp* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:gate.CloseConnIdRsp)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  mutable int _cached_size_;
-  friend struct protobuf_gate_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class CloseClientReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.CloseClientReq) */ {
- public:
-  CloseClientReq();
-  virtual ~CloseClientReq();
-
-  CloseClientReq(const CloseClientReq& from);
-
-  inline CloseClientReq& operator=(const CloseClientReq& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  CloseClientReq(CloseClientReq&& from) noexcept
-    : CloseClientReq() {
-    *this = ::std::move(from);
-  }
-
-  inline CloseClientReq& operator=(CloseClientReq&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const CloseClientReq& default_instance();
-
-  static inline const CloseClientReq* internal_default_instance() {
-    return reinterpret_cast<const CloseClientReq*>(
-               &_CloseClientReq_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    8;
-
-  void Swap(CloseClientReq* other);
-  friend void swap(CloseClientReq& a, CloseClientReq& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline CloseClientReq* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  CloseClientReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const CloseClientReq& from);
-  void MergeFrom(const CloseClientReq& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(CloseClientReq* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:gate.CloseClientReq)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  mutable int _cached_size_;
-  friend struct protobuf_gate_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class CloseClientRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.CloseClientRsp) */ {
- public:
-  CloseClientRsp();
-  virtual ~CloseClientRsp();
-
-  CloseClientRsp(const CloseClientRsp& from);
-
-  inline CloseClientRsp& operator=(const CloseClientRsp& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  CloseClientRsp(CloseClientRsp&& from) noexcept
-    : CloseClientRsp() {
-    *this = ::std::move(from);
-  }
-
-  inline CloseClientRsp& operator=(CloseClientRsp&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const CloseClientRsp& default_instance();
-
-  static inline const CloseClientRsp* internal_default_instance() {
-    return reinterpret_cast<const CloseClientRsp*>(
-               &_CloseClientRsp_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    9;
-
-  void Swap(CloseClientRsp* other);
-  friend void swap(CloseClientRsp& a, CloseClientRsp& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline CloseClientRsp* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  CloseClientRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const CloseClientRsp& from);
-  void MergeFrom(const CloseClientRsp& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(CloseClientRsp* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:gate.CloseClientRsp)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  mutable int _cached_size_;
-  friend struct protobuf_gate_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class LogoutReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.LogoutReq) */ {
- public:
-  LogoutReq();
-  virtual ~LogoutReq();
-
-  LogoutReq(const LogoutReq& from);
-
-  inline LogoutReq& operator=(const LogoutReq& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  LogoutReq(LogoutReq&& from) noexcept
-    : LogoutReq() {
-    *this = ::std::move(from);
-  }
-
-  inline LogoutReq& operator=(LogoutReq&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const LogoutReq& default_instance();
-
-  static inline const LogoutReq* internal_default_instance() {
-    return reinterpret_cast<const LogoutReq*>(
-               &_LogoutReq_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    10;
-
-  void Swap(LogoutReq* other);
-  friend void swap(LogoutReq& a, LogoutReq& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline LogoutReq* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  LogoutReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const LogoutReq& from);
-  void MergeFrom(const LogoutReq& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(LogoutReq* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:gate.LogoutReq)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  mutable int _cached_size_;
-  friend struct protobuf_gate_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class LogoutRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.LogoutRsp) */ {
- public:
-  LogoutRsp();
-  virtual ~LogoutRsp();
-
-  LogoutRsp(const LogoutRsp& from);
-
-  inline LogoutRsp& operator=(const LogoutRsp& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  LogoutRsp(LogoutRsp&& from) noexcept
-    : LogoutRsp() {
-    *this = ::std::move(from);
-  }
-
-  inline LogoutRsp& operator=(LogoutRsp&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const LogoutRsp& default_instance();
-
-  static inline const LogoutRsp* internal_default_instance() {
-    return reinterpret_cast<const LogoutRsp*>(
-               &_LogoutRsp_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    11;
-
-  void Swap(LogoutRsp* other);
-  friend void swap(LogoutRsp& a, LogoutRsp& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline LogoutRsp* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  LogoutRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const LogoutRsp& from);
-  void MergeFrom(const LogoutRsp& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(LogoutRsp* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:gate.LogoutRsp)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  mutable int _cached_size_;
-  friend struct protobuf_gate_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class SetConnLoginReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.SetConnLoginReq) */ {
- public:
-  SetConnLoginReq();
-  virtual ~SetConnLoginReq();
-
-  SetConnLoginReq(const SetConnLoginReq& from);
-
-  inline SetConnLoginReq& operator=(const SetConnLoginReq& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  SetConnLoginReq(SetConnLoginReq&& from) noexcept
-    : SetConnLoginReq() {
-    *this = ::std::move(from);
-  }
-
-  inline SetConnLoginReq& operator=(SetConnLoginReq&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const SetConnLoginReq& default_instance();
-
-  static inline const SetConnLoginReq* internal_default_instance() {
-    return reinterpret_cast<const SetConnLoginReq*>(
-               &_SetConnLoginReq_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    12;
-
-  void Swap(SetConnLoginReq* other);
-  friend void swap(SetConnLoginReq& a, SetConnLoginReq& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline SetConnLoginReq* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  SetConnLoginReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const SetConnLoginReq& from);
-  void MergeFrom(const SetConnLoginReq& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(SetConnLoginReq* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // uint64 conn_id = 1;
-  void clear_conn_id();
-  static const int kConnIdFieldNumber = 1;
-  ::google::protobuf::uint64 conn_id() const;
-  void set_conn_id(::google::protobuf::uint64 value);
-
-  // @@protoc_insertion_point(class_scope:gate.SetConnLoginReq)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint64 conn_id_;
-  mutable int _cached_size_;
-  friend struct protobuf_gate_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class SetConnLoginRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.SetConnLoginRsp) */ {
- public:
-  SetConnLoginRsp();
-  virtual ~SetConnLoginRsp();
-
-  SetConnLoginRsp(const SetConnLoginRsp& from);
-
-  inline SetConnLoginRsp& operator=(const SetConnLoginRsp& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  SetConnLoginRsp(SetConnLoginRsp&& from) noexcept
-    : SetConnLoginRsp() {
-    *this = ::std::move(from);
-  }
-
-  inline SetConnLoginRsp& operator=(SetConnLoginRsp&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const SetConnLoginRsp& default_instance();
-
-  static inline const SetConnLoginRsp* internal_default_instance() {
-    return reinterpret_cast<const SetConnLoginRsp*>(
-               &_SetConnLoginRsp_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    13;
-
-  void Swap(SetConnLoginRsp* other);
-  friend void swap(SetConnLoginRsp& a, SetConnLoginRsp& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline SetConnLoginRsp* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  SetConnLoginRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const SetConnLoginRsp& from);
-  void MergeFrom(const SetConnLoginRsp& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(SetConnLoginRsp* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:gate.SetConnLoginRsp)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  mutable int _cached_size_;
-  friend struct protobuf_gate_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
 
 class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.GateMsg) */ {
  public:
@@ -1494,7 +202,7 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
                &_GateMsg_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    14;
+    0;
 
   void Swap(GateMsg* other);
   friend void swap(GateMsg& a, GateMsg& b) {
@@ -1541,23 +249,23 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // .gate.TestReq test_req = 1;
+  // .common.TestReq test_req = 1;
   bool has_test_req() const;
   void clear_test_req();
   static const int kTestReqFieldNumber = 1;
-  const ::gate::TestReq& test_req() const;
-  ::gate::TestReq* mutable_test_req();
-  ::gate::TestReq* release_test_req();
-  void set_allocated_test_req(::gate::TestReq* test_req);
+  const ::common::TestReq& test_req() const;
+  ::common::TestReq* mutable_test_req();
+  ::common::TestReq* release_test_req();
+  void set_allocated_test_req(::common::TestReq* test_req);
 
-  // .gate.TestRsp test_rsp = 2;
+  // .common.TestRsp test_rsp = 2;
   bool has_test_rsp() const;
   void clear_test_rsp();
   static const int kTestRspFieldNumber = 2;
-  const ::gate::TestRsp& test_rsp() const;
-  ::gate::TestRsp* mutable_test_rsp();
-  ::gate::TestRsp* release_test_rsp();
-  void set_allocated_test_rsp(::gate::TestRsp* test_rsp);
+  const ::common::TestRsp& test_rsp() const;
+  ::common::TestRsp* mutable_test_rsp();
+  ::common::TestRsp* release_test_rsp();
+  void set_allocated_test_rsp(::common::TestRsp* test_rsp);
 
   // .gate.WakeHeartbeatReq wake_heartbeat_req = 3;
   bool has_wake_heartbeat_req() const;
@@ -1692,8 +400,8 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   union ChoiceUnion {
     ChoiceUnion() {}
-    ::gate::TestReq* test_req_;
-    ::gate::TestRsp* test_rsp_;
+    ::common::TestReq* test_req_;
+    ::common::TestRsp* test_rsp_;
     ::gate::WakeHeartbeatReq* wake_heartbeat_req_;
     ::gate::WakeHeartbeatRsp* wake_heartbeat_rsp_;
     ::gate::GetConnIdReq* get_conn_id_req_;
@@ -1712,6 +420,1149 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   friend struct protobuf_gate_2eproto::TableStruct;
 };
+// -------------------------------------------------------------------
+
+class WakeHeartbeatReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.WakeHeartbeatReq) */ {
+ public:
+  WakeHeartbeatReq();
+  virtual ~WakeHeartbeatReq();
+
+  WakeHeartbeatReq(const WakeHeartbeatReq& from);
+
+  inline WakeHeartbeatReq& operator=(const WakeHeartbeatReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  WakeHeartbeatReq(WakeHeartbeatReq&& from) noexcept
+    : WakeHeartbeatReq() {
+    *this = ::std::move(from);
+  }
+
+  inline WakeHeartbeatReq& operator=(WakeHeartbeatReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WakeHeartbeatReq& default_instance();
+
+  static inline const WakeHeartbeatReq* internal_default_instance() {
+    return reinterpret_cast<const WakeHeartbeatReq*>(
+               &_WakeHeartbeatReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    1;
+
+  void Swap(WakeHeartbeatReq* other);
+  friend void swap(WakeHeartbeatReq& a, WakeHeartbeatReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline WakeHeartbeatReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  WakeHeartbeatReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const WakeHeartbeatReq& from);
+  void MergeFrom(const WakeHeartbeatReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(WakeHeartbeatReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 server_time = 1;
+  void clear_server_time();
+  static const int kServerTimeFieldNumber = 1;
+  ::google::protobuf::uint64 server_time() const;
+  void set_server_time(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:gate.WakeHeartbeatReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 server_time_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class WakeHeartbeatRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.WakeHeartbeatRsp) */ {
+ public:
+  WakeHeartbeatRsp();
+  virtual ~WakeHeartbeatRsp();
+
+  WakeHeartbeatRsp(const WakeHeartbeatRsp& from);
+
+  inline WakeHeartbeatRsp& operator=(const WakeHeartbeatRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  WakeHeartbeatRsp(WakeHeartbeatRsp&& from) noexcept
+    : WakeHeartbeatRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline WakeHeartbeatRsp& operator=(WakeHeartbeatRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WakeHeartbeatRsp& default_instance();
+
+  static inline const WakeHeartbeatRsp* internal_default_instance() {
+    return reinterpret_cast<const WakeHeartbeatRsp*>(
+               &_WakeHeartbeatRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    2;
+
+  void Swap(WakeHeartbeatRsp* other);
+  friend void swap(WakeHeartbeatRsp& a, WakeHeartbeatRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline WakeHeartbeatRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  WakeHeartbeatRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const WakeHeartbeatRsp& from);
+  void MergeFrom(const WakeHeartbeatRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(WakeHeartbeatRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 client_time = 1;
+  void clear_client_time();
+  static const int kClientTimeFieldNumber = 1;
+  ::google::protobuf::uint64 client_time() const;
+  void set_client_time(::google::protobuf::uint64 value);
+
+  // uint64 key = 2;
+  void clear_key();
+  static const int kKeyFieldNumber = 2;
+  ::google::protobuf::uint64 key() const;
+  void set_key(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:gate.WakeHeartbeatRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 client_time_;
+  ::google::protobuf::uint64 key_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class GetConnIdReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.GetConnIdReq) */ {
+ public:
+  GetConnIdReq();
+  virtual ~GetConnIdReq();
+
+  GetConnIdReq(const GetConnIdReq& from);
+
+  inline GetConnIdReq& operator=(const GetConnIdReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetConnIdReq(GetConnIdReq&& from) noexcept
+    : GetConnIdReq() {
+    *this = ::std::move(from);
+  }
+
+  inline GetConnIdReq& operator=(GetConnIdReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetConnIdReq& default_instance();
+
+  static inline const GetConnIdReq* internal_default_instance() {
+    return reinterpret_cast<const GetConnIdReq*>(
+               &_GetConnIdReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    3;
+
+  void Swap(GetConnIdReq* other);
+  friend void swap(GetConnIdReq& a, GetConnIdReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetConnIdReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  GetConnIdReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const GetConnIdReq& from);
+  void MergeFrom(const GetConnIdReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(GetConnIdReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 client_time = 1;
+  void clear_client_time();
+  static const int kClientTimeFieldNumber = 1;
+  ::google::protobuf::uint64 client_time() const;
+  void set_client_time(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:gate.GetConnIdReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 client_time_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class GetConnIdRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.GetConnIdRsp) */ {
+ public:
+  GetConnIdRsp();
+  virtual ~GetConnIdRsp();
+
+  GetConnIdRsp(const GetConnIdRsp& from);
+
+  inline GetConnIdRsp& operator=(const GetConnIdRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetConnIdRsp(GetConnIdRsp&& from) noexcept
+    : GetConnIdRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline GetConnIdRsp& operator=(GetConnIdRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetConnIdRsp& default_instance();
+
+  static inline const GetConnIdRsp* internal_default_instance() {
+    return reinterpret_cast<const GetConnIdRsp*>(
+               &_GetConnIdRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    4;
+
+  void Swap(GetConnIdRsp* other);
+  friend void swap(GetConnIdRsp& a, GetConnIdRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetConnIdRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  GetConnIdRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const GetConnIdRsp& from);
+  void MergeFrom(const GetConnIdRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(GetConnIdRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 server_time = 1;
+  void clear_server_time();
+  static const int kServerTimeFieldNumber = 1;
+  ::google::protobuf::uint64 server_time() const;
+  void set_server_time(::google::protobuf::uint64 value);
+
+  // uint64 conn_id = 3;
+  void clear_conn_id();
+  static const int kConnIdFieldNumber = 3;
+  ::google::protobuf::uint64 conn_id() const;
+  void set_conn_id(::google::protobuf::uint64 value);
+
+  // uint32 conn_create_time = 2;
+  void clear_conn_create_time();
+  static const int kConnCreateTimeFieldNumber = 2;
+  ::google::protobuf::uint32 conn_create_time() const;
+  void set_conn_create_time(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:gate.GetConnIdRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 server_time_;
+  ::google::protobuf::uint64 conn_id_;
+  ::google::protobuf::uint32 conn_create_time_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class CloseConnIdReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.CloseConnIdReq) */ {
+ public:
+  CloseConnIdReq();
+  virtual ~CloseConnIdReq();
+
+  CloseConnIdReq(const CloseConnIdReq& from);
+
+  inline CloseConnIdReq& operator=(const CloseConnIdReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CloseConnIdReq(CloseConnIdReq&& from) noexcept
+    : CloseConnIdReq() {
+    *this = ::std::move(from);
+  }
+
+  inline CloseConnIdReq& operator=(CloseConnIdReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CloseConnIdReq& default_instance();
+
+  static inline const CloseConnIdReq* internal_default_instance() {
+    return reinterpret_cast<const CloseConnIdReq*>(
+               &_CloseConnIdReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    5;
+
+  void Swap(CloseConnIdReq* other);
+  friend void swap(CloseConnIdReq& a, CloseConnIdReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CloseConnIdReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  CloseConnIdReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const CloseConnIdReq& from);
+  void MergeFrom(const CloseConnIdReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(CloseConnIdReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 conn_id = 1;
+  void clear_conn_id();
+  static const int kConnIdFieldNumber = 1;
+  ::google::protobuf::uint64 conn_id() const;
+  void set_conn_id(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:gate.CloseConnIdReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 conn_id_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class CloseConnIdRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.CloseConnIdRsp) */ {
+ public:
+  CloseConnIdRsp();
+  virtual ~CloseConnIdRsp();
+
+  CloseConnIdRsp(const CloseConnIdRsp& from);
+
+  inline CloseConnIdRsp& operator=(const CloseConnIdRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CloseConnIdRsp(CloseConnIdRsp&& from) noexcept
+    : CloseConnIdRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline CloseConnIdRsp& operator=(CloseConnIdRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CloseConnIdRsp& default_instance();
+
+  static inline const CloseConnIdRsp* internal_default_instance() {
+    return reinterpret_cast<const CloseConnIdRsp*>(
+               &_CloseConnIdRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    6;
+
+  void Swap(CloseConnIdRsp* other);
+  friend void swap(CloseConnIdRsp& a, CloseConnIdRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CloseConnIdRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  CloseConnIdRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const CloseConnIdRsp& from);
+  void MergeFrom(const CloseConnIdRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(CloseConnIdRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:gate.CloseConnIdRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class CloseClientReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.CloseClientReq) */ {
+ public:
+  CloseClientReq();
+  virtual ~CloseClientReq();
+
+  CloseClientReq(const CloseClientReq& from);
+
+  inline CloseClientReq& operator=(const CloseClientReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CloseClientReq(CloseClientReq&& from) noexcept
+    : CloseClientReq() {
+    *this = ::std::move(from);
+  }
+
+  inline CloseClientReq& operator=(CloseClientReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CloseClientReq& default_instance();
+
+  static inline const CloseClientReq* internal_default_instance() {
+    return reinterpret_cast<const CloseClientReq*>(
+               &_CloseClientReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    7;
+
+  void Swap(CloseClientReq* other);
+  friend void swap(CloseClientReq& a, CloseClientReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CloseClientReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  CloseClientReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const CloseClientReq& from);
+  void MergeFrom(const CloseClientReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(CloseClientReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:gate.CloseClientReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class CloseClientRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.CloseClientRsp) */ {
+ public:
+  CloseClientRsp();
+  virtual ~CloseClientRsp();
+
+  CloseClientRsp(const CloseClientRsp& from);
+
+  inline CloseClientRsp& operator=(const CloseClientRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CloseClientRsp(CloseClientRsp&& from) noexcept
+    : CloseClientRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline CloseClientRsp& operator=(CloseClientRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CloseClientRsp& default_instance();
+
+  static inline const CloseClientRsp* internal_default_instance() {
+    return reinterpret_cast<const CloseClientRsp*>(
+               &_CloseClientRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    8;
+
+  void Swap(CloseClientRsp* other);
+  friend void swap(CloseClientRsp& a, CloseClientRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CloseClientRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  CloseClientRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const CloseClientRsp& from);
+  void MergeFrom(const CloseClientRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(CloseClientRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:gate.CloseClientRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class LogoutReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.LogoutReq) */ {
+ public:
+  LogoutReq();
+  virtual ~LogoutReq();
+
+  LogoutReq(const LogoutReq& from);
+
+  inline LogoutReq& operator=(const LogoutReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  LogoutReq(LogoutReq&& from) noexcept
+    : LogoutReq() {
+    *this = ::std::move(from);
+  }
+
+  inline LogoutReq& operator=(LogoutReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const LogoutReq& default_instance();
+
+  static inline const LogoutReq* internal_default_instance() {
+    return reinterpret_cast<const LogoutReq*>(
+               &_LogoutReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    9;
+
+  void Swap(LogoutReq* other);
+  friend void swap(LogoutReq& a, LogoutReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline LogoutReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  LogoutReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const LogoutReq& from);
+  void MergeFrom(const LogoutReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(LogoutReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:gate.LogoutReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class LogoutRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.LogoutRsp) */ {
+ public:
+  LogoutRsp();
+  virtual ~LogoutRsp();
+
+  LogoutRsp(const LogoutRsp& from);
+
+  inline LogoutRsp& operator=(const LogoutRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  LogoutRsp(LogoutRsp&& from) noexcept
+    : LogoutRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline LogoutRsp& operator=(LogoutRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const LogoutRsp& default_instance();
+
+  static inline const LogoutRsp* internal_default_instance() {
+    return reinterpret_cast<const LogoutRsp*>(
+               &_LogoutRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    10;
+
+  void Swap(LogoutRsp* other);
+  friend void swap(LogoutRsp& a, LogoutRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline LogoutRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  LogoutRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const LogoutRsp& from);
+  void MergeFrom(const LogoutRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(LogoutRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:gate.LogoutRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class SetConnLoginReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.SetConnLoginReq) */ {
+ public:
+  SetConnLoginReq();
+  virtual ~SetConnLoginReq();
+
+  SetConnLoginReq(const SetConnLoginReq& from);
+
+  inline SetConnLoginReq& operator=(const SetConnLoginReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  SetConnLoginReq(SetConnLoginReq&& from) noexcept
+    : SetConnLoginReq() {
+    *this = ::std::move(from);
+  }
+
+  inline SetConnLoginReq& operator=(SetConnLoginReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SetConnLoginReq& default_instance();
+
+  static inline const SetConnLoginReq* internal_default_instance() {
+    return reinterpret_cast<const SetConnLoginReq*>(
+               &_SetConnLoginReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    11;
+
+  void Swap(SetConnLoginReq* other);
+  friend void swap(SetConnLoginReq& a, SetConnLoginReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SetConnLoginReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  SetConnLoginReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const SetConnLoginReq& from);
+  void MergeFrom(const SetConnLoginReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(SetConnLoginReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 conn_id = 1;
+  void clear_conn_id();
+  static const int kConnIdFieldNumber = 1;
+  ::google::protobuf::uint64 conn_id() const;
+  void set_conn_id(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:gate.SetConnLoginReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 conn_id_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class SetConnLoginRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:gate.SetConnLoginRsp) */ {
+ public:
+  SetConnLoginRsp();
+  virtual ~SetConnLoginRsp();
+
+  SetConnLoginRsp(const SetConnLoginRsp& from);
+
+  inline SetConnLoginRsp& operator=(const SetConnLoginRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  SetConnLoginRsp(SetConnLoginRsp&& from) noexcept
+    : SetConnLoginRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline SetConnLoginRsp& operator=(SetConnLoginRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SetConnLoginRsp& default_instance();
+
+  static inline const SetConnLoginRsp* internal_default_instance() {
+    return reinterpret_cast<const SetConnLoginRsp*>(
+               &_SetConnLoginRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    12;
+
+  void Swap(SetConnLoginRsp* other);
+  friend void swap(SetConnLoginRsp& a, SetConnLoginRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SetConnLoginRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  SetConnLoginRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const SetConnLoginRsp& from);
+  void MergeFrom(const SetConnLoginRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(SetConnLoginRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:gate.SetConnLoginRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct protobuf_gate_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -1722,258 +1573,9 @@ class GateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// TestReq
-
-// int32 service_id = 1;
-inline void TestReq::clear_service_id() {
-  service_id_ = 0;
-}
-inline ::google::protobuf::int32 TestReq::service_id() const {
-  // @@protoc_insertion_point(field_get:gate.TestReq.service_id)
-  return service_id_;
-}
-inline void TestReq::set_service_id(::google::protobuf::int32 value) {
-  
-  service_id_ = value;
-  // @@protoc_insertion_point(field_set:gate.TestReq.service_id)
-}
-
-// -------------------------------------------------------------------
-
-// TestRsp
-
-// bytes service_name = 1;
-inline void TestRsp::clear_service_name() {
-  service_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& TestRsp::service_name() const {
-  // @@protoc_insertion_point(field_get:gate.TestRsp.service_name)
-  return service_name_.GetNoArena();
-}
-inline void TestRsp::set_service_name(const ::std::string& value) {
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:gate.TestRsp.service_name)
-}
-#if LANG_CXX11
-inline void TestRsp::set_service_name(::std::string&& value) {
-  
-  service_name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:gate.TestRsp.service_name)
-}
-#endif
-inline void TestRsp::set_service_name(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:gate.TestRsp.service_name)
-}
-inline void TestRsp::set_service_name(const void* value, size_t size) {
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:gate.TestRsp.service_name)
-}
-inline ::std::string* TestRsp::mutable_service_name() {
-  
-  // @@protoc_insertion_point(field_mutable:gate.TestRsp.service_name)
-  return service_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* TestRsp::release_service_name() {
-  // @@protoc_insertion_point(field_release:gate.TestRsp.service_name)
-  
-  return service_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void TestRsp::set_allocated_service_name(::std::string* service_name) {
-  if (service_name != NULL) {
-    
-  } else {
-    
-  }
-  service_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), service_name);
-  // @@protoc_insertion_point(field_set_allocated:gate.TestRsp.service_name)
-}
-
-// -------------------------------------------------------------------
-
-// WakeHeartbeatReq
-
-// uint64 server_time = 1;
-inline void WakeHeartbeatReq::clear_server_time() {
-  server_time_ = GOOGLE_ULONGLONG(0);
-}
-inline ::google::protobuf::uint64 WakeHeartbeatReq::server_time() const {
-  // @@protoc_insertion_point(field_get:gate.WakeHeartbeatReq.server_time)
-  return server_time_;
-}
-inline void WakeHeartbeatReq::set_server_time(::google::protobuf::uint64 value) {
-  
-  server_time_ = value;
-  // @@protoc_insertion_point(field_set:gate.WakeHeartbeatReq.server_time)
-}
-
-// -------------------------------------------------------------------
-
-// WakeHeartbeatRsp
-
-// uint64 client_time = 1;
-inline void WakeHeartbeatRsp::clear_client_time() {
-  client_time_ = GOOGLE_ULONGLONG(0);
-}
-inline ::google::protobuf::uint64 WakeHeartbeatRsp::client_time() const {
-  // @@protoc_insertion_point(field_get:gate.WakeHeartbeatRsp.client_time)
-  return client_time_;
-}
-inline void WakeHeartbeatRsp::set_client_time(::google::protobuf::uint64 value) {
-  
-  client_time_ = value;
-  // @@protoc_insertion_point(field_set:gate.WakeHeartbeatRsp.client_time)
-}
-
-// uint64 key = 2;
-inline void WakeHeartbeatRsp::clear_key() {
-  key_ = GOOGLE_ULONGLONG(0);
-}
-inline ::google::protobuf::uint64 WakeHeartbeatRsp::key() const {
-  // @@protoc_insertion_point(field_get:gate.WakeHeartbeatRsp.key)
-  return key_;
-}
-inline void WakeHeartbeatRsp::set_key(::google::protobuf::uint64 value) {
-  
-  key_ = value;
-  // @@protoc_insertion_point(field_set:gate.WakeHeartbeatRsp.key)
-}
-
-// -------------------------------------------------------------------
-
-// GetConnIdReq
-
-// uint64 client_time = 1;
-inline void GetConnIdReq::clear_client_time() {
-  client_time_ = GOOGLE_ULONGLONG(0);
-}
-inline ::google::protobuf::uint64 GetConnIdReq::client_time() const {
-  // @@protoc_insertion_point(field_get:gate.GetConnIdReq.client_time)
-  return client_time_;
-}
-inline void GetConnIdReq::set_client_time(::google::protobuf::uint64 value) {
-  
-  client_time_ = value;
-  // @@protoc_insertion_point(field_set:gate.GetConnIdReq.client_time)
-}
-
-// -------------------------------------------------------------------
-
-// GetConnIdRsp
-
-// uint64 server_time = 1;
-inline void GetConnIdRsp::clear_server_time() {
-  server_time_ = GOOGLE_ULONGLONG(0);
-}
-inline ::google::protobuf::uint64 GetConnIdRsp::server_time() const {
-  // @@protoc_insertion_point(field_get:gate.GetConnIdRsp.server_time)
-  return server_time_;
-}
-inline void GetConnIdRsp::set_server_time(::google::protobuf::uint64 value) {
-  
-  server_time_ = value;
-  // @@protoc_insertion_point(field_set:gate.GetConnIdRsp.server_time)
-}
-
-// uint32 conn_create_time = 2;
-inline void GetConnIdRsp::clear_conn_create_time() {
-  conn_create_time_ = 0u;
-}
-inline ::google::protobuf::uint32 GetConnIdRsp::conn_create_time() const {
-  // @@protoc_insertion_point(field_get:gate.GetConnIdRsp.conn_create_time)
-  return conn_create_time_;
-}
-inline void GetConnIdRsp::set_conn_create_time(::google::protobuf::uint32 value) {
-  
-  conn_create_time_ = value;
-  // @@protoc_insertion_point(field_set:gate.GetConnIdRsp.conn_create_time)
-}
-
-// uint64 conn_id = 3;
-inline void GetConnIdRsp::clear_conn_id() {
-  conn_id_ = GOOGLE_ULONGLONG(0);
-}
-inline ::google::protobuf::uint64 GetConnIdRsp::conn_id() const {
-  // @@protoc_insertion_point(field_get:gate.GetConnIdRsp.conn_id)
-  return conn_id_;
-}
-inline void GetConnIdRsp::set_conn_id(::google::protobuf::uint64 value) {
-  
-  conn_id_ = value;
-  // @@protoc_insertion_point(field_set:gate.GetConnIdRsp.conn_id)
-}
-
-// -------------------------------------------------------------------
-
-// CloseConnIdReq
-
-// uint64 conn_id = 1;
-inline void CloseConnIdReq::clear_conn_id() {
-  conn_id_ = GOOGLE_ULONGLONG(0);
-}
-inline ::google::protobuf::uint64 CloseConnIdReq::conn_id() const {
-  // @@protoc_insertion_point(field_get:gate.CloseConnIdReq.conn_id)
-  return conn_id_;
-}
-inline void CloseConnIdReq::set_conn_id(::google::protobuf::uint64 value) {
-  
-  conn_id_ = value;
-  // @@protoc_insertion_point(field_set:gate.CloseConnIdReq.conn_id)
-}
-
-// -------------------------------------------------------------------
-
-// CloseConnIdRsp
-
-// -------------------------------------------------------------------
-
-// CloseClientReq
-
-// -------------------------------------------------------------------
-
-// CloseClientRsp
-
-// -------------------------------------------------------------------
-
-// LogoutReq
-
-// -------------------------------------------------------------------
-
-// LogoutRsp
-
-// -------------------------------------------------------------------
-
-// SetConnLoginReq
-
-// uint64 conn_id = 1;
-inline void SetConnLoginReq::clear_conn_id() {
-  conn_id_ = GOOGLE_ULONGLONG(0);
-}
-inline ::google::protobuf::uint64 SetConnLoginReq::conn_id() const {
-  // @@protoc_insertion_point(field_get:gate.SetConnLoginReq.conn_id)
-  return conn_id_;
-}
-inline void SetConnLoginReq::set_conn_id(::google::protobuf::uint64 value) {
-  
-  conn_id_ = value;
-  // @@protoc_insertion_point(field_set:gate.SetConnLoginReq.conn_id)
-}
-
-// -------------------------------------------------------------------
-
-// SetConnLoginRsp
-
-// -------------------------------------------------------------------
-
 // GateMsg
 
-// .gate.TestReq test_req = 1;
+// .common.TestReq test_req = 1;
 inline bool GateMsg::has_test_req() const {
   return choice_case() == kTestReq;
 }
@@ -1986,33 +1588,33 @@ inline void GateMsg::clear_test_req() {
     clear_has_choice();
   }
 }
-inline  const ::gate::TestReq& GateMsg::test_req() const {
+inline  const ::common::TestReq& GateMsg::test_req() const {
   // @@protoc_insertion_point(field_get:gate.GateMsg.test_req)
   return has_test_req()
       ? *choice_.test_req_
-      : ::gate::TestReq::default_instance();
+      : ::common::TestReq::default_instance();
 }
-inline ::gate::TestReq* GateMsg::mutable_test_req() {
+inline ::common::TestReq* GateMsg::mutable_test_req() {
   if (!has_test_req()) {
     clear_choice();
     set_has_test_req();
-    choice_.test_req_ = new ::gate::TestReq;
+    choice_.test_req_ = new ::common::TestReq;
   }
   // @@protoc_insertion_point(field_mutable:gate.GateMsg.test_req)
   return choice_.test_req_;
 }
-inline ::gate::TestReq* GateMsg::release_test_req() {
+inline ::common::TestReq* GateMsg::release_test_req() {
   // @@protoc_insertion_point(field_release:gate.GateMsg.test_req)
   if (has_test_req()) {
     clear_has_choice();
-    ::gate::TestReq* temp = choice_.test_req_;
+    ::common::TestReq* temp = choice_.test_req_;
     choice_.test_req_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void GateMsg::set_allocated_test_req(::gate::TestReq* test_req) {
+inline void GateMsg::set_allocated_test_req(::common::TestReq* test_req) {
   clear_choice();
   if (test_req) {
     set_has_test_req();
@@ -2021,7 +1623,7 @@ inline void GateMsg::set_allocated_test_req(::gate::TestReq* test_req) {
   // @@protoc_insertion_point(field_set_allocated:gate.GateMsg.test_req)
 }
 
-// .gate.TestRsp test_rsp = 2;
+// .common.TestRsp test_rsp = 2;
 inline bool GateMsg::has_test_rsp() const {
   return choice_case() == kTestRsp;
 }
@@ -2034,33 +1636,33 @@ inline void GateMsg::clear_test_rsp() {
     clear_has_choice();
   }
 }
-inline  const ::gate::TestRsp& GateMsg::test_rsp() const {
+inline  const ::common::TestRsp& GateMsg::test_rsp() const {
   // @@protoc_insertion_point(field_get:gate.GateMsg.test_rsp)
   return has_test_rsp()
       ? *choice_.test_rsp_
-      : ::gate::TestRsp::default_instance();
+      : ::common::TestRsp::default_instance();
 }
-inline ::gate::TestRsp* GateMsg::mutable_test_rsp() {
+inline ::common::TestRsp* GateMsg::mutable_test_rsp() {
   if (!has_test_rsp()) {
     clear_choice();
     set_has_test_rsp();
-    choice_.test_rsp_ = new ::gate::TestRsp;
+    choice_.test_rsp_ = new ::common::TestRsp;
   }
   // @@protoc_insertion_point(field_mutable:gate.GateMsg.test_rsp)
   return choice_.test_rsp_;
 }
-inline ::gate::TestRsp* GateMsg::release_test_rsp() {
+inline ::common::TestRsp* GateMsg::release_test_rsp() {
   // @@protoc_insertion_point(field_release:gate.GateMsg.test_rsp)
   if (has_test_rsp()) {
     clear_has_choice();
-    ::gate::TestRsp* temp = choice_.test_rsp_;
+    ::common::TestRsp* temp = choice_.test_rsp_;
     choice_.test_rsp_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void GateMsg::set_allocated_test_rsp(::gate::TestRsp* test_rsp) {
+inline void GateMsg::set_allocated_test_rsp(::common::TestRsp* test_rsp) {
   clear_choice();
   if (test_rsp) {
     set_has_test_rsp();
@@ -2654,14 +2256,184 @@ inline void GateMsg::clear_has_choice() {
 inline GateMsg::ChoiceCase GateMsg::choice_case() const {
   return GateMsg::ChoiceCase(_oneof_case_[0]);
 }
+// -------------------------------------------------------------------
+
+// WakeHeartbeatReq
+
+// uint64 server_time = 1;
+inline void WakeHeartbeatReq::clear_server_time() {
+  server_time_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 WakeHeartbeatReq::server_time() const {
+  // @@protoc_insertion_point(field_get:gate.WakeHeartbeatReq.server_time)
+  return server_time_;
+}
+inline void WakeHeartbeatReq::set_server_time(::google::protobuf::uint64 value) {
+  
+  server_time_ = value;
+  // @@protoc_insertion_point(field_set:gate.WakeHeartbeatReq.server_time)
+}
+
+// -------------------------------------------------------------------
+
+// WakeHeartbeatRsp
+
+// uint64 client_time = 1;
+inline void WakeHeartbeatRsp::clear_client_time() {
+  client_time_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 WakeHeartbeatRsp::client_time() const {
+  // @@protoc_insertion_point(field_get:gate.WakeHeartbeatRsp.client_time)
+  return client_time_;
+}
+inline void WakeHeartbeatRsp::set_client_time(::google::protobuf::uint64 value) {
+  
+  client_time_ = value;
+  // @@protoc_insertion_point(field_set:gate.WakeHeartbeatRsp.client_time)
+}
+
+// uint64 key = 2;
+inline void WakeHeartbeatRsp::clear_key() {
+  key_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 WakeHeartbeatRsp::key() const {
+  // @@protoc_insertion_point(field_get:gate.WakeHeartbeatRsp.key)
+  return key_;
+}
+inline void WakeHeartbeatRsp::set_key(::google::protobuf::uint64 value) {
+  
+  key_ = value;
+  // @@protoc_insertion_point(field_set:gate.WakeHeartbeatRsp.key)
+}
+
+// -------------------------------------------------------------------
+
+// GetConnIdReq
+
+// uint64 client_time = 1;
+inline void GetConnIdReq::clear_client_time() {
+  client_time_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 GetConnIdReq::client_time() const {
+  // @@protoc_insertion_point(field_get:gate.GetConnIdReq.client_time)
+  return client_time_;
+}
+inline void GetConnIdReq::set_client_time(::google::protobuf::uint64 value) {
+  
+  client_time_ = value;
+  // @@protoc_insertion_point(field_set:gate.GetConnIdReq.client_time)
+}
+
+// -------------------------------------------------------------------
+
+// GetConnIdRsp
+
+// uint64 server_time = 1;
+inline void GetConnIdRsp::clear_server_time() {
+  server_time_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 GetConnIdRsp::server_time() const {
+  // @@protoc_insertion_point(field_get:gate.GetConnIdRsp.server_time)
+  return server_time_;
+}
+inline void GetConnIdRsp::set_server_time(::google::protobuf::uint64 value) {
+  
+  server_time_ = value;
+  // @@protoc_insertion_point(field_set:gate.GetConnIdRsp.server_time)
+}
+
+// uint32 conn_create_time = 2;
+inline void GetConnIdRsp::clear_conn_create_time() {
+  conn_create_time_ = 0u;
+}
+inline ::google::protobuf::uint32 GetConnIdRsp::conn_create_time() const {
+  // @@protoc_insertion_point(field_get:gate.GetConnIdRsp.conn_create_time)
+  return conn_create_time_;
+}
+inline void GetConnIdRsp::set_conn_create_time(::google::protobuf::uint32 value) {
+  
+  conn_create_time_ = value;
+  // @@protoc_insertion_point(field_set:gate.GetConnIdRsp.conn_create_time)
+}
+
+// uint64 conn_id = 3;
+inline void GetConnIdRsp::clear_conn_id() {
+  conn_id_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 GetConnIdRsp::conn_id() const {
+  // @@protoc_insertion_point(field_get:gate.GetConnIdRsp.conn_id)
+  return conn_id_;
+}
+inline void GetConnIdRsp::set_conn_id(::google::protobuf::uint64 value) {
+  
+  conn_id_ = value;
+  // @@protoc_insertion_point(field_set:gate.GetConnIdRsp.conn_id)
+}
+
+// -------------------------------------------------------------------
+
+// CloseConnIdReq
+
+// uint64 conn_id = 1;
+inline void CloseConnIdReq::clear_conn_id() {
+  conn_id_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 CloseConnIdReq::conn_id() const {
+  // @@protoc_insertion_point(field_get:gate.CloseConnIdReq.conn_id)
+  return conn_id_;
+}
+inline void CloseConnIdReq::set_conn_id(::google::protobuf::uint64 value) {
+  
+  conn_id_ = value;
+  // @@protoc_insertion_point(field_set:gate.CloseConnIdReq.conn_id)
+}
+
+// -------------------------------------------------------------------
+
+// CloseConnIdRsp
+
+// -------------------------------------------------------------------
+
+// CloseClientReq
+
+// -------------------------------------------------------------------
+
+// CloseClientRsp
+
+// -------------------------------------------------------------------
+
+// LogoutReq
+
+// -------------------------------------------------------------------
+
+// LogoutRsp
+
+// -------------------------------------------------------------------
+
+// SetConnLoginReq
+
+// uint64 conn_id = 1;
+inline void SetConnLoginReq::clear_conn_id() {
+  conn_id_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 SetConnLoginReq::conn_id() const {
+  // @@protoc_insertion_point(field_get:gate.SetConnLoginReq.conn_id)
+  return conn_id_;
+}
+inline void SetConnLoginReq::set_conn_id(::google::protobuf::uint64 value) {
+  
+  conn_id_ = value;
+  // @@protoc_insertion_point(field_set:gate.SetConnLoginReq.conn_id)
+}
+
+// -------------------------------------------------------------------
+
+// SetConnLoginRsp
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -2691,6 +2463,18 @@ inline GateMsg::ChoiceCase GateMsg::choice_case() const {
 
 
 }  // namespace gate
+
+namespace google {
+namespace protobuf {
+
+template <> struct is_proto_enum< ::gate::ErrorCode> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::gate::ErrorCode>() {
+  return ::gate::ErrorCode_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 
