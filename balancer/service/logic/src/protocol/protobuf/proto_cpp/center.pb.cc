@@ -18,16 +18,17 @@
 // @@protoc_insertion_point(includes)
 
 namespace center {
-class TestReqDefaultTypeInternal {
+class CenterMsgDefaultTypeInternal {
 public:
- ::google::protobuf::internal::ExplicitlyConstructed<TestReq>
+ ::google::protobuf::internal::ExplicitlyConstructed<CenterMsg>
      _instance;
-} _TestReq_default_instance_;
-class TestRspDefaultTypeInternal {
-public:
- ::google::protobuf::internal::ExplicitlyConstructed<TestRsp>
-     _instance;
-} _TestRsp_default_instance_;
+  const ::common::TestReq* test_req_;
+  const ::common::TestRsp* test_rsp_;
+  const ::center::HeartbeatReq* heartbeat_req_;
+  const ::center::HeartbeatRsp* heartbeat_rsp_;
+  const ::center::SyncServiceReq* sync_service_req_;
+  const ::center::SyncServiceRsp* sync_service_rsp_;
+} _CenterMsg_default_instance_;
 class HeartbeatReqDefaultTypeInternal {
 public:
  ::google::protobuf::internal::ExplicitlyConstructed<HeartbeatReq>
@@ -48,24 +49,13 @@ public:
  ::google::protobuf::internal::ExplicitlyConstructed<SyncServiceRsp>
      _instance;
 } _SyncServiceRsp_default_instance_;
-class CenterMsgDefaultTypeInternal {
-public:
- ::google::protobuf::internal::ExplicitlyConstructed<CenterMsg>
-     _instance;
-  const ::center::TestReq* test_req_;
-  const ::center::TestRsp* test_rsp_;
-  const ::center::HeartbeatReq* heartbeat_req_;
-  const ::center::HeartbeatRsp* heartbeat_rsp_;
-  const ::center::SyncServiceReq* sync_service_req_;
-  const ::center::SyncServiceRsp* sync_service_rsp_;
-} _CenterMsg_default_instance_;
 
 namespace protobuf_center_2eproto {
 
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[7];
+::google::protobuf::Metadata file_level_metadata[5];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[3];
 
 }  // namespace
@@ -86,23 +76,21 @@ PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::ParseTable const
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
-  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
-  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
 };
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestReq, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CenterMsg, _internal_metadata_),
   ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CenterMsg, _oneof_case_[0]),
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestReq, service_id_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestRsp, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestRsp, service_name_),
+  offsetof(CenterMsgDefaultTypeInternal, test_req_),
+  offsetof(CenterMsgDefaultTypeInternal, test_rsp_),
+  offsetof(CenterMsgDefaultTypeInternal, heartbeat_req_),
+  offsetof(CenterMsgDefaultTypeInternal, heartbeat_rsp_),
+  offsetof(CenterMsgDefaultTypeInternal, sync_service_req_),
+  offsetof(CenterMsgDefaultTypeInternal, sync_service_rsp_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CenterMsg, choice_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HeartbeatReq, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -137,37 +125,21 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SyncServiceRsp, conf_update_time_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SyncServiceRsp, conf_json_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CenterMsg, _internal_metadata_),
-  ~0u,  // no _extensions_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CenterMsg, _oneof_case_[0]),
-  ~0u,  // no _weak_field_map_
-  offsetof(CenterMsgDefaultTypeInternal, test_req_),
-  offsetof(CenterMsgDefaultTypeInternal, test_rsp_),
-  offsetof(CenterMsgDefaultTypeInternal, heartbeat_req_),
-  offsetof(CenterMsgDefaultTypeInternal, heartbeat_rsp_),
-  offsetof(CenterMsgDefaultTypeInternal, sync_service_req_),
-  offsetof(CenterMsgDefaultTypeInternal, sync_service_rsp_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CenterMsg, choice_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(TestReq)},
-  { 6, -1, sizeof(TestRsp)},
+  { 0, -1, sizeof(CenterMsg)},
   { 12, -1, sizeof(HeartbeatReq)},
   { 23, -1, sizeof(HeartbeatRsp)},
   { 33, -1, sizeof(SyncServiceReq)},
   { 39, -1, sizeof(SyncServiceRsp)},
-  { 46, -1, sizeof(CenterMsg)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&_TestReq_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_TestRsp_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_CenterMsg_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_HeartbeatReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_HeartbeatRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_SyncServiceReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_SyncServiceRsp_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_CenterMsg_default_instance_),
 };
 
 namespace {
@@ -188,7 +160,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 7);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 5);
 }
 
 }  // namespace
@@ -196,11 +168,10 @@ void TableStruct::InitDefaultsImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::internal::InitProtobufDefaults();
-  _TestReq_default_instance_._instance.DefaultConstruct();
+  ::common::protobuf_common_2eproto::InitDefaults();
+  _CenterMsg_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_TestReq_default_instance_);_TestRsp_default_instance_._instance.DefaultConstruct();
-  ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_TestRsp_default_instance_);_HeartbeatReq_default_instance_._instance.DefaultConstruct();
+      &_CenterMsg_default_instance_);_HeartbeatReq_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
       &_HeartbeatReq_default_instance_);_HeartbeatRsp_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
@@ -208,12 +179,10 @@ void TableStruct::InitDefaultsImpl() {
   ::google::protobuf::internal::OnShutdownDestroyMessage(
       &_SyncServiceReq_default_instance_);_SyncServiceRsp_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_SyncServiceRsp_default_instance_);_CenterMsg_default_instance_._instance.DefaultConstruct();
-  ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_CenterMsg_default_instance_);_CenterMsg_default_instance_.test_req_ = const_cast< ::center::TestReq*>(
-      ::center::TestReq::internal_default_instance());
-  _CenterMsg_default_instance_.test_rsp_ = const_cast< ::center::TestRsp*>(
-      ::center::TestRsp::internal_default_instance());
+      &_SyncServiceRsp_default_instance_);_CenterMsg_default_instance_.test_req_ = const_cast< ::common::TestReq*>(
+      ::common::TestReq::internal_default_instance());
+  _CenterMsg_default_instance_.test_rsp_ = const_cast< ::common::TestRsp*>(
+      ::common::TestRsp::internal_default_instance());
   _CenterMsg_default_instance_.heartbeat_req_ = const_cast< ::center::HeartbeatReq*>(
       ::center::HeartbeatReq::internal_default_instance());
   _CenterMsg_default_instance_.heartbeat_rsp_ = const_cast< ::center::HeartbeatRsp*>(
@@ -232,63 +201,62 @@ namespace {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\014center.proto\022\006center\"\035\n\007TestReq\022\022\n\nser"
-      "vice_id\030\001 \001(\005\"\037\n\007TestRsp\022\024\n\014service_name"
-      "\030\001 \001(\014\"~\n\014HeartbeatReq\022\r\n\005level\030\001 \001(\005\022\022\n"
-      "\nservice_id\030\002 \001(\005\022\017\n\007proc_id\030\003 \001(\r\022\r\n\005st"
-      "ate\030\004 \001(\r\022\030\n\020conf_update_time\030\005 \001(\004\022\021\n\tc"
-      "onf_json\030\006 \001(\014\"s\n\014HeartbeatRsp\022\r\n\005level\030"
-      "\001 \001(\005\022\022\n\nservice_id\030\002 \001(\005\022\017\n\007proc_id\030\003 \001"
-      "(\r\022\030\n\020conf_update_time\030\004 \001(\004\022\025\n\rexpire_s"
-      "econd\030\005 \001(\r\"*\n\016SyncServiceReq\022\030\n\020conf_up"
-      "date_time\030\001 \001(\004\"=\n\016SyncServiceRsp\022\030\n\020con"
-      "f_update_time\030\001 \001(\004\022\021\n\tconf_json\030\002 \001(\014\"\245"
-      "\002\n\tCenterMsg\022#\n\010test_req\030\001 \001(\0132\017.center."
-      "TestReqH\000\022#\n\010test_rsp\030\002 \001(\0132\017.center.Tes"
-      "tRspH\000\022-\n\rheartbeat_req\030\003 \001(\0132\024.center.H"
-      "eartbeatReqH\000\022-\n\rheartbeat_rsp\030\004 \001(\0132\024.c"
-      "enter.HeartbeatRspH\000\0222\n\020sync_service_req"
-      "\030\005 \001(\0132\026.center.SyncServiceReqH\000\0222\n\020sync"
-      "_service_rsp\030\006 \001(\0132\026.center.SyncServiceR"
-      "spH\000B\010\n\006choice*\256\t\n\tErrorCode\022\013\n\007SUCCESS\020"
-      "\000\022\021\n\tERR_BEGIN\020\200\301\315\341\003\022\025\n\rERR_SYS_BEGIN\020\344\301"
-      "\315\341\003\022\030\n\020ERR_SYS_OVERLOAD\020\345\301\315\341\003\022\036\n\026ERR_SYS"
-      "_REJECT_SERVICE\020\346\301\315\341\003\022\034\n\024ERR_SYS_SERVER_"
-      "INNER\020\347\301\315\341\003\022\027\n\017ERR_SYS_TIMEOUT\020\350\301\315\341\003\022!\n\031"
-      "ERR_SYS_NO_INSERVICE_LIST\020\351\301\315\341\003\022\032\n\022ERR_S"
-      "YS_TASK_STATE\020\352\301\315\341\003\022\034\n\024ERR_SYS_TASK_DISC"
-      "ARD\020\353\301\315\341\003\022\023\n\013ERR_SYS_END\020\307\302\315\341\003\022\030\n\020ERR_PA"
-      "CKET_BEGIN\020\310\302\315\341\003\022\031\n\021ERR_PACKET_ENCODE\020\311\302"
-      "\315\341\003\022\031\n\021ERR_PACKET_DECODE\020\312\302\315\341\003\022\031\n\021ERR_PA"
-      "CKET_HEADER\020\313\302\315\341\003\022\026\n\016ERR_PACKET_LEN\020\314\302\315\341"
-      "\003\022\032\n\022ERR_PACKET_VERSION\020\315\302\315\341\003\022\"\n\032ERR_PAC"
-      "KET_FROM_SERVICE_ID\020\316\302\315\341\003\022 \n\030ERR_PACKET_"
-      "TO_SERVICE_ID\020\317\302\315\341\003\022\031\n\021ERR_PACKET_APP_ID"
-      "\020\320\302\315\341\003\022\036\n\026ERR_PACKET_APP_VERSION\020\321\302\315\341\003\022\036"
-      "\n\026ERR_PACKET_CONN_SEQ_ID\020\322\302\315\341\003\022\035\n\025ERR_PA"
-      "CKET_MSG_SEQ_ID\020\323\302\315\341\003\022\036\n\026ERR_PACKET_DATA"
-      "_FORMAT\020\324\302\315\341\003\022\037\n\027ERR_PACKET_DATA_FIELD_0"
-      "\020\325\302\315\341\003\022\037\n\027ERR_PACKET_DATA_FIELD_1\020\326\302\315\341\003\022"
-      "\037\n\027ERR_PACKET_DATA_FIELD_2\020\327\302\315\341\003\022\037\n\027ERR_"
-      "PACKET_DATA_FIELD_3\020\330\302\315\341\003\022\034\n\024ERR_PACKET_"
-      "CHECK_SUM\020\331\302\315\341\003\022\"\n\032ERR_PACKET_UNKNOWN_RE"
-      "QUEST\020\332\302\315\341\003\022\026\n\016ERR_PACKET_END\020\253\303\315\341\003\022\033\n\023E"
-      "RR_INTERFACE_BEGIN\020\254\303\315\341\003\022\033\n\023ERR_INTERFAC"
-      "E_PARAM\020\255\303\315\341\003\022\032\n\022ERR_INTERFACE_PERM\020\256\303\315\341"
-      "\003\022\031\n\021ERR_INTERFACE_END\020\217\304\315\341\003\022\032\n\022ERR_BUSI"
-      "NESS_BEGIN\020\220\217\316\341\003\022\"\n\032ERR_PROBER_SERVICE_T"
-      "IMEOUT\020\221\217\316\341\003\022\035\n\025ERR_PROBER_SERVICE_ID\020\222\217"
-      "\316\341\003\022#\n\033ERR_PROBER_CONF_JSON_TO_MAP\020\223\217\316\341\003"
-      "\022$\n\034ERR_PROBER_CONF_LOAD_IP_INFO\020\224\217\316\341\003\022\017"
-      "\n\007ERR_END\020\237\316\323\341\003*7\n\005State\022\017\n\013STATE_BEGIN\020"
-      "\000\022\r\n\tHEARTBEAT\020d\022\016\n\tINSERVICE\020\310\001*)\n\005Leve"
-      "l\022\017\n\013LEVEL_BEGIN\020\000\022\017\n\nINIT_LEVEL\020\350\007b\006pro"
-      "to3"
+      "\n\014center.proto\022\006center\032\014common.proto\"\245\002\n"
+      "\tCenterMsg\022#\n\010test_req\030\001 \001(\0132\017.common.Te"
+      "stReqH\000\022#\n\010test_rsp\030\002 \001(\0132\017.common.TestR"
+      "spH\000\022-\n\rheartbeat_req\030\003 \001(\0132\024.center.Hea"
+      "rtbeatReqH\000\022-\n\rheartbeat_rsp\030\004 \001(\0132\024.cen"
+      "ter.HeartbeatRspH\000\0222\n\020sync_service_req\030\005"
+      " \001(\0132\026.center.SyncServiceReqH\000\0222\n\020sync_s"
+      "ervice_rsp\030\006 \001(\0132\026.center.SyncServiceRsp"
+      "H\000B\010\n\006choice\"~\n\014HeartbeatReq\022\r\n\005level\030\001 "
+      "\001(\005\022\022\n\nservice_id\030\002 \001(\005\022\017\n\007proc_id\030\003 \001(\r"
+      "\022\r\n\005state\030\004 \001(\r\022\030\n\020conf_update_time\030\005 \001("
+      "\004\022\021\n\tconf_json\030\006 \001(\014\"s\n\014HeartbeatRsp\022\r\n\005"
+      "level\030\001 \001(\005\022\022\n\nservice_id\030\002 \001(\005\022\017\n\007proc_"
+      "id\030\003 \001(\r\022\030\n\020conf_update_time\030\004 \001(\004\022\025\n\rex"
+      "pire_second\030\005 \001(\r\"*\n\016SyncServiceReq\022\030\n\020c"
+      "onf_update_time\030\001 \001(\004\"=\n\016SyncServiceRsp\022"
+      "\030\n\020conf_update_time\030\001 \001(\004\022\021\n\tconf_json\030\002"
+      " \001(\014*\255\t\n\tErrorCode\022\013\n\007SUCCESS\020\000\022\020\n\tERR_B"
+      "EGIN\020\300\306\2240\022\024\n\rERR_SYS_BEGIN\020\244\307\2240\022\027\n\020ERR_S"
+      "YS_OVERLOAD\020\245\307\2240\022\035\n\026ERR_SYS_REJECT_SERVI"
+      "CE\020\246\307\2240\022\033\n\024ERR_SYS_SERVER_INNER\020\247\307\2240\022\026\n\017"
+      "ERR_SYS_TIMEOUT\020\250\307\2240\022 \n\031ERR_SYS_NO_INSER"
+      "VICE_LIST\020\251\307\2240\022\031\n\022ERR_SYS_TASK_STATE\020\252\307\224"
+      "0\022\033\n\024ERR_SYS_TASK_DISCARD\020\253\307\2240\022\022\n\013ERR_SY"
+      "S_END\020\207\310\2240\022\027\n\020ERR_PACKET_BEGIN\020\210\310\2240\022\030\n\021E"
+      "RR_PACKET_ENCODE\020\211\310\2240\022\030\n\021ERR_PACKET_DECO"
+      "DE\020\212\310\2240\022\030\n\021ERR_PACKET_HEADER\020\213\310\2240\022\025\n\016ERR"
+      "_PACKET_LEN\020\214\310\2240\022\031\n\022ERR_PACKET_VERSION\020\215"
+      "\310\2240\022!\n\032ERR_PACKET_FROM_SERVICE_ID\020\216\310\2240\022\037"
+      "\n\030ERR_PACKET_TO_SERVICE_ID\020\217\310\2240\022\030\n\021ERR_P"
+      "ACKET_APP_ID\020\220\310\2240\022\035\n\026ERR_PACKET_APP_VERS"
+      "ION\020\221\310\2240\022\035\n\026ERR_PACKET_CONN_SEQ_ID\020\222\310\2240\022"
+      "\034\n\025ERR_PACKET_MSG_SEQ_ID\020\223\310\2240\022\035\n\026ERR_PAC"
+      "KET_DATA_FORMAT\020\224\310\2240\022\036\n\027ERR_PACKET_DATA_"
+      "FIELD_0\020\225\310\2240\022\036\n\027ERR_PACKET_DATA_FIELD_1\020"
+      "\226\310\2240\022\036\n\027ERR_PACKET_DATA_FIELD_2\020\227\310\2240\022\036\n\027"
+      "ERR_PACKET_DATA_FIELD_3\020\230\310\2240\022\033\n\024ERR_PACK"
+      "ET_CHECK_SUM\020\231\310\2240\022!\n\032ERR_PACKET_UNKNOWN_"
+      "REQUEST\020\232\310\2240\022\025\n\016ERR_PACKET_END\020\353\310\2240\022\032\n\023E"
+      "RR_INTERFACE_BEGIN\020\354\310\2240\022\032\n\023ERR_INTERFACE"
+      "_PARAM\020\355\310\2240\022\031\n\022ERR_INTERFACE_PERM\020\356\310\2240\022\034"
+      "\n\025ERR_INTERFACE_TIMEOUT\020\357\310\2240\022\030\n\021ERR_INTE"
+      "RFACE_END\020\317\311\2240\022\031\n\022ERR_BUSINESS_BEGIN\020\250\316\224"
+      "0\022!\n\032ERR_PROBER_SERVICE_TIMEOUT\020\251\316\2240\022\034\n\025"
+      "ERR_PROBER_SERVICE_ID\020\252\316\2240\022\"\n\033ERR_PROBER"
+      "_CONF_JSON_TO_MAP\020\253\316\2240\022#\n\034ERR_PROBER_CON"
+      "F_LOAD_IP_INFO\020\254\316\2240\022\027\n\020ERR_BUSINESS_END\020"
+      "\317\224\2250*7\n\005State\022\017\n\013STATE_BEGIN\020\000\022\r\n\tHEARTB"
+      "EAT\020d\022\016\n\tINSERVICE\020\310\001*)\n\005Level\022\017\n\013LEVEL_"
+      "BEGIN\020\000\022\017\n\nINIT_LEVEL\020\350\007b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2043);
+      descriptor, 1992);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "center.proto", &protobuf_RegisterTypes);
+  ::common::protobuf_common_2eproto::AddDescriptors();
 }
 } // anonymous namespace
 
@@ -312,46 +280,47 @@ const ::google::protobuf::EnumDescriptor* ErrorCode_descriptor() {
 bool ErrorCode_IsValid(int value) {
   switch (value) {
     case 0:
-    case 1010000000:
-    case 1010000100:
-    case 1010000101:
-    case 1010000102:
-    case 1010000103:
-    case 1010000104:
-    case 1010000105:
-    case 1010000106:
-    case 1010000107:
-    case 1010000199:
-    case 1010000200:
-    case 1010000201:
-    case 1010000202:
-    case 1010000203:
-    case 1010000204:
-    case 1010000205:
-    case 1010000206:
-    case 1010000207:
-    case 1010000208:
-    case 1010000209:
-    case 1010000210:
-    case 1010000211:
-    case 1010000212:
-    case 1010000213:
-    case 1010000214:
-    case 1010000215:
-    case 1010000216:
-    case 1010000217:
-    case 1010000218:
-    case 1010000299:
-    case 1010000300:
-    case 1010000301:
-    case 1010000302:
-    case 1010000399:
-    case 1010010000:
-    case 1010010001:
-    case 1010010002:
-    case 1010010003:
-    case 1010010004:
-    case 1010099999:
+    case 101000000:
+    case 101000100:
+    case 101000101:
+    case 101000102:
+    case 101000103:
+    case 101000104:
+    case 101000105:
+    case 101000106:
+    case 101000107:
+    case 101000199:
+    case 101000200:
+    case 101000201:
+    case 101000202:
+    case 101000203:
+    case 101000204:
+    case 101000205:
+    case 101000206:
+    case 101000207:
+    case 101000208:
+    case 101000209:
+    case 101000210:
+    case 101000211:
+    case 101000212:
+    case 101000213:
+    case 101000214:
+    case 101000215:
+    case 101000216:
+    case 101000217:
+    case 101000218:
+    case 101000299:
+    case 101000300:
+    case 101000301:
+    case 101000302:
+    case 101000303:
+    case 101000399:
+    case 101001000:
+    case 101001001:
+    case 101001002:
+    case 101001003:
+    case 101001004:
+    case 101009999:
       return true;
     default:
       return false;
@@ -391,346 +360,220 @@ bool Level_IsValid(int value) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TestReq::kServiceIdFieldNumber;
+const int CenterMsg::kTestReqFieldNumber;
+const int CenterMsg::kTestRspFieldNumber;
+const int CenterMsg::kHeartbeatReqFieldNumber;
+const int CenterMsg::kHeartbeatRspFieldNumber;
+const int CenterMsg::kSyncServiceReqFieldNumber;
+const int CenterMsg::kSyncServiceRspFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-TestReq::TestReq()
+CenterMsg::CenterMsg()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
     protobuf_center_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:center.TestReq)
+  // @@protoc_insertion_point(constructor:center.CenterMsg)
 }
-TestReq::TestReq(const TestReq& from)
+CenterMsg::CenterMsg(const CenterMsg& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  service_id_ = from.service_id_;
-  // @@protoc_insertion_point(copy_constructor:center.TestReq)
-}
-
-void TestReq::SharedCtor() {
-  service_id_ = 0;
-  _cached_size_ = 0;
-}
-
-TestReq::~TestReq() {
-  // @@protoc_insertion_point(destructor:center.TestReq)
-  SharedDtor();
-}
-
-void TestReq::SharedDtor() {
-}
-
-void TestReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* TestReq::descriptor() {
-  protobuf_center_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_center_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const TestReq& TestReq::default_instance() {
-  protobuf_center_2eproto::InitDefaults();
-  return *internal_default_instance();
-}
-
-TestReq* TestReq::New(::google::protobuf::Arena* arena) const {
-  TestReq* n = new TestReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void TestReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:center.TestReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  service_id_ = 0;
-  _internal_metadata_.Clear();
-}
-
-bool TestReq::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:center.TestReq)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 service_id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &service_id_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
+  clear_has_choice();
+  switch (from.choice_case()) {
+    case kTestReq: {
+      mutable_test_req()->::common::TestReq::MergeFrom(from.test_req());
+      break;
+    }
+    case kTestRsp: {
+      mutable_test_rsp()->::common::TestRsp::MergeFrom(from.test_rsp());
+      break;
+    }
+    case kHeartbeatReq: {
+      mutable_heartbeat_req()->::center::HeartbeatReq::MergeFrom(from.heartbeat_req());
+      break;
+    }
+    case kHeartbeatRsp: {
+      mutable_heartbeat_rsp()->::center::HeartbeatRsp::MergeFrom(from.heartbeat_rsp());
+      break;
+    }
+    case kSyncServiceReq: {
+      mutable_sync_service_req()->::center::SyncServiceReq::MergeFrom(from.sync_service_req());
+      break;
+    }
+    case kSyncServiceRsp: {
+      mutable_sync_service_rsp()->::center::SyncServiceRsp::MergeFrom(from.sync_service_rsp());
+      break;
+    }
+    case CHOICE_NOT_SET: {
+      break;
     }
   }
-success:
-  // @@protoc_insertion_point(parse_success:center.TestReq)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:center.TestReq)
-  return false;
-#undef DO_
+  // @@protoc_insertion_point(copy_constructor:center.CenterMsg)
 }
 
-void TestReq::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:center.TestReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 service_id = 1;
-  if (this->service_id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->service_id(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:center.TestReq)
-}
-
-::google::protobuf::uint8* TestReq::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:center.TestReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 service_id = 1;
-  if (this->service_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->service_id(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:center.TestReq)
-  return target;
-}
-
-size_t TestReq::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:center.TestReq)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // int32 service_id = 1;
-  if (this->service_id() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->service_id());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void TestReq::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:center.TestReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TestReq* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TestReq>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:center.TestReq)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:center.TestReq)
-    MergeFrom(*source);
-  }
-}
-
-void TestReq::MergeFrom(const TestReq& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:center.TestReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.service_id() != 0) {
-    set_service_id(from.service_id());
-  }
-}
-
-void TestReq::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:center.TestReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void TestReq::CopyFrom(const TestReq& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:center.TestReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool TestReq::IsInitialized() const {
-  return true;
-}
-
-void TestReq::Swap(TestReq* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void TestReq::InternalSwap(TestReq* other) {
-  using std::swap;
-  swap(service_id_, other->service_id_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata TestReq::GetMetadata() const {
-  protobuf_center_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_center_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// TestReq
-
-// int32 service_id = 1;
-void TestReq::clear_service_id() {
-  service_id_ = 0;
-}
-::google::protobuf::int32 TestReq::service_id() const {
-  // @@protoc_insertion_point(field_get:center.TestReq.service_id)
-  return service_id_;
-}
-void TestReq::set_service_id(::google::protobuf::int32 value) {
-  
-  service_id_ = value;
-  // @@protoc_insertion_point(field_set:center.TestReq.service_id)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TestRsp::kServiceNameFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-TestRsp::TestRsp()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    protobuf_center_2eproto::InitDefaults();
-  }
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:center.TestRsp)
-}
-TestRsp::TestRsp(const TestRsp& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  service_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.service_name().size() > 0) {
-    service_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.service_name_);
-  }
-  // @@protoc_insertion_point(copy_constructor:center.TestRsp)
-}
-
-void TestRsp::SharedCtor() {
-  service_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+void CenterMsg::SharedCtor() {
+  clear_has_choice();
   _cached_size_ = 0;
 }
 
-TestRsp::~TestRsp() {
-  // @@protoc_insertion_point(destructor:center.TestRsp)
+CenterMsg::~CenterMsg() {
+  // @@protoc_insertion_point(destructor:center.CenterMsg)
   SharedDtor();
 }
 
-void TestRsp::SharedDtor() {
-  service_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+void CenterMsg::SharedDtor() {
+  if (has_choice()) {
+    clear_choice();
+  }
 }
 
-void TestRsp::SetCachedSize(int size) const {
+void CenterMsg::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* TestRsp::descriptor() {
+const ::google::protobuf::Descriptor* CenterMsg::descriptor() {
   protobuf_center_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_center_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const TestRsp& TestRsp::default_instance() {
+const CenterMsg& CenterMsg::default_instance() {
   protobuf_center_2eproto::InitDefaults();
   return *internal_default_instance();
 }
 
-TestRsp* TestRsp::New(::google::protobuf::Arena* arena) const {
-  TestRsp* n = new TestRsp;
+CenterMsg* CenterMsg::New(::google::protobuf::Arena* arena) const {
+  CenterMsg* n = new CenterMsg;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void TestRsp::Clear() {
-// @@protoc_insertion_point(message_clear_start:center.TestRsp)
+void CenterMsg::clear_choice() {
+// @@protoc_insertion_point(one_of_clear_start:center.CenterMsg)
+  switch (choice_case()) {
+    case kTestReq: {
+      delete choice_.test_req_;
+      break;
+    }
+    case kTestRsp: {
+      delete choice_.test_rsp_;
+      break;
+    }
+    case kHeartbeatReq: {
+      delete choice_.heartbeat_req_;
+      break;
+    }
+    case kHeartbeatRsp: {
+      delete choice_.heartbeat_rsp_;
+      break;
+    }
+    case kSyncServiceReq: {
+      delete choice_.sync_service_req_;
+      break;
+    }
+    case kSyncServiceRsp: {
+      delete choice_.sync_service_rsp_;
+      break;
+    }
+    case CHOICE_NOT_SET: {
+      break;
+    }
+  }
+  _oneof_case_[0] = CHOICE_NOT_SET;
+}
+
+
+void CenterMsg::Clear() {
+// @@protoc_insertion_point(message_clear_start:center.CenterMsg)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  service_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_choice();
   _internal_metadata_.Clear();
 }
 
-bool TestRsp::MergePartialFromCodedStream(
+bool CenterMsg::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:center.TestRsp)
+  // @@protoc_insertion_point(parse_start:center.CenterMsg)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes service_name = 1;
+      // .common.TestReq test_req = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_service_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_test_req()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .common.TestRsp test_rsp = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_test_rsp()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .center.HeartbeatReq heartbeat_req = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_heartbeat_req()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .center.HeartbeatRsp heartbeat_rsp = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_heartbeat_rsp()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .center.SyncServiceReq sync_service_req = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_sync_service_req()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .center.SyncServiceRsp sync_service_rsp = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_sync_service_rsp()));
         } else {
           goto handle_unusual;
         }
@@ -749,57 +592,122 @@ bool TestRsp::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:center.TestRsp)
+  // @@protoc_insertion_point(parse_success:center.CenterMsg)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:center.TestRsp)
+  // @@protoc_insertion_point(parse_failure:center.CenterMsg)
   return false;
 #undef DO_
 }
 
-void TestRsp::SerializeWithCachedSizes(
+void CenterMsg::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:center.TestRsp)
+  // @@protoc_insertion_point(serialize_start:center.CenterMsg)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes service_name = 1;
-  if (this->service_name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->service_name(), output);
+  // .common.TestReq test_req = 1;
+  if (has_test_req()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *choice_.test_req_, output);
+  }
+
+  // .common.TestRsp test_rsp = 2;
+  if (has_test_rsp()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, *choice_.test_rsp_, output);
+  }
+
+  // .center.HeartbeatReq heartbeat_req = 3;
+  if (has_heartbeat_req()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, *choice_.heartbeat_req_, output);
+  }
+
+  // .center.HeartbeatRsp heartbeat_rsp = 4;
+  if (has_heartbeat_rsp()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, *choice_.heartbeat_rsp_, output);
+  }
+
+  // .center.SyncServiceReq sync_service_req = 5;
+  if (has_sync_service_req()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, *choice_.sync_service_req_, output);
+  }
+
+  // .center.SyncServiceRsp sync_service_rsp = 6;
+  if (has_sync_service_rsp()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, *choice_.sync_service_rsp_, output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:center.TestRsp)
+  // @@protoc_insertion_point(serialize_end:center.CenterMsg)
 }
 
-::google::protobuf::uint8* TestRsp::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* CenterMsg::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:center.TestRsp)
+  // @@protoc_insertion_point(serialize_to_array_start:center.CenterMsg)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes service_name = 1;
-  if (this->service_name().size() > 0) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->service_name(), target);
+  // .common.TestReq test_req = 1;
+  if (has_test_req()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        1, *choice_.test_req_, deterministic, target);
+  }
+
+  // .common.TestRsp test_rsp = 2;
+  if (has_test_rsp()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        2, *choice_.test_rsp_, deterministic, target);
+  }
+
+  // .center.HeartbeatReq heartbeat_req = 3;
+  if (has_heartbeat_req()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        3, *choice_.heartbeat_req_, deterministic, target);
+  }
+
+  // .center.HeartbeatRsp heartbeat_rsp = 4;
+  if (has_heartbeat_rsp()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        4, *choice_.heartbeat_rsp_, deterministic, target);
+  }
+
+  // .center.SyncServiceReq sync_service_req = 5;
+  if (has_sync_service_req()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        5, *choice_.sync_service_req_, deterministic, target);
+  }
+
+  // .center.SyncServiceRsp sync_service_rsp = 6;
+  if (has_sync_service_rsp()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        6, *choice_.sync_service_rsp_, deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:center.TestRsp)
+  // @@protoc_insertion_point(serialize_to_array_end:center.CenterMsg)
   return target;
 }
 
-size_t TestRsp::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:center.TestRsp)
+size_t CenterMsg::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:center.CenterMsg)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -807,13 +715,53 @@ size_t TestRsp::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bytes service_name = 1;
-  if (this->service_name().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->service_name());
+  switch (choice_case()) {
+    // .common.TestReq test_req = 1;
+    case kTestReq: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.test_req_);
+      break;
+    }
+    // .common.TestRsp test_rsp = 2;
+    case kTestRsp: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.test_rsp_);
+      break;
+    }
+    // .center.HeartbeatReq heartbeat_req = 3;
+    case kHeartbeatReq: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.heartbeat_req_);
+      break;
+    }
+    // .center.HeartbeatRsp heartbeat_rsp = 4;
+    case kHeartbeatRsp: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.heartbeat_rsp_);
+      break;
+    }
+    // .center.SyncServiceReq sync_service_req = 5;
+    case kSyncServiceReq: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.sync_service_req_);
+      break;
+    }
+    // .center.SyncServiceRsp sync_service_rsp = 6;
+    case kSyncServiceRsp: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.sync_service_rsp_);
+      break;
+    }
+    case CHOICE_NOT_SET: {
+      break;
+    }
   }
-
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = cached_size;
@@ -821,124 +769,394 @@ size_t TestRsp::ByteSizeLong() const {
   return total_size;
 }
 
-void TestRsp::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:center.TestRsp)
+void CenterMsg::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:center.CenterMsg)
   GOOGLE_DCHECK_NE(&from, this);
-  const TestRsp* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TestRsp>(
+  const CenterMsg* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const CenterMsg>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:center.TestRsp)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:center.CenterMsg)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:center.TestRsp)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:center.CenterMsg)
     MergeFrom(*source);
   }
 }
 
-void TestRsp::MergeFrom(const TestRsp& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:center.TestRsp)
+void CenterMsg::MergeFrom(const CenterMsg& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:center.CenterMsg)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.service_name().size() > 0) {
-
-    service_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.service_name_);
+  switch (from.choice_case()) {
+    case kTestReq: {
+      mutable_test_req()->::common::TestReq::MergeFrom(from.test_req());
+      break;
+    }
+    case kTestRsp: {
+      mutable_test_rsp()->::common::TestRsp::MergeFrom(from.test_rsp());
+      break;
+    }
+    case kHeartbeatReq: {
+      mutable_heartbeat_req()->::center::HeartbeatReq::MergeFrom(from.heartbeat_req());
+      break;
+    }
+    case kHeartbeatRsp: {
+      mutable_heartbeat_rsp()->::center::HeartbeatRsp::MergeFrom(from.heartbeat_rsp());
+      break;
+    }
+    case kSyncServiceReq: {
+      mutable_sync_service_req()->::center::SyncServiceReq::MergeFrom(from.sync_service_req());
+      break;
+    }
+    case kSyncServiceRsp: {
+      mutable_sync_service_rsp()->::center::SyncServiceRsp::MergeFrom(from.sync_service_rsp());
+      break;
+    }
+    case CHOICE_NOT_SET: {
+      break;
+    }
   }
 }
 
-void TestRsp::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:center.TestRsp)
+void CenterMsg::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:center.CenterMsg)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void TestRsp::CopyFrom(const TestRsp& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:center.TestRsp)
+void CenterMsg::CopyFrom(const CenterMsg& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:center.CenterMsg)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool TestRsp::IsInitialized() const {
+bool CenterMsg::IsInitialized() const {
   return true;
 }
 
-void TestRsp::Swap(TestRsp* other) {
+void CenterMsg::Swap(CenterMsg* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void TestRsp::InternalSwap(TestRsp* other) {
+void CenterMsg::InternalSwap(CenterMsg* other) {
   using std::swap;
-  service_name_.Swap(&other->service_name_);
+  swap(choice_, other->choice_);
+  swap(_oneof_case_[0], other->_oneof_case_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata TestRsp::GetMetadata() const {
+::google::protobuf::Metadata CenterMsg::GetMetadata() const {
   protobuf_center_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_center_2eproto::file_level_metadata[kIndexInFileMessages];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// TestRsp
+// CenterMsg
 
-// bytes service_name = 1;
-void TestRsp::clear_service_name() {
-  service_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// .common.TestReq test_req = 1;
+bool CenterMsg::has_test_req() const {
+  return choice_case() == kTestReq;
 }
-const ::std::string& TestRsp::service_name() const {
-  // @@protoc_insertion_point(field_get:center.TestRsp.service_name)
-  return service_name_.GetNoArena();
+void CenterMsg::set_has_test_req() {
+  _oneof_case_[0] = kTestReq;
 }
-void TestRsp::set_service_name(const ::std::string& value) {
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:center.TestRsp.service_name)
-}
-#if LANG_CXX11
-void TestRsp::set_service_name(::std::string&& value) {
-  
-  service_name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:center.TestRsp.service_name)
-}
-#endif
-void TestRsp::set_service_name(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:center.TestRsp.service_name)
-}
-void TestRsp::set_service_name(const void* value, size_t size) {
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:center.TestRsp.service_name)
-}
-::std::string* TestRsp::mutable_service_name() {
-  
-  // @@protoc_insertion_point(field_mutable:center.TestRsp.service_name)
-  return service_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-::std::string* TestRsp::release_service_name() {
-  // @@protoc_insertion_point(field_release:center.TestRsp.service_name)
-  
-  return service_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-void TestRsp::set_allocated_service_name(::std::string* service_name) {
-  if (service_name != NULL) {
-    
-  } else {
-    
+void CenterMsg::clear_test_req() {
+  if (has_test_req()) {
+    delete choice_.test_req_;
+    clear_has_choice();
   }
-  service_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), service_name);
-  // @@protoc_insertion_point(field_set_allocated:center.TestRsp.service_name)
+}
+ const ::common::TestReq& CenterMsg::test_req() const {
+  // @@protoc_insertion_point(field_get:center.CenterMsg.test_req)
+  return has_test_req()
+      ? *choice_.test_req_
+      : ::common::TestReq::default_instance();
+}
+::common::TestReq* CenterMsg::mutable_test_req() {
+  if (!has_test_req()) {
+    clear_choice();
+    set_has_test_req();
+    choice_.test_req_ = new ::common::TestReq;
+  }
+  // @@protoc_insertion_point(field_mutable:center.CenterMsg.test_req)
+  return choice_.test_req_;
+}
+::common::TestReq* CenterMsg::release_test_req() {
+  // @@protoc_insertion_point(field_release:center.CenterMsg.test_req)
+  if (has_test_req()) {
+    clear_has_choice();
+    ::common::TestReq* temp = choice_.test_req_;
+    choice_.test_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void CenterMsg::set_allocated_test_req(::common::TestReq* test_req) {
+  clear_choice();
+  if (test_req) {
+    set_has_test_req();
+    choice_.test_req_ = test_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.test_req)
 }
 
+// .common.TestRsp test_rsp = 2;
+bool CenterMsg::has_test_rsp() const {
+  return choice_case() == kTestRsp;
+}
+void CenterMsg::set_has_test_rsp() {
+  _oneof_case_[0] = kTestRsp;
+}
+void CenterMsg::clear_test_rsp() {
+  if (has_test_rsp()) {
+    delete choice_.test_rsp_;
+    clear_has_choice();
+  }
+}
+ const ::common::TestRsp& CenterMsg::test_rsp() const {
+  // @@protoc_insertion_point(field_get:center.CenterMsg.test_rsp)
+  return has_test_rsp()
+      ? *choice_.test_rsp_
+      : ::common::TestRsp::default_instance();
+}
+::common::TestRsp* CenterMsg::mutable_test_rsp() {
+  if (!has_test_rsp()) {
+    clear_choice();
+    set_has_test_rsp();
+    choice_.test_rsp_ = new ::common::TestRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:center.CenterMsg.test_rsp)
+  return choice_.test_rsp_;
+}
+::common::TestRsp* CenterMsg::release_test_rsp() {
+  // @@protoc_insertion_point(field_release:center.CenterMsg.test_rsp)
+  if (has_test_rsp()) {
+    clear_has_choice();
+    ::common::TestRsp* temp = choice_.test_rsp_;
+    choice_.test_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void CenterMsg::set_allocated_test_rsp(::common::TestRsp* test_rsp) {
+  clear_choice();
+  if (test_rsp) {
+    set_has_test_rsp();
+    choice_.test_rsp_ = test_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.test_rsp)
+}
+
+// .center.HeartbeatReq heartbeat_req = 3;
+bool CenterMsg::has_heartbeat_req() const {
+  return choice_case() == kHeartbeatReq;
+}
+void CenterMsg::set_has_heartbeat_req() {
+  _oneof_case_[0] = kHeartbeatReq;
+}
+void CenterMsg::clear_heartbeat_req() {
+  if (has_heartbeat_req()) {
+    delete choice_.heartbeat_req_;
+    clear_has_choice();
+  }
+}
+ const ::center::HeartbeatReq& CenterMsg::heartbeat_req() const {
+  // @@protoc_insertion_point(field_get:center.CenterMsg.heartbeat_req)
+  return has_heartbeat_req()
+      ? *choice_.heartbeat_req_
+      : ::center::HeartbeatReq::default_instance();
+}
+::center::HeartbeatReq* CenterMsg::mutable_heartbeat_req() {
+  if (!has_heartbeat_req()) {
+    clear_choice();
+    set_has_heartbeat_req();
+    choice_.heartbeat_req_ = new ::center::HeartbeatReq;
+  }
+  // @@protoc_insertion_point(field_mutable:center.CenterMsg.heartbeat_req)
+  return choice_.heartbeat_req_;
+}
+::center::HeartbeatReq* CenterMsg::release_heartbeat_req() {
+  // @@protoc_insertion_point(field_release:center.CenterMsg.heartbeat_req)
+  if (has_heartbeat_req()) {
+    clear_has_choice();
+    ::center::HeartbeatReq* temp = choice_.heartbeat_req_;
+    choice_.heartbeat_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void CenterMsg::set_allocated_heartbeat_req(::center::HeartbeatReq* heartbeat_req) {
+  clear_choice();
+  if (heartbeat_req) {
+    set_has_heartbeat_req();
+    choice_.heartbeat_req_ = heartbeat_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.heartbeat_req)
+}
+
+// .center.HeartbeatRsp heartbeat_rsp = 4;
+bool CenterMsg::has_heartbeat_rsp() const {
+  return choice_case() == kHeartbeatRsp;
+}
+void CenterMsg::set_has_heartbeat_rsp() {
+  _oneof_case_[0] = kHeartbeatRsp;
+}
+void CenterMsg::clear_heartbeat_rsp() {
+  if (has_heartbeat_rsp()) {
+    delete choice_.heartbeat_rsp_;
+    clear_has_choice();
+  }
+}
+ const ::center::HeartbeatRsp& CenterMsg::heartbeat_rsp() const {
+  // @@protoc_insertion_point(field_get:center.CenterMsg.heartbeat_rsp)
+  return has_heartbeat_rsp()
+      ? *choice_.heartbeat_rsp_
+      : ::center::HeartbeatRsp::default_instance();
+}
+::center::HeartbeatRsp* CenterMsg::mutable_heartbeat_rsp() {
+  if (!has_heartbeat_rsp()) {
+    clear_choice();
+    set_has_heartbeat_rsp();
+    choice_.heartbeat_rsp_ = new ::center::HeartbeatRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:center.CenterMsg.heartbeat_rsp)
+  return choice_.heartbeat_rsp_;
+}
+::center::HeartbeatRsp* CenterMsg::release_heartbeat_rsp() {
+  // @@protoc_insertion_point(field_release:center.CenterMsg.heartbeat_rsp)
+  if (has_heartbeat_rsp()) {
+    clear_has_choice();
+    ::center::HeartbeatRsp* temp = choice_.heartbeat_rsp_;
+    choice_.heartbeat_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void CenterMsg::set_allocated_heartbeat_rsp(::center::HeartbeatRsp* heartbeat_rsp) {
+  clear_choice();
+  if (heartbeat_rsp) {
+    set_has_heartbeat_rsp();
+    choice_.heartbeat_rsp_ = heartbeat_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.heartbeat_rsp)
+}
+
+// .center.SyncServiceReq sync_service_req = 5;
+bool CenterMsg::has_sync_service_req() const {
+  return choice_case() == kSyncServiceReq;
+}
+void CenterMsg::set_has_sync_service_req() {
+  _oneof_case_[0] = kSyncServiceReq;
+}
+void CenterMsg::clear_sync_service_req() {
+  if (has_sync_service_req()) {
+    delete choice_.sync_service_req_;
+    clear_has_choice();
+  }
+}
+ const ::center::SyncServiceReq& CenterMsg::sync_service_req() const {
+  // @@protoc_insertion_point(field_get:center.CenterMsg.sync_service_req)
+  return has_sync_service_req()
+      ? *choice_.sync_service_req_
+      : ::center::SyncServiceReq::default_instance();
+}
+::center::SyncServiceReq* CenterMsg::mutable_sync_service_req() {
+  if (!has_sync_service_req()) {
+    clear_choice();
+    set_has_sync_service_req();
+    choice_.sync_service_req_ = new ::center::SyncServiceReq;
+  }
+  // @@protoc_insertion_point(field_mutable:center.CenterMsg.sync_service_req)
+  return choice_.sync_service_req_;
+}
+::center::SyncServiceReq* CenterMsg::release_sync_service_req() {
+  // @@protoc_insertion_point(field_release:center.CenterMsg.sync_service_req)
+  if (has_sync_service_req()) {
+    clear_has_choice();
+    ::center::SyncServiceReq* temp = choice_.sync_service_req_;
+    choice_.sync_service_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void CenterMsg::set_allocated_sync_service_req(::center::SyncServiceReq* sync_service_req) {
+  clear_choice();
+  if (sync_service_req) {
+    set_has_sync_service_req();
+    choice_.sync_service_req_ = sync_service_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.sync_service_req)
+}
+
+// .center.SyncServiceRsp sync_service_rsp = 6;
+bool CenterMsg::has_sync_service_rsp() const {
+  return choice_case() == kSyncServiceRsp;
+}
+void CenterMsg::set_has_sync_service_rsp() {
+  _oneof_case_[0] = kSyncServiceRsp;
+}
+void CenterMsg::clear_sync_service_rsp() {
+  if (has_sync_service_rsp()) {
+    delete choice_.sync_service_rsp_;
+    clear_has_choice();
+  }
+}
+ const ::center::SyncServiceRsp& CenterMsg::sync_service_rsp() const {
+  // @@protoc_insertion_point(field_get:center.CenterMsg.sync_service_rsp)
+  return has_sync_service_rsp()
+      ? *choice_.sync_service_rsp_
+      : ::center::SyncServiceRsp::default_instance();
+}
+::center::SyncServiceRsp* CenterMsg::mutable_sync_service_rsp() {
+  if (!has_sync_service_rsp()) {
+    clear_choice();
+    set_has_sync_service_rsp();
+    choice_.sync_service_rsp_ = new ::center::SyncServiceRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:center.CenterMsg.sync_service_rsp)
+  return choice_.sync_service_rsp_;
+}
+::center::SyncServiceRsp* CenterMsg::release_sync_service_rsp() {
+  // @@protoc_insertion_point(field_release:center.CenterMsg.sync_service_rsp)
+  if (has_sync_service_rsp()) {
+    clear_has_choice();
+    ::center::SyncServiceRsp* temp = choice_.sync_service_rsp_;
+    choice_.sync_service_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void CenterMsg::set_allocated_sync_service_rsp(::center::SyncServiceRsp* sync_service_rsp) {
+  clear_choice();
+  if (sync_service_rsp) {
+    set_has_sync_service_rsp();
+    choice_.sync_service_rsp_ = sync_service_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.sync_service_rsp)
+}
+
+bool CenterMsg::has_choice() const {
+  return choice_case() != CHOICE_NOT_SET;
+}
+void CenterMsg::clear_has_choice() {
+  _oneof_case_[0] = CHOICE_NOT_SET;
+}
+CenterMsg::ChoiceCase CenterMsg::choice_case() const {
+  return CenterMsg::ChoiceCase(_oneof_case_[0]);
+}
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
@@ -2563,808 +2781,6 @@ void SyncServiceRsp::set_allocated_conf_json(::std::string* conf_json) {
   // @@protoc_insertion_point(field_set_allocated:center.SyncServiceRsp.conf_json)
 }
 
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int CenterMsg::kTestReqFieldNumber;
-const int CenterMsg::kTestRspFieldNumber;
-const int CenterMsg::kHeartbeatReqFieldNumber;
-const int CenterMsg::kHeartbeatRspFieldNumber;
-const int CenterMsg::kSyncServiceReqFieldNumber;
-const int CenterMsg::kSyncServiceRspFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-CenterMsg::CenterMsg()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    protobuf_center_2eproto::InitDefaults();
-  }
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:center.CenterMsg)
-}
-CenterMsg::CenterMsg(const CenterMsg& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  clear_has_choice();
-  switch (from.choice_case()) {
-    case kTestReq: {
-      mutable_test_req()->::center::TestReq::MergeFrom(from.test_req());
-      break;
-    }
-    case kTestRsp: {
-      mutable_test_rsp()->::center::TestRsp::MergeFrom(from.test_rsp());
-      break;
-    }
-    case kHeartbeatReq: {
-      mutable_heartbeat_req()->::center::HeartbeatReq::MergeFrom(from.heartbeat_req());
-      break;
-    }
-    case kHeartbeatRsp: {
-      mutable_heartbeat_rsp()->::center::HeartbeatRsp::MergeFrom(from.heartbeat_rsp());
-      break;
-    }
-    case kSyncServiceReq: {
-      mutable_sync_service_req()->::center::SyncServiceReq::MergeFrom(from.sync_service_req());
-      break;
-    }
-    case kSyncServiceRsp: {
-      mutable_sync_service_rsp()->::center::SyncServiceRsp::MergeFrom(from.sync_service_rsp());
-      break;
-    }
-    case CHOICE_NOT_SET: {
-      break;
-    }
-  }
-  // @@protoc_insertion_point(copy_constructor:center.CenterMsg)
-}
-
-void CenterMsg::SharedCtor() {
-  clear_has_choice();
-  _cached_size_ = 0;
-}
-
-CenterMsg::~CenterMsg() {
-  // @@protoc_insertion_point(destructor:center.CenterMsg)
-  SharedDtor();
-}
-
-void CenterMsg::SharedDtor() {
-  if (has_choice()) {
-    clear_choice();
-  }
-}
-
-void CenterMsg::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* CenterMsg::descriptor() {
-  protobuf_center_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_center_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const CenterMsg& CenterMsg::default_instance() {
-  protobuf_center_2eproto::InitDefaults();
-  return *internal_default_instance();
-}
-
-CenterMsg* CenterMsg::New(::google::protobuf::Arena* arena) const {
-  CenterMsg* n = new CenterMsg;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void CenterMsg::clear_choice() {
-// @@protoc_insertion_point(one_of_clear_start:center.CenterMsg)
-  switch (choice_case()) {
-    case kTestReq: {
-      delete choice_.test_req_;
-      break;
-    }
-    case kTestRsp: {
-      delete choice_.test_rsp_;
-      break;
-    }
-    case kHeartbeatReq: {
-      delete choice_.heartbeat_req_;
-      break;
-    }
-    case kHeartbeatRsp: {
-      delete choice_.heartbeat_rsp_;
-      break;
-    }
-    case kSyncServiceReq: {
-      delete choice_.sync_service_req_;
-      break;
-    }
-    case kSyncServiceRsp: {
-      delete choice_.sync_service_rsp_;
-      break;
-    }
-    case CHOICE_NOT_SET: {
-      break;
-    }
-  }
-  _oneof_case_[0] = CHOICE_NOT_SET;
-}
-
-
-void CenterMsg::Clear() {
-// @@protoc_insertion_point(message_clear_start:center.CenterMsg)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  clear_choice();
-  _internal_metadata_.Clear();
-}
-
-bool CenterMsg::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:center.CenterMsg)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .center.TestReq test_req = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_test_req()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .center.TestRsp test_rsp = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_test_rsp()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .center.HeartbeatReq heartbeat_req = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_heartbeat_req()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .center.HeartbeatRsp heartbeat_rsp = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_heartbeat_rsp()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .center.SyncServiceReq sync_service_req = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_sync_service_req()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .center.SyncServiceRsp sync_service_rsp = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_sync_service_rsp()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:center.CenterMsg)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:center.CenterMsg)
-  return false;
-#undef DO_
-}
-
-void CenterMsg::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:center.CenterMsg)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // .center.TestReq test_req = 1;
-  if (has_test_req()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, *choice_.test_req_, output);
-  }
-
-  // .center.TestRsp test_rsp = 2;
-  if (has_test_rsp()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, *choice_.test_rsp_, output);
-  }
-
-  // .center.HeartbeatReq heartbeat_req = 3;
-  if (has_heartbeat_req()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, *choice_.heartbeat_req_, output);
-  }
-
-  // .center.HeartbeatRsp heartbeat_rsp = 4;
-  if (has_heartbeat_rsp()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, *choice_.heartbeat_rsp_, output);
-  }
-
-  // .center.SyncServiceReq sync_service_req = 5;
-  if (has_sync_service_req()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, *choice_.sync_service_req_, output);
-  }
-
-  // .center.SyncServiceRsp sync_service_rsp = 6;
-  if (has_sync_service_rsp()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, *choice_.sync_service_rsp_, output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:center.CenterMsg)
-}
-
-::google::protobuf::uint8* CenterMsg::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:center.CenterMsg)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // .center.TestReq test_req = 1;
-  if (has_test_req()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        1, *choice_.test_req_, deterministic, target);
-  }
-
-  // .center.TestRsp test_rsp = 2;
-  if (has_test_rsp()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        2, *choice_.test_rsp_, deterministic, target);
-  }
-
-  // .center.HeartbeatReq heartbeat_req = 3;
-  if (has_heartbeat_req()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        3, *choice_.heartbeat_req_, deterministic, target);
-  }
-
-  // .center.HeartbeatRsp heartbeat_rsp = 4;
-  if (has_heartbeat_rsp()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        4, *choice_.heartbeat_rsp_, deterministic, target);
-  }
-
-  // .center.SyncServiceReq sync_service_req = 5;
-  if (has_sync_service_req()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        5, *choice_.sync_service_req_, deterministic, target);
-  }
-
-  // .center.SyncServiceRsp sync_service_rsp = 6;
-  if (has_sync_service_rsp()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        6, *choice_.sync_service_rsp_, deterministic, target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:center.CenterMsg)
-  return target;
-}
-
-size_t CenterMsg::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:center.CenterMsg)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  switch (choice_case()) {
-    // .center.TestReq test_req = 1;
-    case kTestReq: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.test_req_);
-      break;
-    }
-    // .center.TestRsp test_rsp = 2;
-    case kTestRsp: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.test_rsp_);
-      break;
-    }
-    // .center.HeartbeatReq heartbeat_req = 3;
-    case kHeartbeatReq: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.heartbeat_req_);
-      break;
-    }
-    // .center.HeartbeatRsp heartbeat_rsp = 4;
-    case kHeartbeatRsp: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.heartbeat_rsp_);
-      break;
-    }
-    // .center.SyncServiceReq sync_service_req = 5;
-    case kSyncServiceReq: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.sync_service_req_);
-      break;
-    }
-    // .center.SyncServiceRsp sync_service_rsp = 6;
-    case kSyncServiceRsp: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.sync_service_rsp_);
-      break;
-    }
-    case CHOICE_NOT_SET: {
-      break;
-    }
-  }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void CenterMsg::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:center.CenterMsg)
-  GOOGLE_DCHECK_NE(&from, this);
-  const CenterMsg* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const CenterMsg>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:center.CenterMsg)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:center.CenterMsg)
-    MergeFrom(*source);
-  }
-}
-
-void CenterMsg::MergeFrom(const CenterMsg& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:center.CenterMsg)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  switch (from.choice_case()) {
-    case kTestReq: {
-      mutable_test_req()->::center::TestReq::MergeFrom(from.test_req());
-      break;
-    }
-    case kTestRsp: {
-      mutable_test_rsp()->::center::TestRsp::MergeFrom(from.test_rsp());
-      break;
-    }
-    case kHeartbeatReq: {
-      mutable_heartbeat_req()->::center::HeartbeatReq::MergeFrom(from.heartbeat_req());
-      break;
-    }
-    case kHeartbeatRsp: {
-      mutable_heartbeat_rsp()->::center::HeartbeatRsp::MergeFrom(from.heartbeat_rsp());
-      break;
-    }
-    case kSyncServiceReq: {
-      mutable_sync_service_req()->::center::SyncServiceReq::MergeFrom(from.sync_service_req());
-      break;
-    }
-    case kSyncServiceRsp: {
-      mutable_sync_service_rsp()->::center::SyncServiceRsp::MergeFrom(from.sync_service_rsp());
-      break;
-    }
-    case CHOICE_NOT_SET: {
-      break;
-    }
-  }
-}
-
-void CenterMsg::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:center.CenterMsg)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void CenterMsg::CopyFrom(const CenterMsg& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:center.CenterMsg)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool CenterMsg::IsInitialized() const {
-  return true;
-}
-
-void CenterMsg::Swap(CenterMsg* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void CenterMsg::InternalSwap(CenterMsg* other) {
-  using std::swap;
-  swap(choice_, other->choice_);
-  swap(_oneof_case_[0], other->_oneof_case_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata CenterMsg::GetMetadata() const {
-  protobuf_center_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_center_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// CenterMsg
-
-// .center.TestReq test_req = 1;
-bool CenterMsg::has_test_req() const {
-  return choice_case() == kTestReq;
-}
-void CenterMsg::set_has_test_req() {
-  _oneof_case_[0] = kTestReq;
-}
-void CenterMsg::clear_test_req() {
-  if (has_test_req()) {
-    delete choice_.test_req_;
-    clear_has_choice();
-  }
-}
- const ::center::TestReq& CenterMsg::test_req() const {
-  // @@protoc_insertion_point(field_get:center.CenterMsg.test_req)
-  return has_test_req()
-      ? *choice_.test_req_
-      : ::center::TestReq::default_instance();
-}
-::center::TestReq* CenterMsg::mutable_test_req() {
-  if (!has_test_req()) {
-    clear_choice();
-    set_has_test_req();
-    choice_.test_req_ = new ::center::TestReq;
-  }
-  // @@protoc_insertion_point(field_mutable:center.CenterMsg.test_req)
-  return choice_.test_req_;
-}
-::center::TestReq* CenterMsg::release_test_req() {
-  // @@protoc_insertion_point(field_release:center.CenterMsg.test_req)
-  if (has_test_req()) {
-    clear_has_choice();
-    ::center::TestReq* temp = choice_.test_req_;
-    choice_.test_req_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-void CenterMsg::set_allocated_test_req(::center::TestReq* test_req) {
-  clear_choice();
-  if (test_req) {
-    set_has_test_req();
-    choice_.test_req_ = test_req;
-  }
-  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.test_req)
-}
-
-// .center.TestRsp test_rsp = 2;
-bool CenterMsg::has_test_rsp() const {
-  return choice_case() == kTestRsp;
-}
-void CenterMsg::set_has_test_rsp() {
-  _oneof_case_[0] = kTestRsp;
-}
-void CenterMsg::clear_test_rsp() {
-  if (has_test_rsp()) {
-    delete choice_.test_rsp_;
-    clear_has_choice();
-  }
-}
- const ::center::TestRsp& CenterMsg::test_rsp() const {
-  // @@protoc_insertion_point(field_get:center.CenterMsg.test_rsp)
-  return has_test_rsp()
-      ? *choice_.test_rsp_
-      : ::center::TestRsp::default_instance();
-}
-::center::TestRsp* CenterMsg::mutable_test_rsp() {
-  if (!has_test_rsp()) {
-    clear_choice();
-    set_has_test_rsp();
-    choice_.test_rsp_ = new ::center::TestRsp;
-  }
-  // @@protoc_insertion_point(field_mutable:center.CenterMsg.test_rsp)
-  return choice_.test_rsp_;
-}
-::center::TestRsp* CenterMsg::release_test_rsp() {
-  // @@protoc_insertion_point(field_release:center.CenterMsg.test_rsp)
-  if (has_test_rsp()) {
-    clear_has_choice();
-    ::center::TestRsp* temp = choice_.test_rsp_;
-    choice_.test_rsp_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-void CenterMsg::set_allocated_test_rsp(::center::TestRsp* test_rsp) {
-  clear_choice();
-  if (test_rsp) {
-    set_has_test_rsp();
-    choice_.test_rsp_ = test_rsp;
-  }
-  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.test_rsp)
-}
-
-// .center.HeartbeatReq heartbeat_req = 3;
-bool CenterMsg::has_heartbeat_req() const {
-  return choice_case() == kHeartbeatReq;
-}
-void CenterMsg::set_has_heartbeat_req() {
-  _oneof_case_[0] = kHeartbeatReq;
-}
-void CenterMsg::clear_heartbeat_req() {
-  if (has_heartbeat_req()) {
-    delete choice_.heartbeat_req_;
-    clear_has_choice();
-  }
-}
- const ::center::HeartbeatReq& CenterMsg::heartbeat_req() const {
-  // @@protoc_insertion_point(field_get:center.CenterMsg.heartbeat_req)
-  return has_heartbeat_req()
-      ? *choice_.heartbeat_req_
-      : ::center::HeartbeatReq::default_instance();
-}
-::center::HeartbeatReq* CenterMsg::mutable_heartbeat_req() {
-  if (!has_heartbeat_req()) {
-    clear_choice();
-    set_has_heartbeat_req();
-    choice_.heartbeat_req_ = new ::center::HeartbeatReq;
-  }
-  // @@protoc_insertion_point(field_mutable:center.CenterMsg.heartbeat_req)
-  return choice_.heartbeat_req_;
-}
-::center::HeartbeatReq* CenterMsg::release_heartbeat_req() {
-  // @@protoc_insertion_point(field_release:center.CenterMsg.heartbeat_req)
-  if (has_heartbeat_req()) {
-    clear_has_choice();
-    ::center::HeartbeatReq* temp = choice_.heartbeat_req_;
-    choice_.heartbeat_req_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-void CenterMsg::set_allocated_heartbeat_req(::center::HeartbeatReq* heartbeat_req) {
-  clear_choice();
-  if (heartbeat_req) {
-    set_has_heartbeat_req();
-    choice_.heartbeat_req_ = heartbeat_req;
-  }
-  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.heartbeat_req)
-}
-
-// .center.HeartbeatRsp heartbeat_rsp = 4;
-bool CenterMsg::has_heartbeat_rsp() const {
-  return choice_case() == kHeartbeatRsp;
-}
-void CenterMsg::set_has_heartbeat_rsp() {
-  _oneof_case_[0] = kHeartbeatRsp;
-}
-void CenterMsg::clear_heartbeat_rsp() {
-  if (has_heartbeat_rsp()) {
-    delete choice_.heartbeat_rsp_;
-    clear_has_choice();
-  }
-}
- const ::center::HeartbeatRsp& CenterMsg::heartbeat_rsp() const {
-  // @@protoc_insertion_point(field_get:center.CenterMsg.heartbeat_rsp)
-  return has_heartbeat_rsp()
-      ? *choice_.heartbeat_rsp_
-      : ::center::HeartbeatRsp::default_instance();
-}
-::center::HeartbeatRsp* CenterMsg::mutable_heartbeat_rsp() {
-  if (!has_heartbeat_rsp()) {
-    clear_choice();
-    set_has_heartbeat_rsp();
-    choice_.heartbeat_rsp_ = new ::center::HeartbeatRsp;
-  }
-  // @@protoc_insertion_point(field_mutable:center.CenterMsg.heartbeat_rsp)
-  return choice_.heartbeat_rsp_;
-}
-::center::HeartbeatRsp* CenterMsg::release_heartbeat_rsp() {
-  // @@protoc_insertion_point(field_release:center.CenterMsg.heartbeat_rsp)
-  if (has_heartbeat_rsp()) {
-    clear_has_choice();
-    ::center::HeartbeatRsp* temp = choice_.heartbeat_rsp_;
-    choice_.heartbeat_rsp_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-void CenterMsg::set_allocated_heartbeat_rsp(::center::HeartbeatRsp* heartbeat_rsp) {
-  clear_choice();
-  if (heartbeat_rsp) {
-    set_has_heartbeat_rsp();
-    choice_.heartbeat_rsp_ = heartbeat_rsp;
-  }
-  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.heartbeat_rsp)
-}
-
-// .center.SyncServiceReq sync_service_req = 5;
-bool CenterMsg::has_sync_service_req() const {
-  return choice_case() == kSyncServiceReq;
-}
-void CenterMsg::set_has_sync_service_req() {
-  _oneof_case_[0] = kSyncServiceReq;
-}
-void CenterMsg::clear_sync_service_req() {
-  if (has_sync_service_req()) {
-    delete choice_.sync_service_req_;
-    clear_has_choice();
-  }
-}
- const ::center::SyncServiceReq& CenterMsg::sync_service_req() const {
-  // @@protoc_insertion_point(field_get:center.CenterMsg.sync_service_req)
-  return has_sync_service_req()
-      ? *choice_.sync_service_req_
-      : ::center::SyncServiceReq::default_instance();
-}
-::center::SyncServiceReq* CenterMsg::mutable_sync_service_req() {
-  if (!has_sync_service_req()) {
-    clear_choice();
-    set_has_sync_service_req();
-    choice_.sync_service_req_ = new ::center::SyncServiceReq;
-  }
-  // @@protoc_insertion_point(field_mutable:center.CenterMsg.sync_service_req)
-  return choice_.sync_service_req_;
-}
-::center::SyncServiceReq* CenterMsg::release_sync_service_req() {
-  // @@protoc_insertion_point(field_release:center.CenterMsg.sync_service_req)
-  if (has_sync_service_req()) {
-    clear_has_choice();
-    ::center::SyncServiceReq* temp = choice_.sync_service_req_;
-    choice_.sync_service_req_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-void CenterMsg::set_allocated_sync_service_req(::center::SyncServiceReq* sync_service_req) {
-  clear_choice();
-  if (sync_service_req) {
-    set_has_sync_service_req();
-    choice_.sync_service_req_ = sync_service_req;
-  }
-  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.sync_service_req)
-}
-
-// .center.SyncServiceRsp sync_service_rsp = 6;
-bool CenterMsg::has_sync_service_rsp() const {
-  return choice_case() == kSyncServiceRsp;
-}
-void CenterMsg::set_has_sync_service_rsp() {
-  _oneof_case_[0] = kSyncServiceRsp;
-}
-void CenterMsg::clear_sync_service_rsp() {
-  if (has_sync_service_rsp()) {
-    delete choice_.sync_service_rsp_;
-    clear_has_choice();
-  }
-}
- const ::center::SyncServiceRsp& CenterMsg::sync_service_rsp() const {
-  // @@protoc_insertion_point(field_get:center.CenterMsg.sync_service_rsp)
-  return has_sync_service_rsp()
-      ? *choice_.sync_service_rsp_
-      : ::center::SyncServiceRsp::default_instance();
-}
-::center::SyncServiceRsp* CenterMsg::mutable_sync_service_rsp() {
-  if (!has_sync_service_rsp()) {
-    clear_choice();
-    set_has_sync_service_rsp();
-    choice_.sync_service_rsp_ = new ::center::SyncServiceRsp;
-  }
-  // @@protoc_insertion_point(field_mutable:center.CenterMsg.sync_service_rsp)
-  return choice_.sync_service_rsp_;
-}
-::center::SyncServiceRsp* CenterMsg::release_sync_service_rsp() {
-  // @@protoc_insertion_point(field_release:center.CenterMsg.sync_service_rsp)
-  if (has_sync_service_rsp()) {
-    clear_has_choice();
-    ::center::SyncServiceRsp* temp = choice_.sync_service_rsp_;
-    choice_.sync_service_rsp_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-void CenterMsg::set_allocated_sync_service_rsp(::center::SyncServiceRsp* sync_service_rsp) {
-  clear_choice();
-  if (sync_service_rsp) {
-    set_has_sync_service_rsp();
-    choice_.sync_service_rsp_ = sync_service_rsp;
-  }
-  // @@protoc_insertion_point(field_set_allocated:center.CenterMsg.sync_service_rsp)
-}
-
-bool CenterMsg::has_choice() const {
-  return choice_case() != CHOICE_NOT_SET;
-}
-void CenterMsg::clear_has_choice() {
-  _oneof_case_[0] = CHOICE_NOT_SET;
-}
-CenterMsg::ChoiceCase CenterMsg::choice_case() const {
-  return CenterMsg::ChoiceCase(_oneof_case_[0]);
-}
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)

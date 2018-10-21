@@ -18,16 +18,17 @@
 // @@protoc_insertion_point(includes)
 
 namespace navigate {
-class TestReqDefaultTypeInternal {
+class NavigateMsgDefaultTypeInternal {
 public:
- ::google::protobuf::internal::ExplicitlyConstructed<TestReq>
+ ::google::protobuf::internal::ExplicitlyConstructed<NavigateMsg>
      _instance;
-} _TestReq_default_instance_;
-class TestRspDefaultTypeInternal {
-public:
- ::google::protobuf::internal::ExplicitlyConstructed<TestRsp>
-     _instance;
-} _TestRsp_default_instance_;
+  const ::common::TestReq* test_req_;
+  const ::common::TestRsp* test_rsp_;
+  const ::navigate::GetAccessReq* get_access_req_;
+  const ::navigate::GetAccessRsp* get_access_rsp_;
+  const ::navigate::PutLoadReq* put_load_req_;
+  const ::navigate::PutLoadRsp* put_load_rsp_;
+} _NavigateMsg_default_instance_;
 class GetAccessReqDefaultTypeInternal {
 public:
  ::google::protobuf::internal::ExplicitlyConstructed<GetAccessReq>
@@ -48,24 +49,14 @@ public:
  ::google::protobuf::internal::ExplicitlyConstructed<PutLoadRsp>
      _instance;
 } _PutLoadRsp_default_instance_;
-class NavigateMsgDefaultTypeInternal {
-public:
- ::google::protobuf::internal::ExplicitlyConstructed<NavigateMsg>
-     _instance;
-  const ::navigate::TestReq* test_req_;
-  const ::navigate::TestRsp* test_rsp_;
-  const ::navigate::GetAccessReq* get_access_req_;
-  const ::navigate::GetAccessRsp* get_access_rsp_;
-  const ::navigate::PutLoadReq* put_load_req_;
-  const ::navigate::PutLoadRsp* put_load_rsp_;
-} _NavigateMsg_default_instance_;
 
 namespace protobuf_navigate_2eproto {
 
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[7];
+::google::protobuf::Metadata file_level_metadata[5];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
 
 }  // namespace
 
@@ -85,23 +76,21 @@ PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::ParseTable const
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
-  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
-  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
 };
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestReq, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NavigateMsg, _internal_metadata_),
   ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NavigateMsg, _oneof_case_[0]),
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestReq, service_id_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestRsp, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestRsp, service_name_),
+  offsetof(NavigateMsgDefaultTypeInternal, test_req_),
+  offsetof(NavigateMsgDefaultTypeInternal, test_rsp_),
+  offsetof(NavigateMsgDefaultTypeInternal, get_access_req_),
+  offsetof(NavigateMsgDefaultTypeInternal, get_access_rsp_),
+  offsetof(NavigateMsgDefaultTypeInternal, put_load_req_),
+  offsetof(NavigateMsgDefaultTypeInternal, put_load_rsp_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NavigateMsg, choice_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetAccessReq, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -132,37 +121,21 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NavigateMsg, _internal_metadata_),
-  ~0u,  // no _extensions_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NavigateMsg, _oneof_case_[0]),
-  ~0u,  // no _weak_field_map_
-  offsetof(NavigateMsgDefaultTypeInternal, test_req_),
-  offsetof(NavigateMsgDefaultTypeInternal, test_rsp_),
-  offsetof(NavigateMsgDefaultTypeInternal, get_access_req_),
-  offsetof(NavigateMsgDefaultTypeInternal, get_access_rsp_),
-  offsetof(NavigateMsgDefaultTypeInternal, put_load_req_),
-  offsetof(NavigateMsgDefaultTypeInternal, put_load_rsp_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NavigateMsg, choice_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(TestReq)},
-  { 6, -1, sizeof(TestRsp)},
+  { 0, -1, sizeof(NavigateMsg)},
   { 12, -1, sizeof(GetAccessReq)},
   { 19, -1, sizeof(GetAccessRsp)},
   { 29, -1, sizeof(PutLoadReq)},
   { 37, -1, sizeof(PutLoadRsp)},
-  { 42, -1, sizeof(NavigateMsg)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&_TestReq_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_TestRsp_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_NavigateMsg_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_GetAccessReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_GetAccessRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_PutLoadReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_PutLoadRsp_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_NavigateMsg_default_instance_),
 };
 
 namespace {
@@ -172,7 +145,7 @@ void protobuf_AssignDescriptors() {
   ::google::protobuf::MessageFactory* factory = NULL;
   AssignDescriptors(
       "navigate.proto", schemas, file_default_instances, TableStruct::offsets, factory,
-      file_level_metadata, NULL, NULL);
+      file_level_metadata, file_level_enum_descriptors, NULL);
 }
 
 void protobuf_AssignDescriptorsOnce() {
@@ -183,7 +156,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 7);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 5);
 }
 
 }  // namespace
@@ -191,11 +164,10 @@ void TableStruct::InitDefaultsImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::internal::InitProtobufDefaults();
-  _TestReq_default_instance_._instance.DefaultConstruct();
+  ::common::protobuf_common_2eproto::InitDefaults();
+  _NavigateMsg_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_TestReq_default_instance_);_TestRsp_default_instance_._instance.DefaultConstruct();
-  ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_TestRsp_default_instance_);_GetAccessReq_default_instance_._instance.DefaultConstruct();
+      &_NavigateMsg_default_instance_);_GetAccessReq_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
       &_GetAccessReq_default_instance_);_GetAccessRsp_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
@@ -203,12 +175,10 @@ void TableStruct::InitDefaultsImpl() {
   ::google::protobuf::internal::OnShutdownDestroyMessage(
       &_PutLoadReq_default_instance_);_PutLoadRsp_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_PutLoadRsp_default_instance_);_NavigateMsg_default_instance_._instance.DefaultConstruct();
-  ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_NavigateMsg_default_instance_);_NavigateMsg_default_instance_.test_req_ = const_cast< ::navigate::TestReq*>(
-      ::navigate::TestReq::internal_default_instance());
-  _NavigateMsg_default_instance_.test_rsp_ = const_cast< ::navigate::TestRsp*>(
-      ::navigate::TestRsp::internal_default_instance());
+      &_PutLoadRsp_default_instance_);_NavigateMsg_default_instance_.test_req_ = const_cast< ::common::TestReq*>(
+      ::common::TestReq::internal_default_instance());
+  _NavigateMsg_default_instance_.test_rsp_ = const_cast< ::common::TestRsp*>(
+      ::common::TestRsp::internal_default_instance());
   _NavigateMsg_default_instance_.get_access_req_ = const_cast< ::navigate::GetAccessReq*>(
       ::navigate::GetAccessReq::internal_default_instance());
   _NavigateMsg_default_instance_.get_access_rsp_ = const_cast< ::navigate::GetAccessRsp*>(
@@ -227,27 +197,53 @@ namespace {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\016navigate.proto\022\010navigate\"\035\n\007TestReq\022\022\n"
-      "\nservice_id\030\001 \001(\005\"\037\n\007TestRsp\022\024\n\014service_"
-      "name\030\001 \001(\014\"3\n\014GetAccessReq\022\022\n\nservice_id"
-      "\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\004\"i\n\014GetAccessRsp\022"
-      "\022\n\naccess_key\030\001 \001(\014\022\022\n\nservice_id\030\002 \001(\005\022"
-      "\017\n\007proc_id\030\003 \001(\r\022\016\n\006out_ip\030\004 \001(\014\022\020\n\010out_"
-      "port\030\005 \001(\005\"C\n\nPutLoadReq\022\022\n\nservice_id\030\001"
-      " \001(\005\022\017\n\007proc_id\030\002 \001(\r\022\020\n\010load_val\030\003 \001(\005\""
-      "\014\n\nPutLoadRsp\"\245\002\n\013NavigateMsg\022%\n\010test_re"
-      "q\030\001 \001(\0132\021.navigate.TestReqH\000\022%\n\010test_rsp"
-      "\030\002 \001(\0132\021.navigate.TestRspH\000\0220\n\016get_acces"
-      "s_req\030\003 \001(\0132\026.navigate.GetAccessReqH\000\0220\n"
-      "\016get_access_rsp\030\004 \001(\0132\026.navigate.GetAcce"
-      "ssRspH\000\022,\n\014put_load_req\030\005 \001(\0132\024.navigate"
-      ".PutLoadReqH\000\022,\n\014put_load_rsp\030\006 \001(\0132\024.na"
-      "vigate.PutLoadRspH\000B\010\n\006choiceb\006proto3"
+      "\n\016navigate.proto\022\010navigate\032\014common.proto"
+      "\"\241\002\n\013NavigateMsg\022#\n\010test_req\030\001 \001(\0132\017.com"
+      "mon.TestReqH\000\022#\n\010test_rsp\030\002 \001(\0132\017.common"
+      ".TestRspH\000\0220\n\016get_access_req\030\003 \001(\0132\026.nav"
+      "igate.GetAccessReqH\000\0220\n\016get_access_rsp\030\004"
+      " \001(\0132\026.navigate.GetAccessRspH\000\022,\n\014put_lo"
+      "ad_req\030\005 \001(\0132\024.navigate.PutLoadReqH\000\022,\n\014"
+      "put_load_rsp\030\006 \001(\0132\024.navigate.PutLoadRsp"
+      "H\000B\010\n\006choice\"3\n\014GetAccessReq\022\022\n\nservice_"
+      "id\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\004\"i\n\014GetAccessRs"
+      "p\022\022\n\naccess_key\030\001 \001(\014\022\022\n\nservice_id\030\002 \001("
+      "\005\022\017\n\007proc_id\030\003 \001(\r\022\016\n\006out_ip\030\004 \001(\014\022\020\n\010ou"
+      "t_port\030\005 \001(\005\"C\n\nPutLoadReq\022\022\n\nservice_id"
+      "\030\001 \001(\005\022\017\n\007proc_id\030\002 \001(\r\022\020\n\010load_val\030\003 \001("
+      "\005\"\014\n\nPutLoadRsp*\221\010\n\tErrorCode\022\013\n\007SUCCESS"
+      "\020\000\022\024\n\rERR_SYS_BEGIN\020\344\313\3210\022\027\n\020ERR_SYS_OVER"
+      "LOAD\020\345\313\3210\022\035\n\026ERR_SYS_REJECT_SERVICE\020\346\313\3210"
+      "\022\033\n\024ERR_SYS_SERVER_INNER\020\347\313\3210\022\026\n\017ERR_SYS"
+      "_TIMEOUT\020\350\313\3210\022 \n\031ERR_SYS_NO_INSERVICE_LI"
+      "ST\020\351\313\3210\022\031\n\022ERR_SYS_TASK_STATE\020\352\313\3210\022\033\n\024ER"
+      "R_SYS_TASK_DISCARD\020\353\313\3210\022\022\n\013ERR_SYS_END\020\307"
+      "\314\3210\022\027\n\020ERR_PACKET_BEGIN\020\310\314\3210\022\030\n\021ERR_PACK"
+      "ET_ENCODE\020\311\314\3210\022\030\n\021ERR_PACKET_DECODE\020\312\314\3210"
+      "\022\030\n\021ERR_PACKET_HEADER\020\313\314\3210\022\025\n\016ERR_PACKET"
+      "_LEN\020\314\314\3210\022\031\n\022ERR_PACKET_VERSION\020\315\314\3210\022!\n\032"
+      "ERR_PACKET_FROM_SERVICE_ID\020\316\314\3210\022\037\n\030ERR_P"
+      "ACKET_TO_SERVICE_ID\020\317\314\3210\022\030\n\021ERR_PACKET_A"
+      "PP_ID\020\320\314\3210\022\035\n\026ERR_PACKET_APP_VERSION\020\321\314\321"
+      "0\022\035\n\026ERR_PACKET_CONN_SEQ_ID\020\322\314\3210\022\034\n\025ERR_"
+      "PACKET_MSG_SEQ_ID\020\323\314\3210\022\035\n\026ERR_PACKET_DAT"
+      "A_FORMAT\020\324\314\3210\022\036\n\027ERR_PACKET_DATA_FIELD_0"
+      "\020\325\314\3210\022\036\n\027ERR_PACKET_DATA_FIELD_1\020\326\314\3210\022\036\n"
+      "\027ERR_PACKET_DATA_FIELD_2\020\327\314\3210\022\036\n\027ERR_PAC"
+      "KET_DATA_FIELD_3\020\330\314\3210\022\033\n\024ERR_PACKET_CHEC"
+      "K_SUM\020\331\314\3210\022!\n\032ERR_PACKET_UNKNOWN_REQUEST"
+      "\020\332\314\3210\022\025\n\016ERR_PACKET_END\020\253\315\3210\022\032\n\023ERR_INTE"
+      "RFACE_BEGIN\020\254\315\3210\022\032\n\023ERR_INTERFACE_PARAM\020"
+      "\255\315\3210\022\031\n\022ERR_INTERFACE_PERM\020\256\315\3210\022\034\n\025ERR_I"
+      "NTERFACE_TIMEOUT\020\257\315\3210\022\030\n\021ERR_INTERFACE_E"
+      "ND\020\217\316\3210\022\031\n\022ERR_BUSINESS_BEGIN\020\350\322\3210\022\027\n\020ER"
+      "R_BUSINESS_END\020\217\231\3220b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 637);
+      descriptor, 1627);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "navigate.proto", &protobuf_RegisterTypes);
+  ::common::protobuf_common_2eproto::AddDescriptors();
 }
 } // anonymous namespace
 
@@ -264,350 +260,273 @@ struct StaticDescriptorInitializer {
 
 }  // namespace protobuf_navigate_2eproto
 
+const ::google::protobuf::EnumDescriptor* ErrorCode_descriptor() {
+  protobuf_navigate_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_navigate_2eproto::file_level_enum_descriptors[0];
+}
+bool ErrorCode_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 102000100:
+    case 102000101:
+    case 102000102:
+    case 102000103:
+    case 102000104:
+    case 102000105:
+    case 102000106:
+    case 102000107:
+    case 102000199:
+    case 102000200:
+    case 102000201:
+    case 102000202:
+    case 102000203:
+    case 102000204:
+    case 102000205:
+    case 102000206:
+    case 102000207:
+    case 102000208:
+    case 102000209:
+    case 102000210:
+    case 102000211:
+    case 102000212:
+    case 102000213:
+    case 102000214:
+    case 102000215:
+    case 102000216:
+    case 102000217:
+    case 102000218:
+    case 102000299:
+    case 102000300:
+    case 102000301:
+    case 102000302:
+    case 102000303:
+    case 102000399:
+    case 102001000:
+    case 102009999:
+      return true;
+    default:
+      return false;
+  }
+}
+
 
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TestReq::kServiceIdFieldNumber;
+const int NavigateMsg::kTestReqFieldNumber;
+const int NavigateMsg::kTestRspFieldNumber;
+const int NavigateMsg::kGetAccessReqFieldNumber;
+const int NavigateMsg::kGetAccessRspFieldNumber;
+const int NavigateMsg::kPutLoadReqFieldNumber;
+const int NavigateMsg::kPutLoadRspFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-TestReq::TestReq()
+NavigateMsg::NavigateMsg()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
     protobuf_navigate_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:navigate.TestReq)
+  // @@protoc_insertion_point(constructor:navigate.NavigateMsg)
 }
-TestReq::TestReq(const TestReq& from)
+NavigateMsg::NavigateMsg(const NavigateMsg& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  service_id_ = from.service_id_;
-  // @@protoc_insertion_point(copy_constructor:navigate.TestReq)
-}
-
-void TestReq::SharedCtor() {
-  service_id_ = 0;
-  _cached_size_ = 0;
-}
-
-TestReq::~TestReq() {
-  // @@protoc_insertion_point(destructor:navigate.TestReq)
-  SharedDtor();
-}
-
-void TestReq::SharedDtor() {
-}
-
-void TestReq::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* TestReq::descriptor() {
-  protobuf_navigate_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_navigate_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const TestReq& TestReq::default_instance() {
-  protobuf_navigate_2eproto::InitDefaults();
-  return *internal_default_instance();
-}
-
-TestReq* TestReq::New(::google::protobuf::Arena* arena) const {
-  TestReq* n = new TestReq;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void TestReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:navigate.TestReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  service_id_ = 0;
-  _internal_metadata_.Clear();
-}
-
-bool TestReq::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:navigate.TestReq)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 service_id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &service_id_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
+  clear_has_choice();
+  switch (from.choice_case()) {
+    case kTestReq: {
+      mutable_test_req()->::common::TestReq::MergeFrom(from.test_req());
+      break;
+    }
+    case kTestRsp: {
+      mutable_test_rsp()->::common::TestRsp::MergeFrom(from.test_rsp());
+      break;
+    }
+    case kGetAccessReq: {
+      mutable_get_access_req()->::navigate::GetAccessReq::MergeFrom(from.get_access_req());
+      break;
+    }
+    case kGetAccessRsp: {
+      mutable_get_access_rsp()->::navigate::GetAccessRsp::MergeFrom(from.get_access_rsp());
+      break;
+    }
+    case kPutLoadReq: {
+      mutable_put_load_req()->::navigate::PutLoadReq::MergeFrom(from.put_load_req());
+      break;
+    }
+    case kPutLoadRsp: {
+      mutable_put_load_rsp()->::navigate::PutLoadRsp::MergeFrom(from.put_load_rsp());
+      break;
+    }
+    case CHOICE_NOT_SET: {
+      break;
     }
   }
-success:
-  // @@protoc_insertion_point(parse_success:navigate.TestReq)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:navigate.TestReq)
-  return false;
-#undef DO_
+  // @@protoc_insertion_point(copy_constructor:navigate.NavigateMsg)
 }
 
-void TestReq::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:navigate.TestReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 service_id = 1;
-  if (this->service_id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->service_id(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:navigate.TestReq)
-}
-
-::google::protobuf::uint8* TestReq::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:navigate.TestReq)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 service_id = 1;
-  if (this->service_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->service_id(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:navigate.TestReq)
-  return target;
-}
-
-size_t TestReq::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:navigate.TestReq)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // int32 service_id = 1;
-  if (this->service_id() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->service_id());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void TestReq::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:navigate.TestReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TestReq* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TestReq>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:navigate.TestReq)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:navigate.TestReq)
-    MergeFrom(*source);
-  }
-}
-
-void TestReq::MergeFrom(const TestReq& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:navigate.TestReq)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.service_id() != 0) {
-    set_service_id(from.service_id());
-  }
-}
-
-void TestReq::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:navigate.TestReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void TestReq::CopyFrom(const TestReq& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:navigate.TestReq)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool TestReq::IsInitialized() const {
-  return true;
-}
-
-void TestReq::Swap(TestReq* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void TestReq::InternalSwap(TestReq* other) {
-  using std::swap;
-  swap(service_id_, other->service_id_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata TestReq::GetMetadata() const {
-  protobuf_navigate_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_navigate_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// TestReq
-
-// int32 service_id = 1;
-void TestReq::clear_service_id() {
-  service_id_ = 0;
-}
-::google::protobuf::int32 TestReq::service_id() const {
-  // @@protoc_insertion_point(field_get:navigate.TestReq.service_id)
-  return service_id_;
-}
-void TestReq::set_service_id(::google::protobuf::int32 value) {
-  
-  service_id_ = value;
-  // @@protoc_insertion_point(field_set:navigate.TestReq.service_id)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TestRsp::kServiceNameFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-TestRsp::TestRsp()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    protobuf_navigate_2eproto::InitDefaults();
-  }
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:navigate.TestRsp)
-}
-TestRsp::TestRsp(const TestRsp& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  service_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.service_name().size() > 0) {
-    service_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.service_name_);
-  }
-  // @@protoc_insertion_point(copy_constructor:navigate.TestRsp)
-}
-
-void TestRsp::SharedCtor() {
-  service_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+void NavigateMsg::SharedCtor() {
+  clear_has_choice();
   _cached_size_ = 0;
 }
 
-TestRsp::~TestRsp() {
-  // @@protoc_insertion_point(destructor:navigate.TestRsp)
+NavigateMsg::~NavigateMsg() {
+  // @@protoc_insertion_point(destructor:navigate.NavigateMsg)
   SharedDtor();
 }
 
-void TestRsp::SharedDtor() {
-  service_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+void NavigateMsg::SharedDtor() {
+  if (has_choice()) {
+    clear_choice();
+  }
 }
 
-void TestRsp::SetCachedSize(int size) const {
+void NavigateMsg::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* TestRsp::descriptor() {
+const ::google::protobuf::Descriptor* NavigateMsg::descriptor() {
   protobuf_navigate_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_navigate_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const TestRsp& TestRsp::default_instance() {
+const NavigateMsg& NavigateMsg::default_instance() {
   protobuf_navigate_2eproto::InitDefaults();
   return *internal_default_instance();
 }
 
-TestRsp* TestRsp::New(::google::protobuf::Arena* arena) const {
-  TestRsp* n = new TestRsp;
+NavigateMsg* NavigateMsg::New(::google::protobuf::Arena* arena) const {
+  NavigateMsg* n = new NavigateMsg;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void TestRsp::Clear() {
-// @@protoc_insertion_point(message_clear_start:navigate.TestRsp)
+void NavigateMsg::clear_choice() {
+// @@protoc_insertion_point(one_of_clear_start:navigate.NavigateMsg)
+  switch (choice_case()) {
+    case kTestReq: {
+      delete choice_.test_req_;
+      break;
+    }
+    case kTestRsp: {
+      delete choice_.test_rsp_;
+      break;
+    }
+    case kGetAccessReq: {
+      delete choice_.get_access_req_;
+      break;
+    }
+    case kGetAccessRsp: {
+      delete choice_.get_access_rsp_;
+      break;
+    }
+    case kPutLoadReq: {
+      delete choice_.put_load_req_;
+      break;
+    }
+    case kPutLoadRsp: {
+      delete choice_.put_load_rsp_;
+      break;
+    }
+    case CHOICE_NOT_SET: {
+      break;
+    }
+  }
+  _oneof_case_[0] = CHOICE_NOT_SET;
+}
+
+
+void NavigateMsg::Clear() {
+// @@protoc_insertion_point(message_clear_start:navigate.NavigateMsg)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  service_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_choice();
   _internal_metadata_.Clear();
 }
 
-bool TestRsp::MergePartialFromCodedStream(
+bool NavigateMsg::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:navigate.TestRsp)
+  // @@protoc_insertion_point(parse_start:navigate.NavigateMsg)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes service_name = 1;
+      // .common.TestReq test_req = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_service_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_test_req()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .common.TestRsp test_rsp = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_test_rsp()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .navigate.GetAccessReq get_access_req = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_get_access_req()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .navigate.GetAccessRsp get_access_rsp = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_get_access_rsp()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .navigate.PutLoadReq put_load_req = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_put_load_req()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .navigate.PutLoadRsp put_load_rsp = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_put_load_rsp()));
         } else {
           goto handle_unusual;
         }
@@ -626,57 +545,122 @@ bool TestRsp::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:navigate.TestRsp)
+  // @@protoc_insertion_point(parse_success:navigate.NavigateMsg)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:navigate.TestRsp)
+  // @@protoc_insertion_point(parse_failure:navigate.NavigateMsg)
   return false;
 #undef DO_
 }
 
-void TestRsp::SerializeWithCachedSizes(
+void NavigateMsg::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:navigate.TestRsp)
+  // @@protoc_insertion_point(serialize_start:navigate.NavigateMsg)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes service_name = 1;
-  if (this->service_name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->service_name(), output);
+  // .common.TestReq test_req = 1;
+  if (has_test_req()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *choice_.test_req_, output);
+  }
+
+  // .common.TestRsp test_rsp = 2;
+  if (has_test_rsp()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, *choice_.test_rsp_, output);
+  }
+
+  // .navigate.GetAccessReq get_access_req = 3;
+  if (has_get_access_req()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, *choice_.get_access_req_, output);
+  }
+
+  // .navigate.GetAccessRsp get_access_rsp = 4;
+  if (has_get_access_rsp()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, *choice_.get_access_rsp_, output);
+  }
+
+  // .navigate.PutLoadReq put_load_req = 5;
+  if (has_put_load_req()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, *choice_.put_load_req_, output);
+  }
+
+  // .navigate.PutLoadRsp put_load_rsp = 6;
+  if (has_put_load_rsp()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, *choice_.put_load_rsp_, output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:navigate.TestRsp)
+  // @@protoc_insertion_point(serialize_end:navigate.NavigateMsg)
 }
 
-::google::protobuf::uint8* TestRsp::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* NavigateMsg::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:navigate.TestRsp)
+  // @@protoc_insertion_point(serialize_to_array_start:navigate.NavigateMsg)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes service_name = 1;
-  if (this->service_name().size() > 0) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->service_name(), target);
+  // .common.TestReq test_req = 1;
+  if (has_test_req()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        1, *choice_.test_req_, deterministic, target);
+  }
+
+  // .common.TestRsp test_rsp = 2;
+  if (has_test_rsp()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        2, *choice_.test_rsp_, deterministic, target);
+  }
+
+  // .navigate.GetAccessReq get_access_req = 3;
+  if (has_get_access_req()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        3, *choice_.get_access_req_, deterministic, target);
+  }
+
+  // .navigate.GetAccessRsp get_access_rsp = 4;
+  if (has_get_access_rsp()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        4, *choice_.get_access_rsp_, deterministic, target);
+  }
+
+  // .navigate.PutLoadReq put_load_req = 5;
+  if (has_put_load_req()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        5, *choice_.put_load_req_, deterministic, target);
+  }
+
+  // .navigate.PutLoadRsp put_load_rsp = 6;
+  if (has_put_load_rsp()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        6, *choice_.put_load_rsp_, deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:navigate.TestRsp)
+  // @@protoc_insertion_point(serialize_to_array_end:navigate.NavigateMsg)
   return target;
 }
 
-size_t TestRsp::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:navigate.TestRsp)
+size_t NavigateMsg::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:navigate.NavigateMsg)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -684,13 +668,53 @@ size_t TestRsp::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bytes service_name = 1;
-  if (this->service_name().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->service_name());
+  switch (choice_case()) {
+    // .common.TestReq test_req = 1;
+    case kTestReq: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.test_req_);
+      break;
+    }
+    // .common.TestRsp test_rsp = 2;
+    case kTestRsp: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.test_rsp_);
+      break;
+    }
+    // .navigate.GetAccessReq get_access_req = 3;
+    case kGetAccessReq: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.get_access_req_);
+      break;
+    }
+    // .navigate.GetAccessRsp get_access_rsp = 4;
+    case kGetAccessRsp: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.get_access_rsp_);
+      break;
+    }
+    // .navigate.PutLoadReq put_load_req = 5;
+    case kPutLoadReq: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.put_load_req_);
+      break;
+    }
+    // .navigate.PutLoadRsp put_load_rsp = 6;
+    case kPutLoadRsp: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.put_load_rsp_);
+      break;
+    }
+    case CHOICE_NOT_SET: {
+      break;
+    }
   }
-
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = cached_size;
@@ -698,124 +722,394 @@ size_t TestRsp::ByteSizeLong() const {
   return total_size;
 }
 
-void TestRsp::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:navigate.TestRsp)
+void NavigateMsg::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:navigate.NavigateMsg)
   GOOGLE_DCHECK_NE(&from, this);
-  const TestRsp* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TestRsp>(
+  const NavigateMsg* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const NavigateMsg>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:navigate.TestRsp)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:navigate.NavigateMsg)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:navigate.TestRsp)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:navigate.NavigateMsg)
     MergeFrom(*source);
   }
 }
 
-void TestRsp::MergeFrom(const TestRsp& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:navigate.TestRsp)
+void NavigateMsg::MergeFrom(const NavigateMsg& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:navigate.NavigateMsg)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.service_name().size() > 0) {
-
-    service_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.service_name_);
+  switch (from.choice_case()) {
+    case kTestReq: {
+      mutable_test_req()->::common::TestReq::MergeFrom(from.test_req());
+      break;
+    }
+    case kTestRsp: {
+      mutable_test_rsp()->::common::TestRsp::MergeFrom(from.test_rsp());
+      break;
+    }
+    case kGetAccessReq: {
+      mutable_get_access_req()->::navigate::GetAccessReq::MergeFrom(from.get_access_req());
+      break;
+    }
+    case kGetAccessRsp: {
+      mutable_get_access_rsp()->::navigate::GetAccessRsp::MergeFrom(from.get_access_rsp());
+      break;
+    }
+    case kPutLoadReq: {
+      mutable_put_load_req()->::navigate::PutLoadReq::MergeFrom(from.put_load_req());
+      break;
+    }
+    case kPutLoadRsp: {
+      mutable_put_load_rsp()->::navigate::PutLoadRsp::MergeFrom(from.put_load_rsp());
+      break;
+    }
+    case CHOICE_NOT_SET: {
+      break;
+    }
   }
 }
 
-void TestRsp::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:navigate.TestRsp)
+void NavigateMsg::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:navigate.NavigateMsg)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void TestRsp::CopyFrom(const TestRsp& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:navigate.TestRsp)
+void NavigateMsg::CopyFrom(const NavigateMsg& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:navigate.NavigateMsg)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool TestRsp::IsInitialized() const {
+bool NavigateMsg::IsInitialized() const {
   return true;
 }
 
-void TestRsp::Swap(TestRsp* other) {
+void NavigateMsg::Swap(NavigateMsg* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void TestRsp::InternalSwap(TestRsp* other) {
+void NavigateMsg::InternalSwap(NavigateMsg* other) {
   using std::swap;
-  service_name_.Swap(&other->service_name_);
+  swap(choice_, other->choice_);
+  swap(_oneof_case_[0], other->_oneof_case_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata TestRsp::GetMetadata() const {
+::google::protobuf::Metadata NavigateMsg::GetMetadata() const {
   protobuf_navigate_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_navigate_2eproto::file_level_metadata[kIndexInFileMessages];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// TestRsp
+// NavigateMsg
 
-// bytes service_name = 1;
-void TestRsp::clear_service_name() {
-  service_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// .common.TestReq test_req = 1;
+bool NavigateMsg::has_test_req() const {
+  return choice_case() == kTestReq;
 }
-const ::std::string& TestRsp::service_name() const {
-  // @@protoc_insertion_point(field_get:navigate.TestRsp.service_name)
-  return service_name_.GetNoArena();
+void NavigateMsg::set_has_test_req() {
+  _oneof_case_[0] = kTestReq;
 }
-void TestRsp::set_service_name(const ::std::string& value) {
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:navigate.TestRsp.service_name)
-}
-#if LANG_CXX11
-void TestRsp::set_service_name(::std::string&& value) {
-  
-  service_name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:navigate.TestRsp.service_name)
-}
-#endif
-void TestRsp::set_service_name(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:navigate.TestRsp.service_name)
-}
-void TestRsp::set_service_name(const void* value, size_t size) {
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:navigate.TestRsp.service_name)
-}
-::std::string* TestRsp::mutable_service_name() {
-  
-  // @@protoc_insertion_point(field_mutable:navigate.TestRsp.service_name)
-  return service_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-::std::string* TestRsp::release_service_name() {
-  // @@protoc_insertion_point(field_release:navigate.TestRsp.service_name)
-  
-  return service_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-void TestRsp::set_allocated_service_name(::std::string* service_name) {
-  if (service_name != NULL) {
-    
-  } else {
-    
+void NavigateMsg::clear_test_req() {
+  if (has_test_req()) {
+    delete choice_.test_req_;
+    clear_has_choice();
   }
-  service_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), service_name);
-  // @@protoc_insertion_point(field_set_allocated:navigate.TestRsp.service_name)
+}
+ const ::common::TestReq& NavigateMsg::test_req() const {
+  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.test_req)
+  return has_test_req()
+      ? *choice_.test_req_
+      : ::common::TestReq::default_instance();
+}
+::common::TestReq* NavigateMsg::mutable_test_req() {
+  if (!has_test_req()) {
+    clear_choice();
+    set_has_test_req();
+    choice_.test_req_ = new ::common::TestReq;
+  }
+  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.test_req)
+  return choice_.test_req_;
+}
+::common::TestReq* NavigateMsg::release_test_req() {
+  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.test_req)
+  if (has_test_req()) {
+    clear_has_choice();
+    ::common::TestReq* temp = choice_.test_req_;
+    choice_.test_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void NavigateMsg::set_allocated_test_req(::common::TestReq* test_req) {
+  clear_choice();
+  if (test_req) {
+    set_has_test_req();
+    choice_.test_req_ = test_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.test_req)
 }
 
+// .common.TestRsp test_rsp = 2;
+bool NavigateMsg::has_test_rsp() const {
+  return choice_case() == kTestRsp;
+}
+void NavigateMsg::set_has_test_rsp() {
+  _oneof_case_[0] = kTestRsp;
+}
+void NavigateMsg::clear_test_rsp() {
+  if (has_test_rsp()) {
+    delete choice_.test_rsp_;
+    clear_has_choice();
+  }
+}
+ const ::common::TestRsp& NavigateMsg::test_rsp() const {
+  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.test_rsp)
+  return has_test_rsp()
+      ? *choice_.test_rsp_
+      : ::common::TestRsp::default_instance();
+}
+::common::TestRsp* NavigateMsg::mutable_test_rsp() {
+  if (!has_test_rsp()) {
+    clear_choice();
+    set_has_test_rsp();
+    choice_.test_rsp_ = new ::common::TestRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.test_rsp)
+  return choice_.test_rsp_;
+}
+::common::TestRsp* NavigateMsg::release_test_rsp() {
+  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.test_rsp)
+  if (has_test_rsp()) {
+    clear_has_choice();
+    ::common::TestRsp* temp = choice_.test_rsp_;
+    choice_.test_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void NavigateMsg::set_allocated_test_rsp(::common::TestRsp* test_rsp) {
+  clear_choice();
+  if (test_rsp) {
+    set_has_test_rsp();
+    choice_.test_rsp_ = test_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.test_rsp)
+}
+
+// .navigate.GetAccessReq get_access_req = 3;
+bool NavigateMsg::has_get_access_req() const {
+  return choice_case() == kGetAccessReq;
+}
+void NavigateMsg::set_has_get_access_req() {
+  _oneof_case_[0] = kGetAccessReq;
+}
+void NavigateMsg::clear_get_access_req() {
+  if (has_get_access_req()) {
+    delete choice_.get_access_req_;
+    clear_has_choice();
+  }
+}
+ const ::navigate::GetAccessReq& NavigateMsg::get_access_req() const {
+  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.get_access_req)
+  return has_get_access_req()
+      ? *choice_.get_access_req_
+      : ::navigate::GetAccessReq::default_instance();
+}
+::navigate::GetAccessReq* NavigateMsg::mutable_get_access_req() {
+  if (!has_get_access_req()) {
+    clear_choice();
+    set_has_get_access_req();
+    choice_.get_access_req_ = new ::navigate::GetAccessReq;
+  }
+  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.get_access_req)
+  return choice_.get_access_req_;
+}
+::navigate::GetAccessReq* NavigateMsg::release_get_access_req() {
+  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.get_access_req)
+  if (has_get_access_req()) {
+    clear_has_choice();
+    ::navigate::GetAccessReq* temp = choice_.get_access_req_;
+    choice_.get_access_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void NavigateMsg::set_allocated_get_access_req(::navigate::GetAccessReq* get_access_req) {
+  clear_choice();
+  if (get_access_req) {
+    set_has_get_access_req();
+    choice_.get_access_req_ = get_access_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.get_access_req)
+}
+
+// .navigate.GetAccessRsp get_access_rsp = 4;
+bool NavigateMsg::has_get_access_rsp() const {
+  return choice_case() == kGetAccessRsp;
+}
+void NavigateMsg::set_has_get_access_rsp() {
+  _oneof_case_[0] = kGetAccessRsp;
+}
+void NavigateMsg::clear_get_access_rsp() {
+  if (has_get_access_rsp()) {
+    delete choice_.get_access_rsp_;
+    clear_has_choice();
+  }
+}
+ const ::navigate::GetAccessRsp& NavigateMsg::get_access_rsp() const {
+  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.get_access_rsp)
+  return has_get_access_rsp()
+      ? *choice_.get_access_rsp_
+      : ::navigate::GetAccessRsp::default_instance();
+}
+::navigate::GetAccessRsp* NavigateMsg::mutable_get_access_rsp() {
+  if (!has_get_access_rsp()) {
+    clear_choice();
+    set_has_get_access_rsp();
+    choice_.get_access_rsp_ = new ::navigate::GetAccessRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.get_access_rsp)
+  return choice_.get_access_rsp_;
+}
+::navigate::GetAccessRsp* NavigateMsg::release_get_access_rsp() {
+  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.get_access_rsp)
+  if (has_get_access_rsp()) {
+    clear_has_choice();
+    ::navigate::GetAccessRsp* temp = choice_.get_access_rsp_;
+    choice_.get_access_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void NavigateMsg::set_allocated_get_access_rsp(::navigate::GetAccessRsp* get_access_rsp) {
+  clear_choice();
+  if (get_access_rsp) {
+    set_has_get_access_rsp();
+    choice_.get_access_rsp_ = get_access_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.get_access_rsp)
+}
+
+// .navigate.PutLoadReq put_load_req = 5;
+bool NavigateMsg::has_put_load_req() const {
+  return choice_case() == kPutLoadReq;
+}
+void NavigateMsg::set_has_put_load_req() {
+  _oneof_case_[0] = kPutLoadReq;
+}
+void NavigateMsg::clear_put_load_req() {
+  if (has_put_load_req()) {
+    delete choice_.put_load_req_;
+    clear_has_choice();
+  }
+}
+ const ::navigate::PutLoadReq& NavigateMsg::put_load_req() const {
+  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.put_load_req)
+  return has_put_load_req()
+      ? *choice_.put_load_req_
+      : ::navigate::PutLoadReq::default_instance();
+}
+::navigate::PutLoadReq* NavigateMsg::mutable_put_load_req() {
+  if (!has_put_load_req()) {
+    clear_choice();
+    set_has_put_load_req();
+    choice_.put_load_req_ = new ::navigate::PutLoadReq;
+  }
+  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.put_load_req)
+  return choice_.put_load_req_;
+}
+::navigate::PutLoadReq* NavigateMsg::release_put_load_req() {
+  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.put_load_req)
+  if (has_put_load_req()) {
+    clear_has_choice();
+    ::navigate::PutLoadReq* temp = choice_.put_load_req_;
+    choice_.put_load_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void NavigateMsg::set_allocated_put_load_req(::navigate::PutLoadReq* put_load_req) {
+  clear_choice();
+  if (put_load_req) {
+    set_has_put_load_req();
+    choice_.put_load_req_ = put_load_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.put_load_req)
+}
+
+// .navigate.PutLoadRsp put_load_rsp = 6;
+bool NavigateMsg::has_put_load_rsp() const {
+  return choice_case() == kPutLoadRsp;
+}
+void NavigateMsg::set_has_put_load_rsp() {
+  _oneof_case_[0] = kPutLoadRsp;
+}
+void NavigateMsg::clear_put_load_rsp() {
+  if (has_put_load_rsp()) {
+    delete choice_.put_load_rsp_;
+    clear_has_choice();
+  }
+}
+ const ::navigate::PutLoadRsp& NavigateMsg::put_load_rsp() const {
+  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.put_load_rsp)
+  return has_put_load_rsp()
+      ? *choice_.put_load_rsp_
+      : ::navigate::PutLoadRsp::default_instance();
+}
+::navigate::PutLoadRsp* NavigateMsg::mutable_put_load_rsp() {
+  if (!has_put_load_rsp()) {
+    clear_choice();
+    set_has_put_load_rsp();
+    choice_.put_load_rsp_ = new ::navigate::PutLoadRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.put_load_rsp)
+  return choice_.put_load_rsp_;
+}
+::navigate::PutLoadRsp* NavigateMsg::release_put_load_rsp() {
+  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.put_load_rsp)
+  if (has_put_load_rsp()) {
+    clear_has_choice();
+    ::navigate::PutLoadRsp* temp = choice_.put_load_rsp_;
+    choice_.put_load_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void NavigateMsg::set_allocated_put_load_rsp(::navigate::PutLoadRsp* put_load_rsp) {
+  clear_choice();
+  if (put_load_rsp) {
+    set_has_put_load_rsp();
+    choice_.put_load_rsp_ = put_load_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.put_load_rsp)
+}
+
+bool NavigateMsg::has_choice() const {
+  return choice_case() != CHOICE_NOT_SET;
+}
+void NavigateMsg::clear_has_choice() {
+  _oneof_case_[0] = CHOICE_NOT_SET;
+}
+NavigateMsg::ChoiceCase NavigateMsg::choice_case() const {
+  return NavigateMsg::ChoiceCase(_oneof_case_[0]);
+}
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
@@ -2238,808 +2532,6 @@ void PutLoadRsp::InternalSwap(PutLoadRsp* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // PutLoadRsp
 
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int NavigateMsg::kTestReqFieldNumber;
-const int NavigateMsg::kTestRspFieldNumber;
-const int NavigateMsg::kGetAccessReqFieldNumber;
-const int NavigateMsg::kGetAccessRspFieldNumber;
-const int NavigateMsg::kPutLoadReqFieldNumber;
-const int NavigateMsg::kPutLoadRspFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-NavigateMsg::NavigateMsg()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    protobuf_navigate_2eproto::InitDefaults();
-  }
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:navigate.NavigateMsg)
-}
-NavigateMsg::NavigateMsg(const NavigateMsg& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  clear_has_choice();
-  switch (from.choice_case()) {
-    case kTestReq: {
-      mutable_test_req()->::navigate::TestReq::MergeFrom(from.test_req());
-      break;
-    }
-    case kTestRsp: {
-      mutable_test_rsp()->::navigate::TestRsp::MergeFrom(from.test_rsp());
-      break;
-    }
-    case kGetAccessReq: {
-      mutable_get_access_req()->::navigate::GetAccessReq::MergeFrom(from.get_access_req());
-      break;
-    }
-    case kGetAccessRsp: {
-      mutable_get_access_rsp()->::navigate::GetAccessRsp::MergeFrom(from.get_access_rsp());
-      break;
-    }
-    case kPutLoadReq: {
-      mutable_put_load_req()->::navigate::PutLoadReq::MergeFrom(from.put_load_req());
-      break;
-    }
-    case kPutLoadRsp: {
-      mutable_put_load_rsp()->::navigate::PutLoadRsp::MergeFrom(from.put_load_rsp());
-      break;
-    }
-    case CHOICE_NOT_SET: {
-      break;
-    }
-  }
-  // @@protoc_insertion_point(copy_constructor:navigate.NavigateMsg)
-}
-
-void NavigateMsg::SharedCtor() {
-  clear_has_choice();
-  _cached_size_ = 0;
-}
-
-NavigateMsg::~NavigateMsg() {
-  // @@protoc_insertion_point(destructor:navigate.NavigateMsg)
-  SharedDtor();
-}
-
-void NavigateMsg::SharedDtor() {
-  if (has_choice()) {
-    clear_choice();
-  }
-}
-
-void NavigateMsg::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* NavigateMsg::descriptor() {
-  protobuf_navigate_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_navigate_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const NavigateMsg& NavigateMsg::default_instance() {
-  protobuf_navigate_2eproto::InitDefaults();
-  return *internal_default_instance();
-}
-
-NavigateMsg* NavigateMsg::New(::google::protobuf::Arena* arena) const {
-  NavigateMsg* n = new NavigateMsg;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void NavigateMsg::clear_choice() {
-// @@protoc_insertion_point(one_of_clear_start:navigate.NavigateMsg)
-  switch (choice_case()) {
-    case kTestReq: {
-      delete choice_.test_req_;
-      break;
-    }
-    case kTestRsp: {
-      delete choice_.test_rsp_;
-      break;
-    }
-    case kGetAccessReq: {
-      delete choice_.get_access_req_;
-      break;
-    }
-    case kGetAccessRsp: {
-      delete choice_.get_access_rsp_;
-      break;
-    }
-    case kPutLoadReq: {
-      delete choice_.put_load_req_;
-      break;
-    }
-    case kPutLoadRsp: {
-      delete choice_.put_load_rsp_;
-      break;
-    }
-    case CHOICE_NOT_SET: {
-      break;
-    }
-  }
-  _oneof_case_[0] = CHOICE_NOT_SET;
-}
-
-
-void NavigateMsg::Clear() {
-// @@protoc_insertion_point(message_clear_start:navigate.NavigateMsg)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  clear_choice();
-  _internal_metadata_.Clear();
-}
-
-bool NavigateMsg::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:navigate.NavigateMsg)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .navigate.TestReq test_req = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_test_req()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .navigate.TestRsp test_rsp = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_test_rsp()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .navigate.GetAccessReq get_access_req = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_get_access_req()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .navigate.GetAccessRsp get_access_rsp = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_get_access_rsp()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .navigate.PutLoadReq put_load_req = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_put_load_req()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .navigate.PutLoadRsp put_load_rsp = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_put_load_rsp()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:navigate.NavigateMsg)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:navigate.NavigateMsg)
-  return false;
-#undef DO_
-}
-
-void NavigateMsg::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:navigate.NavigateMsg)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // .navigate.TestReq test_req = 1;
-  if (has_test_req()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, *choice_.test_req_, output);
-  }
-
-  // .navigate.TestRsp test_rsp = 2;
-  if (has_test_rsp()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, *choice_.test_rsp_, output);
-  }
-
-  // .navigate.GetAccessReq get_access_req = 3;
-  if (has_get_access_req()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, *choice_.get_access_req_, output);
-  }
-
-  // .navigate.GetAccessRsp get_access_rsp = 4;
-  if (has_get_access_rsp()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, *choice_.get_access_rsp_, output);
-  }
-
-  // .navigate.PutLoadReq put_load_req = 5;
-  if (has_put_load_req()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, *choice_.put_load_req_, output);
-  }
-
-  // .navigate.PutLoadRsp put_load_rsp = 6;
-  if (has_put_load_rsp()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, *choice_.put_load_rsp_, output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:navigate.NavigateMsg)
-}
-
-::google::protobuf::uint8* NavigateMsg::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:navigate.NavigateMsg)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // .navigate.TestReq test_req = 1;
-  if (has_test_req()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        1, *choice_.test_req_, deterministic, target);
-  }
-
-  // .navigate.TestRsp test_rsp = 2;
-  if (has_test_rsp()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        2, *choice_.test_rsp_, deterministic, target);
-  }
-
-  // .navigate.GetAccessReq get_access_req = 3;
-  if (has_get_access_req()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        3, *choice_.get_access_req_, deterministic, target);
-  }
-
-  // .navigate.GetAccessRsp get_access_rsp = 4;
-  if (has_get_access_rsp()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        4, *choice_.get_access_rsp_, deterministic, target);
-  }
-
-  // .navigate.PutLoadReq put_load_req = 5;
-  if (has_put_load_req()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        5, *choice_.put_load_req_, deterministic, target);
-  }
-
-  // .navigate.PutLoadRsp put_load_rsp = 6;
-  if (has_put_load_rsp()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        6, *choice_.put_load_rsp_, deterministic, target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:navigate.NavigateMsg)
-  return target;
-}
-
-size_t NavigateMsg::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:navigate.NavigateMsg)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  switch (choice_case()) {
-    // .navigate.TestReq test_req = 1;
-    case kTestReq: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.test_req_);
-      break;
-    }
-    // .navigate.TestRsp test_rsp = 2;
-    case kTestRsp: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.test_rsp_);
-      break;
-    }
-    // .navigate.GetAccessReq get_access_req = 3;
-    case kGetAccessReq: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.get_access_req_);
-      break;
-    }
-    // .navigate.GetAccessRsp get_access_rsp = 4;
-    case kGetAccessRsp: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.get_access_rsp_);
-      break;
-    }
-    // .navigate.PutLoadReq put_load_req = 5;
-    case kPutLoadReq: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.put_load_req_);
-      break;
-    }
-    // .navigate.PutLoadRsp put_load_rsp = 6;
-    case kPutLoadRsp: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *choice_.put_load_rsp_);
-      break;
-    }
-    case CHOICE_NOT_SET: {
-      break;
-    }
-  }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void NavigateMsg::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:navigate.NavigateMsg)
-  GOOGLE_DCHECK_NE(&from, this);
-  const NavigateMsg* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const NavigateMsg>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:navigate.NavigateMsg)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:navigate.NavigateMsg)
-    MergeFrom(*source);
-  }
-}
-
-void NavigateMsg::MergeFrom(const NavigateMsg& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:navigate.NavigateMsg)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  switch (from.choice_case()) {
-    case kTestReq: {
-      mutable_test_req()->::navigate::TestReq::MergeFrom(from.test_req());
-      break;
-    }
-    case kTestRsp: {
-      mutable_test_rsp()->::navigate::TestRsp::MergeFrom(from.test_rsp());
-      break;
-    }
-    case kGetAccessReq: {
-      mutable_get_access_req()->::navigate::GetAccessReq::MergeFrom(from.get_access_req());
-      break;
-    }
-    case kGetAccessRsp: {
-      mutable_get_access_rsp()->::navigate::GetAccessRsp::MergeFrom(from.get_access_rsp());
-      break;
-    }
-    case kPutLoadReq: {
-      mutable_put_load_req()->::navigate::PutLoadReq::MergeFrom(from.put_load_req());
-      break;
-    }
-    case kPutLoadRsp: {
-      mutable_put_load_rsp()->::navigate::PutLoadRsp::MergeFrom(from.put_load_rsp());
-      break;
-    }
-    case CHOICE_NOT_SET: {
-      break;
-    }
-  }
-}
-
-void NavigateMsg::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:navigate.NavigateMsg)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void NavigateMsg::CopyFrom(const NavigateMsg& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:navigate.NavigateMsg)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool NavigateMsg::IsInitialized() const {
-  return true;
-}
-
-void NavigateMsg::Swap(NavigateMsg* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void NavigateMsg::InternalSwap(NavigateMsg* other) {
-  using std::swap;
-  swap(choice_, other->choice_);
-  swap(_oneof_case_[0], other->_oneof_case_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata NavigateMsg::GetMetadata() const {
-  protobuf_navigate_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_navigate_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// NavigateMsg
-
-// .navigate.TestReq test_req = 1;
-bool NavigateMsg::has_test_req() const {
-  return choice_case() == kTestReq;
-}
-void NavigateMsg::set_has_test_req() {
-  _oneof_case_[0] = kTestReq;
-}
-void NavigateMsg::clear_test_req() {
-  if (has_test_req()) {
-    delete choice_.test_req_;
-    clear_has_choice();
-  }
-}
- const ::navigate::TestReq& NavigateMsg::test_req() const {
-  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.test_req)
-  return has_test_req()
-      ? *choice_.test_req_
-      : ::navigate::TestReq::default_instance();
-}
-::navigate::TestReq* NavigateMsg::mutable_test_req() {
-  if (!has_test_req()) {
-    clear_choice();
-    set_has_test_req();
-    choice_.test_req_ = new ::navigate::TestReq;
-  }
-  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.test_req)
-  return choice_.test_req_;
-}
-::navigate::TestReq* NavigateMsg::release_test_req() {
-  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.test_req)
-  if (has_test_req()) {
-    clear_has_choice();
-    ::navigate::TestReq* temp = choice_.test_req_;
-    choice_.test_req_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-void NavigateMsg::set_allocated_test_req(::navigate::TestReq* test_req) {
-  clear_choice();
-  if (test_req) {
-    set_has_test_req();
-    choice_.test_req_ = test_req;
-  }
-  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.test_req)
-}
-
-// .navigate.TestRsp test_rsp = 2;
-bool NavigateMsg::has_test_rsp() const {
-  return choice_case() == kTestRsp;
-}
-void NavigateMsg::set_has_test_rsp() {
-  _oneof_case_[0] = kTestRsp;
-}
-void NavigateMsg::clear_test_rsp() {
-  if (has_test_rsp()) {
-    delete choice_.test_rsp_;
-    clear_has_choice();
-  }
-}
- const ::navigate::TestRsp& NavigateMsg::test_rsp() const {
-  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.test_rsp)
-  return has_test_rsp()
-      ? *choice_.test_rsp_
-      : ::navigate::TestRsp::default_instance();
-}
-::navigate::TestRsp* NavigateMsg::mutable_test_rsp() {
-  if (!has_test_rsp()) {
-    clear_choice();
-    set_has_test_rsp();
-    choice_.test_rsp_ = new ::navigate::TestRsp;
-  }
-  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.test_rsp)
-  return choice_.test_rsp_;
-}
-::navigate::TestRsp* NavigateMsg::release_test_rsp() {
-  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.test_rsp)
-  if (has_test_rsp()) {
-    clear_has_choice();
-    ::navigate::TestRsp* temp = choice_.test_rsp_;
-    choice_.test_rsp_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-void NavigateMsg::set_allocated_test_rsp(::navigate::TestRsp* test_rsp) {
-  clear_choice();
-  if (test_rsp) {
-    set_has_test_rsp();
-    choice_.test_rsp_ = test_rsp;
-  }
-  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.test_rsp)
-}
-
-// .navigate.GetAccessReq get_access_req = 3;
-bool NavigateMsg::has_get_access_req() const {
-  return choice_case() == kGetAccessReq;
-}
-void NavigateMsg::set_has_get_access_req() {
-  _oneof_case_[0] = kGetAccessReq;
-}
-void NavigateMsg::clear_get_access_req() {
-  if (has_get_access_req()) {
-    delete choice_.get_access_req_;
-    clear_has_choice();
-  }
-}
- const ::navigate::GetAccessReq& NavigateMsg::get_access_req() const {
-  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.get_access_req)
-  return has_get_access_req()
-      ? *choice_.get_access_req_
-      : ::navigate::GetAccessReq::default_instance();
-}
-::navigate::GetAccessReq* NavigateMsg::mutable_get_access_req() {
-  if (!has_get_access_req()) {
-    clear_choice();
-    set_has_get_access_req();
-    choice_.get_access_req_ = new ::navigate::GetAccessReq;
-  }
-  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.get_access_req)
-  return choice_.get_access_req_;
-}
-::navigate::GetAccessReq* NavigateMsg::release_get_access_req() {
-  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.get_access_req)
-  if (has_get_access_req()) {
-    clear_has_choice();
-    ::navigate::GetAccessReq* temp = choice_.get_access_req_;
-    choice_.get_access_req_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-void NavigateMsg::set_allocated_get_access_req(::navigate::GetAccessReq* get_access_req) {
-  clear_choice();
-  if (get_access_req) {
-    set_has_get_access_req();
-    choice_.get_access_req_ = get_access_req;
-  }
-  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.get_access_req)
-}
-
-// .navigate.GetAccessRsp get_access_rsp = 4;
-bool NavigateMsg::has_get_access_rsp() const {
-  return choice_case() == kGetAccessRsp;
-}
-void NavigateMsg::set_has_get_access_rsp() {
-  _oneof_case_[0] = kGetAccessRsp;
-}
-void NavigateMsg::clear_get_access_rsp() {
-  if (has_get_access_rsp()) {
-    delete choice_.get_access_rsp_;
-    clear_has_choice();
-  }
-}
- const ::navigate::GetAccessRsp& NavigateMsg::get_access_rsp() const {
-  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.get_access_rsp)
-  return has_get_access_rsp()
-      ? *choice_.get_access_rsp_
-      : ::navigate::GetAccessRsp::default_instance();
-}
-::navigate::GetAccessRsp* NavigateMsg::mutable_get_access_rsp() {
-  if (!has_get_access_rsp()) {
-    clear_choice();
-    set_has_get_access_rsp();
-    choice_.get_access_rsp_ = new ::navigate::GetAccessRsp;
-  }
-  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.get_access_rsp)
-  return choice_.get_access_rsp_;
-}
-::navigate::GetAccessRsp* NavigateMsg::release_get_access_rsp() {
-  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.get_access_rsp)
-  if (has_get_access_rsp()) {
-    clear_has_choice();
-    ::navigate::GetAccessRsp* temp = choice_.get_access_rsp_;
-    choice_.get_access_rsp_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-void NavigateMsg::set_allocated_get_access_rsp(::navigate::GetAccessRsp* get_access_rsp) {
-  clear_choice();
-  if (get_access_rsp) {
-    set_has_get_access_rsp();
-    choice_.get_access_rsp_ = get_access_rsp;
-  }
-  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.get_access_rsp)
-}
-
-// .navigate.PutLoadReq put_load_req = 5;
-bool NavigateMsg::has_put_load_req() const {
-  return choice_case() == kPutLoadReq;
-}
-void NavigateMsg::set_has_put_load_req() {
-  _oneof_case_[0] = kPutLoadReq;
-}
-void NavigateMsg::clear_put_load_req() {
-  if (has_put_load_req()) {
-    delete choice_.put_load_req_;
-    clear_has_choice();
-  }
-}
- const ::navigate::PutLoadReq& NavigateMsg::put_load_req() const {
-  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.put_load_req)
-  return has_put_load_req()
-      ? *choice_.put_load_req_
-      : ::navigate::PutLoadReq::default_instance();
-}
-::navigate::PutLoadReq* NavigateMsg::mutable_put_load_req() {
-  if (!has_put_load_req()) {
-    clear_choice();
-    set_has_put_load_req();
-    choice_.put_load_req_ = new ::navigate::PutLoadReq;
-  }
-  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.put_load_req)
-  return choice_.put_load_req_;
-}
-::navigate::PutLoadReq* NavigateMsg::release_put_load_req() {
-  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.put_load_req)
-  if (has_put_load_req()) {
-    clear_has_choice();
-    ::navigate::PutLoadReq* temp = choice_.put_load_req_;
-    choice_.put_load_req_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-void NavigateMsg::set_allocated_put_load_req(::navigate::PutLoadReq* put_load_req) {
-  clear_choice();
-  if (put_load_req) {
-    set_has_put_load_req();
-    choice_.put_load_req_ = put_load_req;
-  }
-  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.put_load_req)
-}
-
-// .navigate.PutLoadRsp put_load_rsp = 6;
-bool NavigateMsg::has_put_load_rsp() const {
-  return choice_case() == kPutLoadRsp;
-}
-void NavigateMsg::set_has_put_load_rsp() {
-  _oneof_case_[0] = kPutLoadRsp;
-}
-void NavigateMsg::clear_put_load_rsp() {
-  if (has_put_load_rsp()) {
-    delete choice_.put_load_rsp_;
-    clear_has_choice();
-  }
-}
- const ::navigate::PutLoadRsp& NavigateMsg::put_load_rsp() const {
-  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.put_load_rsp)
-  return has_put_load_rsp()
-      ? *choice_.put_load_rsp_
-      : ::navigate::PutLoadRsp::default_instance();
-}
-::navigate::PutLoadRsp* NavigateMsg::mutable_put_load_rsp() {
-  if (!has_put_load_rsp()) {
-    clear_choice();
-    set_has_put_load_rsp();
-    choice_.put_load_rsp_ = new ::navigate::PutLoadRsp;
-  }
-  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.put_load_rsp)
-  return choice_.put_load_rsp_;
-}
-::navigate::PutLoadRsp* NavigateMsg::release_put_load_rsp() {
-  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.put_load_rsp)
-  if (has_put_load_rsp()) {
-    clear_has_choice();
-    ::navigate::PutLoadRsp* temp = choice_.put_load_rsp_;
-    choice_.put_load_rsp_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-void NavigateMsg::set_allocated_put_load_rsp(::navigate::PutLoadRsp* put_load_rsp) {
-  clear_choice();
-  if (put_load_rsp) {
-    set_has_put_load_rsp();
-    choice_.put_load_rsp_ = put_load_rsp;
-  }
-  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.put_load_rsp)
-}
-
-bool NavigateMsg::has_choice() const {
-  return choice_case() != CHOICE_NOT_SET;
-}
-void NavigateMsg::clear_has_choice() {
-  _oneof_case_[0] = CHOICE_NOT_SET;
-}
-NavigateMsg::ChoiceCase NavigateMsg::choice_case() const {
-  return NavigateMsg::ChoiceCase(_oneof_case_[0]);
-}
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)

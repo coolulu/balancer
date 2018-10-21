@@ -25,11 +25,19 @@
 #include <google/protobuf/generated_message_table_driven.h>
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/metadata.h>
+#include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_reflection.h>
+#include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 namespace common {
+class TestReq;
+class TestReqDefaultTypeInternal;
+extern TestReqDefaultTypeInternal _TestReq_default_instance_;
+class TestRsp;
+class TestRspDefaultTypeInternal;
+extern TestRspDefaultTypeInternal _TestRsp_default_instance_;
 }  // namespace common
 
 namespace common {
@@ -83,9 +91,10 @@ enum ErrorCode {
   ERR_INTERFACE_BEGIN = 300,
   ERR_INTERFACE_PARAM = 301,
   ERR_INTERFACE_PERM = 302,
+  ERR_INTERFACE_TIMEOUT = 303,
   ERR_INTERFACE_END = 399,
-  ERR_BUSINESS_BEGIN = 10000,
-  ERR_BUSINESS_END = 99999,
+  ERR_BUSINESS_BEGIN = 1000,
+  ERR_BUSINESS_END = 9999,
   ErrorCode_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ErrorCode_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
@@ -106,7 +115,206 @@ inline bool ErrorCode_Parse(
 }
 // ===================================================================
 
+class TestReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:common.TestReq) */ {
+ public:
+  TestReq();
+  virtual ~TestReq();
 
+  TestReq(const TestReq& from);
+
+  inline TestReq& operator=(const TestReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  TestReq(TestReq&& from) noexcept
+    : TestReq() {
+    *this = ::std::move(from);
+  }
+
+  inline TestReq& operator=(TestReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TestReq& default_instance();
+
+  static inline const TestReq* internal_default_instance() {
+    return reinterpret_cast<const TestReq*>(
+               &_TestReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    0;
+
+  void Swap(TestReq* other);
+  friend void swap(TestReq& a, TestReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TestReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  TestReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const TestReq& from);
+  void MergeFrom(const TestReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(TestReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // int32 service_id = 1;
+  void clear_service_id();
+  static const int kServiceIdFieldNumber = 1;
+  ::google::protobuf::int32 service_id() const;
+  void set_service_id(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:common.TestReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::int32 service_id_;
+  mutable int _cached_size_;
+  friend struct protobuf_common_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class TestRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:common.TestRsp) */ {
+ public:
+  TestRsp();
+  virtual ~TestRsp();
+
+  TestRsp(const TestRsp& from);
+
+  inline TestRsp& operator=(const TestRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  TestRsp(TestRsp&& from) noexcept
+    : TestRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline TestRsp& operator=(TestRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TestRsp& default_instance();
+
+  static inline const TestRsp* internal_default_instance() {
+    return reinterpret_cast<const TestRsp*>(
+               &_TestRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    1;
+
+  void Swap(TestRsp* other);
+  friend void swap(TestRsp& a, TestRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TestRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  TestRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const TestRsp& from);
+  void MergeFrom(const TestRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(TestRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bytes service_name = 1;
+  void clear_service_name();
+  static const int kServiceNameFieldNumber = 1;
+  const ::std::string& service_name() const;
+  void set_service_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_service_name(::std::string&& value);
+  #endif
+  void set_service_name(const char* value);
+  void set_service_name(const void* value, size_t size);
+  ::std::string* mutable_service_name();
+  ::std::string* release_service_name();
+  void set_allocated_service_name(::std::string* service_name);
+
+  // @@protoc_insertion_point(class_scope:common.TestRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr service_name_;
+  mutable int _cached_size_;
+  friend struct protobuf_common_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -117,10 +325,85 @@ inline bool ErrorCode_Parse(
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// TestReq
+
+// int32 service_id = 1;
+inline void TestReq::clear_service_id() {
+  service_id_ = 0;
+}
+inline ::google::protobuf::int32 TestReq::service_id() const {
+  // @@protoc_insertion_point(field_get:common.TestReq.service_id)
+  return service_id_;
+}
+inline void TestReq::set_service_id(::google::protobuf::int32 value) {
+  
+  service_id_ = value;
+  // @@protoc_insertion_point(field_set:common.TestReq.service_id)
+}
+
+// -------------------------------------------------------------------
+
+// TestRsp
+
+// bytes service_name = 1;
+inline void TestRsp::clear_service_name() {
+  service_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TestRsp::service_name() const {
+  // @@protoc_insertion_point(field_get:common.TestRsp.service_name)
+  return service_name_.GetNoArena();
+}
+inline void TestRsp::set_service_name(const ::std::string& value) {
+  
+  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:common.TestRsp.service_name)
+}
+#if LANG_CXX11
+inline void TestRsp::set_service_name(::std::string&& value) {
+  
+  service_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:common.TestRsp.service_name)
+}
+#endif
+inline void TestRsp::set_service_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:common.TestRsp.service_name)
+}
+inline void TestRsp::set_service_name(const void* value, size_t size) {
+  
+  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:common.TestRsp.service_name)
+}
+inline ::std::string* TestRsp::mutable_service_name() {
+  
+  // @@protoc_insertion_point(field_mutable:common.TestRsp.service_name)
+  return service_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TestRsp::release_service_name() {
+  // @@protoc_insertion_point(field_release:common.TestRsp.service_name)
+  
+  return service_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TestRsp::set_allocated_service_name(::std::string* service_name) {
+  if (service_name != NULL) {
+    
+  } else {
+    
+  }
+  service_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), service_name);
+  // @@protoc_insertion_point(field_set_allocated:common.TestRsp.service_name)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 

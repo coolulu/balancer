@@ -28,7 +28,9 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "common.pb.h"
 // @@protoc_insertion_point(includes)
 namespace navigate {
 class GetAccessReq;
@@ -46,12 +48,6 @@ extern PutLoadReqDefaultTypeInternal _PutLoadReq_default_instance_;
 class PutLoadRsp;
 class PutLoadRspDefaultTypeInternal;
 extern PutLoadRspDefaultTypeInternal _PutLoadRsp_default_instance_;
-class TestReq;
-class TestReqDefaultTypeInternal;
-extern TestReqDefaultTypeInternal _TestReq_default_instance_;
-class TestRsp;
-class TestRspDefaultTypeInternal;
-extern TestRspDefaultTypeInternal _TestRsp_default_instance_;
 }  // namespace navigate
 
 namespace navigate {
@@ -71,26 +67,82 @@ void AddDescriptors();
 void InitDefaults();
 }  // namespace protobuf_navigate_2eproto
 
+enum ErrorCode {
+  SUCCESS = 0,
+  ERR_SYS_BEGIN = 102000100,
+  ERR_SYS_OVERLOAD = 102000101,
+  ERR_SYS_REJECT_SERVICE = 102000102,
+  ERR_SYS_SERVER_INNER = 102000103,
+  ERR_SYS_TIMEOUT = 102000104,
+  ERR_SYS_NO_INSERVICE_LIST = 102000105,
+  ERR_SYS_TASK_STATE = 102000106,
+  ERR_SYS_TASK_DISCARD = 102000107,
+  ERR_SYS_END = 102000199,
+  ERR_PACKET_BEGIN = 102000200,
+  ERR_PACKET_ENCODE = 102000201,
+  ERR_PACKET_DECODE = 102000202,
+  ERR_PACKET_HEADER = 102000203,
+  ERR_PACKET_LEN = 102000204,
+  ERR_PACKET_VERSION = 102000205,
+  ERR_PACKET_FROM_SERVICE_ID = 102000206,
+  ERR_PACKET_TO_SERVICE_ID = 102000207,
+  ERR_PACKET_APP_ID = 102000208,
+  ERR_PACKET_APP_VERSION = 102000209,
+  ERR_PACKET_CONN_SEQ_ID = 102000210,
+  ERR_PACKET_MSG_SEQ_ID = 102000211,
+  ERR_PACKET_DATA_FORMAT = 102000212,
+  ERR_PACKET_DATA_FIELD_0 = 102000213,
+  ERR_PACKET_DATA_FIELD_1 = 102000214,
+  ERR_PACKET_DATA_FIELD_2 = 102000215,
+  ERR_PACKET_DATA_FIELD_3 = 102000216,
+  ERR_PACKET_CHECK_SUM = 102000217,
+  ERR_PACKET_UNKNOWN_REQUEST = 102000218,
+  ERR_PACKET_END = 102000299,
+  ERR_INTERFACE_BEGIN = 102000300,
+  ERR_INTERFACE_PARAM = 102000301,
+  ERR_INTERFACE_PERM = 102000302,
+  ERR_INTERFACE_TIMEOUT = 102000303,
+  ERR_INTERFACE_END = 102000399,
+  ERR_BUSINESS_BEGIN = 102001000,
+  ERR_BUSINESS_END = 102009999,
+  ErrorCode_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ErrorCode_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool ErrorCode_IsValid(int value);
+const ErrorCode ErrorCode_MIN = SUCCESS;
+const ErrorCode ErrorCode_MAX = ERR_BUSINESS_END;
+const int ErrorCode_ARRAYSIZE = ErrorCode_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ErrorCode_descriptor();
+inline const ::std::string& ErrorCode_Name(ErrorCode value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ErrorCode_descriptor(), value);
+}
+inline bool ErrorCode_Parse(
+    const ::std::string& name, ErrorCode* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ErrorCode>(
+    ErrorCode_descriptor(), name, value);
+}
 // ===================================================================
 
-class TestReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:navigate.TestReq) */ {
+class NavigateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:navigate.NavigateMsg) */ {
  public:
-  TestReq();
-  virtual ~TestReq();
+  NavigateMsg();
+  virtual ~NavigateMsg();
 
-  TestReq(const TestReq& from);
+  NavigateMsg(const NavigateMsg& from);
 
-  inline TestReq& operator=(const TestReq& from) {
+  inline NavigateMsg& operator=(const NavigateMsg& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  TestReq(TestReq&& from) noexcept
-    : TestReq() {
+  NavigateMsg(NavigateMsg&& from) noexcept
+    : NavigateMsg() {
     *this = ::std::move(from);
   }
 
-  inline TestReq& operator=(TestReq&& from) noexcept {
+  inline NavigateMsg& operator=(NavigateMsg&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -100,29 +152,39 @@ class TestReq : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const TestReq& default_instance();
+  static const NavigateMsg& default_instance();
 
-  static inline const TestReq* internal_default_instance() {
-    return reinterpret_cast<const TestReq*>(
-               &_TestReq_default_instance_);
+  enum ChoiceCase {
+    kTestReq = 1,
+    kTestRsp = 2,
+    kGetAccessReq = 3,
+    kGetAccessRsp = 4,
+    kPutLoadReq = 5,
+    kPutLoadRsp = 6,
+    CHOICE_NOT_SET = 0,
+  };
+
+  static inline const NavigateMsg* internal_default_instance() {
+    return reinterpret_cast<const NavigateMsg*>(
+               &_NavigateMsg_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     0;
 
-  void Swap(TestReq* other);
-  friend void swap(TestReq& a, TestReq& b) {
+  void Swap(NavigateMsg* other);
+  friend void swap(NavigateMsg& a, NavigateMsg& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline TestReq* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline NavigateMsg* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  TestReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  NavigateMsg* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const TestReq& from);
-  void MergeFrom(const TestReq& from);
+  void CopyFrom(const NavigateMsg& from);
+  void MergeFrom(const NavigateMsg& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -138,7 +200,7 @@ class TestReq : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(TestReq* other);
+  void InternalSwap(NavigateMsg* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -154,123 +216,87 @@ class TestReq : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // int32 service_id = 1;
-  void clear_service_id();
-  static const int kServiceIdFieldNumber = 1;
-  ::google::protobuf::int32 service_id() const;
-  void set_service_id(::google::protobuf::int32 value);
+  // .common.TestReq test_req = 1;
+  bool has_test_req() const;
+  void clear_test_req();
+  static const int kTestReqFieldNumber = 1;
+  const ::common::TestReq& test_req() const;
+  ::common::TestReq* mutable_test_req();
+  ::common::TestReq* release_test_req();
+  void set_allocated_test_req(::common::TestReq* test_req);
 
-  // @@protoc_insertion_point(class_scope:navigate.TestReq)
+  // .common.TestRsp test_rsp = 2;
+  bool has_test_rsp() const;
+  void clear_test_rsp();
+  static const int kTestRspFieldNumber = 2;
+  const ::common::TestRsp& test_rsp() const;
+  ::common::TestRsp* mutable_test_rsp();
+  ::common::TestRsp* release_test_rsp();
+  void set_allocated_test_rsp(::common::TestRsp* test_rsp);
+
+  // .navigate.GetAccessReq get_access_req = 3;
+  bool has_get_access_req() const;
+  void clear_get_access_req();
+  static const int kGetAccessReqFieldNumber = 3;
+  const ::navigate::GetAccessReq& get_access_req() const;
+  ::navigate::GetAccessReq* mutable_get_access_req();
+  ::navigate::GetAccessReq* release_get_access_req();
+  void set_allocated_get_access_req(::navigate::GetAccessReq* get_access_req);
+
+  // .navigate.GetAccessRsp get_access_rsp = 4;
+  bool has_get_access_rsp() const;
+  void clear_get_access_rsp();
+  static const int kGetAccessRspFieldNumber = 4;
+  const ::navigate::GetAccessRsp& get_access_rsp() const;
+  ::navigate::GetAccessRsp* mutable_get_access_rsp();
+  ::navigate::GetAccessRsp* release_get_access_rsp();
+  void set_allocated_get_access_rsp(::navigate::GetAccessRsp* get_access_rsp);
+
+  // .navigate.PutLoadReq put_load_req = 5;
+  bool has_put_load_req() const;
+  void clear_put_load_req();
+  static const int kPutLoadReqFieldNumber = 5;
+  const ::navigate::PutLoadReq& put_load_req() const;
+  ::navigate::PutLoadReq* mutable_put_load_req();
+  ::navigate::PutLoadReq* release_put_load_req();
+  void set_allocated_put_load_req(::navigate::PutLoadReq* put_load_req);
+
+  // .navigate.PutLoadRsp put_load_rsp = 6;
+  bool has_put_load_rsp() const;
+  void clear_put_load_rsp();
+  static const int kPutLoadRspFieldNumber = 6;
+  const ::navigate::PutLoadRsp& put_load_rsp() const;
+  ::navigate::PutLoadRsp* mutable_put_load_rsp();
+  ::navigate::PutLoadRsp* release_put_load_rsp();
+  void set_allocated_put_load_rsp(::navigate::PutLoadRsp* put_load_rsp);
+
+  ChoiceCase choice_case() const;
+  // @@protoc_insertion_point(class_scope:navigate.NavigateMsg)
  private:
+  void set_has_test_req();
+  void set_has_test_rsp();
+  void set_has_get_access_req();
+  void set_has_get_access_rsp();
+  void set_has_put_load_req();
+  void set_has_put_load_rsp();
+
+  inline bool has_choice() const;
+  void clear_choice();
+  inline void clear_has_choice();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int32 service_id_;
+  union ChoiceUnion {
+    ChoiceUnion() {}
+    ::common::TestReq* test_req_;
+    ::common::TestRsp* test_rsp_;
+    ::navigate::GetAccessReq* get_access_req_;
+    ::navigate::GetAccessRsp* get_access_rsp_;
+    ::navigate::PutLoadReq* put_load_req_;
+    ::navigate::PutLoadRsp* put_load_rsp_;
+  } choice_;
   mutable int _cached_size_;
-  friend struct protobuf_navigate_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
+  ::google::protobuf::uint32 _oneof_case_[1];
 
-class TestRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:navigate.TestRsp) */ {
- public:
-  TestRsp();
-  virtual ~TestRsp();
-
-  TestRsp(const TestRsp& from);
-
-  inline TestRsp& operator=(const TestRsp& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  TestRsp(TestRsp&& from) noexcept
-    : TestRsp() {
-    *this = ::std::move(from);
-  }
-
-  inline TestRsp& operator=(TestRsp&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const TestRsp& default_instance();
-
-  static inline const TestRsp* internal_default_instance() {
-    return reinterpret_cast<const TestRsp*>(
-               &_TestRsp_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    1;
-
-  void Swap(TestRsp* other);
-  friend void swap(TestRsp& a, TestRsp& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline TestRsp* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  TestRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const TestRsp& from);
-  void MergeFrom(const TestRsp& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(TestRsp* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // bytes service_name = 1;
-  void clear_service_name();
-  static const int kServiceNameFieldNumber = 1;
-  const ::std::string& service_name() const;
-  void set_service_name(const ::std::string& value);
-  #if LANG_CXX11
-  void set_service_name(::std::string&& value);
-  #endif
-  void set_service_name(const char* value);
-  void set_service_name(const void* value, size_t size);
-  ::std::string* mutable_service_name();
-  ::std::string* release_service_name();
-  void set_allocated_service_name(::std::string* service_name);
-
-  // @@protoc_insertion_point(class_scope:navigate.TestRsp)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr service_name_;
-  mutable int _cached_size_;
   friend struct protobuf_navigate_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -309,7 +335,7 @@ class GetAccessReq : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_GetAccessReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    2;
+    1;
 
   void Swap(GetAccessReq* other);
   friend void swap(GetAccessReq& a, GetAccessReq& b) {
@@ -413,7 +439,7 @@ class GetAccessRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_GetAccessRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    3;
+    2;
 
   void Swap(GetAccessRsp* other);
   friend void swap(GetAccessRsp& a, GetAccessRsp& b) {
@@ -554,7 +580,7 @@ class PutLoadReq : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_PutLoadReq_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    4;
+    3;
 
   void Swap(PutLoadReq* other);
   friend void swap(PutLoadReq& a, PutLoadReq& b) {
@@ -665,7 +691,7 @@ class PutLoadRsp : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_PutLoadRsp_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    5;
+    4;
 
   void Swap(PutLoadRsp* other);
   friend void swap(PutLoadRsp& a, PutLoadRsp& b) {
@@ -719,182 +745,6 @@ class PutLoadRsp : public ::google::protobuf::Message /* @@protoc_insertion_poin
   mutable int _cached_size_;
   friend struct protobuf_navigate_2eproto::TableStruct;
 };
-// -------------------------------------------------------------------
-
-class NavigateMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:navigate.NavigateMsg) */ {
- public:
-  NavigateMsg();
-  virtual ~NavigateMsg();
-
-  NavigateMsg(const NavigateMsg& from);
-
-  inline NavigateMsg& operator=(const NavigateMsg& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  NavigateMsg(NavigateMsg&& from) noexcept
-    : NavigateMsg() {
-    *this = ::std::move(from);
-  }
-
-  inline NavigateMsg& operator=(NavigateMsg&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const NavigateMsg& default_instance();
-
-  enum ChoiceCase {
-    kTestReq = 1,
-    kTestRsp = 2,
-    kGetAccessReq = 3,
-    kGetAccessRsp = 4,
-    kPutLoadReq = 5,
-    kPutLoadRsp = 6,
-    CHOICE_NOT_SET = 0,
-  };
-
-  static inline const NavigateMsg* internal_default_instance() {
-    return reinterpret_cast<const NavigateMsg*>(
-               &_NavigateMsg_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    6;
-
-  void Swap(NavigateMsg* other);
-  friend void swap(NavigateMsg& a, NavigateMsg& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline NavigateMsg* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  NavigateMsg* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const NavigateMsg& from);
-  void MergeFrom(const NavigateMsg& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(NavigateMsg* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // .navigate.TestReq test_req = 1;
-  bool has_test_req() const;
-  void clear_test_req();
-  static const int kTestReqFieldNumber = 1;
-  const ::navigate::TestReq& test_req() const;
-  ::navigate::TestReq* mutable_test_req();
-  ::navigate::TestReq* release_test_req();
-  void set_allocated_test_req(::navigate::TestReq* test_req);
-
-  // .navigate.TestRsp test_rsp = 2;
-  bool has_test_rsp() const;
-  void clear_test_rsp();
-  static const int kTestRspFieldNumber = 2;
-  const ::navigate::TestRsp& test_rsp() const;
-  ::navigate::TestRsp* mutable_test_rsp();
-  ::navigate::TestRsp* release_test_rsp();
-  void set_allocated_test_rsp(::navigate::TestRsp* test_rsp);
-
-  // .navigate.GetAccessReq get_access_req = 3;
-  bool has_get_access_req() const;
-  void clear_get_access_req();
-  static const int kGetAccessReqFieldNumber = 3;
-  const ::navigate::GetAccessReq& get_access_req() const;
-  ::navigate::GetAccessReq* mutable_get_access_req();
-  ::navigate::GetAccessReq* release_get_access_req();
-  void set_allocated_get_access_req(::navigate::GetAccessReq* get_access_req);
-
-  // .navigate.GetAccessRsp get_access_rsp = 4;
-  bool has_get_access_rsp() const;
-  void clear_get_access_rsp();
-  static const int kGetAccessRspFieldNumber = 4;
-  const ::navigate::GetAccessRsp& get_access_rsp() const;
-  ::navigate::GetAccessRsp* mutable_get_access_rsp();
-  ::navigate::GetAccessRsp* release_get_access_rsp();
-  void set_allocated_get_access_rsp(::navigate::GetAccessRsp* get_access_rsp);
-
-  // .navigate.PutLoadReq put_load_req = 5;
-  bool has_put_load_req() const;
-  void clear_put_load_req();
-  static const int kPutLoadReqFieldNumber = 5;
-  const ::navigate::PutLoadReq& put_load_req() const;
-  ::navigate::PutLoadReq* mutable_put_load_req();
-  ::navigate::PutLoadReq* release_put_load_req();
-  void set_allocated_put_load_req(::navigate::PutLoadReq* put_load_req);
-
-  // .navigate.PutLoadRsp put_load_rsp = 6;
-  bool has_put_load_rsp() const;
-  void clear_put_load_rsp();
-  static const int kPutLoadRspFieldNumber = 6;
-  const ::navigate::PutLoadRsp& put_load_rsp() const;
-  ::navigate::PutLoadRsp* mutable_put_load_rsp();
-  ::navigate::PutLoadRsp* release_put_load_rsp();
-  void set_allocated_put_load_rsp(::navigate::PutLoadRsp* put_load_rsp);
-
-  ChoiceCase choice_case() const;
-  // @@protoc_insertion_point(class_scope:navigate.NavigateMsg)
- private:
-  void set_has_test_req();
-  void set_has_test_rsp();
-  void set_has_get_access_req();
-  void set_has_get_access_rsp();
-  void set_has_put_load_req();
-  void set_has_put_load_rsp();
-
-  inline bool has_choice() const;
-  void clear_choice();
-  inline void clear_has_choice();
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  union ChoiceUnion {
-    ChoiceUnion() {}
-    ::navigate::TestReq* test_req_;
-    ::navigate::TestRsp* test_rsp_;
-    ::navigate::GetAccessReq* get_access_req_;
-    ::navigate::GetAccessRsp* get_access_rsp_;
-    ::navigate::PutLoadReq* put_load_req_;
-    ::navigate::PutLoadRsp* put_load_rsp_;
-  } choice_;
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _oneof_case_[1];
-
-  friend struct protobuf_navigate_2eproto::TableStruct;
-};
 // ===================================================================
 
 
@@ -905,79 +755,305 @@ class NavigateMsg : public ::google::protobuf::Message /* @@protoc_insertion_poi
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// TestReq
+// NavigateMsg
 
-// int32 service_id = 1;
-inline void TestReq::clear_service_id() {
-  service_id_ = 0;
+// .common.TestReq test_req = 1;
+inline bool NavigateMsg::has_test_req() const {
+  return choice_case() == kTestReq;
 }
-inline ::google::protobuf::int32 TestReq::service_id() const {
-  // @@protoc_insertion_point(field_get:navigate.TestReq.service_id)
-  return service_id_;
+inline void NavigateMsg::set_has_test_req() {
+  _oneof_case_[0] = kTestReq;
 }
-inline void TestReq::set_service_id(::google::protobuf::int32 value) {
-  
-  service_id_ = value;
-  // @@protoc_insertion_point(field_set:navigate.TestReq.service_id)
-}
-
-// -------------------------------------------------------------------
-
-// TestRsp
-
-// bytes service_name = 1;
-inline void TestRsp::clear_service_name() {
-  service_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& TestRsp::service_name() const {
-  // @@protoc_insertion_point(field_get:navigate.TestRsp.service_name)
-  return service_name_.GetNoArena();
-}
-inline void TestRsp::set_service_name(const ::std::string& value) {
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:navigate.TestRsp.service_name)
-}
-#if LANG_CXX11
-inline void TestRsp::set_service_name(::std::string&& value) {
-  
-  service_name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:navigate.TestRsp.service_name)
-}
-#endif
-inline void TestRsp::set_service_name(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:navigate.TestRsp.service_name)
-}
-inline void TestRsp::set_service_name(const void* value, size_t size) {
-  
-  service_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:navigate.TestRsp.service_name)
-}
-inline ::std::string* TestRsp::mutable_service_name() {
-  
-  // @@protoc_insertion_point(field_mutable:navigate.TestRsp.service_name)
-  return service_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* TestRsp::release_service_name() {
-  // @@protoc_insertion_point(field_release:navigate.TestRsp.service_name)
-  
-  return service_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void TestRsp::set_allocated_service_name(::std::string* service_name) {
-  if (service_name != NULL) {
-    
-  } else {
-    
+inline void NavigateMsg::clear_test_req() {
+  if (has_test_req()) {
+    delete choice_.test_req_;
+    clear_has_choice();
   }
-  service_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), service_name);
-  // @@protoc_insertion_point(field_set_allocated:navigate.TestRsp.service_name)
+}
+inline  const ::common::TestReq& NavigateMsg::test_req() const {
+  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.test_req)
+  return has_test_req()
+      ? *choice_.test_req_
+      : ::common::TestReq::default_instance();
+}
+inline ::common::TestReq* NavigateMsg::mutable_test_req() {
+  if (!has_test_req()) {
+    clear_choice();
+    set_has_test_req();
+    choice_.test_req_ = new ::common::TestReq;
+  }
+  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.test_req)
+  return choice_.test_req_;
+}
+inline ::common::TestReq* NavigateMsg::release_test_req() {
+  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.test_req)
+  if (has_test_req()) {
+    clear_has_choice();
+    ::common::TestReq* temp = choice_.test_req_;
+    choice_.test_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void NavigateMsg::set_allocated_test_req(::common::TestReq* test_req) {
+  clear_choice();
+  if (test_req) {
+    set_has_test_req();
+    choice_.test_req_ = test_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.test_req)
 }
 
+// .common.TestRsp test_rsp = 2;
+inline bool NavigateMsg::has_test_rsp() const {
+  return choice_case() == kTestRsp;
+}
+inline void NavigateMsg::set_has_test_rsp() {
+  _oneof_case_[0] = kTestRsp;
+}
+inline void NavigateMsg::clear_test_rsp() {
+  if (has_test_rsp()) {
+    delete choice_.test_rsp_;
+    clear_has_choice();
+  }
+}
+inline  const ::common::TestRsp& NavigateMsg::test_rsp() const {
+  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.test_rsp)
+  return has_test_rsp()
+      ? *choice_.test_rsp_
+      : ::common::TestRsp::default_instance();
+}
+inline ::common::TestRsp* NavigateMsg::mutable_test_rsp() {
+  if (!has_test_rsp()) {
+    clear_choice();
+    set_has_test_rsp();
+    choice_.test_rsp_ = new ::common::TestRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.test_rsp)
+  return choice_.test_rsp_;
+}
+inline ::common::TestRsp* NavigateMsg::release_test_rsp() {
+  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.test_rsp)
+  if (has_test_rsp()) {
+    clear_has_choice();
+    ::common::TestRsp* temp = choice_.test_rsp_;
+    choice_.test_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void NavigateMsg::set_allocated_test_rsp(::common::TestRsp* test_rsp) {
+  clear_choice();
+  if (test_rsp) {
+    set_has_test_rsp();
+    choice_.test_rsp_ = test_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.test_rsp)
+}
+
+// .navigate.GetAccessReq get_access_req = 3;
+inline bool NavigateMsg::has_get_access_req() const {
+  return choice_case() == kGetAccessReq;
+}
+inline void NavigateMsg::set_has_get_access_req() {
+  _oneof_case_[0] = kGetAccessReq;
+}
+inline void NavigateMsg::clear_get_access_req() {
+  if (has_get_access_req()) {
+    delete choice_.get_access_req_;
+    clear_has_choice();
+  }
+}
+inline  const ::navigate::GetAccessReq& NavigateMsg::get_access_req() const {
+  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.get_access_req)
+  return has_get_access_req()
+      ? *choice_.get_access_req_
+      : ::navigate::GetAccessReq::default_instance();
+}
+inline ::navigate::GetAccessReq* NavigateMsg::mutable_get_access_req() {
+  if (!has_get_access_req()) {
+    clear_choice();
+    set_has_get_access_req();
+    choice_.get_access_req_ = new ::navigate::GetAccessReq;
+  }
+  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.get_access_req)
+  return choice_.get_access_req_;
+}
+inline ::navigate::GetAccessReq* NavigateMsg::release_get_access_req() {
+  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.get_access_req)
+  if (has_get_access_req()) {
+    clear_has_choice();
+    ::navigate::GetAccessReq* temp = choice_.get_access_req_;
+    choice_.get_access_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void NavigateMsg::set_allocated_get_access_req(::navigate::GetAccessReq* get_access_req) {
+  clear_choice();
+  if (get_access_req) {
+    set_has_get_access_req();
+    choice_.get_access_req_ = get_access_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.get_access_req)
+}
+
+// .navigate.GetAccessRsp get_access_rsp = 4;
+inline bool NavigateMsg::has_get_access_rsp() const {
+  return choice_case() == kGetAccessRsp;
+}
+inline void NavigateMsg::set_has_get_access_rsp() {
+  _oneof_case_[0] = kGetAccessRsp;
+}
+inline void NavigateMsg::clear_get_access_rsp() {
+  if (has_get_access_rsp()) {
+    delete choice_.get_access_rsp_;
+    clear_has_choice();
+  }
+}
+inline  const ::navigate::GetAccessRsp& NavigateMsg::get_access_rsp() const {
+  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.get_access_rsp)
+  return has_get_access_rsp()
+      ? *choice_.get_access_rsp_
+      : ::navigate::GetAccessRsp::default_instance();
+}
+inline ::navigate::GetAccessRsp* NavigateMsg::mutable_get_access_rsp() {
+  if (!has_get_access_rsp()) {
+    clear_choice();
+    set_has_get_access_rsp();
+    choice_.get_access_rsp_ = new ::navigate::GetAccessRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.get_access_rsp)
+  return choice_.get_access_rsp_;
+}
+inline ::navigate::GetAccessRsp* NavigateMsg::release_get_access_rsp() {
+  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.get_access_rsp)
+  if (has_get_access_rsp()) {
+    clear_has_choice();
+    ::navigate::GetAccessRsp* temp = choice_.get_access_rsp_;
+    choice_.get_access_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void NavigateMsg::set_allocated_get_access_rsp(::navigate::GetAccessRsp* get_access_rsp) {
+  clear_choice();
+  if (get_access_rsp) {
+    set_has_get_access_rsp();
+    choice_.get_access_rsp_ = get_access_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.get_access_rsp)
+}
+
+// .navigate.PutLoadReq put_load_req = 5;
+inline bool NavigateMsg::has_put_load_req() const {
+  return choice_case() == kPutLoadReq;
+}
+inline void NavigateMsg::set_has_put_load_req() {
+  _oneof_case_[0] = kPutLoadReq;
+}
+inline void NavigateMsg::clear_put_load_req() {
+  if (has_put_load_req()) {
+    delete choice_.put_load_req_;
+    clear_has_choice();
+  }
+}
+inline  const ::navigate::PutLoadReq& NavigateMsg::put_load_req() const {
+  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.put_load_req)
+  return has_put_load_req()
+      ? *choice_.put_load_req_
+      : ::navigate::PutLoadReq::default_instance();
+}
+inline ::navigate::PutLoadReq* NavigateMsg::mutable_put_load_req() {
+  if (!has_put_load_req()) {
+    clear_choice();
+    set_has_put_load_req();
+    choice_.put_load_req_ = new ::navigate::PutLoadReq;
+  }
+  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.put_load_req)
+  return choice_.put_load_req_;
+}
+inline ::navigate::PutLoadReq* NavigateMsg::release_put_load_req() {
+  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.put_load_req)
+  if (has_put_load_req()) {
+    clear_has_choice();
+    ::navigate::PutLoadReq* temp = choice_.put_load_req_;
+    choice_.put_load_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void NavigateMsg::set_allocated_put_load_req(::navigate::PutLoadReq* put_load_req) {
+  clear_choice();
+  if (put_load_req) {
+    set_has_put_load_req();
+    choice_.put_load_req_ = put_load_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.put_load_req)
+}
+
+// .navigate.PutLoadRsp put_load_rsp = 6;
+inline bool NavigateMsg::has_put_load_rsp() const {
+  return choice_case() == kPutLoadRsp;
+}
+inline void NavigateMsg::set_has_put_load_rsp() {
+  _oneof_case_[0] = kPutLoadRsp;
+}
+inline void NavigateMsg::clear_put_load_rsp() {
+  if (has_put_load_rsp()) {
+    delete choice_.put_load_rsp_;
+    clear_has_choice();
+  }
+}
+inline  const ::navigate::PutLoadRsp& NavigateMsg::put_load_rsp() const {
+  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.put_load_rsp)
+  return has_put_load_rsp()
+      ? *choice_.put_load_rsp_
+      : ::navigate::PutLoadRsp::default_instance();
+}
+inline ::navigate::PutLoadRsp* NavigateMsg::mutable_put_load_rsp() {
+  if (!has_put_load_rsp()) {
+    clear_choice();
+    set_has_put_load_rsp();
+    choice_.put_load_rsp_ = new ::navigate::PutLoadRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.put_load_rsp)
+  return choice_.put_load_rsp_;
+}
+inline ::navigate::PutLoadRsp* NavigateMsg::release_put_load_rsp() {
+  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.put_load_rsp)
+  if (has_put_load_rsp()) {
+    clear_has_choice();
+    ::navigate::PutLoadRsp* temp = choice_.put_load_rsp_;
+    choice_.put_load_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void NavigateMsg::set_allocated_put_load_rsp(::navigate::PutLoadRsp* put_load_rsp) {
+  clear_choice();
+  if (put_load_rsp) {
+    set_has_put_load_rsp();
+    choice_.put_load_rsp_ = put_load_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.put_load_rsp)
+}
+
+inline bool NavigateMsg::has_choice() const {
+  return choice_case() != CHOICE_NOT_SET;
+}
+inline void NavigateMsg::clear_has_choice() {
+  _oneof_case_[0] = CHOICE_NOT_SET;
+}
+inline NavigateMsg::ChoiceCase NavigateMsg::choice_case() const {
+  return NavigateMsg::ChoiceCase(_oneof_case_[0]);
+}
 // -------------------------------------------------------------------
 
 // GetAccessReq
@@ -1212,315 +1288,10 @@ inline void PutLoadReq::set_load_val(::google::protobuf::int32 value) {
 
 // PutLoadRsp
 
-// -------------------------------------------------------------------
-
-// NavigateMsg
-
-// .navigate.TestReq test_req = 1;
-inline bool NavigateMsg::has_test_req() const {
-  return choice_case() == kTestReq;
-}
-inline void NavigateMsg::set_has_test_req() {
-  _oneof_case_[0] = kTestReq;
-}
-inline void NavigateMsg::clear_test_req() {
-  if (has_test_req()) {
-    delete choice_.test_req_;
-    clear_has_choice();
-  }
-}
-inline  const ::navigate::TestReq& NavigateMsg::test_req() const {
-  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.test_req)
-  return has_test_req()
-      ? *choice_.test_req_
-      : ::navigate::TestReq::default_instance();
-}
-inline ::navigate::TestReq* NavigateMsg::mutable_test_req() {
-  if (!has_test_req()) {
-    clear_choice();
-    set_has_test_req();
-    choice_.test_req_ = new ::navigate::TestReq;
-  }
-  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.test_req)
-  return choice_.test_req_;
-}
-inline ::navigate::TestReq* NavigateMsg::release_test_req() {
-  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.test_req)
-  if (has_test_req()) {
-    clear_has_choice();
-    ::navigate::TestReq* temp = choice_.test_req_;
-    choice_.test_req_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-inline void NavigateMsg::set_allocated_test_req(::navigate::TestReq* test_req) {
-  clear_choice();
-  if (test_req) {
-    set_has_test_req();
-    choice_.test_req_ = test_req;
-  }
-  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.test_req)
-}
-
-// .navigate.TestRsp test_rsp = 2;
-inline bool NavigateMsg::has_test_rsp() const {
-  return choice_case() == kTestRsp;
-}
-inline void NavigateMsg::set_has_test_rsp() {
-  _oneof_case_[0] = kTestRsp;
-}
-inline void NavigateMsg::clear_test_rsp() {
-  if (has_test_rsp()) {
-    delete choice_.test_rsp_;
-    clear_has_choice();
-  }
-}
-inline  const ::navigate::TestRsp& NavigateMsg::test_rsp() const {
-  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.test_rsp)
-  return has_test_rsp()
-      ? *choice_.test_rsp_
-      : ::navigate::TestRsp::default_instance();
-}
-inline ::navigate::TestRsp* NavigateMsg::mutable_test_rsp() {
-  if (!has_test_rsp()) {
-    clear_choice();
-    set_has_test_rsp();
-    choice_.test_rsp_ = new ::navigate::TestRsp;
-  }
-  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.test_rsp)
-  return choice_.test_rsp_;
-}
-inline ::navigate::TestRsp* NavigateMsg::release_test_rsp() {
-  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.test_rsp)
-  if (has_test_rsp()) {
-    clear_has_choice();
-    ::navigate::TestRsp* temp = choice_.test_rsp_;
-    choice_.test_rsp_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-inline void NavigateMsg::set_allocated_test_rsp(::navigate::TestRsp* test_rsp) {
-  clear_choice();
-  if (test_rsp) {
-    set_has_test_rsp();
-    choice_.test_rsp_ = test_rsp;
-  }
-  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.test_rsp)
-}
-
-// .navigate.GetAccessReq get_access_req = 3;
-inline bool NavigateMsg::has_get_access_req() const {
-  return choice_case() == kGetAccessReq;
-}
-inline void NavigateMsg::set_has_get_access_req() {
-  _oneof_case_[0] = kGetAccessReq;
-}
-inline void NavigateMsg::clear_get_access_req() {
-  if (has_get_access_req()) {
-    delete choice_.get_access_req_;
-    clear_has_choice();
-  }
-}
-inline  const ::navigate::GetAccessReq& NavigateMsg::get_access_req() const {
-  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.get_access_req)
-  return has_get_access_req()
-      ? *choice_.get_access_req_
-      : ::navigate::GetAccessReq::default_instance();
-}
-inline ::navigate::GetAccessReq* NavigateMsg::mutable_get_access_req() {
-  if (!has_get_access_req()) {
-    clear_choice();
-    set_has_get_access_req();
-    choice_.get_access_req_ = new ::navigate::GetAccessReq;
-  }
-  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.get_access_req)
-  return choice_.get_access_req_;
-}
-inline ::navigate::GetAccessReq* NavigateMsg::release_get_access_req() {
-  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.get_access_req)
-  if (has_get_access_req()) {
-    clear_has_choice();
-    ::navigate::GetAccessReq* temp = choice_.get_access_req_;
-    choice_.get_access_req_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-inline void NavigateMsg::set_allocated_get_access_req(::navigate::GetAccessReq* get_access_req) {
-  clear_choice();
-  if (get_access_req) {
-    set_has_get_access_req();
-    choice_.get_access_req_ = get_access_req;
-  }
-  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.get_access_req)
-}
-
-// .navigate.GetAccessRsp get_access_rsp = 4;
-inline bool NavigateMsg::has_get_access_rsp() const {
-  return choice_case() == kGetAccessRsp;
-}
-inline void NavigateMsg::set_has_get_access_rsp() {
-  _oneof_case_[0] = kGetAccessRsp;
-}
-inline void NavigateMsg::clear_get_access_rsp() {
-  if (has_get_access_rsp()) {
-    delete choice_.get_access_rsp_;
-    clear_has_choice();
-  }
-}
-inline  const ::navigate::GetAccessRsp& NavigateMsg::get_access_rsp() const {
-  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.get_access_rsp)
-  return has_get_access_rsp()
-      ? *choice_.get_access_rsp_
-      : ::navigate::GetAccessRsp::default_instance();
-}
-inline ::navigate::GetAccessRsp* NavigateMsg::mutable_get_access_rsp() {
-  if (!has_get_access_rsp()) {
-    clear_choice();
-    set_has_get_access_rsp();
-    choice_.get_access_rsp_ = new ::navigate::GetAccessRsp;
-  }
-  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.get_access_rsp)
-  return choice_.get_access_rsp_;
-}
-inline ::navigate::GetAccessRsp* NavigateMsg::release_get_access_rsp() {
-  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.get_access_rsp)
-  if (has_get_access_rsp()) {
-    clear_has_choice();
-    ::navigate::GetAccessRsp* temp = choice_.get_access_rsp_;
-    choice_.get_access_rsp_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-inline void NavigateMsg::set_allocated_get_access_rsp(::navigate::GetAccessRsp* get_access_rsp) {
-  clear_choice();
-  if (get_access_rsp) {
-    set_has_get_access_rsp();
-    choice_.get_access_rsp_ = get_access_rsp;
-  }
-  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.get_access_rsp)
-}
-
-// .navigate.PutLoadReq put_load_req = 5;
-inline bool NavigateMsg::has_put_load_req() const {
-  return choice_case() == kPutLoadReq;
-}
-inline void NavigateMsg::set_has_put_load_req() {
-  _oneof_case_[0] = kPutLoadReq;
-}
-inline void NavigateMsg::clear_put_load_req() {
-  if (has_put_load_req()) {
-    delete choice_.put_load_req_;
-    clear_has_choice();
-  }
-}
-inline  const ::navigate::PutLoadReq& NavigateMsg::put_load_req() const {
-  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.put_load_req)
-  return has_put_load_req()
-      ? *choice_.put_load_req_
-      : ::navigate::PutLoadReq::default_instance();
-}
-inline ::navigate::PutLoadReq* NavigateMsg::mutable_put_load_req() {
-  if (!has_put_load_req()) {
-    clear_choice();
-    set_has_put_load_req();
-    choice_.put_load_req_ = new ::navigate::PutLoadReq;
-  }
-  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.put_load_req)
-  return choice_.put_load_req_;
-}
-inline ::navigate::PutLoadReq* NavigateMsg::release_put_load_req() {
-  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.put_load_req)
-  if (has_put_load_req()) {
-    clear_has_choice();
-    ::navigate::PutLoadReq* temp = choice_.put_load_req_;
-    choice_.put_load_req_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-inline void NavigateMsg::set_allocated_put_load_req(::navigate::PutLoadReq* put_load_req) {
-  clear_choice();
-  if (put_load_req) {
-    set_has_put_load_req();
-    choice_.put_load_req_ = put_load_req;
-  }
-  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.put_load_req)
-}
-
-// .navigate.PutLoadRsp put_load_rsp = 6;
-inline bool NavigateMsg::has_put_load_rsp() const {
-  return choice_case() == kPutLoadRsp;
-}
-inline void NavigateMsg::set_has_put_load_rsp() {
-  _oneof_case_[0] = kPutLoadRsp;
-}
-inline void NavigateMsg::clear_put_load_rsp() {
-  if (has_put_load_rsp()) {
-    delete choice_.put_load_rsp_;
-    clear_has_choice();
-  }
-}
-inline  const ::navigate::PutLoadRsp& NavigateMsg::put_load_rsp() const {
-  // @@protoc_insertion_point(field_get:navigate.NavigateMsg.put_load_rsp)
-  return has_put_load_rsp()
-      ? *choice_.put_load_rsp_
-      : ::navigate::PutLoadRsp::default_instance();
-}
-inline ::navigate::PutLoadRsp* NavigateMsg::mutable_put_load_rsp() {
-  if (!has_put_load_rsp()) {
-    clear_choice();
-    set_has_put_load_rsp();
-    choice_.put_load_rsp_ = new ::navigate::PutLoadRsp;
-  }
-  // @@protoc_insertion_point(field_mutable:navigate.NavigateMsg.put_load_rsp)
-  return choice_.put_load_rsp_;
-}
-inline ::navigate::PutLoadRsp* NavigateMsg::release_put_load_rsp() {
-  // @@protoc_insertion_point(field_release:navigate.NavigateMsg.put_load_rsp)
-  if (has_put_load_rsp()) {
-    clear_has_choice();
-    ::navigate::PutLoadRsp* temp = choice_.put_load_rsp_;
-    choice_.put_load_rsp_ = NULL;
-    return temp;
-  } else {
-    return NULL;
-  }
-}
-inline void NavigateMsg::set_allocated_put_load_rsp(::navigate::PutLoadRsp* put_load_rsp) {
-  clear_choice();
-  if (put_load_rsp) {
-    set_has_put_load_rsp();
-    choice_.put_load_rsp_ = put_load_rsp;
-  }
-  // @@protoc_insertion_point(field_set_allocated:navigate.NavigateMsg.put_load_rsp)
-}
-
-inline bool NavigateMsg::has_choice() const {
-  return choice_case() != CHOICE_NOT_SET;
-}
-inline void NavigateMsg::clear_has_choice() {
-  _oneof_case_[0] = CHOICE_NOT_SET;
-}
-inline NavigateMsg::ChoiceCase NavigateMsg::choice_case() const {
-  return NavigateMsg::ChoiceCase(_oneof_case_[0]);
-}
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -1534,6 +1305,18 @@ inline NavigateMsg::ChoiceCase NavigateMsg::choice_case() const {
 
 
 }  // namespace navigate
+
+namespace google {
+namespace protobuf {
+
+template <> struct is_proto_enum< ::navigate::ErrorCode> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::navigate::ErrorCode>() {
+  return ::navigate::ErrorCode_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 

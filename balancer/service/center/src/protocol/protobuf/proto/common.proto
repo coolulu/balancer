@@ -6,7 +6,7 @@ package common;
 enum ErrorCode {
     SUCCESS                         = 0;
 
-    // 公共系统错误码 (各个服务service_id * 100000 + 公共系统错误码)
+    // 公共系统错误码 (各个服务service_id * 10000 + 公共系统错误码)
     ERR_SYS_BEGIN                   = 100;
     ERR_SYS_OVERLOAD                = 101;          // 服务过载
     ERR_SYS_REJECT_SERVICE          = 102;          // 拒绝服务
@@ -17,7 +17,7 @@ enum ErrorCode {
     ERR_SYS_TASK_DISCARD            = 107;          // 任务丢弃
     ERR_SYS_END                     = 199;
 
-    // 公共数据包错误码 (各个服务service_id * 100000 + 公共数据包错误码)
+    // 公共数据包错误码 (各个服务service_id * 10000 + 公共数据包错误码)
     ERR_PACKET_BEGIN                = 200;
     ERR_PACKET_ENCODE               = 201;          // 打包失败
     ERR_PACKET_DECODE               = 202;          // 解码失败
@@ -39,14 +39,23 @@ enum ErrorCode {
     ERR_PACKET_UNKNOWN_REQUEST      = 218;          // 不明请求
     ERR_PACKET_END                  = 299;
 
-    // 公共接口错误码 (各个服务service_id * 100000 + 公共接口错误码)
+    // 公共接口错误码 (各个服务service_id * 10000 + 公共接口错误码)
     ERR_INTERFACE_BEGIN             = 300;
     ERR_INTERFACE_PARAM             = 301;          // 参数错误
     ERR_INTERFACE_PERM              = 302;          // 权限错误
+    ERR_INTERFACE_TIMEOUT           = 303;          // 接口超时
     ERR_INTERFACE_END               = 399;
 
-    // 公共业务错误码 (各个服务service_id * 100000 + 公共业务错误码)
-    ERR_BUSINESS_BEGIN              = 10000;
-    ERR_BUSINESS_END                = 99999;
+    // 公共业务错误码 (各个服务service_id * 10000 + 公共业务错误码)
+    ERR_BUSINESS_BEGIN              = 1000;
+    ERR_BUSINESS_END                = 9999;
+}
+
+message TestReq {
+    int32   service_id        = 1;
+}
+
+message TestRsp {
+    bytes   service_name      = 1;
 }
 
