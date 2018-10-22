@@ -25,7 +25,7 @@ void GetConnId::handle(const gate::GateMsg& msg)
 	B_LOG_INFO << "client_time=" << req.client_time();
 
 	GateContext* p_gate_context = boost::any_cast<GateContext>(_conn->getMutableContext());
-	p_gate_context->_is_client_init_conn_seq_id = true;		// client已获取到conn_seq_id，连接可以开始处理业务
+	p_gate_context->_en_conn = GateContext::EN_CONN_NOT_LOGIN;	// client已获取到conn_seq_id，连接变为未登录状态
 
 	unsigned long long server_time = Util::get_us();
 	unsigned int conn_create_time = p_gate_context->_create_time;
