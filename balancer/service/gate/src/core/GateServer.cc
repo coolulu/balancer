@@ -6,12 +6,14 @@
 #include "define.h"
 #include "handle/gate/WakeHeartbeat.h"
 #include "handle/gate/DelSession.h"
+#include "protocol/protobuf/proto_cpp/service.pb.h"
 
 GateContext::GateContext(unsigned long long conn_seq_id)
 	:	_conn_seq_id(conn_seq_id), 
 		_create_time(0), 
 		_update_time(0), 
-		_is_client_init_conn_seq_id(false),
+		_is_send_login_request(false),
+		_en_conn(EN_CONN_NOT_INIT_CONN),
 		_is_wake_heartbeat_wait(false)
 {
 	_create_time = ::time(nullptr);
@@ -172,102 +174,215 @@ void GateServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 							PacketPtr& packet_ptr,
 							muduo::Timestamp time)
 {
-	GateContext* p_gate_context = boost::any_cast<GateContext>(conn->getMutableContext());
-	if(p_gate_context->_is_client_init_conn_seq_id)
+	if(packet_ptr->_from_service_id <= service::CLIENT_BEGIN && packet_ptr->_from_service_id >= service::CLIENT_END)
 	{
-		// 客户端获取到连接id
-		if(packet_ptr->_to_service_id == Define::service_id)
+		// 非客户端连接
+		B_LOG_WARN	<< "shutdown, _from_service_id not in (CLIENT_BEGIN, CLIENT_END),"
+					<< ", _msg_seq_id=" << packet_ptr->_msg_seq_id
+					<< ", CLIENT_BEGIN=" << service::CLIENT_BEGIN
+					<< ", CLIENT_END=" << service::CLIENT_END
+					<< ", _from_service_id=" << packet_ptr->_from_service_id;
+		conn->shutdown();
+		return;
+	}
+
+	GateContext* p_gate_context = boost::any_cast<GateContext>(conn->getMutableContext());
+	if(p_gate_context->_en_conn == GateContext::EN_CONN_LOGIN)
+	{
+		if(packet_ptr->_to_service_id > service::LOGIC_BEGIN && packet_ptr->_to_service_id < service::PROXY_END)
 		{
-			// 处理client返回gate的rsp
-			TaskMsgBase* task = _proc._task_msg_pool.find(packet_ptr->_msg_seq_id);
-			if(task == nullptr)
+			// 只能访问业务逻辑服务和业务代理服务
+			if(packet_ptr->_conn_seq_id == p_gate_context->_conn_seq_id)
 			{
-				B_LOG_ERROR << "no find msg_seq_id=" << packet_ptr->_msg_seq_id;
+				// 转发请求到内部服务TcpClient, s out -> c in
+				_handle_gate.forward_request_to_service(conn, packet_ptr, time);
 			}
 			else
 			{
-				bool b = packet_ptr->parse();
-				if(b)
+				// 转发响应到内部服务TcpServer, s out -> s in
+				_handle_gate.forward_response_to_service(conn, packet_ptr, time);
+			}
+		}
+		else
+		{
+			// 核心服务只能访问gate，其他核心服务不能访问
+			if(packet_ptr->_to_service_id == Define::service_id)
+			{
+				// 处理client发送给gate的req
+				if(packet_ptr->_to_proc_id == _proc._owner._proc_id)
 				{
-					int msg_type = packet_ptr->_body.msg_type_case();
-					switch(msg_type)
+					bool b = packet_ptr->parse();
+					if(b)
 					{
-					case data::Body::kMsgReq:
-						B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
-									<< ", msg_type is req";
-						break;
-
-					case data::Body::kMsgRsp:
+						int msg_type = packet_ptr->_body.msg_type_case();
+						switch(msg_type)
 						{
-							const ::data::MsgRsp& msg_rsp = packet_ptr->_body.msg_rsp();
+						case data::Body::kMsgReq:
+							{
+								const ::data::MsgReq& msg_req = packet_ptr->_body.msg_req();
 
-							B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
-										<< ", msg_type is rsp" << ", code=" << msg_rsp.code() << ", info=" << msg_rsp.info();
+								B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
+											<< ", msg_type is req";
 
-							task->_response = packet_ptr;
-							_handle_gate.handle_response(conn, task, time);
-							_proc._task_msg_pool.del(packet_ptr->_msg_seq_id);
-							task = nullptr;
+								_handle_gate.handle_request(conn, packet_ptr, time);
+							}		
+							break;
+
+						case data::Body::kMsgRsp:
+							B_LOG_ERROR	<< conn->name() << ", shutdown, _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
+										<< ", msg_type is rsp";
+							break;
+
+						default:
+							B_LOG_ERROR	<< conn->name() << ", shutdown, _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString() 
+										<< ", unknow msg_type=" << msg_type;
+							break;
 						}
-						break;
-
-					default:
-						B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString() 
-									<< ", unknow msg_type=" << msg_type;
-						break;
+					}
+					else
+					{
+						// 丢包
+						B_LOG_ERROR << "lose packet, parse=false, _msg_seq_id=" << packet_ptr->_msg_seq_id;
 					}
 				}
 				else
 				{
-					// 丢包
+					// 处理client返回gate的rsp
+					TaskMsgBase* task = _proc._task_msg_pool.find(packet_ptr->_msg_seq_id);
+					if(task == nullptr)
+					{
+						B_LOG_ERROR << "no find _msg_seq_id=" << packet_ptr->_msg_seq_id;
+					}
+					else
+					{
+						bool b = packet_ptr->parse();
+						if(b)
+						{
+							int msg_type = packet_ptr->_body.msg_type_case();
+							switch(msg_type)
+							{
+							case data::Body::kMsgReq:
+								B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
+											<< ", msg_type is req";
+								break;
+
+							case data::Body::kMsgRsp:
+								{
+									const ::data::MsgRsp& msg_rsp = packet_ptr->_body.msg_rsp();
+
+									B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
+												<< ", msg_type is rsp" << ", code=" << msg_rsp.code() << ", info=" << msg_rsp.info();
+
+									task->_response = packet_ptr;
+									_handle_gate.handle_response(conn, task, time);
+									_proc._task_msg_pool.del(packet_ptr->_msg_seq_id);
+									task = nullptr;
+								}
+								break;
+
+							default:
+								B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString() 
+											<< ", unknow msg_type=" << msg_type;
+								break;
+							}
+						}
+						else
+						{
+							// 丢包
+							B_LOG_ERROR << "lose packet, parse=false, _msg_seq_id=" << packet_ptr->_msg_seq_id;
+						}
+					}
 				}
 			}
-		}
-		else if(packet_ptr->_conn_seq_id == p_gate_context->_conn_seq_id)
+			else
+			{
+				// 没有权限访问非gate外的核心服务
+				B_LOG_WARN	<< "shutdown, _to_service_id is not Define::service_id"
+							<< ", _msg_seq_id=" << packet_ptr->_msg_seq_id
+							<< ", Define::service_id=" << Define::service_id
+							<< ", _to_service_id=" << packet_ptr->_to_service_id;
+				conn->shutdown();
+			}		
+		}	
+	}
+	else if(p_gate_context->_en_conn == GateContext::EN_CONN_NOT_LOGIN)
+	{	
+		if(packet_ptr->_to_service_id == service::LOGIN && packet_ptr->_conn_seq_id == p_gate_context->_conn_seq_id)
 		{
-			// 转发请求到内部服务TcpClient, s out -> c in
-			_handle_gate.forward_request_to_service(conn, packet_ptr, time);
+			if(p_gate_context->_is_send_login_request)
+			{
+				// 已经发送过登录请求，防止穷举
+				B_LOG_WARN << "shutdown, _is_send_login_request=true, _msg_seq_id=" << packet_ptr->_msg_seq_id;
+				conn->shutdown();
+			}
+			else
+			{
+				// 请求转发给登录服务器
+				_handle_gate.forward_request_to_service(conn, packet_ptr, time);
+				p_gate_context->_is_send_login_request = true;
+			}
 		}
 		else
 		{
-			// 转发响应到内部服务TcpServer, s out -> s in
-			_handle_gate.forward_response_to_service(conn, packet_ptr, time);
+			B_LOG_WARN	<< "shutdown, _to_service_id is not LOGIN or _conn_seq_id is error"
+						<< ", _msg_seq_id=" << packet_ptr->_msg_seq_id
+						<< ", _to_service_id=" << packet_ptr->_to_service_id
+						<< ", packet_ptr->_conn_seq_id=" << packet_ptr->_conn_seq_id
+						<< ", p_gate_context->_conn_seq_id" << p_gate_context->_conn_seq_id;
+			conn->shutdown();
 		}
 	}
 	else
 	{
-		// 客户端没获取到连接id
-		bool b = packet_ptr->parse();
-		if(b)
+		// EN_CONN_NOT_INIT_CONN
+		if(packet_ptr->_to_service_id == Define::service_id && packet_ptr->_to_proc_id == _proc._owner._proc_id)
 		{
-			int msg_type = packet_ptr->_body.msg_type_case();
-			switch(msg_type)
+			bool b = packet_ptr->parse();
+			if(b)
 			{
-			case data::Body::kMsgReq:
+				int msg_type = packet_ptr->_body.msg_type_case();
+				switch(msg_type)
 				{
-					const ::data::MsgReq& msg_req = packet_ptr->_body.msg_req();
+				case data::Body::kMsgReq:
+					{
+						const ::data::MsgReq& msg_req = packet_ptr->_body.msg_req();
 
-					B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
-								<< ", msg_type is req";
+						B_LOG_INFO	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
+									<< ", msg_type is req";
 
-					_handle_gate.handle_request(conn, packet_ptr, time);
-				}		
-				break;
+						_handle_gate.handle_request_not_init_conn(conn, packet_ptr, time);
+					}		
+					break;
 
-			case data::Body::kMsgRsp:
-				B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
-							<< ", msg_type is rsp";
-				break;
+				case data::Body::kMsgRsp:
+					B_LOG_ERROR	<< conn->name() << ", shutdown, _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString()
+								<< ", msg_type is rsp";
+					conn->shutdown();
+					break;
 
-			default:
-				B_LOG_ERROR	<< conn->name() << ", _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString() 
-							<< ", unknow msg_type=" << msg_type;
-				break;
+				default:
+					B_LOG_ERROR	<< conn->name() << ", shutdown, _msg_seq_id=" << packet_ptr->_msg_seq_id << ", _len=" << packet_ptr->_len << ", time=" << time.toString() 
+								<< ", unknow msg_type=" << msg_type;
+					conn->shutdown();
+					break;
+				}
+			}
+			else
+			{
+				// 丢包
+				B_LOG_ERROR << "shutdown, lose packet, parse=false, _msg_seq_id=" << packet_ptr->_msg_seq_id;
+				conn->shutdown();
 			}
 		}
 		else
 		{
-			// 丢包
+			B_LOG_WARN	<< "shutdown, _to_service_id is not Define::service_id or _to_proc_id is not _owner._proc_id"
+						<< ", _msg_seq_id=" << packet_ptr->_msg_seq_id
+						<< ", _to_service_id=" << packet_ptr->_to_service_id
+						<< ", _to_proc_id=" << packet_ptr->_to_proc_id
+						<< ", Define::service_id=" << Define::service_id
+						<< ", _owner._proc_id=" << _proc._owner._proc_id;
+			conn->shutdown();
 		}
 	}
 
@@ -278,13 +393,8 @@ void GateServer::on_write_complete(const muduo::net::TcpConnectionPtr& conn)
 {
 	B_LOG_INFO	<< conn->name();
 
-	/*
-	GateServer发送给client时不用更新时间，避免与主动发送GateMsg::WakeHeartbeatReq的功能冲突，
-	导致p_gate_context->_update_time一直更新，不能触发on_check_idle关闭连接
-
 	GateContext* p_gate_context = boost::any_cast<GateContext>(conn->getMutableContext());
 	p_gate_context->_update_time = ::time(nullptr);
-	*/
 }
 
 void GateServer::on_high_water_mark(const muduo::net::TcpConnectionPtr& conn, size_t len)
@@ -304,16 +414,27 @@ void GateServer::on_check_idle()
 		if(conn)
 		{
 			GateContext* p_gate_context = boost::any_cast<GateContext>(conn->getMutableContext());
-			if(p_gate_context->_is_wake_heartbeat_wait)
+			if(p_gate_context->_en_conn == GateContext::EN_CONN_LOGIN)
 			{
-				// 等待客户端心跳返回，无需处理
+				if(p_gate_context->_is_wake_heartbeat_wait)
+				{
+					// 等待客户端心跳返回，无需处理
+				}
+				else if(t_now - p_gate_context->_update_time >= _proc._config.proc.gate_server_idle)
+				{
+					// 登录状态的空闲连接，给客户端发送心跳请求
+					WakeHeartbeat* whb = new WakeHeartbeat(_proc, p_gate_context->_conn_seq_id);
+					whb->wake_client(conn, p_gate_context);
+					_proc._task_msg_pool.add(whb);	// 加入定时器
+				}
 			}
 			else if(t_now - p_gate_context->_update_time >= _proc._config.proc.gate_server_idle)
 			{
-				// 给客户端发送心跳请求
-				WakeHeartbeat* whb = new WakeHeartbeat(_proc, p_gate_context->_conn_seq_id);
-				whb->wake_client(conn, p_gate_context);
-				_proc._task_msg_pool.add(whb);	// 加入定时器
+				// 非登录状态的空闲连接，直接断开连接
+				B_LOG_ERROR << conn->name() << " is idle, shutdown"
+											<< ", _conn_seq_id=" << p_gate_context->_conn_seq_id
+											<< ", _en_conn=" << p_gate_context->_en_conn;
+				conn->shutdown();
 			}
 
 			++it;

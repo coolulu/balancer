@@ -13,10 +13,18 @@ struct GateContext
 {
 	GateContext(unsigned long long conn_seq_id);
 
+	enum EN_CONN
+	{
+		EN_CONN_NOT_INIT_CONN	= 0,	// 客户端连接未获取conn_id
+		EN_CONN_NOT_LOGIN		= 1,	// 客户端连接获取conn_id,未登录
+		EN_CONN_LOGIN			= 2,	// 客户端连接获取conn_id,登录成功
+	};
+
 	unsigned long long _conn_seq_id;
 	unsigned int _create_time;
 	unsigned int _update_time;
-	bool		 _is_client_init_conn_seq_id;
+	EN_CONN		 _en_conn;
+	bool		 _is_send_login_request;	// 是否已发送登录请求
 	bool		 _is_wake_heartbeat_wait;
 };
 
