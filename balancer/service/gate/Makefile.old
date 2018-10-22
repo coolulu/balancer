@@ -23,7 +23,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := src/config/Config.cc src/config/ServiceConfig.cc src/core/BHttpServer.cc src/core/BTcpClient.cc src/core/BTcpClientPool.cc src/core/BTcpServer.cc src/core/Codec.cc src/core/GateServer.cc src/core/InserviceService.cc src/core/Kv.cc src/core/Owner.cc src/core/Packet.cc src/core/PacketStream.cc src/core/Proc.cc src/core/PutLoad.cc src/core/Seq.cc src/core/SignalHandle.cc src/core/TaskMsgBase.cc src/core/TaskMsgMaster.cc src/core/TaskMsgPool.cc src/core/TaskMsgSub.cc src/core/Timer.cc src/define.cc src/handle/gate/CloseClient.cc src/handle/gate/DelSession.cc src/handle/gate/GetConnId.cc src/handle/gate/WakeHeartbeat.cc src/handle/HandleClient.cc src/handle/HandleGate.cc src/handle/HandleServer.cc src/handle/server/CloseConnId.cc src/handle/server/Heartbeat.cc src/log/Log.cc src/main.cc src/protocol/protobuf/CenterStack.cc src/protocol/protobuf/GateStack.cc src/protocol/protobuf/NavigateStack.cc src/protocol/protobuf/proto_cpp/center.pb.cc src/protocol/protobuf/proto_cpp/common.pb.cc src/protocol/protobuf/proto_cpp/data.pb.cc src/protocol/protobuf/proto_cpp/data_format.pb.cc src/protocol/protobuf/proto_cpp/gate.pb.cc src/protocol/protobuf/proto_cpp/navigate.pb.cc src/protocol/protobuf/proto_cpp/service.pb.cc src/protocol/protobuf/proto_cpp/session.pb.cc src/protocol/protobuf/proto_cpp/version.pb.cc src/protocol/protobuf/SessionStack.cc src/tool/Util.cc
+SOURCEFILES := src/config/Config.cc src/config/ServiceConfig.cc src/core/BHttpServer.cc src/core/BTcpClient.cc src/core/BTcpClientPool.cc src/core/BTcpServer.cc src/core/Codec.cc src/core/GateServer.cc src/core/InserviceService.cc src/core/Kv.cc src/core/Owner.cc src/core/Packet.cc src/core/PacketStream.cc src/core/Proc.cc src/core/PutLoad.cc src/core/Seq.cc src/core/SignalHandle.cc src/core/TaskMsgBase.cc src/core/TaskMsgMaster.cc src/core/TaskMsgPool.cc src/core/TaskMsgSub.cc src/core/Timer.cc src/define.cc src/handle/gate/CloseClient.cc src/handle/gate/DelSession.cc src/handle/gate/GetConnId.cc src/handle/gate/Logout.cc src/handle/gate/WakeHeartbeat.cc src/handle/HandleClient.cc src/handle/HandleGate.cc src/handle/HandleServer.cc src/handle/server/CloseConnId.cc src/handle/server/Heartbeat.cc src/log/Log.cc src/main.cc src/protocol/protobuf/CenterStack.cc src/protocol/protobuf/GateStack.cc src/protocol/protobuf/NavigateStack.cc src/protocol/protobuf/proto_cpp/center.pb.cc src/protocol/protobuf/proto_cpp/common.pb.cc src/protocol/protobuf/proto_cpp/data.pb.cc src/protocol/protobuf/proto_cpp/data_format.pb.cc src/protocol/protobuf/proto_cpp/gate.pb.cc src/protocol/protobuf/proto_cpp/navigate.pb.cc src/protocol/protobuf/proto_cpp/service.pb.cc src/protocol/protobuf/proto_cpp/session.pb.cc src/protocol/protobuf/proto_cpp/version.pb.cc src/protocol/protobuf/SessionStack.cc src/tool/Util.cc
 EXTERNAL_LIBS := 
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
@@ -266,6 +266,10 @@ $(BINARYDIR)/DelSession.o : src/handle/gate/DelSession.cc $(all_make_files) |$(B
 
 
 $(BINARYDIR)/GetConnId.o : src/handle/gate/GetConnId.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/Logout.o : src/handle/gate/Logout.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 

@@ -233,6 +233,9 @@
     <ClCompile Include="src\handle\gate\Logout.cc">
       <Filter>src\handle\gate</Filter>
     </ClCompile>
+    <ClCompile Include="src\handle\server\SetConnLogin.cc">
+      <Filter>src\handle\server</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\config\Config.h">
@@ -381,6 +384,9 @@
     </ClInclude>
     <ClInclude Include="src\handle\gate\Logout.h">
       <Filter>src\handle\gate</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handle\server\SetConnLogin.h">
+      <Filter>src\handle\server</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

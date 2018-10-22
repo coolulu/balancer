@@ -109,6 +109,7 @@
     <ClCompile Include="src\handle\HandleServer.cc" />
     <ClCompile Include="src\handle\server\CloseConnId.cc" />
     <ClCompile Include="src\handle\server\Heartbeat.cc" />
+    <ClCompile Include="src\handle\server\SetConnLogin.cc" />
     <ClCompile Include="src\log\Log.cc" />
     <ClCompile Include="src\main.cc" />
     <ClCompile Include="src\protocol\protobuf\CenterStack.cc" />
@@ -160,6 +161,7 @@
     <ClInclude Include="src\handle\HandleServer.h" />
     <ClInclude Include="src\handle\server\CloseConnId.h" />
     <ClInclude Include="src\handle\server\Heartbeat.h" />
+    <ClInclude Include="src\handle\server\SetConnLogin.h" />
     <ClInclude Include="src\log\Log.h" />
     <ClInclude Include="src\protocol\protobuf\CenterStack.h" />
     <ClInclude Include="src\protocol\protobuf\GateStack.h" />
