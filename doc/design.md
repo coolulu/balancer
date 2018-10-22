@@ -490,6 +490,111 @@
 
     navigate每秒检查一次找出最小负载，最小负载proc_id变换时，更新到每个httpsrver的最小proc_id
 
+
+
+
+    未整理的记录 ------------- begin
+    1.接收上报负载数据
+    2.定时刷新最低负载机器
+    3.返回最低负载数据
+    message GetAccessReq {
+        int32   service_id          = 1;
+        uint64  user_id             = 2;
+    }
+
+    if(service_id == service::gate)
+    {
+     service_id = local_gate_id;     // 配置好映射关系
+    }
+
+    navigate要动态配置下发该地区gate的service_id（local_gate_id）
+    增加local_service_id本地配置，设置区域性Define::service_id为local_service_id
+    未整理的记录 ------------- end
+
+#### 消息分发
+    未整理的记录 ------------- begin
+    gate不依赖login服务协议login.proto，直接转发消息流
+
+    连接状态:
+    not_init_conn
+    not_login
+    login
+
+    if(login)
+    {
+
+    }
+    else if(not_login)
+    {
+        -> 转发login req
+
+        if(is_send_login_req)
+        {
+            conn->shutdown();
+        }
+        else
+        {
+            is_send_login_req = true;
+        }
+    }
+    else
+    {
+        // not_init_conn
+        -> getConnit
+    }
+
+    gate的请求要判断service_id和proc_id
+
+    struct Packet
+    {
+        unsigned short          from_service_id     :2
+        unsigned short          to_service_id       :2 
+        unsigned int            to_proc_id          :4 
+        unsigned long long      conn_seq_id         :8 
+    }
+
+    c => G  req
+    from_service_id: c
+    to_service_id: g
+    to_proc_id: g *
+    conn_seq_id: 0
+
+    c <- G  rsp
+    from_service_id: g
+    to_service_id: c
+    to_proc_id: 0
+    conn_seq_id: !0 *  // 非0值(放TaskMsgBase._seq_id)
+
+    c <- G  req
+    from_service_id: g
+    to_service_id: c
+    to_proc_id: 0
+    conn_seq_id: 0 *
+
+    c => G  rsp
+    from_service_id: c
+    to_service_id: g
+    to_proc_id: 0 *
+    conn_seq_id: 0
+
+    消息分发client<=>gate
+    gate通过to_proc_id g or 0区分是req还是rsp
+    client通过conn_seq_id !0 or 0来区分是rsp还是req
+
+    消息分发client<=>backend
+
+
+
+    1.gate，上线->下线要断开所有客户端的连接，
+    2.下线状态新来的客户端连接直接断开
+    3.gate,每次被center接管时候要更新记录proc_id,下线状态不需要Putload同步给navigate
+    未整理的记录 ------------- end
+
+#### 客户端空闲连接判断
+    未整理的记录 ------------- begin
+    conn空闲判断 根据连接状态同步对应操作不同，非login的直接shutdown
+    未整理的记录 ------------- end
+
 #### 客户端连接
     1.当客户(主动or被动)连接断开完成后，触发调用Session.DelSession，删除客户端session
 
