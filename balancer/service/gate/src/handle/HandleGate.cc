@@ -3,6 +3,7 @@
 #include "core/Proc.h"
 #include "protocol/Protocol.h"
 #include "handle/gate/GetConnId.h"
+#include "handle/gate/Logout.h"
 
 HandleGate::HandleGate(Proc& proc)
 	: _proc(proc)
@@ -13,6 +14,53 @@ HandleGate::HandleGate(Proc& proc)
 HandleGate::~HandleGate()
 {
 
+}
+
+void HandleGate::handle_request_not_init_conn(const muduo::net::TcpConnectionPtr& conn, 
+											  PacketPtr& packet_ptr,
+											  muduo::Timestamp time)
+{
+	const ::google::protobuf::Any& service_msg = packet_ptr->_body.service_msg();
+
+	if(false)
+	{
+		// 过载保护
+		return;
+	}
+
+	if(false)
+	{
+		// 初始化未完成
+		return;
+	}
+
+	if(service_msg.Is<gate::GateMsg>())
+	{
+		gate::GateMsg msg;
+		service_msg.UnpackTo(&msg);
+
+		switch(msg.choice_case())
+		{
+		case gate::GateMsg::kGetConnIdReq:
+			{
+				B_LOG_INFO << "gate::GetConnIdReq, _msg_seq_id=" << packet_ptr->_msg_seq_id;
+				GetConnId get_conn_id(_proc, conn, packet_ptr, time);
+				get_conn_id.handle(msg);
+			}
+			break;
+
+		default:
+			B_LOG_ERROR << "unknow GateMsg, shutdown, choice_case=" << msg.choice_case();
+			conn->shutdown();	// 关闭客户端连接
+			break;
+		}
+	}
+	else
+	{
+		B_LOG_ERROR << "unknow service, shutdown, _msg_seq_id=" << packet_ptr->_msg_seq_id;
+		packet_ptr->print();
+		conn->shutdown();		// 关闭客户端连接
+	}
 }
 
 void HandleGate::handle_request(const muduo::net::TcpConnectionPtr& conn, 
@@ -40,16 +88,16 @@ void HandleGate::handle_request(const muduo::net::TcpConnectionPtr& conn,
 
 		switch(msg.choice_case())
 		{
-		case gate::GateMsg::kCloseConnIdReq:
+		case gate::GateMsg::kLogoutReq:
 			{
-				GetConnId get_conn_id(_proc, conn, packet_ptr, time);
-				get_conn_id.handle(msg);
+				B_LOG_INFO << "gate::LogoutReq, _msg_seq_id=" << packet_ptr->_msg_seq_id;
+				Logout logout(_proc, conn, packet_ptr, time);
+				logout.handle(msg);
 			}
 			break;
 
 		default:
 			B_LOG_ERROR << "unknow GateMsg, shutdown, choice_case=" << msg.choice_case();
-			conn->shutdown();	// 关闭客户端连接
 			break;
 		}
 	}
@@ -57,7 +105,6 @@ void HandleGate::handle_request(const muduo::net::TcpConnectionPtr& conn,
 	{
 		B_LOG_ERROR << "unknow service, shutdown, _msg_seq_id=" << packet_ptr->_msg_seq_id;
 		packet_ptr->print();
-		conn->shutdown();		// 关闭客户端连接
 	}
 }
 
@@ -115,5 +162,6 @@ void HandleGate::forward_response_to_service(const muduo::net::TcpConnectionPtr&
 {
 	_proc._tcp_server.send_stream(packet_ptr);
 }
+
 
 

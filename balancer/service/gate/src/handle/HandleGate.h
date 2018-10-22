@@ -13,6 +13,10 @@ public:
 	~HandleGate();
 
 public:
+	void handle_request_not_init_conn(const muduo::net::TcpConnectionPtr& conn, 
+									  PacketPtr& packet_ptr,
+									  muduo::Timestamp time);
+
 	void handle_request(const muduo::net::TcpConnectionPtr& conn, 
 						PacketPtr& packet_ptr,
 						muduo::Timestamp time);
