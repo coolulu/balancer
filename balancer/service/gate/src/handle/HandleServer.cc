@@ -5,6 +5,7 @@
 #include "handle/server/Heartbeat.h"
 #include "core/PacketStream.h"
 #include "handle/server/CloseConnId.h"
+#include "handle/server/SetConnLogin.h"
 
 HandleServer::HandleServer(Proc& proc)
 	: _proc(proc)
@@ -72,6 +73,14 @@ void HandleServer::handle_request(const muduo::net::TcpConnectionPtr& conn,
 				B_LOG_INFO << "gate::CloseConnIdReq, _msg_seq_id=" << packet_ptr->_msg_seq_id;
 				CloseConnId cci(_proc, conn, packet_ptr, time);
 				cci.handle(msg);
+			}
+			break;
+
+		case gate::GateMsg::kSetConnLoginReq:
+			{
+				B_LOG_INFO << "gate::SetConnLoginReq, _msg_seq_id=" << packet_ptr->_msg_seq_id;
+				SetConnLogin scl(_proc, conn, packet_ptr, time);
+				scl.handle(msg);
 			}
 			break;
 
