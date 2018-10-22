@@ -70,3 +70,16 @@ void GateStack::LogoutRsp(data::Body& body, int code, const std::string& info)
 	body.mutable_service_msg()->PackFrom(msg);
 }
 
+void GateStack::SetConnLoginRsp(data::Body& body, int code, const std::string& info)
+{
+	gate::GateMsg msg;
+
+	gate::SetConnLoginRsp* rsp = msg.mutable_set_conn_login_rsp();
+
+	::data::MsgRsp* msg_rsp = body.mutable_msg_rsp();
+	msg_rsp->set_code(code);
+	msg_rsp->set_info(info);
+
+	body.mutable_service_msg()->PackFrom(msg);
+}
+
