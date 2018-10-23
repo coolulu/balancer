@@ -4,7 +4,7 @@
 #include "proto_cpp/login.pb.h"
 #include "core/Packet.h"
 
-namespace LogicStack
+namespace LoginStack
 {
 
 };
