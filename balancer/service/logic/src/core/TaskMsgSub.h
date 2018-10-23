@@ -15,7 +15,6 @@ public:
 	// proc_id不等于0，则指定proc_id
 	TaskMsgSub(Proc& proc,
 			   const std::string& task_name,
-			   unsigned int gap_us,
 			   unsigned short depend_service_id,
 			   unsigned int proc_id,
 			   TaskMsgMaster* p_task_msg_master);

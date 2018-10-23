@@ -3,11 +3,12 @@
 #include "core/Proc.h"
 #include "core/TaskMsgMaster.h"
 
-TaskMsgSub::TaskMsgSub(Proc& proc, const std::string& task_name, unsigned int gap_us,
+TaskMsgSub::TaskMsgSub(Proc& proc,
+					   const std::string& task_name,
 					   unsigned short depend_service_id, 
 					   unsigned int proc_id,
 					   TaskMsgMaster* p_task_msg_master)
-	:	TaskMsgBase(proc, task_name, gap_us),
+	:	TaskMsgBase(proc, task_name, proc._is.kv()._task_msg_sub_timeout_us),
 		_depend_service_id(depend_service_id),
 		_proc_id(proc_id),
 		_p_task_msg_master(p_task_msg_master)

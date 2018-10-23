@@ -9,8 +9,7 @@ class TaskMsgMaster : public TaskMsgBase
 {
 public:
 	TaskMsgMaster(Proc& proc, 
-				  const std::string& task_name, 
-				  unsigned int gap_us);
+				  const std::string& task_name);
 	virtual ~TaskMsgMaster();
 
 public:

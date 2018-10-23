@@ -3,8 +3,8 @@
 #include "core/Proc.h"
 #include "core/TaskMsgSub.h"
 
-TaskMsgMaster::TaskMsgMaster(Proc& proc, const std::string& task_name, unsigned int gap_us)
-	:	TaskMsgBase(proc, task_name, gap_us)
+TaskMsgMaster::TaskMsgMaster(Proc& proc, const std::string& task_name)
+	:	TaskMsgBase(proc, task_name, proc._is.kv()._task_msg_master_timeout_us)
 {
 
 }
