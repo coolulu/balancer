@@ -131,13 +131,7 @@
     <ClCompile Include="src\core\TaskMsgBase.cc">
       <Filter>src\core</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\TaskMsgMaster.cc">
-      <Filter>src\core</Filter>
-    </ClCompile>
     <ClCompile Include="src\core\TaskMsgPool.cc">
-      <Filter>src\core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\TaskMsgSub.cc">
       <Filter>src\core</Filter>
     </ClCompile>
     <ClCompile Include="src\core\Timer.cc">
@@ -283,13 +277,7 @@
     <ClInclude Include="src\core\TaskMsgBase.h">
       <Filter>src\core</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\TaskMsgMaster.h">
-      <Filter>src\core</Filter>
-    </ClInclude>
     <ClInclude Include="src\core\TaskMsgPool.h">
-      <Filter>src\core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\TaskMsgSub.h">
       <Filter>src\core</Filter>
     </ClInclude>
     <ClInclude Include="src\core\Timer.h">

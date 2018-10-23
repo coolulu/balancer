@@ -94,9 +94,7 @@
     <ClCompile Include="src\core\Seq.cc" />
     <ClCompile Include="src\core\SignalHandle.cc" />
     <ClCompile Include="src\core\TaskMsgBase.cc" />
-    <ClCompile Include="src\core\TaskMsgMaster.cc" />
     <ClCompile Include="src\core\TaskMsgPool.cc" />
-    <ClCompile Include="src\core\TaskMsgSub.cc" />
     <ClCompile Include="src\core\Timer.cc" />
     <ClCompile Include="src\define.cc" />
     <ClCompile Include="src\handle\gate\CloseClient.cc" />
@@ -146,9 +144,7 @@
     <ClInclude Include="src\core\Seq.h" />
     <ClInclude Include="src\core\SignalHandle.h" />
     <ClInclude Include="src\core\TaskMsgBase.h" />
-    <ClInclude Include="src\core\TaskMsgMaster.h" />
     <ClInclude Include="src\core\TaskMsgPool.h" />
-    <ClInclude Include="src\core\TaskMsgSub.h" />
     <ClInclude Include="src\core\Timer.h" />
     <ClInclude Include="src\define.h" />
     <ClInclude Include="src\handle\gate\CloseClient.h" />
