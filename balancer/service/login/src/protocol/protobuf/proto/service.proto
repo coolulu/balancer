@@ -1,0 +1,33 @@
+syntax="proto3";
+
+package service;
+
+enum ServiceId {
+    BEGIN        = 0;
+
+    // 客户端段
+    CLIENT_BEGIN = 1000;
+    CLIENT       = 1001;
+    CLIENT_END   = 9999;
+
+    // 核心服务段
+    CORE_BEGIN   = 10000;
+    CENTER       = 10100;
+    NAVIGATE     = 10200;
+    GATE         = 10300;
+    SESSION      = 10400;
+    LOGIN        = 10500;
+    CORE_END     = 19999;
+
+    // 业务逻辑服务段
+    LOGIC_BEGIN  = 20000;
+    LOGIC        = 20100;
+    LOGIC_END    = 29999;
+
+    // 业务代理服务段
+    PROXY_BEGIN  = 30000;
+    PROXY        = 30100;
+    PROXY_END    = 39999;
+
+    END          = 65535;
+}

@@ -1,0 +1,112 @@
+syntax="proto3";
+
+import "common.proto";
+
+package center;
+
+message CenterMsg {                                 // 奇数是请求，偶数是响应
+    oneof choice {
+        common.TestReq  test_req        = 1;        // 请求
+        common.TestRsp  test_rsp        = 2;        // 响应
+   
+        HeartbeatReq    heartbeat_req   = 3;        // 心跳探测
+        HeartbeatRsp    heartbeat_rsp   = 4;
+
+        SyncServiceReq  sync_service_req = 5;       // center主从同步
+        SyncServiceRsp  sync_service_rsp = 6;
+    }
+}
+
+enum ErrorCode {
+    SUCCESS                         = 0;
+
+    ERR_BEGIN                       = 101000000;
+
+    // 系统错误码  (各个服务service_id * 10000 + 公共系统错误码)
+    ERR_SYS_BEGIN                   = 101000100;
+    ERR_SYS_OVERLOAD                = 101000101;       // 服务过载
+    ERR_SYS_REJECT_SERVICE          = 101000102;       // 拒绝服务
+    ERR_SYS_SERVER_INNER            = 101000103;       // 服务内部错误
+    ERR_SYS_TIMEOUT                 = 101000104;       // 超时错误
+    ERR_SYS_NO_INSERVICE_LIST       = 101000105;       // 没有可用服务ip
+    ERR_SYS_TASK_STATE              = 101000106;       // 任务状态错误
+    ERR_SYS_TASK_DISCARD            = 101000107;       // 任务丢弃
+    ERR_SYS_END                     = 101000199;
+
+    // 数据包错误码 (各个服务service_id * 10000 + 公共数据包错误码)
+    ERR_PACKET_BEGIN                = 101000200;
+    ERR_PACKET_ENCODE               = 101000201;       // 打包失败
+    ERR_PACKET_DECODE               = 101000202;       // 解码失败
+    ERR_PACKET_HEADER               = 101000203;
+    ERR_PACKET_LEN                  = 101000204;
+    ERR_PACKET_VERSION              = 101000205;
+    ERR_PACKET_FROM_SERVICE_ID      = 101000206;
+    ERR_PACKET_TO_SERVICE_ID        = 101000207;
+    ERR_PACKET_APP_ID               = 101000208;
+    ERR_PACKET_APP_VERSION          = 101000209;
+    ERR_PACKET_CONN_SEQ_ID          = 101000210;
+    ERR_PACKET_MSG_SEQ_ID           = 101000211;
+    ERR_PACKET_DATA_FORMAT          = 101000212;
+    ERR_PACKET_DATA_FIELD_0         = 101000213;
+    ERR_PACKET_DATA_FIELD_1         = 101000214;
+    ERR_PACKET_DATA_FIELD_2         = 101000215;
+    ERR_PACKET_DATA_FIELD_3         = 101000216;
+    ERR_PACKET_CHECK_SUM            = 101000217;
+    ERR_PACKET_UNKNOWN_REQUEST      = 101000218;       // 不明请求
+    ERR_PACKET_END                  = 101000299;
+
+    // 接口错误码 (各个服务service_id * 10000 + 公共接口错误码)
+    ERR_INTERFACE_BEGIN             = 101000300;
+    ERR_INTERFACE_PARAM             = 101000301;       // 参数错误
+    ERR_INTERFACE_PERM              = 101000302;       // 权限错误
+    ERR_INTERFACE_TIMEOUT           = 101000303;       // 接口超时
+    ERR_INTERFACE_END               = 101000399;
+
+    // 业务错误码 (各个服务service_id * 10000 + 公共业务错误码)
+    ERR_BUSINESS_BEGIN              = 101001000;
+    ERR_PROBER_SERVICE_TIMEOUT      = 101001001;       // 探测服务超时
+    ERR_PROBER_SERVICE_ID           = 101001002;       // 探测service_id错误
+    ERR_PROBER_CONF_JSON_TO_MAP     = 101001003;       // 探测下发配置json_to_map错误
+    ERR_PROBER_CONF_LOAD_IP_INFO    = 101001004;       // 探测下发配置load_ip_info错误
+    ERR_BUSINESS_END                = 101009999;
+}
+
+enum State {
+    STATE_BEGIN     = 0;
+    HEARTBEAT       = 100;      // 上架
+    INSERVICE       = 200;      // 上线
+}
+
+enum Level {
+    LEVEL_BEGIN     = 0;
+    INIT_LEVEL      = 1000;     // 初始等级(最低等级)
+}
+
+message HeartbeatReq {
+    int32      level               = 1;     // center的等级
+    int32      service_id          = 2;
+    uint32     proc_id             = 3;
+    uint32     state               = 4;     // 目标进程状态(State):1.上架, 2.上线
+    uint64     conf_update_time    = 5;     // 配置更新时间(微妙)
+    bytes      conf_json           = 6;     // 有配置更新下发json，无配置更新下发空字符串
+}
+
+message HeartbeatRsp {
+    int32      level               = 1;     // 接管center的等级
+    int32      service_id          = 2;     // 返回和HeartbeatReq.service_id的值一样
+    uint32     proc_id             = 3;     // 返回和HeartbeatReq.proc_id的值一样
+    uint64     conf_update_time    = 4;     // 配置更新时间(微妙)
+    uint32     expire_second       = 5;     // 接管center的到期秒数，
+                                            // 服务当前时间和接管center最新心跳请求时间相减秒数，
+                                            // 非接管center根据expire_second判断是否需要接管服务
+}
+
+message SyncServiceReq {
+    uint64   conf_update_time	    = 1;
+}
+
+message SyncServiceRsp {
+	uint64   conf_update_time	    = 1;
+    bytes    conf_json      	    = 2;
+}
+

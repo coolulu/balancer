@@ -1,0 +1,62 @@
+syntax="proto3";
+
+import "common.proto";
+
+package proxy;
+
+message ProxyMsg {                              // 奇数是请求，偶数是响应
+    oneof choice {
+        common.TestReq  test_req        = 1;    // 请求
+        common.TestRsp  test_rsp        = 2;    // 响应
+    }
+}
+
+enum ErrorCode {
+    SUCCESS                         = 0;
+
+    // 系统错误码 (各个服务service_id * 10000 + 公共系统错误码)
+    ERR_SYS_BEGIN                   = 301000100;
+    ERR_SYS_OVERLOAD                = 301000101;    // 服务过载
+    ERR_SYS_REJECT_SERVICE          = 301000102;    // 拒绝服务
+    ERR_SYS_SERVER_INNER            = 301000103;    // 服务内部错误
+    ERR_SYS_TIMEOUT                 = 301000104;    // 超时错误
+    ERR_SYS_NO_INSERVICE_LIST       = 301000105;    // 没有可用服务ip
+    ERR_SYS_TASK_STATE              = 301000106;    // 任务状态错误
+    ERR_SYS_TASK_DISCARD            = 301000107;    // 任务丢弃
+    ERR_SYS_END                     = 301000199;
+
+    // 数据包错误码 (各个服务service_id * 10000 + 公共数据包错误码)
+    ERR_PACKET_BEGIN                = 301000200;
+    ERR_PACKET_ENCODE               = 301000201;   	// 打包失败
+    ERR_PACKET_DECODE               = 301000202;   	// 解码失败
+    ERR_PACKET_HEADER               = 301000203;
+    ERR_PACKET_LEN                  = 301000204;
+    ERR_PACKET_VERSION              = 301000205;
+    ERR_PACKET_FROM_SERVICE_ID      = 301000206;
+    ERR_PACKET_TO_SERVICE_ID        = 301000207;
+    ERR_PACKET_APP_ID               = 301000208;
+    ERR_PACKET_APP_VERSION          = 301000209;
+    ERR_PACKET_CONN_SEQ_ID          = 301000210;
+    ERR_PACKET_MSG_SEQ_ID           = 301000211;
+    ERR_PACKET_DATA_FORMAT          = 301000212;
+    ERR_PACKET_DATA_FIELD_0         = 301000213;
+    ERR_PACKET_DATA_FIELD_1         = 301000214;
+    ERR_PACKET_DATA_FIELD_2         = 301000215;
+    ERR_PACKET_DATA_FIELD_3         = 301000216;
+    ERR_PACKET_CHECK_SUM            = 301000217;
+    ERR_PACKET_UNKNOWN_REQUEST      = 301000218;   	// 不明请求
+    ERR_PACKET_END                  = 301000299;
+
+    // 接口错误码 (各个服务service_id * 10000 + 公共接口错误码)
+    ERR_INTERFACE_BEGIN             = 301000300;
+    ERR_INTERFACE_PARAM             = 301000301;   	// 参数错误
+    ERR_INTERFACE_PERM              = 301000302;   	// 权限错误
+    ERR_INTERFACE_TIMEOUT           = 301000303;   	// 接口超时
+    ERR_INTERFACE_END               = 301000399;
+
+    // 业务错误码 (各个服务service_id * 10000 + 公共业务错误码)
+    ERR_BUSINESS_BEGIN              = 301001000;
+    ERR_BUSINESS_END                = 301009999;
+}
+
+
