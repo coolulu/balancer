@@ -86,10 +86,6 @@ std::string Config::load(const std::string& json)
 			return err_is_not_uint(KeyConfig::tcp_client_high_water_mark);
 		if(!get_uint(cv, KeyConfig::tcp_client_msg_reduce_size, proc.tcp_client_msg_reduce_size))
 			return err_is_not_uint(KeyConfig::tcp_client_msg_reduce_size);
-		if(!get_uint(cv, KeyConfig::task_msg_master_timeout_us, proc.task_msg_master_timeout_us))
-			return err_is_not_uint(KeyConfig::task_msg_master_timeout_us);
-		if(!get_uint(cv, KeyConfig::task_msg_sub_timeout_us, proc.task_msg_sub_timeout_us))
-			return err_is_not_uint(KeyConfig::task_msg_sub_timeout_us);
 	}
 
 	return "";
@@ -222,9 +218,7 @@ std::string Config::to_string()
 			", proc.tcp_client_recv_packet_len_max="	+ std::to_string(proc.tcp_client_recv_packet_len_max) + 
 			", proc.tcp_client_send_packet_len_max="	+ std::to_string(proc.tcp_client_send_packet_len_max) + 
 			", proc.tcp_client_high_water_mark="		+ std::to_string(proc.tcp_client_high_water_mark) + 
-			", proc.tcp_client_msg_reduce_size="		+ std::to_string(proc.tcp_client_msg_reduce_size) +
-			", proc.task_msg_master_timeout_us="		+ std::to_string(proc.task_msg_master_timeout_us) +
-			", proc.task_msg_sub_timeout_us="			+ std::to_string(proc.task_msg_sub_timeout_us);
+			", proc.tcp_client_msg_reduce_size="		+ std::to_string(proc.tcp_client_msg_reduce_size);
 }
 
 
