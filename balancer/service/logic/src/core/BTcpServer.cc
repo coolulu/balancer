@@ -135,7 +135,7 @@ void BTcpServer::on_write_complete(const muduo::net::TcpConnectionPtr& conn)
 
 void BTcpServer::on_high_water_mark(const muduo::net::TcpConnectionPtr& conn, size_t len)
 {
-	LOG_WARN << conn->name() << ", len=" << len;
+	B_LOG_WARN << conn->name() << ", len=" << len;
 
 	Context* p_context = boost::any_cast<Context>(conn->getMutableContext());
 	p_context->_update_time = ::time(nullptr);

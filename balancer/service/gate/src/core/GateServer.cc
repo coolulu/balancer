@@ -399,7 +399,7 @@ void GateServer::on_write_complete(const muduo::net::TcpConnectionPtr& conn)
 
 void GateServer::on_high_water_mark(const muduo::net::TcpConnectionPtr& conn, size_t len)
 {
-	LOG_WARN << conn->name() << ", len=" << len;
+	B_LOG_WARN << conn->name() << ", len=" << len;
 
 	GateContext* p_gate_context = boost::any_cast<GateContext>(conn->getMutableContext());
 	p_gate_context->_update_time = ::time(nullptr);

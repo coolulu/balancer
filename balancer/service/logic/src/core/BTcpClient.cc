@@ -182,7 +182,7 @@ void BTcpClient::on_write_complete(const muduo::net::TcpConnectionPtr& conn)
 
 void BTcpClient::on_high_water_mark(const muduo::net::TcpConnectionPtr& conn, size_t len)
 {
-	LOG_WARN << conn->name() << ", len=" << len;
+	B_LOG_WARN << conn->name() << ", len=" << len;
 
 	_update_time = ::time(nullptr);
 }
