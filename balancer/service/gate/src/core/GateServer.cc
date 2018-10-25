@@ -13,6 +13,7 @@ GateContext::GateContext(unsigned long long conn_seq_id)
 		_create_time(0), 
 		_update_time(0), 
 		_is_send_login_request(false),
+		_is_send_access_key_response(false),
 		_en_conn(EN_CONN_NOT_INIT_CONN),
 		_is_wake_heartbeat_wait(false)
 {
@@ -306,29 +307,57 @@ void GateServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 		}	
 	}
 	else if(p_gate_context->_en_conn == GateContext::EN_CONN_NOT_LOGIN)
-	{	
-		if(packet_ptr->_to_service_id == service::LOGIN && packet_ptr->_conn_seq_id == p_gate_context->_conn_seq_id)
+	{
+		// 必须是转发到登录服务
+		if(packet_ptr->_to_service_id == service::LOGIN)
 		{
-			if(p_gate_context->_is_send_login_request)
+			if(packet_ptr->_conn_seq_id == p_gate_context->_conn_seq_id)
 			{
-				// 已经发送过登录请求，防止穷举
-				B_LOG_WARN << "shutdown, _is_send_login_request=true, _msg_seq_id=" << packet_ptr->_msg_seq_id;
-				conn->shutdown();
+				// 请求
+				if(p_gate_context->_is_send_login_request)
+				{
+					// 已经发送过登录请求，防止穷举
+					B_LOG_WARN << "shutdown, _is_send_login_request=true, _msg_seq_id=" << packet_ptr->_msg_seq_id;
+					conn->shutdown();
+				}
+				else
+				{
+					// 登录请求转发给登录服务器
+					_handle_gate.forward_request_to_service(conn, packet_ptr, time);
+					p_gate_context->_is_send_login_request = true;
+				}
 			}
 			else
 			{
-				// 请求转发给登录服务器
-				_handle_gate.forward_request_to_service(conn, packet_ptr, time);
-				p_gate_context->_is_send_login_request = true;
+				// 响应
+				if(p_gate_context->_is_send_login_request)
+				{
+					if(p_gate_context->_is_send_access_key_response)
+					{
+						// 已经发送过access_key响应，防止穷举
+						B_LOG_WARN << "shutdown, _is_send_access_key_response=true, _msg_seq_id=" << packet_ptr->_msg_seq_id;
+						conn->shutdown();
+					}
+					else
+					{
+						// access_key响应转发给登录服务器
+						_handle_gate.forward_response_to_service(conn, packet_ptr, time);
+						p_gate_context->_is_send_access_key_response = true;
+					}
+				}
+				else
+				{
+					// 客户端必须先发送登录请求才会有access_key响应
+					B_LOG_WARN << "shutdown, access key rsp, _is_send_login_request=false, _msg_seq_id=" << packet_ptr->_msg_seq_id;
+					conn->shutdown();
+				}
 			}
 		}
 		else
 		{
-			B_LOG_WARN	<< "shutdown, _to_service_id is not LOGIN or _conn_seq_id is error"
+			B_LOG_WARN	<< "shutdown, _to_service_id is not LOGIN"
 						<< ", _msg_seq_id=" << packet_ptr->_msg_seq_id
-						<< ", _to_service_id=" << packet_ptr->_to_service_id
-						<< ", packet_ptr->_conn_seq_id=" << packet_ptr->_conn_seq_id
-						<< ", p_gate_context->_conn_seq_id" << p_gate_context->_conn_seq_id;
+						<< ", _to_service_id=" << packet_ptr->_to_service_id;
 			conn->shutdown();
 		}
 	}

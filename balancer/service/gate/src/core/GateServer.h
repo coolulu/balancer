@@ -24,7 +24,8 @@ struct GateContext
 	unsigned int _create_time;
 	unsigned int _update_time;
 	EN_CONN		 _en_conn;
-	bool		 _is_send_login_request;	// 是否已发送登录请求
+	bool		 _is_send_login_request;		// 是否已发送登录请求
+	bool		 _is_send_access_key_response;	// 是否已发送access_key响应
 	bool		 _is_wake_heartbeat_wait;
 };
 
