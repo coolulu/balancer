@@ -375,7 +375,7 @@ void AddDescriptorsImpl() {
       "\001(\004\"\020\n\016CloseConnIdRsp\"\020\n\016CloseClientReq\""
       "\020\n\016CloseClientRsp\"\013\n\tLogoutReq\"\013\n\tLogout"
       "Rsp\"\"\n\017SetConnLoginReq\022\017\n\007conn_id\030\001 \001(\004\""
-      "\021\n\017SetConnLoginRsp*\267\010\n\tErrorCode\022\013\n\007SUCC"
+      "\021\n\017SetConnLoginRsp*\376\010\n\tErrorCode\022\013\n\007SUCC"
       "ESS\020\000\022\024\n\rERR_SYS_BEGIN\020\244\320\2161\022\027\n\020ERR_SYS_O"
       "VERLOAD\020\245\320\2161\022\035\n\026ERR_SYS_REJECT_SERVICE\020\246"
       "\320\2161\022\033\n\024ERR_SYS_SERVER_INNER\020\247\320\2161\022\026\n\017ERR_"
@@ -399,13 +399,15 @@ void AddDescriptorsImpl() {
       "EST\020\232\321\2161\022\025\n\016ERR_PACKET_END\020\353\321\2161\022\032\n\023ERR_I"
       "NTERFACE_BEGIN\020\354\321\2161\022\032\n\023ERR_INTERFACE_PAR"
       "AM\020\355\321\2161\022\031\n\022ERR_INTERFACE_PERM\020\356\321\2161\022\034\n\025ER"
-      "R_INTERFACE_TIMEOUT\020\357\321\2161\022\030\n\021ERR_INTERFAC"
-      "E_END\020\317\322\2161\022\031\n\022ERR_BUSINESS_BEGIN\020\250\327\2161\022$\n"
-      "\035ERR_BUSINESS_NOT_FIND_CONN_ID\020\251\327\2161\022\027\n\020E"
-      "RR_BUSINESS_END\020\317\235\2171b\006proto3"
+      "R_INTERFACE_TIMEOUT\020\357\321\2161\022#\n\034ERR_INTERFAC"
+      "E_MASTER_TIMEOUT\020\360\321\2161\022 \n\031ERR_INTERFACE_S"
+      "UB_TIMEOUT\020\361\321\2161\022\030\n\021ERR_INTERFACE_END\020\317\322\216"
+      "1\022\031\n\022ERR_BUSINESS_BEGIN\020\250\327\2161\022$\n\035ERR_BUSI"
+      "NESS_NOT_FIND_CONN_ID\020\251\327\2161\022\027\n\020ERR_BUSINE"
+      "SS_END\020\317\235\2171b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2188);
+      descriptor, 2259);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "gate.proto", &protobuf_RegisterTypes);
   ::common::protobuf_common_2eproto::AddDescriptors();
@@ -465,6 +467,8 @@ bool ErrorCode_IsValid(int value) {
     case 103000301:
     case 103000302:
     case 103000303:
+    case 103000304:
+    case 103000305:
     case 103000399:
     case 103001000:
     case 103001001:
