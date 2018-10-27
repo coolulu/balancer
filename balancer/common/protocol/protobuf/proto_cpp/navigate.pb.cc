@@ -211,7 +211,7 @@ void AddDescriptorsImpl() {
       "\005\022\017\n\007proc_id\030\003 \001(\r\022\016\n\006out_ip\030\004 \001(\014\022\020\n\010ou"
       "t_port\030\005 \001(\005\"C\n\nPutLoadReq\022\022\n\nservice_id"
       "\030\001 \001(\005\022\017\n\007proc_id\030\002 \001(\r\022\020\n\010load_val\030\003 \001("
-      "\005\"\014\n\nPutLoadRsp*\221\010\n\tErrorCode\022\013\n\007SUCCESS"
+      "\005\"\014\n\nPutLoadRsp*\330\010\n\tErrorCode\022\013\n\007SUCCESS"
       "\020\000\022\024\n\rERR_SYS_BEGIN\020\344\313\3210\022\027\n\020ERR_SYS_OVER"
       "LOAD\020\345\313\3210\022\035\n\026ERR_SYS_REJECT_SERVICE\020\346\313\3210"
       "\022\033\n\024ERR_SYS_SERVER_INNER\020\347\313\3210\022\026\n\017ERR_SYS"
@@ -235,12 +235,14 @@ void AddDescriptorsImpl() {
       "\020\332\314\3210\022\025\n\016ERR_PACKET_END\020\253\315\3210\022\032\n\023ERR_INTE"
       "RFACE_BEGIN\020\254\315\3210\022\032\n\023ERR_INTERFACE_PARAM\020"
       "\255\315\3210\022\031\n\022ERR_INTERFACE_PERM\020\256\315\3210\022\034\n\025ERR_I"
-      "NTERFACE_TIMEOUT\020\257\315\3210\022\030\n\021ERR_INTERFACE_E"
-      "ND\020\217\316\3210\022\031\n\022ERR_BUSINESS_BEGIN\020\350\322\3210\022\027\n\020ER"
-      "R_BUSINESS_END\020\217\231\3220b\006proto3"
+      "NTERFACE_TIMEOUT\020\257\315\3210\022#\n\034ERR_INTERFACE_M"
+      "ASTER_TIMEOUT\020\260\315\3210\022 \n\031ERR_INTERFACE_SUB_"
+      "TIMEOUT\020\261\315\3210\022\030\n\021ERR_INTERFACE_END\020\217\316\3210\022\031"
+      "\n\022ERR_BUSINESS_BEGIN\020\350\322\3210\022\027\n\020ERR_BUSINES"
+      "S_END\020\217\231\3220b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1627);
+      descriptor, 1698);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "navigate.proto", &protobuf_RegisterTypes);
   ::common::protobuf_common_2eproto::AddDescriptors();
@@ -300,6 +302,8 @@ bool ErrorCode_IsValid(int value) {
     case 102000301:
     case 102000302:
     case 102000303:
+    case 102000304:
+    case 102000305:
     case 102000399:
     case 102001000:
     case 102009999:

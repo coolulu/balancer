@@ -350,7 +350,7 @@ void AddDescriptorsImpl() {
       "session\030\001 \001(\0132\020.session.Session\"+\n\023Query"
       "SessionListReq\022\024\n\014user_id_list\030\001 \003(\004\"=\n\023"
       "QuerySessionListRsp\022&\n\014session_list\030\001 \003("
-      "\0132\020.session.Session*\221\010\n\tErrorCode\022\013\n\007SUC"
+      "\0132\020.session.Session*\330\010\n\tErrorCode\022\013\n\007SUC"
       "CESS\020\000\022\024\n\rERR_SYS_BEGIN\020\344\324\3131\022\027\n\020ERR_SYS_"
       "OVERLOAD\020\345\324\3131\022\035\n\026ERR_SYS_REJECT_SERVICE\020"
       "\346\324\3131\022\033\n\024ERR_SYS_SERVER_INNER\020\347\324\3131\022\026\n\017ERR"
@@ -374,12 +374,14 @@ void AddDescriptorsImpl() {
       "UEST\020\332\325\3131\022\025\n\016ERR_PACKET_END\020\253\326\3131\022\032\n\023ERR_"
       "INTERFACE_BEGIN\020\254\326\3131\022\032\n\023ERR_INTERFACE_PA"
       "RAM\020\255\326\3131\022\031\n\022ERR_INTERFACE_PERM\020\256\326\3131\022\034\n\025E"
-      "RR_INTERFACE_TIMEOUT\020\257\326\3131\022\030\n\021ERR_INTERFA"
-      "CE_END\020\217\327\3131\022\031\n\022ERR_BUSINESS_BEGIN\020\350\333\3131\022\027"
-      "\n\020ERR_BUSINESS_END\020\217\242\3141b\006proto3"
+      "RR_INTERFACE_TIMEOUT\020\257\326\3131\022#\n\034ERR_INTERFA"
+      "CE_MASTER_TIMEOUT\020\260\326\3131\022 \n\031ERR_INTERFACE_"
+      "SUB_TIMEOUT\020\261\326\3131\022\030\n\021ERR_INTERFACE_END\020\217\327"
+      "\3131\022\031\n\022ERR_BUSINESS_BEGIN\020\350\333\3131\022\027\n\020ERR_BUS"
+      "INESS_END\020\217\242\3141b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2271);
+      descriptor, 2342);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "session.proto", &protobuf_RegisterTypes);
   ::common::protobuf_common_2eproto::AddDescriptors();
@@ -439,6 +441,8 @@ bool ErrorCode_IsValid(int value) {
     case 104000301:
     case 104000302:
     case 104000303:
+    case 104000304:
+    case 104000305:
     case 104000399:
     case 104001000:
     case 104009999:

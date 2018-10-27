@@ -120,7 +120,7 @@ void AddDescriptorsImpl() {
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\014common.proto\022\006common\"\035\n\007TestReq\022\022\n\nser"
       "vice_id\030\001 \001(\005\"\037\n\007TestRsp\022\024\n\014service_name"
-      "\030\001 \001(\014*\301\007\n\tErrorCode\022\013\n\007SUCCESS\020\000\022\021\n\rERR"
+      "\030\001 \001(\014*\204\010\n\tErrorCode\022\013\n\007SUCCESS\020\000\022\021\n\rERR"
       "_SYS_BEGIN\020d\022\024\n\020ERR_SYS_OVERLOAD\020e\022\032\n\026ER"
       "R_SYS_REJECT_SERVICE\020f\022\030\n\024ERR_SYS_SERVER"
       "_INNER\020g\022\023\n\017ERR_SYS_TIMEOUT\020h\022\035\n\031ERR_SYS"
@@ -142,12 +142,14 @@ void AddDescriptorsImpl() {
       "N_REQUEST\020\332\001\022\023\n\016ERR_PACKET_END\020\253\002\022\030\n\023ERR"
       "_INTERFACE_BEGIN\020\254\002\022\030\n\023ERR_INTERFACE_PAR"
       "AM\020\255\002\022\027\n\022ERR_INTERFACE_PERM\020\256\002\022\032\n\025ERR_IN"
-      "TERFACE_TIMEOUT\020\257\002\022\026\n\021ERR_INTERFACE_END\020"
-      "\217\003\022\027\n\022ERR_BUSINESS_BEGIN\020\350\007\022\025\n\020ERR_BUSIN"
-      "ESS_END\020\217Nb\006proto3"
+      "TERFACE_TIMEOUT\020\257\002\022!\n\034ERR_INTERFACE_MAST"
+      "ER_TIMEOUT\020\260\002\022\036\n\031ERR_INTERFACE_SUB_TIMEO"
+      "UT\020\261\002\022\026\n\021ERR_INTERFACE_END\020\217\003\022\027\n\022ERR_BUS"
+      "INESS_BEGIN\020\350\007\022\025\n\020ERR_BUSINESS_END\020\217Nb\006p"
+      "roto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1058);
+      descriptor, 1125);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
 }
@@ -206,6 +208,8 @@ bool ErrorCode_IsValid(int value) {
     case 301:
     case 302:
     case 303:
+    case 304:
+    case 305:
     case 399:
     case 1000:
     case 9999:

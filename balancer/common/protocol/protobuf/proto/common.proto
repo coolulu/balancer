@@ -44,6 +44,8 @@ enum ErrorCode {
     ERR_INTERFACE_PARAM             = 301;          // 参数错误
     ERR_INTERFACE_PERM              = 302;          // 权限错误
     ERR_INTERFACE_TIMEOUT           = 303;          // 接口超时
+    ERR_INTERFACE_MASTER_TIMEOUT    = 304;          // 接口主任务超时
+    ERR_INTERFACE_SUB_TIMEOUT       = 305;          // 接口子任务超时
     ERR_INTERFACE_END               = 399;
 
     // 公共业务错误码 (各个服务service_id * 10000 + 公共业务错误码)
