@@ -8,6 +8,9 @@ message ProxyMsg {                              // 奇数是请求，偶数是�
     oneof choice {
         common.TestReq  test_req        = 1;    // 请求
         common.TestRsp  test_rsp        = 2;    // 响应
+
+        GetUserInfoReq  get_user_info_req   = 3;
+        GetUserInfoRsp  get_user_info_rsp   = 4;
     }
 }
 
@@ -61,4 +64,10 @@ enum ErrorCode {
     ERR_BUSINESS_END                = 301009999;
 }
 
+message GetUserInfoReq {
+    uint64  user_id     = 1; 
+}
 
+message GetUserInfoRsp {
+
+}

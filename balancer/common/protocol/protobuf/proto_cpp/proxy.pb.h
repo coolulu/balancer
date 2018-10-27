@@ -33,6 +33,12 @@
 #include "common.pb.h"
 // @@protoc_insertion_point(includes)
 namespace proxy {
+class GetUserInfoReq;
+class GetUserInfoReqDefaultTypeInternal;
+extern GetUserInfoReqDefaultTypeInternal _GetUserInfoReq_default_instance_;
+class GetUserInfoRsp;
+class GetUserInfoRspDefaultTypeInternal;
+extern GetUserInfoRspDefaultTypeInternal _GetUserInfoRsp_default_instance_;
 class ProxyMsg;
 class ProxyMsgDefaultTypeInternal;
 extern ProxyMsgDefaultTypeInternal _ProxyMsg_default_instance_;
@@ -147,6 +153,8 @@ class ProxyMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(
   enum ChoiceCase {
     kTestReq = 1,
     kTestRsp = 2,
+    kGetUserInfoReq = 3,
+    kGetUserInfoRsp = 4,
     CHOICE_NOT_SET = 0,
   };
 
@@ -220,11 +228,31 @@ class ProxyMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::common::TestRsp* release_test_rsp();
   void set_allocated_test_rsp(::common::TestRsp* test_rsp);
 
+  // .proxy.GetUserInfoReq get_user_info_req = 3;
+  bool has_get_user_info_req() const;
+  void clear_get_user_info_req();
+  static const int kGetUserInfoReqFieldNumber = 3;
+  const ::proxy::GetUserInfoReq& get_user_info_req() const;
+  ::proxy::GetUserInfoReq* mutable_get_user_info_req();
+  ::proxy::GetUserInfoReq* release_get_user_info_req();
+  void set_allocated_get_user_info_req(::proxy::GetUserInfoReq* get_user_info_req);
+
+  // .proxy.GetUserInfoRsp get_user_info_rsp = 4;
+  bool has_get_user_info_rsp() const;
+  void clear_get_user_info_rsp();
+  static const int kGetUserInfoRspFieldNumber = 4;
+  const ::proxy::GetUserInfoRsp& get_user_info_rsp() const;
+  ::proxy::GetUserInfoRsp* mutable_get_user_info_rsp();
+  ::proxy::GetUserInfoRsp* release_get_user_info_rsp();
+  void set_allocated_get_user_info_rsp(::proxy::GetUserInfoRsp* get_user_info_rsp);
+
   ChoiceCase choice_case() const;
   // @@protoc_insertion_point(class_scope:proxy.ProxyMsg)
  private:
   void set_has_test_req();
   void set_has_test_rsp();
+  void set_has_get_user_info_req();
+  void set_has_get_user_info_rsp();
 
   inline bool has_choice() const;
   void clear_choice();
@@ -235,10 +263,199 @@ class ProxyMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(
     ChoiceUnion() {}
     ::common::TestReq* test_req_;
     ::common::TestRsp* test_rsp_;
+    ::proxy::GetUserInfoReq* get_user_info_req_;
+    ::proxy::GetUserInfoRsp* get_user_info_rsp_;
   } choice_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
 
+  friend struct protobuf_proxy_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class GetUserInfoReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proxy.GetUserInfoReq) */ {
+ public:
+  GetUserInfoReq();
+  virtual ~GetUserInfoReq();
+
+  GetUserInfoReq(const GetUserInfoReq& from);
+
+  inline GetUserInfoReq& operator=(const GetUserInfoReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetUserInfoReq(GetUserInfoReq&& from) noexcept
+    : GetUserInfoReq() {
+    *this = ::std::move(from);
+  }
+
+  inline GetUserInfoReq& operator=(GetUserInfoReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetUserInfoReq& default_instance();
+
+  static inline const GetUserInfoReq* internal_default_instance() {
+    return reinterpret_cast<const GetUserInfoReq*>(
+               &_GetUserInfoReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    1;
+
+  void Swap(GetUserInfoReq* other);
+  friend void swap(GetUserInfoReq& a, GetUserInfoReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetUserInfoReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  GetUserInfoReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const GetUserInfoReq& from);
+  void MergeFrom(const GetUserInfoReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(GetUserInfoReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 user_id = 1;
+  void clear_user_id();
+  static const int kUserIdFieldNumber = 1;
+  ::google::protobuf::uint64 user_id() const;
+  void set_user_id(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:proxy.GetUserInfoReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 user_id_;
+  mutable int _cached_size_;
+  friend struct protobuf_proxy_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class GetUserInfoRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proxy.GetUserInfoRsp) */ {
+ public:
+  GetUserInfoRsp();
+  virtual ~GetUserInfoRsp();
+
+  GetUserInfoRsp(const GetUserInfoRsp& from);
+
+  inline GetUserInfoRsp& operator=(const GetUserInfoRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetUserInfoRsp(GetUserInfoRsp&& from) noexcept
+    : GetUserInfoRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline GetUserInfoRsp& operator=(GetUserInfoRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetUserInfoRsp& default_instance();
+
+  static inline const GetUserInfoRsp* internal_default_instance() {
+    return reinterpret_cast<const GetUserInfoRsp*>(
+               &_GetUserInfoRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    2;
+
+  void Swap(GetUserInfoRsp* other);
+  friend void swap(GetUserInfoRsp& a, GetUserInfoRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetUserInfoRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  GetUserInfoRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const GetUserInfoRsp& from);
+  void MergeFrom(const GetUserInfoRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(GetUserInfoRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:proxy.GetUserInfoRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
   friend struct protobuf_proxy_2eproto::TableStruct;
 };
 // ===================================================================
@@ -349,6 +566,102 @@ inline void ProxyMsg::set_allocated_test_rsp(::common::TestRsp* test_rsp) {
   // @@protoc_insertion_point(field_set_allocated:proxy.ProxyMsg.test_rsp)
 }
 
+// .proxy.GetUserInfoReq get_user_info_req = 3;
+inline bool ProxyMsg::has_get_user_info_req() const {
+  return choice_case() == kGetUserInfoReq;
+}
+inline void ProxyMsg::set_has_get_user_info_req() {
+  _oneof_case_[0] = kGetUserInfoReq;
+}
+inline void ProxyMsg::clear_get_user_info_req() {
+  if (has_get_user_info_req()) {
+    delete choice_.get_user_info_req_;
+    clear_has_choice();
+  }
+}
+inline  const ::proxy::GetUserInfoReq& ProxyMsg::get_user_info_req() const {
+  // @@protoc_insertion_point(field_get:proxy.ProxyMsg.get_user_info_req)
+  return has_get_user_info_req()
+      ? *choice_.get_user_info_req_
+      : ::proxy::GetUserInfoReq::default_instance();
+}
+inline ::proxy::GetUserInfoReq* ProxyMsg::mutable_get_user_info_req() {
+  if (!has_get_user_info_req()) {
+    clear_choice();
+    set_has_get_user_info_req();
+    choice_.get_user_info_req_ = new ::proxy::GetUserInfoReq;
+  }
+  // @@protoc_insertion_point(field_mutable:proxy.ProxyMsg.get_user_info_req)
+  return choice_.get_user_info_req_;
+}
+inline ::proxy::GetUserInfoReq* ProxyMsg::release_get_user_info_req() {
+  // @@protoc_insertion_point(field_release:proxy.ProxyMsg.get_user_info_req)
+  if (has_get_user_info_req()) {
+    clear_has_choice();
+    ::proxy::GetUserInfoReq* temp = choice_.get_user_info_req_;
+    choice_.get_user_info_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void ProxyMsg::set_allocated_get_user_info_req(::proxy::GetUserInfoReq* get_user_info_req) {
+  clear_choice();
+  if (get_user_info_req) {
+    set_has_get_user_info_req();
+    choice_.get_user_info_req_ = get_user_info_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:proxy.ProxyMsg.get_user_info_req)
+}
+
+// .proxy.GetUserInfoRsp get_user_info_rsp = 4;
+inline bool ProxyMsg::has_get_user_info_rsp() const {
+  return choice_case() == kGetUserInfoRsp;
+}
+inline void ProxyMsg::set_has_get_user_info_rsp() {
+  _oneof_case_[0] = kGetUserInfoRsp;
+}
+inline void ProxyMsg::clear_get_user_info_rsp() {
+  if (has_get_user_info_rsp()) {
+    delete choice_.get_user_info_rsp_;
+    clear_has_choice();
+  }
+}
+inline  const ::proxy::GetUserInfoRsp& ProxyMsg::get_user_info_rsp() const {
+  // @@protoc_insertion_point(field_get:proxy.ProxyMsg.get_user_info_rsp)
+  return has_get_user_info_rsp()
+      ? *choice_.get_user_info_rsp_
+      : ::proxy::GetUserInfoRsp::default_instance();
+}
+inline ::proxy::GetUserInfoRsp* ProxyMsg::mutable_get_user_info_rsp() {
+  if (!has_get_user_info_rsp()) {
+    clear_choice();
+    set_has_get_user_info_rsp();
+    choice_.get_user_info_rsp_ = new ::proxy::GetUserInfoRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:proxy.ProxyMsg.get_user_info_rsp)
+  return choice_.get_user_info_rsp_;
+}
+inline ::proxy::GetUserInfoRsp* ProxyMsg::release_get_user_info_rsp() {
+  // @@protoc_insertion_point(field_release:proxy.ProxyMsg.get_user_info_rsp)
+  if (has_get_user_info_rsp()) {
+    clear_has_choice();
+    ::proxy::GetUserInfoRsp* temp = choice_.get_user_info_rsp_;
+    choice_.get_user_info_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void ProxyMsg::set_allocated_get_user_info_rsp(::proxy::GetUserInfoRsp* get_user_info_rsp) {
+  clear_choice();
+  if (get_user_info_rsp) {
+    set_has_get_user_info_rsp();
+    choice_.get_user_info_rsp_ = get_user_info_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:proxy.ProxyMsg.get_user_info_rsp)
+}
+
 inline bool ProxyMsg::has_choice() const {
   return choice_case() != CHOICE_NOT_SET;
 }
@@ -358,10 +671,36 @@ inline void ProxyMsg::clear_has_choice() {
 inline ProxyMsg::ChoiceCase ProxyMsg::choice_case() const {
   return ProxyMsg::ChoiceCase(_oneof_case_[0]);
 }
+// -------------------------------------------------------------------
+
+// GetUserInfoReq
+
+// uint64 user_id = 1;
+inline void GetUserInfoReq::clear_user_id() {
+  user_id_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 GetUserInfoReq::user_id() const {
+  // @@protoc_insertion_point(field_get:proxy.GetUserInfoReq.user_id)
+  return user_id_;
+}
+inline void GetUserInfoReq::set_user_id(::google::protobuf::uint64 value) {
+  
+  user_id_ = value;
+  // @@protoc_insertion_point(field_set:proxy.GetUserInfoReq.user_id)
+}
+
+// -------------------------------------------------------------------
+
+// GetUserInfoRsp
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
