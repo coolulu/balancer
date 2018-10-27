@@ -133,6 +133,8 @@
         ERR_INTERFACE_PARAM             = 301;          // 参数错误
         ERR_INTERFACE_PERM              = 302;          // 权限错误
         ERR_INTERFACE_TIMEOUT           = 303;          // 接口超时
+        ERR_INTERFACE_MASTER_TIMEOUT    = 304;          // 接口主任务超时
+        ERR_INTERFACE_SUB_TIMEOUT       = 305;          // 接口子任务超时
         ERR_INTERFACE_END               = 399;
 
         // 公共业务错误码 (各个服务service_id * 10000 + 公共业务错误码)
@@ -221,6 +223,8 @@
         ERR_INTERFACE_PARAM             = 101000301;       // 参数错误
         ERR_INTERFACE_PERM              = 101000302;       // 权限错误
         ERR_INTERFACE_TIMEOUT           = 101000303;       // 接口超时
+        ERR_INTERFACE_MASTER_TIMEOUT    = 101000304;       // 接口主任务超时
+        ERR_INTERFACE_SUB_TIMEOUT       = 101000305;       // 接口子任务超时
         ERR_INTERFACE_END               = 101000399;
 
         // 业务错误码
