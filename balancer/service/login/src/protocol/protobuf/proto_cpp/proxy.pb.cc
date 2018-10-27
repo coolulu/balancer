@@ -114,7 +114,7 @@ void AddDescriptorsImpl() {
       "\n\013proxy.proto\022\005proxy\032\014common.proto\"^\n\010Pr"
       "oxyMsg\022#\n\010test_req\030\001 \001(\0132\017.common.TestRe"
       "qH\000\022#\n\010test_rsp\030\002 \001(\0132\017.common.TestRspH\000"
-      "B\010\n\006choice*\265\010\n\tErrorCode\022\013\n\007SUCCESS\020\000\022\025\n"
+      "B\010\n\006choice*\376\010\n\tErrorCode\022\013\n\007SUCCESS\020\000\022\025\n"
       "\rERR_SYS_BEGIN\020\244\313\303\217\001\022\030\n\020ERR_SYS_OVERLOAD"
       "\020\245\313\303\217\001\022\036\n\026ERR_SYS_REJECT_SERVICE\020\246\313\303\217\001\022\034"
       "\n\024ERR_SYS_SERVER_INNER\020\247\313\303\217\001\022\027\n\017ERR_SYS_"
@@ -139,12 +139,14 @@ void AddDescriptorsImpl() {
       "ET_END\020\353\314\303\217\001\022\033\n\023ERR_INTERFACE_BEGIN\020\354\314\303\217"
       "\001\022\033\n\023ERR_INTERFACE_PARAM\020\355\314\303\217\001\022\032\n\022ERR_IN"
       "TERFACE_PERM\020\356\314\303\217\001\022\035\n\025ERR_INTERFACE_TIME"
-      "OUT\020\357\314\303\217\001\022\031\n\021ERR_INTERFACE_END\020\317\315\303\217\001\022\032\n\022"
-      "ERR_BUSINESS_BEGIN\020\250\322\303\217\001\022\030\n\020ERR_BUSINESS"
-      "_END\020\317\230\304\217\001b\006proto3"
+      "OUT\020\357\314\303\217\001\022$\n\034ERR_INTERFACE_MASTER_TIMEOU"
+      "T\020\360\314\303\217\001\022!\n\031ERR_INTERFACE_SUB_TIMEOUT\020\361\314\303"
+      "\217\001\022\031\n\021ERR_INTERFACE_END\020\317\315\303\217\001\022\032\n\022ERR_BUS"
+      "INESS_BEGIN\020\250\322\303\217\001\022\030\n\020ERR_BUSINESS_END\020\317\230"
+      "\304\217\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1218);
+      descriptor, 1291);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "proxy.proto", &protobuf_RegisterTypes);
   ::common::protobuf_common_2eproto::AddDescriptors();
@@ -204,6 +206,8 @@ bool ErrorCode_IsValid(int value) {
     case 301000301:
     case 301000302:
     case 301000303:
+    case 301000304:
+    case 301000305:
     case 301000399:
     case 301001000:
     case 301009999:

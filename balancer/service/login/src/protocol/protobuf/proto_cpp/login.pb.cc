@@ -206,7 +206,7 @@ void AddDescriptorsImpl() {
       "d\030\003 \001(\004\022\016\n\006passwd\030\004 \001(\014\022\020\n\010dev_type\030\005 \001("
       "\r\022\021\n\tdev_token\030\006 \001(\014\"\n\n\010LoginRsp\"\016\n\014Acce"
       "ssKeyReq\"\"\n\014AccessKeyRsp\022\022\n\naccess_key\030\001"
-      " \001(\014*\221\010\n\tErrorCode\022\013\n\007SUCCESS\020\000\022\024\n\rERR_S"
+      " \001(\014*\330\010\n\tErrorCode\022\013\n\007SUCCESS\020\000\022\024\n\rERR_S"
       "YS_BEGIN\020\244\331\2102\022\027\n\020ERR_SYS_OVERLOAD\020\245\331\2102\022\035"
       "\n\026ERR_SYS_REJECT_SERVICE\020\246\331\2102\022\033\n\024ERR_SYS"
       "_SERVER_INNER\020\247\331\2102\022\026\n\017ERR_SYS_TIMEOUT\020\250\331"
@@ -230,12 +230,14 @@ void AddDescriptorsImpl() {
       "R_PACKET_END\020\353\332\2102\022\032\n\023ERR_INTERFACE_BEGIN"
       "\020\354\332\2102\022\032\n\023ERR_INTERFACE_PARAM\020\355\332\2102\022\031\n\022ERR"
       "_INTERFACE_PERM\020\356\332\2102\022\034\n\025ERR_INTERFACE_TI"
-      "MEOUT\020\357\332\2102\022\030\n\021ERR_INTERFACE_END\020\317\333\2102\022\031\n\022"
-      "ERR_BUSINESS_BEGIN\020\250\340\2102\022\027\n\020ERR_BUSINESS_"
-      "END\020\317\246\2112b\006proto3"
+      "MEOUT\020\357\332\2102\022#\n\034ERR_INTERFACE_MASTER_TIMEO"
+      "UT\020\360\332\2102\022 \n\031ERR_INTERFACE_SUB_TIMEOUT\020\361\332\210"
+      "2\022\030\n\021ERR_INTERFACE_END\020\317\333\2102\022\031\n\022ERR_BUSIN"
+      "ESS_BEGIN\020\250\340\2102\022\027\n\020ERR_BUSINESS_END\020\317\246\2112b"
+      "\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1536);
+      descriptor, 1607);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "login.proto", &protobuf_RegisterTypes);
   ::common::protobuf_common_2eproto::AddDescriptors();
@@ -295,6 +297,8 @@ bool ErrorCode_IsValid(int value) {
     case 105000301:
     case 105000302:
     case 105000303:
+    case 105000304:
+    case 105000305:
     case 105000399:
     case 105001000:
     case 105009999:
