@@ -16,7 +16,7 @@ public:
 	virtual int timeout_by_sub(TaskMsgSub& sub) = 0;
 	virtual int timeout() = 0;
 	virtual int run(void* p = nullptr) = 0;
-	virtual void print(const std::string& prefix = "");
+	virtual void print(const std::string& prefix = ""){}
 
 public:
 	unsigned int sub_size();
