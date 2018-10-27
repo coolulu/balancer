@@ -114,7 +114,7 @@ void AddDescriptorsImpl() {
       "\n\013logic.proto\022\005logic\032\014common.proto\"^\n\010Lo"
       "gicMsg\022#\n\010test_req\030\001 \001(\0132\017.common.TestRe"
       "qH\000\022#\n\010test_rsp\030\002 \001(\0132\017.common.TestRspH\000"
-      "B\010\n\006choice*\221\010\n\tErrorCode\022\013\n\007SUCCESS\020\000\022\024\n"
+      "B\010\n\006choice*\330\010\n\tErrorCode\022\013\n\007SUCCESS\020\000\022\024\n"
       "\rERR_SYS_BEGIN\020\244\211\354_\022\027\n\020ERR_SYS_OVERLOAD\020"
       "\245\211\354_\022\035\n\026ERR_SYS_REJECT_SERVICE\020\246\211\354_\022\033\n\024E"
       "RR_SYS_SERVER_INNER\020\247\211\354_\022\026\n\017ERR_SYS_TIME"
@@ -138,12 +138,14 @@ void AddDescriptorsImpl() {
       "\022\025\n\016ERR_PACKET_END\020\353\212\354_\022\032\n\023ERR_INTERFACE"
       "_BEGIN\020\354\212\354_\022\032\n\023ERR_INTERFACE_PARAM\020\355\212\354_\022"
       "\031\n\022ERR_INTERFACE_PERM\020\356\212\354_\022\034\n\025ERR_INTERF"
-      "ACE_TIMEOUT\020\357\212\354_\022\030\n\021ERR_INTERFACE_END\020\317\213"
-      "\354_\022\031\n\022ERR_BUSINESS_BEGIN\020\250\220\354_\022\027\n\020ERR_BUS"
-      "INESS_END\020\317\326\354_b\006proto3"
+      "ACE_TIMEOUT\020\357\212\354_\022#\n\034ERR_INTERFACE_MASTER"
+      "_TIMEOUT\020\360\212\354_\022 \n\031ERR_INTERFACE_SUB_TIMEO"
+      "UT\020\361\212\354_\022\030\n\021ERR_INTERFACE_END\020\317\213\354_\022\031\n\022ERR"
+      "_BUSINESS_BEGIN\020\250\220\354_\022\027\n\020ERR_BUSINESS_END"
+      "\020\317\326\354_b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1182);
+      descriptor, 1253);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "logic.proto", &protobuf_RegisterTypes);
   ::common::protobuf_common_2eproto::AddDescriptors();
@@ -203,6 +205,8 @@ bool ErrorCode_IsValid(int value) {
     case 201000301:
     case 201000302:
     case 201000303:
+    case 201000304:
+    case 201000305:
     case 201000399:
     case 201001000:
     case 201009999:
