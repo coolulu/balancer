@@ -15,4 +15,4 @@ namespace CenterStack
 					  unsigned long long conf_update_time,
 					  unsigned int expire_second);
 
-};
+}

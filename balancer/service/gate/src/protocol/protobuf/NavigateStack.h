@@ -10,4 +10,4 @@ namespace NavigateStack
 					int service_id, 
 					unsigned int proc_id, 
 					int load_val);
-};
+}

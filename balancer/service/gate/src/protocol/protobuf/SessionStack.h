@@ -11,4 +11,4 @@ namespace SessionStack
 					   const std::string& in_ip,
 					   int in_port,
 					   unsigned int conn_id);
-};
+}

@@ -23,4 +23,4 @@ namespace CenterStack
 						unsigned long long conf_update_time,
 						const std::string& conf_json);
 
-};
+}

@@ -22,4 +22,4 @@ namespace GateStack
 	void LogoutRsp(data::Body& body, int code, const std::string& info);
 
 	void SetConnLoginRsp(data::Body& body, int code, const std::string& info);
-};
+}
