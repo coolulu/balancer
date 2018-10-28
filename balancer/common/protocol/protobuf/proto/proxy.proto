@@ -9,8 +9,11 @@ message ProxyMsg {                              // 奇数是请求，偶数是�
         common.TestReq  test_req        = 1;    // 请求
         common.TestRsp  test_rsp        = 2;    // 响应
 
-        GetUserInfoReq  get_user_info_req   = 3;
+        GetUserInfoReq  get_user_info_req   = 3;    // 获取用户信息
         GetUserInfoRsp  get_user_info_rsp   = 4;
+
+        CheckPasswdReq  check_passwd_req    = 5;    // 校验用户密码
+        CheckPasswdRsp  check_passwd_rsp    = 6;
     }
 }
 
@@ -61,6 +64,8 @@ enum ErrorCode {
 
     // 业务错误码 (各个服务service_id * 10000 + 公共业务错误码)
     ERR_BUSINESS_BEGIN              = 301001000;
+    ERR_BUSINESS_NOT_FIND_USER_ID   = 301001001;    // user_id不存在
+    ERR_BUSINESS_CHECK_PASSWD_ERROR = 301001002;    // 校验密码错误
     ERR_BUSINESS_END                = 301009999;
 }
 
@@ -71,3 +76,13 @@ message GetUserInfoReq {
 message GetUserInfoRsp {
 
 }
+
+message CheckPasswdReq {
+    uint64  user_id     = 1;
+    bytes   passwd      = 2;
+}
+
+message CheckPasswdRsp {
+
+}
+
