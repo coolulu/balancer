@@ -8,6 +8,7 @@ namespace KvKey
 {
 	static const std::string& task_msg_master_timeout_us	= "task_msg_master_timeout_us";
 	static const std::string& task_msg_sub_timeout_us		= "task_msg_sub_timeout_us";
+	static const std::string& navigate_key					= "navigate_key";
 }
 
 class Kv
@@ -37,4 +38,5 @@ private:
 public:
 	unsigned int _task_msg_master_timeout_us;
 	unsigned int _task_msg_sub_timeout_us;
+	std::string _navigate_key;
 };

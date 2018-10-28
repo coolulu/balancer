@@ -21,6 +21,7 @@ bool Kv::load_kv(std::map<std::string, ServiceConfig::KV>& kv_map)
 
 	get_uint(kv_map, KvKey::task_msg_master_timeout_us, _task_msg_master_timeout_us, b);
 	get_uint(kv_map, KvKey::task_msg_sub_timeout_us, _task_msg_sub_timeout_us, b);
+	get_str(kv_map, KvKey::navigate_key, _navigate_key, b);
 
 	return b;
 }
