@@ -6,5 +6,8 @@
 
 namespace LoginStack
 {
+	void LoginRsp(data::Body& body, int code, const std::string& info);
 
-};
+	void AccessKeyReq(data::Body& body);
+
+}
