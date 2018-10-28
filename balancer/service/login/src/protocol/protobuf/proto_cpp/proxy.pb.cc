@@ -26,6 +26,8 @@ public:
   const ::common::TestRsp* test_rsp_;
   const ::proxy::GetUserInfoReq* get_user_info_req_;
   const ::proxy::GetUserInfoRsp* get_user_info_rsp_;
+  const ::proxy::CheckPasswdReq* check_passwd_req_;
+  const ::proxy::CheckPasswdRsp* check_passwd_rsp_;
 } _ProxyMsg_default_instance_;
 class GetUserInfoReqDefaultTypeInternal {
 public:
@@ -37,13 +39,23 @@ public:
  ::google::protobuf::internal::ExplicitlyConstructed<GetUserInfoRsp>
      _instance;
 } _GetUserInfoRsp_default_instance_;
+class CheckPasswdReqDefaultTypeInternal {
+public:
+ ::google::protobuf::internal::ExplicitlyConstructed<CheckPasswdReq>
+     _instance;
+} _CheckPasswdReq_default_instance_;
+class CheckPasswdRspDefaultTypeInternal {
+public:
+ ::google::protobuf::internal::ExplicitlyConstructed<CheckPasswdRsp>
+     _instance;
+} _CheckPasswdRsp_default_instance_;
 
 namespace protobuf_proxy_2eproto {
 
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[3];
+::google::protobuf::Metadata file_level_metadata[5];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
 
 }  // namespace
@@ -62,6 +74,8 @@ PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::ParseTable const
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
+  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
+  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
 };
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -74,6 +88,8 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   offsetof(ProxyMsgDefaultTypeInternal, test_rsp_),
   offsetof(ProxyMsgDefaultTypeInternal, get_user_info_req_),
   offsetof(ProxyMsgDefaultTypeInternal, get_user_info_rsp_),
+  offsetof(ProxyMsgDefaultTypeInternal, check_passwd_req_),
+  offsetof(ProxyMsgDefaultTypeInternal, check_passwd_rsp_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProxyMsg, choice_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetUserInfoReq, _internal_metadata_),
@@ -86,17 +102,33 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CheckPasswdReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CheckPasswdReq, user_id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CheckPasswdReq, passwd_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CheckPasswdRsp, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(ProxyMsg)},
-  { 10, -1, sizeof(GetUserInfoReq)},
-  { 16, -1, sizeof(GetUserInfoRsp)},
+  { 12, -1, sizeof(GetUserInfoReq)},
+  { 18, -1, sizeof(GetUserInfoRsp)},
+  { 23, -1, sizeof(CheckPasswdReq)},
+  { 30, -1, sizeof(CheckPasswdRsp)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&_ProxyMsg_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_GetUserInfoReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_GetUserInfoRsp_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_CheckPasswdReq_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_CheckPasswdRsp_default_instance_),
 };
 
 namespace {
@@ -117,7 +149,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 3);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 5);
 }
 
 }  // namespace
@@ -132,7 +164,11 @@ void TableStruct::InitDefaultsImpl() {
   ::google::protobuf::internal::OnShutdownDestroyMessage(
       &_GetUserInfoReq_default_instance_);_GetUserInfoRsp_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_GetUserInfoRsp_default_instance_);_ProxyMsg_default_instance_.test_req_ = const_cast< ::common::TestReq*>(
+      &_GetUserInfoRsp_default_instance_);_CheckPasswdReq_default_instance_._instance.DefaultConstruct();
+  ::google::protobuf::internal::OnShutdownDestroyMessage(
+      &_CheckPasswdReq_default_instance_);_CheckPasswdRsp_default_instance_._instance.DefaultConstruct();
+  ::google::protobuf::internal::OnShutdownDestroyMessage(
+      &_CheckPasswdRsp_default_instance_);_ProxyMsg_default_instance_.test_req_ = const_cast< ::common::TestReq*>(
       ::common::TestReq::internal_default_instance());
   _ProxyMsg_default_instance_.test_rsp_ = const_cast< ::common::TestRsp*>(
       ::common::TestRsp::internal_default_instance());
@@ -140,6 +176,10 @@ void TableStruct::InitDefaultsImpl() {
       ::proxy::GetUserInfoReq::internal_default_instance());
   _ProxyMsg_default_instance_.get_user_info_rsp_ = const_cast< ::proxy::GetUserInfoRsp*>(
       ::proxy::GetUserInfoRsp::internal_default_instance());
+  _ProxyMsg_default_instance_.check_passwd_req_ = const_cast< ::proxy::CheckPasswdReq*>(
+      ::proxy::CheckPasswdReq::internal_default_instance());
+  _ProxyMsg_default_instance_.check_passwd_rsp_ = const_cast< ::proxy::CheckPasswdRsp*>(
+      ::proxy::CheckPasswdRsp::internal_default_instance());
 }
 
 void InitDefaults() {
@@ -150,46 +190,52 @@ namespace {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\013proxy.proto\022\005proxy\032\014common.proto\"\306\001\n\010P"
+      "\n\013proxy.proto\022\005proxy\032\014common.proto\"\254\002\n\010P"
       "roxyMsg\022#\n\010test_req\030\001 \001(\0132\017.common.TestR"
       "eqH\000\022#\n\010test_rsp\030\002 \001(\0132\017.common.TestRspH"
       "\000\0222\n\021get_user_info_req\030\003 \001(\0132\025.proxy.Get"
       "UserInfoReqH\000\0222\n\021get_user_info_rsp\030\004 \001(\013"
-      "2\025.proxy.GetUserInfoRspH\000B\010\n\006choice\"!\n\016G"
-      "etUserInfoReq\022\017\n\007user_id\030\001 \001(\004\"\020\n\016GetUse"
-      "rInfoRsp*\376\010\n\tErrorCode\022\013\n\007SUCCESS\020\000\022\025\n\rE"
-      "RR_SYS_BEGIN\020\244\313\303\217\001\022\030\n\020ERR_SYS_OVERLOAD\020\245"
-      "\313\303\217\001\022\036\n\026ERR_SYS_REJECT_SERVICE\020\246\313\303\217\001\022\034\n\024"
-      "ERR_SYS_SERVER_INNER\020\247\313\303\217\001\022\027\n\017ERR_SYS_TI"
-      "MEOUT\020\250\313\303\217\001\022!\n\031ERR_SYS_NO_INSERVICE_LIST"
-      "\020\251\313\303\217\001\022\032\n\022ERR_SYS_TASK_STATE\020\252\313\303\217\001\022\034\n\024ER"
-      "R_SYS_TASK_DISCARD\020\253\313\303\217\001\022\023\n\013ERR_SYS_END\020"
-      "\207\314\303\217\001\022\030\n\020ERR_PACKET_BEGIN\020\210\314\303\217\001\022\031\n\021ERR_P"
-      "ACKET_ENCODE\020\211\314\303\217\001\022\031\n\021ERR_PACKET_DECODE\020"
-      "\212\314\303\217\001\022\031\n\021ERR_PACKET_HEADER\020\213\314\303\217\001\022\026\n\016ERR_"
-      "PACKET_LEN\020\214\314\303\217\001\022\032\n\022ERR_PACKET_VERSION\020\215"
-      "\314\303\217\001\022\"\n\032ERR_PACKET_FROM_SERVICE_ID\020\216\314\303\217\001"
-      "\022 \n\030ERR_PACKET_TO_SERVICE_ID\020\217\314\303\217\001\022\031\n\021ER"
-      "R_PACKET_APP_ID\020\220\314\303\217\001\022\036\n\026ERR_PACKET_APP_"
-      "VERSION\020\221\314\303\217\001\022\036\n\026ERR_PACKET_CONN_SEQ_ID\020"
-      "\222\314\303\217\001\022\035\n\025ERR_PACKET_MSG_SEQ_ID\020\223\314\303\217\001\022\036\n\026"
-      "ERR_PACKET_DATA_FORMAT\020\224\314\303\217\001\022\037\n\027ERR_PACK"
-      "ET_DATA_FIELD_0\020\225\314\303\217\001\022\037\n\027ERR_PACKET_DATA"
-      "_FIELD_1\020\226\314\303\217\001\022\037\n\027ERR_PACKET_DATA_FIELD_"
-      "2\020\227\314\303\217\001\022\037\n\027ERR_PACKET_DATA_FIELD_3\020\230\314\303\217\001"
-      "\022\034\n\024ERR_PACKET_CHECK_SUM\020\231\314\303\217\001\022\"\n\032ERR_PA"
-      "CKET_UNKNOWN_REQUEST\020\232\314\303\217\001\022\026\n\016ERR_PACKET"
-      "_END\020\353\314\303\217\001\022\033\n\023ERR_INTERFACE_BEGIN\020\354\314\303\217\001\022"
-      "\033\n\023ERR_INTERFACE_PARAM\020\355\314\303\217\001\022\032\n\022ERR_INTE"
-      "RFACE_PERM\020\356\314\303\217\001\022\035\n\025ERR_INTERFACE_TIMEOU"
-      "T\020\357\314\303\217\001\022$\n\034ERR_INTERFACE_MASTER_TIMEOUT\020"
-      "\360\314\303\217\001\022!\n\031ERR_INTERFACE_SUB_TIMEOUT\020\361\314\303\217\001"
-      "\022\031\n\021ERR_INTERFACE_END\020\317\315\303\217\001\022\032\n\022ERR_BUSIN"
-      "ESS_BEGIN\020\250\322\303\217\001\022\030\n\020ERR_BUSINESS_END\020\317\230\304\217"
-      "\001b\006proto3"
+      "2\025.proxy.GetUserInfoRspH\000\0221\n\020check_passw"
+      "d_req\030\005 \001(\0132\025.proxy.CheckPasswdReqH\000\0221\n\020"
+      "check_passwd_rsp\030\006 \001(\0132\025.proxy.CheckPass"
+      "wdRspH\000B\010\n\006choice\"!\n\016GetUserInfoReq\022\017\n\007u"
+      "ser_id\030\001 \001(\004\"\020\n\016GetUserInfoRsp\"1\n\016CheckP"
+      "asswdReq\022\017\n\007user_id\030\001 \001(\004\022\016\n\006passwd\030\002 \001("
+      "\014\"\020\n\016CheckPasswdRsp*\316\t\n\tErrorCode\022\013\n\007SUC"
+      "CESS\020\000\022\025\n\rERR_SYS_BEGIN\020\244\313\303\217\001\022\030\n\020ERR_SYS"
+      "_OVERLOAD\020\245\313\303\217\001\022\036\n\026ERR_SYS_REJECT_SERVIC"
+      "E\020\246\313\303\217\001\022\034\n\024ERR_SYS_SERVER_INNER\020\247\313\303\217\001\022\027\n"
+      "\017ERR_SYS_TIMEOUT\020\250\313\303\217\001\022!\n\031ERR_SYS_NO_INS"
+      "ERVICE_LIST\020\251\313\303\217\001\022\032\n\022ERR_SYS_TASK_STATE\020"
+      "\252\313\303\217\001\022\034\n\024ERR_SYS_TASK_DISCARD\020\253\313\303\217\001\022\023\n\013E"
+      "RR_SYS_END\020\207\314\303\217\001\022\030\n\020ERR_PACKET_BEGIN\020\210\314\303"
+      "\217\001\022\031\n\021ERR_PACKET_ENCODE\020\211\314\303\217\001\022\031\n\021ERR_PAC"
+      "KET_DECODE\020\212\314\303\217\001\022\031\n\021ERR_PACKET_HEADER\020\213\314"
+      "\303\217\001\022\026\n\016ERR_PACKET_LEN\020\214\314\303\217\001\022\032\n\022ERR_PACKE"
+      "T_VERSION\020\215\314\303\217\001\022\"\n\032ERR_PACKET_FROM_SERVI"
+      "CE_ID\020\216\314\303\217\001\022 \n\030ERR_PACKET_TO_SERVICE_ID\020"
+      "\217\314\303\217\001\022\031\n\021ERR_PACKET_APP_ID\020\220\314\303\217\001\022\036\n\026ERR_"
+      "PACKET_APP_VERSION\020\221\314\303\217\001\022\036\n\026ERR_PACKET_C"
+      "ONN_SEQ_ID\020\222\314\303\217\001\022\035\n\025ERR_PACKET_MSG_SEQ_I"
+      "D\020\223\314\303\217\001\022\036\n\026ERR_PACKET_DATA_FORMAT\020\224\314\303\217\001\022"
+      "\037\n\027ERR_PACKET_DATA_FIELD_0\020\225\314\303\217\001\022\037\n\027ERR_"
+      "PACKET_DATA_FIELD_1\020\226\314\303\217\001\022\037\n\027ERR_PACKET_"
+      "DATA_FIELD_2\020\227\314\303\217\001\022\037\n\027ERR_PACKET_DATA_FI"
+      "ELD_3\020\230\314\303\217\001\022\034\n\024ERR_PACKET_CHECK_SUM\020\231\314\303\217"
+      "\001\022\"\n\032ERR_PACKET_UNKNOWN_REQUEST\020\232\314\303\217\001\022\026\n"
+      "\016ERR_PACKET_END\020\353\314\303\217\001\022\033\n\023ERR_INTERFACE_B"
+      "EGIN\020\354\314\303\217\001\022\033\n\023ERR_INTERFACE_PARAM\020\355\314\303\217\001\022"
+      "\032\n\022ERR_INTERFACE_PERM\020\356\314\303\217\001\022\035\n\025ERR_INTER"
+      "FACE_TIMEOUT\020\357\314\303\217\001\022$\n\034ERR_INTERFACE_MAST"
+      "ER_TIMEOUT\020\360\314\303\217\001\022!\n\031ERR_INTERFACE_SUB_TI"
+      "MEOUT\020\361\314\303\217\001\022\031\n\021ERR_INTERFACE_END\020\317\315\303\217\001\022\032"
+      "\n\022ERR_BUSINESS_BEGIN\020\250\322\303\217\001\022%\n\035ERR_BUSINE"
+      "SS_NOT_FIND_USER_ID\020\251\322\303\217\001\022\'\n\037ERR_BUSINES"
+      "S_CHECK_PASSWD_ERROR\020\252\322\303\217\001\022\030\n\020ERR_BUSINE"
+      "SS_END\020\317\230\304\217\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1449);
+      descriptor, 1700);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "proxy.proto", &protobuf_RegisterTypes);
   ::common::protobuf_common_2eproto::AddDescriptors();
@@ -253,6 +299,8 @@ bool ErrorCode_IsValid(int value) {
     case 301000305:
     case 301000399:
     case 301001000:
+    case 301001001:
+    case 301001002:
     case 301009999:
       return true;
     default:
@@ -268,6 +316,8 @@ const int ProxyMsg::kTestReqFieldNumber;
 const int ProxyMsg::kTestRspFieldNumber;
 const int ProxyMsg::kGetUserInfoReqFieldNumber;
 const int ProxyMsg::kGetUserInfoRspFieldNumber;
+const int ProxyMsg::kCheckPasswdReqFieldNumber;
+const int ProxyMsg::kCheckPasswdRspFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ProxyMsg::ProxyMsg()
@@ -299,6 +349,14 @@ ProxyMsg::ProxyMsg(const ProxyMsg& from)
     }
     case kGetUserInfoRsp: {
       mutable_get_user_info_rsp()->::proxy::GetUserInfoRsp::MergeFrom(from.get_user_info_rsp());
+      break;
+    }
+    case kCheckPasswdReq: {
+      mutable_check_passwd_req()->::proxy::CheckPasswdReq::MergeFrom(from.check_passwd_req());
+      break;
+    }
+    case kCheckPasswdRsp: {
+      mutable_check_passwd_rsp()->::proxy::CheckPasswdRsp::MergeFrom(from.check_passwd_rsp());
       break;
     }
     case CHOICE_NOT_SET: {
@@ -364,6 +422,14 @@ void ProxyMsg::clear_choice() {
     }
     case kGetUserInfoRsp: {
       delete choice_.get_user_info_rsp_;
+      break;
+    }
+    case kCheckPasswdReq: {
+      delete choice_.check_passwd_req_;
+      break;
+    }
+    case kCheckPasswdRsp: {
+      delete choice_.check_passwd_rsp_;
       break;
     }
     case CHOICE_NOT_SET: {
@@ -442,6 +508,30 @@ bool ProxyMsg::MergePartialFromCodedStream(
         break;
       }
 
+      // .proxy.CheckPasswdReq check_passwd_req = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_check_passwd_req()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .proxy.CheckPasswdRsp check_passwd_rsp = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_check_passwd_rsp()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -492,6 +582,18 @@ void ProxyMsg::SerializeWithCachedSizes(
       4, *choice_.get_user_info_rsp_, output);
   }
 
+  // .proxy.CheckPasswdReq check_passwd_req = 5;
+  if (has_check_passwd_req()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, *choice_.check_passwd_req_, output);
+  }
+
+  // .proxy.CheckPasswdRsp check_passwd_rsp = 6;
+  if (has_check_passwd_rsp()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, *choice_.check_passwd_rsp_, output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -532,6 +634,20 @@ void ProxyMsg::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         4, *choice_.get_user_info_rsp_, deterministic, target);
+  }
+
+  // .proxy.CheckPasswdReq check_passwd_req = 5;
+  if (has_check_passwd_req()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        5, *choice_.check_passwd_req_, deterministic, target);
+  }
+
+  // .proxy.CheckPasswdRsp check_passwd_rsp = 6;
+  if (has_check_passwd_rsp()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        6, *choice_.check_passwd_rsp_, deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -578,6 +694,20 @@ size_t ProxyMsg::ByteSizeLong() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *choice_.get_user_info_rsp_);
+      break;
+    }
+    // .proxy.CheckPasswdReq check_passwd_req = 5;
+    case kCheckPasswdReq: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.check_passwd_req_);
+      break;
+    }
+    // .proxy.CheckPasswdRsp check_passwd_rsp = 6;
+    case kCheckPasswdRsp: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *choice_.check_passwd_rsp_);
       break;
     }
     case CHOICE_NOT_SET: {
@@ -628,6 +758,14 @@ void ProxyMsg::MergeFrom(const ProxyMsg& from) {
     }
     case kGetUserInfoRsp: {
       mutable_get_user_info_rsp()->::proxy::GetUserInfoRsp::MergeFrom(from.get_user_info_rsp());
+      break;
+    }
+    case kCheckPasswdReq: {
+      mutable_check_passwd_req()->::proxy::CheckPasswdReq::MergeFrom(from.check_passwd_req());
+      break;
+    }
+    case kCheckPasswdRsp: {
+      mutable_check_passwd_rsp()->::proxy::CheckPasswdRsp::MergeFrom(from.check_passwd_rsp());
       break;
     }
     case CHOICE_NOT_SET: {
@@ -864,6 +1002,102 @@ void ProxyMsg::set_allocated_get_user_info_rsp(::proxy::GetUserInfoRsp* get_user
     choice_.get_user_info_rsp_ = get_user_info_rsp;
   }
   // @@protoc_insertion_point(field_set_allocated:proxy.ProxyMsg.get_user_info_rsp)
+}
+
+// .proxy.CheckPasswdReq check_passwd_req = 5;
+bool ProxyMsg::has_check_passwd_req() const {
+  return choice_case() == kCheckPasswdReq;
+}
+void ProxyMsg::set_has_check_passwd_req() {
+  _oneof_case_[0] = kCheckPasswdReq;
+}
+void ProxyMsg::clear_check_passwd_req() {
+  if (has_check_passwd_req()) {
+    delete choice_.check_passwd_req_;
+    clear_has_choice();
+  }
+}
+ const ::proxy::CheckPasswdReq& ProxyMsg::check_passwd_req() const {
+  // @@protoc_insertion_point(field_get:proxy.ProxyMsg.check_passwd_req)
+  return has_check_passwd_req()
+      ? *choice_.check_passwd_req_
+      : ::proxy::CheckPasswdReq::default_instance();
+}
+::proxy::CheckPasswdReq* ProxyMsg::mutable_check_passwd_req() {
+  if (!has_check_passwd_req()) {
+    clear_choice();
+    set_has_check_passwd_req();
+    choice_.check_passwd_req_ = new ::proxy::CheckPasswdReq;
+  }
+  // @@protoc_insertion_point(field_mutable:proxy.ProxyMsg.check_passwd_req)
+  return choice_.check_passwd_req_;
+}
+::proxy::CheckPasswdReq* ProxyMsg::release_check_passwd_req() {
+  // @@protoc_insertion_point(field_release:proxy.ProxyMsg.check_passwd_req)
+  if (has_check_passwd_req()) {
+    clear_has_choice();
+    ::proxy::CheckPasswdReq* temp = choice_.check_passwd_req_;
+    choice_.check_passwd_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void ProxyMsg::set_allocated_check_passwd_req(::proxy::CheckPasswdReq* check_passwd_req) {
+  clear_choice();
+  if (check_passwd_req) {
+    set_has_check_passwd_req();
+    choice_.check_passwd_req_ = check_passwd_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:proxy.ProxyMsg.check_passwd_req)
+}
+
+// .proxy.CheckPasswdRsp check_passwd_rsp = 6;
+bool ProxyMsg::has_check_passwd_rsp() const {
+  return choice_case() == kCheckPasswdRsp;
+}
+void ProxyMsg::set_has_check_passwd_rsp() {
+  _oneof_case_[0] = kCheckPasswdRsp;
+}
+void ProxyMsg::clear_check_passwd_rsp() {
+  if (has_check_passwd_rsp()) {
+    delete choice_.check_passwd_rsp_;
+    clear_has_choice();
+  }
+}
+ const ::proxy::CheckPasswdRsp& ProxyMsg::check_passwd_rsp() const {
+  // @@protoc_insertion_point(field_get:proxy.ProxyMsg.check_passwd_rsp)
+  return has_check_passwd_rsp()
+      ? *choice_.check_passwd_rsp_
+      : ::proxy::CheckPasswdRsp::default_instance();
+}
+::proxy::CheckPasswdRsp* ProxyMsg::mutable_check_passwd_rsp() {
+  if (!has_check_passwd_rsp()) {
+    clear_choice();
+    set_has_check_passwd_rsp();
+    choice_.check_passwd_rsp_ = new ::proxy::CheckPasswdRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:proxy.ProxyMsg.check_passwd_rsp)
+  return choice_.check_passwd_rsp_;
+}
+::proxy::CheckPasswdRsp* ProxyMsg::release_check_passwd_rsp() {
+  // @@protoc_insertion_point(field_release:proxy.ProxyMsg.check_passwd_rsp)
+  if (has_check_passwd_rsp()) {
+    clear_has_choice();
+    ::proxy::CheckPasswdRsp* temp = choice_.check_passwd_rsp_;
+    choice_.check_passwd_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void ProxyMsg::set_allocated_check_passwd_rsp(::proxy::CheckPasswdRsp* check_passwd_rsp) {
+  clear_choice();
+  if (check_passwd_rsp) {
+    set_has_check_passwd_rsp();
+    choice_.check_passwd_rsp_ = check_passwd_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:proxy.ProxyMsg.check_passwd_rsp)
 }
 
 bool ProxyMsg::has_choice() const {
@@ -1324,6 +1558,554 @@ void GetUserInfoRsp::InternalSwap(GetUserInfoRsp* other) {
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // GetUserInfoRsp
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int CheckPasswdReq::kUserIdFieldNumber;
+const int CheckPasswdReq::kPasswdFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CheckPasswdReq::CheckPasswdReq()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_proxy_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proxy.CheckPasswdReq)
+}
+CheckPasswdReq::CheckPasswdReq(const CheckPasswdReq& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  passwd_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.passwd().size() > 0) {
+    passwd_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.passwd_);
+  }
+  user_id_ = from.user_id_;
+  // @@protoc_insertion_point(copy_constructor:proxy.CheckPasswdReq)
+}
+
+void CheckPasswdReq::SharedCtor() {
+  passwd_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  user_id_ = GOOGLE_ULONGLONG(0);
+  _cached_size_ = 0;
+}
+
+CheckPasswdReq::~CheckPasswdReq() {
+  // @@protoc_insertion_point(destructor:proxy.CheckPasswdReq)
+  SharedDtor();
+}
+
+void CheckPasswdReq::SharedDtor() {
+  passwd_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void CheckPasswdReq::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CheckPasswdReq::descriptor() {
+  protobuf_proxy_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_proxy_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const CheckPasswdReq& CheckPasswdReq::default_instance() {
+  protobuf_proxy_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+CheckPasswdReq* CheckPasswdReq::New(::google::protobuf::Arena* arena) const {
+  CheckPasswdReq* n = new CheckPasswdReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void CheckPasswdReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:proxy.CheckPasswdReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  passwd_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  user_id_ = GOOGLE_ULONGLONG(0);
+  _internal_metadata_.Clear();
+}
+
+bool CheckPasswdReq::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proxy.CheckPasswdReq)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // uint64 user_id = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &user_id_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // bytes passwd = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_passwd()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proxy.CheckPasswdReq)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proxy.CheckPasswdReq)
+  return false;
+#undef DO_
+}
+
+void CheckPasswdReq::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proxy.CheckPasswdReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 user_id = 1;
+  if (this->user_id() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->user_id(), output);
+  }
+
+  // bytes passwd = 2;
+  if (this->passwd().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      2, this->passwd(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:proxy.CheckPasswdReq)
+}
+
+::google::protobuf::uint8* CheckPasswdReq::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:proxy.CheckPasswdReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 user_id = 1;
+  if (this->user_id() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->user_id(), target);
+  }
+
+  // bytes passwd = 2;
+  if (this->passwd().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        2, this->passwd(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:proxy.CheckPasswdReq)
+  return target;
+}
+
+size_t CheckPasswdReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:proxy.CheckPasswdReq)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // bytes passwd = 2;
+  if (this->passwd().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->passwd());
+  }
+
+  // uint64 user_id = 1;
+  if (this->user_id() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->user_id());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CheckPasswdReq::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:proxy.CheckPasswdReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CheckPasswdReq* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const CheckPasswdReq>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:proxy.CheckPasswdReq)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:proxy.CheckPasswdReq)
+    MergeFrom(*source);
+  }
+}
+
+void CheckPasswdReq::MergeFrom(const CheckPasswdReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proxy.CheckPasswdReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.passwd().size() > 0) {
+
+    passwd_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.passwd_);
+  }
+  if (from.user_id() != 0) {
+    set_user_id(from.user_id());
+  }
+}
+
+void CheckPasswdReq::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:proxy.CheckPasswdReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CheckPasswdReq::CopyFrom(const CheckPasswdReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proxy.CheckPasswdReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CheckPasswdReq::IsInitialized() const {
+  return true;
+}
+
+void CheckPasswdReq::Swap(CheckPasswdReq* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CheckPasswdReq::InternalSwap(CheckPasswdReq* other) {
+  using std::swap;
+  passwd_.Swap(&other->passwd_);
+  swap(user_id_, other->user_id_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata CheckPasswdReq::GetMetadata() const {
+  protobuf_proxy_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_proxy_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// CheckPasswdReq
+
+// uint64 user_id = 1;
+void CheckPasswdReq::clear_user_id() {
+  user_id_ = GOOGLE_ULONGLONG(0);
+}
+::google::protobuf::uint64 CheckPasswdReq::user_id() const {
+  // @@protoc_insertion_point(field_get:proxy.CheckPasswdReq.user_id)
+  return user_id_;
+}
+void CheckPasswdReq::set_user_id(::google::protobuf::uint64 value) {
+  
+  user_id_ = value;
+  // @@protoc_insertion_point(field_set:proxy.CheckPasswdReq.user_id)
+}
+
+// bytes passwd = 2;
+void CheckPasswdReq::clear_passwd() {
+  passwd_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+const ::std::string& CheckPasswdReq::passwd() const {
+  // @@protoc_insertion_point(field_get:proxy.CheckPasswdReq.passwd)
+  return passwd_.GetNoArena();
+}
+void CheckPasswdReq::set_passwd(const ::std::string& value) {
+  
+  passwd_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:proxy.CheckPasswdReq.passwd)
+}
+#if LANG_CXX11
+void CheckPasswdReq::set_passwd(::std::string&& value) {
+  
+  passwd_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:proxy.CheckPasswdReq.passwd)
+}
+#endif
+void CheckPasswdReq::set_passwd(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  passwd_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proxy.CheckPasswdReq.passwd)
+}
+void CheckPasswdReq::set_passwd(const void* value, size_t size) {
+  
+  passwd_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proxy.CheckPasswdReq.passwd)
+}
+::std::string* CheckPasswdReq::mutable_passwd() {
+  
+  // @@protoc_insertion_point(field_mutable:proxy.CheckPasswdReq.passwd)
+  return passwd_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+::std::string* CheckPasswdReq::release_passwd() {
+  // @@protoc_insertion_point(field_release:proxy.CheckPasswdReq.passwd)
+  
+  return passwd_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+void CheckPasswdReq::set_allocated_passwd(::std::string* passwd) {
+  if (passwd != NULL) {
+    
+  } else {
+    
+  }
+  passwd_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), passwd);
+  // @@protoc_insertion_point(field_set_allocated:proxy.CheckPasswdReq.passwd)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CheckPasswdRsp::CheckPasswdRsp()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_proxy_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proxy.CheckPasswdRsp)
+}
+CheckPasswdRsp::CheckPasswdRsp(const CheckPasswdRsp& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:proxy.CheckPasswdRsp)
+}
+
+void CheckPasswdRsp::SharedCtor() {
+  _cached_size_ = 0;
+}
+
+CheckPasswdRsp::~CheckPasswdRsp() {
+  // @@protoc_insertion_point(destructor:proxy.CheckPasswdRsp)
+  SharedDtor();
+}
+
+void CheckPasswdRsp::SharedDtor() {
+}
+
+void CheckPasswdRsp::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CheckPasswdRsp::descriptor() {
+  protobuf_proxy_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_proxy_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const CheckPasswdRsp& CheckPasswdRsp::default_instance() {
+  protobuf_proxy_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+CheckPasswdRsp* CheckPasswdRsp::New(::google::protobuf::Arena* arena) const {
+  CheckPasswdRsp* n = new CheckPasswdRsp;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void CheckPasswdRsp::Clear() {
+// @@protoc_insertion_point(message_clear_start:proxy.CheckPasswdRsp)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _internal_metadata_.Clear();
+}
+
+bool CheckPasswdRsp::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proxy.CheckPasswdRsp)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, _internal_metadata_.mutable_unknown_fields()));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proxy.CheckPasswdRsp)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proxy.CheckPasswdRsp)
+  return false;
+#undef DO_
+}
+
+void CheckPasswdRsp::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proxy.CheckPasswdRsp)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:proxy.CheckPasswdRsp)
+}
+
+::google::protobuf::uint8* CheckPasswdRsp::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:proxy.CheckPasswdRsp)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:proxy.CheckPasswdRsp)
+  return target;
+}
+
+size_t CheckPasswdRsp::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:proxy.CheckPasswdRsp)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CheckPasswdRsp::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:proxy.CheckPasswdRsp)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CheckPasswdRsp* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const CheckPasswdRsp>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:proxy.CheckPasswdRsp)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:proxy.CheckPasswdRsp)
+    MergeFrom(*source);
+  }
+}
+
+void CheckPasswdRsp::MergeFrom(const CheckPasswdRsp& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proxy.CheckPasswdRsp)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+}
+
+void CheckPasswdRsp::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:proxy.CheckPasswdRsp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CheckPasswdRsp::CopyFrom(const CheckPasswdRsp& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proxy.CheckPasswdRsp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CheckPasswdRsp::IsInitialized() const {
+  return true;
+}
+
+void CheckPasswdRsp::Swap(CheckPasswdRsp* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CheckPasswdRsp::InternalSwap(CheckPasswdRsp* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata CheckPasswdRsp::GetMetadata() const {
+  protobuf_proxy_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_proxy_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// CheckPasswdRsp
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 

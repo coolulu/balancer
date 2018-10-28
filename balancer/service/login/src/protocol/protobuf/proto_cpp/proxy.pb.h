@@ -33,6 +33,12 @@
 #include "common.pb.h"
 // @@protoc_insertion_point(includes)
 namespace proxy {
+class CheckPasswdReq;
+class CheckPasswdReqDefaultTypeInternal;
+extern CheckPasswdReqDefaultTypeInternal _CheckPasswdReq_default_instance_;
+class CheckPasswdRsp;
+class CheckPasswdRspDefaultTypeInternal;
+extern CheckPasswdRspDefaultTypeInternal _CheckPasswdRsp_default_instance_;
 class GetUserInfoReq;
 class GetUserInfoReqDefaultTypeInternal;
 extern GetUserInfoReqDefaultTypeInternal _GetUserInfoReq_default_instance_;
@@ -100,6 +106,8 @@ enum ErrorCode {
   ERR_INTERFACE_SUB_TIMEOUT = 301000305,
   ERR_INTERFACE_END = 301000399,
   ERR_BUSINESS_BEGIN = 301001000,
+  ERR_BUSINESS_NOT_FIND_USER_ID = 301001001,
+  ERR_BUSINESS_CHECK_PASSWD_ERROR = 301001002,
   ERR_BUSINESS_END = 301009999,
   ErrorCode_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ErrorCode_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
@@ -155,6 +163,8 @@ class ProxyMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(
     kTestRsp = 2,
     kGetUserInfoReq = 3,
     kGetUserInfoRsp = 4,
+    kCheckPasswdReq = 5,
+    kCheckPasswdRsp = 6,
     CHOICE_NOT_SET = 0,
   };
 
@@ -246,6 +256,24 @@ class ProxyMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::proxy::GetUserInfoRsp* release_get_user_info_rsp();
   void set_allocated_get_user_info_rsp(::proxy::GetUserInfoRsp* get_user_info_rsp);
 
+  // .proxy.CheckPasswdReq check_passwd_req = 5;
+  bool has_check_passwd_req() const;
+  void clear_check_passwd_req();
+  static const int kCheckPasswdReqFieldNumber = 5;
+  const ::proxy::CheckPasswdReq& check_passwd_req() const;
+  ::proxy::CheckPasswdReq* mutable_check_passwd_req();
+  ::proxy::CheckPasswdReq* release_check_passwd_req();
+  void set_allocated_check_passwd_req(::proxy::CheckPasswdReq* check_passwd_req);
+
+  // .proxy.CheckPasswdRsp check_passwd_rsp = 6;
+  bool has_check_passwd_rsp() const;
+  void clear_check_passwd_rsp();
+  static const int kCheckPasswdRspFieldNumber = 6;
+  const ::proxy::CheckPasswdRsp& check_passwd_rsp() const;
+  ::proxy::CheckPasswdRsp* mutable_check_passwd_rsp();
+  ::proxy::CheckPasswdRsp* release_check_passwd_rsp();
+  void set_allocated_check_passwd_rsp(::proxy::CheckPasswdRsp* check_passwd_rsp);
+
   ChoiceCase choice_case() const;
   // @@protoc_insertion_point(class_scope:proxy.ProxyMsg)
  private:
@@ -253,6 +281,8 @@ class ProxyMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(
   void set_has_test_rsp();
   void set_has_get_user_info_req();
   void set_has_get_user_info_rsp();
+  void set_has_check_passwd_req();
+  void set_has_check_passwd_rsp();
 
   inline bool has_choice() const;
   void clear_choice();
@@ -265,6 +295,8 @@ class ProxyMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(
     ::common::TestRsp* test_rsp_;
     ::proxy::GetUserInfoReq* get_user_info_req_;
     ::proxy::GetUserInfoRsp* get_user_info_rsp_;
+    ::proxy::CheckPasswdReq* check_passwd_req_;
+    ::proxy::CheckPasswdRsp* check_passwd_rsp_;
   } choice_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -452,6 +484,208 @@ class GetUserInfoRsp : public ::google::protobuf::Message /* @@protoc_insertion_
   // accessors -------------------------------------------------------
 
   // @@protoc_insertion_point(class_scope:proxy.GetUserInfoRsp)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct protobuf_proxy_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class CheckPasswdReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proxy.CheckPasswdReq) */ {
+ public:
+  CheckPasswdReq();
+  virtual ~CheckPasswdReq();
+
+  CheckPasswdReq(const CheckPasswdReq& from);
+
+  inline CheckPasswdReq& operator=(const CheckPasswdReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CheckPasswdReq(CheckPasswdReq&& from) noexcept
+    : CheckPasswdReq() {
+    *this = ::std::move(from);
+  }
+
+  inline CheckPasswdReq& operator=(CheckPasswdReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CheckPasswdReq& default_instance();
+
+  static inline const CheckPasswdReq* internal_default_instance() {
+    return reinterpret_cast<const CheckPasswdReq*>(
+               &_CheckPasswdReq_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    3;
+
+  void Swap(CheckPasswdReq* other);
+  friend void swap(CheckPasswdReq& a, CheckPasswdReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CheckPasswdReq* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  CheckPasswdReq* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const CheckPasswdReq& from);
+  void MergeFrom(const CheckPasswdReq& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(CheckPasswdReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bytes passwd = 2;
+  void clear_passwd();
+  static const int kPasswdFieldNumber = 2;
+  const ::std::string& passwd() const;
+  void set_passwd(const ::std::string& value);
+  #if LANG_CXX11
+  void set_passwd(::std::string&& value);
+  #endif
+  void set_passwd(const char* value);
+  void set_passwd(const void* value, size_t size);
+  ::std::string* mutable_passwd();
+  ::std::string* release_passwd();
+  void set_allocated_passwd(::std::string* passwd);
+
+  // uint64 user_id = 1;
+  void clear_user_id();
+  static const int kUserIdFieldNumber = 1;
+  ::google::protobuf::uint64 user_id() const;
+  void set_user_id(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:proxy.CheckPasswdReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr passwd_;
+  ::google::protobuf::uint64 user_id_;
+  mutable int _cached_size_;
+  friend struct protobuf_proxy_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class CheckPasswdRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proxy.CheckPasswdRsp) */ {
+ public:
+  CheckPasswdRsp();
+  virtual ~CheckPasswdRsp();
+
+  CheckPasswdRsp(const CheckPasswdRsp& from);
+
+  inline CheckPasswdRsp& operator=(const CheckPasswdRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CheckPasswdRsp(CheckPasswdRsp&& from) noexcept
+    : CheckPasswdRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline CheckPasswdRsp& operator=(CheckPasswdRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CheckPasswdRsp& default_instance();
+
+  static inline const CheckPasswdRsp* internal_default_instance() {
+    return reinterpret_cast<const CheckPasswdRsp*>(
+               &_CheckPasswdRsp_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    4;
+
+  void Swap(CheckPasswdRsp* other);
+  friend void swap(CheckPasswdRsp& a, CheckPasswdRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CheckPasswdRsp* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  CheckPasswdRsp* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const CheckPasswdRsp& from);
+  void MergeFrom(const CheckPasswdRsp& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(CheckPasswdRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:proxy.CheckPasswdRsp)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -662,6 +896,102 @@ inline void ProxyMsg::set_allocated_get_user_info_rsp(::proxy::GetUserInfoRsp* g
   // @@protoc_insertion_point(field_set_allocated:proxy.ProxyMsg.get_user_info_rsp)
 }
 
+// .proxy.CheckPasswdReq check_passwd_req = 5;
+inline bool ProxyMsg::has_check_passwd_req() const {
+  return choice_case() == kCheckPasswdReq;
+}
+inline void ProxyMsg::set_has_check_passwd_req() {
+  _oneof_case_[0] = kCheckPasswdReq;
+}
+inline void ProxyMsg::clear_check_passwd_req() {
+  if (has_check_passwd_req()) {
+    delete choice_.check_passwd_req_;
+    clear_has_choice();
+  }
+}
+inline  const ::proxy::CheckPasswdReq& ProxyMsg::check_passwd_req() const {
+  // @@protoc_insertion_point(field_get:proxy.ProxyMsg.check_passwd_req)
+  return has_check_passwd_req()
+      ? *choice_.check_passwd_req_
+      : ::proxy::CheckPasswdReq::default_instance();
+}
+inline ::proxy::CheckPasswdReq* ProxyMsg::mutable_check_passwd_req() {
+  if (!has_check_passwd_req()) {
+    clear_choice();
+    set_has_check_passwd_req();
+    choice_.check_passwd_req_ = new ::proxy::CheckPasswdReq;
+  }
+  // @@protoc_insertion_point(field_mutable:proxy.ProxyMsg.check_passwd_req)
+  return choice_.check_passwd_req_;
+}
+inline ::proxy::CheckPasswdReq* ProxyMsg::release_check_passwd_req() {
+  // @@protoc_insertion_point(field_release:proxy.ProxyMsg.check_passwd_req)
+  if (has_check_passwd_req()) {
+    clear_has_choice();
+    ::proxy::CheckPasswdReq* temp = choice_.check_passwd_req_;
+    choice_.check_passwd_req_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void ProxyMsg::set_allocated_check_passwd_req(::proxy::CheckPasswdReq* check_passwd_req) {
+  clear_choice();
+  if (check_passwd_req) {
+    set_has_check_passwd_req();
+    choice_.check_passwd_req_ = check_passwd_req;
+  }
+  // @@protoc_insertion_point(field_set_allocated:proxy.ProxyMsg.check_passwd_req)
+}
+
+// .proxy.CheckPasswdRsp check_passwd_rsp = 6;
+inline bool ProxyMsg::has_check_passwd_rsp() const {
+  return choice_case() == kCheckPasswdRsp;
+}
+inline void ProxyMsg::set_has_check_passwd_rsp() {
+  _oneof_case_[0] = kCheckPasswdRsp;
+}
+inline void ProxyMsg::clear_check_passwd_rsp() {
+  if (has_check_passwd_rsp()) {
+    delete choice_.check_passwd_rsp_;
+    clear_has_choice();
+  }
+}
+inline  const ::proxy::CheckPasswdRsp& ProxyMsg::check_passwd_rsp() const {
+  // @@protoc_insertion_point(field_get:proxy.ProxyMsg.check_passwd_rsp)
+  return has_check_passwd_rsp()
+      ? *choice_.check_passwd_rsp_
+      : ::proxy::CheckPasswdRsp::default_instance();
+}
+inline ::proxy::CheckPasswdRsp* ProxyMsg::mutable_check_passwd_rsp() {
+  if (!has_check_passwd_rsp()) {
+    clear_choice();
+    set_has_check_passwd_rsp();
+    choice_.check_passwd_rsp_ = new ::proxy::CheckPasswdRsp;
+  }
+  // @@protoc_insertion_point(field_mutable:proxy.ProxyMsg.check_passwd_rsp)
+  return choice_.check_passwd_rsp_;
+}
+inline ::proxy::CheckPasswdRsp* ProxyMsg::release_check_passwd_rsp() {
+  // @@protoc_insertion_point(field_release:proxy.ProxyMsg.check_passwd_rsp)
+  if (has_check_passwd_rsp()) {
+    clear_has_choice();
+    ::proxy::CheckPasswdRsp* temp = choice_.check_passwd_rsp_;
+    choice_.check_passwd_rsp_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void ProxyMsg::set_allocated_check_passwd_rsp(::proxy::CheckPasswdRsp* check_passwd_rsp) {
+  clear_choice();
+  if (check_passwd_rsp) {
+    set_has_check_passwd_rsp();
+    choice_.check_passwd_rsp_ = check_passwd_rsp;
+  }
+  // @@protoc_insertion_point(field_set_allocated:proxy.ProxyMsg.check_passwd_rsp)
+}
+
 inline bool ProxyMsg::has_choice() const {
   return choice_case() != CHOICE_NOT_SET;
 }
@@ -693,10 +1023,89 @@ inline void GetUserInfoReq::set_user_id(::google::protobuf::uint64 value) {
 
 // GetUserInfoRsp
 
+// -------------------------------------------------------------------
+
+// CheckPasswdReq
+
+// uint64 user_id = 1;
+inline void CheckPasswdReq::clear_user_id() {
+  user_id_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 CheckPasswdReq::user_id() const {
+  // @@protoc_insertion_point(field_get:proxy.CheckPasswdReq.user_id)
+  return user_id_;
+}
+inline void CheckPasswdReq::set_user_id(::google::protobuf::uint64 value) {
+  
+  user_id_ = value;
+  // @@protoc_insertion_point(field_set:proxy.CheckPasswdReq.user_id)
+}
+
+// bytes passwd = 2;
+inline void CheckPasswdReq::clear_passwd() {
+  passwd_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& CheckPasswdReq::passwd() const {
+  // @@protoc_insertion_point(field_get:proxy.CheckPasswdReq.passwd)
+  return passwd_.GetNoArena();
+}
+inline void CheckPasswdReq::set_passwd(const ::std::string& value) {
+  
+  passwd_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:proxy.CheckPasswdReq.passwd)
+}
+#if LANG_CXX11
+inline void CheckPasswdReq::set_passwd(::std::string&& value) {
+  
+  passwd_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:proxy.CheckPasswdReq.passwd)
+}
+#endif
+inline void CheckPasswdReq::set_passwd(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  passwd_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proxy.CheckPasswdReq.passwd)
+}
+inline void CheckPasswdReq::set_passwd(const void* value, size_t size) {
+  
+  passwd_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proxy.CheckPasswdReq.passwd)
+}
+inline ::std::string* CheckPasswdReq::mutable_passwd() {
+  
+  // @@protoc_insertion_point(field_mutable:proxy.CheckPasswdReq.passwd)
+  return passwd_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CheckPasswdReq::release_passwd() {
+  // @@protoc_insertion_point(field_release:proxy.CheckPasswdReq.passwd)
+  
+  return passwd_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CheckPasswdReq::set_allocated_passwd(::std::string* passwd) {
+  if (passwd != NULL) {
+    
+  } else {
+    
+  }
+  passwd_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), passwd);
+  // @@protoc_insertion_point(field_set_allocated:proxy.CheckPasswdReq.passwd)
+}
+
+// -------------------------------------------------------------------
+
+// CheckPasswdRsp
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
