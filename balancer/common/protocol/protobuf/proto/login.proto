@@ -64,6 +64,8 @@ enum ErrorCode {
 
     // 业务错误码 (各个服务service_id * 10000 + 公共业务错误码)
     ERR_BUSINESS_BEGIN              = 105001000;
+    ERR_BUSINESS_ACCESS_KEY_ERROR   = 105001001;
+    ERR_BUSINESS_ACCESS_KEY_TIMEOUT = 105001002;
     ERR_BUSINESS_END                = 105009999;
 }
 
