@@ -23,7 +23,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := src/config/Config.cc src/config/ServiceConfig.cc src/core/BHttpServer.cc src/core/BTcpClient.cc src/core/BTcpClientPool.cc src/core/BTcpServer.cc src/core/Codec.cc src/core/InserviceService.cc src/core/Kv.cc src/core/Owner.cc src/core/Packet.cc src/core/Proc.cc src/core/Seq.cc src/core/SignalHandle.cc src/core/TaskMsgBase.cc src/core/TaskMsgMaster.cc src/core/TaskMsgPool.cc src/core/TaskMsgSub.cc src/core/Timer.cc src/define.cc src/handle/HandleClient.cc src/handle/HandleServer.cc src/handle/server/Heartbeat.cc src/log/Log.cc src/main.cc src/protocol/protobuf/CenterStack.cc src/protocol/protobuf/LoginStack.cc src/protocol/protobuf/proto_cpp/center.pb.cc src/protocol/protobuf/proto_cpp/common.pb.cc src/protocol/protobuf/proto_cpp/data.pb.cc src/protocol/protobuf/proto_cpp/data_format.pb.cc src/protocol/protobuf/proto_cpp/login.pb.cc src/protocol/protobuf/proto_cpp/proxy.pb.cc src/protocol/protobuf/proto_cpp/service.pb.cc src/protocol/protobuf/proto_cpp/session.pb.cc src/protocol/protobuf/proto_cpp/version.pb.cc src/tool/Util.cc
+SOURCEFILES := src/config/Config.cc src/config/ServiceConfig.cc src/core/BHttpServer.cc src/core/BTcpClient.cc src/core/BTcpClientPool.cc src/core/BTcpServer.cc src/core/Codec.cc src/core/InserviceService.cc src/core/Kv.cc src/core/Owner.cc src/core/Packet.cc src/core/Proc.cc src/core/Seq.cc src/core/SignalHandle.cc src/core/TaskMsgBase.cc src/core/TaskMsgMaster.cc src/core/TaskMsgPool.cc src/core/TaskMsgSub.cc src/core/Timer.cc src/define.cc src/handle/HandleClient.cc src/handle/HandleServer.cc src/handle/server/Heartbeat.cc src/handle/server/Login.cc src/log/Log.cc src/main.cc src/protocol/protobuf/CenterStack.cc src/protocol/protobuf/GateStack.cc src/protocol/protobuf/LoginStack.cc src/protocol/protobuf/proto_cpp/center.pb.cc src/protocol/protobuf/proto_cpp/common.pb.cc src/protocol/protobuf/proto_cpp/data.pb.cc src/protocol/protobuf/proto_cpp/data_format.pb.cc src/protocol/protobuf/proto_cpp/gate.pb.cc src/protocol/protobuf/proto_cpp/login.pb.cc src/protocol/protobuf/proto_cpp/proxy.pb.cc src/protocol/protobuf/proto_cpp/service.pb.cc src/protocol/protobuf/proto_cpp/session.pb.cc src/protocol/protobuf/proto_cpp/version.pb.cc src/protocol/protobuf/ProxyStack.cc src/protocol/protobuf/SessionStack.cc src/tool/Util.cc
 EXTERNAL_LIBS := 
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
@@ -257,6 +257,10 @@ $(BINARYDIR)/Heartbeat.o : src/handle/server/Heartbeat.cc $(all_make_files) |$(B
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
+$(BINARYDIR)/Login.o : src/handle/server/Login.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
 $(BINARYDIR)/Log.o : src/log/Log.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
@@ -266,6 +270,10 @@ $(BINARYDIR)/main.o : src/main.cc $(all_make_files) |$(BINARYDIR)
 
 
 $(BINARYDIR)/CenterStack.o : src/protocol/protobuf/CenterStack.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/GateStack.o : src/protocol/protobuf/GateStack.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
@@ -289,6 +297,10 @@ $(BINARYDIR)/data_format.pb.o : src/protocol/protobuf/proto_cpp/data_format.pb.c
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
+$(BINARYDIR)/gate.pb.o : src/protocol/protobuf/proto_cpp/gate.pb.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
 $(BINARYDIR)/login.pb.o : src/protocol/protobuf/proto_cpp/login.pb.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
@@ -306,6 +318,14 @@ $(BINARYDIR)/session.pb.o : src/protocol/protobuf/proto_cpp/session.pb.cc $(all_
 
 
 $(BINARYDIR)/version.pb.o : src/protocol/protobuf/proto_cpp/version.pb.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/ProxyStack.o : src/protocol/protobuf/ProxyStack.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/SessionStack.o : src/protocol/protobuf/SessionStack.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 

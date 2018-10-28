@@ -69,6 +69,7 @@
     <None Include="src\protocol\protobuf\proto\common.proto" />
     <None Include="src\protocol\protobuf\proto\data.proto" />
     <None Include="src\protocol\protobuf\proto\data_format.proto" />
+    <None Include="src\protocol\protobuf\proto\gate.proto" />
     <None Include="src\protocol\protobuf\proto\login.proto" />
     <None Include="src\protocol\protobuf\proto\proxy.proto" />
     <None Include="src\protocol\protobuf\proto\service.proto" />
@@ -99,19 +100,24 @@
     <ClCompile Include="src\handle\HandleClient.cc" />
     <ClCompile Include="src\handle\HandleServer.cc" />
     <ClCompile Include="src\handle\server\Heartbeat.cc" />
+    <ClCompile Include="src\handle\server\Login.cc" />
     <ClCompile Include="src\log\Log.cc" />
     <ClCompile Include="src\main.cc" />
     <ClCompile Include="src\protocol\protobuf\CenterStack.cc" />
+    <ClCompile Include="src\protocol\protobuf\GateStack.cc" />
     <ClCompile Include="src\protocol\protobuf\LoginStack.cc" />
     <ClCompile Include="src\protocol\protobuf\proto_cpp\center.pb.cc" />
     <ClCompile Include="src\protocol\protobuf\proto_cpp\common.pb.cc" />
     <ClCompile Include="src\protocol\protobuf\proto_cpp\data.pb.cc" />
     <ClCompile Include="src\protocol\protobuf\proto_cpp\data_format.pb.cc" />
+    <ClCompile Include="src\protocol\protobuf\proto_cpp\gate.pb.cc" />
     <ClCompile Include="src\protocol\protobuf\proto_cpp\login.pb.cc" />
     <ClCompile Include="src\protocol\protobuf\proto_cpp\proxy.pb.cc" />
     <ClCompile Include="src\protocol\protobuf\proto_cpp\service.pb.cc" />
     <ClCompile Include="src\protocol\protobuf\proto_cpp\session.pb.cc" />
     <ClCompile Include="src\protocol\protobuf\proto_cpp\version.pb.cc" />
+    <ClCompile Include="src\protocol\protobuf\ProxyStack.cc" />
+    <ClCompile Include="src\protocol\protobuf\SessionStack.cc" />
     <ClCompile Include="src\tool\Util.cc" />
   </ItemGroup>
   <ItemGroup>
@@ -138,18 +144,23 @@
     <ClInclude Include="src\handle\HandleClient.h" />
     <ClInclude Include="src\handle\HandleServer.h" />
     <ClInclude Include="src\handle\server\Heartbeat.h" />
+    <ClInclude Include="src\handle\server\Login.h" />
     <ClInclude Include="src\log\Log.h" />
     <ClInclude Include="src\protocol\protobuf\CenterStack.h" />
+    <ClInclude Include="src\protocol\protobuf\GateStack.h" />
     <ClInclude Include="src\protocol\protobuf\LoginStack.h" />
     <ClInclude Include="src\protocol\protobuf\proto_cpp\center.pb.h" />
     <ClInclude Include="src\protocol\protobuf\proto_cpp\common.pb.h" />
     <ClInclude Include="src\protocol\protobuf\proto_cpp\data.pb.h" />
     <ClInclude Include="src\protocol\protobuf\proto_cpp\data_format.pb.h" />
+    <ClInclude Include="src\protocol\protobuf\proto_cpp\gate.pb.h" />
     <ClInclude Include="src\protocol\protobuf\proto_cpp\login.pb.h" />
     <ClInclude Include="src\protocol\protobuf\proto_cpp\proxy.pb.h" />
     <ClInclude Include="src\protocol\protobuf\proto_cpp\service.pb.h" />
     <ClInclude Include="src\protocol\protobuf\proto_cpp\session.pb.h" />
     <ClInclude Include="src\protocol\protobuf\proto_cpp\version.pb.h" />
+    <ClInclude Include="src\protocol\protobuf\ProxyStack.h" />
+    <ClInclude Include="src\protocol\protobuf\SessionStack.h" />
     <ClInclude Include="src\protocol\Protocol.h" />
     <ClInclude Include="src\tool\Util.h" />
   </ItemGroup>
