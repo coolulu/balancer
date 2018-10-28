@@ -6,6 +6,8 @@
 #include "handle/server/Heartbeat.h"
 #include "core/TaskMsgMaster.h"
 
+#include "handle/server/Login.h"
+
 HandleServer::HandleServer(Proc& proc)
 	: _proc(proc)
 {
@@ -66,8 +68,8 @@ void HandleServer::handle_request(const muduo::net::TcpConnectionPtr& conn,
 		
 		switch(msg.choice_case())
 		{
-		case login::LoginMsg::kTestReq:
-			task = nullptr;
+		case login::LoginMsg::kLoginReq:
+			task = new Login(_proc, conn, packet_ptr, time, msg);
 			break;
 
 		default:
