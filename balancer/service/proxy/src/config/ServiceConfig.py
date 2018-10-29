@@ -65,15 +65,17 @@ class IPInfo:
         self.proc_id = 0
         self.proc_des = ''
         self.in_ip = ''
+        self.in_port = 0
         self.out_ip = ''
-        self.port = 0
+        self.out_port = 0
 
     def load(self, d):
         self.proc_id = d['proc_id']
         self.proc_des = d['proc_des']
         self.in_ip = d['in_ip']
+        self.in_port = d['in_port']
         self.out_ip = d['out_ip']
-        self.port = d['port']
+        self.out_port = d['out_port']
 
         ip_info = IPInfo()
         if type(ip_info.proc_id) != type(self.proc_id) or ip_info.proc_id == self.proc_id:
@@ -82,9 +84,11 @@ class IPInfo:
             raise Exception('type failed')
         if type(ip_info.in_ip) != type(self.in_ip) or ip_info.in_ip == self.in_ip:
             raise Exception('type failed')
+        if type(ip_info.in_port) != type(self.in_port) or ip_info.in_port == self.in_port:
+            raise Exception('type failed')
         if type(ip_info.out_ip) != type(self.out_ip) or ip_info.out_ip == self.out_ip:
             raise Exception('type failed')
-        if type(ip_info.port) != type(self.port) or ip_info.port == self.port:
+        if type(ip_info.out_port) != type(self.out_port) or ip_info.out_port == self.out_port:
             raise Exception('type failed')
 
 
@@ -152,7 +156,7 @@ class ServiceConfig:
         return True
 
 
-str = '{"service_map":[{"service_id":10100,"service_name":"gate","heartbeat":{"heartbeat_enable":true,"heartbeat_gap":5,"lose_time":3,"recover_time":5},"depend_map":[{"depend_service_id":10200}],"kv_map":[{"key":"timeout","val":"30"},{"key":"env","val":"test"}],"heartbeat_list":[{"proc_id":100,"proc_des":"gate_1_0","in_ip":"121.1.1.1","out_ip":"11.1.1.1","port":10100}],"inservice_list":[{"proc_id":200,"proc_des":"gate_2_0","in_ip":"121.1.1.2","out_ip":"11.1.1.2","port":10100}]},{"service_id":10200,"service_name":"group","heartbeat":{"heartbeat_enable":true,"heartbeat_gap":5,"lose_time":3,"recover_time":5},"depend_map":[{"depend_service_id":10100}],"kv_map":[{"key":"name_max_size","val":"1024"},{"key":"buffer_max_size","val":"1024"}],"heartbeat_list":[{"proc_id":100,"proc_des":"group_1_0","in_ip":"121.1.1.10","out_ip":"11.1.1.10","port":10200}],"inservice_list":[{"proc_id":200,"proc_des":"group_2_0","in_ip":"121.1.1.20","out_ip":"11.1.1.20","port":10200},{"proc_id":201,"proc_des":"group_2_1","in_ip":"121.1.1.21","out_ip":"11.1.1.21","port":10201}]}]}'
+str = '{ "service_map": [ { "service_id": 10100, "service_name": "gate", "heartbeat": { "heartbeat_enable": true, "heartbeat_gap": 5, "lose_time": 3, "recover_time": 5 }, "depend_map": [ { "depend_service_id": 10200 } ], "kv_map": [ { "key": "timeout", "val": "30" }, { "key": "env", "val": "test" } ], "heartbeat_list": [ { "proc_id": 100, "proc_des": "gate_1_0", "in_ip": "121.1.1.1", "in_port": 10100, "out_ip": "11.1.1.1", "out_port": 30000 } ], "inservice_list": [ { "proc_id": 200, "proc_des": "gate_2_0", "in_ip": "121.1.1.2", "in_port": 10100, "out_ip": "11.1.1.2", "out_port": 30000 } ] }, { "service_id": 10200, "service_name": "group", "heartbeat": { "heartbeat_enable": true, "heartbeat_gap": 5, "lose_time": 3, "recover_time": 5 }, "depend_map": [ { "depend_service_id": 10100 } ], "kv_map": [ { "key": "name_max_size", "val": "1024" }, { "key": "buffer_max_size", "val": "1024" }, {  "key": "navigate_key",  "val": "qsdjkajwojfdowjowj"  },  {  "key": "navigate_key_timeout_us",  "val": "60000000"  },  { "key": "map_gate_service_id",  "val": "10300" } ], "heartbeat_list": [ { "proc_id": 100, "proc_des": "group_1_0", "in_ip": "121.1.1.10", "in_port": 10200, "out_ip": "11.1.1.10", "out_port": 10200 } ], "inservice_list": [ { "proc_id": 200, "proc_des": "group_2_0", "in_ip": "121.1.1.20", "in_port": 10200, "out_ip": "11.1.1.20", "out_port": 10200 }, { "proc_id": 201, "proc_des": "group_2_1", "in_ip": "121.1.1.21", "in_port": 10201, "out_ip": "11.1.1.21", "out_port": 10201 } ] } ] } '
 
 sc = ServiceConfig()
 sc.json_to_map(str)
