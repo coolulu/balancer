@@ -64,7 +64,7 @@ enum ErrorCode {
 
     // 业务错误码 (各个服务service_id * 10000 + 公共业务错误码)
     ERR_BUSINESS_BEGIN              = 301001000;
-    ERR_BUSINESS_NOT_FIND_USER_ID   = 301001001;    // user_id不存在
+    ERR_BUSINESS_NOT_FIND_USER_ID   = 301001001;    // user_id不存在(CheckPasswd不应返回这个错误码，防止被穷举)
     ERR_BUSINESS_CHECK_PASSWD_ERROR = 301001002;    // 校验密码错误
     ERR_BUSINESS_END                = 301009999;
 }
