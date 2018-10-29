@@ -605,22 +605,30 @@
 ### 会话服务
     service_type: session
     Session {
-        // session查询使用（主动触发）
+        // session查询使用（主动触发） HGETALL 
         user_id : user{user_id, conn_id, gate_id, gate_ip, gate_port, ...}
         eg: session:user:user_id:123
             session:user:123
 
+        // sscan 模糊查询  *:conn_id 或 user_id:*
+        gate_ip_port : user_set{(user_id:conn_id)}  eg: session:user_set:127.0.0.1:10301
+
+
+        /*
         // gate和client连接断开使用（主动触发）
         gate_id_conn_id : user_id       eg: session:user_id:gate_id:10300:conn_id:1234567890
                                             session:user_id:10300:1234567890
         gate_ip_port_conn_id : user_id  eg: session:user_id:gate_ip:127.0.0.1:port:10301:conn_id:1234567890
                                             session:user_id:127.0.0.1:10301:1234567890
+        */
 
+        /*      可以不要，通过keys * 模糊匹配找出userid来实现删除
         // gate挂掉使用（被动触发）
         gate_id : user_set[{user_id, conn_id}]           eg: session:user_set:gate_id:10300
                                                              session:user_set:10300
         gate_ip_port : user_set[{user_id, conn_id}]      eg: session:user_set:gate_ip:127.0.0.1:port:10301
                                                              session:user_set:127.0.0.1:10301
+        */
     }
 
     key = service_name + val名 + key值
@@ -633,6 +641,39 @@
 
 ### 登录服务
     service_type: login
+
+    登录流程
+    login:
+    client -->  login               LoginReq
+    client <--  login               AccessKeyReq
+    client -->  login               AccessKeyRsp
+                login --> proxy     CheckPasswdReq
+                login --> proxy     CheckPasswdRsp
+    gate   <--  login               SetConnLoginReq
+    gate   -->  login               SetConnLoginRsp
+                login --> session   QuerySessionReq
+                login <-- session   QuerySessionRsp （用户离线）
+                login --> session   CreateSessionReq
+                login <-- session   CreateSessionRsp
+    client <--  login               LoginRsp
+
+    login:
+    client -->  login               LoginReq
+    client <--  login               AccessKeyReq            login*
+    client -->  login               AccessKeyRsp
+                login --> proxy     CheckPasswdReq          proxy
+                login --> proxy     CheckPasswdRsp
+    gate   <--  login               SetConnLoginReq         gate
+    gate   -->  login               SetConnLoginRsp
+                login --> session   QuerySessionReq         session
+                login <-- session   QuerySessionRsp （用户在线）
+                login --> session   DelSessionReq           session
+                login <-- session   DelSessionRsp
+    gate   <--  login               CloseConnIdReq          gate
+    gate   -->  login               CloseConnIdRsp
+                login --> session   CreateSessionReq        session
+                login <-- session   CreateSessionRsp
+    client <--  login               LoginRsp                login*
 
 ### 逻辑服务
     service_type: logic
