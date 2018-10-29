@@ -397,7 +397,7 @@ int Login::handle_DelSession(TaskMsgSub& sub)
 
 	if(sub_is_empty())
 	{
-		TaskMsgSub* p_sub = new TaskMsgSub(_proc, "CloseConnId", service::SESSION, 0, this);
+		TaskMsgSub* p_sub = new TaskMsgSub(_proc, "CloseConnId", _req.service_id(), _req.proc_id(), this);
 		sub_insert(p_sub->_seq_id);
 		p_sub->_request.reset(new Packet(
 			p_sub->_depend_service_id, p_sub->_proc_id, 0, 0, 0, p_sub->_seq_id));
