@@ -464,14 +464,14 @@ int Login::handle_CreateSession(TaskMsgSub& sub)
 
 void Login::send_rsp_success()
 {
-	_response.reset(new Packet(_request->_from_service_id, 0, 0, 0, _request->_conn_seq_id, _seq_id));
+	_response.reset(new Packet(_request->_from_service_id, 0, _request->_app_id, _request->_app_version, _request->_conn_seq_id, _seq_id));
 	LoginStack::LoginRsp(_response->_body, common::SUCCESS, "");
 	_proc._tcp_server.send_msg(_conn, _response);
 }
 
 void Login::send_rsp_error()
 {
-	_response.reset(new Packet(_request->_from_service_id, 0, 0, 0, _request->_conn_seq_id, _seq_id));
+	_response.reset(new Packet(_request->_from_service_id, 0, _request->_app_id, _request->_app_version, _request->_conn_seq_id, _seq_id));
 	LoginStack::LoginRsp(_response->_body, _code, _info);
 	_proc._tcp_server.send_msg(_conn, _response);
 }
@@ -514,7 +514,7 @@ void Login::send_rsp_timeout()
 		break;
 	}
 
-	_response.reset(new Packet(_request->_from_service_id, 0, 0, 0, _request->_conn_seq_id, _seq_id));
+	_response.reset(new Packet(_request->_from_service_id, 0, _request->_app_id, _request->_app_version, _request->_conn_seq_id, _seq_id));
 	LoginStack::LoginRsp(_response->_body, _code, _info);
 	_proc._tcp_server.send_msg(_conn, _response);
 }
@@ -557,7 +557,7 @@ void Login::send_rsp_timeout_by_sub()
 		break;
 	}
 
-	_response.reset(new Packet(_request->_from_service_id, 0, 0, 0, _request->_conn_seq_id, _seq_id));
+	_response.reset(new Packet(_request->_from_service_id, 0, _request->_app_id, _request->_app_version, _request->_conn_seq_id, _seq_id));
 	LoginStack::LoginRsp(_response->_body, _code, _info);
 	_proc._tcp_server.send_msg(_conn, _response);
 }
