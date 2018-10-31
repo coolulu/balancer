@@ -69,7 +69,7 @@ void CloseClient::handle(bool is_timeout)
 	}
 	
 	// ·¢ËÍrsp
-	PacketPtr packet_ptr_rsp(new Packet(_packet_ptr_req->_from_service_id, 0, 0, 0, 0, _packet_ptr_req->_msg_seq_id));
+	PacketPtr packet_ptr_rsp(new Packet(_packet_ptr_req->_from_service_id, 0, _packet_ptr_req->_app_id, _packet_ptr_req->_app_version, _packet_ptr_req->_conn_seq_id, _packet_ptr_req->_msg_seq_id));
 	GateStack::CloseConnIdRsp(packet_ptr_rsp->_body, common::SUCCESS, "");
 
 	_proc._tcp_server.send_msg(_rsp_conn_id, packet_ptr_rsp);

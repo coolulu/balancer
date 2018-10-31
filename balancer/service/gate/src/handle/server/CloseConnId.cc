@@ -37,7 +37,7 @@ void CloseConnId::handle(const gate::GateMsg& msg)
 	else
 	{
 		B_LOG_WARN << "CloseConnId is not find conn, conn_id=" << req.conn_id();
-		PacketPtr packet_ptr_rsp(new Packet(_packet_ptr->_from_service_id, 0, 0, 0, 0, _packet_ptr->_msg_seq_id));
+		PacketPtr packet_ptr_rsp(new Packet(_packet_ptr->_from_service_id, 0, _packet_ptr->_app_id, _packet_ptr->_app_version, _packet_ptr->_conn_seq_id, _packet_ptr->_msg_seq_id));
 		GateStack::CloseConnIdRsp(packet_ptr_rsp->_body, common::SUCCESS, "");
 
 		_proc._tcp_server.send_msg(_conn, packet_ptr_rsp);

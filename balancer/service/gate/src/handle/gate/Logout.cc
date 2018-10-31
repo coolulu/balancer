@@ -27,7 +27,7 @@ void Logout::handle(const gate::GateMsg& msg)
 				<< ", _create_time=" << gate_context._create_time 
 				<< ", _update_time=" << gate_context._update_time;
 
-	PacketPtr packet_ptr_rsp(new Packet(_packet_ptr->_from_service_id, 0, 0, 0, _packet_ptr->_msg_seq_id, _packet_ptr->_msg_seq_id));
+	PacketPtr packet_ptr_rsp(new Packet(_packet_ptr->_from_service_id, 0, _packet_ptr->_app_id, _packet_ptr->_app_version, _packet_ptr->_msg_seq_id, _packet_ptr->_msg_seq_id));
 	GateStack::LogoutRsp(packet_ptr_rsp->_body, common::SUCCESS, "");
 
 	_proc._gate_server.send_msg(_conn, packet_ptr_rsp);
