@@ -82,7 +82,7 @@ async def handle_echo(reader, writer):
     g_conn_map[conn.conn_id] = conn
 
     while True:
-        data = await reader.read(1024)
+        data = await reader.read(65535)
         conn.update()
         if data is b'':
             print("on connect close")
