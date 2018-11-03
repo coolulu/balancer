@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+from tool import util
 
 
 class Listen:
@@ -8,17 +9,11 @@ class Listen:
         self.ip = ''
         self.port = 0
 
-    def __str__(self):
-        return ', '.join(['%s=%s' % item for item in self.__dict__.items()])
-
 
 class Net:
     def __init__(self):
         self.tcp = Listen()
         self.http = Listen()
-
-    def __str__(self):
-        return '\n'.join(['%s:%s' % item for item in self.__dict__.items()])
 
 
 class Log:
@@ -28,18 +23,13 @@ class Log:
         self.size = 0
         self.level = ''
 
-    def __str__(self):
-        return ', '.join(['%s=%s' % item for item in self.__dict__.items()])
-
 
 class Proc:
     def __init__(self):
         self.tcp_server_idle = 0
         self.tcp_server_recv_packet_len_max = 0
         self.tcp_server_send_packet_len_max = 0
-
-    def __str__(self):
-        return ', '.join(['%s=%s' % item for item in self.__dict__.items()])
+        self.tcp_server_recv_size = 0
 
 
 class Mysql:
@@ -50,18 +40,12 @@ class Mysql:
         self.passwd = ''
         self.db = ''
 
-    def __str__(self):
-        return ', '.join(['%s=%s' % item for item in self.__dict__.items()])
-
 
 class Redis:
     def __init__(self):
         self.host = ''
         self.port = 0
         self.passwd = ''
-
-    def __str__(self):
-        return ', '.join(['%s=%s' % item for item in self.__dict__.items()])
 
 
 class Mongodb:
@@ -72,18 +56,12 @@ class Mongodb:
         self.password = ''
         self.authSource = ''
 
-    def __str__(self):
-        return ', '.join(['%s=%s' % item for item in self.__dict__.items()])
-
 
 class Proxy:
     def __init__(self):
         self.mysql = Mysql()
         self.redis = Redis()
         self.mongodb = Mongodb()
-
-    def __str__(self):
-        return '\n'.join(['%s:%s' % item for item in self.__dict__.items()])
 
 
 class Config:
@@ -94,41 +72,77 @@ class Config:
         self.proxy = Proxy()
 
     def __str__(self):
-        return '\n'.join(['%s.%s' % item for item in self.__dict__.items()])
+        str = 'Config.to_string'
+        str += ', net.tcp.ip=%s' % self.net.tcp.ip
+        str += ', net.tcp.port=%d' % self.net.tcp.port
+        str += '  net.http.ip=%s' % self.net.http.ip
+        str += ', net.http.port=%d' % self.net.http.port
+
+        str += ', self.log.module=%s' % self.log.module
+        str += ', self.log.path=%s' % self.log.path
+        str += ', self.log.size=%d' % self.log.size
+        str += ', self.log.level=%s' % self.log.level
+
+        str += ', proc.tcp_server_idle=%d' % self.proc.tcp_server_idle
+        str += ', proc.tcp_server_recv_packet_len_max=%d' % self.proc.tcp_server_recv_packet_len_max
+        str += ', proc.tcp_server_send_packet_len_max=%d' % self.proc.tcp_server_send_packet_len_max
+        str += ', proc.tcp_server_recv_size=%d' % self.proc.tcp_server_recv_size
+
+        str += ', proxy.mysql.host=%s' % self.proxy.mysql.host
+        str += ', proxy.mysql.port=%d' % self.proxy.mysql.port
+        str += ', proxy.mysql.user=%s' % self.proxy.mysql.user
+        str += ', proxy.mysql.passwd=%s' % self.proxy.mysql.passwd
+        str += ', proxy.mysql.db=%s' % self.proxy.mysql.db
+
+        str += ', proxy.redis.host=%s' % self.proxy.redis.host
+        str += ', proxy.redis.port=%d' % self.proxy.redis.port
+        str += ', proxy.redis.passwd=%s' % self.proxy.redis.passwd
+
+        str += ', proxy.mongodb.host=%s' % self.proxy.mongodb.host
+        str += ', proxy.mongodb.port=%d' % self.proxy.mongodb.port
+        str += ', proxy.mongodb.username=%s' % self.proxy.mongodb.username
+        str += ', proxy.mongodb.password=%s' % self.proxy.mongodb.password
+        str += ', proxy.mongodb.authSource=%s' % self.proxy.mongodb.authSource
+
+        return str
 
     def load(self, str):
-        d = json.loads(str)
+        jo = json.loads(str, object_hook=util.JsonObject)
+
         try:
-            self.net.tcp.ip = d['net']['tcp']['ip']
-            self.net.tcp.port = d['net']['tcp']['port']
-            self.net.http.ip = d['net']['http']['ip']
-            self.net.http.port = d['net']['http']['port']
+            self.net.tcp.ip = jo.net.tcp.ip
+            self.net.tcp.port = jo.net.tcp.port
+            self.net.http.ip = jo.net.http.ip
+            self.net.http.port = jo.net.http.port
 
-            self.log.module = d['log']['module']
-            self.log.path = d['log']['path']
-            self.log.size = d['log']['size']
-            self.log.level = d['log']['level']
+            self.log.module = jo.log.module
+            self.log.path = jo.log.path
+            self.log.size = jo.log.size
+            self.log.level = jo.log.level
 
-            self.proc.tcp_server_idle = d['proc']['tcp_server_idle']
-            self.proc.tcp_server_recv_packet_len_max = d['proc']['tcp_server_recv_packet_len_max']
-            self.proc.tcp_server_send_packet_len_max = d['proc']['tcp_server_send_packet_len_max']
+            self.proc.tcp_server_idle = jo.proc.tcp_server_idle
+            self.proc.tcp_server_recv_packet_len_max = jo.proc.tcp_server_recv_packet_len_max
+            self.proc.tcp_server_send_packet_len_max = jo.proc.tcp_server_send_packet_len_max
+            self.proc.tcp_server_recv_size = jo.proc.tcp_server_recv_size
 
-            self.proxy.mysql.host = d['proxy']['mysql']['host']
-            self.proxy.mysql.port = d['proxy']['mysql']['port']
-            self.proxy.mysql.user = d['proxy']['mysql']['user']
-            self.proxy.mysql.passwd = d['proxy']['mysql']['passwd']
-            self.proxy.mysql.db = d['proxy']['mysql']['db']
+            self.proxy.mysql.host = jo.proxy.mysql.host
+            self.proxy.mysql.port = jo.proxy.mysql.port
+            self.proxy.mysql.user = jo.proxy.mysql.user
+            self.proxy.mysql.passwd = jo.proxy.mysql.passwd
+            self.proxy.mysql.db = jo.proxy.mysql.db
 
-            self.proxy.redis.host = d['proxy']['redis']['host']
-            self.proxy.redis.port = d['proxy']['redis']['port']
-            self.proxy.redis.passwd = d['proxy']['redis']['passwd']
+            self.proxy.redis.host = jo.proxy.redis.host
+            self.proxy.redis.port = jo.proxy.redis.port
+            self.proxy.redis.passwd = jo.proxy.redis.passwd
 
-            self.proxy.mongodb.host = d['proxy']['mongodb']['host']
-            self.proxy.mongodb.port = d['proxy']['mongodb']['port']
-            self.proxy.mongodb.username = d['proxy']['mongodb']['username']
-            self.proxy.mongodb.password = d['proxy']['mongodb']['password']
-            self.proxy.mongodb.authSource = d['proxy']['mongodb']['authSource']
-        except:
+            self.proxy.mongodb.host = jo.proxy.mongodb.host
+            self.proxy.mongodb.port = jo.proxy.mongodb.port
+            self.proxy.mongodb.username = jo.proxy.mongodb.username
+            self.proxy.mongodb.password = jo.proxy.mongodb.password
+            self.proxy.mongodb.authSource = jo.proxy.mongodb.authSource
+
+        except Exception as e:
+            print(e)
             return False
         return self.check()
 
@@ -169,6 +183,9 @@ class Config:
         if type(self.proc.tcp_server_send_packet_len_max) != type(c.proc.tcp_server_send_packet_len_max) or \
                 self.proc.tcp_server_send_packet_len_max == c.proc.tcp_server_send_packet_len_max:
             return False
+        if type(self.proc.tcp_server_recv_size) != type(c.proc.tcp_server_recv_size) or \
+                self.proc.tcp_server_recv_size == c.proc.tcp_server_recv_size:
+            return False
 
         if type(self.proxy.mysql.host) != type(c.proxy.mysql.host) or self.proxy.mysql.host == c.proxy.mysql.host:
             return False
@@ -205,4 +222,7 @@ class Config:
             return False
 
         return True
+
+
+
 

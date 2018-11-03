@@ -142,6 +142,10 @@ class Service:
 class ServiceConfig:
     def __init__(self):
         self.service_map = {}
+        self.json = ''
+
+    def __str__(self):
+        return self.json
 
     def json_to_map(self, str):
         d = json.loads(str)
@@ -150,8 +154,11 @@ class ServiceConfig:
                 service = Service()
                 service.load(n)
                 self.service_map[service.service_id] = service
-        except:
+        except Exception as e:
+            print(e)
             return False
+
+        self.json = str
         return True
 
 
@@ -161,4 +168,9 @@ sc = ServiceConfig()
 sc.json_to_map(str)
 
 print(sc)
+
+m = ()
+
+
+
 

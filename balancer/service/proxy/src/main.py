@@ -1,16 +1,19 @@
 # -*- coding: utf-8 -*-
 
-from src.config.Config import Config
+from config import config
+
 
 def main():
 
     with open('./conf/proxy_0.json') as fd:
         str = fd.read(1024 * 1024)
 
-    c = Config()
+    c = config.Config()
     b = c.load(str)
 
-    c.reload(str)
+    b = c.reload(str)
+    print(c)
+
     pass
 
 
