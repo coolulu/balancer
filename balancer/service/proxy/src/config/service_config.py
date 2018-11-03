@@ -96,10 +96,10 @@ class Service:
         self.service_id = 0
         self.service_name = ''
         self.heartbeat = Heartbeat()
-        self.depend_map = []
-        self.kv_map = []
-        self.heartbeat_list = []
-        self.inservice_list = []
+        self.depend_map = {}
+        self.kv_map = {}
+        self.heartbeat_list = {}
+        self.inservice_list = {}
 
     def load(self, d):
         self.service_id = d['service_id']
@@ -108,19 +108,19 @@ class Service:
         for n in d['depend_map']:
             depend = Depend()
             depend.load(n)
-            self.depend_map.append(depend)
+            self.depend_map[depend.depend_service_id] = depend
         for n in d['kv_map']:
             kv = KV()
             kv.load(n)
-            self.kv_map.append(kv)
+            self.kv_map[kv.key] = kv
         for n in d['heartbeat_list']:
             ip_info = IPInfo()
             ip_info.load(n)
-            self.heartbeat_list.append(ip_info)
+            self.heartbeat_list[ip_info.proc_id] = ip_info
         for n in d['inservice_list']:
             ip_info = IPInfo()
             ip_info.load(n)
-            self.inservice_list.append(ip_info)
+            self.inservice_list[ip_info.proc_id] = ip_info
 
         service = Service()
         if type(service.service_id) != type(self.service_id) or service.service_id == self.service_id:
@@ -169,7 +169,6 @@ sc.json_to_map(str)
 
 print(sc)
 
-m = ()
 
 
 
