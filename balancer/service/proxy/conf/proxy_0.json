@@ -21,30 +21,31 @@
 	"proc": {
 		"tcp_server_idle": 90,
 		"tcp_server_recv_packet_len_max": 65535,
-		"tcp_server_send_packet_len_max": 65535
+		"tcp_server_send_packet_len_max": 65535,
+		"tcp_server_recv_size": 65535
 	},
 
 	"proxy": {
 		"mysql": {
-			"host": "",
-			"port": 0,
-			"user": "",
-			"passwd": "",
-			"db": ""
+			"host": "127.0.0.1",
+			"port": 1,
+			"user": "user",
+			"passwd": "passwd",
+			"db": "db"
 		},
 
 		"redis": {
-			"host": "",
-			"port": 0,
-			"passwd": ""
+			"host": "127.0.0.1",
+			"port": 1,
+			"passwd": "passwd"
 		},
 
 		"mongodb": {
-			"host": "",
-            "port": 0,
-            "username": "",
-            "password": "",
-            "authSource": ""
+			"host": "host",
+            "port": 1,
+            "username": "username",
+            "password": "password",
+            "authSource": "authSource"
 		}
 	}
 }
