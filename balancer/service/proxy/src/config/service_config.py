@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+from tool import util
 
 
 class Heartbeat:
@@ -10,11 +11,11 @@ class Heartbeat:
         self.lose_time = 0
         self.recover_time = 0
 
-    def load(self, d):
-        self.heartbeat_enable = d['heartbeat_enable']
-        self.heartbeat_gap = d['heartbeat_gap']
-        self.lose_time = d['lose_time']
-        self.recover_time = d['recover_time']
+    def load(self, jo):
+        self.heartbeat_enable = jo.heartbeat_enable
+        self.heartbeat_gap = jo.heartbeat_gap
+        self.lose_time = jo.lose_time
+        self.recover_time = jo.recover_time
 
         heartbeat = Heartbeat()
         if type(heartbeat.heartbeat_enable) != type(self.heartbeat_enable):
@@ -34,8 +35,8 @@ class Depend:
     def __init__(self):
         self.depend_service_id = 0
 
-    def load(self, d):
-        self.depend_service_id = d['depend_service_id']
+    def load(self, jo):
+        self.depend_service_id = jo.depend_service_id
 
         depend = Depend()
         if type(depend.depend_service_id) != type(self.depend_service_id) or \
@@ -48,9 +49,9 @@ class KV:
         self.key = ''
         self.val = ''
 
-    def load(self, d):
-        self.key = d['key']
-        self.val = d['val']
+    def load(self, jo):
+        self.key = jo.key
+        self.val = jo.val
 
         kv = KV()
         if type(kv.key) != type(self.key) or kv.key == self.key:
@@ -68,13 +69,13 @@ class IPInfo:
         self.out_ip = ''
         self.out_port = 0
 
-    def load(self, d):
-        self.proc_id = d['proc_id']
-        self.proc_des = d['proc_des']
-        self.in_ip = d['in_ip']
-        self.in_port = d['in_port']
-        self.out_ip = d['out_ip']
-        self.out_port = d['out_port']
+    def load(self, jo):
+        self.proc_id = jo.proc_id
+        self.proc_des = jo.proc_des
+        self.in_ip = jo.in_ip
+        self.in_port = jo.in_port
+        self.out_ip = jo.out_ip
+        self.out_port = jo.out_port
 
         ip_info = IPInfo()
         if type(ip_info.proc_id) != type(self.proc_id) or ip_info.proc_id == self.proc_id:
@@ -101,23 +102,23 @@ class Service:
         self.heartbeat_list = {}
         self.inservice_list = {}
 
-    def load(self, d):
-        self.service_id = d['service_id']
-        self.service_name = d['service_name']
-        self.heartbeat.load(d['heartbeat'])
-        for n in d['depend_map']:
+    def load(self, jo):
+        self.service_id = jo.service_id
+        self.service_name = jo.service_name
+        self.heartbeat.load(jo.heartbeat)
+        for n in jo.depend_map:
             depend = Depend()
             depend.load(n)
             self.depend_map[depend.depend_service_id] = depend
-        for n in d['kv_map']:
+        for n in jo.kv_map:
             kv = KV()
             kv.load(n)
             self.kv_map[kv.key] = kv
-        for n in d['heartbeat_list']:
+        for n in jo.heartbeat_list:
             ip_info = IPInfo()
             ip_info.load(n)
             self.heartbeat_list[ip_info.proc_id] = ip_info
-        for n in d['inservice_list']:
+        for n in jo.inservice_list:
             ip_info = IPInfo()
             ip_info.load(n)
             self.inservice_list[ip_info.proc_id] = ip_info
@@ -148,9 +149,9 @@ class ServiceConfig:
         return self.json
 
     def json_to_map(self, str):
-        d = json.loads(str)
+        jo = json.loads(str, object_hook=util.JsonObject)
         try:
-            for n in d['service_map']:
+            for n in jo.service_map:
                 service = Service()
                 service.load(n)
                 self.service_map[service.service_id] = service
