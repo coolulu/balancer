@@ -212,10 +212,15 @@ std::string Util::set_cpu_mask(unsigned short cpu_id, cpu_set_t *mask)
 
 unsigned long long Util::uiui2ull(unsigned int high, unsigned int low)
 {
+	/*
 	unsigned long long ull = 0;
 	memcpy((char*)&ull, (char*)&low, sizeof(low));
 	memcpy((char*)&ull + sizeof(low), (char*)&high, sizeof(high));
 	return ull;
+	*/
+
+	unsigned long long ull = high;
+	return (ull << 32) + low;
 }
 
 int Util::daemon_run()

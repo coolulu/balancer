@@ -765,10 +765,6 @@ bool ServiceConfig::del_service(unsigned short service_id)
 void ServiceConfig::IPInfo::change()
 {
 	ip = Util::sip_2_uip(in_ip.c_str());
-	/*
-	memcpy((char*)&key_in_ip_port, (char*)&ip, sizeof(ip));
-	memcpy((char*)&key_in_ip_port + sizeof(ip), (char*)&in_port, sizeof(in_port));
-	*/
 	key_in_ip_port = Util::uiui2ull(ip, in_port);
 }
 
