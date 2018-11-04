@@ -8,6 +8,12 @@ message ProxyMsg {                              // 奇数是请求，偶数是�
     oneof choice {
         common.TestReq  test_req        = 1;    // 请求
         common.TestRsp  test_rsp        = 2;    // 响应
+
+        GetUserInfoReq  get_user_info_req   = 3;    // 获取用户信息
+        GetUserInfoRsp  get_user_info_rsp   = 4;
+
+        CheckPasswdReq  check_passwd_req    = 5;    // 校验用户密码
+        CheckPasswdRsp  check_passwd_rsp    = 6;
     }
 }
 
@@ -52,11 +58,31 @@ enum ErrorCode {
     ERR_INTERFACE_PARAM             = 301000301;   	// 参数错误
     ERR_INTERFACE_PERM              = 301000302;   	// 权限错误
     ERR_INTERFACE_TIMEOUT           = 301000303;   	// 接口超时
+    ERR_INTERFACE_MASTER_TIMEOUT    = 301000304;    // 接口主任务超时
+    ERR_INTERFACE_SUB_TIMEOUT       = 301000305;    // 接口子任务超时
     ERR_INTERFACE_END               = 301000399;
 
     // 业务错误码 (各个服务service_id * 10000 + 公共业务错误码)
     ERR_BUSINESS_BEGIN              = 301001000;
+    ERR_BUSINESS_NOT_FIND_USER_ID   = 301001001;    // user_id不存在(CheckPasswd不应返回这个错误码，防止被穷举)
+    ERR_BUSINESS_CHECK_PASSWD_ERROR = 301001002;    // 校验密码错误
     ERR_BUSINESS_END                = 301009999;
 }
 
+message GetUserInfoReq {
+    uint64  user_id     = 1; 
+}
+
+message GetUserInfoRsp {
+
+}
+
+message CheckPasswdReq {
+    uint64  user_id     = 1;
+    bytes   passwd      = 2;
+}
+
+message CheckPasswdRsp {
+
+}
 
