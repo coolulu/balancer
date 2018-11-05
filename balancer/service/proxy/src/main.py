@@ -18,7 +18,6 @@ def main():
 
     log.logger(c)
     log.info('11111')
-    log.warn('22222')
 
     pass
 
