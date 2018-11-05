@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from config import config
+from log import log
+
 
 
 def main():
@@ -14,7 +16,15 @@ def main():
     b = c.reload(str)
     print(c)
 
+    log.logger(c)
+    log.info('11111')
+    log.warn('22222')
+
     pass
+
+
+
+
 
 
 

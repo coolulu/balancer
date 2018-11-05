@@ -15,7 +15,7 @@
 		"module": "proxy",
         "path": "./log/0",
         "size": 10000000,
-        "level": "debug"
+        "level": "info"
 	},
 
 	"proc": {
