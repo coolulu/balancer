@@ -3,40 +3,45 @@
 import sys
 import getopt
 
-from config import config
 from log import log
+from core.signal_handle import SignalHandle
+from core.proc import Proc
 
 
 def main(argv):
-
-    config_file = ''
-
     try:
         opts, args = getopt.getopt(argv, 'f:', ['config_file='])
     except getopt.GetoptError:
-        print('python bin/proxy -f conf/proxy_0.json')
-        sys.exit(-1)
+        print('nohup python bin/proxy -f conf/proxy_0.json > /dev/null 2 > &1 &')
+        sys.exit(-10)
 
+    config_file = ''
     for opt, arg in opts:
-        if opt in ("-i", "--ifile"):
+        if opt in ("-f", "config_file"):
             config_file = arg
 
+    if config_file == 'config_file is empty':
+        print()
+        sys.exit(-20)
 
-    with open('./conf/proxy_0.json') as fd:
-        str = fd.read(1024 * 1024)
+    print('config_file={}'.format(config_file))
 
-    c = config.Config()
-    b = c.load(str)
+    SignalHandle.init_signal()
 
-    b = c.reload(str)
-    print(c)
+    proc = Proc(config_file)
+    ret = proc.init()
+    if ret != 0:
+        print('proc init error, ret={}'.format(ret))
+        sys.exit(ret)
 
-    log.logger(c)
-    log.info('11111')
+    proc.logging()
+    proc.start()
+    proc.loop()
 
-    
-    
-    pass
+    log.error('stop end')
+
+    sys.exit(0)
+
 
 
 

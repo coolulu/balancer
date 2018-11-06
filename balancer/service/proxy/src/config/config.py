@@ -150,7 +150,7 @@ class Config:
         c = Config()
         b = c.load(str)
         if b:
-            self.log = c.log
+            # self.log = c.log 日志模块不支持reload
             self.proc = c.proc
         return b
 
