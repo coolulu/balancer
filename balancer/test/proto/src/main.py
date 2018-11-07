@@ -21,8 +21,9 @@ def main():
     # print(data)
 
     msg = proxy_pb2.ProxyMsg()
-    msg.check_passwd_req.user_id = 1111
-    msg.check_passwd_req.passwd = b'passwd'
+    # msg.check_passwd_req.user_id = 1111
+    # msg.check_passwd_req.passwd = b'passwd'
+    msg.check_passwd_req
     buff = msg.SerializeToString()
 
 
