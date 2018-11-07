@@ -26,6 +26,8 @@
 	},
 
 	"proxy": {
+		"thread_size": 4,
+
 		"mysql": {
 			"host": "127.0.0.1",
 			"port": 1,
