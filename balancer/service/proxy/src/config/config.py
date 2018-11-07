@@ -59,6 +59,7 @@ class Mongodb:
 
 class Proxy:
     def __init__(self):
+        self.thread_size = 0
         self.mysql = Mysql()
         self.redis = Redis()
         self.mongodb = Mongodb()
@@ -87,6 +88,8 @@ class Config:
         str += ', proc.tcp_server_recv_packet_len_max=%d' % self.proc.tcp_server_recv_packet_len_max
         str += ', proc.tcp_server_send_packet_len_max=%d' % self.proc.tcp_server_send_packet_len_max
         str += ', proc.tcp_server_recv_size=%d' % self.proc.tcp_server_recv_size
+
+        str += ', proxy.thread_size=%d' % self.proxy.thread_size
 
         str += ', proxy.mysql.host=%s' % self.proxy.mysql.host
         str += ', proxy.mysql.port=%d' % self.proxy.mysql.port
@@ -125,6 +128,8 @@ class Config:
             self.proc.tcp_server_send_packet_len_max = jo.proc.tcp_server_send_packet_len_max
             self.proc.tcp_server_recv_size = jo.proc.tcp_server_recv_size
 
+            self.proxy.thread_size = jo.proxy.thread_size
+
             self.proxy.mysql.host = jo.proxy.mysql.host
             self.proxy.mysql.port = jo.proxy.mysql.port
             self.proxy.mysql.user = jo.proxy.mysql.user
@@ -150,7 +155,7 @@ class Config:
         c = Config()
         b = c.load(str)
         if b:
-            # self.log = c.log 日志模块不支持reload
+            # self.log = c.log # 鏃ュ織涓嶆敮鎸乺eload
             self.proc = c.proc
         return b
 
@@ -185,6 +190,9 @@ class Config:
             return False
         if type(self.proc.tcp_server_recv_size) != type(c.proc.tcp_server_recv_size) or \
                 self.proc.tcp_server_recv_size == c.proc.tcp_server_recv_size:
+            return False
+
+        if type(self.proxy.thread_size) != type(c.proxy.thread_size) or self.proxy.thread_size == c.proxy.thread_size:
             return False
 
         if type(self.proxy.mysql.host) != type(c.proxy.mysql.host) or self.proxy.mysql.host == c.proxy.mysql.host:

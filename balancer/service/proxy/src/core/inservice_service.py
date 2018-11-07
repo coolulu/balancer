@@ -40,21 +40,17 @@ class InserviceService:
         self._is_ok = self._kv.load_kv(service.kv_map)
         return self._is_ok
 
-    def get_ip_info(self, depend_service_id):
+    def get_ip_info(self, depend_service_id, proc_id=0):
         il = self._map.get(depend_service_id)
         if il is not None:
-            size = len(il.inservice_list)
-            if size > 0:
-                il.count += 1
-                index = il.count % size
-                return il.inservice_list[index]
-
-        return None
-
-    def get_ip_info(self, depend_service_id, proc_id):
-        il = self._map.get(depend_service_id)
-        if il is not None:
-            return il.inservice_map.get(proc_id)
+            if proc_id == 0:
+                size = len(il.inservice_list)
+                if size > 0:
+                    il.count += 1
+                    index = il.count % size
+                    return il.inservice_list[index]
+            else:
+                return il.inservice_map.get(proc_id)
 
         return None
 

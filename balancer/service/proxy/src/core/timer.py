@@ -3,10 +3,10 @@
 
 class Timer:
 
-    def __init__(self, proc):
-        self._proc = proc
+    @staticmethod
+    def check_timeout(proc):
+        proc.check_flag()
+        proc.on_check_idle()
 
-    def check_timeout(self):
-        self._proc.check_flag()
-
+        proc._loop.call_later(0.1, Timer.check_timeout, proc)
 
