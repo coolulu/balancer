@@ -35,6 +35,10 @@ def test():
     print(len(ss))
     print(ss)
 
+    head = struct.unpack('!IIHHHIIIQQBBIII' + str(len(p._data)) + 'sI', stream)
+    print(head)
+    pass
+
 
 test()
 
