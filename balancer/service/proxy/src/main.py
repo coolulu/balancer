@@ -36,9 +36,9 @@ def main(argv):
 
     proc.logging()
     proc.start()
-    proc.loop()
+    proc.looping()
 
-    log.error('stop end')
+    log.g_logger.error('stop end')
 
     sys.exit(0)
 

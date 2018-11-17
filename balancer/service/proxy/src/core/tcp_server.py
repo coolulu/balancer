@@ -2,20 +2,36 @@
 
 import time
 
-from core import proc
 from log import log
+from core import proc
+from core import task
+from handle import handle_server
 
 
-class Task:
-    def __init__(self, conn_id, data):
-        self.conn_id = conn_id
-        self.data = data
-        self.create_time = time.time()
+async def on_connection(reader, writer):
+    log.g_logger.info('on connect create')
+    conn = Conn(proc.g_proc.seq.make_seq(), writer)
+    proc.g_proc.conn_map[conn.conn_id] = conn
+
+    while True:
+        data = await reader.read(proc.g_proc.config.proc.tcp_server_recv_size)
+        conn.update()
+        if data is b'':
+            log.g_logger.info('on connect close')
+            if conn.close():
+                proc.g_proc.conn_map.pop(conn.conn_id)
+            break
+        else:
+            log.g_logger.info('Received %r from %r %r' % (data, conn.peername, conn.update_time))
+            proc.g_proc.loop.run_in_executor(proc.g_proc.pool,
+                                             handle_server.handle_request,
+                                             task.Task(conn.conn_id, data))
 
 
 class Conn:
     def __init__(self, conn_id, writer):
         self.conn_id = conn_id
+        self.stream_buffer = b''
         self.writer = writer
         self.peername = writer.get_extra_info('peername')
         self.socket = writer.get_extra_info('socket')
@@ -39,38 +55,5 @@ class Conn:
         else:
             return False
 
-
-async def on_connection(reader, writer):
-    log.info('on connect create')
-    conn = Conn(proc.g_proc._seq.make_seq(), writer)
-    proc.g_proc._conn_map[conn.conn_id] = conn
-
-    while True:
-        data = await reader.read(proc.g_proc._config.proc.tcp_server_recv_size)
-        conn.update()
-        if data is b'':
-            log.info('on connect close')
-            if conn.close():
-                proc.g_proc._conn_map.pop(conn.conn_id)
-            break
-        else:
-            log.info('Received %r from %r %r' % (data, conn.peername, conn.update_time))
-            proc.g_proc._loop.run_in_executor(proc.g_proc._pool,
-                                              doing,
-                                              Task(conn.conn_id, data))
-
-
-def doing(task):
-
-    proc.g_proc._loop.call_soon_threadsafe(done, task)
-
-
-def done(task):
-    end = time.time()
-    log.info('time end: ' + str(end) + ', diff: ' + str(end - task.create_time))
-    conn = proc.g_proc._conn_map.get(task.conn_id)
-    if conn is not None:
-        log.info('Send: %r' % task.data)
-        conn.write(task.data)
-    else:
-        log.info('conn_id is None: %d' % task.conn_id)
+    def append(self, data):
+            self.stream_buffer += data

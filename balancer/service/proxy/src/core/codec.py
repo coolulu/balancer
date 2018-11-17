@@ -1,6 +1,7 @@
 
 import struct
-import packet
+from core import packet
+
 
 
 def test():

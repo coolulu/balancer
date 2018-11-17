@@ -34,7 +34,7 @@ class Proc:
         g_proc = self
 
         self.conn_map = {}
-        self._loop = None
+        self.loop = None
         self.pool = None
 
         self.config_file = config_file
@@ -56,37 +56,37 @@ class Proc:
         return 0
 
     def start(self):
-        log.info('start')
+        log.g_logger.info('start')
         if self.pool is None:
             self.pool = futures.ThreadPoolExecutor(self.config.proxy.thread_size)
 
-        if self._loop is None:
-            self._loop = asyncio.get_event_loop()
-            self._loop.call_later(0, timer.Timer.check_timeout, self)
+        if self.loop is None:
+            self.loop = asyncio.get_event_loop()
+            self.loop.call_later(0, timer.Timer.check_timeout, self)
 
     def quit(self):
-        log.info('quit')
-        self._loop.stop()
+        log.g_logger.info('quit')
+        self.loop.stop()
 
-    def loop(self):
-        log.info('loop')
+    def looping(self):
+        log.g_logger.info('looping')
         coro = asyncio.start_server(tcp_server.on_connection,
                                     self.config.net.tcp.ip,
                                     self.config.net.tcp.port,
-                                    loop=self._loop)
-        server = self._loop.run_until_complete(coro)
-        log.info('Serving on {}'.format(server.sockets[0].getsockname()))
+                                    loop=self.loop)
+        server = self.loop.run_until_complete(coro)
+        log.g_logger.info('Serving on {}'.format(server.sockets[0].getsockname()))
 
         # Server requests until Ctrl+C is pressed
         try:
-            self._loop.run_forever()
+            self.loop.run_forever()
         except KeyboardInterrupt:
             pass
 
         # Close the server
         server.close()
-        self._loop.run_until_complete(server.wait_closed())
-        self._loop.close()
+        self.loop.run_until_complete(server.wait_closed())
+        self.loop.close()
 
     def logging(self):
         log.logger(self.config)
@@ -94,15 +94,15 @@ class Proc:
     def check_flag(self):
         if Proc.s_reload_flag:
             Proc.s_reload_flag = False
-            log.error('reload start')
+            log.g_logger.error('reload start')
             if self.reload():
-                log.error('reload end')
+                log.g_logger.error('reload end')
             else:
-                log.error('reload failed')
+                log.g_logger.error('reload failed')
 
         if Proc.s_stop_flag:
             Proc.s_stop_flag = False
-            log.error('stop start')
+            log.g_logger.error('stop start')
             self.quit()
 
     def reload(self):
@@ -110,10 +110,10 @@ class Proc:
             config_json = fd.read(Define.BUFFER_SIZE)
         b = self.config.reload(config_json)
         if not b:
-            log.error('config load err')
+            log.g_logger.error('config load err')
             return False
 
-        log.info(self.config)
+        log.g_logger.info(self.config)
         return True
 
     def on_check_idle(self):

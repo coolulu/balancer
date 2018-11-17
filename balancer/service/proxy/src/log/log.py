@@ -171,25 +171,6 @@ def handler(config):
     return g_handler
 
 
-def debug(s):
-    global g_logger
-    g_logger.debug(s)
-
-
-def info(s):
-    global g_logger
-    g_logger.info(s)
-
-
-def warn(s):
-    global g_logger
-    g_logger.warn(s)
-
-
-def error(s):
-    global g_logger
-    g_logger.error(s)
-
 # Log = logger()
 # Log_Handler = handler()
 

@@ -8,5 +8,5 @@ class Timer:
         proc.check_flag()
         proc.on_check_idle()
 
-        proc._loop.call_later(0.1, Timer.check_timeout, proc)
+        proc.loop.call_later(0.1, Timer.check_timeout, proc)
 

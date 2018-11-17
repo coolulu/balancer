@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 
 from proto_py import data_pb2
 
@@ -27,5 +27,3 @@ class Packet:
         self.check_sum = 0
 
         self._body = data_pb2.Body()
-
-
