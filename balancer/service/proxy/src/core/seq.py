@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from tool import util
+from src.tool import util
 
 
 class Seq:

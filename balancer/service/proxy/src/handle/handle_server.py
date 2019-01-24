@@ -2,8 +2,8 @@
 
 import time
 
-from log import log
-from core import proc
+from src.log import log
+from src.core import proc
 
 
 def handle_request(task):

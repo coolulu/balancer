@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from tool import util
-from protocol.protobuf.proto_py import center_pb2
+from src.tool import util
+from src.protocol.protobuf.proto_py import center_pb2
 
 
 class Owner:

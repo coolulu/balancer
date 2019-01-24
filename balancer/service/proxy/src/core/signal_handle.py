@@ -2,7 +2,7 @@
 
 import signal
 
-from core import proc
+from src.core import proc
 
 
 class SignalHandle:

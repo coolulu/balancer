@@ -3,10 +3,9 @@
 import sys
 import getopt
 
-from log import log
-from core.signal_handle import SignalHandle
-from core.proc import Proc
-
+from src.log import log
+from src.core.signal_handle import SignalHandle
+from src.core.proc import Proc
 
 def main(argv):
     try:

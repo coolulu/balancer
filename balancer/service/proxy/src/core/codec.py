@@ -2,7 +2,7 @@
 import struct
 import zlib
 
-from core import packet
+from src.core import packet
 
 
 
