@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from core import kv
-
+from src.core import kv
 
 class InserviceList:
 

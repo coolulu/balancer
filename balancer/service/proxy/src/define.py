@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from protocol.protobuf.proto_py import service_pb2
+from src.protocol.protobuf.proto_py import service_pb2
 
 
 class Define:

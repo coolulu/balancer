@@ -2,10 +2,10 @@
 
 import time
 
-from log import log
-from core import proc
-from core import task
-from handle import handle_server
+from src.log import log
+from src.core import proc
+from src.core import task
+from src.handle import handle_server
 
 
 async def on_connection(reader, writer):
