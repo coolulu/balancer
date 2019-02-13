@@ -140,7 +140,7 @@ void GateServer::on_connection(const muduo::net::TcpConnectionPtr& conn)
 	{
 		if(_proc._owner.is_not_inservice())
 		{
-			// ·şÎñ²»ÔÚÉÏÏß×´Ì¬Ê±£¬½¨Á¢ĞÂÁ¬½ÓÊ±Ôò¶Ï¿ªÁ¬½Ó
+			// æœåŠ¡ä¸åœ¨ä¸Šçº¿çŠ¶æ€æ—¶ï¼Œå»ºç«‹æ–°è¿æ¥æ—¶åˆ™æ–­å¼€è¿æ¥
 			B_LOG_WARN << "service is not inservice, new conn is shutdown";
 			conn->shutdown();
 			return;
@@ -161,13 +161,13 @@ void GateServer::on_connection(const muduo::net::TcpConnectionPtr& conn)
 
 		B_LOG_INFO << "conn is close, del session, _conn_seq_id=" << gate_context._conn_seq_id;
 	
-		// É¾³ıÁ¬½Ó¶ÔÓ¦µÄsession
+		// åˆ é™¤è¿æ¥å¯¹åº”çš„session
 		DelSession* ds = new DelSession(_proc, gate_context._conn_seq_id);
 		ds->del_session();
-		_proc._task_msg_pool.add(ds);	// ¼ÓÈë¶¨Ê±Æ÷
+		_proc._task_msg_pool.add(ds);	// åŠ å…¥å®šæ—¶å™¨
 	}
 
-	// Ã¿´Î½¨Á¢Á¬½Ó/¶Ï¿ªÁ¬½Ó´¥·¢Í¬²½
+	// æ¯æ¬¡å»ºç«‹è¿æ¥/æ–­å¼€è¿æ¥è§¦å‘åŒæ­¥
 	_proc._put_load.trigger_sync_count();
 }
 
@@ -177,7 +177,7 @@ void GateServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 {
 	if(packet_ptr->_from_service_id <= service::CLIENT_BEGIN && packet_ptr->_from_service_id >= service::CLIENT_END)
 	{
-		// ·Ç¿Í»§¶ËÁ¬½Ó
+		// éå®¢æˆ·ç«¯è¿æ¥
 		B_LOG_WARN	<< "shutdown, _from_service_id not in (CLIENT_BEGIN, CLIENT_END),"
 					<< ", _msg_seq_id=" << packet_ptr->_msg_seq_id
 					<< ", CLIENT_BEGIN=" << service::CLIENT_BEGIN
@@ -192,24 +192,24 @@ void GateServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 	{
 		if(packet_ptr->_to_service_id > service::LOGIC_BEGIN && packet_ptr->_to_service_id < service::PROXY_END)
 		{
-			// Ö»ÄÜ·ÃÎÊÒµÎñÂß¼­·şÎñºÍÒµÎñ´úÀí·şÎñ
+			// åªèƒ½è®¿é—®ä¸šåŠ¡é€»è¾‘æœåŠ¡å’Œä¸šåŠ¡ä»£ç†æœåŠ¡
 			if(packet_ptr->_conn_seq_id == p_gate_context->_conn_seq_id)
 			{
-				// ×ª·¢ÇëÇóµ½ÄÚ²¿·şÎñTcpClient, s out -> c in
+				// è½¬å‘è¯·æ±‚åˆ°å†…éƒ¨æœåŠ¡TcpClient, s out -> c in
 				_handle_gate.forward_request_to_service(conn, packet_ptr, time);
 			}
 			else
 			{
-				// ×ª·¢ÏìÓ¦µ½ÄÚ²¿·şÎñTcpServer, s out -> s in
+				// è½¬å‘å“åº”åˆ°å†…éƒ¨æœåŠ¡TcpServer, s out -> s in
 				_handle_gate.forward_response_to_service(conn, packet_ptr, time);
 			}
 		}
 		else
 		{
-			// ºËĞÄ·şÎñÖ»ÄÜ·ÃÎÊgate£¬ÆäËûºËĞÄ·şÎñ²»ÄÜ·ÃÎÊ
+			// æ ¸å¿ƒæœåŠ¡åªèƒ½è®¿é—®gateï¼Œå…¶ä»–æ ¸å¿ƒæœåŠ¡ä¸èƒ½è®¿é—®
 			if(packet_ptr->_to_service_id == Define::service_id)
 			{
-				// ´¦Àíclient·¢ËÍ¸øgateµÄreq
+				// å¤„ç†clientå‘é€ç»™gateçš„req
 				if(packet_ptr->_to_proc_id == _proc._owner._proc_id)
 				{
 					bool b = packet_ptr->parse();
@@ -242,13 +242,13 @@ void GateServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 					}
 					else
 					{
-						// ¶ª°ü
+						// ä¸¢åŒ…
 						B_LOG_ERROR << "lose packet, parse=false, _msg_seq_id=" << packet_ptr->_msg_seq_id;
 					}
 				}
 				else
 				{
-					// ´¦Àíclient·µ»ØgateµÄrsp
+					// å¤„ç†clientè¿”å›gateçš„rsp
 					TaskMsgBase* task = _proc._task_msg_pool.find(packet_ptr->_msg_seq_id);
 					if(task == nullptr)
 					{
@@ -289,7 +289,7 @@ void GateServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 						}
 						else
 						{
-							// ¶ª°ü
+							// ä¸¢åŒ…
 							B_LOG_ERROR << "lose packet, parse=false, _msg_seq_id=" << packet_ptr->_msg_seq_id;
 						}
 					}
@@ -297,7 +297,7 @@ void GateServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 			}
 			else
 			{
-				// Ã»ÓĞÈ¨ÏŞ·ÃÎÊ·ÇgateÍâµÄºËĞÄ·şÎñ
+				// æ²¡æœ‰æƒé™è®¿é—®égateå¤–çš„æ ¸å¿ƒæœåŠ¡
 				B_LOG_WARN	<< "shutdown, _to_service_id is not Define::service_id"
 							<< ", _msg_seq_id=" << packet_ptr->_msg_seq_id
 							<< ", Define::service_id=" << Define::service_id
@@ -308,46 +308,46 @@ void GateServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 	}
 	else if(p_gate_context->_en_conn == GateContext::EN_CONN_NOT_LOGIN)
 	{
-		// ±ØĞëÊÇ×ª·¢µ½µÇÂ¼·şÎñ
+		// å¿…é¡»æ˜¯è½¬å‘åˆ°ç™»å½•æœåŠ¡
 		if(packet_ptr->_to_service_id == service::LOGIN)
 		{
 			if(packet_ptr->_conn_seq_id == p_gate_context->_conn_seq_id)
 			{
-				// ÇëÇó
+				// è¯·æ±‚
 				if(p_gate_context->_is_send_login_request)
 				{
-					// ÒÑ¾­·¢ËÍ¹ıµÇÂ¼ÇëÇó£¬·ÀÖ¹Çî¾Ù
+					// å·²ç»å‘é€è¿‡ç™»å½•è¯·æ±‚ï¼Œé˜²æ­¢ç©·ä¸¾
 					B_LOG_WARN << "shutdown, _is_send_login_request=true, _msg_seq_id=" << packet_ptr->_msg_seq_id;
 					conn->shutdown();
 				}
 				else
 				{
-					// µÇÂ¼ÇëÇó×ª·¢¸øµÇÂ¼·şÎñÆ÷
+					// ç™»å½•è¯·æ±‚è½¬å‘ç»™ç™»å½•æœåŠ¡å™¨
 					_handle_gate.forward_request_to_service(conn, packet_ptr, time);
 					p_gate_context->_is_send_login_request = true;
 				}
 			}
 			else
 			{
-				// ÏìÓ¦
+				// å“åº”
 				if(p_gate_context->_is_send_login_request)
 				{
 					if(p_gate_context->_is_send_access_key_response)
 					{
-						// ÒÑ¾­·¢ËÍ¹ıaccess_keyÏìÓ¦£¬·ÀÖ¹Çî¾Ù
+						// å·²ç»å‘é€è¿‡access_keyå“åº”ï¼Œé˜²æ­¢ç©·ä¸¾
 						B_LOG_WARN << "shutdown, _is_send_access_key_response=true, _msg_seq_id=" << packet_ptr->_msg_seq_id;
 						conn->shutdown();
 					}
 					else
 					{
-						// access_keyÏìÓ¦×ª·¢¸øµÇÂ¼·şÎñÆ÷
+						// access_keyå“åº”è½¬å‘ç»™ç™»å½•æœåŠ¡å™¨
 						_handle_gate.forward_response_to_service(conn, packet_ptr, time);
 						p_gate_context->_is_send_access_key_response = true;
 					}
 				}
 				else
 				{
-					// ¿Í»§¶Ë±ØĞëÏÈ·¢ËÍµÇÂ¼ÇëÇó²Å»áÓĞaccess_keyÏìÓ¦
+					// å®¢æˆ·ç«¯å¿…é¡»å…ˆå‘é€ç™»å½•è¯·æ±‚æ‰ä¼šæœ‰access_keyå“åº”
 					B_LOG_WARN << "shutdown, access key rsp, _is_send_login_request=false, _msg_seq_id=" << packet_ptr->_msg_seq_id;
 					conn->shutdown();
 				}
@@ -398,7 +398,7 @@ void GateServer::on_message(const muduo::net::TcpConnectionPtr& conn,
 			}
 			else
 			{
-				// ¶ª°ü
+				// ä¸¢åŒ…
 				B_LOG_ERROR << "shutdown, lose packet, parse=false, _msg_seq_id=" << packet_ptr->_msg_seq_id;
 				conn->shutdown();
 			}
@@ -428,10 +428,12 @@ void GateServer::on_write_complete(const muduo::net::TcpConnectionPtr& conn)
 
 void GateServer::on_high_water_mark(const muduo::net::TcpConnectionPtr& conn, size_t len)
 {
-	B_LOG_WARN << conn->name() << ", len=" << len;
+	B_LOG_WARN << conn->name() << " shutdown, len=" << len;
 
-	GateContext* p_gate_context = boost::any_cast<GateContext>(conn->getMutableContext());
-	p_gate_context->_update_time = ::time(nullptr);
+	// GateContext* p_gate_context = boost::any_cast<GateContext>(conn->getMutableContext());
+	// p_gate_context->_update_time = ::time(nullptr);
+	
+	conn->shutdown();	// é˜²æ­¢å®¢æˆ·ç«¯åªå‘ä¸æ”¶ï¼Œå¯¼è‡´æœåŠ¡ç«¯å†…å­˜ä¸æ–­å¢åŠ 
 }
 
 void GateServer::on_check_idle()
@@ -447,19 +449,19 @@ void GateServer::on_check_idle()
 			{
 				if(p_gate_context->_is_wake_heartbeat_wait)
 				{
-					// µÈ´ı¿Í»§¶ËĞÄÌø·µ»Ø£¬ÎŞĞè´¦Àí
+					// ç­‰å¾…å®¢æˆ·ç«¯å¿ƒè·³è¿”å›ï¼Œæ— éœ€å¤„ç†
 				}
 				else if(t_now - p_gate_context->_update_time >= _proc._config.proc.gate_server_idle)
 				{
-					// µÇÂ¼×´Ì¬µÄ¿ÕÏĞÁ¬½Ó£¬¸ø¿Í»§¶Ë·¢ËÍĞÄÌøÇëÇó
+					// ç™»å½•çŠ¶æ€çš„ç©ºé—²è¿æ¥ï¼Œç»™å®¢æˆ·ç«¯å‘é€å¿ƒè·³è¯·æ±‚
 					WakeHeartbeat* whb = new WakeHeartbeat(_proc, p_gate_context->_conn_seq_id);
 					whb->wake_client(conn, p_gate_context);
-					_proc._task_msg_pool.add(whb);	// ¼ÓÈë¶¨Ê±Æ÷
+					_proc._task_msg_pool.add(whb);	// åŠ å…¥å®šæ—¶å™¨
 				}
 			}
 			else if(t_now - p_gate_context->_update_time >= _proc._config.proc.gate_server_idle)
 			{
-				// ·ÇµÇÂ¼×´Ì¬µÄ¿ÕÏĞÁ¬½Ó£¬Ö±½Ó¶Ï¿ªÁ¬½Ó
+				// éç™»å½•çŠ¶æ€çš„ç©ºé—²è¿æ¥ï¼Œç›´æ¥æ–­å¼€è¿æ¥
 				B_LOG_ERROR << conn->name() << " is idle, shutdown"
 											<< ", _conn_seq_id=" << p_gate_context->_conn_seq_id
 											<< ", _en_conn=" << p_gate_context->_en_conn;
