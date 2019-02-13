@@ -433,7 +433,8 @@ void GateServer::on_high_water_mark(const muduo::net::TcpConnectionPtr& conn, si
 	// GateContext* p_gate_context = boost::any_cast<GateContext>(conn->getMutableContext());
 	// p_gate_context->_update_time = ::time(nullptr);
 	
-	conn->shutdown();	// 防止客户端只发不收，导致服务端内存不断增加
+	// 防止客户端只发送请求不接收响应，tcp发送缓冲区塞满，导致用户态的发送缓冲区不断增加，从而服务端内存不断增加
+	conn->shutdown();
 }
 
 void GateServer::on_check_idle()
